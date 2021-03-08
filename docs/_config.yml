@@ -18,17 +18,17 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: openIDL code
+title: openIDL documentation
 email: kens@aaisonline.com
 description: >- # this means to ignore newlines until "baseurl:"
-  openIDL is an open source distributed blockchain solution built with hyperledger fabric.
-  With openIDL, organizations can consent to sharing of data for any prupose.
-baseurl: "docs" # the subpath of your site, e.g. /blog
+  This is the openIDL documentation site.
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-github_username:  kens-aais
+twitter_username: jekyllrb
+github_username:  jekyll
 
 # Build settings
-theme: jekyll-theme-slate
+theme: minima
 plugins:
   - jekyll-feed
 
