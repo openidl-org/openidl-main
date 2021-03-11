@@ -1,7 +1,17 @@
-## Welcome to openIDL Main
+---
+layout: default
+title: openIDL
+nav_order: 1
+---
+[//]: # (SPDX-License-Identifier: CC-BY-4.0)
 
-This project contains all the code for the openIDL project.
+# openIDL
 
-The general discussion of openIDL can be found [here](gendiscuss)
+## Using
 
-Continue below to find out about the project and how to participate.
+## Learning
+
+## Contributing
+
+## Building
+

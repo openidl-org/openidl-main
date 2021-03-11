@@ -1,0 +1,10 @@
+theme: just-the-docs
+# remote-theme: pmarsceill/just-the-docs
+logo: "aais-logo.png"
+title: openIDL
+email: kens@aaisonline.com
+description: >- # this means to ignore newlines until "baseurl:"
+  This is the openIDL documentation site.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "openidl.org"
+
