@@ -1,6 +1,6 @@
 theme: just-the-docs
 # remote_theme: pmarsceill/just-the-docs
-logo: "aais-logo.png"
+logo: "openidl_color.png"
 title: openIDL
 email: kens@aaisonline.com
 description: >- # this means to ignore newlines until "baseurl:"
