@@ -2,7 +2,7 @@
 layout: default
 title: Learn about openIDL
 nav_order: 2
-has_children: true
+# has_children: true
 ---
 
 # What is openIDL?
