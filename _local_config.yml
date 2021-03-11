@@ -7,4 +7,10 @@ description: >- # this means to ignore newlines until "baseurl:"
   This is the openIDL documentation site.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "openidl.org"
-
+aux_links:
+  # "About":
+  #   - "//www.hyperledger.org/about/leadership#tsc"
+  "GitHub Code":
+    - "//github.com/openidl-org/openidl-main"
+  "GitHub Pages":
+    - "//github.com/openidl-org/openidl-main/tree/gh-pages"
