@@ -4,13 +4,4 @@ title: openIDL
 nav_order: 1
 ---
 
-# openIDL
-
-## Using
-
-## Learning
-
-## Contributing
-
-## Building
-
+Under construction
