@@ -8,8 +8,8 @@ description: >- # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "openidl.org"
 aux_links:
-  # "About":
-  #   - "//www.hyperledger.org/about/leadership#tsc"
+  "About":
+    - "//openidl.lfprojects.linuxfoundation.org/"
   "GitHub Code":
     - "//github.com/openidl-org/openidl-main"
   "GitHub Pages":
