@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: Apache-2.0
 import { PipesModule } from './pipes.module';
 
 describe('PipesModule', () => {

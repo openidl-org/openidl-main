@@ -1,3 +1,6 @@
+#
+# SPDX-License-Identifier: Apache-2.0
+#
 #!/bin/bash
 
 # We should abort as soon as there is an error

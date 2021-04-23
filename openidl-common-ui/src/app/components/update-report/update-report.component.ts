@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: Apache-2.0
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { ReportTableComponent } from '../report-table/report-table.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';

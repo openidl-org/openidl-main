@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: Apache-2.0
 const sgMail = require('@sendgrid/mail');
 
 exports.sendEmail = async (apikey, fromaddress, toaddress, emailsubject, bodycontent) => {

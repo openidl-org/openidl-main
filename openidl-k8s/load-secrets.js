@@ -1,4 +1,7 @@
 /**
+ SPDX-License-Identifier: Apache-2.0
+*/
+/**
  * Load the secrets from aws.
  * call via node load-secrets.js <cloud> <environment> <node>
  * The results will be placed into the config directory.

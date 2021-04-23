@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: Apache-2.0
 import { CREDS } from './../app.cred';
 import { Header } from './../header/header.po';
 import { LoginPage } from '../login/login.po';

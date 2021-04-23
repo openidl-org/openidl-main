@@ -1,3 +1,6 @@
+/**
+ SPDX-License-Identifier: Apache-2.0
+*/
 const hdsProcessor = require('./HDSProcessor')
 
 module.exports.convertRecordToFlatJson = (record) => {

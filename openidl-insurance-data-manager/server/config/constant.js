@@ -1,4 +1,7 @@
 /**
+ SPDX-License-Identifier: Apache-2.0
+*/
+/**
  * Message Object is used for config the response parameter value
  */
 module.exports.Message = {

@@ -1,3 +1,6 @@
+/**
+ SPDX-License-Identifier: Apache-2.0
+*/
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CreateDatacallComponent } from '../create-datacall/create-datacall.component';

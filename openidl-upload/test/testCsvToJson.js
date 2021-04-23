@@ -1,3 +1,6 @@
+/**
+ SPDX-License-Identifier: Apache-2.0
+*/
 const fs = require('fs');
 const csvFilePath='test/Book1.csv'
 const csv=require('csvtojson')

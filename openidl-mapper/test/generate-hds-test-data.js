@@ -1,3 +1,6 @@
+/**
+ SPDX-License-Identifier: Apache-2.0
+*/
 // const dataFileNames = ['data/BPPremData.txt','data/BPLossData.txt','data/CPLossData.txt','data/CPPremData.txt','data/IMLossData.txt','data/IMPremData.txt']
 const dataFolder = 'test/data/'
 const fileProcessor = require('../FileProcessor')

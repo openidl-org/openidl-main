@@ -1,3 +1,6 @@
+/**
+ SPDX-License-Identifier: Apache-2.0
+*/
 const MongoDBManager = require('../openidl-extraction-pattern-developer/service/mongo-database-manager')
 const fileProcessor = require('./FileProcessor')
 const fs = require('fs');

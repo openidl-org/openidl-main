@@ -1,3 +1,6 @@
+/**
+ SPDX-License-Identifier: Apache-2.0
+*/
 const log4js = require('log4js');
 const logger = log4js.getLogger('base64Decoder');
 logger.level = config.logLevel;

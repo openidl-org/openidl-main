@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: Apache-2.0
 import { Injectable } from '@angular/core';
 import {Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable, ObservableInput, throwError } from 'rxjs';

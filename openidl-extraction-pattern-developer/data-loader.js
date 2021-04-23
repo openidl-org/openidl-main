@@ -1,3 +1,6 @@
+//
+// SPDX-License-Identifier: Apache-2.0
+//
 const MongoDBManager = require('./service/mongo-database-manager')
 const dbName = 'covid-report'
 const collectionName = 'hds-data'

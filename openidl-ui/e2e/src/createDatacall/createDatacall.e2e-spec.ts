@@ -1,3 +1,6 @@
+/**
+ SPDX-License-Identifier: Apache-2.0
+*/
 import { DATATOCREATE } from './../dataToCreate';
 import { CREDS } from './../app.cred';
 import { Header } from './../header/header.po';

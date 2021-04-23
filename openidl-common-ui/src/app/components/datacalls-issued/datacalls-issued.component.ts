@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: Apache-2.0
 import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { DatacallHistoryComponent } from '../datacall-history/datacall-history.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';

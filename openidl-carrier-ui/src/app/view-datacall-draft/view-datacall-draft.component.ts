@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: Apache-2.0
 import { Component, OnInit } from '@angular/core';
 import { UpdateFormComponent } from './../../../lib/src/app/components/update-form/update-form.component';
 import { Router } from '@angular/router';

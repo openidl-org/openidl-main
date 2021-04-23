@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: Apache-2.0
 #!/bin/bash
 source config.sh
 source utils.sh

@@ -1,4 +1,4 @@
- 
+ // SPDX-License-Identifier: Apache-2.0
 /**
  * Updated Implementation of FileSystem Memory Wallet with InMemory Wallet
  * Same applies to couchdb wallet to be implemented

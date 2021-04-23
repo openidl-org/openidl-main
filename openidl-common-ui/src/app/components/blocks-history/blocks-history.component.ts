@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: Apache-2.0
 import { Response } from '@angular/http';
 
 import { Component, OnInit } from '@angular/core';

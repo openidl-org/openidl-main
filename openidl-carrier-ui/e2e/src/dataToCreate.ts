@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: Apache-2.0
 export const DATATOCREATE = {
   'name': 'Data call UI automation test',
   'description': 'Sample description',

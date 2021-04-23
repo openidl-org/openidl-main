@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: Apache-2.0
 const viewFunction = {};
 viewFunction.map = function() {
     var lineofInsurance = ['32', '34']; // HO : 32, MHO : 34

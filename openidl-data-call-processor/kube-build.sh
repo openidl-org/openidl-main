@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: Apache-2.0
 # Add GitLab token to package.json files
 sed -i 's/${GITHUB_TOKEN}/'$GITHUB_TOKEN'/g' package.json
 sed -i 's/${GITHUB_TOKEN}/'$GITHUB_TOKEN'/g' package-lock.json

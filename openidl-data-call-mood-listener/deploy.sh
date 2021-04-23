@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: Apache-2.0
 #!/bin/bash
 
 sed -i 's/${GITHUB_TOKEN}/'$GITHUB_TOKEN'/g' package.json
