@@ -1,5 +1,6 @@
+/* SPDX-License-Identifier: Apache-2.0 */
 .main-div {
-  background-image: url('../../assets/images/LandingBG.png');
+  background-image: url("../../assets/images/LandingBG.png");
   position: fixed;
   top: 0px;
   left: 0px;
@@ -13,9 +14,9 @@
   background: rgba(255, 255, 255, 0.8);
   width: 450px;
   min-height: 540px;
-  display:block;
-  margin-top:12%;
-  margin-left:16%;
+  display: block;
+  margin-top: 12%;
+  margin-left: 16%;
 }
 
 .card-header {
@@ -24,7 +25,7 @@
 }
 
 .text-heading {
-  font-family: 'IBM Plex Sans Medium';
+  font-family: "IBM Plex Sans Medium";
   font-size: 24px;
   color: #152935;
   line-height: 45px;
@@ -36,14 +37,14 @@
 }
 
 .input-label-user {
-  font-family: 'IBM Plex Sans Medium';
+  font-family: "IBM Plex Sans Medium";
   font-size: 17px;
   color: #152935;
 }
 
 .input-label-pass {
   color: #4979b8;
-  font-family: 'IBM Plex Sans Medium';
+  font-family: "IBM Plex Sans Medium";
   font-size: 17px;
 }
 
@@ -53,7 +54,7 @@
   padding: 10px;
 }
 
-.img-div>img {
+.img-div > img {
   margin-top: 20px;
 }
 
@@ -78,7 +79,7 @@ select.form-control {
 
 .span-style {
   color: #4979b8;
-  font-family: 'IBM Plex Sans Medium';
+  font-family: "IBM Plex Sans Medium";
   font-size: 17px;
   text-decoration: underline;
 }
@@ -88,8 +89,8 @@ select.form-control {
   border-radius: 0;
   padding: 10px;
   width: 150px;
-  font-family: 'IBM Plex Sans Medium';
-  text-transform:uppercase
+  font-family: "IBM Plex Sans Medium";
+  text-transform: uppercase;
 }
 
 .btn-center {
@@ -97,12 +98,10 @@ select.form-control {
   margin-top: 20%;
 }
 
-.btn-center>button {
+.btn-center > button {
   margin: 0 auto;
   display: block;
 }
-
-
 
 @keyframes lds-rolling {
   0% {
@@ -125,13 +124,13 @@ select.form-control {
   }
 }
 .lds-css {
-  display:inline-block;
+  display: inline-block;
 }
 .lds-rolling {
   position: relative;
-  width:40px;
-  height:40px;
-  display:inline-block;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
 }
 .lds-rolling div,
 .lds-rolling div:after {

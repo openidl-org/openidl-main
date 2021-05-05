@@ -1,29 +1,30 @@
+/* SPDX-License-Identifier: Apache-2.0*/
 .pageBlock {
-    position: relative;
-    display: inline-block;
-    width: 30px;
-    min-height: 20px;
-    margin: 2px;
-    cursor: pointer;
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  min-height: 20px;
+  margin: 2px;
+  cursor: pointer;
 }
 
 .pageBlock:hover {
-    background-color: #3d70b2;
-    color: white;
+  background-color: #3d70b2;
+  color: white;
 }
 
 .pageView {
-    height: auto;
-    text-align: center;
-    float: right;
+  height: auto;
+  text-align: center;
+  float: right;
 }
 
 .activePage {
-    background: #3d70b2 ! important;
-    color: white ! important;
+  background: #3d70b2 !important;
+  color: white !important;
 }
 
 .disableBtn {
-    color: gray ! important;
-    pointer-events: none;
+  color: gray !important;
+  pointer-events: none;
 }

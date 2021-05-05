@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: Apache-2.0
 #IBM Cloud API KEY
 variable ibmcloud_api_key {}
 

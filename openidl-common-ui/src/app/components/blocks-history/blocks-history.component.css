@@ -1,22 +1,22 @@
-
+/* SPDX-License-Identifier: Apache-2.0*/
 ul {
-  display:block;
+  display: block;
   list-style: none;
 }
-ul>li {
-  display:inline-block;
+ul > li {
+  display: inline-block;
   /* max-width:200px; */
   word-break: break-all;
-  height:auto;
-  padding:10px;
+  height: auto;
+  padding: 10px;
   border: 1px solid #3d70b2;
-  position:relative;
-  margin:8px 30px 8px 0;;
+  position: relative;
+  margin: 8px 30px 8px 0;
   font-size: 11px;
-  background-color:#fff;
+  background-color: #fff;
 }
-ul>li:after {
-  content: '';
+ul > li:after {
+  content: "";
   width: 30px;
   height: 1px;
   background-color: #3d70b2;
@@ -24,8 +24,8 @@ ul>li:after {
   top: 20px;
   position: absolute;
 }
-ul>li:last-child:after {
-  width:0;
-  height:0;
-  content:'';
+ul > li:last-child:after {
+  width: 0;
+  height: 0;
+  content: "";
 }

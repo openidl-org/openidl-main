@@ -1,12 +1,13 @@
+/* SPDX-License-Identifier: Apache-2.0*/
 header {
-  padding:20px 0px;
-  height:83px;
+  padding: 20px 0px;
+  height: 83px;
   border-bottom: 3px solid #005698;
-  display:block;
+  display: block;
   background-color: #fff;
 }
 header img {
-  display:inline-block;
+  display: inline-block;
   padding: 0 10px;
 }
 header .divider {
@@ -23,30 +24,30 @@ header ul {
 }
 header ul li {
   display: inline-block;
-    padding: 0 20px;
+  padding: 0 20px;
 }
 header ul li a {
   font-size: 14px;
-    text-transform: capitalize;
-    font-family: 'IBM Plex Sans Bold';
-    text-decoration: none;
-    height: 35px;
-    display: block;
-    padding-top: 10px;
+  text-transform: capitalize;
+  font-family: "IBM Plex Sans Bold";
+  text-decoration: none;
+  height: 35px;
+  display: block;
+  padding-top: 10px;
 }
 header ul li.active {
-  border-bottom:5px solid #005698;
+  border-bottom: 5px solid #005698;
 }
 .nav-container {
   float: right;
-  padding:0 20px;
+  padding: 0 20px;
   vertical-align: middle;
 }
 
 .logout-link {
   font-size: 14px;
   text-transform: capitalize;
-  font-family: 'IBM Plex Sans Bold';
-  border-left:2px solid #005698;
-  padding:0 15px;
+  font-family: "IBM Plex Sans Bold";
+  border-left: 2px solid #005698;
+  padding: 0 15px;
 }

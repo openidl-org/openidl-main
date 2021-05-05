@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: Apache-2.0
 FROM node:10-alpine
 
 RUN apk update && apk upgrade && \

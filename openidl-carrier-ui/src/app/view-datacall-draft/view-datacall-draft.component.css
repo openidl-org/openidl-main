@@ -1,8 +1,9 @@
+/* SPDX-License-Identifier: Apache-2.0 */
 .back-link {
   color: #3d70b2;
   text-decoration: underline;
   text-transform: capitalize;
-  font-family: 'IBM Plex Sans';
+  font-family: "IBM Plex Sans";
   background: transparent;
   border: 0;
   cursor: pointer;

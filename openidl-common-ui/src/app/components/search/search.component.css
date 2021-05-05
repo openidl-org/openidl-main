@@ -1,11 +1,12 @@
+/* SPDX-License-Identifier: Apache-2.0*/
 .search-container {
-  width:100%;
+  width: 100%;
   position: relative;
   float: left;
 }
-.search-container input { 
+.search-container input {
   width: 85%;
-  border: 1px solid #F2F2F2;
+  border: 1px solid #f2f2f2;
   box-shadow: 0 0px 3px rgba(220, 220, 220, 0.5);
   padding: 10px 30px;
   margin: 2% 0 4%;
@@ -19,10 +20,9 @@
   top: 33%;
 }
 .btn-clearsearch {
-  background-color: #4979B8;
+  background-color: #4979b8;
   border-radius: 0;
   padding: 10px;
   width: 150px;
-  font-family: 'IBM Plex Sans Medium';
- 
+  font-family: "IBM Plex Sans Medium";
 }

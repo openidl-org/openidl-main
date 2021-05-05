@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: Apache-2.0*/
 .btn-primary,
 button:disabled.btn-primary {
   background-color: #3d70b2;
@@ -8,7 +9,7 @@ button:disabled.btn-primary {
   border: 1px solid #3d70b2;
   padding: 8px 12px;
   margin: 10px;
-  font-family: 'IBM Plex Sans Medium';
+  font-family: "IBM Plex Sans Medium";
   cursor: pointer;
   min-width: 130px;
   border: 2px solid #3d70b2 !important;
@@ -22,14 +23,14 @@ button:disabled.btn-primary {
 }
 .btn-secondary,
 button:disabled.btn-secondary {
-  color:#3d70b2;
+  color: #3d70b2;
   background-color: #fff;
-  border:2px solid #3d70b2;
+  border: 2px solid #3d70b2;
   font-size: 14px;
   /* text-transform: capitalize; */
-  padding:8px 12px;
-  margin:10px;
-  font-family: 'IBM Plex Sans Medium';
+  padding: 8px 12px;
+  margin: 10px;
+  font-family: "IBM Plex Sans Medium";
   min-width: 130px;
 }
 button:disabled.btn-secondary {
@@ -39,7 +40,7 @@ button:disabled.btn-secondary {
 
 .btn-secondary:focus,
 .btn-primary:focus {
-  outline:none !important;
+  outline: none !important;
   box-shadow: 0 !important;
 }
 /* Small Spinner blue */
@@ -64,13 +65,13 @@ button:disabled.btn-secondary {
   }
 }
 .lds-css {
-  display:inline-block;
+  display: inline-block;
 }
 .lds-rolling {
   position: relative;
-  width:40px;
-  height:40px;
-  display:inline-block;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
 }
 .lds-rolling div,
 .lds-rolling div:after {

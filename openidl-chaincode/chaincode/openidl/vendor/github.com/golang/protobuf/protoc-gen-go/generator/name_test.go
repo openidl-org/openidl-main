@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: Apache-2.0
 // Go support for Protocol Buffers - Google's data interchange format
 //
 // Copyright 2013 The Go Authors.  All rights reserved.

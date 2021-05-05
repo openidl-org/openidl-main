@@ -1,36 +1,37 @@
+/* SPDX-License-Identifier: Apache-2.0*/
 .col-sm-12.report-table {
   margin-top: 1% !important;
   padding-right: 3% !important;
-  font-family: 'IBM Plex Sans SemiBold'!important;
-  font-size: 11px!important;
-  color: #152935!important;
-  letter-spacing: 0!important;
-  text-align: left!important;
-  line-height: 10.5px!important;
+  font-family: "IBM Plex Sans SemiBold" !important;
+  font-size: 11px !important;
+  color: #152935 !important;
+  letter-spacing: 0 !important;
+  text-align: left !important;
+  line-height: 10.5px !important;
 }
 
-.table-bordered>thead>tr>th,
-.table-bordered>tbody>tr>td {
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > td {
   border: none !important;
   border-top: 1px solid #dfe3e6 !important;
 }
 
-.table-bordered>thead>tr>th {
+.table-bordered > thead > tr > th {
   background: #f5f7fa !important;
 }
 
-.table-hover>tbody>tr:hover td {
-  background: #ECF5FF !important;
+.table-hover > tbody > tr:hover td {
+  background: #ecf5ff !important;
   border: 1px solid #5596e6 !important;
-  border-left: none!important;
-  border-right: none!important;
+  border-left: none !important;
+  border-right: none !important;
 }
 
-.table-hover>tbody>tr:hover td:first-child {
+.table-hover > tbody > tr:hover td:first-child {
   border-left: 1px solid #5596e6 !important;
 }
 
-.table-hover>tbody>tr:hover td:last-child {
+.table-hover > tbody > tr:hover td:last-child {
   border-right: 1px solid #5596e6 !important;
 }
 
@@ -44,14 +45,14 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  display:block;
+  display: block;
 }
 .truncate-hash {
   width: 250px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  display:block;
+  display: block;
 }
 
 @media screen and (max-width: 1024px) {
@@ -60,7 +61,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    display:block;
+    display: block;
   }
   .truncate-hash {
     width: 170px;
@@ -73,7 +74,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    display:block;
+    display: block;
   }
   .truncate-hash {
     width: 90px;
@@ -81,8 +82,8 @@
 }
 
 .reset-btn {
-  display:inline-block;
-  color:#bbb;
+  display: inline-block;
+  color: #bbb;
   font-size: 14px;
   cursor: pointer;
 }
@@ -97,23 +98,23 @@
   top: 25px;
   font-size: 12px;
   border: 1px solid #ccc;
-  box-shadow: 0 2px 5px 0 rgba(120,120,120,0.5);
+  box-shadow: 0 2px 5px 0 rgba(120, 120, 120, 0.5);
 }
 .reset-container:after {
-  content: '';
-    background-color: transparent;
-    width: 15px;
-    height: 15px;
-    position: absolute;
-    border-bottom: 10px solid #fff;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    /* transform: rotate(135deg); */
-    top: -15px;
-    right: 4px;
+  content: "";
+  background-color: transparent;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  border-bottom: 10px solid #fff;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  /* transform: rotate(135deg); */
+  top: -15px;
+  right: 4px;
 }
 .reset-container:before {
-  content: '';
+  content: "";
   background-color: transparent;
   width: 15px;
   height: 15px;
@@ -126,18 +127,18 @@
   top: -15px;
   right: 1px;
 }
-.copyLink>button,
-.copyLink>span {
-  font-size:10px;
-  color:#152935;
-  letter-spacing:0;
-  text-align:left;
-  line-height:22px;
-  display:block;
+.copyLink > button,
+.copyLink > span {
+  font-size: 10px;
+  color: #152935;
+  letter-spacing: 0;
+  text-align: left;
+  line-height: 22px;
+  display: block;
 }
-.copyLink>button {
-  border:0;
-  background:none;
+.copyLink > button {
+  border: 0;
+  background: none;
   box-shadow: none;
-  padding:0;
+  padding: 0;
 }

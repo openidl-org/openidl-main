@@ -1,234 +1,475 @@
+<!-- SPDX-License-Identifier: Apache-2.0-->
 <div class="form-container">
-    <div class="col-sm-offset-1 col-sm-10 text-left main-container" style='margin-top:5px;'>
-
-        <div class="col-sm-12 first-container">
+  <div
+    class="col-sm-offset-1 col-sm-10 text-left main-container"
+    style="margin-top: 5px"
+  >
+    <div class="col-sm-12 first-container">
+      <div class="row">
+        <span class="page-header">Data Call Details:</span>
+      </div>
+      <div class="row" style="margin-left: 3px">
+        <div class="col-sm-12 no-row-padding">
+          <form
+            [formGroup]="registerForm"
+            (submit)="updateFields(tempDate, tempURL, tempPattern)"
+          >
             <div class="row">
-                <span class="page-header">Data Call Details:</span>
+              <div *ngIf="isStatAgent && isDelivery" class="col-sm-4">
+                <div
+                  class="date-container"
+                  style="width: 100%; padding-left: 0"
+                >
+                  <label for="deadline" class="text-heading"
+                    >Delivery Date</label
+                  >
+                  <input
+                    name="deadline"
+                    class="input-style"
+                    formControlName="proposedDeliveryDate"
+                    [(ngModel)]="tempDate"
+                    placeholder="mm/dd/yyyy"
+                    [owlDateTimeTrigger]="dt1"
+                    [owlDateTime]="dt1"
+                  />
+                  <!--[min]="minDeadline"-->
+                  <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+                </div>
+              </div>
+              <div *ngIf="!isForumUrl && isStatAgent" class="col-sm-6">
+                <label for="name" class="text-heading">Forum URL</label>
+                <input
+                  formControlName="forumUrl"
+                  [(ngModel)]="tempURL"
+                  id="name"
+                  type="text"
+                  class="input-style"
+                  style="display: inline-block"
+                  placeholder="Paste forum URL here"
+                />
+              </div>
+              <div
+                *ngIf="(!isForumUrl || isDelivery) && isStatAgent"
+                class="col-sm-2"
+              >
+                <div
+                  class="datebtn"
+                  style="padding-left: 5%; padding-top: 7%; width: 100%"
+                >
+                  <button
+                    class="btn-primary pull-right"
+                    type="submit"
+                    style="width: 100%"
+                  >
+                    Update
+                  </button>
+                </div>
+              </div>
             </div>
-            <div class="row" style="margin-left: 3px;">
-                <div class="col-sm-12 no-row-padding">
-                    <form [formGroup]="registerForm" (submit)='updateFields(tempDate, tempURL, tempPattern)'>
-                        <div class="row">
-                            <div *ngIf='isStatAgent && isDelivery' class="col-sm-4">
-                                <div class="date-container" style='width:100%;padding-left:0;'>
-                                    <label for="deadline" class="text-heading">Delivery Date</label>
-                                    <input name="deadline" class="input-style" formControlName="proposedDeliveryDate" [(ngModel)]="tempDate" placeholder="mm/dd/yyyy" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1">
-                                    <!--[min]="minDeadline"-->
-                                    <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
-                                </div>
-                            </div>
-                            <div *ngIf='!isForumUrl && isStatAgent' class="col-sm-6">
-                                <label for="name" class="text-heading">Forum URL</label>
-                                <input formControlName='forumUrl' [(ngModel)]="tempURL" id="name" type="text" class="input-style" style='display:inline-block;' placeholder="Paste forum URL here">
-                            </div>
-                            <div *ngIf='(!isForumUrl || isDelivery) && isStatAgent' class="col-sm-2">
-                                <div class="datebtn" style='padding-left:5%;padding-top:7%;width:100%;'>
-                                    <button class='btn-primary pull-right' type="submit" style='width:100%;'>Update</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row" *ngIf='!isPattern && isStatAgent'>
-                            <div class="col-sm-4">
-                                <label class="text-heading">Extraction Pattern</label>&nbsp;&nbsp;&nbsp; <label class="text-heading" style="padding-top: 6%; cursor: pointer; font-weight:normal;text-decoration: underline; color:#2d74da " (click)="showPattern()">View & Download Patterns</label>
-                                <select class="input-style" formControlName='extractionPatternID' [(ngModel)]='tempPattern' id="pattern">
-                              <option  *ngFor="let data of extrationPatterList" value="{{data.extractionPatternID}}">{{data.extractionPatternName}}</option>
-                            </select>
-                            </div>
-                            <!-- <div class="col-sm-3" style="top:50%">
+            <div class="row" *ngIf="!isPattern && isStatAgent">
+              <div class="col-sm-4">
+                <label class="text-heading">Extraction Pattern</label
+                >&nbsp;&nbsp;&nbsp;
+                <label
+                  class="text-heading"
+                  style="
+                    padding-top: 6%;
+                    cursor: pointer;
+                    font-weight: normal;
+                    text-decoration: underline;
+                    color: #2d74da;
+                  "
+                  (click)="showPattern()"
+                  >View & Download Patterns</label
+                >
+                <select
+                  class="input-style"
+                  formControlName="extractionPatternID"
+                  [(ngModel)]="tempPattern"
+                  id="pattern"
+                >
+                  <option
+                    *ngFor="let data of extrationPatterList"
+                    value="{{ data.extractionPatternID }}"
+                  >
+                    {{ data.extractionPatternName }}
+                  </option>
+                </select>
+              </div>
+              <!-- <div class="col-sm-3" style="top:50%">
 
                             </div> -->
-                            <div class="col-sm-3" style="top:50%">
-                                <div *ngIf='(isForumUrl && !isDelivery && !isPattern ) && isStatAgent' class="col-sm-2">
-                                    <div class="datebtn" style='padding-left:5%;padding-top:7%;width:100%;'>
-                                        <button class='btn-primary pull-right' type="submit" style='width:100%;'>Update</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+              <div class="col-sm-3" style="top: 50%">
+                <div
+                  *ngIf="isForumUrl && !isDelivery && !isPattern && isStatAgent"
+                  class="col-sm-2"
+                >
+                  <div
+                    class="datebtn"
+                    style="padding-left: 5%; padding-top: 7%; width: 100%"
+                  >
+                    <button
+                      class="btn-primary pull-right"
+                      type="submit"
+                      style="width: 100%"
+                    >
+                      Update
+                    </button>
+                  </div>
                 </div>
+              </div>
             </div>
-            <br>
-            <div class="border-div" *ngIf='(!isForumUrl || isDelivery || !isPattern)'>
-
-            </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <span class="text-heading">Name</span><br>
-                    <span class="text-content">{{draft.name}}</span>
-                </div>
-                <div class="col-sm-3">
-                    <span class="text-heading">Jurisdiction</span><br>
-                    <span class="text-content">{{draft.jurisdiction}}</span>
-                </div>
-                <div class="col-sm-3">
-                    <span class="text-heading">Description</span><br>
-                    <span class="text-content">{{draft.description}}</span>
-                </div>
-                <div class="col-sm-3">
-                    <span class="text-heading">Line of Business</span><br>
-                    <span class="text-content">{{draft.lineOfBusiness}}</span>
-                </div>
-            </div>
-            <div class="row row-top-padding">
-                <div class="col-sm-3">
-                    <span class="text-heading">Premium Dates</span><br>
-                    <span class="text-content">{{draft.premiumFromDate | date:' MM/dd/yyyy '}} to {{draft.premiumToDate | date:'MM/dd/yyyy '}}</span>
-                </div>
-                <div class="col-sm-3">
-                    <span class="text-heading">Loss Dates</span><br>
-                    <span class="text-content">{{draft.lossFromDate | date:'MM/dd/yyyy '}} to {{draft.lossToDate | date:'MM/dd/yyyy '}}</span>
-                </div>
-                <div class="col-sm-3" *ngIf='!isDelivery'>
-                    <span *ngIf='isUpdate' class="text-heading">Proposed Delivery Date</span>&nbsp;&nbsp;<span *ngIf='isStatAgent && isUpdate' class="glyphicon glyphicon glyphicon-pencil glypEdit" (click)='deliveryDateEdit() ' aria-hidden="true"></span><br>
-                    <span *ngIf='isUpdate' class="text-content">{{draft.proposedDeliveryDate | date:'MM/dd/yyyy '}}</span>
-                </div>
-                <div class="col-sm-3">
-                    <span class="text-heading">Expected Public Circulation?</span><br>
-                    <span *ngIf='draft.intentToPublish== true ' class="text-content">Yes</span>
-                    <span *ngIf='draft.intentToPublish==false ' class="text-content">No</span>
-                </div>
-            </div>
-            <div class="row row-top-padding">
-                <div class="col-sm-12">
-                    <div class="col-sm-3 no-row-padding" *ngIf='isForumUrl && isForumUpdate'>
-                        <span class="text-heading">Forum URL</span>&nbsp;&nbsp;<span *ngIf='isStatAgent ' class="glyphicon glyphicon glyphicon-pencil glypEdit" (click)='editforum() ' aria-hidden="true"></span><br>
-                        <span class="text-content"><a href='javascript:void(0) ' (click)='openURL(draft.forumURL) ' target="_blank">{{draft.forumURL}}</a></span>
-                    </div>
-                    <div class="col-sm-3 no-row-padding" *ngIf='isPattern && isPatternUpdate'>
-                        <span class="text-heading">Extraction Pattern</span>&nbsp;&nbsp;<span aria-hidden="true"></span><span class="text-heading" style="padding-top: 6%; cursor: pointer; font-weight:normal;text-decoration: underline; color:#2d74da "
-                            (click)="getExtrationPatternById()">View & Download</span><br>
-                        <span class="text-content">{{draft.extractionPatternName}}</span>
-                    </div>
-                    <!-- <div class="col-sm-3 no-row-padding" *ngIf='isPattern && isPatternUpdate'>
+          </form>
+        </div>
+      </div>
+      <br />
+      <div
+        class="border-div"
+        *ngIf="!isForumUrl || isDelivery || !isPattern"
+      ></div>
+      <div class="row">
+        <div class="col-sm-3">
+          <span class="text-heading">Name</span><br />
+          <span class="text-content">{{ draft.name }}</span>
+        </div>
+        <div class="col-sm-3">
+          <span class="text-heading">Jurisdiction</span><br />
+          <span class="text-content">{{ draft.jurisdiction }}</span>
+        </div>
+        <div class="col-sm-3">
+          <span class="text-heading">Description</span><br />
+          <span class="text-content">{{ draft.description }}</span>
+        </div>
+        <div class="col-sm-3">
+          <span class="text-heading">Line of Business</span><br />
+          <span class="text-content">{{ draft.lineOfBusiness }}</span>
+        </div>
+      </div>
+      <div class="row row-top-padding">
+        <div class="col-sm-3">
+          <span class="text-heading">Premium Dates</span><br />
+          <span class="text-content"
+            >{{ draft.premiumFromDate | date: " MM/dd/yyyy " }} to
+            {{ draft.premiumToDate | date: "MM/dd/yyyy " }}</span
+          >
+        </div>
+        <div class="col-sm-3">
+          <span class="text-heading">Loss Dates</span><br />
+          <span class="text-content"
+            >{{ draft.lossFromDate | date: "MM/dd/yyyy " }} to
+            {{ draft.lossToDate | date: "MM/dd/yyyy " }}</span
+          >
+        </div>
+        <div class="col-sm-3" *ngIf="!isDelivery">
+          <span *ngIf="isUpdate" class="text-heading"
+            >Proposed Delivery Date</span
+          >&nbsp;&nbsp;<span
+            *ngIf="isStatAgent && isUpdate"
+            class="glyphicon glyphicon glyphicon-pencil glypEdit"
+            (click)="deliveryDateEdit()"
+            aria-hidden="true"
+          ></span
+          ><br />
+          <span *ngIf="isUpdate" class="text-content">{{
+            draft.proposedDeliveryDate | date: "MM/dd/yyyy "
+          }}</span>
+        </div>
+        <div class="col-sm-3">
+          <span class="text-heading">Expected Public Circulation?</span><br />
+          <span *ngIf="draft.intentToPublish == true" class="text-content"
+            >Yes</span
+          >
+          <span *ngIf="draft.intentToPublish == false" class="text-content"
+            >No</span
+          >
+        </div>
+      </div>
+      <div class="row row-top-padding">
+        <div class="col-sm-12">
+          <div
+            class="col-sm-3 no-row-padding"
+            *ngIf="isForumUrl && isForumUpdate"
+          >
+            <span class="text-heading">Forum URL</span>&nbsp;&nbsp;<span
+              *ngIf="isStatAgent"
+              class="glyphicon glyphicon glyphicon-pencil glypEdit"
+              (click)="editforum()"
+              aria-hidden="true"
+            ></span
+            ><br />
+            <span class="text-content"
+              ><a
+                href="javascript:void(0) "
+                (click)="openURL(draft.forumURL)"
+                target="_blank"
+                >{{ draft.forumURL }}</a
+              ></span
+            >
+          </div>
+          <div
+            class="col-sm-3 no-row-padding"
+            *ngIf="isPattern && isPatternUpdate"
+          >
+            <span class="text-heading">Extraction Pattern</span
+            >&nbsp;&nbsp;<span aria-hidden="true"></span
+            ><span
+              class="text-heading"
+              style="
+                padding-top: 6%;
+                cursor: pointer;
+                font-weight: normal;
+                text-decoration: underline;
+                color: #2d74da;
+              "
+              (click)="getExtrationPatternById()"
+              >View & Download</span
+            ><br />
+            <span class="text-content">{{ draft.extractionPatternName }}</span>
+          </div>
+          <!-- <div class="col-sm-3 no-row-padding" *ngIf='isPattern && isPatternUpdate'>
                         <span class="text-heading" style="padding-top: 6%; cursor: pointer; font-weight:normal;text-decoration: underline; color:#2d74da " (click)="getExtrationPatternById()">View & Download</span>
                     </div> -->
-                </div>
-            </div>
-            <div class="row row-top-padding">
-                <div class="col-sm-12">
-                    <div class="col-sm-4 no-row-padding">
-                        <span class="text-heading-second">Add list of participants to summary report</span>
-                    </div> &nbsp;
-                    <div class="col-sm-5 no-row-padding">
-                        <input checked="true" [(ngModel)]="draft.isShowParticipants" [checked]='draft.isShowParticipants ' class="bx--toggle" id="toggle1" type="checkbox" [disabled]='true '>
-                        <label class="bx--toggle__label" for="toggle1" style='margin-top:0; '>
-                          <span class="bx--toggle__text--left">Off</span>
-                          <span class="bx--toggle__appearance"></span>
-                          <span class="bx--toggle__text--right">On</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 btn-container">
-                    <button *ngIf='isCarr ' [ngStyle]="{'opacity ': isSmallSpinner ? '0.5 ':' ' }" class='btn-primary pull-right ' (click)='toggleAction() ' style='cursor: pointer;position:relative;width:220px; ' [disabled]='!isConsent '> <!-- , 'btn-secondary
-                ': !isConsent 'padding-right ': isSmallSpinner ? '35px ':'12px ', -->
-                      {{buttonText}}
-                      <div *ngIf='isSmallSpinner ' class="lds-css" style='position:absolute;width:100%;height:100%;top:0;left:-5px; '>
-                        <div style="width:15px !important;height:15px !important; float: right;" class="lds-rolling">
-                          <div style='border: 3px solid #fff;border-top-color: transparent;top:18px;left:0px; '></div>
-                        </div>
-                      </div>
-                    </button>
-                    <button *ngIf='isReg || isCarr ' class='btn-primary pull-right ' type="button" (click)='viewReport() ' [disabled]='!isReportAvlbl '>View Reports</button>
-                    <button *ngIf='isReg || isCarr ' class='btn-secondary pull-right ' (click)='viewDrafts() '>View Draft Versions</button>
-                    <button *ngIf='isReg ' class='btn-secondary pull-right ' (click)='cloneDatacall(draft) '>Clone Data Call</button>
-                </div><br>
-                <div class="col-sm-12 btn-container">
-                    <div *ngIf='isRecorded ' class='recorded-section '>
-                        <span style='float:left '>{{action}} recorded:</span>
-                        <span style='float:right '>&nbsp;&nbsp;{{recordTime}}</span>
-                    </div>
-                </div>
-                <br>
-            </div>
-
-
         </div>
-    </div><br>
-    <div class="col-sm-offset-1 col-sm-10 text-left main-container">
-        <div class="col-sm-12 second-container">
-
-            <div class="col-sm-6 second-container-col1">
-                <div class="row scrollable-div">
-                    <!-- <ng-scrollbar> -->
-                    <div class="row sub-col">
-                        <span class="text-heading-second">Purpose</span><br>
-                        <span class="text-content-second">{{draft.purpose}}</span>
-                    </div>
-                    <div class="row sub-col">
-                        <span class="text-heading-second">Detailed Criteria</span><br>
-                        <span class="text-content-second">{{draft.detailedCriteria}}</span>
-                    </div>
-                    <div class="row sub-col">
-                        <span class="text-heading-second">Eligibility Requirement</span><br>
-                        <span class="text-content-second">{{draft.eligibilityRequirement}}</span>
-                    </div>
-                    <!-- </ng-scrollbar> -->
-                </div>
-                <div class="row sub-col" *ngIf='isStatAgent '>
-                    <button class='btn-secondary pull-left ' (click)='viewDrafts() '>View Draft Versions</button>
-                </div>
+      </div>
+      <div class="row row-top-padding">
+        <div class="col-sm-12">
+          <div class="col-sm-4 no-row-padding">
+            <span class="text-heading-second"
+              >Add list of participants to summary report</span
+            >
+          </div>
+          &nbsp;
+          <div class="col-sm-5 no-row-padding">
+            <input
+              checked="true"
+              [(ngModel)]="draft.isShowParticipants"
+              [checked]="draft.isShowParticipants"
+              class="bx--toggle"
+              id="toggle1"
+              type="checkbox"
+              [disabled]="true"
+            />
+            <label
+              class="bx--toggle__label"
+              for="toggle1"
+              style="margin-top: 0"
+            >
+              <span class="bx--toggle__text--left">Off</span>
+              <span class="bx--toggle__appearance"></span>
+              <span class="bx--toggle__text--right">On</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 btn-container">
+          <button
+            *ngIf="isCarr"
+            [ngStyle]="{ 'opacity ': isSmallSpinner ? '0.5 ' : ' ' }"
+            class="btn-primary pull-right"
+            (click)="toggleAction()"
+            style="cursor: pointer; position: relative; width: 220px"
+            [disabled]="!isConsent"
+          >
+            <!-- , 'btn-secondary
+                ': !isConsent 'padding-right ': isSmallSpinner ? '35px ':'12px ', -->
+            {{ buttonText }}
+            <div
+              *ngIf="isSmallSpinner"
+              class="lds-css"
+              style="
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: -5px;
+              "
+            >
+              <div
+                style="
+                  width: 15px !important;
+                  height: 15px !important;
+                  float: right;
+                "
+                class="lds-rolling"
+              >
+                <div
+                  style="
+                    border: 3px solid #fff;
+                    border-top-color: transparent;
+                    top: 18px;
+                    left: 0px;
+                  "
+                ></div>
+              </div>
             </div>
-            <div class="col-sm-6 second-container-col2">
-                <div class="row sub-col">
-                    <span class="text-heading-third">Carrier Consents</span><br>
-                    <div class="box-style">
-                        <div class="box-text">Number of Carriers &nbsp;&nbsp; {{consentCount}}
-                            <!-- <div *ngIf='isSmallSpinner1 ' class="lds-css">
+          </button>
+          <button
+            *ngIf="isReg || isCarr"
+            class="btn-primary pull-right"
+            type="button"
+            (click)="viewReport()"
+            [disabled]="!isReportAvlbl"
+          >
+            View Reports
+          </button>
+          <button
+            *ngIf="isReg || isCarr"
+            class="btn-secondary pull-right"
+            (click)="viewDrafts()"
+          >
+            View Draft Versions
+          </button>
+          <button
+            *ngIf="isReg"
+            class="btn-secondary pull-right"
+            (click)="cloneDatacall(draft)"
+          >
+            Clone Data Call
+          </button>
+        </div>
+        <br />
+        <div class="col-sm-12 btn-container">
+          <div *ngIf="isRecorded" class="recorded-section">
+            <span style="float: left">{{ action }} recorded:</span>
+            <span style="float: right">&nbsp;&nbsp;{{ recordTime }}</span>
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="col-sm-offset-1 col-sm-10 text-left main-container">
+    <div class="col-sm-12 second-container">
+      <div class="col-sm-6 second-container-col1">
+        <div class="row scrollable-div">
+          <!-- <ng-scrollbar> -->
+          <div class="row sub-col">
+            <span class="text-heading-second">Purpose</span><br />
+            <span class="text-content-second">{{ draft.purpose }}</span>
+          </div>
+          <div class="row sub-col">
+            <span class="text-heading-second">Detailed Criteria</span><br />
+            <span class="text-content-second">{{
+              draft.detailedCriteria
+            }}</span>
+          </div>
+          <div class="row sub-col">
+            <span class="text-heading-second">Eligibility Requirement</span
+            ><br />
+            <span class="text-content-second">{{
+              draft.eligibilityRequirement
+            }}</span>
+          </div>
+          <!-- </ng-scrollbar> -->
+        </div>
+        <div class="row sub-col" *ngIf="isStatAgent">
+          <button class="btn-secondary pull-left" (click)="viewDrafts()">
+            View Draft Versions
+          </button>
+        </div>
+      </div>
+      <div class="col-sm-6 second-container-col2">
+        <div class="row sub-col">
+          <span class="text-heading-third">Carrier Consents</span><br />
+          <div class="box-style">
+            <div class="box-text">
+              Number of Carriers &nbsp;&nbsp; {{ consentCount }}
+              <!-- <div *ngIf='isSmallSpinner1 ' class="lds-css">
                                 <div style="width:100%;height:100%" class="lds-rolling">
                                     <div></div>
                                 </div>
                             </div> -->
-                        </div>
-                        <a *ngIf='isStatAgent ' class='pull-right ' href='javascript:void(0) ' (click)='viewCarriers( "Consented") ' style='font-size: 14px; '>View Carriers</a>
-                    </div>
-                </div>
-                <div class="row sub-col">
-                    <span class="text-heading-third">Organization Likes</span><br>
-                    <div class="box-style">
-                        <div class="box-text">Likes &nbsp;&nbsp; {{likeCount}}
-                            <!-- <div *ngIf='isSmallSpinner2 ' class="lds-css">
+            </div>
+            <a
+              *ngIf="isStatAgent"
+              class="pull-right"
+              href="javascript:void(0) "
+              (click)="viewCarriers('Consented')"
+              style="font-size: 14px"
+              >View Carriers</a
+            >
+          </div>
+        </div>
+        <div class="row sub-col">
+          <span class="text-heading-third">Organization Likes</span><br />
+          <div class="box-style">
+            <div class="box-text">
+              Likes &nbsp;&nbsp; {{ likeCount }}
+              <!-- <div *ngIf='isSmallSpinner2 ' class="lds-css">
                                 <div style="width:100%;height:100%" class="lds-rolling">
                                     <div></div>
                                 </div>
                             </div> -->
-                        </div>
-                        <span *ngIf='isLikeCountPositive; else elseVieworg'>
-                        <a *ngIf='isStatAgent ' class='pull-right ' href='javascript:void(0) '
-                        (click)='viewCarriers( "Liked") '
-                        style='font-size: 14px; '>View Organizations</a>
-                        </span>
-                        <ng-template #elseVieworg>
-                          <span style='font-size:14px;display:inline-block;vertical-align:top;margin-left:20px;'>
-                            View Organizations
-                          </span>
-                        </ng-template>
-
-                    </div>
-                </div><br>
-                <div class="row sub-col">
-                    <div class="text-heading-third">History
-                        <div *ngIf='isSmallSpinner3 ' class="lds-css">
-                            <div style="width:100%;height:100%" class="lds-rolling">
-                                <div></div>
-                            </div>
-                        </div>
-                    </div><br>
-                    <app-datacall-history></app-datacall-history>
-                </div><br>
-                <!-- <div *ngIf='isCarr ' class="row sub-col">
+            </div>
+            <span *ngIf="isLikeCountPositive; else elseVieworg">
+              <a
+                *ngIf="isStatAgent"
+                class="pull-right"
+                href="javascript:void(0) "
+                (click)="viewCarriers('Liked')"
+                style="font-size: 14px"
+                >View Organizations</a
+              >
+            </span>
+            <ng-template #elseVieworg>
+              <span
+                style="
+                  font-size: 14px;
+                  display: inline-block;
+                  vertical-align: top;
+                  margin-left: 20px;
+                "
+              >
+                View Organizations
+              </span>
+            </ng-template>
+          </div>
+        </div>
+        <br />
+        <div class="row sub-col">
+          <div class="text-heading-third">
+            History
+            <div *ngIf="isSmallSpinner3" class="lds-css">
+              <div style="width: 100%; height: 100%" class="lds-rolling">
+                <div></div>
+              </div>
+            </div>
+          </div>
+          <br />
+          <app-datacall-history></app-datacall-history>
+        </div>
+        <br />
+        <!-- <div *ngIf='isCarr ' class="row sub-col">
                   <button [ngClass]="{'btn-primary ': isConsent, 'btn-secondary ': !isConsent}" (click)='toggleAction() ' style='width:100%; margin-left:0; margin-right:0; '>
                     {{buttonText}}
                   </button>
                 </div> -->
-            </div>
-        </div>
+      </div>
     </div>
-    <div *ngIf='isStatAgent ' class="col-sm-offset-1 col-sm-10 text-left main-container" style='margin-top:0; '>
-        <app-update-report [datacall]='draft ' [username]='this.loginResult.username ' (updateReportEvent)='updateReport($event) '></app-update-report>
-    </div>
+  </div>
+  <div
+    *ngIf="isStatAgent"
+    class="col-sm-offset-1 col-sm-10 text-left main-container"
+    style="margin-top: 0"
+  >
+    <app-update-report
+      [datacall]="draft"
+      [username]="this.loginResult.username"
+      (updateReportEvent)="updateReport($event)"
+    ></app-update-report>
+  </div>
 </div>
-<app-spinner *ngIf='isSpinner '></app-spinner>
-<app-modal [title]='title ' [message]='message ' [type]='type ' [data]='data ' [isData]='isData ' (modalClose)='modalClose() ' (forumData)='updateForumByModal($event) ' (deliveryDate)='updatedDelivery($event) ' data-keyboard="false"></app-modal>
+<app-spinner *ngIf="isSpinner"></app-spinner>
+<app-modal
+  [title]="title"
+  [message]="message"
+  [type]="type"
+  [data]="data"
+  [isData]="isData"
+  (modalClose)="modalClose()"
+  (forumData)="updateForumByModal($event)"
+  (deliveryDate)="updatedDelivery($event)"
+  data-keyboard="false"
+></app-modal>

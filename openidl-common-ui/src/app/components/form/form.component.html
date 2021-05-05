@@ -1,160 +1,434 @@
-<div class="form-container" *ngIf='!isSpinner'>
-    <div class="col-sm-offset-2 col-sm-8 text-left">
-        <div class="content-style">
-            <div class="col-sm-12">
-                <form name='datacallForm' [formGroup]="registerForm">
-                    <span *ngIf='!isClone' class="page-heading">Create Data Call</span><br>
-                    <span *ngIf='isClone' class="page-heading">Clone Data Call</span><br>
-                    <div class="col-sm-5 no-row-padding">
-                        <div class="form-item col-sm-12">
-                            <label for="name" class="input-label">Name</label>
-                            <input formControlName="name" (keypress)='fieldChange()' [ngClass]="{'requiredfield':namefield.invalid && isError}" id="name" type="text" class="input-style" placeholder="Enter Name">
-                        </div><br><br>
-                        <div class="form-item col-sm-12">
-                            <label for="description" class="input-label">Description</label>
-                            <input formControlName="description" (keypress)='fieldChange()' [ngClass]="{'requiredfield':descriptionfield.invalid && isError}" id="description" type="text" class="input-style" placeholder="Enter Description">
-                        </div><br><br>
-                        <div class='col-sm-12 no-row-padding'>
-                            <span class="input-label" style='margin-bottom:0;'>Premium Dates</span><br>
-                            <div class="col-sm-5 no-row-padding">
-                                <div class="form-item form-date-item">
-                                    <label for="startdaterange" class="input-label" style='font-size: 12px;'>Start Date</label>
-                                    <input class="input-style" (dateTimeInput)='fieldChange()' placeholder="mm/dd/yyyy" name="fromdate" formControlName="dateRange" [ngClass]="{'requiredfield':fromdatefield.invalid && !(this.registerForm.value.dateRange && this.registerForm.value.dateRange[0] !== undefined) && isError}"
-                                        [(ngModel)]="dateRange" [selectMode]="'rangeFrom'" [owlDateTimeTrigger]="dtRange2" [owlDateTime]="dtRange2">
-                                    <!--(dateTimeInput)="deadlineSet()"-->
-                                    <owl-date-time #dtRange2 [pickerType]="'calendar'"></owl-date-time>
-                                    <img class='abs-calendar-icon' [owlDateTimeTrigger]="dtRange2" src="../../../assets/images/calendarLogo.png" />
-                                </div>
-                            </div>
-                            <div class="col-sm-5 no-row-padding" style='margin-left:15px;'>
-                                <div class="form-item form-date-item">
-                                    <label for="enddaterange" class="input-label" style='font-size: 12px;'>End Date</label>
-                                    <input class="input-style" (dateTimeInput)='fieldChange()' placeholder="mm/dd/yyyy" name="toDate" formControlName="dateRange" [ngClass]="{'requiredfield':todatefield.invalid && !(this.registerForm.value.dateRange && this.registerForm.value.dateRange[1] !== undefined) && isError}"
-                                        [(ngModel)]="dateRange" [selectMode]="'rangeTo'" [owlDateTimeTrigger]="dtRange3" [owlDateTime]="dtRange3">
-                                    <owl-date-time #dtRange3 [pickerType]="'calendar'"></owl-date-time>
-                                    <img class='abs-calendar-icon' [owlDateTimeTrigger]="dtRange3" src="../../../assets/images/calendarLogo.png" />
-                                </div>
-                            </div>
-                            <!-- <div class="col-sm-12">
+<!-- SPDX-License-Identifier: Apache-2.0-->
+<div class="form-container" *ngIf="!isSpinner">
+  <div class="col-sm-offset-2 col-sm-8 text-left">
+    <div class="content-style">
+      <div class="col-sm-12">
+        <form name="datacallForm" [formGroup]="registerForm">
+          <span *ngIf="!isClone" class="page-heading">Create Data Call</span
+          ><br />
+          <span *ngIf="isClone" class="page-heading">Clone Data Call</span
+          ><br />
+          <div class="col-sm-5 no-row-padding">
+            <div class="form-item col-sm-12">
+              <label for="name" class="input-label">Name</label>
+              <input
+                formControlName="name"
+                (keypress)="fieldChange()"
+                [ngClass]="{ requiredfield: namefield.invalid && isError }"
+                id="name"
+                type="text"
+                class="input-style"
+                placeholder="Enter Name"
+              />
+            </div>
+            <br /><br />
+            <div class="form-item col-sm-12">
+              <label for="description" class="input-label">Description</label>
+              <input
+                formControlName="description"
+                (keypress)="fieldChange()"
+                [ngClass]="{
+                  requiredfield: descriptionfield.invalid && isError
+                }"
+                id="description"
+                type="text"
+                class="input-style"
+                placeholder="Enter Description"
+              />
+            </div>
+            <br /><br />
+            <div class="col-sm-12 no-row-padding">
+              <span class="input-label" style="margin-bottom: 0"
+                >Premium Dates</span
+              ><br />
+              <div class="col-sm-5 no-row-padding">
+                <div class="form-item form-date-item">
+                  <label
+                    for="startdaterange"
+                    class="input-label"
+                    style="font-size: 12px"
+                    >Start Date</label
+                  >
+                  <input
+                    class="input-style"
+                    (dateTimeInput)="fieldChange()"
+                    placeholder="mm/dd/yyyy"
+                    name="fromdate"
+                    formControlName="dateRange"
+                    [ngClass]="{
+                      requiredfield:
+                        fromdatefield.invalid &&
+                        !(
+                          this.registerForm.value.dateRange &&
+                          this.registerForm.value.dateRange[0] !== undefined
+                        ) &&
+                        isError
+                    }"
+                    [(ngModel)]="dateRange"
+                    [selectMode]="'rangeFrom'"
+                    [owlDateTimeTrigger]="dtRange2"
+                    [owlDateTime]="dtRange2"
+                  />
+                  <!--(dateTimeInput)="deadlineSet()"-->
+                  <owl-date-time
+                    #dtRange2
+                    [pickerType]="'calendar'"
+                  ></owl-date-time>
+                  <img
+                    class="abs-calendar-icon"
+                    [owlDateTimeTrigger]="dtRange2"
+                    src="../../../assets/images/calendarLogo.png"
+                  />
+                </div>
+              </div>
+              <div class="col-sm-5 no-row-padding" style="margin-left: 15px">
+                <div class="form-item form-date-item">
+                  <label
+                    for="enddaterange"
+                    class="input-label"
+                    style="font-size: 12px"
+                    >End Date</label
+                  >
+                  <input
+                    class="input-style"
+                    (dateTimeInput)="fieldChange()"
+                    placeholder="mm/dd/yyyy"
+                    name="toDate"
+                    formControlName="dateRange"
+                    [ngClass]="{
+                      requiredfield:
+                        todatefield.invalid &&
+                        !(
+                          this.registerForm.value.dateRange &&
+                          this.registerForm.value.dateRange[1] !== undefined
+                        ) &&
+                        isError
+                    }"
+                    [(ngModel)]="dateRange"
+                    [selectMode]="'rangeTo'"
+                    [owlDateTimeTrigger]="dtRange3"
+                    [owlDateTime]="dtRange3"
+                  />
+                  <owl-date-time
+                    #dtRange3
+                    [pickerType]="'calendar'"
+                  ></owl-date-time>
+                  <img
+                    class="abs-calendar-icon"
+                    [owlDateTimeTrigger]="dtRange3"
+                    src="../../../assets/images/calendarLogo.png"
+                  />
+                </div>
+              </div>
+              <!-- <div class="col-sm-12">
                             <h4>Value From Picker: {{dateTimeRange}}</h4>
                         </div> -->
-                        </div><br><br>
-                        <div class="form-item col-xs-12">
-                            <label for="intent" class="input-label">Expected Public Circulation?</label>
+            </div>
+            <br /><br />
+            <div class="form-item col-xs-12">
+              <label for="intent" class="input-label"
+                >Expected Public Circulation?</label
+              >
 
-                            <select formControlName="intent" (change)='fieldChange()' class="input-style">
-                        <!-- <option>Publicly Available</option>
+              <select
+                formControlName="intent"
+                (change)="fieldChange()"
+                class="input-style"
+              >
+                <!-- <option>Publicly Available</option>
                         <option>Only Visible to Regulator and AAIS</option> -->
-                        <option [selected]='true'>Yes</option>
-                        <option>No</option>
-                      </select>
-
-                        </div><br><br>
-                    </div>
-                    <div class="col-sm-5 pull-right no-row-padding">
-                        <div class="form-item col-xs-12">
-                            <label for="linebusiness" class="input-label">Line of Business</label>
-                            <select formControlName="business" (change)='fieldChange()' [ngClass]="{'requiredfield':businessfield.invalid && isError}" class="input-style" [disabled]='isSmallSpinner' style='display:inline-block;'>
-                            <option *ngFor="let lob of LOBs"
-                                [value]="lob.value">
-                              {{lob.value}}
-                            </option>
-                        </select>
-                            <div *ngIf='isSmallSpinner' style='display: inline-block;position:absolute;right:0px;top:48px;width:100%;'>
-                                <div class="lds-css" style='float:right; margin-right:5px; width:25px;background-color:#f4f7fb;'>
-                                    <div style="width:100%;height:100%" class="lds-rolling">
-                                        <div></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div><br><br>
-                        <div class="form-item col-xs-12">
-                            <label for="jurisdiction" class="input-label">Jurisdiction</label>
-                            <input type='text' class="input-style" (keypress)='fieldChange()' formControlName='jurisdiction' [ngClass]="{'requiredfield':jurisdictionfield.invalid && isError}" readonly style='background:none; padding-left:0!important;' />
-                        </div><br><br>
-                        <div class='col-sm-12 no-row-padding'>
-                            <span class="input-label" style='margin-bottom:0;'>Loss Dates</span><br>
-                            <div class="col-sm-5 no-row-padding">
-                                <div class="form-item form-date-item">
-                                    <label class="input-label" style='font-size: 12px;'>Start Date</label>
-                                    <input class="input-style" (dateTimeInput)='fieldChange()' placeholder="mm/dd/yyyy" name="lossfromdate" formControlName="lossdateRange" [ngClass]="{'requiredfield':lossfromdatefield.invalid && !(this.registerForm.value.lossdateRange && this.registerForm.value.lossdateRange[0] !== undefined) && isError}"
-                                        [(ngModel)]="lossdateRange" [selectMode]="'rangeFrom'" [owlDateTimeTrigger]="dtRange4" [owlDateTime]="dtRange4">
-                                    <!--(dateTimeInput)="deadlineSet()"-->
-                                    <owl-date-time #dtRange4 [pickerType]="'calendar'"></owl-date-time>
-                                    <img class='abs-calendar-icon' [owlDateTimeTrigger]="dtRange4" src="../../../assets/images/calendarLogo.png" />
-                                </div>
-                            </div>
-                            <div class="col-sm-5 no-row-padding" style='margin-left:15px;'>
-                                <div class="form-item form-date-item">
-                                    <label class="input-label" style='font-size: 12px;'>End Date</label>
-                                    <input class="input-style" (dateTimeInput)='fieldChange()' placeholder="mm/dd/yyyy" name="losstoDate" formControlName="lossdateRange" [ngClass]="{'requiredfield':losstodatefield.invalid && !(this.registerForm.value.lossdateRange && this.registerForm.value.lossdateRange[1] !== undefined) && isError}"
-                                        [(ngModel)]="lossdateRange" [selectMode]="'rangeTo'" [owlDateTimeTrigger]="dtRange5" [owlDateTime]="dtRange5">
-                                    <owl-date-time #dtRange5 [pickerType]="'calendar'"></owl-date-time>
-                                    <img class='abs-calendar-icon' [owlDateTimeTrigger]="dtRange5" src="../../../assets/images/calendarLogo.png" />
-                                </div>
-                            </div>
-                            <!-- <div class="col-sm-12">
+                <option [selected]="true">Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+            <br /><br />
+          </div>
+          <div class="col-sm-5 pull-right no-row-padding">
+            <div class="form-item col-xs-12">
+              <label for="linebusiness" class="input-label"
+                >Line of Business</label
+              >
+              <select
+                formControlName="business"
+                (change)="fieldChange()"
+                [ngClass]="{ requiredfield: businessfield.invalid && isError }"
+                class="input-style"
+                [disabled]="isSmallSpinner"
+                style="display: inline-block"
+              >
+                <option *ngFor="let lob of LOBs" [value]="lob.value">
+                  {{ lob.value }}
+                </option>
+              </select>
+              <div
+                *ngIf="isSmallSpinner"
+                style="
+                  display: inline-block;
+                  position: absolute;
+                  right: 0px;
+                  top: 48px;
+                  width: 100%;
+                "
+              >
+                <div
+                  class="lds-css"
+                  style="
+                    float: right;
+                    margin-right: 5px;
+                    width: 25px;
+                    background-color: #f4f7fb;
+                  "
+                >
+                  <div style="width: 100%; height: 100%" class="lds-rolling">
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br /><br />
+            <div class="form-item col-xs-12">
+              <label for="jurisdiction" class="input-label">Jurisdiction</label>
+              <input
+                type="text"
+                class="input-style"
+                (keypress)="fieldChange()"
+                formControlName="jurisdiction"
+                [ngClass]="{
+                  requiredfield: jurisdictionfield.invalid && isError
+                }"
+                readonly
+                style="background: none; padding-left: 0 !important"
+              />
+            </div>
+            <br /><br />
+            <div class="col-sm-12 no-row-padding">
+              <span class="input-label" style="margin-bottom: 0"
+                >Loss Dates</span
+              ><br />
+              <div class="col-sm-5 no-row-padding">
+                <div class="form-item form-date-item">
+                  <label class="input-label" style="font-size: 12px"
+                    >Start Date</label
+                  >
+                  <input
+                    class="input-style"
+                    (dateTimeInput)="fieldChange()"
+                    placeholder="mm/dd/yyyy"
+                    name="lossfromdate"
+                    formControlName="lossdateRange"
+                    [ngClass]="{
+                      requiredfield:
+                        lossfromdatefield.invalid &&
+                        !(
+                          this.registerForm.value.lossdateRange &&
+                          this.registerForm.value.lossdateRange[0] !== undefined
+                        ) &&
+                        isError
+                    }"
+                    [(ngModel)]="lossdateRange"
+                    [selectMode]="'rangeFrom'"
+                    [owlDateTimeTrigger]="dtRange4"
+                    [owlDateTime]="dtRange4"
+                  />
+                  <!--(dateTimeInput)="deadlineSet()"-->
+                  <owl-date-time
+                    #dtRange4
+                    [pickerType]="'calendar'"
+                  ></owl-date-time>
+                  <img
+                    class="abs-calendar-icon"
+                    [owlDateTimeTrigger]="dtRange4"
+                    src="../../../assets/images/calendarLogo.png"
+                  />
+                </div>
+              </div>
+              <div class="col-sm-5 no-row-padding" style="margin-left: 15px">
+                <div class="form-item form-date-item">
+                  <label class="input-label" style="font-size: 12px"
+                    >End Date</label
+                  >
+                  <input
+                    class="input-style"
+                    (dateTimeInput)="fieldChange()"
+                    placeholder="mm/dd/yyyy"
+                    name="losstoDate"
+                    formControlName="lossdateRange"
+                    [ngClass]="{
+                      requiredfield:
+                        losstodatefield.invalid &&
+                        !(
+                          this.registerForm.value.lossdateRange &&
+                          this.registerForm.value.lossdateRange[1] !== undefined
+                        ) &&
+                        isError
+                    }"
+                    [(ngModel)]="lossdateRange"
+                    [selectMode]="'rangeTo'"
+                    [owlDateTimeTrigger]="dtRange5"
+                    [owlDateTime]="dtRange5"
+                  />
+                  <owl-date-time
+                    #dtRange5
+                    [pickerType]="'calendar'"
+                  ></owl-date-time>
+                  <img
+                    class="abs-calendar-icon"
+                    [owlDateTimeTrigger]="dtRange5"
+                    src="../../../assets/images/calendarLogo.png"
+                  />
+                </div>
+              </div>
+              <!-- <div class="col-sm-12">
                             <h4>Value From Picker: {{dateTimeRange}}</h4>
                         </div> -->
-                        </div><br><br>
-                        <div class="col-xs-12 no-row-padding">
-                            <div class="col-sm-6 no-row-padding">
-                                <div class='form-item'>
-                                    <label for="deadline" class="input-label">Deadline</label>
-                                    <input name="deadline" (dateTimeInput)='fieldChange()' class="input-style" placeholder="mm/dd/yyyy" formControlName="deadline" [(ngModel)]="deadline" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" [ngClass]="{'requiredfield':deadlinefield.invalid && isError}">
-                                    <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
-                                    <img class='abs-calendar-icon' [owlDateTimeTrigger]="dt1" src="../../../assets/images/calendarLogo.png" style='width: 13%;top: 50%;' />
-                                </div>
-                            </div>
-                            <div class="col-sm-6 no-row-padding">
-                                <!-- <img class='calendar-icon' src="../../../assets/images/calendarLogo.png" /> -->
-                            </div>
-                        </div><br><br>
-                    </div>
-                    <div class="form-item col-xs-12">
-                        <label for="purpose" class="input-label">Purpose</label>
-                        <textarea name="purpose" (keypress)='fieldChange()' placeholder="Enter Purpose" formControlName="purpose" [ngClass]="{'requiredfield':purposefield.invalid && isError}" class="input-style input-style-textarea" rows="7"></textarea>
-                    </div><br><br>
+            </div>
+            <br /><br />
+            <div class="col-xs-12 no-row-padding">
+              <div class="col-sm-6 no-row-padding">
+                <div class="form-item">
+                  <label for="deadline" class="input-label">Deadline</label>
+                  <input
+                    name="deadline"
+                    (dateTimeInput)="fieldChange()"
+                    class="input-style"
+                    placeholder="mm/dd/yyyy"
+                    formControlName="deadline"
+                    [(ngModel)]="deadline"
+                    [owlDateTimeTrigger]="dt1"
+                    [owlDateTime]="dt1"
+                    [ngClass]="{
+                      requiredfield: deadlinefield.invalid && isError
+                    }"
+                  />
+                  <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+                  <img
+                    class="abs-calendar-icon"
+                    [owlDateTimeTrigger]="dt1"
+                    src="../../../assets/images/calendarLogo.png"
+                    style="width: 13%; top: 50%"
+                  />
+                </div>
+              </div>
+              <div class="col-sm-6 no-row-padding">
+                <!-- <img class='calendar-icon' src="../../../assets/images/calendarLogo.png" /> -->
+              </div>
+            </div>
+            <br /><br />
+          </div>
+          <div class="form-item col-xs-12">
+            <label for="purpose" class="input-label">Purpose</label>
+            <textarea
+              name="purpose"
+              (keypress)="fieldChange()"
+              placeholder="Enter Purpose"
+              formControlName="purpose"
+              [ngClass]="{ requiredfield: purposefield.invalid && isError }"
+              class="input-style input-style-textarea"
+              rows="7"
+            ></textarea>
+          </div>
+          <br /><br />
 
-                    <div class="form-item col-xs-12 no-row-padding toggle-area">
-                        <div class="form-item col-xs-12">
-                            <label for="criteria" class="input-label">Detailed Criteria</label>
-                            <textarea id="criteria" (keypress)='fieldChange()' formControlName="criteria" [ngClass]="{'requiredfield':criteriafield.invalid && isError}" placeholder="Enter Detailed Criteria" class="input-style input-style-textarea" rows="7"></textarea>
-                        </div><br><br>
-                        <div class="form-item col-xs-12">
-                            <label for="eligibility" class="input-label">Eligibility Requirement</label>
-                            <textarea id="eligibility" (keypress)='fieldChange()' formControlName="eligibility" [ngClass]="{'requiredfield':eligibilityfield.invalid && isError}" placeholder="Enter Eligibility Requirement" class="input-style input-style-textarea" rows="7"></textarea>
-                        </div>
+          <div class="form-item col-xs-12 no-row-padding toggle-area">
+            <div class="form-item col-xs-12">
+              <label for="criteria" class="input-label"
+                >Detailed Criteria</label
+              >
+              <textarea
+                id="criteria"
+                (keypress)="fieldChange()"
+                formControlName="criteria"
+                [ngClass]="{ requiredfield: criteriafield.invalid && isError }"
+                placeholder="Enter Detailed Criteria"
+                class="input-style input-style-textarea"
+                rows="7"
+              ></textarea>
+            </div>
+            <br /><br />
+            <div class="form-item col-xs-12">
+              <label for="eligibility" class="input-label"
+                >Eligibility Requirement</label
+              >
+              <textarea
+                id="eligibility"
+                (keypress)="fieldChange()"
+                formControlName="eligibility"
+                [ngClass]="{
+                  requiredfield: eligibilityfield.invalid && isError
+                }"
+                placeholder="Enter Eligibility Requirement"
+                class="input-style input-style-textarea"
+                rows="7"
+              ></textarea>
+            </div>
 
-                        <div class="col-sm-12 no-row-padding">
-                            <div class="col-sm-5 no-row-padding">
-                                <label for="togglepart" class="input-label">Add list of participants to summary report</label>
-                            </div>
-                            <div class="col-sm-6 no-row-padding">
-                                <input formControlName="togglecheck" (change)='fieldChange()' [ngClass]="{'requiredfield':togglecheckfield.invalid && isError}" checked="true" class="bx--toggle" id="toggle1" type="checkbox">
-                                <label class="bx--toggle__label" for="toggle1" style='margin:3px 0;'>
-                                <span class="bx--toggle__text--left">Off</span>
-                                <span class="bx--toggle__appearance"></span>
-                                <span class="bx--toggle__text--right">On</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <app-notify *ngIf='isError' [type]='this.type' [message]='this.message' [title]='this.title' (close)='closeNotify()'></app-notify>
-                    </div>
-                    <!-- <div class="col-sm-12">
+            <div class="col-sm-12 no-row-padding">
+              <div class="col-sm-5 no-row-padding">
+                <label for="togglepart" class="input-label"
+                  >Add list of participants to summary report</label
+                >
+              </div>
+              <div class="col-sm-6 no-row-padding">
+                <input
+                  formControlName="togglecheck"
+                  (change)="fieldChange()"
+                  [ngClass]="{
+                    requiredfield: togglecheckfield.invalid && isError
+                  }"
+                  checked="true"
+                  class="bx--toggle"
+                  id="toggle1"
+                  type="checkbox"
+                />
+                <label
+                  class="bx--toggle__label"
+                  for="toggle1"
+                  style="margin: 3px 0"
+                >
+                  <span class="bx--toggle__text--left">Off</span>
+                  <span class="bx--toggle__appearance"></span>
+                  <span class="bx--toggle__text--right">On</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <app-notify
+              *ngIf="isError"
+              [type]="this.type"
+              [message]="this.message"
+              [title]="this.title"
+              (close)="closeNotify()"
+            ></app-notify>
+          </div>
+          <!-- <div class="col-sm-12">
                   <app-notify *ngIf='isSuccess' [type] = 'this.type' [message]='this.message' [title]='this.title' (close)='closeNotify()'></app-notify>
                 </div> -->
-                    <div class="col-sm-12 btn-container no-row-padding">
-                        <button class='btn-primary pull-right' type="button" (click)='issueDatacall(registerForm.value)'>Issue</button>
-                        <button class='btn-secondary pull-right' (click)='saveDatacall(registerForm.value)'>Save as Draft</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+          <div class="col-sm-12 btn-container no-row-padding">
+            <button
+              class="btn-primary pull-right"
+              type="button"
+              (click)="issueDatacall(registerForm.value)"
+            >
+              Issue
+            </button>
+            <button
+              class="btn-secondary pull-right"
+              (click)="saveDatacall(registerForm.value)"
+            >
+              Save as Draft
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
-<app-spinner *ngIf='isSpinner'></app-spinner>
-<app-modal [title]='title' [message]='message' [type]='type' (modalClose)='modalClose()' (redirectLogin)='redirectLogin()'></app-modal>
+<app-spinner *ngIf="isSpinner"></app-spinner>
+<app-modal
+  [title]="title"
+  [message]="message"
+  [type]="type"
+  (modalClose)="modalClose()"
+  (redirectLogin)="redirectLogin()"
+></app-modal>

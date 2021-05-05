@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: Apache-2.0
 # updating version
 sed -i 's/${VERSION}/'$VERSION'/g' deploy_config.json
 
