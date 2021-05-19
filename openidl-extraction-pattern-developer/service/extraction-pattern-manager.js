@@ -1,3 +1,6 @@
+//
+// SPDX-License-Identifier: Apache-2.0
+//
 /**
  * Extraction Pattern Manager
  * CRUD functions for extraction patterns.

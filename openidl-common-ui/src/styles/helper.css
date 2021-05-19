@@ -1,7 +1,8 @@
+/* SPDX-License-Identifier: Apache-2.0*/
 .no-row-padding {
-  padding-left:0 !important;
-  padding-right:0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 .requiredfield {
- border:1px solid #d0021b !important;
+  border: 1px solid #d0021b !important;
 }

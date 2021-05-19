@@ -1,122 +1,181 @@
-<table class="table" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="recordsPerPage" *ngIf='!isSpinner' [mfSortBy]="sortField" [mfSortOrder]="sortDir">
-    <thead>
-        <tr>
-            <th style="width: 15%">
-                <mfDefaultSorter by="name" style='position:relative'>
-                  Name
-                  <span class='sort-arrows'>
-                      <i class='glyphicon glyphicon-triangle-top'></i>
-                      <i class='glyphicon glyphicon-triangle-bottom'></i>
-                  </span>
-                </mfDefaultSorter>
-            </th>
-            <th style="width: 10%">
-                <mfDefaultSorter by="deadline">
-                  Deadline
-                  <span class='sort-arrows'>
-                      <i class='glyphicon glyphicon-triangle-top'></i>
-                      <i class='glyphicon glyphicon-triangle-bottom'></i>
-                  </span>
-                </mfDefaultSorter>
-            </th>
-            <th style="width: 10%">
-                <mfDefaultSorter by="jurisdiction">
-                  Jurisdiction
-                  <span class='sort-arrows'>
-                      <i class='glyphicon glyphicon-triangle-top'></i>
-                      <i class='glyphicon glyphicon-triangle-bottom'></i>
-                  </span>
-                </mfDefaultSorter>
-            </th>
-            <th style="width: 8%">
-                <mfDefaultSorter by="lineOfBusiness">
-                  Line of Business
-                  <span class='sort-arrows'>
-                      <i class='glyphicon glyphicon-triangle-top'></i>
-                      <i class='glyphicon glyphicon-triangle-bottom'></i>
-                  </span>
-                </mfDefaultSorter>
-            </th>
-            <th style="width: 10%;text-align:right; padding-right:25px;">
-                <mfDefaultSorter by="version">
-                  Version No.
-                  <span class='sort-arrows'>
-                      <i class='glyphicon glyphicon-triangle-top'></i>
-                      <i class='glyphicon glyphicon-triangle-bottom'></i>
-                  </span>
-                </mfDefaultSorter>
-            </th>
-            <!-- <th *ngIf='status === "DRAFT"' style="width: 10%;text-align:right">
+<!-- SPDX-License-Identifier: Apache-2.0-->
+<table
+  class="table"
+  [mfData]="data"
+  #mf="mfDataTable"
+  [mfRowsOnPage]="recordsPerPage"
+  *ngIf="!isSpinner"
+  [mfSortBy]="sortField"
+  [mfSortOrder]="sortDir"
+>
+  <thead>
+    <tr>
+      <th style="width: 15%">
+        <mfDefaultSorter by="name" style="position: relative">
+          Name
+          <span class="sort-arrows">
+            <i class="glyphicon glyphicon-triangle-top"></i>
+            <i class="glyphicon glyphicon-triangle-bottom"></i>
+          </span>
+        </mfDefaultSorter>
+      </th>
+      <th style="width: 10%">
+        <mfDefaultSorter by="deadline">
+          Deadline
+          <span class="sort-arrows">
+            <i class="glyphicon glyphicon-triangle-top"></i>
+            <i class="glyphicon glyphicon-triangle-bottom"></i>
+          </span>
+        </mfDefaultSorter>
+      </th>
+      <th style="width: 10%">
+        <mfDefaultSorter by="jurisdiction">
+          Jurisdiction
+          <span class="sort-arrows">
+            <i class="glyphicon glyphicon-triangle-top"></i>
+            <i class="glyphicon glyphicon-triangle-bottom"></i>
+          </span>
+        </mfDefaultSorter>
+      </th>
+      <th style="width: 8%">
+        <mfDefaultSorter by="lineOfBusiness">
+          Line of Business
+          <span class="sort-arrows">
+            <i class="glyphicon glyphicon-triangle-top"></i>
+            <i class="glyphicon glyphicon-triangle-bottom"></i>
+          </span>
+        </mfDefaultSorter>
+      </th>
+      <th style="width: 10%; text-align: right; padding-right: 25px">
+        <mfDefaultSorter by="version">
+          Version No.
+          <span class="sort-arrows">
+            <i class="glyphicon glyphicon-triangle-top"></i>
+            <i class="glyphicon glyphicon-triangle-bottom"></i>
+          </span>
+        </mfDefaultSorter>
+      </th>
+      <!-- <th *ngIf='status === "DRAFT"' style="width: 10%;text-align:right">
                 <mfDefaultSorter by="draftVersions">No. of Drafts</mfDefaultSorter>
             </th> -->
-            <th *ngIf='status === statusObj.DRAFT' style="width: 10%;text-align:right; padding-right:60px;">
-                <mfDefaultSorter by="noOfLikes">
-                  Likes
-                  <span class='sort-arrows'>
-                      <i class='glyphicon glyphicon-triangle-top'></i>
-                      <i class='glyphicon glyphicon-triangle-bottom'></i>
-                  </span>
-                </mfDefaultSorter>
-            </th>
-            <th *ngIf='status === statusObj.ISSUED' style="width: 10%; text-align:right; padding-right:50px;">
-                <mfDefaultSorter by="noOfConsents">
-                  Consents
-                  <span class='sort-arrows'>
-                      <i class='glyphicon glyphicon-triangle-top'></i>
-                      <i class='glyphicon glyphicon-triangle-bottom'></i>
-                  </span>
-                </mfDefaultSorter>
-            </th>
-            <th *ngIf='status === statusObj.ISSUED' style="width: 10%">
-                <mfDefaultSorter by="reportStatus">
-                  Report Status
-                  <span class='sort-arrows'>
-                      <i class='glyphicon glyphicon-triangle-top'></i>
-                      <i class='glyphicon glyphicon-triangle-bottom'></i>
-                  </span>
-                </mfDefaultSorter>
-            </th>
-            <th style="width: 12%;padding-left:20px;" [ngStyle]='{"padding-left":status === statusObj.CANCELLED? "5%":"20px"}'>
-                <mfDefaultSorter by="updatedTs">
-                  Updated Date
-                  <span class='sort-arrows'>
-                      <i class='glyphicon glyphicon-triangle-top'></i>
-                      <i class='glyphicon glyphicon-triangle-bottom'></i>
-                  </span>
-                </mfDefaultSorter>
-            </th>
-        </tr>
-    </thead>
-    <tbody *ngIf='isRecord'>
-        <tr *ngFor="let data of mf.data" (click)='viewDraft(data)'>
-            <td>{{data.name}}</td>
-            <td>{{data.deadline | date:'MM/dd/yyyy'}}</td>
-            <td>{{data.jurisdiction}}</td>
-            <td>{{data.lineOfBusiness}}</td>
-            <td style='text-align:right'>{{data.version}}</td>
-            <!-- <td *ngIf='status === "DRAFT"' style='text-align:right'>{{data.draftVersions}}</td> -->
-            <td *ngIf='status === statusObj.DRAFT' style='text-align:right; padding-right:48px;'>{{data.noOfLikes}}</td>
-            <td *ngIf='status === statusObj.ISSUED' style='text-align:right; padding-right:35px;'>{{data.noOfConsents}}</td>
-            <td *ngIf='status === statusObj.ISSUED' class='report-status' (click)='viewReport($event, data, data.reportStatus, data.reportUrl)' [ngClass]="{'activeLink': data.reportStatus && (!(data.reportStatus.toLowerCase() === 'awaiting'))  }" style='cursor:default;'> <!-- &&((!(this.role === 'carrier' && (data.reportStatus.toLowerCase() === 'candidate' || data.reportStatus.toLowerCase() === 'awaiting' || data.reportStatus.toLowerCase() === 'accepted')))) -->
-                {{data.reportStatus}}</td>
-            <td style='padding-left:20px;' [ngStyle]='{"padding-left":status=== statusObj.CANCELLED? "5%":"20px"}'>{{data.updatedTs | date:'MM/dd/yyyy'}}</td>
-        </tr>
-    </tbody>
-    <tbody *ngIf='!isRecord'>
-        <tr>
-            <td colspan='8'>
-                No {{statusText}} data calls are available
-            </td>
-        </tr>
-    </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="8">
-                <app-pagination [Records]='pageCount' [currentIndex]='currentIndex' (getPageByIndexEvent)='getDatacallsByIndex($event)' (getNextPageEvent)='getNextDatacalls($event)' (getPrevPageEvent)='getPrevDatacalls($event)'></app-pagination>
-            </td>
-        </tr>
-    </tfoot>
+      <th
+        *ngIf="status === statusObj.DRAFT"
+        style="width: 10%; text-align: right; padding-right: 60px"
+      >
+        <mfDefaultSorter by="noOfLikes">
+          Likes
+          <span class="sort-arrows">
+            <i class="glyphicon glyphicon-triangle-top"></i>
+            <i class="glyphicon glyphicon-triangle-bottom"></i>
+          </span>
+        </mfDefaultSorter>
+      </th>
+      <th
+        *ngIf="status === statusObj.ISSUED"
+        style="width: 10%; text-align: right; padding-right: 50px"
+      >
+        <mfDefaultSorter by="noOfConsents">
+          Consents
+          <span class="sort-arrows">
+            <i class="glyphicon glyphicon-triangle-top"></i>
+            <i class="glyphicon glyphicon-triangle-bottom"></i>
+          </span>
+        </mfDefaultSorter>
+      </th>
+      <th *ngIf="status === statusObj.ISSUED" style="width: 10%">
+        <mfDefaultSorter by="reportStatus">
+          Report Status
+          <span class="sort-arrows">
+            <i class="glyphicon glyphicon-triangle-top"></i>
+            <i class="glyphicon glyphicon-triangle-bottom"></i>
+          </span>
+        </mfDefaultSorter>
+      </th>
+      <th
+        style="width: 12%; padding-left: 20px"
+        [ngStyle]="{
+          'padding-left': status === statusObj.CANCELLED ? '5%' : '20px'
+        }"
+      >
+        <mfDefaultSorter by="updatedTs">
+          Updated Date
+          <span class="sort-arrows">
+            <i class="glyphicon glyphicon-triangle-top"></i>
+            <i class="glyphicon glyphicon-triangle-bottom"></i>
+          </span>
+        </mfDefaultSorter>
+      </th>
+    </tr>
+  </thead>
+  <tbody *ngIf="isRecord">
+    <tr *ngFor="let data of mf.data" (click)="viewDraft(data)">
+      <td>{{ data.name }}</td>
+      <td>{{ data.deadline | date: "MM/dd/yyyy" }}</td>
+      <td>{{ data.jurisdiction }}</td>
+      <td>{{ data.lineOfBusiness }}</td>
+      <td style="text-align: right">{{ data.version }}</td>
+      <!-- <td *ngIf='status === "DRAFT"' style='text-align:right'>{{data.draftVersions}}</td> -->
+      <td
+        *ngIf="status === statusObj.DRAFT"
+        style="text-align: right; padding-right: 48px"
+      >
+        {{ data.noOfLikes }}
+      </td>
+      <td
+        *ngIf="status === statusObj.ISSUED"
+        style="text-align: right; padding-right: 35px"
+      >
+        {{ data.noOfConsents }}
+      </td>
+      <td
+        *ngIf="status === statusObj.ISSUED"
+        class="report-status"
+        (click)="viewReport($event, data, data.reportStatus, data.reportUrl)"
+        [ngClass]="{
+          activeLink:
+            data.reportStatus &&
+            !(data.reportStatus.toLowerCase() === 'awaiting')
+        }"
+        style="cursor: default"
+      >
+        <!-- &&((!(this.role === 'carrier' && (data.reportStatus.toLowerCase() === 'candidate' || data.reportStatus.toLowerCase() === 'awaiting' || data.reportStatus.toLowerCase() === 'accepted')))) -->
+        {{ data.reportStatus }}
+      </td>
+      <td
+        style="padding-left: 20px"
+        [ngStyle]="{
+          'padding-left': status === statusObj.CANCELLED ? '5%' : '20px'
+        }"
+      >
+        {{ data.updatedTs | date: "MM/dd/yyyy" }}
+      </td>
+    </tr>
+  </tbody>
+  <tbody *ngIf="!isRecord">
+    <tr>
+      <td colspan="8">No {{ statusText }} data calls are available</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="8">
+        <app-pagination
+          [Records]="pageCount"
+          [currentIndex]="currentIndex"
+          (getPageByIndexEvent)="getDatacallsByIndex($event)"
+          (getNextPageEvent)="getNextDatacalls($event)"
+          (getPrevPageEvent)="getPrevDatacalls($event)"
+        ></app-pagination>
+      </td>
+    </tr>
+  </tfoot>
 </table>
-<app-spinner *ngIf='isSpinner'></app-spinner>
+<app-spinner *ngIf="isSpinner"></app-spinner>
 
-<app-modal [title]='title' [message]='message' [type]='type' (modalClose)='modalClose()' (redirectLogin)='redirectLogin()'></app-modal>
+<app-modal
+  [title]="title"
+  [message]="message"
+  [type]="type"
+  (modalClose)="modalClose()"
+  (redirectLogin)="redirectLogin()"
+></app-modal>

@@ -1,4 +1,6 @@
-
+/**
+ SPDX-License-Identifier: Apache-2.0
+*/
 const referenceData = require('./referenceData.js').referenceData
 const lobProcessor = require('./LOBProcessor')
 

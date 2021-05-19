@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: Apache-2.0
 #Image namespace
 NAMESPACE ?= openidl
 # image name

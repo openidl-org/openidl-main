@@ -1,3 +1,6 @@
+/**
+ SPDX-License-Identifier: Apache-2.0
+*/
 // Jira - AAISPROD-14 Changes 
 
 const log4js = require('log4js');

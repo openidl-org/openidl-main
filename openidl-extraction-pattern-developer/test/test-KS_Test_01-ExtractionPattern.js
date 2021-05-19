@@ -1,3 +1,6 @@
+//
+// SPDX-License-Identifier: Apache-2.0
+//
 "use strict";
 const fs = require('fs')
 const ExtractionPatternManager = require('../service/extraction-pattern-manager')

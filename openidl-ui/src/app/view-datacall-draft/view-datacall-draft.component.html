@@ -1,11 +1,30 @@
-<app-header [selected]='selected' [fieldChanged] = 'hasFieldChanged'></app-header>
-<div class="col-sm-10 col-sm-offset-1 no-row-padding" *ngIf='isBack'>
-  <button class='back-link' (click)='checkBack()' style='padding:0;'>&lt;&lt; &nbsp;Back to Data Calls</button>
+<!-- SPDX-License-Identifier: Apache-2.0-->
+<app-header [selected]="selected" [fieldChanged]="hasFieldChanged"></app-header>
+<div class="col-sm-10 col-sm-offset-1 no-row-padding" *ngIf="isBack">
+  <button class="back-link" (click)="checkBack()" style="padding: 0">
+    &lt;&lt; &nbsp;Back to Data Calls
+  </button>
 </div>
-<div class="col-sm-10 col-sm-offset-1" *ngIf='!isBack'>
-<a class='back-link' [routerLink]='["/datacallList"]'>Data Calls</a> &nbsp; / &nbsp;
-<a class='back-link' [routerLink]='["/viewIssued"]'>Data call details</a> &nbsp; / &nbsp;
-<a class='back-link' style='text-decoration: none;' href='javascript:(void);'>Data call drafts</a>
+<div class="col-sm-10 col-sm-offset-1" *ngIf="!isBack">
+  <a class="back-link" [routerLink]="['/datacallList']">Data Calls</a> &nbsp; /
+  &nbsp;
+  <a class="back-link" [routerLink]="['/viewIssued']">Data call details</a>
+  &nbsp; / &nbsp;
+  <a class="back-link" style="text-decoration: none" href="javascript:(void);"
+    >Data call drafts</a
+  >
 </div>
-<app-update-form (fail)='goBack()' (fieldChangeEvent)='fieldChange()' (noFieldChangeEvent)='noFieldChange()' (issued)='goBack()' (cloneDatacallEvent)='cloneDatacall()' (abandonDatacallEvent)='abandonDatacall()'></app-update-form>
-<app-modal [title]='title' [message]='message' [type]='type' (confirmation)='onConfirmation()'></app-modal>
+<app-update-form
+  (fail)="goBack()"
+  (fieldChangeEvent)="fieldChange()"
+  (noFieldChangeEvent)="noFieldChange()"
+  (issued)="goBack()"
+  (cloneDatacallEvent)="cloneDatacall()"
+  (abandonDatacallEvent)="abandonDatacall()"
+></app-update-form>
+<app-modal
+  [title]="title"
+  [message]="message"
+  [type]="type"
+  (confirmation)="onConfirmation()"
+></app-modal>

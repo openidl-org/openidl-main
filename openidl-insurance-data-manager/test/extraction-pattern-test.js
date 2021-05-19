@@ -1,3 +1,6 @@
+/*
+ SPDX-License-Identifier: Apache-2.0
+*/
 const chai = require('chai');
 const expect = chai.expect;
 const statAgent = require('../server/controllers/stat-agent');

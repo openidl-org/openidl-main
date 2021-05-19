@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: Apache-2.0
 import { ComponentsModule } from './components.module';
 
 describe('ComponentsModule', () => {

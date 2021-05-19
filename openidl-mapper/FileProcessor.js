@@ -1,3 +1,6 @@
+/**
+ SPDX-License-Identifier: Apache-2.0
+*/
 const convertFlatToHDS = require('./LOBProcessor').convertFlatToHDS
 const convertCSVToHDS = require('./LOBProcessor').convertCSVToHDS
 const processIntoChunks = require('./ChunkProcessor').processIntoChunks

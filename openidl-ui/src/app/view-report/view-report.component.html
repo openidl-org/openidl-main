@@ -1,10 +1,18 @@
-<app-header [selected]='selected'></app-header>
-<div class="col-sm-10 col-sm-offset-1" style="margin-top:20px;">
-  <a class='back-link' [routerLink]='["/datacallList"]'>Data Calls</a> &nbsp; / &nbsp;
-  <a class='back-link' [routerLink]='["/viewIssued"]'>Data Call Details</a> &nbsp; / &nbsp;
-  <a class='back-link' style='text-decoration: none;' href='javascript:(void);'>Data Call Reports</a>
-  </div>
-<div class="col-sm-10 col-sm-offset-1" style="padding:25px;background-color:#fff;margin-top:20px;">
-  <h2 style='padding-left:15px; font-weight:bold;'>Report</h2>
+<!-- SPDX-License-Identifier: Apache-2.0-->
+<app-header [selected]="selected"></app-header>
+<div class="col-sm-10 col-sm-offset-1" style="margin-top: 20px">
+  <a class="back-link" [routerLink]="['/datacallList']">Data Calls</a> &nbsp; /
+  &nbsp;
+  <a class="back-link" [routerLink]="['/viewIssued']">Data Call Details</a>
+  &nbsp; / &nbsp;
+  <a class="back-link" style="text-decoration: none" href="javascript:(void);"
+    >Data Call Reports</a
+  >
+</div>
+<div
+  class="col-sm-10 col-sm-offset-1"
+  style="padding: 25px; background-color: #fff; margin-top: 20px"
+>
+  <h2 style="padding-left: 15px; font-weight: bold">Report</h2>
   <app-report-table></app-report-table>
 </div>

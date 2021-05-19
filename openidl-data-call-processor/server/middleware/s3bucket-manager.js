@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: Apache-2.0
 const AWS = require('aws-sdk');
 const log4js = require('log4js');
 const config = require('config');

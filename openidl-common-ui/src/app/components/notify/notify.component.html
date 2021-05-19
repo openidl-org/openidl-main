@@ -1,5 +1,16 @@
-<div class='notify-container' [ngClass]='{"error":type=="error", "success":type=="success", "warning":type=="warning"}'>
-  <span class='title'>{{title}}:</span>
-  <span class='message'>{{message}}</span>
-  <span class='glyphicon glyphicon-remove close-btn' (click)='closeNotify()'></span>
+<!-- SPDX-License-Identifier: Apache-2.0-->
+<div
+  class="notify-container"
+  [ngClass]="{
+    error: type == 'error',
+    success: type == 'success',
+    warning: type == 'warning'
+  }"
+>
+  <span class="title">{{ title }}:</span>
+  <span class="message">{{ message }}</span>
+  <span
+    class="glyphicon glyphicon-remove close-btn"
+    (click)="closeNotify()"
+  ></span>
 </div>

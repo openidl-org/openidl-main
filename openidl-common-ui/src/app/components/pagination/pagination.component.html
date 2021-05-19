@@ -1,25 +1,44 @@
+<!-- SPDX-License-Identifier: Apache-2.0-->
 <div class="pageView">
-    <div class="pageBlock" [ngClass]="{'disableBtn': currentIndex == 1}" (click)='getPrevPage()'>
-        <i class='glyphicon glyphicon-chevron-left'></i>
-    </div>
-            <div class="pageBlock" [ngClass]="{'activePage': currentIndex == page.page}" *ngFor=" let page of indexArray; let i = index" (click)='getPageByIndex(page.page)'>
-                <label style="font-weight: normal">{{page.page}}</label>
-            </div>
-            <div *ngIf='isMorePage' class="pageBlock">
-                <label style="font-weight: normal">...</label>
-            </div>
-            <div *ngIf='isMorePage' class="pageBlock" [ngClass]="{'activePage': currentIndex == lastPage}" (click)='getPageByIndex(lastPage)'>
-                <label style="font-weight: normal">{{lastPage}}</label>
-            </div>
+  <div
+    class="pageBlock"
+    [ngClass]="{ disableBtn: currentIndex == 1 }"
+    (click)="getPrevPage()"
+  >
+    <i class="glyphicon glyphicon-chevron-left"></i>
+  </div>
+  <div
+    class="pageBlock"
+    [ngClass]="{ activePage: currentIndex == page.page }"
+    *ngFor="let page of indexArray; let i = index"
+    (click)="getPageByIndex(page.page)"
+  >
+    <label style="font-weight: normal">{{ page.page }}</label>
+  </div>
+  <div *ngIf="isMorePage" class="pageBlock">
+    <label style="font-weight: normal">...</label>
+  </div>
+  <div
+    *ngIf="isMorePage"
+    class="pageBlock"
+    [ngClass]="{ activePage: currentIndex == lastPage }"
+    (click)="getPageByIndex(lastPage)"
+  >
+    <label style="font-weight: normal">{{ lastPage }}</label>
+  </div>
 
-            <div class="pageBlock" [ngClass]="{'disableBtn': currentIndex == lastPage}" (click)='getNextPage()'>
-                <i class='glyphicon glyphicon-chevron-right'></i>
-            </div>
-            <!-- <div style='display:inline-block'>
+  <div
+    class="pageBlock"
+    [ngClass]="{ disableBtn: currentIndex == lastPage }"
+    (click)="getNextPage()"
+  >
+    <i class="glyphicon glyphicon-chevron-right"></i>
+  </div>
+  <!-- <div style='display:inline-block'>
                 <select [(ngModel)]='recordsPerPage' (change)='changeRecordsPerPage()'>
                     <option value=10>10</option>
                     <option value=30 [selected]='true'>30</option>
                     <option value=50>50</option>
                 </select>
             </div> -->
-    </div>
+</div>

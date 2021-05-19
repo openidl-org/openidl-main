@@ -1,4 +1,7 @@
 /**
+ SPDX-License-Identifier: Apache-2.0
+*/
+/**
  * Process the records into chunks based on the desired chunk size
  */
 module.exports.processIntoChunks = function (chunkSize, batchId, carrierId, records, transform) {

@@ -1,16 +1,17 @@
+/* SPDX-License-Identifier: Apache-2.0*/
 .list-group-item {
-    background: #f7f7f7;
-    /* width: 280px; */
-    width:95%;
-    height: 68px;
-    box-shadow: 0 8px 6px -6px #d7d7d7;
-    margin-bottom: 15px;
-    position:relative;
-    border:1px solid #fdfdfd;
+  background: #f7f7f7;
+  /* width: 280px; */
+  width: 95%;
+  height: 68px;
+  box-shadow: 0 8px 6px -6px #d7d7d7;
+  margin-bottom: 15px;
+  position: relative;
+  border: 1px solid #fdfdfd;
 }
 
 .list-group-item:after {
-  content: '';
+  content: "";
   width: 2px;
   height: 30px;
   position: absolute;
@@ -20,44 +21,44 @@
 }
 
 .list-group-item:last-child:after {
-  width:0;
-  height:0;
+  width: 0;
+  height: 0;
 }
 
 .list-group {
-    overflow-y: auto;
-    height: 295px;
-    /* width: 309px; */
-    margin-top: 4%;
+  overflow-y: auto;
+  height: 295px;
+  /* width: 309px; */
+  margin-top: 4%;
 }
 
 .box-heading {
-    font-family: 'IBM Plex Sans';
-    font-size: 13px;
-    color: #2d74da;
-    text-align: left;
-    text-transform: capitalize;
+  font-family: "IBM Plex Sans";
+  font-size: 13px;
+  color: #2d74da;
+  text-align: left;
+  text-transform: capitalize;
 }
 
 .box-style {
-    display: inline-block;
-    float: left;
-    padding-left: 8%;
+  display: inline-block;
+  float: left;
+  padding-left: 8%;
 }
 
 .box-img {
-    display: inline-block;
-    float: left;
-    padding-top: 3%;
+  display: inline-block;
+  float: left;
+  padding-top: 3%;
 }
 
 .box-content {
-    font-family: 'IBM Plex Sans';
-    font-size: 13px;
-    color: #152935;
-    text-align: left;
+  font-family: "IBM Plex Sans";
+  font-size: 13px;
+  color: #152935;
+  text-align: left;
 }
 
 .artlogo {
-    padding-top: 3%;
+  padding-top: 3%;
 }

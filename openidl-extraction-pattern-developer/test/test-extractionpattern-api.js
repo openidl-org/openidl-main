@@ -1,3 +1,6 @@
+//
+// SPDX-License-Identifier: Apache-2.0
+//
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const expect = chai.expect;

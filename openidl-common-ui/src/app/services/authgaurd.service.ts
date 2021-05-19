@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: Apache-2.0
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { StorageService } from './storage.service';

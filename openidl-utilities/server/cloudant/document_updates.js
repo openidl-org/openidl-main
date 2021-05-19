@@ -1,3 +1,6 @@
+/**
+ SPDX-License-Identifier: Apache-2.0
+*/
 const cred = require("../cloudant/config/local-cloudant-config.json")
 const cloudant = require('@cloudant/cloudant')(cred);
 const const_DB = require('../cloudant/config/constant');

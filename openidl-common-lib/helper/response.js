@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: Apache-2.0
 /**
  * 
  * @param {Boolean} status  --  Executed result true or false

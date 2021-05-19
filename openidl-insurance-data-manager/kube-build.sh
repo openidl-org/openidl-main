@@ -1,3 +1,6 @@
+#
+# SPDX-License-Identifier: Apache-2.0
+#
 echo ${HOST_NAME}
 
 # updating host name in Dockerfile

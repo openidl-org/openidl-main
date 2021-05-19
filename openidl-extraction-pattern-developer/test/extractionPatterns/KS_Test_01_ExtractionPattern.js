@@ -1,3 +1,6 @@
+//
+// SPDX-License-Identifier: Apache-2.0
+//
 /**
  * Sample file with map and reduce functions used to create an extraction pattern.
  */

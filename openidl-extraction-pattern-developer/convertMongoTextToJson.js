@@ -1,3 +1,6 @@
+//
+// SPDX-License-Identifier: Apache-2.0
+//
 /**
  * Converts robo 3t export of multiple records into a json array in a text file
  * Removes ObjectId lines as well

@@ -1,25 +1,23 @@
+/* SPDX-License-Identifier: Apache-2.0*/
 /* .row.content {
   height: 100%;
 } */
-
 
 /* Set gray background color and 100% height */
 
 .sidenav {
   padding-top: 20px;
-  background-color: #F4F7FC;
+  background-color: #f4f7fc;
   height: 100%;
 }
 
-.form-container>div {
+.form-container > div {
   background-color: #fff;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-
 /* On small screens, set height to 'auto' for sidenav and grid */
-
 
 /* @media screen and (max-width: 767px) {
 .sidenav {
@@ -32,7 +30,7 @@
 } */
 
 .page-heading {
-  font-family: 'IBM Plex Sans SemiBold';
+  font-family: "IBM Plex Sans SemiBold";
   font-size: 18px;
   color: #152935;
   line-height: 16.1px;
@@ -44,7 +42,7 @@
 }
 
 .input-label {
-  font-family: 'IBM Plex Sans SemiBold';
+  font-family: "IBM Plex Sans SemiBold";
   font-size: 14.2px;
   color: #152935;
   letter-spacing: 0;
@@ -64,7 +62,7 @@
 }
 
 .input-style {
-  font-family: 'IBM Plex Sans Medium';
+  font-family: "IBM Plex Sans Medium";
   font-size: 1.1rem;
   display: block;
   width: 100%;
@@ -79,7 +77,7 @@
 
 .input-style.input-style-textarea {
   height: 100% !important;
-  padding:10px;
+  padding: 10px;
 }
 
 textarea {
@@ -87,7 +85,7 @@ textarea {
 }
 
 .input-label.input-label-bold {
-  font-family: 'IBM Plex Sans Bold';
+  font-family: "IBM Plex Sans Bold";
   color: #5a6872;
 }
 
@@ -95,7 +93,7 @@ textarea {
   padding: 20px 0;
 }
 .form-container .form-item.form-date-item {
-  padding:5px 0 20px !important;
+  padding: 5px 0 20px !important;
 }
 .toggle-area {
   display: inline-block;

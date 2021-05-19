@@ -1,3 +1,6 @@
+/**
+ SPDX-License-Identifier: Apache-2.0
+*/
 const log4js = require('log4js');
 const config = require('config');
 const S3BucketManager = require('./s3bucket-manager');

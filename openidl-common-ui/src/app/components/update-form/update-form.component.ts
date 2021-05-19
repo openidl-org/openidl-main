@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: Apache-2.0
 import { version } from 'punycode';
 import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';

@@ -4,7 +4,7 @@
   "description": "This component is responsible for processing transactional data available chaincode events.",
   "main": "server/index.js",
   "author": "bipeen",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "scripts": {
     "start": "NODE_CONFIG_DIR=./server/config node server/index.js",
     "dev": "cross-env NODE_CONFIG_DIR=./server/config nodemon server/index.js",

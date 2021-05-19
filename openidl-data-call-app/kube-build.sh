@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: Apache-2.0
 # updating host name in Dockerfile
 sed -i 's/${HOST_NAME}/'$HOST_NAME'/g' ${DOCKER_ROOT}/deployment.yml
 sed -i 's/${CLUSTER_NAME}/'$CLUSTER_NAME'/g' ${DOCKER_ROOT}/deployment.yml

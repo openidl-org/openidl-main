@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: Apache-2.0
 // +build go1.7
 
 package errors

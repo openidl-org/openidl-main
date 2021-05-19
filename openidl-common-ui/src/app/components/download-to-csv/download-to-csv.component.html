@@ -1,3 +1,11 @@
- <div class="model-footer btn-container" style="text-align: right">
-    <button class="btn-primary" style="margin-bottom: 1px" [disabled]="disable" (click)='downloadCsv()'>{{buttonTitle}}</button>
+<!-- SPDX-License-Identifier: Apache-2.0-->
+<div class="model-footer btn-container" style="text-align: right">
+  <button
+    class="btn-primary"
+    style="margin-bottom: 1px"
+    [disabled]="disable"
+    (click)="downloadCsv()"
+  >
+    {{ buttonTitle }}
+  </button>
 </div>

@@ -1,4 +1,4 @@
-
+// SPDX-License-Identifier: Apache-2.0
 import { DataService } from './../../services/data.service';
 import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { StorageService } from './../../services/storage.service';
