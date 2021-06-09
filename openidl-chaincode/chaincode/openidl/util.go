@@ -5,6 +5,7 @@ import (
 
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 	pb "github.com/hyperledger/fabric/protos/peer"
+	logger "github.com/sirupsen/logrus"
 )
 
 // ToChaincodeArgs Prepare chaincode arguments for invoke chaincode

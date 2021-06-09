@@ -5,6 +5,8 @@ import (
 	//"fmt"
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 	pb "github.com/hyperledger/fabric/protos/peer"
+	logger "github.com/sirupsen/logrus"
+
 	//"github.com/stretchr/testify/assert"
 	"os"
 	//"testing"
@@ -15,8 +17,6 @@ type openIDLTestCC struct {
 	carriers map[string]Carrier
 	openIDLCC
 }
-
-//var logger = shim.NewLogger("openIDLTestCC_Logger")
 
 func (this *openIDLTestCC) Init(stub shim.ChaincodeStubInterface) pb.Response {
 	logger.Debug("Init: enter")

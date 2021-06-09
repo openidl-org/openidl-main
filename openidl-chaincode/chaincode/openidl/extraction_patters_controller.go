@@ -4,9 +4,11 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"strconv"
+
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 	pb "github.com/hyperledger/fabric/protos/peer"
-	"strconv"
+	logger "github.com/sirupsen/logrus"
 )
 
 // creates extraction patten definition
@@ -26,15 +28,15 @@ func (this *openIDLCC) CreateExtractionPattern(stub shim.ChaincodeStubInterface,
 		return shim.Error("DbType cant not be empty!!")
 	} else if extractionPatten.ViewDefinition.Map == "" || extractionPatten.ViewDefinition.Reduce == "" {
 		return shim.Error("ViewDefinition cant be empty!!")
-	}   else if extractionPatten.PremiumFromDate == "" {  
-        return shim.Error("PremiumFromDate cannot not be Empty")
-    } else if extractionPatten.LossFromDate == "" {  
-        return shim.Error("LossFromDate cannot not be Empty")
-    } else if extractionPatten.Jurisdiction == "" {  
-        return shim.Error("Jurisdiction cannot not be Empty")
-    } else if extractionPatten.Insurance == "" {  
-        return shim.Error("Insurance cannot not be Empty")
-    }
+	} else if extractionPatten.PremiumFromDate == "" {
+		return shim.Error("PremiumFromDate cannot not be Empty")
+	} else if extractionPatten.LossFromDate == "" {
+		return shim.Error("LossFromDate cannot not be Empty")
+	} else if extractionPatten.Jurisdiction == "" {
+		return shim.Error("Jurisdiction cannot not be Empty")
+	} else if extractionPatten.Insurance == "" {
+		return shim.Error("Insurance cannot not be Empty")
+	}
 	if err != nil {
 		logger.Error("CreateExtractionPattern: Error during json.Unmarshal: ", err)
 		return shim.Error(errors.New("CreateExtractionPattern: Error during json.Unmarshal").Error())
@@ -83,14 +85,14 @@ func (this *openIDLCC) UpdateExtractionPattern(stub shim.ChaincodeStubInterface,
 		return shim.Error("DbType should not be Empty")
 
 	} else if extractionPatten.PremiumFromDate == "" {
-        return shim.Error("PremiumFromDate cannot not be Empty")
-    } else if extractionPatten.LossFromDate == "" {  
-        return shim.Error("LossFromDate cannot not be Empty")
-    } else if extractionPatten.Jurisdiction == "" {  
-        return shim.Error("Jurisdiction cannot not be Empty")
-    } else if extractionPatten.Insurance == "" {  
-        return shim.Error("Insurance cannot not be Empty")
-    }
+		return shim.Error("PremiumFromDate cannot not be Empty")
+	} else if extractionPatten.LossFromDate == "" {
+		return shim.Error("LossFromDate cannot not be Empty")
+	} else if extractionPatten.Jurisdiction == "" {
+		return shim.Error("Jurisdiction cannot not be Empty")
+	} else if extractionPatten.Insurance == "" {
+		return shim.Error("Insurance cannot not be Empty")
+	}
 	namespace := EXTRACTION_PATTERN_PREFIX
 	extPatternKey, _ := stub.CreateCompositeKey(namespace, []string{extractionPatten.ExtractionPatternID, extractionPatten.DbType})
 	extractionPatternAsBytes, err := stub.GetState(extPatternKey)
@@ -105,9 +107,9 @@ func (this *openIDLCC) UpdateExtractionPattern(stub shim.ChaincodeStubInterface,
 		return shim.Error("UpdateExtractionPattern: Failed to unmarshal pattern: " + err.Error())
 	}
 	prevExtractionPattern.PremiumFromDate = extractionPatten.PremiumFromDate
-    prevExtractionPattern.LossFromDate = extractionPatten.LossFromDate
-    prevExtractionPattern.Jurisdiction = extractionPatten.Jurisdiction
-    prevExtractionPattern.Insurance = extractionPatten.Insurance
+	prevExtractionPattern.LossFromDate = extractionPatten.LossFromDate
+	prevExtractionPattern.Jurisdiction = extractionPatten.Jurisdiction
+	prevExtractionPattern.Insurance = extractionPatten.Insurance
 	prevExtractionPattern.ViewDefinition = extractionPatten.ViewDefinition
 	prevExtractionPattern.UpdatedTs = extractionPatten.UpdatedTs
 	prevExtractionPattern.UpdatedBy = extractionPatten.UpdatedBy

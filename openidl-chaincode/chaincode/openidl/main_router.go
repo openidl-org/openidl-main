@@ -9,6 +9,7 @@ import (
 
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 	pb "github.com/hyperledger/fabric/protos/peer"
+	logger "github.com/sirupsen/logrus"
 	//"strconv"
 )
 
@@ -17,7 +18,6 @@ type openIDLCC struct {
 	carriers map[string]Carrier
 }
 
-var logger = shim.NewLogger("openIDLCC_Logger")
 var crossInvocationChannels Channels
 
 // Init is called during chaincode instantiation to initialize any
@@ -30,10 +30,9 @@ func (this *openIDLCC) Init(stub shim.ChaincodeStubInterface) pb.Response {
 
 	var logLevelConfig = os.Getenv(LOGGING_LEVEL)
 	if logLevelConfig != "" {
-		logLevel, _ := shim.LogLevel(logLevelConfig)
-		logger.SetLevel(logLevel)
+		logger.SetLevel(logLevelConfig)
 	} else {
-		logger.SetLevel(shim.LogInfo)
+		logger.SetLevel(logger.InfoLevel)
 	}
 
 	/*init_args := stub.GetStringArgs()
