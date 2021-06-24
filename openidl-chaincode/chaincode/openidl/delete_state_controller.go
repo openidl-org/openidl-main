@@ -7,6 +7,7 @@ import (
 
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 	pb "github.com/hyperledger/fabric/protos/peer"
+	logger "github.com/sirupsen/logrus"
 )
 
 func (this *openIDLCC) ResetWorldState(stub shim.ChaincodeStubInterface) pb.Response {

@@ -4,10 +4,12 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/hyperledger/fabric/core/chaincode/shim"
-	pb "github.com/hyperledger/fabric/protos/peer"
 	"strconv"
 	"time"
+
+	"github.com/hyperledger/fabric/core/chaincode/shim"
+	pb "github.com/hyperledger/fabric/protos/peer"
+	logger "github.com/sirupsen/logrus"
 )
 
 // generateVersion is a helper function for generating a version number.
@@ -79,7 +81,7 @@ func (this *openIDLCC) CreateDataCall(stub shim.ChaincodeStubInterface, args str
 	toggleDataCallCount := ToggleDataCallCount{"", dataCall.Status}
 	datacallIssueLogAsBytes, _ := json.Marshal(toggleDataCallCount)
 	dataCallCountAsBytes := this.ToggleDataCallCount(stub, string(datacallIssueLogAsBytes))
-	logger.Info("The reply from toggle is ", dataCallCountAsBytes)	
+	logger.Info("The reply from toggle is ", dataCallCountAsBytes)
 
 	return shim.Success(nil)
 
@@ -142,7 +144,7 @@ func (this *openIDLCC) ListDataCallsByCriteria(stub shim.ChaincodeStubInterface,
 	elapsedTime := time.Since(startTime)
 	logger.Info("RESPONSE META DATA ", responseMetadata.FetchedRecordsCount)
 	logger.Info("Time consumed to get Data Calls", elapsedTime)
-	defer resultsIterator.Close()	
+	defer resultsIterator.Close()
 	if err != nil {
 		logger.Error("Failed to get state for all the data calls")
 		return shim.Error("Failed to get state for all the data calls")
@@ -366,15 +368,14 @@ func (this *openIDLCC) SaveNewDraft(stub shim.ChaincodeStubInterface, args strin
 	}
 	logger.Debug("SaveNewDraft: Latest Datacall saved!")
 
-	if(currentDataCall.Status != dataCalls[0].Status){
+	if currentDataCall.Status != dataCalls[0].Status {
 		//change the count of the statuses
 		logger.Info("Toggling ", currentDataCall.Status, " and ", dataCalls[0].Status)
 		toggleDataCallCount := ToggleDataCallCount{dataCalls[0].Status, currentDataCall.Status}
 		datacallIssueLogAsBytes, _ := json.Marshal(toggleDataCallCount)
 		dataCallCountAsBytes := this.ToggleDataCallCount(stub, string(datacallIssueLogAsBytes))
-		logger.Info("The reply from toggle is ", dataCallCountAsBytes)	
+		logger.Info("The reply from toggle is ", dataCallCountAsBytes)
 	}
-
 
 	return shim.Success(nil)
 
@@ -613,13 +614,13 @@ func (this *openIDLCC) UpdateDataCall(stub shim.ChaincodeStubInterface, args str
 
 	_ = stub.SetEvent(SET_EXTRACTION_PATTERN_EVENT, extPatternResponseAsBytes)
 
-	if(dataCall.Status != prevDataCall.Status){
+	if dataCall.Status != prevDataCall.Status {
 		//change the count of the statuses
 		logger.Info("Toggling ", dataCall.Status, " and ", prevDataCall.Status)
 		toggleDataCallCount := ToggleDataCallCount{prevDataCall.Status, dataCall.Status}
 		datacallIssueLogAsBytes, _ := json.Marshal(toggleDataCallCount)
 		dataCallCountAsBytes := this.ToggleDataCallCount(stub, string(datacallIssueLogAsBytes))
-		logger.Info("The reply from toggle is ", dataCallCountAsBytes)	
+		logger.Info("The reply from toggle is ", dataCallCountAsBytes)
 	}
 
 	return shim.Success(nil)
@@ -708,15 +709,15 @@ func (this *openIDLCC) IssueDataCall(stub shim.ChaincodeStubInterface, args stri
 			return shim.Error("Error commiting the previous DataCall")
 		}
 
-		if(dataCall.Status != prevDataCall.Status){
+		if dataCall.Status != prevDataCall.Status {
 			//change the count of the statuses
 			logger.Info("Toggling ", dataCall.Status, " and ", prevDataCall.Status)
 			toggleDataCallCount := ToggleDataCallCount{prevDataCall.Status, dataCall.Status}
 			datacallIssueLogAsBytes, _ := json.Marshal(toggleDataCallCount)
 			dataCallCountAsBytes := this.ToggleDataCallCount(stub, string(datacallIssueLogAsBytes))
-			logger.Info("The reply from toggle is ", dataCallCountAsBytes)	
+			logger.Info("The reply from toggle is ", dataCallCountAsBytes)
 		}
-	
+
 	}
 
 	return shim.Success(nil)
@@ -805,15 +806,13 @@ func (this *openIDLCC) toggleDataCallCount(stub shim.ChaincodeStubInterface, arg
 // 		return shim.Error("Incorrect number of arguments!!")
 // 	}
 
-	
-	
 // 	var pks []string = []string{DATA_CALL_PREFIX, "COUNT", "10"}
 // 	countPatternKey, _ := stub.CreateCompositeKey(DOCUMENT_TYPE, pks)
-	
+
 // 	args3 := map[string]int{"ISSUED": 1,"DRAFT": 0, "CANCELLED": 0}
 // 	var dataCallCount = DataCallCount{counts: args3}
 // 	fmt.Println("REACHED INSIDE 3 " + countPatternKey)
-	
+
 // 	logger.Info("REACHED INSIDE 4 ", dataCallCount)
 
 // 	prevDataCallAsBytes, _ := json.Marshal(dataCallCount)
@@ -846,11 +845,9 @@ func (this *openIDLCC) toggleDataCallCount(stub shim.ChaincodeStubInterface, arg
 // 	}
 // 	logger.Info("GOT THE RESPONSE ", prevDataCall)
 
-
 // 	return shim.Success(nil)
 
 // }
-
 
 func (this *openIDLCC) ToggleDataCallCount(stub shim.ChaincodeStubInterface, args string) pb.Response {
 	logger.Debug("ToggleDataCallCount: enter")
@@ -868,25 +865,24 @@ func (this *openIDLCC) ToggleDataCallCount(stub shim.ChaincodeStubInterface, arg
 	}
 	logger.Info("Unmarshalled object ", toggleDataCallCount)
 
-
 	getDataCallCount := GetDataCallCount{"123456", "1"}
 	datacallIssueLogAsBytes, _ := json.Marshal(getDataCallCount)
 	dataCallCountAsBytes := this.GetDataCallCount(stub, string(datacallIssueLogAsBytes))
 	var dataCallCount DataCallCount
 	err = json.Unmarshal(dataCallCountAsBytes.Payload, &dataCallCount)
-	
+
 	logger.Info("The retrieved data is ", dataCallCount)
 
 	if toggleDataCallCount.OriginalStatus == "ISSUED" {
-		dataCallCount.ISSUED = dataCallCount.ISSUED - 1 
+		dataCallCount.ISSUED = dataCallCount.ISSUED - 1
 	} else if toggleDataCallCount.OriginalStatus == "DRAFT" {
 		dataCallCount.DRAFT = dataCallCount.DRAFT - 1
 	} else if toggleDataCallCount.OriginalStatus == "CANCELLED" {
 		dataCallCount.CANCELLED = dataCallCount.CANCELLED - 1
 	}
-	
+
 	if toggleDataCallCount.NewStatus == "ISSUED" {
-		dataCallCount.ISSUED = dataCallCount.ISSUED + 1 
+		dataCallCount.ISSUED = dataCallCount.ISSUED + 1
 	} else if toggleDataCallCount.NewStatus == "DRAFT" {
 		dataCallCount.DRAFT = dataCallCount.DRAFT + 1
 	} else if toggleDataCallCount.NewStatus == "CANCELLED" {
@@ -972,7 +968,6 @@ func (this *openIDLCC) UpdateDataCallCount(stub shim.ChaincodeStubInterface, arg
 	return shim.Success(nil)
 
 }
-
 
 // SearchDataCalls retrives all data calls that match given criteria. If startindex and pageSize are not provided,
 // this method returns the complete list of data calls. If version = latest, the it returns only latest version of a data call

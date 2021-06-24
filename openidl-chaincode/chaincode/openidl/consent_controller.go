@@ -8,6 +8,7 @@ import (
 
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 	pb "github.com/hyperledger/fabric/protos/peer"
+	logger "github.com/sirupsen/logrus"
 )
 
 /**
@@ -112,12 +113,12 @@ func (this *openIDLCC) UpdateConsentStatus(stub shim.ChaincodeStubInterface, arg
 		return shim.Error(errors.New("UpdateConsentStatus: Error during json.Unmarshal").Error())
 	}
 
-	if consent.DataCallID == "" || consent.DataCallVersion == "" || consent.CarrierID == ""  {
+	if consent.DataCallID == "" || consent.DataCallVersion == "" || consent.CarrierID == "" {
 		return shim.Error("DataCallID or DataCallVersion or CarrierID can't be empty")
 	}
 
 	pks := []string{CONSENT_PREFIX, consent.DataCallID, consent.DataCallVersion, consent.CarrierID}
-	consentKey, _ := stub.CreateCompositeKey(CONSENT_DOCUMENT_TYPE, pks) 
+	consentKey, _ := stub.CreateCompositeKey(CONSENT_DOCUMENT_TYPE, pks)
 
 	logger.Debug("Get Consent from World State")
 	consentData, _ := stub.GetState(consentKey)
@@ -139,9 +140,9 @@ func (this *openIDLCC) UpdateConsentStatus(stub shim.ChaincodeStubInterface, arg
 
 		consentDataAsBytes, _ := json.Marshal(cc)
 		err = stub.PutState(consentKey, consentDataAsBytes)
-				if err != nil {
-					logger.Error("Error commiting the cosent status")
-					return shim.Error("Error commiting the consent status")
+		if err != nil {
+			logger.Error("Error commiting the cosent status")
+			return shim.Error("Error commiting the consent status")
 		}
 
 		return shim.Success(nil)

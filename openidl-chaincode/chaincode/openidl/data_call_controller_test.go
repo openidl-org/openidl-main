@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	"github.com/hyperledger/fabric/core/chaincode/shim"
+	logger "github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 )
 

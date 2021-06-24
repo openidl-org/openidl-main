@@ -3,10 +3,12 @@ package main
 import (
 	"encoding/json"
 	"errors"
-	"github.com/hyperledger/fabric/core/chaincode/shim"
-	pb "github.com/hyperledger/fabric/protos/peer"
 	"strconv"
 	"strings"
+
+	"github.com/hyperledger/fabric/core/chaincode/shim"
+	pb "github.com/hyperledger/fabric/protos/peer"
+	logger "github.com/sirupsen/logrus"
 )
 
 func (this *openIDLCC) SaveInsuranceDataHash(stub shim.ChaincodeStubInterface, args string) pb.Response {
@@ -28,7 +30,7 @@ func (this *openIDLCC) SaveInsuranceDataHash(stub shim.ChaincodeStubInterface, a
 	} else if insurance.ChunkId == "" {
 		return shim.Error("ChunkId should not be Empty")
 	}
-	
+
 	namespacePrefix := INSURANCE_HASH_PREFIX
 	//var pks []string = []string{INSURANCE_HASH_PREFIX, insurance.CarrierId, insurance.BatchId}
 	key, _ := stub.CreateCompositeKey(namespacePrefix, []string{insurance.CarrierId, insurance.BatchId, insurance.ChunkId})

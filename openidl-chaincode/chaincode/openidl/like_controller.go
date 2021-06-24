@@ -4,9 +4,11 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"strings"
+
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 	pb "github.com/hyperledger/fabric/protos/peer"
-	"strings"
+	logger "github.com/sirupsen/logrus"
 )
 
 // ToggleLike Creates and then toggles likes as a boolean value
