@@ -10,5 +10,5 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
       - run: cd openidl-mapper
-      - run: npm install -g bats
+      - run: npm install bats
       - run: bats -v
