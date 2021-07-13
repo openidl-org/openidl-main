@@ -1,10 +1,10 @@
 {
-  "name": "@kens-aais/openidl-mapper",
+  "name": "openidl-org/openidl-mapper",
   "version": "0.0.1",
   "main": "index.js",
   "repository": {
     "type":"git",
-    "url":"https://github.com/kens-aais/openidl-mapper.git"
+    "url":"https://github.com/openidl-org/openidl-mapper.git"
   },
   "publishConfig": {
     "registry":"https://npm.pkg.github.com"
