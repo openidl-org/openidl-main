@@ -17,6 +17,12 @@
             "file:/server/config/local-appid-config.json"
         ]
     },
+    "cognito-credentials": {
+        "searchPatterns": [
+            "env:COGNITO_CONFIG",
+            "file:/server/config/local-cognito-config.json"
+        ]
+    },
     "IBM-certificate-manager-credentials": {
         "searchPatterns": [
             "env:IBM_CERTIFICATE_MANAGER_CONFIG",

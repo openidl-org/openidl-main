@@ -28,8 +28,14 @@ spec:
           mountPath: /server/fabric/config/local-appid-config.json
           subPath: appid
         - name: apkey
+          mountPath: /server/fabric/config/local-cognito-config.json
+          subPath: cognito
+        - name: apkey
           mountPath: /server/config/app-id-credentials.json
           subPath: appid
+        - name: apkey
+          mountPath: /server/config/cognito-credentials.json
+          subPath: cognito
         - name: apkey
           mountPath: /server/fabric/config/local-certmanager-config.json
           subPath: certmanager

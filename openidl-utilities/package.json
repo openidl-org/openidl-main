@@ -29,6 +29,7 @@
         "lodash": "^4.17.11",
         "log4js": "4.3.2",
         "nconf": "^0.10.0",
+        "node-fetch": "^2.6.1",
         "openidl-common-lib": "git+https://x-oauth-basic:${GITHUB_TOKEN}@git.ng.bluemix.net/openIDL/openidl-common-lib.git#develop",
         "passport": "^0.4.0",
         "q": "^1.4.1",

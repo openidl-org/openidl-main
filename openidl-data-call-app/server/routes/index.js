@@ -20,6 +20,7 @@ const config = require('config');
 const openidlCommonLib = require('openidl-common-lib');
 const userAuthHandler = openidlCommonLib.UserAuthHandler;
 const apiAuthHandler = openidlCommonLib.ApiAuthHandler;
+const cognitoAuthHandler = openidlCommonLib.CognitoAuthHandler;
 const health = require('./health');
 const ping = require('./ping');
 const commonController = require('../controllers/common');
@@ -39,57 +40,57 @@ logger.level = config.logLevel;
  * Add routes
  */
 router.use('/health', health);
-router.use('/ping', apiAuthHandler.authenticate, ping);
-router.route('/login').post(userAuthHandler.authenticate, userAuthHandler.getUserAttributes, apiAuthHandler.getApiToken, userAuthHandler.storeTokenInCookie, commonController.login);
-router.route('/logout').post(userAuthHandler.logout, commonController.logout);
-router.route('/lob').get(apiAuthHandler.authenticate, commonController.listLineOfBusiness);
+router.use('/ping', cognitoAuthHandler.validateToken, ping);
+router.route('/login').post(cognitoAuthHandler.authenticate, cognitoAuthHandler.getUserAttributes, cognitoAuthHandler.storeTokenInCookie, commonController.login);
+router.route('/logout').post(cognitoAuthHandler.logout, commonController.logout);
+router.route('/lob').get(cognitoAuthHandler.validateToken, commonController.listLineOfBusiness);
 
 
 //--- data call retreival & Search Data Call
-router.route('/search-data-calls').get(apiAuthHandler.authenticate, commonController.searchDataCalls);
-router.route('/list-data-calls-by-criteria').get(apiAuthHandler.authenticate, commonController.listDataCallsByCriteria);
-router.route('/data-call/:id/:version').get(apiAuthHandler.authenticate, commonController.getDataCallByIdAndVersion);
-router.route('/data-call-versions/:id').get(apiAuthHandler.authenticate, commonController.getDataCallVersionsById);
-router.route('/data-call-log/:id/:version').get(apiAuthHandler.authenticate, commonController.dataCallLog);
+router.route('/search-data-calls').get(cognitoAuthHandler.validateToken, commonController.searchDataCalls);
+router.route('/list-data-calls-by-criteria').get(cognitoAuthHandler.validateToken, commonController.listDataCallsByCriteria);
+router.route('/data-call/:id/:version').get(cognitoAuthHandler.validateToken, commonController.getDataCallByIdAndVersion);
+router.route('/data-call-versions/:id').get(cognitoAuthHandler.validateToken, commonController.getDataCallVersionsById);
+router.route('/data-call-log/:id/:version').get(cognitoAuthHandler.validateToken, commonController.dataCallLog);
 
 //--- like and consent
-router.route('/like').post(apiAuthHandler.authenticate, commonController.toggleLike);
-router.route('/consent').post(apiAuthHandler.authenticate, carrierController.createConsent);
-router.route('/like-status-data-call/:id/:version/:orgId').get(apiAuthHandler.authenticate, commonController.likeStatusByDataCall);
-router.route('/consent-status-data-call/:id/:version/:orgId').get(apiAuthHandler.authenticate, carrierController.consentStatusByDataCall);
-router.route('/like-count/:id/:version').get(apiAuthHandler.authenticate, commonController.likeCount);
-router.route('/consent-count/:id/:version').get(apiAuthHandler.authenticate, commonController.consentCount);
-router.route('/update-consent-status').post(apiAuthHandler.authenticate, carrierController.updateConsentStatus);
+router.route('/like').post(cognitoAuthHandler.validateToken, commonController.toggleLike);
+router.route('/consent').post(cognitoAuthHandler.validateToken, carrierController.createConsent);
+router.route('/like-status-data-call/:id/:version/:orgId').get(cognitoAuthHandler.validateToken, commonController.likeStatusByDataCall);
+router.route('/consent-status-data-call/:id/:version/:orgId').get(cognitoAuthHandler.validateToken, carrierController.consentStatusByDataCall);
+router.route('/like-count/:id/:version').get(cognitoAuthHandler.validateToken, commonController.likeCount);
+router.route('/consent-count/:id/:version').get(cognitoAuthHandler.validateToken, commonController.consentCount);
+router.route('/update-consent-status').post(cognitoAuthHandler.validateToken, carrierController.updateConsentStatus);
 
 
 //----extraction-pattern 
-router.route('/list-extraction-patterns').get(apiAuthHandler.authenticate, commonController.listExtractionPatterns);
-// router.route('/extraction-patterns').post(apiAuthHandler.authenticate, commonController.getExtractionPatternsById);
-router.route('/create-extraction-pattern').post(apiAuthHandler.authenticate, regulatorController.createExtractionPattern);
-router.route('/update-extraction-pattern').put(apiAuthHandler.authenticate, regulatorController.updateExtractionPattern);
-router.route('/get-data-call-and-extraction-pattern').post(apiAuthHandler.authenticate, commonController.getDataCallAndExtractionPattern);
+router.route('/list-extraction-patterns').get(cognitoAuthHandler.validateToken, commonController.listExtractionPatterns);
+// router.route('/extraction-patterns').post(cognitoAuthHandler.validateToken, commonController.getExtractionPatternsById);
+router.route('/create-extraction-pattern').post(cognitoAuthHandler.validateToken, regulatorController.createExtractionPattern);
+router.route('/update-extraction-pattern').put(cognitoAuthHandler.validateToken, regulatorController.updateExtractionPattern);
+router.route('/get-data-call-and-extraction-pattern').post(cognitoAuthHandler.validateToken, commonController.getDataCallAndExtractionPattern);
 
 //----data call modification
-router.route('/data-call').post(apiAuthHandler.authenticate, regulatorController.createDataCall)
-    .put(apiAuthHandler.authenticate, regulatorController.updateDataCall);
-router.route('/save-new-draft').post(apiAuthHandler.authenticate, regulatorController.saveNewDraft);
-router.route('/issue-data-call').put(apiAuthHandler.authenticate, regulatorController.issueDataCall);
-router.route('/save-and-issue-data-call').post(apiAuthHandler.authenticate, regulatorController.saveAndIssueDataCall);
-router.route('/updatedatacallcount').post(apiAuthHandler.authenticate, regulatorController.updateDataCallCount);
+router.route('/data-call').post(cognitoAuthHandler.validateToken, regulatorController.createDataCall)
+    .put(cognitoAuthHandler.validateToken, regulatorController.updateDataCall);
+router.route('/save-new-draft').post(cognitoAuthHandler.validateToken, regulatorController.saveNewDraft);
+router.route('/issue-data-call').put(cognitoAuthHandler.validateToken, regulatorController.issueDataCall);
+router.route('/save-and-issue-data-call').post(cognitoAuthHandler.validateToken, regulatorController.saveAndIssueDataCall);
+router.route('/updatedatacallcount').post(cognitoAuthHandler.validateToken, regulatorController.updateDataCallCount);
 
 
 //----stat-agent like/consent
-router.route('/list-likes-by-data-call/:id/:version').get(apiAuthHandler.authenticate, statAgentController.listLikesByDataCall);
-router.route('/list-consents-by-data-call/:id/:version').get(apiAuthHandler.authenticate, statAgentController.listConsentsByDataCall);
+router.route('/list-likes-by-data-call/:id/:version').get(cognitoAuthHandler.validateToken, statAgentController.listLikesByDataCall);
+router.route('/list-consents-by-data-call/:id/:version').get(cognitoAuthHandler.validateToken, statAgentController.listConsentsByDataCall);
 
 //---report
-router.route('/report').get(apiAuthHandler.authenticate, commonController.getReportsByCriteria)
-    .post(apiAuthHandler.authenticate, statAgentController.createReport)
-    .put(apiAuthHandler.authenticate, regulatorController.updateReport);
+router.route('/report').get(cognitoAuthHandler.validateToken, commonController.getReportsByCriteria)
+    .post(cognitoAuthHandler.validateToken, statAgentController.createReport)
+    .put(cognitoAuthHandler.validateToken, regulatorController.updateReport);
 
 
-router.route('/reset-data').delete(apiAuthHandler.authenticate, statAgentController.resetData);
-router.route('/block-explorer').get(apiAuthHandler.authenticate, commonController.blockExplorer);
+router.route('/reset-data').delete(cognitoAuthHandler.validateToken, statAgentController.resetData);
+router.route('/block-explorer').get(cognitoAuthHandler.validateToken, commonController.blockExplorer);
 
 //temp testing idmController
 router.route('/runDataLoad').post(idmController.runDataLoad);

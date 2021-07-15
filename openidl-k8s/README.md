@@ -83,6 +83,7 @@ node is in (aais, analytics, carrier)
 | email.json                             | email-config              |
 | listener-channel-config.json           | listener-channel-config   |
 | local-appid-config.json                | local-appid-config        |
+| local-cognito-config.json              | local-cognito-config      |
 | local-certmanager-config.json          | local-certmanager-config  |
 | local-cloudant-config.json             | local-cloudant-config     |
 | local-mongo-config.json                | local-mongo-config        |

@@ -87,6 +87,8 @@ affinity: {}
 secrets:
     - name: appid-config
       file: local-appid-config.json
+    - name: cognito-config
+      file: local-cognito-config.json
     - name: certmanager-config
       file: local-certmanager-config.json
     - name: mongodb-config

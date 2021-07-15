@@ -20,6 +20,7 @@ const config = require('config');
 const openidlDataCallCommonApp = require('openidl-common-lib');
 
 const apiAuthHandler = openidlDataCallCommonApp.ApiAuthHandler;
+const cognitoAuthHandler = openidlDataCallCommonApp.CognitoAuthHandler;
 const health = require('./health');
 const ping = require('./ping');
 const statAgentController = require('../controllers/stat-agent');
@@ -37,20 +38,20 @@ logger.setLevel(config.logLevel);
 /**
  * Add routes
  */
-router.use('/health', apiAuthHandler.authenticate, health);
-router.use('/ping', apiAuthHandler.authenticate, ping);
-router.use('/insurance-data', apiAuthHandler.authenticate, statAgentController.insuranceData);
-router.use('/ins-data-hash', apiAuthHandler.authenticate, statAgentController.saveInsuranceDataHash);
-router.use('/ins-data-hds', apiAuthHandler.authenticate, statAgentController.saveInsuranceDataHDS);
-router.use('/ins-data-hds-err', apiAuthHandler.authenticate, statAgentController.saveInsuranceDataHDSError);
+router.use('/health', cognitoAuthHandler.validateToken, health);
+router.use('/ping', cognitoAuthHandler.validateToken, ping);
+router.use('/insurance-data', cognitoAuthHandler.validateToken, statAgentController.insuranceData);
+router.use('/ins-data-hash', cognitoAuthHandler.validateToken, statAgentController.saveInsuranceDataHash);
+router.use('/ins-data-hds', cognitoAuthHandler.validateToken, statAgentController.saveInsuranceDataHDS);
+router.use('/ins-data-hds-err', cognitoAuthHandler.validateToken, statAgentController.saveInsuranceDataHDSError);
 
 // Jira - AAISPROD-14 Changes
-router.use('/sendemail', apiAuthHandler.authenticate, emailController.sendEmail);
+router.use('/sendemail', cognitoAuthHandler.validateToken, emailController.sendEmail);
 
 /**
  * This API end point is invoked by Nifi to load insurance data into mongodb and store insurance
  * hash value into blockchain
  */
-router.use('/load-insurance-data', apiAuthHandler.authenticate, statAgentController.loadInsuranceData);
+router.use('/load-insurance-data', cognitoAuthHandler.validateToken, statAgentController.loadInsuranceData);
 
 module.exports = router;

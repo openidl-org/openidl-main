@@ -16,5 +16,6 @@ server/fabric/config/local-cloudant-config.json
 server/fabric/config/users.json
 server/token/token.json
 server/token/local-appid-config.json
+server/token/local-cognito-config.json
 
 **/config/**

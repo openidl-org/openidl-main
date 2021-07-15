@@ -24,6 +24,7 @@ const fs = require('fs');
 const path = require('path');
 const swaggerUi = require('swagger-ui-express');
 const yaml = require('js-yaml');
+global.fetch = require('node-fetch');
 const IBMCloudEnv = require('ibm-cloud-env');
 IBMCloudEnv.init();
 const routes = require('./routes');
@@ -38,7 +39,8 @@ const openidlCommonLib = require('openidl-common-lib');
 const apiAuthHandler = openidlCommonLib.ApiAuthHandler;
 apiAuthHandler.init(IBMCloudEnv.getDictionary('appid-credentials'));
 
-
+const cognitoAuthHandler = openidlCommonApp.CognitoAuthHandler;
+cognitoAuthHandler.init(IBMCloudEnv.getDictionary('cognito-credentials'));
 
 
 let apiAppStrategy = apiAuthHandler.getAPIStrategy();
@@ -53,6 +55,21 @@ apiPassport.serializeUser(function (user, cb) {
 
 apiPassport.deserializeUser(function (obj, cb) {
     cb(null, obj);
+});
+
+const cognitoPassport = cognitoAuthHandler.getPassport();
+app.use(cognitoPassport.initialize());
+app.use(cognitoPassport.session());
+const cognitoStrategy = cognitoAuthHandler.getCognitoAuthStrategy();
+cognitoPassport.use(cognitoStrategy);
+
+// Passport session persistance
+cognitoPassport.serializeUser(function (user, cb) {
+  cb(null, user);
+});
+
+cognitoPassport.deserializeUser(function (obj, cb) {
+  cb(null, obj);
 });
 
 /**

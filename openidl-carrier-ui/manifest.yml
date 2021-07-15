@@ -10,3 +10,4 @@ applications:
   host: env-host
   env:
     APPID_CONFIG: <value goes here>
+    COGNITO_CONFIG: <value goes here>

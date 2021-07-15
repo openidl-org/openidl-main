@@ -13,6 +13,9 @@ sed -i 's|env-host|'$HOST_NAME'|g' manifest.yml
 # Add App ID credentials to manifest.yml
 sed -i 's|<value goes here>|'$APPID_CONFIG'|g' manifest.yml
 
+# Add Cognito credentials to manifest.yml
+sed -i 's|<value goes here>|'$COGNITO_CONFIG'|g' manifest.yml
+
 # Add Certificate Manager (App ID and instance id ) credentials to manifest.yml
 sed -i 's|<cert value goes here>|'$IBM_CERTIFICATE_MANAGER_CONFIG'|g' manifest.yml
 

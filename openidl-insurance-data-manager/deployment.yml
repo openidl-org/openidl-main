@@ -28,6 +28,9 @@ spec:
           mountPath: /server/config/local-appid-config.json
           subPath: appid
         - name: apkey
+          mountPath: /server/config/local-cognito-config.json
+          subPath: cognito
+        - name: apkey
           mountPath: /server/config/local-certmanager-config.json
           subPath: certmanager
         - name: apkey

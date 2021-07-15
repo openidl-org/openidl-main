@@ -55,6 +55,12 @@ For development, testing, and debugging purposes, it is very convenient to run t
 * Paste the above JSON in 'local-appid-config.json' file and add a new attribute named `callerId`. Copy the `clientId` value and assign it to `callerId` element. You should then end up with the same value for both attributes 
 * Add a new attribute as "version":"4" to this JSON.
 
+### 1. Configure local-cognito-config.json
+
+* Create local-cognito-config.json file under server/config
+* Get Cognito Credentials from respective node administrator or Clould administrator
+* Paste the JSON in 'local-cognito-config.json' file
+
 ### 2. Configure local-certmanager-config.json
 
 * Get  `apikey` and `instance_id` from respective node administrator or Clould administrator

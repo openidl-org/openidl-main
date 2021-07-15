@@ -8,6 +8,8 @@ sed -i 's/${GITHUB_TOKEN}/'$GITHUB_TOKEN'/g' package.json
 sed -i 's/${GITHUB_TOKEN}/'$GITHUB_TOKEN'/g' package-lock.json
 # Add App ID credentials to manifest.yml
 sed -i 's|env-appid|'$APPID_CONFIG'|g' manifest.yml
+# Add Cognito credentials to manifest.yml
+sed -i 's|env-cognito|'$COGNITO_CONFIG'|g' manifest.yml
 # Add name value to manifest.yml
 sed -i 's|env-name|'$HOST_NAME'|g' manifest.yml
 # Add host value to manifest.yml

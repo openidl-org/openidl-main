@@ -33,17 +33,23 @@ const routes = require('./routes');
 const openidlCommonLib = require('openidl-common-lib');
 const transactionFactory = require('./helpers/transaction-factory');
 const networkConfig = require('./config/connection-profile.json');
+global.fetch = require('node-fetch');
 const logger = log4js.getLogger('server');
 logger.level = config.logLevel;
 
 // transactionFactory.init(IBMCloudEnv.getDictionary('aais-db-credentials'), networkConfig);
 logger.info('the appid credentials from env/local file');
-logger.info(IBMCloudEnv.getDictionary('appid-credentials'))
+logger.info(IBMCloudEnv.getDictionary('appid-credentials'));
+logger.info(IBMCloudEnv.getDictionary('cognito-credentials'));
+
 const userAuthHandler = openidlCommonLib.UserAuthHandler;
 userAuthHandler.init(IBMCloudEnv.getDictionary('appid-credentials'));
 
 const apiAuthHandler = openidlCommonLib.ApiAuthHandler;
 apiAuthHandler.init(IBMCloudEnv.getDictionary('appid-credentials'));
+
+const cognitoAuthHandler = openidlCommonLib.CognitoAuthHandler;
+cognitoAuthHandler.init(IBMCloudEnv.getDictionary('cognito-credentials'));
 
 const errorHandler = require('./middlewares/error-handler');
 const app = express();
@@ -120,6 +126,21 @@ apiPassport.serializeUser(function (user, cb) {
 
 apiPassport.deserializeUser(function (obj, cb) {
     cb(null, obj);
+});
+
+const cognitoPassport = cognitoAuthHandler.getPassport();
+app.use(cognitoPassport.initialize());
+app.use(cognitoPassport.session());
+const cognitoStrategy = cognitoAuthHandler.getCognitoAuthStrategy();
+cognitoPassport.use(cognitoStrategy);
+
+// Passport session persistance
+cognitoPassport.serializeUser(function (user, cb) {
+  cb(null, user);
+});
+
+cognitoPassport.deserializeUser(function (obj, cb) {
+  cb(null, obj);
 });
 
 app.enable('trust proxy');

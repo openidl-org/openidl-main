@@ -29,6 +29,9 @@ popd
 # Add App ID credentials to manifest.yml
 sed -i 's|<value goes here>|'$APPID_CONFIG'|g' manifest.yml
 
+# Add Cognito credentials to manifest.yml
+sed -i 's|<value goes here>|'$COGNITO_CONFIG'|g' manifest.yml
+
 # Build angular application
 npm install
 cp -r node_modules/openidl-common-ui/* lib/

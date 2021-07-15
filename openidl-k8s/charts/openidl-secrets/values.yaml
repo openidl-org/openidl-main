@@ -122,6 +122,9 @@ secrets:
     - name: appid-config
       file: config/local-appid-config.json
       namespace: default
+    - name: cognito-config
+      file: config/local-cognito-config.json
+      namespace: default
     - name: certmanager-config
       file: config/local-certmanager-config.json
       namespace: default

@@ -74,6 +74,12 @@ To successfully install this dependency, you should replace `{GITHUB_TOKEN}` in 
 * Paste the above JSON in 'local-appid-config.json' file and add a new attribute named `callerId`. Copy the `clientId` value and assign it to `callerId` element. You should then end up with the same value for both attributes 
 * Add a new attribute as "version":"4" to this JSON.
 
+### Configure local-cognito-config.json
+
+* Create local-cognito-config.json file under server/config
+* Get Cognito Credentials from respective node administrator or Clould administrator
+* Paste the JSON in 'local-cognito-config.json' file
+
 #### Port configuration to run the application locally
 The port is configured in a file named `port-config.json` inside `server/config` folder in the following format:
 

@@ -33,7 +33,8 @@
     "ng-pick-datetime-moment": "1.0.7",
     "ngx-bootstrap": "^3.0.1",
     "ngx-cookie-service": "^1.0.10",
-    "ngx-clipboard":"11.1.9",
+    "ngx-clipboard": "11.1.9",
+    "passport-cognito": "^0.2.2",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

@@ -23,6 +23,7 @@
         "js-yaml": "^3.12.0",
         "lodash": "4.17.15",
         "log4js": "4.3.2",
+        "node-fetch": "^2.6.1",
         "openidl-common-lib": "git+https://x-oauth-basic:${GITHUB_TOKEN}@git.ng.bluemix.net/openIDL/openidl-common-lib.git#develop",
         "swagger-ui-express": "^3.0.10",
         "uuid": "^3.3.2",

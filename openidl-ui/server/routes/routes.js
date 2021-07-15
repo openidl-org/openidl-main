@@ -4,6 +4,7 @@ const app = express();
 const openidlCommonApp = require('../../lib/server/index');
 const userAuthHandler = openidlCommonApp.UserAuthHandler;
 const apiAuthHandler = openidlCommonApp.ApiAuthHandler;
+const cognitoAuthHandler = openidlCommonApp.CognitoAuthHandler;
 const commonController = require('../controllers/common');
 const bodyParser = require('body-parser');
 const router = express.Router();
@@ -13,89 +14,89 @@ app.use(bodyParser.json());
 
 //module.exports = function(app) {
 // Application Login
-router.route('/login').post(userAuthHandler.authenticate, userAuthHandler.getUserAttributes, apiAuthHandler.getApiToken, commonController.login);
-// /userAuthHandler.authenticate, userAuthHandler.getUserAttributes, apiAuthHandler.getApiToken, userAuthHandler.storeTokenInCookie,
+router.route('/login').post(cognitoAuthHandler.authenticate, cognitoAuthHandler.getUserAttributes, commonController.login);
+// /cognitoAuthHandler.authenticate, cognitoAuthHandler.getUserAttributes, cognitoAuthHandler.storeTokenInCookie,
 
 // Application logout
-router.route('/logout').post(userAuthHandler.logout, commonController.logout);
+router.route('/logout').post(cognitoAuthHandler.logout, commonController.logout);
 
 // Get data calls according to the params passed eg: status, page index etc
-router.route('/list-data-calls-by-criteria').get(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.getDataCalls);
+router.route('/list-data-calls-by-criteria').get(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.getDataCalls);
 
 // Get LOBs
-router.route('/lob').get(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.getLOBs);
+router.route('/lob').get(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.getLOBs);
 
 // Get Block history
-router.route('/block-explorer').get(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.getBlockHistory);
+router.route('/block-explorer').get(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.getBlockHistory);
 
 // Data call related tasks such as create, update etc
-router.route('/data-call').post(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.dataCall);
+router.route('/data-call').post(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.dataCall);
 
 /**
  * Search data call based on wildcard string
  */
-router.route('/search-data-calls').get(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.getSearchDataCalls);
+router.route('/search-data-calls').get(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.getSearchDataCalls);
 
 // Get draft version
-router.route('/data-call-versions/:id').get(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.dataCallVersions);
+router.route('/data-call-versions/:id').get(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.dataCallVersions);
 
 // Get like status
-router.route('/like-status-data-call/:id/:version/:orgid').get(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.getLikeStatus);
+router.route('/like-status-data-call/:id/:version/:orgid').get(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.getLikeStatus);
 
 // Get consent status
-router.route('/consent-status-data-call/:id/:version/:orgid').get(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.getConsentStatus);
+router.route('/consent-status-data-call/:id/:version/:orgid').get(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.getConsentStatus);
 
 // Get Consent Count
-router.route('/consent-count/:id/:version').get(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.getConsentCount);
+router.route('/consent-count/:id/:version').get(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.getConsentCount);
 
 // Get Like Count
-router.route('/like-count/:id/:version').get(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.getLikeCount);
+router.route('/like-count/:id/:version').get(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.getLikeCount);
 
 // Save and issue a data call
-router.route('/save-and-issue-data-call').post(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.saveAndIssue);
+router.route('/save-and-issue-data-call').post(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.saveAndIssue);
 
 // Issue a data call
-router.route('/issue-data-call').put(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.issue);
+router.route('/issue-data-call').put(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.issue);
 
 // Save new draft
-router.route('/save-new-draft').post(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.saveNewDraft);
+router.route('/save-new-draft').post(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.saveNewDraft);
 
 // Update data call
-router.route('/data-call').put(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.dataCall);
-router.route('/update-data-call').put(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.updateDataCall);
+router.route('/data-call').put(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.dataCall);
+router.route('/update-data-call').put(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.updateDataCall);
 
 // Like / Unlike a data call
-router.route('/like').post(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.likeUnlikeDataCall);
+router.route('/like').post(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.likeUnlikeDataCall);
 
 // List likes
-router.route('/list-likes-by-data-call/:id/:version').get(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.listLikes);
+router.route('/list-likes-by-data-call/:id/:version').get(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.listLikes);
 
 // List Consents
-router.route('/list-consents-by-data-call/:id/:version').get(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.listConsents);
+router.route('/list-consents-by-data-call/:id/:version').get(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.listConsents);
 
 // Get Reports
-router.route('/report').get(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.getReport);
+router.route('/report').get(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.getReport);
 
 // Update Report
-router.route('/report').post(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.updateReport);
+router.route('/report').post(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.updateReport);
 
 // Update Report
-router.route('/report').put(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.updateReport);
+router.route('/report').put(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.updateReport);
 
 // Provide consent to a data call
-router.route('/consent').post(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.provideConsent);
+router.route('/consent').post(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.provideConsent);
 
 // Get data call details
-router.route('/data-call/:id/:version').get(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.getDataCallDetails);
+router.route('/data-call/:id/:version').get(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.getDataCallDetails);
 
 // Get data call history
-router.route('/data-call-log/:id/:version').get(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.getDataCallHistory);
+router.route('/data-call-log/:id/:version').get(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.getDataCallHistory);
 
-router.route('/reset-data').delete(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.resetData);
+router.route('/reset-data').delete(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.resetData);
 
-router.route('/list-extraction-patterns').get(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.getExtrationPattern);
+router.route('/list-extraction-patterns').get(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.getExtrationPattern);
 
-router.route('/extraction-patterns').post(userAuthHandler.isLoggedIn, userAuthHandler.getUserRole, apiAuthHandler.authenticate, commonController.getExtractionPatternsById);
+router.route('/extraction-patterns').post(cognitoAuthHandler.isLoggedIn, cognitoAuthHandler.getUserRole, cognitoAuthHandler.validateToken, commonController.getExtractionPatternsById);
 
 module.exports = router;
 //}

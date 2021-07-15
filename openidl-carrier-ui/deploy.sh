@@ -18,6 +18,7 @@ sed -i 's,${DATA_CALL_CARRIER_APP_URL},'$DATA_CALL_CARRIER_APP_URL',g' config.js
 
 cd $PROJDIR
 sed -i 's|<value goes here>|'$APPID_CONFIG'|g' manifest.yml
+sed -i 's|<value goes here>|'$COGNITO_CONFIG'|g' manifest.yml
 
 # Add name value to manifest.yml
 sed -i 's|env-name|'$HOST_NAME'|g' manifest.yml
@@ -28,6 +29,7 @@ cat manifest.yml
 
 cd $PROJDIR
 cat <<< ${APPID_CONFIG} | sed -e 's/^"//' -e 's/"$//' | sed -r 's/\\/"/g' > server/config/local-appid-config.json
+cat <<< ${COGNITO_CONFIG} | sed -e 's/^"//' -e 's/"$//' | sed -r 's/\\/"/g' > server/config/local-cognito-config.json
 
 cd $PROJDIR
 

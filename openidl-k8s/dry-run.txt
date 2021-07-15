@@ -156,6 +156,8 @@ openidl-data-call-app:
   secrets:
   - file: local-appid-config.json
     name: appid
+  - file: local-cognito-config.json
+    name: cognito
   - file: local-certmanager-config.json
     name: certmanager
   - file: local-mongo-config.json
@@ -496,6 +498,8 @@ openidl-insurance-data-manager:
   secrets:
   - file: local-appid-config.json
     name: appid
+  - file: local-cognito-config.json
+    name: cognito
   - file: local-certmanager-config.json
     name: certmanager
   - file: local-mongo-config.json
@@ -589,6 +593,9 @@ openidl-secrets:
   secrets:
   - file: config/local-appid-config.json
     name: appid
+    namespace: default
+  - file: config/local-cognito-config.json
+    name: cognito
     namespace: default
   - file: config/local-certmanager-config.json
     name: certmanager
@@ -704,6 +711,8 @@ openidl-ui:
   secrets:
   - file: local-appid-config.json
     name: appid
+  - file: local-cognito-config.json
+    name: cognito
   securityContext: {}
   service:
     port: 8080
@@ -783,6 +792,8 @@ openidl-upload:
   secrets:
   - file: local-appid-config.json
     name: appid
+  - file: local-cognito-config.json
+    name: cognito
   securityContext: {}
   service:
     port: 8080
@@ -1189,6 +1200,9 @@ spec:
           mountPath: /server/config/local-appid-config.json
           subPath: appid
         - name: apkey
+          mountPath: /server/config/local-cognito-config.json
+          subPath: cognito
+        - name: apkey
           mountPath: /server/config/local-certmanager-config.json
           subPath: certmanager
         - name: apkey
@@ -1380,6 +1394,9 @@ spec:
           mountPath: /server/config/local-appid-config.json
           subPath: appid
         - name: apkey
+          mountPath: /server/config/local-cognito-config.json
+          subPath: cognito
+        - name: apkey
           mountPath: /server/config/local-certmanager-config.json
           subPath: certmanager
         - name: apkey
@@ -1442,6 +1459,9 @@ spec:
         - name: apkey
           mountPath: /server/config/local-appid-config.json
           subPath: appid
+        - name: apkey
+          mountPath: /server/config/local-cognito-config.json
+          subPath: cognito
 ---
 # Source: openidl-k8s/charts/openidl-upload/templates/deployment.yml
 apiVersion: apps/v1

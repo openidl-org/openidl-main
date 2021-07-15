@@ -10,6 +10,7 @@ const cors = require('cors');
 const config = require('config');
 const log4js = require('log4js');
 const bodyParser = require('body-parser');
+global.fetch = require('node-fetch');
 const openidlCommonApp = require('../lib/server/index');
 
 const IBMCloudEnv = require('ibm-cloud-env');
@@ -27,12 +28,16 @@ logger.debug('setting up app: registering routes, middleware...');
 
 logger.info('credential info');
 logger.info(IBMCloudEnv.getDictionary('appid-credentials'));
+logger.info(IBMCloudEnv.getDictionary('cognito-credentials'));
 
 const userAuthHandler = openidlCommonApp.UserAuthHandler;
 userAuthHandler.init(IBMCloudEnv.getDictionary('appid-credentials'));
 
 const apiAuthHandler = openidlCommonApp.ApiAuthHandler;
 apiAuthHandler.init(IBMCloudEnv.getDictionary('appid-credentials'));
+
+const cognitoAuthHandler = openidlCommonApp.CognitoAuthHandler;
+cognitoAuthHandler.init(IBMCloudEnv.getDictionary('cognito-credentials'));
 
 /**
  * middleware for authentication
@@ -82,6 +87,20 @@ apiPassport.deserializeUser(function(obj, cb) {
     cb(null, obj);
 });
 
+const cognitoPassport = cognitoAuthHandler.getPassport();
+app.use(cognitoPassport.initialize());
+app.use(cognitoPassport.session());
+const cognitoStrategy = cognitoAuthHandler.getCognitoAuthStrategy();
+cognitoPassport.use(cognitoStrategy);
+
+// Passport session persistance
+cognitoPassport.serializeUser(function (user, cb) {
+  cb(null, user);
+});
+
+cognitoPassport.deserializeUser(function (obj, cb) {
+  cb(null, obj);
+});
 
 if (NODE_ENV === 'production') {
     app.use(function(req, res, next) {

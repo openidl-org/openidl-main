@@ -10,5 +10,11 @@
       "env:APPID_CONFIG",
       "file:/server/config/local-appid-config.json"
     ]
+},
+"cognito-credentials": {
+  "searchPatterns": [
+    "env:COGNITO_CONFIG",
+    "file:/server/config/local-cognito-config.json"
+  ]
 }
 }
