@@ -43,13 +43,30 @@ async function generateCSV(dbName, collectionName, outputFileName, useLocal) {
             throw err;
         });
         let reduced = await dbManager.getAllRecords(dbName, collectionName);
-        let csv = convertToCSV(reduced)
 
-        fs.writeFileSync(outputFileName, csv, (err) => {
-            if (err) {
-                console.log('Error writing csv file: ' + err)
-            }
-        })
+        let csv = ''
+        let increment = 100000
+        if (reduced.length < increment) {
+            csv = convertToCSV(reduced)
+            fs.writeFileSync(outputFileName, csv, (err) => {
+                if (err) {
+                    console.log('Error writing csv file: ' + err)
+                }
+            })
+        } else {
+            let i = 0
+            do {
+                let increments = reduced.length / increment
+                csv = convertToCSV(reduced.slice(i * increment, (i + 1) * increment))
+                i++
+                fs.writeFileSync(`${outputFileName}.${i.toString()}.csv`, csv, (err) => {
+                    if (err) {
+                        console.log('Error writing csv file: ' + err)
+                    }
+                })
+            } while (i * increment < reduced.length)
+        }
+
     } catch (err) {
         throw err;
     }
@@ -85,11 +102,11 @@ function convertToCSV(json) {
 // let dbName = "covid-report";
 // let collectionName = "hds-data";
 // let reductionName = "hds-report-input";
-let databaseName = "openidl-offchain-db-ppp";
-let collectionName = "insurance_trx_db_HIG";
-let reductionName = 'hig_covid_data';
+let databaseName = "openidl-offchain-db-ppp-any-nr";
+let collectionName = "insurance_trx_db_any";
+let reductionName = 'any_covid_data_all';
 
-let outputFile = 'covid-output/covid-output-hig-ppp.csv'
+let outputFile = 'covid-output/covid-output-any-ppp-all-nr.csv'
 
 let useLocal = true
 

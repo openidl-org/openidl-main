@@ -7,6 +7,14 @@ NAME ?= openidl-k8s
 #image default tag
 IMAGE_TAG ?= latest
 
+
+UNAME := $(shell uname)
+ifeq ($(UNAME), Darwin)
+	DRIVER=hyperkit
+else
+	DRIVER=docker
+endif
+
 delete_minikube:
 	minikube delete
 
@@ -16,7 +24,7 @@ stop_minikube:
 start_minikube:
 	minikube config set cpus 4
 	minikube config set memory 8192
-	minikube start --driver=hyperkit
+	minikube start --driver=$(DRIVER)
 
 enable_ingress:
 	minikube addons enable ingress
@@ -31,13 +39,17 @@ use_minikube_as_registry:
 	echo This does not work for some reason, do it manually! Use only 1 dollar sign
 	eval $$(minikube -p minikube docker-env)
 
-load_images:
+load_images_full:
 	docker load -i ./openidl-iac-local/images/openidl-ui.tar
 	docker load -i ./openidl-iac-local/images/openidl-insurance-data-manager.tar
 	docker load -i ./openidl-iac-local/images/openidl-data-call-processor.tar
 	docker load -i ./openidl-iac-local/images/openidl-data-call-app.tar
 	docker load -i ./openidl-iac-local/images/openidl-upload.tar
 
+load_images:
+	echo No longer need to load images, they all come from github container registry
+	docker load -i ./openidl-iac-local/images/openidl-ui.tar
+	
 docker_load_ui:
 	docker load -i ./openidl-iac-local/images/openidl-ui.tar
 
@@ -51,6 +63,10 @@ install_in_k8s:
 
 uninstall_from_k8s:
 	helm uninstall local-aais
+
+reinstall_in_k8s:
+	helm uninstall local-aais
+	helm install local-aais ./openidl-k8s -f ./openidl-k8s/global-values.yaml
 
 dashboard:
 	echo better to open a separate terminal for this

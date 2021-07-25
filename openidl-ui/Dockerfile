@@ -14,7 +14,7 @@ COPY . .
 RUN npm install
 
 RUN cp -r node_modules/openidl-common-ui/* lib/
-RUN npm install @angular/cli -g
+RUN npm install @angular/cli@11.2.11 -g
 
 RUN ng config -g cli.warnings.versionMismatch false
 RUN ng build --prod

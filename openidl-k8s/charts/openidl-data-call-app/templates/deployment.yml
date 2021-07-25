@@ -29,6 +29,11 @@ spec:
       - name: apkey
         secret:
           secretName: {{ .Values.global.appsecret }}
+          items:
+          {{- range .Values.secrets }}
+          - key: {{ .name }}
+            path: {{ .file }}
+          {{- end }}
       containers:
       - name: {{ .Chart.Name }}
         # for regular deployment
@@ -39,9 +44,7 @@ spec:
         ports:
         - containerPort: {{ .Values.global.datacallapp.port }}
         volumeMounts:
-        {{- range .Values.secrets }}
         - name: apkey
-          mountPath: /server/config/{{ .file }}
-          subPath: {{ .name }}
-        {{- end }}
+          mountPath: "/server/config"
+          readOnly: true
 {{- end }}

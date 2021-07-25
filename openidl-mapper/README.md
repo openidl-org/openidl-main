@@ -1,3 +1,5 @@
+test github actions ... with npm version ,,, and more versioning
+
 # openidl-mapper
 
 -   a reference implementation for mapping from anything to the harmonized data store

@@ -1,0 +1,14 @@
+{
+  "name": "openidl-k8s",
+  "version": "1.0.0",
+  "description": "This project deploys the application to kubernetes.",
+  "main": "load-secrets.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.886.0"
+  }
+}

@@ -3,17 +3,22 @@
  * call via node load-secrets.js <cloud> <environment> <node>
  * The results will be placed into the config directory.
  */
-const { exit } = require('node:process')
 const secretsManager = require('../openidl-secrets-manager/secrets-manager')
 
 var args = process.argv.slice(2)
 
-if (args.length < 3) {
-    console.log('Error.  Must provide at least 3 parguments: cloud, environment, node.')
-    console.log("Usage: node load-secrets.js <cloud> <environment> <node>")
-    exit(1)
+if (args.length < 4) {
+    console.error('Error.  Must provide at least 4 parguments: destination, cloud, environment, node.')
+    console.error("Usage: node load-secrets.js <destination> <cloud> <environment> <node>")
 } else {
-    var destination = (args.length > 3 ? args[3] : './charts/openidl-secrets/config')
-    secretsManager.loadSecretsFromCloud(destination, args[0], args[1], args[2])
-    exit(0)
+    var destination = (args.length > 3 ? args[0] : './charts/openidl-secrets/config')
+    console.info("About to load secrets into " + destination)
+    try {
+        secretsManager.loadSecretsFromCloud(destination, args[1], args[2], args[3])
+    } catch (err) {
+        console.log(`Error Loading secrets - ${err}`)
+        process.exit(1)
+    }
+    console.info("Finished loading secrets")
+    process.exit()
 }

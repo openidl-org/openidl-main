@@ -53,21 +53,28 @@ function map() {
 
     let policyForm = (recordType === RECORD_TYPE_PREMIUM ? this.policy.policyForm : this.policy.policyStructure[0].coverages[0].policyForm)
     let policyFormName = policyForm.description
-    let physicalDamageRequirement = policyForm.physicalDamageRequirement ? 'Y' : 'N'
-    let businessInteruptionFlag = policyForm.businessInteruptionFlag ? 'Y' : 'N'
-    let viralExclusion = policyForm.viralExclusion ? 'Y' : 'N'
+    let physicalDamageRequirement = policyForm.physicalDamageRequirement ? policyForm.physicalDamageRequirement : null
+    let businessInteruptionFlag = policyForm.businessInteruptionFlag ? policyForm.businessInteruptionFlag : null
+    let viralExclusion = policyForm.viralExclusion ? policyForm.viralExclusion : null
 
     let majorPerilName = this.policy.perilCategory ? this.policy.perilCategory[0].majorPeril : ''
 
     let numberOfEmployees = this.policy.numberOfEmployees ? parseInt(this.policy.numberOfEmployees) : null
 
-    let transactionCode = this.coverateLevel === PREMIUM_LEVEL_POLICY ? this.policy.currencyPayment[0].legacyCode : this.policy.policyStructure[0].coverages[0].currencyPayment[0].legacyCode
+    let transactionCode = this.coverageLevel === PREMIUM_LEVEL_POLICY ? this.policy.currencyPayment[0].legacyCode : this.policy.policyStructure[0].coverages[0].currencyPayment[0].legacyCode
     let transactionType = this.coverageLevel === PREMIUM_LEVEL_POLICY ? this.policy.currencyPayment[0].transactionType : this.policy.policyStructure[0].coverages[0].currencyPayment[0].transactionType
 
     let premiumAccountingDate = null
 
-    let pppIndicataor = this.pppIndicator ? 'Y' : 'N'
-    let naiscCode = this.naiscCode
+    let pppIndicataor = this.ppp.pppIndicator ? 'Y' : 'N'
+    let naicsCode = this.ppp.naicsCode
+    let jobsReported = this.ppp.jobsReported
+    let processingMethod = this.ppp.processingMethod
+    let ruralUrbanIndicator = this.ppp.ruralUrbanIndicator
+    let cd = this.ppp.cd
+    let race = this.ppp.race
+    let initialApprovalAmount = this.ppp.initialApprovalAmount
+    let currentApprovalAmount = this.ppp.currentApprovalAmount
 
     let coverageCode = this.policy.policyStructure[0].coverages[0].legacyCode
     if (this.coverageLevel === PREMIUM_LEVEL_POLICY) {
@@ -148,7 +155,14 @@ function map() {
                 "viralExclusion": viralExclusion,
                 "sicCode": sicCode,
                 "pppIndicator": pppIndicataor,
-                "naiscCode": naiscCode
+                "naicsCode": naicsCode,
+                "jobsReported": jobsReported,
+                "processingMethod": processingMethod,
+                "ruralUrbanIndicator": ruralUrbanIndicator,
+                "cd": cd,
+                "race": race,
+                "initialApprovalAmount": initialApprovalAmount,
+                "currentApprovalAmount": currentApprovalAmount
             },
             {
                 "writtenPremiumAmount": premiumAmount,

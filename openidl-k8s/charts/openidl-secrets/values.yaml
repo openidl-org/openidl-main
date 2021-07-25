@@ -5,72 +5,76 @@
 replicaCount: 1
 
 image:
-  repository: nginx
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+    repository: nginx
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
 serviceAccount:
-  # Specifies whether a service account should be created
-  create: true
-  # Annotations to add to the service account
-  annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: ""
+    # Specifies whether a service account should be created
+    create: true
+    # Annotations to add to the service account
+    annotations: {}
+    # The name of the service account to use.
+    # If not set and create is true, a name is generated using the fullname template
+    name: ""
 
 podAnnotations: {}
 
-podSecurityContext: {}
-  # fsGroup: 2000
+podSecurityContext:
+    {}
+    # fsGroup: 2000
 
-securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+securityContext:
+    {}
+    # capabilities:
+    #   drop:
+    #   - ALL
+    # readOnlyRootFilesystem: true
+    # runAsNonRoot: true
+    # runAsUser: 1000
 
 service:
-  type: ClusterIP
-  port: 80
+    type: ClusterIP
+    port: 80
 
 ingress:
-  enabled: false
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: chart-example.local
-      paths: []
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+    enabled: false
+    annotations:
+        {}
+        # kubernetes.io/ingress.class: nginx
+        # kubernetes.io/tls-acme: "true"
+    hosts:
+        - host: chart-example.local
+          paths: []
+    tls: []
+    #  - secretName: chart-example-tls
+    #    hosts:
+    #      - chart-example.local
 
-resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+resources:
+    {}
+    # We usually recommend not to specify default resources and to leave this as a conscious
+    # choice for the user. This also increases chances charts run on environments with little
+    # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    # limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    # requests:
+    #   cpu: 100m
+    #   memory: 128Mi
 
 autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 100
-  targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 80
+    # targetMemoryUtilizationPercentage: 80
 
 nodeSelector: {}
 
@@ -79,42 +83,78 @@ tolerations: []
 affinity: {}
 
 secrets:
-  - name: appid
-    file: config/local-appid-config.json
-    namespace: default
-  - name: certmanager
-    file: config/local-certmanager-config.json
-    namespace: default
-  - name: mongodb
-    file: config/local-mongo-config.json
-    namespace: default
-  - name: cloudantdb
-    file: config/local-cloudant-config.json
-    namespace: default
-  - name: connectionprofile
-    file: config/connection-profile.json
-    namespace: default
-  - name: channelconfigaais
-    file: config/channel-config-aais-node.json
-    namespace: default
-  - name: dbconfig
-    file: config/DBConfig.json
-    namespace: default
-  - name: email
-    file: config/email.json
-    namespace: default
-  - name: listenerchannelaais
-    file: config/listener-channel-config-aais-node.json
-    namespace: default
-  - name: s3bucket
-    file: config/s3-bucket-config.json
-    namespace: default
-  - name: targetchannelaais
-    file: config/target-channel-config-aais-node.json
-    namespace: default
-  - name: uniqueidentifiersaais
-    file: config/unique-identifiers-config-aais-node.json
-    namespace: default
-  - name: nifi
-    file: config/nifi-flowconfig.json
-    namespace: nifi
+    - name: insurance-data-manager-mappings-config
+      file: config/insurance-data-manager-mappings-config.json
+      namespace: default
+    - name: insurance-data-manager-metadata-config
+      file: config/insurance-data-manager-metadata-config.json
+      namespace: default
+    - name: insurance-data-manager-constant-config
+      file: config/insurance-data-manager-constant-config.js
+      namespace: default
+    - name: insurance-data-manager-default-config
+      file: config/insurance-data-manager-default-config.json
+      namespace: default
+    - name: data-call-app-default-config
+      file: config/data-call-app-default-config.json
+      namespace: default
+    - name: data-call-processor-default-config
+      file: config/data-call-processor-default-config.json
+      namespace: default
+    - name: data-call-processor-metadata-config
+      file: config/data-call-processor-metadata-config.json
+      namespace: default
+    - name: config-config
+      file: config/config-config.js
+      namespace: default
+    - name: data-call-app-mappings-config
+      file: config/data-call-app-mappings-config.json
+      namespace: default
+    - name: data-call-processor-mappings-config
+      file: config/data-call-processor-mappings-config.json
+      namespace: default
+    - name: ui-mappings-config
+      file: config/ui-mappings-config.json
+      namespace: default
+    - name: ui-port-config
+      file: config/ui-port-config.json
+      namespace: default
+    - name: appid-config
+      file: config/local-appid-config.json
+      namespace: default
+    - name: certmanager-config
+      file: config/local-certmanager-config.json
+      namespace: default
+    - name: mongodb-config
+      file: config/local-mongo-config.json
+      namespace: default
+    - name: cloudantdb-config
+      file: config/local-cloudant-config.json
+      namespace: default
+    - name: connectionprofile-config
+      file: config/connection-profile.json
+      namespace: default
+    - name: channelconfigaais
+      file: config/channel-config.json
+      namespace: default
+    - name: db-config
+      file: config/db-config.json
+      namespace: default
+    - name: email-config
+      file: config/email-config.json
+      namespace: default
+    - name: listenerchannelaais-config
+      file: config/listener-channel-config.json
+      namespace: default
+    - name: s3bucket-config
+      file: config/s3-bucket-config.json
+      namespace: default
+    - name: targetchannelaais-config
+      file: config/target-channel-config.json
+      namespace: default
+    - name: uniqueidentifiersaais-config
+      file: config/unique-identifiers-config.json
+      namespace: default
+    - name: nifi-config
+      file: config/nifi-flowconfig.json
+      namespace: nifi

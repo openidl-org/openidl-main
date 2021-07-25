@@ -167,7 +167,7 @@ openidl-data-call-app:
   - file: channel-config.json
     name: channelconfigaais
   - file: DBConfig.json
-    name: dbconfig
+    name: db-config
   securityContext: {}
   service:
     port: 8080
@@ -255,7 +255,7 @@ openidl-data-call-processor:
   - file: connection-profile.json
     name: connectionprofile
   - file: DBConfig.json
-    name: dbconfig
+    name: db-config
   - file: email.json
     name: email
   - file: listener-channel-config.json
@@ -507,7 +507,7 @@ openidl-insurance-data-manager:
   - file: channel-config.json
     name: channelconfigaais
   - file: DBConfig.json
-    name: dbconfig
+    name: db-config
   - file: email.json
     name: email
   securityContext: {}
@@ -602,25 +602,25 @@ openidl-secrets:
   - file: config/connection-profile.json
     name: connectionprofile
     namespace: default
-  - file: config/channel-config-aais-node.json
+  - file: config/channel-config.json
     name: channelconfigaais
     namespace: default
   - file: config/DBConfig.json
-    name: dbconfig
+    name: db-config
     namespace: default
   - file: config/email.json
     name: email
     namespace: default
-  - file: config/listener-channel-config-aais-node.json
+  - file: config/listener-channel-config.json
     name: listenerchannelaais
     namespace: default
   - file: config/s3-bucket-config.json
     name: s3bucket
     namespace: default
-  - file: config/target-channel-config-aais-node.json
+  - file: config/target-channel-config.json
     name: targetchannelaais
     namespace: default
-  - file: config/unique-identifiers-config-aais-node.json
+  - file: config/unique-identifiers-config.json
     name: uniqueidentifiersaais
     namespace: default
   - file: config/nifi-flowconfig.json
