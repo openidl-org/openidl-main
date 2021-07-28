@@ -1,7 +1,7 @@
 openapi: '3.0.0'
 info:
   title: 'OpenIDL Insurance Data Manager API(s)'
-  version: '1.0.0'
+  version: '1.0.1'
   description: >-
     > This interface enables the testers to quickly test the API(s) developed by the Dev Team. If you dont have your token  then first generate the token.
     for testing the API(S).

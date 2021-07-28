@@ -1,5 +1,5 @@
-FROM node:8-alpine
-
+FROM node:14.17-alpine
+ARG arg
 RUN apk update && apk upgrade && \
     apk add --no-cache \
     bash \
@@ -10,8 +10,7 @@ RUN apk update && apk upgrade && \
 
 
 COPY . .
-
-RUN npm rebuild
+RUN mv -f npmrc ~/.npmrc 2>/dev/null; true
 RUN npm install
 EXPOSE 8080
 CMD [ "npm","run","start"]

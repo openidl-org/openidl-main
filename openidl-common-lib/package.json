@@ -1,8 +1,20 @@
 {
-    "name": "openidl-common-lib",
-    "version": "0.1.0",
+    "name": "@openidl-org/openidl-common-lib",
+    "version": "0.1.2",
     "private": false,
     "main": "index.js",
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/openidl-org/openidl-main.git",
+        "directory": "openidl-common-lib"
+    },
+    "engines": {
+        "node": "14.17.x",
+        "npm": "6.14.x"
+    },
     "scripts": {
         "start": "node index.js",
         "dev": "nodemon index.js",
@@ -18,13 +30,13 @@
         "config": "^2.0.1",
         "cors": "^2.8.4",
         "express-enforces-ssl": "^1.1.0",
-        "fabric-ca-client": "^1.4.7",
-        "fabric-client": "^1.4.7",
-        "fabric-network": "^1.4.7",
+        "fabric-ca-client": "^1.4.8",
+        "fabric-client": "^1.4.8",
+        "fabric-network": "^1.4.8",
         "grpc": "^1.15.1",
         "ibm-cloud-env": "^0.2.6",
         "ibmcloud-appid": "^6.0.0",
-        "lodash": "4.17.15",
+        "lodash": "^4.17.21",
         "log4js": "4.3.2",
         "mongodb": "3.3.0-beta2",
         "nconf": "^0.10.0",
@@ -40,9 +52,12 @@
         "eslint-config-airbnb": "^17.0.0",
         "eslint-config-airbnb-base": "^13.0.0",
         "eslint-plugin-import": "^2.13.0",
-        "grpc": "^1.15.1",
-        "mocha": "^5.2.0",
-        "nodemon": "^1.18.3",
+        "mocha": "^8.4.0",
+        "nodemon": "^2.0.12",
         "nyc": "15.0.0"
+    },
+    "resolutions": {
+        "fabric-client/**/jsrsasign": "10.2.0",
+        "fabric-ca-client/**/jsrsasign": "10.2.0"
     }
 }

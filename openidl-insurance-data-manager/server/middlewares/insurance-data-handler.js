@@ -22,7 +22,7 @@ const config = require('config');
 const IBMCloudEnv = require('ibm-cloud-env');
 IBMCloudEnv.init();
 const insuranceManagerDB = config.targetDB;
-const openidlCommonLib = require('openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
 const DBManagerFactory = openidlCommonLib.DBManagerFactory;
 const dbManagerFactoryObject = new DBManagerFactory();
 const transactionFactory = require('../helpers/transaction-factory');
@@ -37,7 +37,7 @@ const emailData = require('../config/email.json').Config;
  * Set up logging
  */
 const logger = log4js.getLogger('store insurance data');
-logger.setLevel(config.logLevel);
+logger.level = config.logLevel;
 let mongoDBCollectionName;
 let maxIteration = 4;
 let currentIteration = 0;

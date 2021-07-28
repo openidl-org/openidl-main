@@ -17,7 +17,7 @@
 const express = require('express');
 const log4js = require('log4js');
 const config = require('config');
-const openidlCommonLib = require('openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
 const EventListener = openidlCommonLib.EventListener;
 const walletHelper = openidlCommonLib.Wallet;
 const IBMCloudEnv = require('ibm-cloud-env');
@@ -32,7 +32,7 @@ let dbManagerFactoryObject = new DBManagerFactory();
 const app = express();
 const logger = log4js.getLogger('index');
 // setup logging
-logger.setLevel(config.logLevel);
+logger.level = config.logLevel;
 app.enable('trust proxy');
 
 app.use(function (req, res, next) {

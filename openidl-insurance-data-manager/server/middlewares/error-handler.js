@@ -24,7 +24,7 @@ const util = require('../helpers/util');
  * Set up logging
  */
 const logger = log4js.getLogger('error handler');
-logger.setLevel(config.logLevel);
+logger.level = config.logLevel;
 
 /**
  * Error Handler object

@@ -5,7 +5,7 @@ const Email = {};
  
 const logger = log4js.getLogger('Email');
 const emailData = require("../config/email.json").Config;
-const openidlCommonLib = require('openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
 let emailHander = openidlCommonLib.Email;
 let emailAPIKey = require('../config/default.json').send_grid_apikey
 

@@ -6,7 +6,7 @@ const channelConfig = require('../config/channel-config.json');
 
 const {
     Transaction
-} = require('openidl-common-lib');
+} = require('@openidl-org/openidl-common-lib');
 
 const logger = log4js.getLogger('helper - transactionFactory');
 logger.level = config.logLevel;

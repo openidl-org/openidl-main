@@ -6,7 +6,7 @@ const IBMCloudEnv = require('ibm-cloud-env');
 IBMCloudEnv.init();
 const mongoDataProcessor = require('./data-processor-mongo');
 const dataProcessor = require('../controllers/data-processor');
-const openidlCommonLib = require('openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
 let DBManagerFactory = openidlCommonLib.DBManagerFactory;
 let dbManagerFactoryObject = new DBManagerFactory();
 

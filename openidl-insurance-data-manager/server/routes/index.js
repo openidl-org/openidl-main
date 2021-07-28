@@ -17,7 +17,7 @@
 const express = require('express');
 const log4js = require('log4js');
 const config = require('config');
-const openidlDataCallCommonApp = require('openidl-common-lib');
+const openidlDataCallCommonApp = require('@openidl-org/openidl-common-lib');
 
 const apiAuthHandler = openidlDataCallCommonApp.ApiAuthHandler;
 const health = require('./health');
@@ -32,7 +32,7 @@ const router = express.Router();
  * Set up logging
  */
 const logger = log4js.getLogger('routes - index');
-logger.setLevel(config.logLevel);
+logger.level = config.logLevel;
 
 /**
  * Add routes

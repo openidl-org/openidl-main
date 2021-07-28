@@ -30,13 +30,13 @@ const session = require('express-session');
 const IBMCloudEnv = require('ibm-cloud-env');
 IBMCloudEnv.init();
 const routes = require('./routes');
-const openidlDataCallCommonApp = require('openidl-common-lib');
+const openidlDataCallCommonApp = require('@openidl-org/openidl-common-lib');
 const transactionFactory = require('./helpers/transaction-factory');
 const networkConfig = require('./config/connection-profile.json');
 
 
 const logger = log4js.getLogger('server');
-logger.setLevel(config.logLevel);
+logger.level = config.logLevel;
 
 const DBManagerFactory = openidlDataCallCommonApp.DBManagerFactory;
 const dbManagerFactoryObject = new DBManagerFactory();
@@ -50,7 +50,7 @@ const apiAuthHandler = openidlDataCallCommonApp.ApiAuthHandler;
 apiAuthHandler.init(IBMCloudEnv.getDictionary('appid-credentials'));
 
 const errorHandler = require('./middlewares/error-handler');
-const { init } = require('openidl-common-lib/helper/wallet');
+const { init } = require('@openidl-org/openidl-common-lib/helper/wallet');
 const { json } = require('body-parser');
 const e = require('express');
 const app = express();

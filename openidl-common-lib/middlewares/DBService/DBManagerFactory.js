@@ -10,7 +10,7 @@ let DBConfig;
 let mongoDBName;
 
 try {
-    DBConfig = require('../../../../server/config/DBConfig.json');
+    DBConfig = require('../../server/config/DBConfig.json');
     mongoDBName = DBConfig.databaseService[0].mongodb;
 } catch (err) {
     logger.info('DBConfig not found!!');

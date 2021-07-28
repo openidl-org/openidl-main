@@ -24,10 +24,10 @@ const IBMCloudEnv = require('ibm-cloud-env');
 IBMCloudEnv.init();
 const {
     Transaction
-} = require('openidl-common-lib');
+} = require('@openidl-org/openidl-common-lib');
 
 const logger = log4js.getLogger('event-handler ');
-logger.setLevel(config.logLevel);
+logger.level = config.logLevel;
 
 console.log(targetChannelConfig);
 

@@ -5,7 +5,7 @@ logger.level=config.logLevel;
 const IBMCloudEnv = require('ibm-cloud-env');
 IBMCloudEnv.init();
 
-const openidlCommonLib = require('openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
 let DBManagerFactory = openidlCommonLib.DBManagerFactory;
 let dbManagerFactoryObject = new DBManagerFactory();
 const networkConfig = require('../config/connection-profile.json');
@@ -13,7 +13,7 @@ const Processor = require('../controllers/processor')
 const targetChannelConfig = require('../config/target-channel-config.json');
 const {
     Transaction
-} = require('openidl-common-lib');
+} = require('@openidl-org/openidl-common-lib');
 
 
 async function getChannelInstance() {

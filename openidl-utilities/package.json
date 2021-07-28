@@ -1,6 +1,6 @@
 {
     "name": "app",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "private": true,
     "scripts": {
         "start": "NODE_CONFIG_DIR=./server/config node server/server.js",
@@ -29,20 +29,20 @@
         "lodash": "^4.17.11",
         "log4js": "4.3.2",
         "nconf": "^0.10.0",
-        "openidl-common-lib": "git+https://x-oauth-basic:${GITHUB_TOKEN}@git.ng.bluemix.net/openIDL/openidl-common-lib.git#develop",
+        "@openidl-org/openidl-common-lib": "^0.1.2",
         "passport": "^0.4.0",
         "q": "^1.4.1",
         "request": "^2.88.0",
         "request-promise": "^4.2.2",
         "swagger-ui-express": "^3.0.10",
         "@cloudant/cloudant": "^3.0.1",
-           "jsonwebtoken": "^8.5.1",
-        "jsrsasign": "^8.0.24",
-         "fs-extra": "7.0.1"
+        "jsonwebtoken": "^8.5.1",
+        "jsrsasign": "^10.3.0",
+        "fs-extra": "7.0.1"
     },
     "engines": {
-        "node": "8.9.x",
-        "npm": "5.5.x"
+        "node": "14.17.x",
+        "npm": "6.14.x"
     },
     "devDependencies": {
         "cross-env": "^5.2.0"

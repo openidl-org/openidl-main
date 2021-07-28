@@ -6,7 +6,7 @@ const IBMCloudEnv = require('ibm-cloud-env');
 IBMCloudEnv.init();
 const sleep = require('sleep');
 const sizeof = require('object-sizeof');
-const openidlCommonLib = require('openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
 
 let InstanceFactory = require('../middleware/instance-factory');
 

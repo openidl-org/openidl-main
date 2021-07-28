@@ -28,7 +28,7 @@ const IBMCloudEnv = require('ibm-cloud-env');
 IBMCloudEnv.init();
 const {
     Transaction
-} = require('openidl-common-lib');
+} = require('@openidl-org/openidl-common-lib');
 let ChannelTransactionMap = new Map();
 logger.level = config.logLevel;
 

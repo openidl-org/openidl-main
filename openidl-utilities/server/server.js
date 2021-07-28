@@ -34,7 +34,7 @@ const app = express();
 
 
 
-const openidlCommonLib = require('openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
 const apiAuthHandler = openidlCommonLib.ApiAuthHandler;
 apiAuthHandler.init(IBMCloudEnv.getDictionary('appid-credentials'));
 

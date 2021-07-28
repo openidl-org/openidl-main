@@ -28,7 +28,7 @@ IBMCloudEnv.init();
 const Processor = require('./processor');
 const {
     Transaction
-} = require('openidl-common-lib');
+} = require('@openidl-org/openidl-common-lib');
 
 var eventFunction = {};
 

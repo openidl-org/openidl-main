@@ -1,4 +1,4 @@
-FROM node:8-alpine
+FROM node:14.17-alpine
 
 RUN apk update && apk upgrade && \
     apk add --no-cache \
@@ -10,6 +10,7 @@ RUN apk update && apk upgrade && \
 
 
 COPY . .
+RUN mv -f npmrc ~/.npmrc 2>/dev/null; true
 
 RUN npm install
 EXPOSE 8080

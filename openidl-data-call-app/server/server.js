@@ -30,7 +30,7 @@ const session = require('express-session');
 const IBMCloudEnv = require('ibm-cloud-env');
 IBMCloudEnv.init();
 const routes = require('./routes');
-const openidlCommonLib = require('openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
 const transactionFactory = require('./helpers/transaction-factory');
 const networkConfig = require('./config/connection-profile.json');
 const logger = log4js.getLogger('server');
