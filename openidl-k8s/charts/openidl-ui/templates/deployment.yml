@@ -4,14 +4,14 @@ kind: Deployment
 metadata:
   name: openidl-ui
   labels:
-    {{- include "openidl-insurance-data-manager.labels" . | nindent 4 }}
+    {{- include "openidl-ui.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "openidl-insurance-data-manager.selectorLabels" . | nindent 6 }}
+      {{- include "openidl-ui.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -19,7 +19,8 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "openidl-insurance-data-manager.selectorLabels" . | nindent 8 }}
+        {{- include "openidl-ui.selectorLabels" . | nindent 8 }}
+        date: "{{ now | unixEpoch }}"
     spec:
       # {{- with .Values.imagePullSecrets }}
       # imagePullSecrets:

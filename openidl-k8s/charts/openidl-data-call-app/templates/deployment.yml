@@ -20,6 +20,7 @@ spec:
       {{- end }}
       labels:
         {{- include "openidl-data-call-app.selectorLabels" . | nindent 8 }}
+        date: "{{ now | unixEpoch }}"
     spec:
       {{- if .Values.global.minikubehostip }}
       hostAliases:

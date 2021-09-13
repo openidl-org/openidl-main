@@ -59,3 +59,5 @@ global:
     targetport: 8080
     ingressenabled: false
     ingresshostname: openidl.aais.dev.aaisdemo.com
+  secrets:
+    install: true

@@ -8,7 +8,7 @@ image:
     # repository: openidl/carrier-ui
     # repository: ghcr.io/openidl-org/openidl-carrier-ui
     repository: ghcr.io/openidl-org/carrier-ui
-    pullPolicy: IfNotPresent
+    pullPolicy: Always
     # Overrides the image tag whose default is the chart appVersion.
     # tag: latest
     tag: 0.0.5

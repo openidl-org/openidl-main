@@ -8,7 +8,7 @@ image:
     # repository: openidl/transactional-data-event-listener
     # repository: ghcr.io/openidl-org/openidl-transactional-data-event-listener
     repository: ghcr.io/openidl-org/transactional-data-event-listener
-    pullPolicy: IfNotPresent
+    pullPolicy: Always
     # Overrides the image tag whose default is the chart appVersion.
     # tag: latest
     tag: 0.0.5
