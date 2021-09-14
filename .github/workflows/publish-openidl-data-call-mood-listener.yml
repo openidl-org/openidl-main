@@ -63,7 +63,7 @@ jobs:
           context: openidl-data-call-mood-listener
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}-${{ env.BRANCH }}-${{ env.COMMIT_ID }}-${{ env.BUILD_DATETIME }}
+            ${{ env.REGISTRY }}/openidl-main/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/openidl-main/${{ env.IMAGE_NAME }}:${{ github.run_number }}-${{ env.BRANCH }}-${{ env.COMMIT_ID }}-${{ env.BUILD_DATETIME }}
 
 

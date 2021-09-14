@@ -1,7 +1,7 @@
 #GitHub Actions to deploy openidl application using HELM upgrade 
 #It requires the EKS cluster public access turned ON 
 
-name: Deploy openIDL application
+name: Deploy openIDL application on dev-aais
 on:
   push:
     branches:
@@ -17,7 +17,7 @@ jobs:
   deploy-openidl-app:
     environment: dev-aais
 
-    name: Deploy openIDL application for node dev-aais
+    name: Deploy openIDL application on dev-aais
     runs-on: ubuntu-latest
 
     steps:
