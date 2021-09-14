@@ -7,7 +7,7 @@ on:
     branches:
       - 'git-actions-helm'
     paths:
-      - 'openidl-k8s/global-values-aais-dev.yaml'
+      - 'openidl-k8s/global-values-dev-aais.yaml'
 
 defaults:
   run:
