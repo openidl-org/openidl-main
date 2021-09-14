@@ -1,13 +1,13 @@
 #GitHub Actions to deploy openidl application using HELM upgrade 
 #It requires the EKS cluster public access turned ON 
 
-name: Deploy openIDL dev-aais
+name: Deploy openIDL dev-carrier
 on:
   push:
     branches:
       - 'git-actions-helm'
     paths:
-      - 'openidl-k8s/global-values-dev-aais.yaml'
+      - 'openidl-k8s/global-values-dev-carrier.yaml'
 
 defaults:
   run:
@@ -15,9 +15,9 @@ defaults:
 
 jobs:
   deploy-openidl-app:
-    environment: dev-aais
+    environment: dev-carrier
 
-    name: Deploy openIDL application on dev-aais
+    name: Deploy openIDL application on dev-carrier
     runs-on: ubuntu-latest
 
     steps:
@@ -46,4 +46,4 @@ jobs:
 
     - name: Deploy openIDL app using helm
       run: |
-        helm upgrade --install dev-aais ./openidl-k8s -f ./openidl-k8s/global-values-dev-aais.yaml -n openidl --set global.datacallapp.ingressenabled=true --set global.utilities.ingressenabled=true --set global.ui.ingressenabled=true --set global.insurancedatamanager.ingressenabled=true --set global.secrets.install=false
+       helm upgrade --install dev-carrier ./openidl-k8s -f ./openidl-k8s/global-values-dev-carrier.yaml -n openidl --set global.datacallapp.ingressenabled=true --set global.utilities.ingressenabled=true --set global.carrierui.ingressenabled=true --set global.insurancedatamanager.ingressenabled=true --set global.secrets.install=false
