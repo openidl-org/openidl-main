@@ -27,7 +27,7 @@ global:
       # repository: ghcr.io/openidl-org/openidl-utilities
       repository: ghcr.io/openidl-org/utilities
       pullPolicy: IfNotPresent
-      tag: 0.0.5
+      tag: 4-git-actions-helm-0a7e15d-091420211732
   ui:
     install: true
     servicename: ui-service
