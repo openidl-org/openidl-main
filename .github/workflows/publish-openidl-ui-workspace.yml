@@ -1,8 +1,8 @@
-name: Publish openidl ui-workspace-v1.0
+name: Publish openIDL ui and carrier-ui
 on:
   push:
     branches:
-      - 'develop'
+      - 'git-actions-helm'
     paths:
       - 'openidl-ui-workspace/**'
 
@@ -19,7 +19,7 @@ defaults:
 
 jobs:
   build-and-push-image-ui-workspace:
-    name: Build and Push - openIDL ui-workspace to GitHub Packages
+    name: Build and Push - openIDL ui and carrier-ui to GitHub Packages
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -47,34 +47,34 @@ jobs:
         run: |
           sed -i 's|${GITHUB_TOKEN}|${{ secrets.ACCESS_TOKEN }}|' ./.npmrc
 
-      - name: Build Date&Time
+      - name: Get Current Date and Time
         id: datetime
         run: echo "BUILD_DATETIME=$(date +%m%d%Y%H%M)" >> ${GITHUB_ENV}
 
-      - name: Check branch-name
+      - name: Get Branch Name
         run: echo "BRANCH=${GITHUB_REF#refs/heads/}" >> ${GITHUB_ENV}
 
-      - name: Check commit-id
+      - name: Get Commit ID
         run: echo "COMMIT_ID=$(git rev-parse --short "$GITHUB_SHA")" >> ${GITHUB_ENV}
 
-      - name: Build and push Docker image for openidl-ui (aais)
+      - name: Build and Push Docker Image for openidl-ui (aais)
         uses: docker/build-push-action@v2
         with:
           context: openidl-ui-workspace
           build-args: PROJECT=aais
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}-ui:latest
-            ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}-ui:${{ github.run_number }}-${{ env.BRANCH }}-${{ env.COMMIT_ID }}-${{ env.BUILD_DATETIME }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-ui:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-ui:${{ github.run_number }}-${{ env.BRANCH }}-${{ env.COMMIT_ID }}-${{ env.BUILD_DATETIME }}
 
-      - name: Build and push Docker image for openidl-carrier-ui (carrier)
+      - name: Build and Push Docker Image for openidl-carrier-ui (carrier)
         uses: docker/build-push-action@v2
         with:
           context: openidl-ui-workspace
           build-args: PROJECT=carrier
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}-carrier-ui:latest
-            ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}-carrier-ui:${{ github.run_number }}-${{ env.BRANCH }}-${{ env.COMMIT_ID }}-${{ env.BUILD_DATETIME }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-carrier-ui:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-carrier-ui:${{ github.run_number }}-${{ env.BRANCH }}-${{ env.COMMIT_ID }}-${{ env.BUILD_DATETIME }}
 
 

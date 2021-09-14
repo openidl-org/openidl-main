@@ -1,8 +1,8 @@
-name: Publish openidl transactional-data-event-listener-v1.0
+name: Publish openIDL transactional-data-event-listener
 on:
   push:
     branches:
-      - 'develop'
+      - 'git-actions-helm'
     paths:
       - 'openidl-transactional-data-event-listener/**'
 
@@ -47,23 +47,23 @@ jobs:
         run: |
           sed -i 's|${GITHUB_TOKEN}|${{ secrets.ACCESS_TOKEN }}|' ./.npmrc
 
-      - name: Build Date&Time
+      - name: Get Current Date and Time
         id: datetime
         run: echo "BUILD_DATETIME=$(date +%m%d%Y%H%M)" >> ${GITHUB_ENV}
 
-      - name: Check branch-name
+      - name: Get Branch Name
         run: echo "BRANCH=${GITHUB_REF#refs/heads/}" >> ${GITHUB_ENV}
 
-      - name: Check commit-id
+      - name: Get Commit ID
         run: echo "COMMIT_ID=$(git rev-parse --short "$GITHUB_SHA")" >> ${GITHUB_ENV}
 
-      - name: Build and push Docker image
+      - name: Build and Push Docker Image
         uses: docker/build-push-action@v2
         with:
           context: openidl-transactional-data-event-listener
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:latest
-            ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}-${{ env.BRANCH }}-${{ env.COMMIT_ID }}-${{ env.BUILD_DATETIME }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}-${{ env.BRANCH }}-${{ env.COMMIT_ID }}-${{ env.BUILD_DATETIME }}
 
 
