@@ -51,6 +51,9 @@ class HashiCorpVault {
 		if (!vaultConfig.password) {
 			throw new Error('No password given');
 		}
+		if (!vaultConfig.orgName) {
+			throw new Error('No orgName given');
+		}
 		// if (!vaultConfig.vaultCA) {
 		// 	throw new Error('No vaultCA given');
 		// }
@@ -77,7 +80,7 @@ class HashiCorpVault {
 			});
 			nodeVault.token = result.auth.client_token; // Add token to vault object for subsequent requests.
 			try {
-				const { data } = await nodeVault.read(`${this.vaultConfig.vaultPath}/${label}`);
+				const { data } = await nodeVault.read(`${this.vaultConfig.orgName}/data/${this.vaultConfig.vaultPath}/${label}`);
 				id = data.data.id;
 				identity = data.data.data;
 			} catch (err) {
@@ -109,7 +112,7 @@ class HashiCorpVault {
 			nodeVault.token = result.auth.client_token;
 			const data = JSON.stringify(identity);
 
-			await nodeVault.write(`${this.vaultConfig.vaultPath}/${name}`, { "data": { "id": name, "data": data } })
+			await nodeVault.write(`${this.vaultConfig.orgName}/data/${this.vaultConfig.vaultPath}/${name}`, { "data": { "id": name, "data": data } })
 				.then(console.log("successfully import the secret"))
 				.catch(console.error);
 		} catch (err) {

@@ -13,7 +13,7 @@
     },
     "dependencies": {
         "@cloudant/cloudant": "^3.0.1",
-        "@openidl-org/openidl-common-lib": "^0.5.6",
+        "@openidl-org/openidl-common-lib": "^0.5.7",
         "@sendgrid/mail": "^7.2.1",
         "aws-sdk": "2.474.0",
         "config": "^2.0.1",
