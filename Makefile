@@ -50,9 +50,9 @@ install_in_k8s:
 	kubectl create namespace openidl-aais-apps
 	kubectl create namespace openidl-analytics-apps
 	kubectl create namespace openidl-carrier-apps
-	helm install local-aais ./openidl-k8s -f ./openidl-k8s/global-values-aais.yaml -n openidl-aais-apps --set global.minikubehostip=$(MINIKUBE_HOST_IP)
-	helm install local-analytics ./openidl-k8s -f ./openidl-k8s/global-values-analytics.yaml -n openidl-analytics-apps --set global.minikubehostip=$(MINIKUBE_HOST_IP)
-	helm install local-carrier ./openidl-k8s -f ./openidl-k8s/global-values-carrier.yaml -n openidl-carrier-apps --set global.minikubehostip=$(MINIKUBE_HOST_IP)
+	helm upgrade --install local-aais ./openidl-k8s -f ./openidl-k8s/global-values-aais.yaml -n openidl-aais-apps --set global.minikubehostip=$(MINIKUBE_HOST_IP)
+	helm upgrade --install local-analytics ./openidl-k8s -f ./openidl-k8s/global-values-analytics.yaml -n openidl-analytics-apps --set global.minikubehostip=$(MINIKUBE_HOST_IP)
+	helm upgrade --install local-carrier ./openidl-k8s -f ./openidl-k8s/global-values-carrier.yaml -n openidl-carrier-apps --set global.minikubehostip=$(MINIKUBE_HOST_IP)
 
 uninstall_from_k8s:
 	helm uninstall local-aais -n openidl-aais-apps 
@@ -63,21 +63,21 @@ reinstall_in_k8s:
 	helm uninstall local-aais -n openidl-aais-apps 
 	helm uninstall local-analytics -n openidl-analytics-apps
 	helm uninstall local-carrier -n openidl-carrier-apps
-	helm install local-aais ./openidl-k8s -f ./openidl-k8s/global-values-aais.yaml -n openidl-aais-apps --set global.minikubehostip=$(MINIKUBE_HOST_IP)
-	helm install local-analytics ./openidl-k8s -f ./openidl-k8s/global-values-analytics.yaml -n openidl-analytics-apps --set global.minikubehostip=$(MINIKUBE_HOST_IP)
-	helm install local-carrier ./openidl-k8s -f ./openidl-k8s/global-values-carrier.yaml -n openidl-carrier-apps --set global.minikubehostip=$(MINIKUBE_HOST_IP)
+	helm upgrade --install local-aais ./openidl-k8s -f ./openidl-k8s/global-values-dev-aais.yaml -n openidl-aais-apps --set global.minikubehostip=$(MINIKUBE_HOST_IP)
+	helm upgrade --install local-analytics ./openidl-k8s -f ./openidl-k8s/global-values-dev-analytics.yaml -n openidl-analytics-apps --set global.minikubehostip=$(MINIKUBE_HOST_IP)
+	helm upgrade --install local-carrier ./openidl-k8s -f ./openidl-k8s/global-values-dev-carrier.yaml -n openidl-carrier-apps --set global.minikubehostip=$(MINIKUBE_HOST_IP)
 
 reinstall_in_k8s_aais_dev:
 	helm uninstall dev-aais -n openidl 
-	helm install dev-aais ./openidl-k8s -f ./openidl-k8s/global-values-aais.yaml -n openidl --set global.datacallapp.ingressenabled=true --set global.utilities.ingressenabled=true --set global.ui.ingressenabled=true --set global.insurancedatamanager.ingressenabled=true --set global.configpath=config-aais-dev
+	helm upgrade --install dev-aais ./openidl-k8s -f ./openidl-k8s/global-values-dev-aais.yaml -n openidl --set global.datacallapp.ingressenabled=true --set global.utilities.ingressenabled=true --set global.ui.ingressenabled=true --set global.insurancedatamanager.ingressenabled=true --set global.configpath=config-aais-dev
 
 reinstall_in_k8s_analytics_dev:
 	helm uninstall dev-analytics -n openidl 
-	helm install dev-analytics ./openidl-k8s -f ./openidl-k8s/global-values-analytics.yaml -n openidl --set global.datacallapp.ingressenabled=true --set global.utilities.ingressenabled=true  --set global.ui.ingressenabled=true --set global.configpath=config-analytics-dev
+	helm upgrade --install dev-analytics ./openidl-k8s -f ./openidl-k8s/global-values-dev-analytics.yaml -n openidl --set global.datacallapp.ingressenabled=true --set global.utilities.ingressenabled=true  --set global.ui.ingressenabled=true --set global.configpath=config-analytics-dev
 
 reinstall_in_k8s_carrier_dev:
 	helm uninstall dev-carrier -n openidl 
-	helm install dev-carrier ./openidl-k8s -f ./openidl-k8s/global-values-carrier.yaml -n openidl --set global.datacallapp.ingressenabled=true --set global.utilities.ingressenabled=true --set global.carrierui.ingressenabled=true --set global.insurancedatamanager.ingressenabled=true --set global.configpath=config-carrier-dev
+	helm upgrade --install dev-carrier ./openidl-k8s -f ./openidl-k8s/global-values-dev-carrier.yaml -n openidl --set global.datacallapp.ingressenabled=true --set global.utilities.ingressenabled=true --set global.carrierui.ingressenabled=true --set global.insurancedatamanager.ingressenabled=true --set global.configpath=config-carrier-dev
 
 dashboard:
 	echo better to open a separate terminal for this

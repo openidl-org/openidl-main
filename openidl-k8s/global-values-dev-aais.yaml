@@ -10,6 +10,11 @@ global:
     ingressenabled: false
     ingresshostname: data-call-app-service.aais.dev.internal.aaisdemo.com
     publicingresshostname: data-call-app-service.aais.dev.aaisdemo.com
+    image:
+      # repository: ghcr.io/openidl-org/openidl-data-call-app
+      repository: ghcr.io/openidl-org/data-call-app
+      pullPolicy: IfNotPresent
+      tag: 0.0.5
   utilities:
     install: true
     port: 8080
@@ -18,6 +23,11 @@ global:
     ingressenabled: false
     ingresshostname: utilities-service.aais.dev.internal.aaisdemo.com
     publicingresshostname: utilities-service.aais.dev.aaisdemo.com
+    image:
+      # repository: ghcr.io/openidl-org/openidl-utilities
+      repository: ghcr.io/openidl-org/utilities
+      pullPolicy: IfNotPresent
+      tag: 0.0.5
   ui:
     install: true
     servicename: ui-service
@@ -25,6 +35,11 @@ global:
     targetport: 8080
     ingressenabled: false
     ingresshostname: openidl.aais.dev.aaisdemo.com
+    image:
+      # repository: ghcr.io/openidl-org/openidl-ui
+      repository: ghcr.io/openidl-org/ui
+      pullPolicy: IfNotPresent
+      tag: 0.0.5
   insurancedatamanager:
     install: true
     port: 8080
@@ -32,26 +47,50 @@ global:
     servicename: insurance-data-manager-service
     ingressenabled: false
     ingresshostname: insurance-data-manager-service.aais.dev.aaisdemo.com
+    image:
+      # repository: ghcr.io/openidl-org/openidl-insurance-data-manager
+      repository: ghcr.io/openidl-org/insurance-data-manager
+      pullPolicy: IfNotPresent
+      tag: 0.0.5
   datacallprocessor:
     install: true
     port: 8080
     targetport: 8080
     servicename: data-call-processor-service
+    image:
+      # repository: ghcr.io/openidl-org/openidl-data-call-processor
+      repository: ghcr.io/openidl-org/data-call-processor
+      pullPolicy: IfNotPresent
+      tag: 0.0.5
   upload:
     install: false
     port: 80
     targetport: 80
     servicename: upload-service
+    image:
+      repository: ghcr.io/openidl-org/openidl-upload
+      pullPolicy: IfNotPresent
+      tag: latest
   datacallmoodlistener:
     install: false
     port: 8080
     targetport: 8080
     servicename: data-call-mood-listener-service
+    image:
+      # repository: ghcr.io/openidl-org/openidl-data-call-mood-listener
+      repository: ghcr.io/openidl-org/data-call-mood-listener
+      pullPolicy: IfNotPresent
+      tag: 0.0.5
   transactionaldataeventlistener:
     install: false
     port: 8080
     targetport: 8080
     servicename: transactional-data-event-listener-service
+    image:
+      # repository: ghcr.io/openidl-org/transactional-data-event-listener
+      repository: ghcr.io/openidl-org/transactional-data-event-listener
+      pullPolicy: IfNotPresent
+      tag: 0.0.5
   carrierui:
     install: false
     servicename: carrier-ui-service
@@ -59,5 +98,10 @@ global:
     targetport: 8080
     ingressenabled: false
     ingresshostname: openidl.aais.dev.aaisdemo.com
+    image:
+      # repository: ghcr.io/openidl-org/openidl-carrier-ui
+      repository: ghcr.io/openidl-org/carrier-ui
+      pullPolicy: IfNotPresent
+      tag: 0.0.5
   secrets:
     install: true

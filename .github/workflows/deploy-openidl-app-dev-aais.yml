@@ -1,0 +1,49 @@
+#GitHub Actions to deploy openidl application using HELM upgrade 
+#It requires the EKS cluster public access turned ON 
+
+name: Manual-Deploy openidl app-v1.0
+on:
+  push:
+    branches:
+      - 'git-actions-helm'
+    paths:
+      - 'openidl-k8s/global-values-aais-dev.yaml'
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  deploy-openidl-app:
+    environment: dev-aais
+
+    name: Deploy openidl application for node dev-aais
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Configure AWS CLI with credentials
+      uses: aws-actions/configure-aws-credentials@230d25f14e841bc8e06b5f4ff89ccd6989fc1d71
+      with:
+        aws-access-key-id: ${{ secrets.eks_admin_access_key }}
+        aws-secret-access-key: ${{ secrets.eks_admin_secret_key }}
+        aws-region: ${{ secrets.eks_region }}
+      # role-to-assume: ${{ secrets.eks_admin_role }}
+      # role-external-id: ${{ secrets.eks_external_id }}
+      # role-duration-seconds: 3600 # session valid for 30 minutes
+      # role-session-name: githubactions-session
+
+    - name: Checkout Code
+      uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
+
+    - name: Install Helm
+      uses: azure/setup-helm@v1
+      with:
+        version: v3.6.3
+
+    - name: Setup kube-config
+      run: |
+        aws eks update-kubeconfig --region ${{ secrets.eks_region }} --name ${{ secrets.eks_cluster_name }}
+
+    - name: Deploy open-idl app using helm
+      run: |
+        helm upgrade --install dev-aais ./openidl-k8s -f ./openidl-k8s/global-values-dev-aais.yaml -n openidl --set global.datacallapp.ingressenabled=true --set global.utilities.ingressenabled=true --set global.ui.ingressenabled=true --set global.insurancedatamanager.ingressenabled=true --set global.secrets.install=false

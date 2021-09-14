@@ -8,7 +8,7 @@ image:
     # repository: openidl/utilities
     # repository: ghcr.io/openidl-org/openidl-utilities
     repository: ghcr.io/openidl-org/utilities
-    pullPolicy: Always
+    pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
     # tag: latest
     tag: 0.0.6

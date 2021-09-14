@@ -20,7 +20,6 @@ spec:
       {{- end }}
       labels:
         {{- include "openidl-insurance-data-manager.selectorLabels" . | nindent 8 }}
-        date: "{{ now | unixEpoch }}"
     spec:
       # {{- with .Values.imagePullSecrets }}
       # imagePullSecrets:
@@ -40,8 +39,8 @@ spec:
         # for regular deployment
         # image: aais:1
         # for local development against minikube registry
-        image: {{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}      
+        image: {{ .Values.global.carrierui.image.repository | default .Values.image.repository }}:{{ .Values.global.carrierui.image.tag | default .Values.image.tag }}
+        imagePullPolicy: {{ .Values.global.carrierui.image.pullPolicy | default .Values.image.pullPolicy }}      
         ports:
         - containerPort: {{ .Values.service.port }}
         volumeMounts:

@@ -20,7 +20,6 @@ spec:
       {{- end }}
       labels:
         {{- include "openidl-transactional-data-event-listener.selectorLabels" . | nindent 8 }}
-        date: "{{ now | unixEpoch }}"
     spec:
       {{- if .Values.global.minikubehostip }}
       hostAliases:
@@ -50,8 +49,8 @@ spec:
         # for regular deployment
         # image: aais:1
         # for local development against minikube registry
-        image: {{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}      
+        image: {{ .Values.global.transactionaldataeventlistener.image.repository | default .Values.image.repository }}:{{ .Values.global.transactionaldataeventlistener.image.tag | default .Values.image.tag }}
+        imagePullPolicy: {{ .Values.global.transactionaldataeventlistener.image.pullPolicy | default .Values.image.pullPolicy }}      
         ports:
         - containerPort: {{ .Values.global.transactionaldataeventlistener.port }}
         volumeMounts:
