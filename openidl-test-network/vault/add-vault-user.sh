@@ -21,8 +21,8 @@ checkOptions() {
     echo "PASSWORD_TO_BE_CREATED is not defined."
     exit 1
   fi
-  if [ -z "${APP}" ]; then
-    echo "APP is not defined."
+  if [ -z "${APP_NAME}" ]; then
+    echo "APP_NAME is not defined."
     exit 1
   fi
   if [ -z "${ORG}" ]; then
@@ -69,7 +69,7 @@ addUser() {
     echo "Error in Invoking Vault with status ${HTTP_STATUS}."
     exit 1
   fi
-
+  
   POLICY_FILE=$(mktemp).json
   RESULT=$?
   if [ $RESULT -ne 0 ]; then
@@ -80,7 +80,7 @@ addUser() {
   PERMISSIONS=$(echo $PERMISSIONS | sed 's/\"/\\\"/g')
   cat >${POLICY_FILE} <<EOF
         {
-            "policy": "path \"${ORG}/data/${APP}/*\" { capabilities = [ ${PERMISSIONS} ]}"
+            "policy": "path \"${ORG}/data/${APP_NAME}/*\" { capabilities = [ ${PERMISSIONS} ]}"
         }
 EOF
   echo "Add policy"
@@ -144,7 +144,7 @@ ORG=AAISOrg
 USER_TOKEN=""
 USER_TO_BE_CREATED=""
 PASSWORD_TO_BE_CREATED=""
-APP=""
+APP_NAME=""
 while getopts "V:t:U:P:a:o:e:" key; do
   case ${key} in
   V)
@@ -160,7 +160,7 @@ while getopts "V:t:U:P:a:o:e:" key; do
     PASSWORD_TO_BE_CREATED=${OPTARG}
     ;;
   a)
-    APP=${OPTARG}
+    APP_NAME=${OPTARG}
     ;;
   o)
     ORG=${OPTARG}

@@ -31,8 +31,8 @@ checkOptions() {
     echo "PASSWORD is not defined."
     exit 1
   fi
-  if [ -z "${APP}" ]; then
-    echo "APP is not defined."
+  if [ -z "${APP_NAME}" ]; then
+    echo "APP_NAME is not defined."
     exit 1
   fi
   if [ -z "${CONFIG_PATH}" ]; then
@@ -56,22 +56,21 @@ pullVaultConfig() {
   fi
   echo LOGIN_RESPONSE=${LOGIN_RESPONSE}
   USER_TOKEN=$(echo ${LOGIN_RESPONSE} | ${JQ} ".auth.client_token" | sed "s/\"//g")
-  echo "Token is ${USER_TOKEN}"
 
   echo "Pull all configs"
 
-  vaultData="$(curl --header "X-Vault-Token: ${USER_TOKEN}" --request GET ${VAULT_URL}/v1/${ORG}/metadata/${APP}/?list=true)"
+  vaultData="$(curl --header "X-Vault-Token: ${USER_TOKEN}" --request GET ${VAULT_URL}/v1/${ORG}/data/${APP_NAME}/?list=true)"
   configKeys=$(echo $vaultData | $JQ ".data.keys[]")
 
   echo $vaultData | $JQ -c '.data.keys[]' | while read config; do
     config=$(echo "$config" | cut -d'"' -f 2)
 
-    echo ${VAULT_URL}/v1/${ORG}/data/${APP}/${config}
+    echo ${VAULT_URL}/v1/${ORG}/data/${APP_NAME}/${config}
 
     HTTP_STATUS=$(curl \
       --header "X-Vault-Token: ${USER_TOKEN}" \
       --request GET \
-      ${VAULT_URL}/v1/${ORG}/data/${APP}/${config})
+      ${VAULT_URL}/v1/${ORG}/data/${APP_NAME}/${config})
     RESULT=$?
     if [ $RESULT -ne 0 ]; then
       echo "Failed to execute curl command."
@@ -97,7 +96,7 @@ VAULT_URL='http://127.0.0.1:8200'
 ORG=AAISOrg
 USER_NAME=""
 PASSWORD=""
-APP=""
+APP_NAME=""
 CONFIG_PATH=""
 while getopts "V:U:P:a:o:c:" key; do
   case ${key} in
@@ -111,7 +110,7 @@ while getopts "V:U:P:a:o:c:" key; do
     PASSWORD=${OPTARG}
     ;;
   a)
-    APP=${OPTARG}
+    APP_NAME=${OPTARG}
     ;;
   o)
     ORG=${OPTARG}

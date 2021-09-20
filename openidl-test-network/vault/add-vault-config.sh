@@ -32,8 +32,8 @@ checkOptions() {
     echo "PASSWORD is not defined."
     exit 1
   fi
-  if [ -z "${APP}" ]; then
-    echo "APP is not defined."
+  if [ -z "${APP_NAME}" ]; then
+    echo "APP_NAME is not defined."
     exit 1
   fi
   if [ -z "${CONFIG_PATH}" ]; then
@@ -66,7 +66,6 @@ addVaultConfig() {
   fi
   LOGIN_RESPONSE=${LOGIN_RESPONSE}
   USER_TOKEN=$(echo ${LOGIN_RESPONSE} | ${JQ} ".auth.client_token" | sed "s/\"//g")
-  echo "USER_TOKEN is ${USER_TOKEN}"
 
   for config in "${configs[@]}"; do
     signcerts=$(cat ${CONFIG_PATH}/${config}.json)
@@ -74,12 +73,12 @@ addVaultConfig() {
 
     JSON_DATA_PAYLOAD="{\"data\":${signcerts}}"
     echo "JSON_DATA_PAYLOAD=${JSON_DATA_PAYLOAD}"
-    echo "Add data to vault for ORG=${ORG}, COMPONENT=${APP}"
+    echo "Add data to vault for ORG=${ORG}, APP_NAME=${APP_NAME}"
     HTTP_STATUS=$(curl \
       --header "X-Vault-Token: ${USER_TOKEN}" \
       --request POST \
       --data "${JSON_DATA_PAYLOAD}" \
-      ${VAULT_URL}/v1/${ORG}/data/${APP}/$config --insecure -s -o /dev/null -w "%{http_code}")
+      ${VAULT_URL}/v1/${ORG}/data/${APP_NAME}/$config --insecure -s -o /dev/null -w "%{http_code}")
     RESULT=$?
     if [ $RESULT -ne 0 ]; then
       echo "Failed to execute curl."
@@ -99,7 +98,7 @@ VAULT_URL='http://127.0.0.1:8200'
 ORG=AAISOrg
 USER_NAME=""
 PASSWORD=""
-APP=""
+APP_NAME=""
 CONFIGPATH=""
 while getopts "V:U:P:a:o:c:" key; do
   case ${key} in
@@ -113,7 +112,7 @@ while getopts "V:U:P:a:o:c:" key; do
     PASSWORD=${OPTARG}
     ;;
   a)
-    APP=${OPTARG}
+    APP_NAME=${OPTARG}
     ;;
   o)
     ORG=${OPTARG}
