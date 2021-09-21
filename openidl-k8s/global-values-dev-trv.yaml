@@ -1,7 +1,7 @@
 global:
   clusterurl: aaistrvdemo.com
   appsecret: apps-secret
-  configpath: config-trv
+  configpath: config-local-trv
   datacallapp:
     install: true
     port: 8080

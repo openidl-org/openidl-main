@@ -1,6 +1,6 @@
-charts/openidl-secrets/config-aais/**
-charts/openidl-secrets/config-carrier/**
-charts/openidl-secrets/config-analytics/**
-charts/openidl-secrets/config-aais-dev/**
-charts/openidl-secrets/config-carrier-dev/**
-charts/openidl-secrets/config-analytics-dev/**
+charts/openidl-secrets/config-local-aais/**
+charts/openidl-secrets/config-local-carrier/**
+charts/openidl-secrets/config-local-analytics/**
+charts/openidl-secrets/config-dev-aais/**
+charts/openidl-secrets/config-dev-carrier/**
+charts/openidl-secrets/config-dev-analytics/**

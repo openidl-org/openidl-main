@@ -1,7 +1,7 @@
 global:
   clusterurl: aaiscarrierdemo.com
   appsecret: apps-secret
-  configpath: config-carrier
+  configpath: config-local-carrier
   datacallapp:
     install: true
     port: 8080

@@ -1,7 +1,7 @@
 global:
   clusterurl: aaisanalyticsdemo.com
   appsecret: apps-secret
-  configpath: config-analytics
+  configpath: config-local-analytics
   datacallapp:
     install: true
     port: 8080
