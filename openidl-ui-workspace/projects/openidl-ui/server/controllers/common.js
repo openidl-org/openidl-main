@@ -1,4 +1,6 @@
 'use strict';
+const urlRegex = require('url-regex');
+const ipRegex = require('ip-regex');
 const express = require('express');
 const app = express();
 const request = require('request');
@@ -15,6 +17,16 @@ app.use(express.json());
 app.use(express.urlencoded({
     extended: true
 }));
+
+common.ifUrlSafe  = (url) => {
+    if (urlRegex().test(url)) {
+        return false;
+    } 
+    if (ipRegex().test(url)) {
+        return false
+    }
+    return true
+}
 
 common.getQueryString = (queryObj) => {
     var keys = Object.keys(queryObj);
@@ -42,26 +54,36 @@ common.getSearchDataCalls = (req, res) => {
 
 common.handleRequest = (req, res, url) => {
     logger.debug('Inside handle request');
-    var options = {
-        url: process.env.DATA_CALL_APP_URL + url,
-        method: req.method,
-        headers: {
-            'content-type': req.headers['content-type'],
-            'authorization': 'Bearer ' + req.headers['usertoken']
+    if (!common.ifUrlSafe(url)) {
+        logger.debug('request url did not pass safety check.');
+        const jsonRes = {
+            statusCode: 403,
+            success: false,
+            message: 'Permission denied: request did not pass safety check.'
+        };
+        util.sendResponse(res, jsonRes);
+    } else {
+        var options = {
+            url: process.env.DATA_CALL_APP_URL + url,
+            method: req.method,
+            headers: {
+                'content-type': req.headers['content-type'],
+                'authorization': 'Bearer ' + req.headers['usertoken']
+            }
+        };
+        if (req.method == 'POST' || req.method == 'PUT') {
+            options.json = req.body;
         }
-    };
-    if (req.method == 'POST' || req.method == 'PUT') {
-        options.json = req.body;
+        logger.debug('REQUEST OPTIONS');
+        logger.debug(options);
+        request(options, function (err, response, body) {
+            if (response) {
+                res.status(response.statusCode).send(body);
+            } else {
+                console.log('Error: ', err);
+            }
+        });
     }
-    logger.debug('REQUEST OPTIONS');
-    logger.debug(options);
-    request(options, function (err, response, body) {
-        if (response) {
-            res.status(response.statusCode).send(body);
-        } else {
-            console.log('Error: ', err);
-        }
-    });
 }
 
 common.handleLogInRequest = (req, res, url) => {
