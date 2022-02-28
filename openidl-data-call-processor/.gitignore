@@ -1,5 +1,9 @@
 node_modules/**
 
+# testing
+coverage/**
+globalConfig.json
+
 # IDE
 .vscode/**
 
