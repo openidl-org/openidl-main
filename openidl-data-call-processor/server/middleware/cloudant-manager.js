@@ -63,7 +63,7 @@ class CloudantManager {
                     }
                 });
             } catch (err) {
-                logger.err("error retrieving document:" + err);
+                logger.error("error retrieving document:" + err);
                 reject("error");
             }
         });
