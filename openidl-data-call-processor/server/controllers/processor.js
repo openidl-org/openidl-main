@@ -41,7 +41,7 @@ class Processor {
     // Jira AAISPROD-14 changes
     async invokeEmail(servicetype, patternname, bodycontent) {
         let emailDatabyServiceType = fileterEmailData(servicetype)
-        if (emailDatabyServiceType.length > 0 && emailDatabyServiceType == undefined && emailDatabyServiceType != null) {
+        if (emailDatabyServiceType && emailDatabyServiceType.length > 0) {
             return new Promise(function (resolve, reject) {
                 emailService.sendEmail(emailkey, emailDatabyServiceType.fromemailaddress, emailDatabyServiceType.toemailaddress, emailDatabyServiceType.emailsubject.replace("<NAME>", patternname), bodycontent).then((data) => {
                     logger.debug("Extract pattern Email sent successfully")
