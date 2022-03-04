@@ -139,13 +139,19 @@ Application currently supports both AWS Cognito and IBM App ID. You can go with 
 ### 7. Configure s3-bucket-config.json
 
 * Create `s3-bucket-config.json` file under `server/config`
-* Paste the following JSON. Getting the `accessKeyId` and `secretAccessKey` from AWS is beyond the scope of this document. (for further details, please see AWS's [documentation](
+* Paste the following JSON. Getting the `accessKeyId`, `secretAccessKey` abd `roleParams` from AWS is beyond the scope of this document. (for further details, please see AWS's [documentation](
 https://aws.amazon.com/premiumsupport/knowledge-center/create-access-key/)).
     ```
     {
         "accessKeyId": "***********************",
         "secretAccessKey": "***********************",
-        "bucketName": "openidl-analytics"
+        "bucketName": "openidl-analytics",
+        "roleParams": {
+          "RoleArn": "******************************",
+          "RoleSessionName": "openidl",
+          "DurationSeconds": "900",
+          "ExternalId": "******"
+    }
     }
     ```
 ### 8. Configure email.json
