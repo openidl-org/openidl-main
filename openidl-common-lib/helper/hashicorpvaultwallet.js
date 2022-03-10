@@ -23,11 +23,30 @@ class HashiCorpVault {
     }
 
 	static async loadoptions(options) {
-		logger.info("in loadoptions");
 		// configure aws
 		AWS.config.update(options);
+		if (!options.accessKeyId || !options.secretAccessKey || !options.roleParams) {
+		throw new Error('No aws secret config given');
+		}
+		const sts = new AWS.STS({
+		//region: 'us-east-2',
+		accessKeyId: options.accessKeyId,
+		secretAccessKey: options.secretAccessKey
+
+		});
+		const params = options.roleParams;
+
+		const accessParamInfo = await sts.assumeRole(params).promise();
+		logger.debug('Changed Credentials');
+
+		const accessparams = {
+		accessKeyId: accessParamInfo.Credentials.AccessKeyId,
+		secretAccessKey: accessParamInfo.Credentials.SecretAccessKey,
+		sessionToken: accessParamInfo.Credentials.SessionToken,
+        };
+		logger.info("in loadoptions");
 		// initialize aws secret manager
-		const awsSecretManager = new AWS.SecretsManager();
+		const awsSecretManager = new AWS.SecretsManager(accessparams);
 		// get vault credentials from aws secret manager
 		const vaultCredentials = await awsSecretManager.getSecretValue({ SecretId: options.secretName || 'hv-credential' }).promise();
 		// parse vault configuration
