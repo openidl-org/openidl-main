@@ -41,9 +41,9 @@ statAgent.resetData = async (req, res) => {
         logger.debug('resetData req body :');
         logger.debug('resetData submitTransaction invoke ');
 
-        promiseArray.push(transactionFactory.getDefaultChannelTransaction().submitTransaction('ResetWorldState', ""));
-        promiseArray.push(transactionFactory.getCarrierChannelTransaction().submitTransaction('ResetWorldState', ""));
-        //promiseArray.push(transactionFactory.getAaisCarrier1ChannelTransaction().submitTransaction('ResetWorldState', ""));
+        promiseArray.push(transactionFactory.getDefaultChannelTransaction().submitTransaction('DeleteAllKeys', ""));
+        promiseArray.push(transactionFactory.getCarrierChannelTransaction().submitTransaction('DeleteAllKeys', ""));
+        //promiseArray.push(transactionFactory.getAaisCarrier1ChannelTransaction().submitTransaction('DeleteAllKeys', ""));
 
         await Promise.all(promiseArray);
         logger.debug(' promise all resetData submitTransaction complete ');

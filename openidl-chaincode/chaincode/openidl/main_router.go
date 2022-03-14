@@ -145,8 +145,8 @@ func (this *SmartContract) Invoke(stub shim.ChaincodeStubInterface) pb.Response 
 		return this.UpdateReport(stub, args[0])
 	case "ListReportsByCriteria":
 		return this.ListReportsByCriteria(stub, args[0])
-	case "ResetWorldState":
-		return this.ResetWorldState(stub)
+	case "DeleteAllKeys":
+		return this.DeleteAllKeys(stub)
 	case "LogDataCallTransaction":
 		return this.LogDataCallTransaction(stub, args[0])
 	case "GetDataCallTransactionHistory":

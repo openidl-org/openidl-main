@@ -91,8 +91,8 @@ func (this *openIDLTestCC) Invoke(stub shim.ChaincodeStubInterface) pb.Response 
 		return this.UpdateReport(stub, args[0])
 	} else if function == "ListReportsByCriteria" {
 		return this.ListReportsByCriteria(stub, args[0])
-	} else if function == "ResetWorldState" {
-		return this.ResetWorldState(stub)
+	} else if function == "DeleteAllKeys" {
+		return this.DeleteAllKeys(stub)
 	} else if function == "LogDataCallTransaction" {
 		return this.LogDataCallTransaction(stub, args[0])
 	} else if function == "GetDataCallTransactionHistory" {

@@ -11,8 +11,8 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-//Test for ResetWorldState
-func Test_ResetWorldState(t *testing.T) {
+//Test for DeleteAllKeys
+func Test_DeleteAllKeys(t *testing.T) {
 
 	// setup Multi-channel Test Envrionment
 	setupMultiChannelTest()
@@ -43,31 +43,31 @@ func Test_ResetWorldState(t *testing.T) {
 	TOTAL_TEST_RECORS_CREATED_ON_MULTI_CARRIER_CHANNEL := 2
 	totalRecordsDeleted := totalDataCallLogs + TOTAL_TEST_RECORDS_CREATED_ON_DEFAULT_CHANNEL
 
-	res_resetDefaultLedger := checkInvokeForResetLedger(t, defaultStub, "ResetWorldState")
+	res_resetDefaultLedger := checkInvokeForResetLedger(t, defaultStub, "DeleteAllKeys")
 	if res_resetDefaultLedger.Status != shim.OK {
-		logger.Error("ResetWorldState failed with message res.Message: ", string(res_resetDefaultLedger.Message))
-		fmt.Println("CreateRResetWorldStateeport failed with message res.Message: ", string(res_resetDefaultLedger.Message))
+		logger.Error("DeleteAllKeys failed with message res.Message: ", string(res_resetDefaultLedger.Message))
+		fmt.Println("CreateRDeleteAllKeys failed with message res.Message: ", string(res_resetDefaultLedger.Message))
 		t.FailNow()
 	}
 
-	res_resetMultiCarrierLedger := checkInvokeForResetLedger(t, mutlicarrierStub, "ResetWorldState")
+	res_resetMultiCarrierLedger := checkInvokeForResetLedger(t, mutlicarrierStub, "DeleteAllKeys")
 	if res_resetMultiCarrierLedger.Status != shim.OK {
-		logger.Error("ResetWorldState failed with message res.Message: ", string(res_resetMultiCarrierLedger.Message))
-		fmt.Println("CreateRResetWorldStateeport failed with message res.Message: ", string(res_resetMultiCarrierLedger.Message))
+		logger.Error("DeleteAllKeys failed with message res.Message: ", string(res_resetMultiCarrierLedger.Message))
+		fmt.Println("CreateRDeleteAllKeys failed with message res.Message: ", string(res_resetMultiCarrierLedger.Message))
 		t.FailNow()
 	}
 
 	//Step-1: For ERROR- check whether returns 200 for success
 	var returnCodeDefault = int(res_resetDefaultLedger.Status)
-	assert.Equal(t, 200, returnCodeDefault, "Test_ResetWorldState: Function's success, status code 200.")
+	assert.Equal(t, 200, returnCodeDefault, "Test_DeleteAllKeys: Function's success, status code 200.")
 
 	//Step-1: For ERROR- check whether returns 200 for success
 	var returnCodeMC = int(res_resetMultiCarrierLedger.Status)
-	assert.Equal(t, 200, returnCodeMC, "Test_ResetWorldState: Function's success, status code 200.")
+	assert.Equal(t, 200, returnCodeMC, "Test_DeleteAllKeys: Function's success, status code 200.")
 
 	//Step-2: For SUCCESS- Total number records created on each channel and total number of records deleted on each channel
 
-	assert.EqualValues(t, strconv.Itoa(totalRecordsDeleted), string(res_resetDefaultLedger.Payload), "Test_ResetWorldState: function's success")
-	assert.EqualValues(t, strconv.Itoa(TOTAL_TEST_RECORS_CREATED_ON_MULTI_CARRIER_CHANNEL), string(res_resetMultiCarrierLedger.Payload), "Test_ResetWorldState: function's success")
+	assert.EqualValues(t, strconv.Itoa(totalRecordsDeleted), string(res_resetDefaultLedger.Payload), "Test_DeleteAllKeys: function's success")
+	assert.EqualValues(t, strconv.Itoa(TOTAL_TEST_RECORS_CREATED_ON_MULTI_CARRIER_CHANNEL), string(res_resetMultiCarrierLedger.Payload), "Test_DeleteAllKeys: function's success")
 
 }

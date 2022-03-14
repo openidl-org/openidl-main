@@ -50,10 +50,10 @@ describe('stat-agent', () => {
             };
             await statAgent.resetData(req,response);
             expect(defaultChannelSpy).toHaveBeenCalledTimes(1);
-            expect(key1).toBe('ResetWorldState');
+            expect(key1).toBe('DeleteAllKeys');
             expect(value1).toBe('');
             expect(carrierChannelSpy).toHaveBeenCalledTimes(1);
-            expect(key2).toBe('ResetWorldState');
+            expect(key2).toBe('DeleteAllKeys');
             expect(value2).toBe('');
             expect(response.statusCode).toBe(200);
             expect(jsonResponse.success).toBe(true);

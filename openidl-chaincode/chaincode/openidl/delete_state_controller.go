@@ -10,9 +10,12 @@ import (
 	logger "github.com/sirupsen/logrus"
 )
 
-func (this *SmartContract) ResetWorldState(stub shim.ChaincodeStubInterface) pb.Response {
-	logger.Debug("ResetWorldState: enter")
-	defer logger.Debug("ResetWorldState: exit")
+// Helper function to delete all existing keys
+// Note: This does not delete the blockchain, rather the key is marked as deleted. After this operation,
+// the ledger history of the key will show all prior values, and will show the deletion as the latest operation.
+func (this *SmartContract) DeleteAllKeys(stub shim.ChaincodeStubInterface) pb.Response {
+	logger.Debug("DeleteAllKeys: enter")
+	defer logger.Debug("DeleteAllKeys: exit")
 
 	dataCallsDeleteCount, _ := DeleteStateByKey(stub, DATA_CALL_PREFIX)
 	reportsDeleteCount, _ := DeleteStateByKey(stub, REPORT_PREFIX)
