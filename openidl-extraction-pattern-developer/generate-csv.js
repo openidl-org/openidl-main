@@ -3,37 +3,19 @@ const mongoDBManagerInstance = require('mongodb').MongoClient;
 const Parser = require('json2csv')
 const fs = require('fs')
 const { v4: uuidv4 } = require('uuid');
+const config = require('./config/config.json')
 
 async function initializeDBConnection(local = true) {
-    if (local) {
-        connectionURL = "mongodb://localhost:27017"
-        let dbManager = new MongoDBManager({ url: connectionURL });
-        await dbManager.connect()
-        return dbManager
-    } else {
-        const mongoconfig = JSON.parse(process.env.OFF_CHAIN_DB_CONFIG);
-        const ca = mongoconfig.connection.mongodb.certificate.certificate_base64;
-        console.log('ca ' + ca)
-
-        const options = {
-            ssl: true,
-            sslValidate: false,
-            sslCA: ca,
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        };
-        const connectionString = mongoconfig.connection.mongodb.composed[0];
-        const mongoDBClient = await mongoDBManagerInstance.connect(connectionString, options);
-        let dbManager = new MongoDBManager({ url: 'none' })
-        dbManager.setClient(mongoDBClient)
-        return dbManager
-    }
+    connectionURL = config.dbURL
+    let dbManager = new MongoDBManager({ url: connectionURL });
+    await dbManager.connect()
+    return dbManager
 }
 
-async function generateCSV(dbName, collectionName, outputFileName, useLocal) {
+async function generateCSV(dbManager, dbName, collectionName, outputFileName, useLocal) {
     console.log("Connecting");
     try {
-        let dbManager = await initializeDBConnection(useLocal);
+        // let dbManager = await initializeDBConnection(useLocal);
         // no need to connect when using ibm cloud connection
         // await dbManager.connect();
         console.log("Using database: " + dbName);
@@ -100,15 +82,24 @@ function convertToCSV(json) {
 // let dbName = "covid-report";
 // let collectionName = "hds-data";
 // let reductionName = "hds-report-input";
-let databaseName = "openidl-offchain-db-ppp-any-nr";
-let collectionName = "insurance_trx_db_any";
-let reductionName = 'any_covid_data_all';
+async function processThem() {
+    let dbManager = await initializeDBConnection(false);
+    let databaseName = config.dbName
+    let carrierNames = ['trvi','car1','car2']
+    for (carrierName of carrierNames) {
+        let carrierConfig = config[carrierName]
+        let collectionName = carrierConfig.collectionName;
+        let reductionName = carrierConfig.reductionName;
+        
+        let outputFile = 'test/' + carrierConfig.reductionName + '.csv'
+        
+        let useLocal = true
+        
+        console.log("Generating CSV");
+        await generateCSV(dbManager, databaseName, reductionName, outputFile, useLocal)
+    }
+    process.exit(0)
+}
 
-let outputFile = 'covid-output/covid-output-any-ppp-all-nr.csv'
+processThem()
 
-let useLocal = true
-
-console.log("Generating CSV");
-generateCSV(databaseName, reductionName, outputFile, useLocal).then(() => {
-    process.exit(0);
-});

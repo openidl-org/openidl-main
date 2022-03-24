@@ -2,8 +2,9 @@ const fs = require('fs')
 const ExtractionPatternManager = require('./service/extraction-pattern-manager')
 const ExtractionPatternProcessor = require('./service/extraction-pattern-processor')
 const MongoDBManager = require('./service/mongo-database-manager')
-const ep = require('./test/extractionPatterns/Trivial_01_ExtractionPattern');
+const ep = require('./test/extractionPatterns/ND_VIN_ExtractionPattern_01');
 const Parser = require('json2csv')
+const config = require('./config/config.json')
 
 function convertToCSV(json) {
     let rows = []
@@ -36,28 +37,32 @@ async function processExtractionPattern() {
     // let collectionName = 'insurance_trx_db_HIG'
     // let reductionName = collectionName + '_' + 'covid_19' + '_1'
     let local = true
-    let dbUrl = 'mongodb://localhost:27018'
-    let dbName = 'extraction-test'
-    let collectionName = 'hds-data'
-    let reductionName = 'extracted-data'
+    // let dbUrl = 'mongodb://localhost:27018'
+    let dbUrl = config.dbURL
+    // let dbName = 'extraction-test'
+    let dbName = config.dbName
+    let carrierNames = ['trvi','car1','car2']
     var manager = new ExtractionPatternManager()
-    var processor
     var map = ep.map
     var reduce = ep.reduce
-    var extractionPattern = manager.createExtractionPattern("Trivial_01", "Trivial_01", "Trivial Extraction Pattern", "AL", "Personal Auto", map, reduce, "0.1", "2022-01-30T18:30:00Z", "2023-01-30T18:30:00Z", "2022-01-30T18:30:00Z", "2023-01-30T18:30:00Z", "2022-01-30T18:30:00Z", "2023-01-30T18:30:00Z", "kens@aaisonline.com")
+    var extractionPattern = manager.createExtractionPattern(config.extractionPattern.id, config.extractionPattern.name, config.extractionPattern.description, config.extractionPattern.jurisdiction, config.extractionPattern.insurance, map, reduce, config.extractionPattern.version, config.extractionPattern.effectiveDate, config.extractionPattern.expirationDate, config.extractionPattern.premiumFromDate, config.extractionPattern.premiumToDate, config.extractionPattern.lossFromDate, config.extractionPattern.lossToDate, config.extractionPattern.userId)
+    var processor
     var dbManager = new MongoDBManager({ url: dbUrl })
     if (!dbManager) {
         throw 'No DB Manager'
     }
-    console.log(typeof dbManager)
-    const extractionPatternProcessor = new ExtractionPatternProcessor(dbManager, dbName, collectionName, reductionName)
+    
+    for (carrierName of carrierNames) {
 
-    await dbManager.connect()
-    await dbManager.useDatabase(dbName).catch((err) => { throw err })
+        let carrierConfig = config[carrierName]
+        const extractionPatternProcessor = new ExtractionPatternProcessor(dbManager, carrierConfig.dbName, carrierConfig.collectionName, carrierConfig.reductionName)
 
-    await extractionPatternProcessor.processExtractionPattern(extractionPattern)
-    console.log(extractionPattern)
-    manager.writeExtractionPatternToFile(extractionPattern, 'Trivial01_ExtractionPattern.json')
+        await dbManager.connect()
+        await dbManager.useDatabase(dbName).catch((err) => { throw err })
+
+        await extractionPatternProcessor.processExtractionPattern(extractionPattern)
+    }
+    manager.writeExtractionPatternToFile(extractionPattern, 'ND_VIN_ExtractionPattern_01.json')
 
 }
 
