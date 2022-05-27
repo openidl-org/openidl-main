@@ -78,7 +78,12 @@ For development, testing, and debugging purposes, it is very convenient to run t
     {
       "accessKeyId": "XXXXXXXXXXXXXXXXXXXX",
       "secretAccessKey": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-      "bucketName": "openidl-analytics"
+      "bucketName": "openidl-analytics",
+      "roleParams": {
+          "RoleArn": "XXXXXXXXXX",
+          "RoleSessionName": "openidl",
+          "DurationSeconds": "900",
+          "ExternalId": "XXXXXXXX"
     }
     ```
 * The access key ID and  secret access key are obtained from AWS

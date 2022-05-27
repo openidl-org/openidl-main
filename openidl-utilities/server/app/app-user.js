@@ -31,7 +31,10 @@ appUserRegister.createUserInCognito = async (usersConfig) => {
 
 	const cognitoConfig = JSON.parse(process.env.IDP_CONFIG);;
 	AWS.config.update(JSON.parse(process.env.IDP_ADMIN_CONFIG));
-	const cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider({
+	const accessparams = await getAccessParams(JSON.parse(process.env.IDP_ADMIN_CONFIG));
+	const cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider(
+		accessparams,
+		{
 		apiVersion: '2016-04-18',
 		region: cognitoConfig.region
 	});
@@ -93,7 +96,10 @@ appUserRegister.updateCognitoUserAttributes = async (usersConfig) => {
 
 	const cognitoConfig = JSON.parse(process.env.IDP_CONFIG);;
 	AWS.config.update(JSON.parse(process.env.IDP_ADMIN_CONFIG));
-	const cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider({
+	const accessparams = await getAccessParams(JSON.parse(process.env.IDP_ADMIN_CONFIG));
+	const cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider(
+		accessparams,
+		{
 		apiVersion: '2016-04-18',
 		region: cognitoConfig.region
 	});
@@ -258,6 +264,29 @@ async function getUserIdFromAppId(accessToken, email) {
 	handleRequest(headers, reqBody, method, url, deferred);
 	return deferred.promise;
 }
+ async function getAccessParams(bucketConfig) {
+	if (!bucketConfig.region || !bucketConfig.accessKeyId
+		|| ! bucketConfig.secretAccessKey || !bucketConfig.roleParams) {
+			throw Error("Missing config for AWS")
+		}
+        const sts = new AWS.STS({
+            region: bucketConfig.region,
+            accessKeyId: bucketConfig.accessKeyId,
+            secretAccessKey: bucketConfig.secretAccessKey
+
+        });
+        const params = bucketConfig.roleParams;
+
+        const accessParamInfo = await sts.assumeRole(params).promise();
+        logger.debug('Changed Credentials');
+
+        const accessparams = {
+            accessKeyId: accessParamInfo.Credentials.AccessKeyId,
+            secretAccessKey: accessParamInfo.Credentials.SecretAccessKey,
+            sessionToken: accessParamInfo.Credentials.SessionToken,
+        };
+        return accessparams;
+    }
 /**
  * Generic HTTP call
  * @param {*} headers 

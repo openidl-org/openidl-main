@@ -14,46 +14,51 @@ AWS.config.update({
 });
 class S3BucketManager {
     constructor() { }
-    async saveTransactionalData(input) {
-        logger.debug('Inside saveTransactionalData');
-        return new Promise(function (resolve, reject) {
-            let bucket = new AWS.S3();
-            let insertObjectParam = { Bucket: bucketConfig.bucketName, Key: input._id, Body: JSON.stringify(input.records) };
-            bucket.putObject((insertObjectParam), (err) => {
-                if (err) {
-                    logger.error('Error inserting records:' + err);
-                    reject(err);
-                } else {
-                    logger.debug('Records Inserted Successfully');
-                    resolve('Records Inserted Successfully');
-                }
-            });
+        async getAccessParams() {
+        const sts = new AWS.STS({
+            //region: 'us-east-2',
+            accessKeyId: bucketConfig.accessKeyId,
+            secretAccessKey: bucketConfig.secretAccessKey
 
         });
+        const params = bucketConfig.roleParams;
+
+        const accessParamInfo = await sts.assumeRole(params).promise();
+        logger.debug('Changed Credentials');
+
+        const accessparams = {
+            accessKeyId: accessParamInfo.Credentials.AccessKeyId,
+            secretAccessKey: accessParamInfo.Credentials.SecretAccessKey,
+            sessionToken: accessParamInfo.Credentials.SessionToken,
+        };
+        return accessparams;
     }
 
     async getTransactionalData(id) {
         logger.debug("Inside getTransactionalData");
-        return new Promise(function (resolve, reject) {
-            let bucket = new AWS.S3();
-            let getObjectParam = { Bucket: bucketConfig.bucketName, Key: id };
-
-            try {
-                bucket.getObject((getObjectParam), (err, data) => {
-                    if (err) {
-                        logger.debug('No record found' + err);
-                        reject('error')
-                    } else {
-                        logger.debug("Inside getTransactionalData, Record exist, upadting in s3Bucket");
-                        resolve(data._rev);
-                    }
-                });
-            } catch (err) {
-                logger.err("error retrieving document:" + err);
-                reject("error");
-            }
-
-        })
+        const accessParams = await this.getAccessParams();
+        logger.debug("accessparams: ", accessParams);
+        let bucket = new AWS.S3(accessParams);
+        let getObjectParam = { Bucket: bucketConfig.bucketName, Key: id };
+            const data = await bucket.getObject(getObjectParam).promise();
+            console.log("getobject data is - " + JSON.stringify(data))
+            console.log("getobject body is - " + JSON.stringify(JSON.parse(data.Body), null, 2))
+            return data.VersionId
+    }
+    async saveTransactionalData(input) {
+        logger.debug('Inside saveTransactionalData');
+        const accessparams = await this.getAccessParams();
+        let bucket = new AWS.S3(accessparams);
+        logger.debug(" saveObjectParam bucket: " + bucketConfig.bucketName + " key: " + input._id)
+        logger.debug("  records: " + JSON.stringify(input.records))
+        let insertObjectParam = { Bucket: bucketConfig.bucketName, Key: input._id, Body: JSON.stringify(input.records) };
+        try {
+            const data = await bucket.putObject(insertObjectParam).promise();
+            logger.debug("After  putobject " + JSON.stringify(data))
+            logger.debug('Records Inserted Successfully');
+        } catch (err) {
+            logger.error(err);
+        }
     }
 }
 module.exports = S3BucketManager;
