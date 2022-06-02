@@ -1,8 +1,9 @@
 const fs = require('fs')
+const conn = require('./connection.json')
 const ExtractionPatternManager = require('./service/extraction-pattern-manager')
 const ExtractionPatternProcessor = require('./service/extraction-pattern-processor')
 const MongoDBManager = require('./service/mongo-database-manager')
-const ep = require('./test/extractionPatterns/Trivial_01_ExtractionPattern');
+const ep = require('./test/extractionPatterns/Trivial_01_ExtractionPattern');  //my extraction pattern
 const Parser = require('json2csv')
 
 function convertToCSV(json) {
@@ -35,13 +36,12 @@ async function processExtractionPattern() {
     // let dbName = 'openidl-offchain-db'
     // let collectionName = 'insurance_trx_db_HIG'
     // let reductionName = collectionName + '_' + 'covid_19' + '_1'
-    let local = true
-    let dbUrl = 'mongodb://localhost:27018'
-    let dbName = 'extraction-test'
-    let collectionName = 'hds-data'
-    let reductionName = 'extracted-data'
+    let local = conn.local
+    let dbUrl = conn.dbUrl
+    let dbName = conn.dbName
+    let collectionName = conn.collectionName
+    let reductionName = conn.reductionName
     var manager = new ExtractionPatternManager()
-    var processor
     var map = ep.map
     var reduce = ep.reduce
     var extractionPattern = manager.createExtractionPattern("Trivial_01", "Trivial_01", "Trivial Extraction Pattern", "AL", "Personal Auto", map, reduce, "0.1", "2022-01-30T18:30:00Z", "2023-01-30T18:30:00Z", "2022-01-30T18:30:00Z", "2023-01-30T18:30:00Z", "2022-01-30T18:30:00Z", "2023-01-30T18:30:00Z", "kens@aaisonline.com")

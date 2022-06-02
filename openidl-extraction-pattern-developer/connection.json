@@ -1,0 +1,7 @@
+{
+	"local": true,
+	"dbUrl": "mongodb://localhost:27017",
+	"dbName": "openIDL",
+	"collectionName": "insurance",
+	"reductionName": "extracted_data"
+}

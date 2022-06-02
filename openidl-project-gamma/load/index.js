@@ -16,8 +16,8 @@ const LOSS_RECORDS = {
         territory: String,
         optionalZipCodeIndicator: String,
         transactionCode: String,
-        premiumAmount: String,
-        lossAmount: String,
+        premiumAmount: Number,
+        lossAmount: Number,
         program: String,
         coverage: String,
         subline: String,
@@ -117,11 +117,11 @@ main()
 	.then(function () {
 		console.log('Worked!!');
 
-        //mongoose.connection.close()
+        mongoose.connection.close()
 	})
 	.catch(function (e) {
 		console.log('Error:');
 		console.log({ e });
 
-        //mongoose.connection.close()
+        mongoose.connection.close()
 	});

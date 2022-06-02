@@ -5,15 +5,15 @@
 function map() {
     let key = this.zipcode
     var result = {
-        "key": { "zipcode": key },
+        "key": { "zipCode": key },
         "value": {
-            "premium": this.premium,
-            "chunkId": this.chunkId,
-            "carrierId": this.carrierId
+            "premiumAmount": this.premiumAmount,
+            //"chunkId": this.chunkId,
+            "companyCode": this.companyCode
         }
     }
     emit(
-        result.key, result.value.premium,
+        result.key, result.value.premiumAmount,
     )
 }
 
