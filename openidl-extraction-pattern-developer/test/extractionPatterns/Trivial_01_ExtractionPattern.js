@@ -3,17 +3,18 @@
  */
 
 function map() {
-    let key = this.zipcode
+    let key = this.Policy.PolicyIdentifier
     var result = {
-        "key": { "zipCode": key },
+        "key": { "PolicyIdentifier": key },
         "value": {
-            "premiumAmount": this.premiumAmount,
+            "premiumAmount": this.Policy.PremiumAmount,
             //"chunkId": this.chunkId,
-            "companyCode": this.companyCode
+            "companyCode": this.Policy.CompanyCode,
+            "state": this.Policy.State
         }
     }
     emit(
-        result.key, result.value.premiumAmount,
+        result.value.state, result.value.premiumAmount,
     )
 }
 
