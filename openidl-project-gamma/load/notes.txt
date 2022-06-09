@@ -1,2 +1,7 @@
 use aais_db
 
+take all premium records in a given time period
+earn premium by policy.
+
+sum policies by geographic region. 
+
