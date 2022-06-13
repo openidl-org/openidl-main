@@ -1,0 +1,45 @@
+
+use('openIDL');
+db.insurance.find({"RecordType" : "Premium"})
+
+use('openIDL');
+db.insurance.find({"Policy.PolicyIdentifier": "A101 328"})
+
+use('openIDL');
+db.insurance.find({"Policy.PolicyIdentifier": "A138 152"})
+
+use('openIDL');
+db.insurance.find({
+    "Policy.PremiumAmount" :{
+        "$gt": 0
+    },
+    "Policy.PremiumAmount": {
+        "$lt": 500
+    }
+})
+
+
+use('openIDL'); 
+db.insurance.count({"RecordType": "Premium"})
+
+use('openIDL'); 
+db.insurance.distinct("Policy.PolicyIdentifier")
+
+use('openIDL'); 
+db.insurance.aggregate(
+    [ 
+        {$match: {}},
+        {$group: {_id: "$Policy.PolicyIdentifier", total: {$sum: "$Policy.PremiumAmount"}}}
+    ]
+)
+
+
+use('openIDL'); 
+db.insurance.aggregate(
+    [ 
+        {$match: {"Policy.LineOfBusiness": "Auto"}},
+        {$match: {"Policy.Subline": "Private Passenger Auto"}},
+        {$match: {"Policy.AccountingDate": {$gte: ISODate("2020-01-01T00:00:00.0Z")}}}
+        {$group: {_id: "$Policy.PolicyIdentifier", total: {$sum: "$Policy.PremiumAmount"}}}
+    ]
+)
