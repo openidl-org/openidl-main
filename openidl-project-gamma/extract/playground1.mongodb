@@ -3,7 +3,7 @@ use('openIDL');
 db.insurance.find({"RecordType" : "Premium"})
 
 use('openIDL');
-db.insurance.find({"Policy.PolicyIdentifier": "A101 328"})
+db.insurance.find({"Policy.PolicyIdentifier": "A131 779"})
 
 use('openIDL');
 db.insurance.find({"Policy.PolicyIdentifier": "A138 152"})
@@ -28,8 +28,21 @@ db.insurance.distinct("Policy.PolicyIdentifier")
 use('openIDL'); 
 db.insurance.aggregate(
     [ 
-        {$match: {}},
-        {$group: {_id: "$Policy.PolicyIdentifier", total: {$sum: "$Policy.PremiumAmount"}}}
+        //{$match: {"Policy.PolicyIdentifier": "A131 779"}},
+        {$group: {_id: "$Policy.PolicyIdentifier", total: {$sum: 1}}}
+    ]
+)
+
+use('openIDL'); 
+db.insurance.aggregate(
+    [ 
+        {$match: {"Policy.LineOfBusiness": "Auto"}},
+        {$match: {"Policy.Subline": "Private Passenger Auto"}},
+        {$match: {"Policy.AccountingDate": {$gt:"2020-01-01"}}},
+        {$match: {"Policy.AccountingDate": {$lt:"2021-01-01"}}},
+        {$match: {"Policy.PolicyIdentifier": "A131 779"}},
+        {$group: {_id: "$Policy.PolicyIdentifier", totalPremium: {$sum: "$Policy.PremiumAmount"}, recordCount: { $sum: 1}}},
+        {$sort: {recordCount: -1}}
     ]
 )
 
@@ -37,9 +50,50 @@ db.insurance.aggregate(
 use('openIDL'); 
 db.insurance.aggregate(
     [ 
-        {$match: {"Policy.LineOfBusiness": "Auto"}},
+        {$match: {"Policy.PolicyIdentifier": "A131 779"}},
         {$match: {"Policy.Subline": "Private Passenger Auto"}},
-        {$match: {"Policy.AccountingDate": {$gte: ISODate("2020-01-01T00:00:00.0Z")}}}
-        {$group: {_id: "$Policy.PolicyIdentifier", total: {$sum: "$Policy.PremiumAmount"}}}
+        {$match: {"Policy.AccountingDate": {$gt:"2020-01-01"}}},
+        {$match: {"Policy.AccountingDate": {$lt:"2021-01-01"}}},
+        {$group: {_id: "$Policy.PolicyIdentifier", totalPremium: {$sum: "$Policy.PremiumAmount"}, recordCount: { $sum: 1}}},
+        {$sort: {"Policy.AccountingDate": 1}}
+    ]
+)
+
+use('openIDL'); 
+db.insurance.aggregate(
+    [ 
+        {$match: {"Policy.PolicyIdentifier": "A131 779"}},
+        {$match: {"Policy.Subline": "Private Passenger Auto"}},
+        {$match: {"Policy.AccountingDate": {$gt:"2020-01-01"}}},
+        {$match: {"Policy.AccountingDate": {$lt:"2021-01-01"}}},
+        {$match: {"Policy.PremiumAmount" : {$lt: 0}}},
+        {$sort: {"Policy.AccountingDate": 1}}
+    ]
+)
+
+
+use('openIDL'); 
+db.insurance.aggregate(
+    [ 
+        {$match: {"Policy.PolicyIdentifier": "A131 779"}},
+        {$match: {"Policy.Subline": "Private Passenger Auto"}},
+        {$match: {"Policy.AccountingDate": {$gt:"2020-01-01"}}},
+        {$match: {"Policy.AccountingDate": {$lt:"2021-01-01"}}},
+        {$match: {"Policy.PremiumAmount" : {$lt: 0}}},
+        {$group: {_id: "$Coverage.Coverage", totalRecord: { $sum: 1}}},
+        {$sort: {"Policy.AccountingDate": 1}}
+    ]
+)
+
+
+use('openIDL'); 
+db.insurance.aggregate(
+    [ 
+        {$match: {"Policy.PolicyIdentifier": "A131 779"}},
+        {$match: {"Policy.Subline": "Private Passenger Auto"}},
+        {$match: {"Policy.AccountingDate": {$gt:"2020-01-01"}}},
+        {$match: {"Policy.AccountingDate": {$lt:"2021-01-01"}}},
+        {$group: {_id: "$Policy.AccountingDate", recordCount: {$sum: 1}}},
+        {$sort: {"Policy.AccountingDate": 1}}
     ]
 )
