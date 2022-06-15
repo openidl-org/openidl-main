@@ -76,19 +76,35 @@ function makePolicy(idmPolicy) {
 }
 
 function makeCoverage(idmPolicy) {
-	coverageCode = idmPolicy.Coverage.CoverageCode;
+	let coverageCode = idmPolicy.Coverage.CoverageCode;
     console.log('coverage code: '+coverageCode) // 1
-	coverageCategory = idmPolicy.Coverage.CoverageCategory;
-	coverage = idmPolicy.Coverage.Coverage
-	coverages = { [coverageCode]: {"CoverageCategory": coverageCategory, "Coverage": coverage}};
-    console.table(idmPolicy['Coverage'])
-	console.table(coverages);
+	let coverageCategory = idmPolicy.Coverage.CoverageCategory;
+	let coverage = idmPolicy.Coverage.Coverage
+    let record = makeCoverageRecord(idmPolicy)
+
+	coverages = { [coverageCode]: {"CoverageCategory": coverageCategory, "Coverage": coverage, "CoverageRecords": [record]}}
+    // console.table(idmPolicy['Coverage'])
+	// console.table(coverages);
     return coverages;
 }
 
 function makeCoverageRecord(idmPolicy){
-    coverageRecords = {}
-    
+    let target = {}
+    target['AccountingDate'] = idmPolicy.Policy.AccountingDate
+    target['LiabilityLimitsName'] = idmPolicy.Coverage.LiabilityLimitsName
+    target['LiabilityLimitsAmount'] = idmPolicy.Coverage.LiabilityLimitsAmount
+    target['Exposure'] = idmPolicy.Coverage.Exposure
+    target['MonthsCovered'] = idmPolicy.Coverage.MonthsCovered
+    target['SingleMultiCarRating'] = idmPolicy.Coverage.SingleMultiCarRating
+    target['Terrorism'] = idmPolicy.Coverage.Terrorism
+    target['Packaging'] = idmPolicy.Coverage.Packaging
+    target['PoolAffiliation'] = idmPolicy.Coverage.PoolAffiliation 
+    target['UMUIMStacking'] = idmPolicy.Coverage.UMUIMStacking
+    target['PassiveRestraintDiscount'] = idmPolicy.Coverage.PassiveRestraintDiscount
+    target['AntiLockBrakesDiscount'] = idmPolicy.Coverage.AntiLockBrakesDiscount
+    target['DefensiveDriverDiscount'] = idmPolicy.Coverage.DefensiveDriverDiscount
+    //console.table(target)
+    return target
 }
 
 
@@ -104,12 +120,12 @@ async function awaitFunction(dbManager, policy, dbName, collection) {
         fs.writeFileSync('policy.json', JSON.stringify(policy))
 
 
-		// let present = await checkTargetPolicy(
-		// 	dbManager,
-		// 	dbName,
-		// 	tgt_collection,
-		// 	policyIdentifier
-		// );
+		let present = await checkTargetPolicy(
+			dbManager,
+			dbName,
+			tgt_collection,
+			policyIdentifier
+		);
 		console.log('Policy: ' + policyIdentifier + ' is present: ' + present);
 		if (present) {
 			console.log('append');
@@ -117,12 +133,12 @@ async function awaitFunction(dbManager, policy, dbName, collection) {
 
 		if (!present) {
 			console.log('add');
-			// await insertNewPersonalAutoPolicy(
-			// 	dbManager,
-			// 	dbName,
-			// 	'policy',
-			// 	record
-			// );
+			await insertNewPersonalAutoPolicy(
+				dbManager,
+				dbName,
+				'policy',
+				idmRecord
+			);
 		}
 		// count = count + 1;
 		// console.log('count ' + count);

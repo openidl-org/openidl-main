@@ -1,14 +1,1 @@
-{
-	"PolicyIdentifier": "A135 261",
-	"State": "CT",
-	"PersonalAuto": {
-		"ZipCode": "06384",
-		"ZipCodeSuffix": "",
-		"Coverages": {
-			"1": {
-				"CoverageCategory": "Liability",
-				"Coverage": "Bodily Injury Liability"
-			}
-		}
-	}
-}
+{"PolicyIdentifier":"A135 261","State":"CT","PersonalAuto":{"ZipCode":"06384","ZipCodeSuffix":"","Coverages":{"1":{"CoverageCategory":"Liability","Coverage":"Bodily Injury Liability","CoverageRecords":[{"AccountingDate":"2022-01-01","LiabilityLimitsName":"Limits","LiabilityLimitsAmount":"$250,000/500,000","Exposure":0,"MonthsCovered":3,"SingleMultiCarRating":"Single Car Rated","Terrorism":"N/A","Packaging":"Auto coverage written as a separate policy and not an endorsement to another policy.","PoolAffiliation":"Preferred Risk","UMUIMStacking":"N/A","PassiveRestraintDiscount":"Not Applicable","AntiLockBrakesDiscount":"Anti-Lock Braking System discount applied to this coverage.","DefensiveDriverDiscount":"Driver does not qualify for the defensive driver discount available on this coverage."}]}}}}
