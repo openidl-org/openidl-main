@@ -55,6 +55,13 @@ class MongoDBManager {
         logger.debug("Done Putting Data into: " + dbName + "." + collectionName)
     }
 
+    async loadSingleData(data, dbName, collectionName) {
+        logger.debug("Putting Data into: " + dbName + "." + collectionName)
+        // await this.useDatabase(dbName)
+        await this.db.collection(collectionName).insertOne(data)
+        logger.debug("Done Putting Data into: " + dbName + "." + collectionName)
+    }
+
     async loadDataFromInsuranceDataManagerPayload(data, dbName, collectionName) {
         logger.debug("Putting Data into: " + dbName + "." + collectionName)
         console.log(data)
@@ -71,6 +78,7 @@ class MongoDBManager {
     async getRecords(dbName, collectionName, query) {
         await this.useDatabase(dbName)
         let collection = this.db.collection(collectionName)
+        console.log('get records query: '+query)
         let recordCursor = collection.find(query);
         let records = await recordCursor.toArray()
         return records
