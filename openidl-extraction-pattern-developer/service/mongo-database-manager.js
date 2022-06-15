@@ -78,7 +78,7 @@ class MongoDBManager {
     async getRecords(dbName, collectionName, query) {
         await this.useDatabase(dbName)
         let collection = this.db.collection(collectionName)
-        console.log('get records query: '+query)
+        //console.log('get records query: '+query)
         let recordCursor = collection.find(query);
         let records = await recordCursor.toArray()
         return records

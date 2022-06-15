@@ -1,0 +1,14 @@
+{
+	"PolicyIdentifier": "A135 261",
+	"State": "CT",
+	"PersonalAuto": {
+		"ZipCode": "06384",
+		"ZipCodeSuffix": "",
+		"Coverages": {
+			"1": {
+				"CoverageCategory": "Liability",
+				"Coverage": "Bodily Injury Liability"
+			}
+		}
+	}
+}
