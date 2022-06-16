@@ -62,11 +62,17 @@ class MongoDBManager {
         logger.debug("Done Putting Data into: " + dbName + "." + collectionName)
     }
 
-    async updateData(data,key,value, dbName, collectionName) {
-        logger.debug("updating Data into: " +data )
+    async replacePolicyData(data,value,  collectionName) {
+        logger.debug("replacing Data into: " +data )
         // await this.useDatabase(dbName)
-        await this.db.collection(collectionName).update({[key]:[value]},data)
-        logger.debug("Done updatingData into: " + dbName + "." + collectionName)
+        console.table(data)
+        console.log('key: policy idenifier value: '+value)
+   
+        delete data._id
+
+        await this.db.collection(collectionName).replaceOne({"PolicyIdentifier": value},data)
+//        await this.db.collection(collectionName).replaceOne({[key]:[value]},data)
+        logger.debug("Done replacingData into: " + collectionName)
     }
 
     async loadDataFromInsuranceDataManagerPayload(data, dbName, collectionName) {

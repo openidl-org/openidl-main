@@ -3,6 +3,8 @@ const conn = require('../../openidl-extraction-pattern-developer/connection.json
 const { syncBuiltinESMExports } = require('module');
 var manager = new MongoDBManager({ url: 'mongodb://localhost:27017' });
 const fs = require('fs')
+const util = require('util')
+
 
 const dbName = conn.dbName;
 //const filterPolicy = "A131 779" //big
@@ -30,17 +32,6 @@ async function checkPresentValue(dbManager, dbName, collection, query) {
 	return false;
 }
 
-async function checkPresentKey(dbManager, dbName, collection, key) {
-    let query = {[key]: {$exists:true}}
-	//console.table(query)
-	let records = await dbManager.getRecords(dbName, collection, query);
-	//console.log('check records length: ' + records.length);
-	if (records.length > 0) {
-		return true;
-	}
-	return false;
-}
-
 
 async function checkTargetPolicy(
 	dbManager,
@@ -55,11 +46,19 @@ async function checkTargetPolicy(
 
 
 function checkPersonalAutoCoverage(policyRecord, coverageCode){
-	console.table(policyRecord)
-	let coverageCodes = policyRecord.PersonalAuto.Coverages.keys
-	if (coverageCode in coverageCodes){
+	// console.table(policyRecord)
+    // console.table(policyRecord.PersonalAuto)
+    // console.table(policyRecord.PersonalAuto.Coverages)
+	let coverages = policyRecord.PersonalAuto.Coverages
+    //let coverageCodes = Object.keys(coverages)
+    //console.log(Object.keys(coverages))
+    //console.log('new code: '+coverageCode+' code$: '+coverageCodes)
+
+
+	if (policyRecord['PersonalAuto']['Coverages'][coverageCode]){
 		return true
 	}
+    console.log('code not found')
 	return false
 }
 
@@ -149,28 +148,73 @@ function checkPersonalAuto(idmRecord){
     return false
 }
 
-async function appendCoverage(dbManager, dbName, collection, idmRecord,policyRecord){
+async function appendCoverage(dbManager, idmRecord,policyRecord){
 
     let personalAutoPresent = checkPersonalAuto(idmRecord)
     //console.log('personal auto present: ' +personalAutoPresent)
-    let new_coverage = idmRecord.Coverage.CoverageCode
-
+    let newCoverageCode = idmRecord.Coverage.CoverageCode
+   
     if (personalAutoPresent){
-        console.log(idmRecord.Policy.PolicyIdentifier+' personal auto exists')
+        //console.log(idmRecord.Policy.PolicyIdentifier+' personal auto exists')
         //check coverage
-        let coverage_present = checkPersonalAutoCoverage(dbManager,dbName,collection,policyRecord) //start from here, 
+        let coverage_present = checkPersonalAutoCoverage(policyRecord,newCoverageCode) //start from here, 
         //should be a simple check above db to see if its there. 
         let coverage = makeCoverage(idmRecord)
         if (coverage_present){
             console.log('append')
-            policyRecord['Coverages'][coverageCode]['CoverageRecords'].push(coverage) 
+            // // console.log('top record')
+            // // console.table(policyRecord)
+            // // console.log('personal auto')
+            // console.table(policyRecord['PersonalAuto'])
+            // console.table(policyRecord['PersonalAuto']['Coverages'][newCoverageCode])
+            // console.log('coverage')
+            // console.table(coverage[newCoverageCode])
+            if (coverage[newCoverageCode]==policyRecord['PersonalAuto']['Coverages'][newCoverageCode]){
+                //existing coverage code
+                let coverageRecords = coverage[newCoverageCode].CoverageRecords
+                if (policyRecord['PersonalAuto']['Coverages'][newCoverageCode].CoverageRecords == coverageRecords){
+                    //duplicate pass
+                }
+
+                if (!policyRecord['PersonalAuto']['Coverages'][newCoverageCode].CoverageRecords == coverageRecords){
+                    let coverageRecord = coverageRecords[0]
+                    let present = false
+                    for (let lcl_record of policyRecord['PersonalAuto']['Coverages'][newCoverageCode].CoverageRecords){
+                            if (lcl_record == coverageRecord){
+                                present = true
+                            }
+                    }
+                    if (!present){
+                        policyRecord['PersonalAuto']['Coverages'][newCoverageCode].CoverageRecords.push(coverageRecord)
+                    }
+                }
+            }
+            
+
+
         }
         if (!coverage_present){
             console.log('add new coverage')
-            policyRecord['Coverages'][coverageCode]['CoverageRecords'] = [coverage]
+           // policyRecord['PersonalAuto']['Coverages'][newCoverageCode] = {"CoverageRecords": [coverage]}
+            // console.log('top record')
+            // console.table(policyRecord)
+            // console.log('personal auto')
+            // console.table(policyRecord['PersonalAuto'])
+            // console.table(policyRecord['PersonalAuto']['Coverages'][newCoverageCode])
+            // console.log('coverage')
+            // console.table(coverage[newCoverageCode])
+
+            policyRecord['PersonalAuto']['Coverages'][newCoverageCode] = coverage[newCoverageCode]
         }
         console.log('before update')
-        await dbManager.updateData(policyRecord,'PolicyIdentifier',policyRecord.PolicyIdentifier,'Policy')
+        // console.log('top record')
+        // console.table(policyRecord)
+        // console.log('personal auto')
+        //console.table(policyRecord['PersonalAuto'])
+        //console.table(policyRecord['PersonalAuto']['Coverages'])
+        //console.table(policyRecord['PersonalAuto']['Coverages']['CoverageRecords'])
+        fs.writeFileSync('../../../con-data/policy2.json', JSON.stringify(policyRecord))
+        await dbManager.replacePolicyData(policyRecord,policyRecord.PolicyIdentifier,'policy')
     }
    
 }
@@ -179,7 +223,7 @@ async function awaitFunction(dbManager, filterPolicy, dbName) {
 	await dbManager.connect();
 	let q1 = { 'Policy.PolicyIdentifier': filterPolicy };
     let records = await find(dbManager, dbName, 'insurance', q1);
-	
+	count=0
     for (let idmRecord of records) {
 		let policyIdentifier = idmRecord.Policy.PolicyIdentifier;
 		const tgt_collection = 'policy';
@@ -196,14 +240,15 @@ async function awaitFunction(dbManager, filterPolicy, dbName) {
 		console.log('Policy: ' + policyIdentifier + ' is present: ' + present);
 		if (present) {
             //get new record from policy table
-            console.log('append');
-            query = { 'PolicyIdentifier': policyIdentifier };
-            let policyRecord = await find(dbManager,dbName,'policy',query)
+            // console.log('append')
+			// console.table;
+            // query = { 'PolicyIdentifier': policyIdentifier };
+            let policyRecords = await find(dbManager,dbName,'policy',query)
+            let policyRecord = policyRecords[0]
+			// console.table(policyRecord)
+			// console.log(policyRecord._id)
 
-            console.table(policyRecord)
-            console.log('^append')
-
-            await appendCoverage(dbManager,dbName,'policy',idmRecord,policyRecord)
+            await appendCoverage(dbManager,idmRecord,policyRecord)
 		}
 
 		if (!present) {
@@ -215,14 +260,14 @@ async function awaitFunction(dbManager, filterPolicy, dbName) {
 				idmRecord
 			);
 		}
-		// count = count + 1;
-		// console.log('count ' + count);
-		// if (count > 1) {
-		// 	break;
-		// }
-        break
+
+        count=count+1
+        // if (count == 2){
+        //     break
+        // }
 	}
 	await dbManager.disconnect();
+
 }
 
 awaitFunction(manager, filterPolicy, dbName);

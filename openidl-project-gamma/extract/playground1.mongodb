@@ -17,10 +17,69 @@ db.insurance.find({
         "$lt": 500
     }
 })
-
+use('openIDL');
+db.policy.replaceOne({"PolicyIdentifier": 'A135 261'}
+                , {
+  "PolicyIdentifier": "A135 261",
+  "State": "CT",
+  "PersonalAuto": {
+    "ZipCode": "06384",
+    "ZipCodeSuffix": "",
+    "Coverages": {
+      "1": {
+        "CoverageCategory": "Liability",
+        "Coverage": "Bodily Injury Liability",
+        "CoverageRecords": [
+          {
+            "AccountingDate": "2022-01-01",
+            "PremiumAmount": -12.4,
+            "LiabilityLimitsName": "Limits",
+            "LiabilityLimitsAmount": "$250,000/500,000",
+            "Exposure": 0,
+            "MonthsCovered": 3,
+            "SingleMultiCarRating": "Single Car Rated",
+            "Terrorism": "N/A",
+            "Packaging": "Auto coverage written as a separate policy and not an endorsement to another policy.",
+            "PoolAffiliation": "Preferred Risk",
+            "UMUIMStacking": "N/A",
+            "PassiveRestraintDiscount": "Not Applicable",
+            "AntiLockBrakesDiscount": "Anti-Lock Braking System discount applied to this coverage.",
+            "DefensiveDriverDiscount": "Driver does not qualify for the defensive driver discount available on this coverage."
+          }
+        ]
+      },
+      "2": {
+        "CoverageCategory": "Liability",
+        "Coverage": "Property Damage Liability",
+        "CoverageRecords": [
+          {
+            "AccountingDate": "2022-01-01",
+            "PremiumAmount": -3.5,
+            "LiabilityLimitsName": "State Statutory Basic Limits Through",
+            "LiabilityLimitsAmount": "$100,000",
+            "Exposure": 0,
+            "MonthsCovered": 3,
+            "SingleMultiCarRating": "Single Car Rated",
+            "Terrorism": "N/A",
+            "Packaging": "Auto coverage written as a separate policy and not an endorsement to another policy.",
+            "PoolAffiliation": "Preferred Risk",
+            "UMUIMStacking": "N/A",
+            "PassiveRestraintDiscount": "Not Applicable",
+            "AntiLockBrakesDiscount": "Anti-Lock Braking System discount applied to this coverage.",
+            "DefensiveDriverDiscount": "Driver does not qualify for the defensive driver discount available on this coverage."
+          }
+        ]
+      }
+    }
+  }
+}           
+  )
 
 use('openIDL')
 db.policy.find({'PersonalAuto': {$exists:true}})
+
+use('openIDL')
+db.policy.update('')
 
 use('openIDL'); 
 db.insurance.count({"RecordType": "Premium"})
