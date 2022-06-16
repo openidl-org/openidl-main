@@ -7,8 +7,8 @@ const util = require('util')
 
 
 const dbName = conn.dbName;
-//const filterPolicy = "A131 779" //big
-const filterPolicy = 'A135 261'; //small
+const filterPolicy = "A131 779" //big
+//const filterPolicy = 'A135 261'; //small
 const collection = 'insurance';
 
 
@@ -162,32 +162,62 @@ async function appendCoverage(dbManager, idmRecord,policyRecord){
         let coverage = makeCoverage(idmRecord)
         if (coverage_present){
             console.log('append')
-            // // console.log('top record')
-            // // console.table(policyRecord)
-            // // console.log('personal auto')
-            // console.table(policyRecord['PersonalAuto'])
-            // console.table(policyRecord['PersonalAuto']['Coverages'][newCoverageCode])
-            // console.log('coverage')
+            console.log('top record')
+            console.table(policyRecord)
+            console.log('personal auto')
+            console.table(policyRecord['PersonalAuto'])
+            console.table(policyRecord['PersonalAuto']['Coverages'][newCoverageCode])
+            console.log('coverage : '+newCoverageCode)
             // console.table(coverage[newCoverageCode])
-            if (coverage[newCoverageCode]==policyRecord['PersonalAuto']['Coverages'][newCoverageCode]){
+
+
+
+            if (policyRecord['PersonalAuto']['Coverages'][newCoverageCode]){
                 //existing coverage code
-                let coverageRecords = coverage[newCoverageCode].CoverageRecords
-                if (policyRecord['PersonalAuto']['Coverages'][newCoverageCode].CoverageRecords == coverageRecords){
+                console.log('existing code')
+                let stop = true
+                let IDMcoverageRecords = coverage[newCoverageCode].CoverageRecords
+                let policyCoverageRecords = policyRecord['PersonalAuto']['Coverages'][newCoverageCode].CoverageRecords
+                delete IDMcoverageRecords._id //delete pk
+                delete policyCoverageRecords._id //delete pk
+                // console.table(IDMcoverageRecords)
+                // console.table(policyCoverageRecords)
+                // let e = false
+                // if (JSON.stringify(IDMcoverageRecords) == JSON.stringify(policyCoverageRecords)){
+                //     e = true
+                // }
+                // fs.writeFileSync('../../../con-data/idm.json', JSON.stringify(IDMcoverageRecords))
+                // fs.writeFileSync('../../../con-data/policy3.json', JSON.stringify(policyCoverageRecords))
+                // console.log(e)
+                // c()
+                let present = false
+                if (JSON.stringify(IDMcoverageRecords) == JSON.stringify(policyCoverageRecords)){
                     //duplicate pass
+                    console.log('duplicate pass')
+                    present = true
+                    x()
+
                 }
 
-                if (!policyRecord['PersonalAuto']['Coverages'][newCoverageCode].CoverageRecords == coverageRecords){
-                    let coverageRecord = coverageRecords[0]
-                    let present = false
-                    for (let lcl_record of policyRecord['PersonalAuto']['Coverages'][newCoverageCode].CoverageRecords){
-                            if (lcl_record == coverageRecord){
+                else {
+                    console.log('append to existing coverage: '+newCoverageCode)
+                    let IDMcoverageRecord = IDMcoverageRecords[0]
+                    
+                    for (let lcl_record of policyCoverageRecords){
+                            console.table(lcl_record)
+                            console.table(IDMcoverageRecord)
+                            if (JSON.stringify(IDMcoverageRecord) == JSON.stringify(lcl_record)){
                                 present = true
                             }
+                            
                     }
                     if (!present){
-                        policyRecord['PersonalAuto']['Coverages'][newCoverageCode].CoverageRecords.push(coverageRecord)
+                        policyRecord['PersonalAuto']['Coverages'][newCoverageCode].CoverageRecords.push(IDMcoverageRecord)
                     }
+                
+
                 }
+              
             }
             
 

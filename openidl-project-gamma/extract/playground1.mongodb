@@ -108,6 +108,17 @@ db.insurance.aggregate(
     ]
 )
 
+use('openIDL'); 
+db.insurance.aggregate(
+    [ 
+        {$match: {"Policy.LineOfBusiness": "Auto"}},
+        {$match: {"Policy.Subline": "Private Passenger Auto"}},
+        {$match: {"Policy.AccountingDate": {$gt:"2020-01-01"}}},
+        {$match: {"Policy.AccountingDate": {$lt:"2021-01-01"}}},
+        {$group: {_id: "$Policy.PolicyIdentifier", totalCoverages: {$distinct: "$Coverage.CoverageCode"}}},
+        {$sort: {recordCount: -1}}
+    ]
+)
 
 use('openIDL'); 
 db.insurance.aggregate(
