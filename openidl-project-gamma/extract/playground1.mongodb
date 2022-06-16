@@ -19,6 +19,9 @@ db.insurance.find({
 })
 
 
+use('openIDL')
+db.policy.find({'PersonalAuto': {$exists:true}})
+
 use('openIDL'); 
 db.insurance.count({"RecordType": "Premium"})
 

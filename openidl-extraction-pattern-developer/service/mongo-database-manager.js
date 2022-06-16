@@ -62,6 +62,13 @@ class MongoDBManager {
         logger.debug("Done Putting Data into: " + dbName + "." + collectionName)
     }
 
+    async updateData(data,key,value, dbName, collectionName) {
+        logger.debug("updating Data into: " +data )
+        // await this.useDatabase(dbName)
+        await this.db.collection(collectionName).update({[key]:[value]},data)
+        logger.debug("Done updatingData into: " + dbName + "." + collectionName)
+    }
+
     async loadDataFromInsuranceDataManagerPayload(data, dbName, collectionName) {
         logger.debug("Putting Data into: " + dbName + "." + collectionName)
         console.log(data)
