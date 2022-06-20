@@ -1,21 +1,21 @@
 
 
 
-function makeVehicle(idmPolicy){
+function makeVehicle(idmRecord){
 	let target = {}
-	target['ZipCode'] = idmPolicy.Policy.ZipCode
-	target['ZipCodeSuffix'] = idmPolicy.Policy.ZipCodeSuffix
-	target["VehicleUse"] = idmPolicy.Policy.VehicleUse
+	target['ZipCode'] = idmRecord.Policy.ZipCode
+	target['ZipCodeSuffix'] = idmRecord.Policy.ZipCodeSuffix
+	target["VehicleUse"] = idmRecord.Policy.VehicleUse
 	return target
 }
 
 
-function makeCoverageIDM(idmPolicy) {
-	let coverageCode = idmPolicy.Coverage.CoverageCode;
-	console.log('coverage code: '+coverageCode) // 1
-	let coverageCategory = idmPolicy.Coverage.CoverageCategory;
-	let coverage = idmPolicy.Coverage.Coverage;
-	let record = makeCoverageRecord(idmPolicy);
+function makeCoverageIDM(idmRecord) {
+	let coverageCode = idmRecord.Coverage.CoverageCode;
+	//console.log('coverage code: '+coverageCode) // 1
+	let coverageCategory = idmRecord.Coverage.CoverageCategory;
+	let coverage = idmRecord.Coverage.Coverage;
+	let record = makeCoverageRecord(idmRecord);
 
 	let coverages = {
 		[coverageCode]: {
@@ -24,34 +24,47 @@ function makeCoverageIDM(idmPolicy) {
 			CoverageRecords: [record]
 		}
 	};
-	console.table(idmPolicy['Coverage'])
-	console.table(coverages);
+	// console.table(idmRecord['Coverage'])
+	// console.table(coverages);
 	return coverages;
 }
 
 
-function makeCoverageRecord(idmPolicy) {
+function makeCoverageRecord(idmRecord) {
 	let target = {};
-	target['AccountingDate'] = idmPolicy.Policy.AccountingDate;
-	target['PremiumAmount'] = idmPolicy.Policy.PremiumAmount;
-	target['LiabilityLimitsName'] = idmPolicy.Coverage.LiabilityLimitsName;
-	target['LiabilityLimitsAmount'] = idmPolicy.Coverage.LiabilityLimitsAmount;
-	target['Exposure'] = idmPolicy.Coverage.Exposure;
-	target['MonthsCovered'] = idmPolicy.Coverage.MonthsCovered;
-	target['SingleMultiCarRating'] = idmPolicy.Coverage.SingleMultiCarRating;
-	target['Terrorism'] = idmPolicy.Coverage.Terrorism;
-	target['Packaging'] = idmPolicy.Coverage.Packaging;
-	target['PoolAffiliation'] = idmPolicy.Coverage.PoolAffiliation;
-	target['UMUIMStacking'] = idmPolicy.Coverage.UMUIMStacking;
+	target['AccountingDate'] = idmRecord.Policy.AccountingDate;
+	target['PremiumAmount'] = idmRecord.Policy.PremiumAmount;
+	target['LiabilityLimitsName'] = idmRecord.Coverage.LiabilityLimitsName;
+	target['LiabilityLimitsAmount'] = idmRecord.Coverage.LiabilityLimitsAmount;
+	target['Exposure'] = idmRecord.Coverage.Exposure;
+	target['MonthsCovered'] = idmRecord.Coverage.MonthsCovered;
+	target['SingleMultiCarRating'] = idmRecord.Coverage.SingleMultiCarRating;
+	target['Terrorism'] = idmRecord.Coverage.Terrorism;
+	target['Packaging'] = idmRecord.Coverage.Packaging;
+	target['PoolAffiliation'] = idmRecord.Coverage.PoolAffiliation;
+	target['UMUIMStacking'] = idmRecord.Coverage.UMUIMStacking;
 	target['PassiveRestraintDiscount'] =
-		idmPolicy.Coverage.PassiveRestraintDiscount;
+		idmRecord.Coverage.PassiveRestraintDiscount;
 	target['AntiLockBrakesDiscount'] =
-		idmPolicy.Coverage.AntiLockBrakesDiscount;
+		idmRecord.Coverage.AntiLockBrakesDiscount;
 	target['DefensiveDriverDiscount'] =
-		idmPolicy.Coverage.DefensiveDriverDiscount;
+		idmRecord.Coverage.DefensiveDriverDiscount;
 
 	//console.table(target)
 	return target;
 }
 
-module.exports = {makeVehicle, makeCoverageIDM, makeCoverageRecord}
+function makeAutoPolicy(idmPolicy) {
+	let target = {};
+	target['PolicyIdentifier'] = idmPolicy.Policy.PolicyIdentifier;
+	target['State'] = idmPolicy.Policy.State;
+	target['LineOfBusiness'] = idmPolicy.Policy.LineOfBusiness;
+	target['Subline'] = idmPolicy.Policy.Subline;
+	(target['SublineCategory'] = idmPolicy.Policy.SublineCategory),
+		(target['Vehicle'] = makeVehicle(idmPolicy));
+	target['Coverages'] = makeCoverageIDM(idmPolicy);
+
+	return target;
+}
+
+module.exports = {makeAutoPolicy,makeVehicle, makeCoverageIDM, makeCoverageRecord}
