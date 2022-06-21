@@ -119,14 +119,14 @@ async function awaitFunction(dbManager, filterPolicy, dbName) {
 		'Policy.Subline': 'Private Passenger Auto',
 		'Policy.SublineCategory': 'Personal'
 	};
-	//let q1 = { };
+	q1 = { };
 	let records = await find(dbManager, dbName, 'insurance', q1);
 
 	count = 0;
 
 	for (let idmRecord of records) {
 		let policyIdentifier = idmRecord.Policy.PolicyIdentifier;
-		let coverageCode = idmRecord.Coverage.CoverageCode;
+		//let coverageCode = idmRecord.Coverage.CoverageCode;
 		const tgt_collection = 'policy';
 		let policy = makeAutoPolicy(idmRecord);
 
@@ -163,10 +163,10 @@ async function awaitFunction(dbManager, filterPolicy, dbName) {
 		}
 
 		count = count + 1;
-		if (count == 7) {
-			break;
-		}
-		console.log('\n\n')
+		// if (count == 7) {
+		// 	break;
+		// }
+		console.log('\n')
 	}
 	await dbManager.disconnect();
 }

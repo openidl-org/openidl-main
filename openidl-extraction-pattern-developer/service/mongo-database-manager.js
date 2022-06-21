@@ -1,6 +1,7 @@
 const log4js = require('log4js');
 const logger = log4js.getLogger('mongo-db-manager');
-logger.level = "debug"
+// logger.level = "debug"
+logger.level = "off"
 const { emitDeprecationWarning } = require('mongodb/lib/utils');
 const safeEval = require('safe-eval')
 
@@ -65,8 +66,8 @@ class MongoDBManager {
     async replacePolicyData(data,value,  collectionName) {
         logger.debug("replacing Data into: " +data )
         // await this.useDatabase(dbName)
-        console.table(data)
-        console.log('key: policy idenifier value: '+value)
+        //console.table(data)
+        //console.log('key: policy idenifier value: '+value)
    
         delete data._id
 

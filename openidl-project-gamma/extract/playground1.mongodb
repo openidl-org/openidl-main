@@ -78,6 +78,23 @@ db.policy.replaceOne({"PolicyIdentifier": 'A135 261'}
 use('openIDL')
 db.policy.find({'PersonalAuto': {$exists:true}})
 
+
+use('openIDL')
+db.policy.find({ 'Policy.PolicyIdentifier': 'A135 261',  'Policy.LineOfBusiness': 'Auto'
+, 'Subline': 'Private Passenger Auto', 'SublineCategory': 'Personal'})
+
+
+use('openIDL')
+db.insurance.find({'Policy.PolicyIdentifier': 'A135 261','Policy.LineOfBusiness': 'Auto'
+, 'Policy.Subline': 'Private Passenger Auto','Policy.SublineCategory': 'Personal'})
+
+use('openIDL')
+db.insurance.find({'Policy.PolicyIdentifier': 'A135 261','Policy.LineOfBusiness': 'Auto'})
+
+use('openIDL')
+db.insurance.find({'Policy.LineOfBusiness': 'Auto'
+, 'Subline': 'Private Passenger Auto', 'SublineCategory': 'Personal'})
+
 use('openIDL')
 db.policy.update('')
 

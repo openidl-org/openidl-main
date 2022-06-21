@@ -60,6 +60,7 @@ function makeAutoPolicy(idmPolicy) {
 	target['State'] = idmPolicy.Policy.State;
 	target['LineOfBusiness'] = idmPolicy.Policy.LineOfBusiness;
 	target['Subline'] = idmPolicy.Policy.Subline;
+    target['Error'] = idmPolicy.Policy.Error
 	(target['SublineCategory'] = idmPolicy.Policy.SublineCategory),
 		(target['Vehicle'] = makeVehicle(idmPolicy));
 	target['Coverages'] = makeCoverageIDM(idmPolicy);
