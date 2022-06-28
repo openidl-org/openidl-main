@@ -19,9 +19,11 @@ function makeCoverageIDM(idmRecord) {
 
 	let coverages = {
 		[coverageCode]: {
+			CoverageCode: coverageCode,
 			CoverageCategory: coverageCategory,
 			Coverage: coverage,
 			CoverageRecords: [record]
+			
 		}
 	};
 	// console.table(idmRecord['Coverage'])
@@ -29,11 +31,67 @@ function makeCoverageIDM(idmRecord) {
 	return coverages;
 }
 
+// function addMonths(date, months) {
+//     var d = date.getDate();
+//     date.setMonth(date.getMonth() + +months);
+//     if (date.getDate() != d) {
+//       date.setDate(0);
+//     }
+//     return date;
+// }
+
+function addMonths(date, months) {
+    //var d = date.getDate();
+    date.setMonth(date.getMonth() +months);
+	date.setDate(date.getDay() -2 )
+    return date;
+}
+
+function makeDate(datestr){
+	let date_array = datestr.split("-")
+	let year = parseInt(date_array[0])
+	let month = parseInt(date_array[1])-1 //make date is zero indexed
+	let day = parseInt(date_array[2])
+	let date = new Date (year, month, day)
+	return date
+}
+
+function add_term(datestr, term){
+	let date = makeDate(datestr)
+	let rv_date = addMonths(date, term)
+	let rv_year = rv_date.getFullYear()
+	let rv_month = rv_date.getMonth() +2
+	let rv_day = rv_date.getDay()
+	if (rv_month < 10){
+		rv_month= '0'+rv_month.toString()
+	}
+	if (rv_day < 10){
+		rv_day= '0'+rv_day.toString()
+	}
+
+	if (rv_month =='00'){
+		rv_month = '01'
+	}
+
+	if (rv_day =='00'){
+		rv_day = '01'
+	}
+
+	let rv_string = rv_year+'-'+rv_month+'-'+rv_day
+	console.log(datestr+' term: '+term+' new date:'+rv_string)
+	return rv_string
+	
+}
+
+
+
 
 function makeCoverageRecord(idmRecord) {
 	let target = {};
 	target['AccountingDate'] = idmRecord.Policy.AccountingDate;
+	target['AccountingTermExpiration'] = add_term(idmRecord.Policy.AccountingDate, idmRecord.Coverage.MonthsCovered ) 
 	target['PremiumAmount'] = idmRecord.Policy.PremiumAmount;
+	target['MonthlyPremiumAmount'] =  parseFloat((idmRecord.Policy.PremiumAmount/idmRecord.Coverage.MonthsCovered).toFixed(3));
 	target['LiabilityLimitsName'] = idmRecord.Coverage.LiabilityLimitsName;
 	target['LiabilityLimitsAmount'] = idmRecord.Coverage.LiabilityLimitsAmount;
 	target['Exposure'] = idmRecord.Coverage.Exposure;
@@ -60,7 +118,10 @@ function makeAutoPolicy(idmPolicy) {
 	target['State'] = idmPolicy.Policy.State;
 	target['LineOfBusiness'] = idmPolicy.Policy.LineOfBusiness;
 	target['Subline'] = idmPolicy.Policy.Subline;
-    target['Error'] = idmPolicy.Policy.Error
+    if (idmPolicy.Policy.Error){
+		target['Error'] = idmPolicy.Policy.Error
+	}
+	
 	(target['SublineCategory'] = idmPolicy.Policy.SublineCategory),
 		(target['Vehicle'] = makeVehicle(idmPolicy));
 	target['Coverages'] = makeCoverageIDM(idmPolicy);
@@ -68,4 +129,4 @@ function makeAutoPolicy(idmPolicy) {
 	return target;
 }
 
-module.exports = {makeAutoPolicy,makeVehicle, makeCoverageIDM, makeCoverageRecord}
+module.exports = {makeAutoPolicy,makeVehicle, makeCoverageIDM, makeCoverageRecord, makeDate}

@@ -53,7 +53,7 @@ async function appendAutoCoverage(dbManager, idmRecord, policyRecord) {
 		
 		
 		console.log('coverage record')
-		console.table(coverageRecord)
+		//console.table(coverageRecord)
 		for (let lcl_coverage of policyCoverageRecords) {
 			//console.log('lcl coverage')
 			//console.table(lcl_coverage)
@@ -86,10 +86,10 @@ async function appendAutoCoverage(dbManager, idmRecord, policyRecord) {
 		console.log('	New Coverage');
 
 		let newCoverageRecord = {}
+		newCoverageRecord['CoverageCode'] = newCoverageCode
 		newCoverageRecord['CoverageCategory'] = idmRecord.Coverage.CoverageCategory
 		newCoverageRecord['Coverage'] = idmRecord.Coverage.Coverage
 		newCoverageRecord['CoverageRecords'] = [coverageRecord]
-
 		policyRecord['Coverages'][newCoverageCode] = newCoverageRecord;
 	}
 	
@@ -113,18 +113,26 @@ async function insertNewPersonalAutoPolicy(
 
 async function awaitFunction(dbManager, filterPolicy, dbName) {
 	await dbManager.connect();
+	// let q1 = {
+	// 	'Policy.PolicyIdentifier': filterPolicy,
+	// 	'Policy.LineOfBusiness': 'Auto',
+	// 	'Policy.Subline': 'Private Passenger Auto',
+	// 	'Policy.SublineCategory': 'Personal'
+	// };
+
 	let q1 = {
-		'Policy.PolicyIdentifier': filterPolicy,
 		'Policy.LineOfBusiness': 'Auto',
 		'Policy.Subline': 'Private Passenger Auto',
 		'Policy.SublineCategory': 'Personal'
 	};
-	q1 = { };
+
 	let records = await find(dbManager, dbName, 'insurance', q1);
 
 	count = 0;
-
+	console.log(records.length+' idm records found.')
 	for (let idmRecord of records) {
+		//console.log('idm record')
+		//console.table(idmRecord['Coverage'])
 		let policyIdentifier = idmRecord.Policy.PolicyIdentifier;
 		//let coverageCode = idmRecord.Coverage.CoverageCode;
 		const tgt_collection = 'policy';
@@ -163,9 +171,9 @@ async function awaitFunction(dbManager, filterPolicy, dbName) {
 		}
 
 		count = count + 1;
-		// if (count == 7) {
-		// 	break;
-		// }
+		if (count == 1000) {
+			break;
+		}
 		console.log('\n')
 	}
 	await dbManager.disconnect();

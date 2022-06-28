@@ -1,0 +1,29 @@
+use('campusInsurance');
+//works, returns proper raw dataset: group1, filename: polisy.json
+db.policy.aggregate([
+  {
+     $match: { "Coverages.1.CoverageRecords.AccountingDate" : { $gte: "2020-01-01"} }
+  },
+  {
+    $match: { "Coverages.1.CoverageRecords.AccountingTermExpiration" : { $lte: "2020-03-01"} }
+  }
+])
+
+
+
+//returns earned premium as zero
+use('campusInsurance');
+db.policy.aggregate([
+  {
+     $match: { "Coverages.1.CoverageRecords.AccountingDate" : { $gte: "2020-01-01"} }
+  },
+  {
+    $match: { "Coverages.1.CoverageRecords.AccountingTermExpiration" : { $lte: "2020-03-01"} }
+  },
+  {
+    $group: { _id: "$Coverages.1.Coverage", earnedPremium: {$sum: "$Coverages.1.CoverageRecords.PremiumAmount"}}
+  }
+  ]
+)
+
+//note in mongodb Type(PremiumAmount) = int32

@@ -1,0 +1,151 @@
+use('openIDL')
+db.policy.find({'Coverages.1': {$exists:true}})
+
+
+
+//gaps: Accounting Expiration
+
+//get all records with coverage 1
+//earned premium for 2021 only. 
+//3 groups of records,
+//1. items starting before date, end of term, is middle of range, start of term before accounting date
+//2. items starting and stopping date, accounting date & end of term within range
+//3, items starting midway through, accounting date in range, end of term out of range. 
+
+//do we get other edge cases from cancelations
+
+let start =  "2020-01-15"
+use('openIDL')
+db.policy.find({"Coverages.1.CoverageRecords.AccountingDate": {$gt:"2020-06-15"}})
+
+let start =  "2020-01-15"
+use('openIDL')
+db.policy.find({"Coverages.1.CoverageRecords.MonthsCovered": {$lt:12}})
+
+use('openIDL')
+db.policy.find({"Coverages.1.CoverageRecords.PremiumAmount": {$exists:true}})
+
+                let start =  "2020-01-15"
+                use('openIDL')
+                db.policy.find({"Coverages.1.CoverageRecords.AccountingDate": {$lt:"2020-01-15"}})
+
+                let end =  "2020-01-17" 
+                use('openIDL')
+                db.policy.find({"Coverages.1.CoverageRecords.AccountingTermExpiration": {$lt:"2020-03-01"} })
+//group 1
+use('openIDL')
+let start = "2020-01-15"
+let end = "2020-03-01"
+db.policy.find({$and: [{"Coverages.1.CoverageRecords.AccountingDate": {$gte: start}},
+{"Coverages.1.CoverageRecords.AccountingTermExpiration": {$lte:end }}]})
+
+
+//group 2
+use('openIDL')
+let start = "2020-02-01"
+let end = "2021-01-01"
+db.policy.find({$and: [{"Coverages.1.CoverageRecords.AccountingDate": {$lt: start}},
+{"Coverages.1.CoverageRecords.AccountingTermExpiration": {$lte:end }},
+{"Coverages.1.CoverageRecords.AccountingTermExpiration": {$gte:start}}]})
+
+//group 3
+use('openIDL')
+let start = "2020-01-01"
+let end = "2021-01-01"
+db.policy.find({$and: [{"Coverages.1.CoverageRecords.AccountingDate": {$gte: start}},
+{"Coverages.1.CoverageRecords.AccountingDate": {$lte: end}},
+{"Coverages.1.CoverageRecords.AccountingTermExpiration": {$gt:end }}]})
+
+
+
+//----------------------------------------------------------------------------------
+//aggregate
+//group 1
+use('openIDL')
+let start = "2020-01-15"
+let end = "2020-03-01"
+db.policy.find({$and: [{"Coverages.1.CoverageRecords.AccountingDate": {$lt: start}},
+{"Coverages.1.CoverageRecords.AccountingTermExpiration": {$lt:end }}]})
+
+
+let start = "2020-01-15"
+let end = "2020-03-01"
+use('openIDL');
+db.policy.aggregate(
+  [{$match: "Coverages.1.CoverageRecords.PremiumAmount" : {$gt: 0}}
+  ]
+)
+
+use('openIDL');
+db.policy.aggregate([
+  {
+     $match: { "Coverages.1.CoverageCode" : "1"}
+     }
+  ]
+)
+
+use('openIDL');
+db.policy.aggregate([
+  {
+     $match: { "Coverages.1.CoverageRecords.AccountingDate" : "2020-01-01"}
+     }
+  ]
+)
+
+
+use('openIDL');
+//works, returns proper raw dataset: group1
+db.policy.aggregate([
+  {
+     $match: { "Coverages.1.CoverageRecords.AccountingDate" : { $gte: "2020-01-01"} }
+  },
+  {
+    $match: { "Coverages.1.CoverageRecords.AccountingTermExpiration" : { $lte: "2020-03-01"} }
+  }
+])
+
+//returns zero| SO says, its seeing PremiumAmount as a string; but it reads as in INT 
+//here to the left, and via mongoshell
+use('openIDL');
+db.policy.aggregate([
+  {
+     $match: { "Coverages.1.CoverageRecords.AccountingDate" : { $gte: "2020-01-01"} }
+  },
+  {
+    $match: { "Coverages.1.CoverageRecords.AccountingTermExpiration" : { $lte: "2020-03-01"} }
+  },
+  {
+    $group: { _id: "$Coverages.1.Coverage", earnedPremium: {$sum: "$Coverages.1.CoverageRecords.PremiumAmount"}}
+  }
+  ]
+)
+
+use('openIDL');
+db.policy.aggregate([
+  {
+     $match: { "Coverages.1.CoverageRecords.AccountingDate" : { $gte: "2020-01-01"} }
+  },
+  {
+    $match: { "Coverages.1.CoverageRecords.AccountingTermExpiration" : { $lte: "2020-03-01"} }
+  },
+  {
+    $group: { _id: "$Coverages.1.CoverageRecords.PremiumAmount", earnedPremium: {$sum: 1}}
+  }
+  ]
+)
+
+
+use('openIDL');
+db.policy.aggregate([
+  {
+     $match: { "Coverages.1.CoverageRecords.AccountingDate" : { $gte: "2020-01-01"} }
+  },
+  {
+    $match: { "Coverages.1.CoverageRecords.AccountingTermExpiration" : { $lte: "2020-03-01"} }
+  },
+  {
+    $group: { _id: "$Coverages.1.CoverageRecords.PremiumAmount"},
+  }
+  ]
+)
+     

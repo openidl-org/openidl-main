@@ -1,0 +1,99 @@
+{
+	"_id": {
+		"$oid": "678"
+	},
+	"PolicyIdentifier": "asbiuasdf",
+	"State": "PT",
+	"LineOfBusiness": "Auto",
+	"Subline": "Private Passenger Auto",
+	"SublineCategory": "Personal",
+	"Vehicle": {
+		"ZipCode": "77777",
+		"ZipCodeSuffix": "",
+		"VehicleUse": null
+	},
+	"Coverages": {
+		"1": {
+			"CoverageCode": "1",
+			"CoverageCategory": "Liability",
+			"Coverage": "Bodily Injury Liability",
+			"CoverageRecords": [
+				{
+					"AccountingDate": "2014-01-01",
+					"AccountingTermExpiration": "2014-02-02",
+					"PremiumAmount": -9,
+					"LiabilityLimitsName": "Limits",
+					"LiabilityLimitsAmount": "$250,000/500,000",
+					"Exposure": 0,
+					"MonthsCovered": 1,
+					"SingleMultiCarRating": "Multi-Car Rated",
+					"Terrorism": "N/A",
+					"Packaging": "Auto coverage written as a separate policy and not an endorsement to another policy.",
+					"PoolAffiliation": "Preferred Risk",
+					"UMUIMStacking": "N/A",
+					"PassiveRestraintDiscount": "Not Applicable",
+					"AntiLockBrakesDiscount": "Anti-Lock Braking System discount applied to this coverage.",
+					"DefensiveDriverDiscount": "Driver does not qualify for the defensive driver discount available on this coverage."
+				},
+				{
+					"AccountingDate": "2014-01-01",
+					"AccountingTermExpiration": "2014-02-02",
+					"PremiumAmount": -7,
+					"LiabilityLimitsName": "Limits",
+					"LiabilityLimitsAmount": "$250,000/500,000",
+					"Exposure": 0,
+					"MonthsCovered": 1,
+					"SingleMultiCarRating": "Multi-Car Rated",
+					"Terrorism": "N/A",
+					"Packaging": "Auto coverage written as a separate policy and not an endorsement to another policy.",
+					"PoolAffiliation": "Preferred Risk",
+					"UMUIMStacking": "N/A",
+					"PassiveRestraintDiscount": "Not Applicable",
+					"AntiLockBrakesDiscount": "Anti-Lock Braking System discount applied to this coverage.",
+					"DefensiveDriverDiscount": "Driver does not qualify for the defensive driver discount available on this coverage."
+				}
+			]
+		},
+		"2": {
+			"CoverageCode": "2",
+			"CoverageCategory": "Liability",
+			"Coverage": "Property Damage Liability",
+			"CoverageRecords": [
+				{
+					"AccountingDate": "2014-01-01",
+					"AccountingTermExpiration": "2014-02-02",
+					"PremiumAmount": -3,
+					"LiabilityLimitsName": "State Statutory Basic Limits Through",
+					"LiabilityLimitsAmount": "$100,000",
+					"Exposure": 0,
+					"MonthsCovered": 1,
+					"SingleMultiCarRating": "Multi-Car Rated",
+					"Terrorism": "N/A",
+					"Packaging": "Auto coverage written as a separate policy and not an endorsement to another policy.",
+					"PoolAffiliation": "Preferred Risk",
+					"UMUIMStacking": "N/A",
+					"PassiveRestraintDiscount": "Not Applicable",
+					"AntiLockBrakesDiscount": "Anti-Lock Braking System discount applied to this coverage.",
+					"DefensiveDriverDiscount": "Driver does not qualify for the defensive driver discount available on this coverage."
+				},
+				{
+					"AccountingDate": "2014-01-01",
+					"AccountingTermExpiration": "2014-02-02",
+					"PremiumAmount": -2,
+					"LiabilityLimitsName": "State Statutory Basic Limits Through",
+					"LiabilityLimitsAmount": "$100,000",
+					"Exposure": 0,
+					"MonthsCovered": 1,
+					"SingleMultiCarRating": "Multi-Car Rated",
+					"Terrorism": "N/A",
+					"Packaging": "Auto coverage written as a separate policy and not an endorsement to another policy.",
+					"PoolAffiliation": "Preferred Risk",
+					"UMUIMStacking": "N/A",
+					"PassiveRestraintDiscount": "Not Applicable",
+					"AntiLockBrakesDiscount": "Anti-Lock Braking System discount applied to this coverage.",
+					"DefensiveDriverDiscount": "Driver does not qualify for the defensive driver discount available on this coverage."
+				}
+			]
+		}
+	}
+}

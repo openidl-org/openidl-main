@@ -12,7 +12,7 @@ function removeError(payload){
     let clean = []
     let count = 0
     for (let record of payload){
-        if (!record['Error']){
+        if (!record['Error']===true){
             clean.push(record)
         }
         if (record['Error']){

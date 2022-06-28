@@ -125,6 +125,14 @@ db.insurance.aggregate(
     ]
 )
 
+use('openIDL');
+db.policy.aggregate(
+  [
+    {$match: {"Coverages" :  "1"}}
+  ]
+)
+
+
 use('openIDL'); 
 db.insurance.aggregate(
     [ 
