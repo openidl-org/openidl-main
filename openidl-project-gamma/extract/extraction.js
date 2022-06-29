@@ -40,7 +40,7 @@ function earnedPremium3(coverageCode, records, end){
             let year = accExp.getFullYear() - isoEnd.getFullYear
             let range = month + year
             let lclEp = range*coverage.MonthlyPremiumAmount
-            console.log('range: '+range+' lcl ep: '+lclEp+' total ep: '+earnedPremium)
+            //console.log('range: '+range+' lcl ep: '+lclEp+' total ep: '+earnedPremium)
             earnedPremium+=lclEp
 		}
 	}
@@ -65,7 +65,7 @@ function earnedPremium2(coverageCode, records, start){
             let accountingDateExp = help.makeDate(coverage.AccountingTermExpiration)
             let range = getRange2(isoStart, accountingDateExp )
             let lclEp = range*coverage.MonthlyPremiumAmount
-            console.log('range: '+range+' lcl ep: '+lclEp+' total ep: '+earnedPremium)
+            //console.log('range: '+range+' lcl ep: '+lclEp+' total ep: '+earnedPremium)
             earnedPremium+=lclEp
 		}
 	}
@@ -90,7 +90,7 @@ function earnedPremium3(coverageCode, records, end){
             let accountingDate = help.makeDate(coverage.AccountingDate)
             let range = getRange3(isoEnd,accountingDate)
             let lclEp = range*coverage.MonthlyPremiumAmount
-            console.log('range: '+range+' lcl ep: '+lclEp+' total ep: '+earnedPremium)
+            //console.log('range: '+range+' lcl ep: '+lclEp+' total ep: '+earnedPremium)
             earnedPremium+=lclEp
 		}
 	}
@@ -111,7 +111,7 @@ function earnedPremium4(coverageCode, records){
             let range = month + year
 
             let lclEp = range*coverage.MonthlyPremiumAmount
-            console.log('range: '+range+' lcl ep: '+lclEp+' total ep: '+earnedPremium)
+            //console.log('range: '+range+' lcl ep: '+lclEp+' total ep: '+earnedPremium)
             earnedPremium+=lclEp
 		}
 	}
@@ -145,7 +145,7 @@ async function earnPremium(start, end, coverageCode) {
     let r2 = await find('policy',q2)
     console.log('Find Group Three')
     let r3 = await find('policy',q3)
-    console.log('Find Group 4')
+    console.log('Find Group Four')
     let r4 = await find('policy',q4)
 
     let recordCount = r1.length+r2.length+r3.length+r4.length
