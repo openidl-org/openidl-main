@@ -170,10 +170,10 @@ async function awaitFunction(dbManager, filterPolicy, dbName) {
 			);
 		}
 
-		count = count + 1;
-		if (count == 1000) {
-			break;
-		}
+		// count = count + 1;
+		// if (count == 1000) {
+		// 	break;
+		// }
 		console.log('\n')
 	}
 	await dbManager.disconnect();

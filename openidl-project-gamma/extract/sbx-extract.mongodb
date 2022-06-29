@@ -56,6 +56,12 @@ db.policy.find({$and: [{"Coverages.1.CoverageRecords.AccountingDate": {$gte: sta
 {"Coverages.1.CoverageRecords.AccountingDate": {$lte: end}},
 {"Coverages.1.CoverageRecords.AccountingTermExpiration": {$gt:end }}]})
 
+//group 4
+use('openIDL')
+let start = "2020-01-01"
+let end = "2021-01-01"
+db.policy.find({$and: [{"Coverages.1.CoverageRecords.AccountingDate": {$lte: start}},
+{"Coverages.1.CoverageRecords.AccountingTermExpiration": {$gt:end }}]})
 
 
 //----------------------------------------------------------------------------------
