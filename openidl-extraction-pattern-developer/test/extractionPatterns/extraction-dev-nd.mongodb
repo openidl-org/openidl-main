@@ -36,6 +36,7 @@ db.insurance_trx_db_5.find({$and: [{'vin': vin}
 db.insurance_trx_db_5.find({$and: [{'vin': vin}
 , {'effectiveDate': { $lte: queryDate}},{"expirationDate": {$gte: queryDate}} ]})
 
+let queryDate = '2022-06-15'
 let vins = ["12345678901234567",
     "12345678901234568",
     "12345678901234569",
