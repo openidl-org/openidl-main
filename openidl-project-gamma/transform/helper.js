@@ -1,4 +1,7 @@
-
+const MongoDBManager = require('../../openidl-extraction-pattern-developer/service/mongo-database-manager');
+const conn = require('../../openidl-extraction-pattern-developer/connection.json');
+var manager = new MongoDBManager({ url: 'mongodb://localhost:27017' });
+const dbName = conn.dbName;
 
 
 function makeVehicle(idmRecord){
@@ -128,5 +131,6 @@ function makeAutoPolicy(idmPolicy) {
 
 	return target;
 }
+
 
 module.exports = {makeAutoPolicy,makeVehicle, makeCoverageIDM, makeCoverageRecord, makeDate}

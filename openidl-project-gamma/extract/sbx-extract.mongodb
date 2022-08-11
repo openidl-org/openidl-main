@@ -37,7 +37,8 @@ use('openIDL')
 let start = "2020-01-15"
 let end = "2020-03-01"
 db.policy.find({$and: [{"Coverages.1.CoverageRecords.AccountingDate": {$gte: start}},
-{"Coverages.1.CoverageRecords.AccountingTermExpiration": {$lte:end }}]})
+{"Coverages.1.CoverageRecords.AccountingTermExpiration": {$lte:end }}
+,{"Coverages.1.CoverageRecords.PremiumAmount": {$gt: 0} }]})
 
 
 //group 2
@@ -47,6 +48,15 @@ let end = "2021-01-01"
 db.policy.find({$and: [{"Coverages.1.CoverageRecords.AccountingDate": {$lt: start}},
 {"Coverages.1.CoverageRecords.AccountingTermExpiration": {$lte:end }},
 {"Coverages.1.CoverageRecords.AccountingTermExpiration": {$gte:start}}]})
+
+
+use('openIDL')
+let start = "2020-02-01"
+let end = "2021-01-01"
+db.policy.find({$and: [{"Coverages.1.CoverageRecords.AccountingDate": {$lt: start}},
+{"Coverages.1.CoverageRecords.AccountingTermExpiration": {$lte:end }},
+{"Coverages.1.CoverageRecords.AccountingTermExpiration": {$gte:start}},
+{"Coverages.1.CoverageRecords.Exposure": {$gt: 0} }]})
 
 //group 3
 use('openIDL')

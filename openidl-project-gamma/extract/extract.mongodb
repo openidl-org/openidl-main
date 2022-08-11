@@ -10,6 +10,51 @@ db.policy.aggregate([
 ])
 
 
+use('openIDL')
+let start = "2020-02-01"
+let end = "2021-01-01"
+db.insurance.find({"TransactionCode": {$in: ['2','3','6','7']}})
+
+use('openIDL')
+let start = "2020-02-01"
+let end = "2021-01-01"
+db.insurance.find({$and: [{"TransactionCode": {$in: ['2','3','6','7']}},
+{"Coverages.1.CoverageRecords.AccountingDate": {$lt: start}},
+{"Coverages.1.CoverageRecords.AccountingTermExpiration": {$lt:end }}]})
+
+use('openIDL')
+let start = "2013-01-01"
+let end = "2022-01-01"
+db.insurance.find({"TransactionCode": "2"})
+
+use('openIDL')
+let start = "2013-01-01"
+let end = "2022-01-01"
+db.insurance.find({"Claim.AccidentDate": "2013-09-01"})
+
+use('openIDL')
+let start = "2013-01-01"
+let end = "2022-01-01"
+db.insurance.find({$and: [{"TransactionCode": "2"}
+,{"Claim.AccidentDate": "2013-09-01"}]})
+
+use('openIDL')
+let start = "2013-01-01"
+let end = "2022-01-01"
+db.insurance.find({"Claim.AccidentDate": {$gt: start}})
+
+use('openIDL')
+let start = "2013-01-01"
+let end = "2022-01-01"
+db.insurance.find({$and: [{"TransactionCode": "2"}
+,{"Claim.AccidentDate": {$gt: start}}]})
+
+////
+
+
+
+
+
 
 //returns earned premium as zero
 use('campusInsurance');
