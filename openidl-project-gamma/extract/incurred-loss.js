@@ -73,9 +73,11 @@ async function getIncurredLoss(start, end, coverageCode) {
 	await manager.connect();
 
 	//get all paid loss within time line
+    //TODO: 
 	let q1 = {
 		$and: [
 			{ TransactionCode: '2' },
+            { 'Coverage.CoverageCode': coverageCode },
 			{ 'Claim.AccidentDate': { $gte: start } },
 			{ 'Claim.AccidentDate': { $lte: end } }
 		]
@@ -85,6 +87,7 @@ async function getIncurredLoss(start, end, coverageCode) {
 	let q2 = {
 		$and: [
 			{ TransactionCode: '3' },
+            { 'Coverage.CoverageCode': coverageCode },
 			{ 'Claim.AccidentDate': { $gte: start } },
 			{ 'Claim.AccidentDate': { $lte: end } }
 		]
@@ -103,13 +106,13 @@ async function getIncurredLoss(start, end, coverageCode) {
 			paidLoss +
 			'\n   Outstanding Loss: ' +
 			outstandLoss +
-			'\n   Incurred Loss:' +
+			'\n   Incurred Loss: ' +
 			incurredLoss
 	);
 }
 
 let start = '2020-02-01';
 let end = '2021-01-01';
-let coverageCode = 1;
+let coverageCode = "1";
 
 getIncurredLoss(start, end, coverageCode);
