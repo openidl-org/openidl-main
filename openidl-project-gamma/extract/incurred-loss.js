@@ -30,7 +30,7 @@ function sumOutstanding(records) {
 	for (let record of records) {
 		//console.log('identifier: '+record.Claim.OccurrenceIdentifier)
 
-		//check if OccurrenceIdentifierw already exists in result set
+		//check if OccurrenceIdentifier already exists in result set
 		let present = null;
 		if (record.Claim.OccurrenceIdentifier in resultSet) {
 			//console.log('True')
@@ -73,7 +73,6 @@ async function getIncurredLoss(start, end, coverageCode) {
 	await manager.connect();
 
 	//get all paid loss within time line
-    //TODO: 
 	let q1 = {
 		$and: [
 			{ TransactionCode: '2' },
@@ -113,6 +112,6 @@ async function getIncurredLoss(start, end, coverageCode) {
 
 let start = '2020-02-01';
 let end = '2021-01-01';
-let coverageCode = "1";
+let coverageCode = "1";  
 
 getIncurredLoss(start, end, coverageCode);
