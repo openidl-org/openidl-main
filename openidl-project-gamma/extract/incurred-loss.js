@@ -108,6 +108,7 @@ async function getIncurredLoss(start, end, coverageCode) {
 			'\n   Incurred Loss: ' +
 			incurredLoss
 	);
+    return incurredLoss
 }
 
 let start = '2020-02-01';
@@ -115,3 +116,4 @@ let end = '2021-01-01';
 let coverageCode = "1";  
 
 getIncurredLoss(start, end, coverageCode);
+
