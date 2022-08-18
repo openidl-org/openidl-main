@@ -14,11 +14,54 @@ import { StorageService } from '../../services/storage.service';
 import { MESSAGE } from '../../config/messageBundle';
 import { DialogService } from '../../services/dialog.service';
 import { NotifierService } from '../../services/notifier.service';
+import {
+	MomentDateAdapter,
+	MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+  } from '@angular/material-moment-adapter';
+  import {
+	DateAdapter,
+	MAT_DATE_FORMATS,
+	MAT_DATE_LOCALE,
+  } from '@angular/material/core';
+  import { MatDatepicker } from '@angular/material/datepicker';
+  
+  // Depending on whether rollup is used, moment needs to be imported differently.
+  // Since Moment.js doesn't have a default export, we normally need to import using the `* as`
+  // syntax. However, rollup creates a synthetic default module and we thus need to import it using
+  // the `default as` syntax.
+  import * as _moment from 'moment';
+  // tslint:disable-next-line:no-duplicate-imports
+  import { default as _rollupMoment, Moment } from 'moment';
+  
+  const moment = _rollupMoment || _moment;
+  
+  // See the Moment.js docs for the meaning of these formats:
+  // https://momentjs.com/docs/#/displaying/format/
+  export const MY_FORMATS = {
+	parse: {
+	  dateInput: 'YYYY/MM',
+	},
+	display: {
+	  dateInput: 'YYYY/MM',
+	},
+  };  
 
 @Component({
 	selector: 'app-form',
 	templateUrl: './form.component.html',
-	styleUrls: ['./form.component.scss']
+	styleUrls: ['./form.component.scss'],
+	providers: [
+	  // `MomentDateAdapter` can be automatically provided by importing `MomentDateModule` in your
+	  // application's root module. We provide it at the component level here, due to limitations of
+	  // our example generation script.
+	  {
+		provide: DateAdapter,
+		useClass: MomentDateAdapter,
+		deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+	  },
+  
+	  { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+	]
 })
 export class FormComponent implements OnInit, OnDestroy {
 	// Event emitted to the parent component
@@ -105,6 +148,7 @@ export class FormComponent implements OnInit, OnDestroy {
 				premiumToDate: [dataCall.premiumToDate, [Validators.required]],
 				lossFromDate: [dataCall.lossFromDate, [Validators.required]],
 				lossToDate: [dataCall.lossToDate, [Validators.required]],
+				transactionMonth: [moment(), [Validators.required]],
 				deadline: [dataCall.deadline, [Validators.required]],
 				purpose: [dataCall.purpose, [Validators.required]],
 				isShowParticipants: [dataCall.isShowParticipants],
@@ -137,6 +181,7 @@ export class FormComponent implements OnInit, OnDestroy {
 				premiumToDate: [endDate, [Validators.required]],
 				lossFromDate: [startDate, [Validators.required]],
 				lossToDate: [endDate, [Validators.required]],
+				transactionMonth: [moment(), [Validators.required]],
 				deadline: ['', [Validators.required]],
 				purpose: ['', [Validators.required]],
 				isShowParticipants: [true],
@@ -289,4 +334,20 @@ export class FormComponent implements OnInit, OnDestroy {
 		// display today and future dates
 		return selected.setHours(0, 0, 0, 0) >= now.setHours(0, 0, 0, 0);
 	};
+
+	chosenYearHandler(normalizedYear: Moment) {
+		const ctrlValue = this.registerForm.get('transactionMonth').value;
+		ctrlValue.year(normalizedYear.year());
+		this.registerForm.get('transactionMonth').setValue(ctrlValue);
+	}
+	
+	chosenMonthHandler(
+		normalizedMonth: Moment,
+		datepicker: MatDatepicker<Moment>
+	) {
+		const ctrlValue = this.registerForm.get('transactionMonth').value;
+		ctrlValue.month(normalizedMonth.month());
+		this.registerForm.get('transactionMonth').setValue(ctrlValue);
+		datepicker.close();
+	}
 }
