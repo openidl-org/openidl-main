@@ -49,26 +49,76 @@ let end = "2022-01-01"
 db.insurance.find({$and: [{"TransactionCode": "2"}
 ,{"Claim.AccidentDate": {$gt: start}}]})
 
-////
 
 
+use('openIDL')
+let start = "2013-01-01"
+let end = "2022-01-01"
+let coverageCode = "1"
+db.insurance.find({$and: [{"Coverage.CoverageCode": coverageCode}]})
+
+use('openIDL')
+let start = "2013-01-01"
+let end = "2022-01-01"
+let coverageCode = "1"
+db.insurance.find({$and: [{"Policy.AccountingDate": {$gte: start}}]})
+
+use('openIDL')
+let start = "2013-01-01"
+let end = "2022-01-01"
+let coverageCode = "1"
+db.insurance.find({$and: [{"Policy.AccountingTermExpiration": {$lte:end }}]})
+
+use('openIDL')
+let start = "2013-01-01"
+let end = "2022-01-01"
+let coverageCode = "1"
+db.insurance.find({$and: [{"Policy.AccountingDate": {$gte: start}},
+	{"Policy.AccountingTermExpiration": {$lte:end }}]})
 
 
+use('openIDL')
+let start = "2013-01-01"
+let end = "2022-01-01"
+let coverageCode = "1"
+db.insurance.find({$and: [{"Policy.AccountingDate": {$gte: start}},
+	{"Policy.AccountingTermExpiration": {$lte:end }},{"Coverage.CoverageCode": coverageCode}]})
 
 
-//returns earned premium as zero
-use('campusInsurance');
-db.policy.aggregate([
-  {
-     $match: { "Coverages.1.CoverageRecords.AccountingDate" : { $gte: "2020-01-01"} }
-  },
-  {
-    $match: { "Coverages.1.CoverageRecords.AccountingTermExpiration" : { $lte: "2020-03-01"} }
-  },
-  {
-    $group: { _id: "$Coverages.1.Coverage", earnedPremium: {$sum: "$Coverages.1.CoverageRecords.PremiumAmount"}}
-  }
-  ]
-)
+use('openIDL')
+db.insurance.find({$and: [{"Coverage.Exposure": {$lte: 0}}
+, {"Coverage.MonthsCovered": {$gt: 1}}
+, {"Policy.PremiumAmount":{$lte: 0}}]})
 
-//note in mongodb Type(PremiumAmount) = int32
+use('openIDL')
+db.insurance.find({$and: [{"Coverage.Exposure": 0}
+, {"Coverage.MonthsCovered": {$gt: 1}}
+, {"Policy.PremiumAmount":{$lte: 0}}]})
+
+use('openIDL')
+db.insurance.find({$and: [{"Policy.PolicyIdentifier": "A103 782-2"}, 
+{"Coverage.CoverageCode": "3"}, {"Driver.OperatorAge": "55 - 64"}, {"Driver.Gender": "Female"},
+{"Driver.MaritialStatus": "Married"}]})
+
+use('openIDL')
+db.insurance.find({$and: [{"Policy.PolicyIdentifier": "A103 782-2"},
+{"Coverage.CoverageCode": "3"},
+{"Driver.OperatorAge": "55 - 64"},
+{"Driver.Gender": "Female"},
+{"Driver.MaritalStatus": "Married"}
+]})
+
+use('openIDL')
+db.insurance.find({$and  [{"Coverage.MonthsCovered": {$gte: 1}}]})
+
+use('openIDL')
+db.insurance.find({$and: [{"Coverage.MonthsCovered": {$gt: 12}}  ]})
+
+use('openIDL')
+db.insurance.find({$and: [{"TransactionCode": "1"}
+, {"Policy.PremiumAmount": {$lt: 0}}]})
+
+use('openIDL')
+db.insurance.find({$and: [{"TransactionCode": "1"}
+, {"Policy.PremiumAmount": {$lt: 0}}
+, {"Coverage.Exposure" : {$lt: 0}}  ]})
