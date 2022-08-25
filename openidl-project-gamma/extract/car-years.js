@@ -90,7 +90,6 @@ async function getCarYears(start, end, coverageCode){
     ,{"Coverage.CoverageCode": coverageCode}
     ,{"TransactionCode": transactionCode}]}
 
-
     let q4 = {$and: [{"Policy.AccountingDate": {$lte: start}},
     {"Policy.AccountingTermExpiration": {$gt:end }}
     ,{"Coverage.CoverageCode": coverageCode}
