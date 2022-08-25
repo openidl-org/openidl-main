@@ -13,6 +13,21 @@
 			<td mat-cell *matCellDef="let row">{{ row.name }}</td>
 		</ng-container>
 
+		<!-- Transaction Month Column -->
+		<ng-container matColumnDef="transactionMonth">
+			<th
+				mat-header-cell
+				*matHeaderCellDef
+				mat-sort-header
+				class="col-transaction-month"
+			>
+				Transaction Month
+			</th>
+			<td mat-cell *matCellDef="let row">
+				{{ row.transactionMonth | date: 'YYYY/MM' }}
+			</td>
+		</ng-container>
+
 		<!-- Deadline Column -->
 		<ng-container matColumnDef="deadline">
 			<th
