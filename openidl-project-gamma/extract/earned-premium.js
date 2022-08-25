@@ -70,6 +70,7 @@ function earnedPremium3(coverageCode, records, end){
 	return earnedPremium
 }
 
+//wrong, this is doing the full record.
 function earnedPremium4(coverageCode, records){
 	let earnedPremium = 0
 	for (let record of records){
@@ -95,13 +96,13 @@ function earnedPremium4(coverageCode, records){
 async function earnPremium(start, end, coverageCode) {
 	await manager.connect();
 
-    //queries
-	let q1 = {$and: [{"Coverages.1.CoverageRecords.AccountingDate": {$lt: start}},
-	{"Coverages.1.CoverageRecords.AccountingTermExpiration": {$lt:end }}]}
+    //queries  //needs review again, 8/24/22
+	let q1 = {$and: [{"Coverages.1.CoverageRecords.AccountingDate": {$gte: start}},
+	{"Coverages.1.CoverageRecords.AccountingTermExpiration": {$lte:end }}]}
     
 	let q2 = {$and: [{"Coverages.1.CoverageRecords.AccountingDate": {$lt: start}},
     {"Coverages.1.CoverageRecords.AccountingTermExpiration": {$lte:end }},
-    {"Coverages.1.CoverageRecords.AccountingTermExpiration": {$gte:start}}]}
+    {"Coverages.1.CoverageRecords.AccountingTermExpiration": {$gt:start}}]}
 
     let q3 = {$and: [{"Coverages.1.CoverageRecords.AccountingDate": {$gte: start}},
 	{"Coverages.1.CoverageRecords.AccountingDate": {$lte: end}},

@@ -122,3 +122,71 @@ use('openIDL')
 db.insurance.find({$and: [{"TransactionCode": "1"}
 , {"Policy.PremiumAmount": {$lt: 0}}
 , {"Coverage.Exposure" : {$lt: 0}}  ]})
+
+
+
+use('openIDL')
+let start = "2013-01-01"
+let end = "2022-01-01"
+let coverageCode = "1"
+db.insurance.find({$and: [{"Policy.AccountingDate": {$lt: start}}]})
+
+
+use('openIDL')
+let start = "2013-01-01"
+let end = "2022-01-01"
+let coverageCode = "1"
+let transactionCode = "1"
+db.insurance.find({$and: [{"Policy.AccountingDate": {$gt: start}},
+	{"Policy.AccountingTermExpiration": {$lt:end }}
+    ,{"Coverage.CoverageCode": coverageCode},{"TransactionCode": "1"}]})
+
+
+use('openIDL')
+let start = "2013-01-01"
+let end = "2022-01-01"
+let coverageCode = "1"
+let transactionCode = "1"
+db.insurance.find({$and: [{"Policy.AccountingDate": {$lt: start}},
+	{"Policy.AccountingTermExpiration": {$lte:end }},
+    {"Policy.AccountingTermExpiration": {$gt:start }}
+    ,{"Coverage.CoverageCode": coverageCode}
+    ,{"TransactionCode": transactionCode}]})
+
+use('openIDL')
+let start = "2021-01-01"
+let end = "2022-01-01"
+let coverageCode = "1"
+let transactionCode = "1"
+db.insurance.find({$and: [{"Policy.AccountingDate": {$lt: start}}
+    ,{"Coverage.CoverageCode": coverageCode}
+    ,{"TransactionCode": transactionCode}
+	  ,{"Policy.AccountingTermExpiration": {$lte:end }}
+    ,{"Policy.AccountingTermExpiration": {$gt:start }}    
+    ]})
+
+
+
+use('openIDL')
+let start = "2021-01-01"
+let end = "2022-01-01"
+let coverageCode = "1"
+let transactionCode = "1"
+db.insurance.find({$and: [{"Policy.AccountingDate": {$lte: start}}
+,{"TransactionCode": transactionCode}
+,{"Coverage.CoverageCode": coverageCode},
+{"Coverage.MonthsCovered": {$gt: 3}}
+]})
+
+
+
+//group4
+use('openIDL')
+let start = "2020-02-01"
+let end = "2021-01-01"
+let coverageCode = "1"
+let transactionCode = "1"
+db.insurance.find({$and: [{"Policy.AccountingDate": {$lt: start}},
+    {"Policy.AccountingTermExpiration": {$gt:end }}
+    ,{"Coverage.CoverageCode": coverageCode}
+    ,{"TransactionCode": transactionCode}]})
