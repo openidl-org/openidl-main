@@ -75,24 +75,24 @@ async function getCarYears(start, end, coverageCode, manager){
 
     let q1 = {$and: [{"Policy.AccountingDate": {$gte: start}},
 	{"Policy.AccountingTermExpiration": {$lte:end }}
-    ,{"Coverage.CoverageCode": coverageCode}
+    ,{"Coverage.CoverageCode": {$in: coverageCode}}
     ,{"TransactionCode": transactionCode}]}
     
     let q2 = {$and: [{"Policy.AccountingDate": {$lt: start}},
 	{"Policy.AccountingTermExpiration": {$lte:end }},
     {"Policy.AccountingTermExpiration": {$gt:start }}
-    ,{"Coverage.CoverageCode": coverageCode}
+    ,{"Coverage.CoverageCode": {$in: coverageCode}}
     ,{"TransactionCode": transactionCode}]}
 
     let q3 = {$and: [{"Policy.AccountingDate": {$gte: start}},
 	{"Policy.AccountingDate": {$lte:end }},
     {"Policy.AccountingTermExpiration": {$gt:end }}
-    ,{"Coverage.CoverageCode": coverageCode}
+    ,{"Coverage.CoverageCode": {$in: coverageCode}}
     ,{"TransactionCode": transactionCode}]}
 
     let q4 = {$and: [{"Policy.AccountingDate": {$lte: start}},
     {"Policy.AccountingTermExpiration": {$gt:end }}
-    ,{"Coverage.CoverageCode": coverageCode}
+    ,{"Coverage.CoverageCode": {$in: coverageCode}}
     ,{"TransactionCode": transactionCode}]}
 
     console.log('Find Group One')

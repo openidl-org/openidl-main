@@ -76,7 +76,7 @@ async function getIncurredLoss(start, end, coverageCode,manager) {
 	let q1 = {
 		$and: [
 			{ TransactionCode: '2' },
-            { 'Coverage.CoverageCode': coverageCode },
+            { 'Coverage.CoverageCode': {$in: coverageCode} },
 			{ 'Claim.AccidentDate': { $gte: start } },
 			{ 'Claim.AccidentDate': { $lte: end } }
 		]
@@ -86,7 +86,7 @@ async function getIncurredLoss(start, end, coverageCode,manager) {
 	let q2 = {
 		$and: [
 			{ TransactionCode: '3' },
-            { 'Coverage.CoverageCode': coverageCode },
+            { 'Coverage.CoverageCode': {$in: coverageCode} },
 			{ 'Claim.AccidentDate': { $gte: start } },
 			{ 'Claim.AccidentDate': { $lte: end } }
 		]

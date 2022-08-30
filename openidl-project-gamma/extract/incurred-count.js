@@ -18,10 +18,12 @@ async function getIncurredCount(start, end, coverageCode, manager){
     let q1 = {
 		$and: [
 			{ 'TransactionCode': {$in: ['2','3','6','7']} },
-            { 'Coverage.CoverageCode': coverageCode },
+            { 'Coverage.CoverageCode': {$in: coverageCode} },
 			{ 'Claim.AccidentDate': { $gte: start } },
 			{ 'Claim.AccidentDate': { $lte: end } }
 		]
+        
+
 	};
     let rawLoss = await find('insurance', q1, manager)
     //console.log(rawLoss)
@@ -50,9 +52,9 @@ async function main(start,end,covCode){
     //console.log('disconnected')
 }
 
-// let start = '2020-02-01';
-// let end = '2021-01-01';
-// let coverageCode = "1";  
-// main(start, end, coverageCode);
+let start = '2020-02-01';
+let end = '2021-01-01';
+let coverageCode = ["1","9"];  
+main(start, end, coverageCode);
 
 module.exports = {getIncurredCount}

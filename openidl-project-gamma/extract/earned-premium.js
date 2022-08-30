@@ -8,6 +8,8 @@ const dbName = conn.dbName;
 
 
 async function find(collection, query, manager) {
+    console.log('find query')
+    console.log(query)
 	let records = await manager.getRecords(dbName, collection, query);
 	//console.log('records length: ' + records.length);
 	return records;
@@ -73,36 +75,38 @@ function earnedPremium4(records,start,end){
     
 }
 async function earnPremium(start, end, coverageCode, manager) {
-	
+	console.log('earnPremium, coverageCodes ')
+    console.table(coverageCode)
+
 
     let transactionCode = '1'
-    //queries  //needs review again, 8/24/22
 	let q1 = {$and: [{"Policy.AccountingDate": {$gte: start}},
 	{"Policy.AccountingTermExpiration": {$lte:end }}
-    ,{"Coverage.CoverageCode": coverageCode}
+    ,{"Coverage.CoverageCode": {$in: coverageCode}}
     ,{"TransactionCode": transactionCode}]}
     
     let q2 = {$and: [{"Policy.AccountingDate": {$lt: start}},
 	{"Policy.AccountingTermExpiration": {$lte:end }},
     {"Policy.AccountingTermExpiration": {$gt:start }}
-    ,{"Coverage.CoverageCode": coverageCode}
+    ,{"Coverage.CoverageCode": {$in: coverageCode}}
     ,{"TransactionCode": transactionCode}]}
 
     let q3 = {$and: [{"Policy.AccountingDate": {$gte: start}},
 	{"Policy.AccountingDate": {$lte:end }},
     {"Policy.AccountingTermExpiration": {$gt:end }}
-    ,{"Coverage.CoverageCode": coverageCode}
+    ,{"Coverage.CoverageCode": {$in: coverageCode}}
     ,{"TransactionCode": transactionCode}]}
 
     let q4 = {$and: [{"Policy.AccountingDate": {$lte: start}},
     {"Policy.AccountingTermExpiration": {$gt:end }}
-    ,{"Coverage.CoverageCode": coverageCode}
+    ,{"Coverage.CoverageCode": {$in: coverageCode}}
     ,{"TransactionCode": transactionCode}]}
 
 
 
     //records
     console.log('Find Group One')
+    console.table(q1['$and'][2]['Coverage.CoverageCode'])
     let r1 = await find('insurance',q1, manager)
     console.log('r1 length: '+r1.length)
     console.log('Find Group Two')
@@ -138,11 +142,11 @@ async function main(start,end,covCode){
     //console.log('disconnected')
 }
 
-
+let covCode = ["1","9"]
 let start = "2020-02-01"
 let end = "2021-01-01"
 
 
-// main(start,end,'1')
+main(start,end,covCode)
 
 module.exports = {earnPremium}
