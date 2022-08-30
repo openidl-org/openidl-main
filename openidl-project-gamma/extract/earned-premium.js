@@ -72,9 +72,10 @@ function earnedPremium4(records,start,end){
 	return earnedPremium
     
 }
-async function earnPremium(start, end, coverageCode, transactionCode) {
+async function earnPremium(start, end, coverageCode) {
 	await manager.connect();
 
+    let transactionCode = '1'
     //queries  //needs review again, 8/24/22
 	let q1 = {$and: [{"Policy.AccountingDate": {$gte: start}},
 	{"Policy.AccountingTermExpiration": {$lte:end }}
@@ -134,6 +135,6 @@ async function earnPremium(start, end, coverageCode, transactionCode) {
 let start = "2020-02-01"
 let end = "2021-01-01"
 
-earnPremium(start,end,'1','1')
+earnPremium(start,end,'1')
 
 module.exports = {earnPremium}

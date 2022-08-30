@@ -51,3 +51,4 @@ let coverageCode = "1";
 
 getIncurredCount(start, end, coverageCode);
 
+module.exports = {getIncurredCount}

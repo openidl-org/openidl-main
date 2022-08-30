@@ -117,3 +117,4 @@ let coverageCode = "1";
 
 getIncurredLoss(start, end, coverageCode);
 
+module.exports = {getIncurredLoss}
