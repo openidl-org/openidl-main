@@ -84,6 +84,10 @@ async function earnPremium(start, end, coverageCode, manager) {
 	{"Policy.AccountingTermExpiration": {$lte:end }}
     ,{"Coverage.CoverageCode": {$in: coverageCode}}
     ,{"TransactionCode": transactionCode}]}
+    console.log('Cov COde')
+    console.table(q1['$and'][2]['Coverage.CoverageCode'])
+    const q1s = JSON.stringify(q1)
+    console.log(q1s)
     
     let q2 = {$and: [{"Policy.AccountingDate": {$lt: start}},
 	{"Policy.AccountingTermExpiration": {$lte:end }},
@@ -106,7 +110,7 @@ async function earnPremium(start, end, coverageCode, manager) {
 
     //records
     console.log('Find Group One')
-    console.table(q1['$and'][2]['Coverage.CoverageCode'])
+    
     let r1 = await find('insurance',q1, manager)
     console.log('r1 length: '+r1.length)
     console.log('Find Group Two')

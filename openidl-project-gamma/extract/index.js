@@ -15,12 +15,13 @@ let covCode = "1"
 async function getBodilyInjury(start,end,manager){
     let covCode = ["1","9"]
     earnedPremium = await ep.earnPremium(start,end,covCode, manager)
-    carYears = await cy.getCarYears(start,end,covCode,manager)
-    incurredCount = await iCount.getIncurredCount(start,end,covCode,manager)
-    incurredLoss = await iLoss.getIncurredLoss(start,end,covCode,manager)
-    let row = {"Earned Premium": earnedPremium, "Car Years": carYears, "Incurred Count": incurredCount, "Incurred Loss": incurredLoss}
-    return row
-    
+    console.log('ep: '+earnedPremium)
+    // carYears = await cy.getCarYears(start,end,covCode,manager)
+    // incurredCount = await iCount.getIncurredCount(start,end,covCode,manager)
+    // incurredLoss = await iLoss.getIncurredLoss(start,end,covCode,manager)
+    // let row = {"Earned Premium": earnedPremium, "Car Years": carYears, "Incurred Count": incurredCount, "Incurred Loss": incurredLoss}
+    // return row
+    return earnedPremium
 }
 
 async function getPropertyDamage(start,end,manager){
