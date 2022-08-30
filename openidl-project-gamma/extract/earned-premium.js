@@ -1,13 +1,13 @@
 const MongoDBManager = require('../../openidl-extraction-pattern-developer/service/mongo-database-manager');
 const conn = require('../../openidl-extraction-pattern-developer/connection.json');
-var manager = new MongoDBManager({ url: 'mongodb://localhost:27017' });
+
 const fs = require('fs');
 const util = require('util');
 var help = require('../transform/helper');
 const dbName = conn.dbName;
 
 
-async function find(collection, query) {
+async function find(collection, query, manager) {
 	let records = await manager.getRecords(dbName, collection, query);
 	//console.log('records length: ' + records.length);
 	return records;
@@ -72,8 +72,8 @@ function earnedPremium4(records,start,end){
 	return earnedPremium
     
 }
-async function earnPremium(start, end, coverageCode) {
-	await manager.connect();
+async function earnPremium(start, end, coverageCode, manager) {
+	
 
     let transactionCode = '1'
     //queries  //needs review again, 8/24/22
@@ -103,16 +103,16 @@ async function earnPremium(start, end, coverageCode) {
 
     //records
     console.log('Find Group One')
-    let r1 = await find('insurance',q1)
+    let r1 = await find('insurance',q1, manager)
     console.log('r1 length: '+r1.length)
     console.log('Find Group Two')
-    let r2 = await find('insurance',q2)
+    let r2 = await find('insurance',q2, manager)
     console.log('r2 length: '+r2.length)
     console.log('Find Group Three')
-    let r3 = await find('insurance',q3)
+    let r3 = await find('insurance',q3, manager)
     console.log('r3 length: '+r3.length)
     console.log('Find Group Four')
-    let r4 = await find('insurance',q4)
+    let r4 = await find('insurance',q4, manager)
     console.log('r4 length: '+r4.length)
 
     let recordCount = r1.length+r2.length+r3.length+r4.length
@@ -125,16 +125,24 @@ async function earnPremium(start, end, coverageCode) {
     let ep4 = earnedPremium4(r4,start,end)
     console.log('ep:1: '+ep1+'\nep2: '+ep2+'\nep3: '+ep3+'\nep4: '+ep4)
     let lclEarnedPremium = (ep1+ep2+ep3+ ep4)
-    await manager.disconnect();
+    //await manager.disconnect();
     console.log('earned premium: '+lclEarnedPremium.toFixed(4))
     return lclEarnedPremium
 }
 
+async function main(start,end,covCode){
+    var manager = new MongoDBManager({ url: 'mongodb://localhost:27017' });
+    await manager.connect();
+    await earnPremium(start, end, covCode, manager)
+    await manager.disconnect();
+    //console.log('disconnected')
+}
 
 
 let start = "2020-02-01"
 let end = "2021-01-01"
 
-earnPremium(start,end,'1')
+
+// main(start,end,'1')
 
 module.exports = {earnPremium}

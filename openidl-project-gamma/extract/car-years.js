@@ -1,12 +1,12 @@
 const MongoDBManager = require('../../openidl-extraction-pattern-developer/service/mongo-database-manager');
 const conn = require('../../openidl-extraction-pattern-developer/connection.json');
-var manager = new MongoDBManager({ url: 'mongodb://localhost:27017' });
+
 const fs = require('fs');
 const util = require('util');
 var help = require('../transform/helper');
 const dbName = conn.dbName;
 
-async function find(collection, query) {
+async function find(collection, query,manager) {
 	let records = await manager.getRecords(dbName, collection, query);
 	//console.log('records length: ' + records.length);
 	return records;
@@ -68,8 +68,8 @@ function getCarYears4(records,start,end){
     return years
 }
 
-async function getCarYears(start, end, coverageCode){
-    await manager.connect();
+async function getCarYears(start, end, coverageCode, manager){
+    //await manager.connect();
 
     let transactionCode = "1"
 
@@ -96,15 +96,15 @@ async function getCarYears(start, end, coverageCode){
     ,{"TransactionCode": transactionCode}]}
 
     console.log('Find Group One')
-    let r1 = await find('insurance',q1)
+    let r1 = await find('insurance',q1, manager)
     console.log('r1 length: '+r1.length)
-    let r2 = await find('insurance', q2)
+    let r2 = await find('insurance', q2, manager)
     console.log('r2 length: '+r2.length)
-    let r3 = await find('insurance', q3)
+    let r3 = await find('insurance', q3, manager)
     console.log('r3 length: '+r3.length)
-    let r4 = await find('insurance', q4)
+    let r4 = await find('insurance', q4, manager)
     console.log('r4 length: '+r4.length)
-    await manager.disconnect();
+    //await manager.disconnect();
     
     let y1 = getCarYears1(r1)
     let y2 = getCarYears2(r2,start)
@@ -119,17 +119,23 @@ async function getCarYears(start, end, coverageCode){
     return total
 
 }
-//group2
-// let start = '2021-02-01';
-// let end = '2021-06-01';
+
+
+async function main(start,end,covCode){
+    var manager = new MongoDBManager({ url: 'mongodb://localhost:27017' });
+    await manager.connect();
+    await getCarYears(start, end, covCode, manager)
+    await manager.disconnect();
+    //console.log('disconnected')
+}
+
+
+// let start = "2020-02-01"
+// let end = "2021-01-01"
 // let coverageCode = "1";  
-//group4
-let start = "2020-02-01"
-let end = "2021-01-01"
-let coverageCode = "1";  
-console.log(52)
-let carYears = getCarYears(start,end,coverageCode)
-console.log(54)
-console.log('car years: '+carYears)
+//let carYears = main(start,end,coverageCode)
+//console.log('car years: '+carYears)
+
+
 
 module.exports = {getCarYears}

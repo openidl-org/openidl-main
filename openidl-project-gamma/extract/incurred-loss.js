@@ -1,12 +1,12 @@
 const MongoDBManager = require('../../openidl-extraction-pattern-developer/service/mongo-database-manager');
 const conn = require('../../openidl-extraction-pattern-developer/connection.json');
-var manager = new MongoDBManager({ url: 'mongodb://localhost:27017' });
+
 const fs = require('fs');
 const util = require('util');
 var help = require('../transform/helper');
 const dbName = conn.dbName;
 
-async function find(collection, query) {
+async function find(collection, query, manager) {
 	let records = await manager.getRecords(dbName, collection, query);
 	//console.log('records length: ' + records.length);
 	return records;
@@ -69,8 +69,8 @@ function sumOutstanding(records) {
 	return total;
 }
 
-async function getIncurredLoss(start, end, coverageCode) {
-	await manager.connect();
+async function getIncurredLoss(start, end, coverageCode,manager) {
+	
 
 	//get all paid loss within time line
 	let q1 = {
@@ -92,9 +92,9 @@ async function getIncurredLoss(start, end, coverageCode) {
 		]
 	};
 
-	let lossRecords = await find('insurance', q1);
-	let outstandingRecords = await find('insurance', q2);
-	await manager.disconnect();
+	let lossRecords = await find('insurance', q1, manager);
+	let outstandingRecords = await find('insurance', q2, manager);
+	
 
 	let paidLoss = sumPaidLoss(lossRecords);
 	let outstandLoss = sumOutstanding(outstandingRecords);
@@ -111,10 +111,19 @@ async function getIncurredLoss(start, end, coverageCode) {
     return incurredLoss
 }
 
+async function main(start,end,covCode){
+    var manager = new MongoDBManager({ url: 'mongodb://localhost:27017' });
+    await manager.connect();
+    await getIncurredLoss(start, end, covCode, manager)
+    await manager.disconnect();
+    //console.log('disconnected')
+}
+
+
 let start = '2020-02-01';
 let end = '2021-01-01';
 let coverageCode = "1";  
 
-getIncurredLoss(start, end, coverageCode);
+main(start, end, coverageCode);
 
 module.exports = {getIncurredLoss}

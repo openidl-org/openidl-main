@@ -1,12 +1,11 @@
 const MongoDBManager = require('../../openidl-extraction-pattern-developer/service/mongo-database-manager');
 const conn = require('../../openidl-extraction-pattern-developer/connection.json');
-var manager = new MongoDBManager({ url: 'mongodb://localhost:27017' });
 const fs = require('fs');
 const util = require('util');
 var help = require('../transform/helper');
 const dbName = conn.dbName;
 
-async function find(collection, query) {
+async function find(collection, query, manager) {
 	let records = await manager.getRecords(dbName, collection, query);
 	//console.log('records length: ' + records.length);
 	return records;
@@ -14,7 +13,7 @@ async function find(collection, query) {
 
 
 
-async function getIncurredCount(start, end, coverageCode){
+async function getIncurredCount(start, end, coverageCode, manager){
 
     let q1 = {
 		$and: [
@@ -24,13 +23,9 @@ async function getIncurredCount(start, end, coverageCode){
 			{ 'Claim.AccidentDate': { $lte: end } }
 		]
 	};
-
-    await manager.connect();
-    let rawLoss = await find('insurance', q1)
+    let rawLoss = await find('insurance', q1, manager)
     //console.log(rawLoss)
     console.log('rawLoss size: '+rawLoss.length)
-    await manager.disconnect();
-
     //data object to hold unique ids
     let uniqueRecords = new Set()
 
@@ -45,10 +40,19 @@ async function getIncurredCount(start, end, coverageCode){
     return uniqueCount
 }
 
-let start = '2020-02-01';
-let end = '2021-01-01';
-let coverageCode = "1";  
+ 
 
-getIncurredCount(start, end, coverageCode);
+async function main(start,end,covCode){
+    var manager = new MongoDBManager({ url: 'mongodb://localhost:27017' });
+    await manager.connect();
+    await getIncurredCount(start, end, covCode, manager)
+    await manager.disconnect();
+    //console.log('disconnected')
+}
+
+// let start = '2020-02-01';
+// let end = '2021-01-01';
+// let coverageCode = "1";  
+// main(start, end, coverageCode);
 
 module.exports = {getIncurredCount}
