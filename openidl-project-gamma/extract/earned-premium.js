@@ -8,10 +8,15 @@ const dbName = conn.dbName;
 
 
 async function find(collection, query, manager) {
-    console.log('find query')
-    console.log(query)
+    console.log('find query [find]')
+    const q1s = JSON.stringify(query)
+    console.table(query)
+    console.log("\n"+q1s+"\n")
+
+
 	let records = await manager.getRecords(dbName, collection, query);
-	//console.log('records length: ' + records.length);
+	console.log('records length: ' + records.length);
+    console.log('after find')
 	return records;
 }
 
@@ -75,8 +80,8 @@ function earnedPremium4(records,start,end){
     
 }
 async function earnPremium(start, end, coverageCode, manager) {
-	console.log('earnPremium, coverageCodes ')
-    console.table(coverageCode)
+	// console.log('earnPremium, coverageCodes ')
+    // console.table(coverageCode)
 
 
     let transactionCode = '1'
@@ -84,10 +89,10 @@ async function earnPremium(start, end, coverageCode, manager) {
 	{"Policy.AccountingTermExpiration": {$lte:end }}
     ,{"Coverage.CoverageCode": {$in: coverageCode}}
     ,{"TransactionCode": transactionCode}]}
-    console.log('Cov COde')
-    console.table(q1['$and'][2]['Coverage.CoverageCode'])
-    const q1s = JSON.stringify(q1)
-    console.log(q1s)
+    // console.log('Cov COde')
+    // console.table(q1['$and'][2]['Coverage.CoverageCode'])
+    // const q1s = JSON.stringify(q1)
+    // console.log(q1s)
     
     let q2 = {$and: [{"Policy.AccountingDate": {$lt: start}},
 	{"Policy.AccountingTermExpiration": {$lte:end }},
