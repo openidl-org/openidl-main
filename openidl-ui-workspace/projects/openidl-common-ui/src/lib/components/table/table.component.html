@@ -24,7 +24,7 @@
 				Transaction Month
 			</th>
 			<td mat-cell *matCellDef="let row">
-				{{ row.transactionMonth | date: 'YYYY/MM' }}
+				{{ getTransactionMonth(row) }}
 			</td>
 		</ng-container>
 

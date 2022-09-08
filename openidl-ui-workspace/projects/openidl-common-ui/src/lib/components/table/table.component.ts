@@ -495,6 +495,10 @@ export class TableComponent implements OnInit, AfterViewInit {
 			this.viewReportEvent.emit(data);
 		}
 	}
+
+	getTransactionMonth(row) {
+		return row.transactionMonth.format('YYYY/MM');
+	}
 }
 
 export interface DataTableItem {

@@ -13,6 +13,7 @@ import { DataService } from '../../services/data.service';
 import { UpdateReportComponent } from '../update-report/update-report.component';
 import { MESSAGE } from '../../config/messageBundle';
 import { DialogService } from '../../services/dialog.service';
+import moment from 'moment';
 
 @Component({
 	selector: 'app-datacalls-issued',
@@ -42,6 +43,7 @@ export class DatacallsIssuedComponent implements OnInit {
 		premiumFromDate: '',
 		premiumToDate: '',
 		deadline: '',
+		transactionMonth: moment(),
 		intentToPublish: true,
 		isShowParticipants: '',
 		purpose: '',
@@ -168,6 +170,10 @@ export class DatacallsIssuedComponent implements OnInit {
 		this.getExtractionPattern();
 		this.getReports();
 	} // init ends
+
+	getTransactionMonth() {
+		return this.draft.transactionMonth.format('YYYY/MM');
+	}
 
 	setControlsState() {
 		if (this.draft.proposedDeliveryDate === this.defaultDate) {

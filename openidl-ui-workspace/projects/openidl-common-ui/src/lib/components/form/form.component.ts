@@ -161,7 +161,7 @@ export class FormComponent implements OnInit, OnDestroy {
 				premiumToDate: [dataCall.premiumToDate, [Validators.required]],
 				lossFromDate: [dataCall.lossFromDate, [Validators.required]],
 				lossToDate: [dataCall.lossToDate, [Validators.required]],
-				transactionMonth: [moment(), [Validators.required]],
+				transactionMonth: [dataCall.transactionMonth, [Validators.required]],
 				deadline: [dataCall.deadline, [Validators.required]],
 				purpose: [dataCall.purpose, [Validators.required]],
 				isShowParticipants: [dataCall.isShowParticipants],
