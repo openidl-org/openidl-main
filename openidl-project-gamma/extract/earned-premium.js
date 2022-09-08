@@ -9,9 +9,9 @@ const dbName = conn.dbName;
 
 async function find(collection, query, manager) {
     console.log('find query [find]')
-    const q1s = JSON.stringify(query)
-    console.table(query)
-    console.log("\n"+q1s+"\n")
+    // const q1s = JSON.stringify(query)
+    // console.table(query)
+    // console.log("\n"+q1s+"\n")
 
 
 	let records = await manager.getRecords(dbName, collection, query);
@@ -156,6 +156,6 @@ let start = "2020-02-01"
 let end = "2021-01-01"
 
 
-main(start,end,covCode)
+// main(start,end,covCode)
 
-module.exports = {earnPremium}
+module.exports.earnPremium = earnPremium
