@@ -197,7 +197,7 @@
 						</button>
 					</p>
 				</div>
-				<div class="col readonly" *ngIf="hasPattern">
+				<div class="col readonly" *ngIf="hasPattern; else emptyColumn">
 					<h4>Extraction Pattern</h4>
 					<p>
 						<button
@@ -212,7 +212,15 @@
 						</span>
 					</p>
 				</div>
-				<div class="col readonly"></div>
+				<ng-template #emptyColumn>
+					<div class="col readonly"></div>
+				</ng-template>
+				<div class="col readonly">
+					<h4>Transaction Month</h4>
+					<p>
+						<span>{{ getTransactionMonth() }}</span>
+					</p>
+				</div>
 			</div>
 
 			<div class="row">

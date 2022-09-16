@@ -4,7 +4,8 @@ import {
 	Input,
 	Output,
 	EventEmitter,
-	OnDestroy
+	OnDestroy,
+	Directive
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs/internal/Subscription';
@@ -14,11 +15,66 @@ import { StorageService } from '../../services/storage.service';
 import { MESSAGE } from '../../config/messageBundle';
 import { DialogService } from '../../services/dialog.service';
 import { NotifierService } from '../../services/notifier.service';
+import {
+	MomentDateAdapter,
+	MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+} from '@angular/material-moment-adapter';
+import {
+	DateAdapter,
+	MAT_DATE_FORMATS,
+	MAT_DATE_LOCALE,
+} from '@angular/material/core';
+import { MatDatepicker } from '@angular/material/datepicker';
+import * as _moment from 'moment';
+import { default as _rollupMoment, Moment } from 'moment';
+  
+const moment = _rollupMoment || _moment;
+  
+export const STANDARD_FORMATS = {
+	parse: {
+		dateInput: 'MM/DD/YYYY',
+	},
+	display: {
+		dateInput: 'MM/DD/YYYY',
+		monthYearLabel: 'MMM YYYY',
+		dateA11yLabel: 'LL',
+		monthYearA11yLabel: 'MMMM YYYY',
+	}
+};
+
+export const YYYYMM_FORMATS = {
+	parse: {
+		dateInput: 'YYYY/MM',
+	},
+	display: {
+		dateInput: 'YYYY/MM',
+		monthYearLabel: 'MMM YYYY',
+		dateA11yLabel: 'LL',
+		monthYearA11yLabel: 'MMMM YYYY',
+	}
+};
+
+@Directive({
+	selector: '[dateFormat]',
+	providers: [
+	  {provide: MAT_DATE_FORMATS, useValue: YYYYMM_FORMATS},
+	]
+  })
+  export class CustomDateFormat {
+  }
 
 @Component({
 	selector: 'app-form',
 	templateUrl: './form.component.html',
-	styleUrls: ['./form.component.scss']
+	styleUrls: ['./form.component.scss'],
+	providers: [
+		{
+			provide: DateAdapter,
+			useClass: MomentDateAdapter,
+			deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+		},
+		{provide: MAT_DATE_FORMATS, useValue: STANDARD_FORMATS}
+	]
 })
 export class FormComponent implements OnInit, OnDestroy {
 	// Event emitted to the parent component
@@ -105,6 +161,7 @@ export class FormComponent implements OnInit, OnDestroy {
 				premiumToDate: [dataCall.premiumToDate, [Validators.required]],
 				lossFromDate: [dataCall.lossFromDate, [Validators.required]],
 				lossToDate: [dataCall.lossToDate, [Validators.required]],
+				transactionMonth: [dataCall.transactionMonth, [Validators.required]],
 				deadline: [dataCall.deadline, [Validators.required]],
 				purpose: [dataCall.purpose, [Validators.required]],
 				isShowParticipants: [dataCall.isShowParticipants],
@@ -137,6 +194,7 @@ export class FormComponent implements OnInit, OnDestroy {
 				premiumToDate: [endDate, [Validators.required]],
 				lossFromDate: [startDate, [Validators.required]],
 				lossToDate: [endDate, [Validators.required]],
+				transactionMonth: [moment(), [Validators.required]],
 				deadline: ['', [Validators.required]],
 				purpose: ['', [Validators.required]],
 				isShowParticipants: [true],
@@ -252,7 +310,8 @@ export class FormComponent implements OnInit, OnDestroy {
 			eligibilityRequirement: value.eligibilityRequirement.trim(),
 			status: status,
 			isShowParticipants: value.isShowParticipants,
-			deadline: value.deadline
+			deadline: value.deadline,
+			transactionMonth: value.transactionMonth
 		};
 
 		console.log('Trimmed data', this.dataCallObject);
@@ -284,9 +343,25 @@ export class FormComponent implements OnInit, OnDestroy {
 	}
 
 	disableOldDates = (d: Date | null): boolean => {
-		const selected = d || new Date();
+		const selected = (d || new Date());
 		const now = new Date();
 		// display today and future dates
-		return selected.setHours(0, 0, 0, 0) >= now.setHours(0, 0, 0, 0);
+		return selected >= now;
 	};
+
+	chosenYearHandler(normalizedYear: Moment) {
+		const ctrlValue = this.registerForm.get('transactionMonth').value;
+		ctrlValue.year(normalizedYear.year());
+		this.registerForm.get('transactionMonth').setValue(ctrlValue);
+	}
+	
+	chosenMonthHandler(
+		normalizedMonth: Moment,
+		datepicker: MatDatepicker<Moment>
+	) {
+		const ctrlValue = this.registerForm.get('transactionMonth').value;
+		ctrlValue.month(normalizedMonth.month());
+		this.registerForm.get('transactionMonth').setValue(ctrlValue);
+		datepicker.close();
+	}
 }
