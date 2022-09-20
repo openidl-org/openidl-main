@@ -55,98 +55,101 @@
 					</div>
 				</div>
 
-				<div class="row">
-					<div class="col">
-						<mat-form-field appearance="outline" class="full-width">
-							<mat-label>Premium Dates</mat-label>
-							<mat-date-range-input
-								[rangePicker]="premiumDatePicker"
-							>
-								<input
-									matStartDate
-									formControlName="premiumFromDate"
-									placeholder="Start date"
-								/>
-								<input
-									matEndDate
-									formControlName="premiumToDate"
-									placeholder="End date"
-								/>
-							</mat-date-range-input>
-							<mat-datepicker-toggle
-								matSuffix
-								[for]="premiumDatePicker"
-							></mat-datepicker-toggle>
-							<mat-date-range-picker
-								#premiumDatePicker
-							></mat-date-range-picker>
-
-							<mat-error
-								*ngIf="
-									registerForm.controls.premiumFromDate.hasError(
-										'matStartDateInvalid'
-									)
-								"
-								>Invalid start date</mat-error
-							>
-							<mat-error
-								*ngIf="
-									registerForm.controls.premiumToDate.hasError(
-										'matEndDateInvalid'
-									)
-								"
-								>Invalid end date</mat-error
-							>
-						</mat-form-field>
+				<ng-container *ngIf="hideFormElement">
+					<div class="row">
+						<div class="col">
+							<mat-form-field appearance="outline" class="full-width">
+								<mat-label>Premium Dates</mat-label>
+								<mat-date-range-input
+									[rangePicker]="premiumDatePicker"
+								>
+									<input
+										matStartDate
+										formControlName="premiumFromDate"
+										placeholder="Start date"
+									/>
+									<input
+										matEndDate
+										formControlName="premiumToDate"
+										placeholder="End date"
+									/>
+								</mat-date-range-input>
+								<mat-datepicker-toggle
+									matSuffix
+									[for]="premiumDatePicker"
+								></mat-datepicker-toggle>
+								<mat-date-range-picker
+									#premiumDatePicker
+								></mat-date-range-picker>
+	
+								<mat-error
+									*ngIf="
+										registerForm.controls.premiumFromDate.hasError(
+											'matStartDateInvalid'
+										)
+									"
+									>Invalid start date</mat-error
+								>
+								<mat-error
+									*ngIf="
+										registerForm.controls.premiumToDate.hasError(
+											'matEndDateInvalid'
+										)
+									"
+									>Invalid end date</mat-error
+								>
+							</mat-form-field>
+						</div>
+						<div class="col">
+							<mat-form-field appearance="outline" class="full-width">
+								<mat-label>Loss Dates</mat-label>
+								<mat-date-range-input
+									[rangePicker]="lossDatePicker"
+								>
+									<input
+										matStartDate
+										formControlName="lossFromDate"
+										placeholder="Start date"
+									/>
+									<input
+										matEndDate
+										formControlName="lossToDate"
+										placeholder="End date"
+									/>
+								</mat-date-range-input>
+								<mat-datepicker-toggle
+									matSuffix
+									[for]="lossDatePicker"
+								></mat-datepicker-toggle>
+								<mat-date-range-picker
+									#lossDatePicker
+								></mat-date-range-picker>
+	
+								<mat-error
+									*ngIf="
+										registerForm.controls.lossFromDate.hasError(
+											'matStartDateInvalid'
+										)
+									"
+									>Invalid start date</mat-error
+								>
+								<mat-error
+									*ngIf="
+										registerForm.controls.lossToDate.hasError(
+											'matEndDateInvalid'
+										)
+									"
+									>Invalid end date</mat-error
+								>
+							</mat-form-field>
+						</div>
 					</div>
-					<div class="col">
-						<mat-form-field appearance="outline" class="full-width">
-							<mat-label>Loss Dates</mat-label>
-							<mat-date-range-input
-								[rangePicker]="lossDatePicker"
-							>
-								<input
-									matStartDate
-									formControlName="lossFromDate"
-									placeholder="Start date"
-								/>
-								<input
-									matEndDate
-									formControlName="lossToDate"
-									placeholder="End date"
-								/>
-							</mat-date-range-input>
-							<mat-datepicker-toggle
-								matSuffix
-								[for]="lossDatePicker"
-							></mat-datepicker-toggle>
-							<mat-date-range-picker
-								#lossDatePicker
-							></mat-date-range-picker>
-
-							<mat-error
-								*ngIf="
-									registerForm.controls.lossFromDate.hasError(
-										'matStartDateInvalid'
-									)
-								"
-								>Invalid start date</mat-error
-							>
-							<mat-error
-								*ngIf="
-									registerForm.controls.lossToDate.hasError(
-										'matEndDateInvalid'
-									)
-								"
-								>Invalid end date</mat-error
-							>
-						</mat-form-field>
-					</div>
-				</div>
+				</ng-container>
 
 				<div class="row">
 					<div class="col toggle">
-						<mat-slide-toggle
+						<ng-container *ngIf="hideFormElement">
+							<mat-slide-toggle
 							formControlName="intentToPublish"
 							color="primary"
 							[checked]="true"
@@ -154,6 +157,7 @@
 						>
 							Expected Public Circulation?
 						</mat-slide-toggle>
+						</ng-container>
 					</div>
 					<div class="col">
 						<mat-form-field appearance="outline" class="full-width">

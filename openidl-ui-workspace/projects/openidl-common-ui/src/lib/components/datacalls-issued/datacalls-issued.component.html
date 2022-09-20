@@ -109,33 +109,35 @@
 					</p>
 				</div>
 			</div>
+			<ng-container *ngIf="hideFormElement">
+				<div class="row">
+					<div class="col readonly">
+						<h4>Expected Public Circulation?</h4>
+						<p>
+							{{ draft.intentToPublish ? 'Yes' : 'No' }}
+						</p>
+					</div>
+					<div class="col readonly">
+						<h4>Premium Dates</h4>
+						<p>
+							{{ draft.premiumFromDate | date: 'MM/dd/yyyy' }} to
+							{{ draft.premiumToDate | date: 'MM/dd/yyyy' }}
+						</p>
+					</div>
+					<div class="col readonly">
+						<h4>Loss Dates</h4>
+						<p>
+							{{ draft.lossFromDate | date: 'MM/dd/yyyy' }} to
+							{{ draft.lossToDate | date: 'MM/dd/yyyy' }}
+						</p>
+					</div>
+				</div>
+			</ng-container>
 			<div class="row">
 				<div class="col readonly">
 					<h4>Line of Business</h4>
 					<p>
 						{{ draft.lineOfBusiness }}
-					</p>
-				</div>
-				<div class="col readonly">
-					<h4>Premium Dates</h4>
-					<p>
-						{{ draft.premiumFromDate | date: 'MM/dd/yyyy' }} to
-						{{ draft.premiumToDate | date: 'MM/dd/yyyy' }}
-					</p>
-				</div>
-				<div class="col readonly">
-					<h4>Loss Dates</h4>
-					<p>
-						{{ draft.lossFromDate | date: 'MM/dd/yyyy' }} to
-						{{ draft.lossToDate | date: 'MM/dd/yyyy' }}
-					</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col readonly">
-					<h4>Expected Public Circulation?</h4>
-					<p>
-						{{ draft.intentToPublish ? 'Yes' : 'No' }}
 					</p>
 				</div>
 				<div class="col readonly">
