@@ -468,8 +468,8 @@ async function main(start,end){
 }
 
 let covCode = ["1","9"]
-let start = "2020-02-01"
-let end = "2021-01-01"
+let start = "2000-01-01"
+let end = "2001-01-01"
 
 
 main(start,end)

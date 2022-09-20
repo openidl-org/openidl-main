@@ -15,6 +15,7 @@
     "url": "git@gitlab.aaisdirect.com:openidl/openidl-mongo-utilities.git"
   },
   "dependencies": {
+    "utf8": "3.0.0",
     "deep-equals": "0.0.2",
     "json-diff": "^0.5.4",
     "json2csv": "^5.0.6",

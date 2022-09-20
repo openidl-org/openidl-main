@@ -102,7 +102,10 @@ use('openIDL');
 db.insurance.count({"RecordType": "Premium"})
 
 use('openIDL'); 
+db.insurance.find({})
+
 db.insurance.distinct("Policy.PolicyIdentifier")
+db.insurance.distinct("TransactionCode")
 
 use('openIDL'); 
 db.insurance.aggregate(

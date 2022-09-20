@@ -5,6 +5,9 @@ logger.level = "off"
 const { emitDeprecationWarning } = require('mongodb/lib/utils');
 const safeEval = require('safe-eval')
 
+const utf8 = require('utf8');
+
+
 const MongoClient = require('mongodb').MongoClient
 
 class MongoDBManager {
@@ -90,9 +93,27 @@ class MongoDBManager {
     }
 
     async getRecords(dbName, collectionName, query) {
+        
         await this.useDatabase(dbName)
         let collection = this.db.collection(collectionName)
-        //console.log('get records query: '+query)
+        
+        let query2 = {"$and":[{"Policy.AccountingDate":{"$gte":"2020-02-01"}},{"Policy.AccountingTermExpiration":{"$lte":"2021-01-01"}},{"Coverage.CoverageCode":{"$in":["1","9"]}},{"TransactionCode":"1"}]}
+        console.log('get records query : '+JSON.stringify(query))
+        console.log('get records query2: '+JSON.stringify(query2))
+        if (JSON.stringify(query) ==JSON.stringify(query)){
+            console.log('match')
+        } else {
+            console.log('no match')
+        }
+
+
+        // console.log(query)
+        // console.log(query2)
+        //console.log(query['$and'][2])
+        //console.log(query2['$and'][2])
+        // let query3 = JSON.parse(utf8.encode(JSON.stringify(query)))
+        //console.log('query3: '+query3)
+
         let recordCursor = collection.find(query);
         let records = await recordCursor.toArray()
         return records
