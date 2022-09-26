@@ -82,7 +82,16 @@ export class FormComponent implements OnInit, OnDestroy {
 		if (jurisdiction) {
 			this.jurisdiction = jurisdiction;
 		} else {
-			this.jurisdiction = 'North Dakota';
+			this.dataService.getData('/jurisdiction').subscribe(
+				(response) => {
+					this.jurisdiction = response;
+					this.storageService.setItem('jurisdiction', response);
+				},
+				(error) => {
+					console.log(error);
+				}
+			);
+			// this.jurisdiction = 'North Dakota';
 		}
 		// Fetch the data and show in case of cloned data call
 		if (this.isClone) {

@@ -10,5 +10,9 @@
 	"data-call-app-url": {
 		"value": "http://localhost:4400/openidl/api",
 		"env": "DATA_CALL_APP_URL"
+	},
+	"current-jurisdiction": {
+		"value": "North Dakota",
+		"env": "CURRENT_JURISDICTION"
 	}
 }
