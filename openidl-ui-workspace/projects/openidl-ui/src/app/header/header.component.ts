@@ -45,7 +45,7 @@ export class HeaderComponent implements OnInit {
 	ngOnInit() {
 		this.role = this.storageService.getItem('role');
 		this.org = this.storageService.getItem('org');
-		this.appConst = appConst[this.role];
+		this.orgLogo = this.orgIcon(this.org);
 		this.orgLogo = this.appConst.org[this.org];
 		this.roleIcon = appConst.roles[this.role];
 
@@ -79,6 +79,10 @@ export class HeaderComponent implements OnInit {
 				console.log(err);
 			}
 		);
+	}
+
+	orgIcon(org) {
+		return this.storageService.getItem('iconBucketUrl') + org + '-logo.png';
 	}
 
 	toggleResetBtn() {

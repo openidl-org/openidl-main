@@ -96,6 +96,9 @@ router.route(API_URL + '/data-call/:id/:version').get(authHandler.isLoggedIn, au
 // Get data call history
 router.route(API_URL + '/data-call-log/:id/:version').get(authHandler.isLoggedIn, authHandler.getUserRole, authHandler.validateToken, commonController.getDataCallHistory);
 
+// Get getIconBucketUrl
+router.route(API_URL + '/icon-bucket-url').get(authHandler.isLoggedIn, authHandler.getUserRole, authHandler.validateToken, commonController.getIconBucketUrl);
+
 router.route(API_URL + '/reset-data').delete(authHandler.isLoggedIn, authHandler.getUserRole, authHandler.validateToken, commonController.resetData);
 
 router.route(API_URL + '/list-extraction-patterns').get(authHandler.isLoggedIn, authHandler.getUserRole, authHandler.validateToken, commonController.getExtrationPattern);

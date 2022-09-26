@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
 
 import { appConst } from '../const/app.const';
-import { StorageService } from 'openidl-common-ui';
+import { DataService, StorageService } from 'openidl-common-ui';
 import { TableComponent } from 'openidl-common-ui';
 
 @Component({
@@ -21,10 +21,19 @@ export class DatacallListComponent implements OnInit {
   currentTab = 0;
   // currentStatus = appConst.status.DRAFT;
 
-  constructor(private storageService: StorageService, private router: Router) {
+  constructor(private storageService: StorageService, private dataService: DataService, private router: Router) {
     this.role = this.storageService.getItem('role');
     this.appConst = appConst[this.role];
     this.statusObj = appConst.status;
+    this.dataService.getData('/icon-bucket-url').subscribe(
+			(response) => {
+				this.storageService.setItem('iconBucketUrl', response);
+			},
+			(error) => {
+				console.log(error);
+			}
+		);
+
   }
 
   ngOnInit() {
