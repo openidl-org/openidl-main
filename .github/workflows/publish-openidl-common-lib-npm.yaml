@@ -9,11 +9,6 @@ on:
 
   workflow_dispatch:
 
-defaults:
-  run:
-    shell: bash
-    working-directory: openidl-common-lib
-    
 jobs:
   build:
     runs-on: ubuntu-latest
