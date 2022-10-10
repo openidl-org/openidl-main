@@ -1,4 +1,4 @@
-name: Publish openidl-common-lib to Github NPM
+name: Publish openIDL common-lib to Github NPM
 on:
   push:
     branches:
