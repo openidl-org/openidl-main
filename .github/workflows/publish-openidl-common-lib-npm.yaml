@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - 'develop'
+      - 'openidl-nd-poc-main'
     paths:
       - 'openidl-common-lib/**'
 
