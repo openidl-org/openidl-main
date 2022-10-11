@@ -1,5 +1,10 @@
 name: Publish openIDL common-lib to Github NPM
 on:
+  push:
+    branches:
+      - 'develop'
+    paths:
+      - 'openidl-common-lib/**'
   pull_request:
     branches:
       - 'develop'     
