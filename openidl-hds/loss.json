@@ -1,0 +1,68 @@
+{
+    "Policy": {
+      "LineOfBusiness": "Auto",
+      "Subline": "Private Passenger Auto",
+      "SublineCategory": "Personal",
+      "AccountingDate": "2000-01-15",
+      "CompanyCode": "de0a",
+      "CompanyID": "de0a",
+      "State": "RI",
+      "Territory": "058",
+      "OptionalZipCodeIndicator": "",
+      "Program": "All Other Programs (including independent bureaus)",
+      "EffectiveDate": "",
+      "ExpirationDate": "",
+      "NCProgramEnhancement": "N/A",
+      "ZipCode": "02864",
+      "ZipCodeSuffix": ""
+    },
+    "Coverage": {
+      "CoverageCategory": "Physical Damage",
+      "Coverage": "Physical Damage - Collision",
+      "CoverageCode": "7",
+      "DeductibleAmount": "$500",
+      "DeductibleCode": "5",
+      "Terrorism": "N/A",
+      "Packaging": "Auto coverage written as a separate policy and not an endorsement to another policy.",
+      "PoolAffiliation": "Preferred Risk",
+      "UMUIMStacking": "N/A",
+      "PassiveRestraintDiscount": "Not Applicable",
+      "AntiLockBrakesDiscount": "Not Applicable -Program does not offer an Anti-Lock Braking System discount on this coverage.",
+      "DefensiveDriverDiscount": "Driver does not qualify for the defensive driver discount available on this coverage."
+    },
+    "Driver": {
+      "OperatorAge": "65 and over",
+      "OperatorAgeCode": "9",
+      "Gender": "Male",
+      "MaritalStatus": "Married",
+      "MaritalStatusCode": "1",
+      "PrincipalSecondary": "N/A",
+      "DriversTraining": "No",
+      "GoodStudentDiscount": "N/A",
+      "PenaltyPoints": "0"
+    },
+    "Vehicle": {
+      "VehicleUse": "Pleasure",
+      "VehicleUseOperator": "N/A",
+      "CommuteDistance": "N/A",
+      "AnnualDistance": "Under 7500 Miles",
+      "VehiclePerformance": "Standard",
+      "ModelYear": "04",
+      "Symbol": "07"
+    },
+    "Claim": {
+      "LossAmount": -50,
+      "ClaimCount": 0,
+      "CauseOfLoss": "Collision",
+      "AccidentDate": "1993-09-01",
+      "OccurrenceIdentifier": "e49ea131c2ac",
+      "ClaimIdentifier": "",
+      "LimitedCodingLossTransaction": ""
+    },
+    "createdTime": "2022-10-11T19:55:25.690Z",
+    "RecordType": "Loss",
+    "TransactionType": "Paid Loss",
+    "TransactionCode": "2",
+    "chunkId": "1",
+    "chunkid": "1"
+  }
