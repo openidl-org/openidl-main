@@ -35,5 +35,6 @@ openidl-config/openidl-configurations/config/carrier-config.json
 openidl-config/vault/*
 openidl-config/*
 openidl-k8s/*
+openidl-hds/config/*
 awx-automation/*
 jenkins-jobs/*
