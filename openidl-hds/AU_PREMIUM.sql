@@ -1,7 +1,7 @@
-create table au_premium
+create table openidl.au_premium
 (
 id NUMERIC,
-AnnualStatementLine VARCHAR
+AnnualStatementLine VARCHAR,
 LineOfBusiness VARCHAR,
 Subline VARCHAR,
 RecordType VARCHAR,
@@ -48,7 +48,8 @@ MaritalStatusCode VARCHAR,
 PrincipalSecondary VARCHAR,
 DriversTraining VARCHAR,
 GoodStudentDiscount VARCHAR,
-PenaltyPoints NUMERIC,
+PenaltyPoints VARCHAR,
+PenaltyPointsCode Varchar,
 VehicleUse VARCHAR,
 VehicleUseOperator VARCHAR,
 CommuteDistance VARCHAR,
