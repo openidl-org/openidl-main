@@ -20,17 +20,20 @@ async function clientDemo() {
   }
 
 async function getPremiums(client){
-    
-    await client.connect();
-    
-    const premiums = await client.query(`select * from ${config.db.schema}.au_premium ap ;`)
-    await client.end();
+    const premiums = await client.query(`select * from openidl.au_premium ap ;`)
+    console.log(premiums.rows)
   
     return premiums;
 }
 
 function makeInsertQuery(record){
-    let query = `INSERT INTO ${config.db.schema}.au_premium
+    let accountingDateArray = record.Policy.AccountingDate.split('-')
+    let accountingYear=accountingDateArray[0]
+    let accountingMonth=accountingDateArray[1]
+    let accountingDay=accountingDateArray[2]
+    let accountingDate = `${accountingYear}-${accountingMonth}-${accountingDay}`
+
+    let query = `set datestyle to DMY; INSERT INTO ${config.db.schema}.au_premium
     (LineOfBusiness,
      Subline,
      RecordType,
@@ -148,16 +151,9 @@ function makeInsertQuery(record){
 }
 
 async function insertPremium(client,record){
-
-    
-    
-    
     let query = makeInsertQuery(record)
     // console.log(query)
     await client.query(query)
-
-
-
 }
 
 async function insertRecords(client,records){
@@ -184,13 +180,14 @@ async function main(){
     //let response = await clientDemo(client)
     //console.log('response: '+response.now)    
     await client.connect();
-    await insertRecords(client,records)
+    // await insertRecords(client,records)
+    let premiums = await getPremiums(client)
     await client.end();
 
     
-    //let premiums = await getPremiums()
+    
 
-    //console.log(premiums[0])
+    console.log(premiums[0])
 }
 
 main()
