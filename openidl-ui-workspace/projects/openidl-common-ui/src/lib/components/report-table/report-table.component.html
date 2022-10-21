@@ -53,17 +53,21 @@
 		</ng-container>
 
 		<!-- Report URL Column -->
-		<ng-container matColumnDef="url" *ngIf="isShowUrl">
+		<ng-container matColumnDef="url">
 			<th mat-header-cell *matHeaderCellDef>Report URL</th>
 			<td mat-cell *matCellDef="let row" class="row-icon">
-				<a
-					class="report-link text-wrap"
-					[matTooltip]="row.url"
-					matTooltipPosition="above"
-					href="javascript:void(0);"
-					(click)="openURL(row.url)"
-					>{{ row.url }}</a
-				>
+				<ng-container *ngIf="isShowUrl;else noUrl">
+					<a class="report-link text-wrap"
+						[matTooltip]="row.url"
+						matTooltipPosition="above"
+						href="javascript:void(0);"
+						(click)="openURL(row.url)"
+						>{{ row.url }}</a
+					>
+				</ng-container>
+				<ng-template  #noUrl>
+					<span>-NA-</span>
+				</ng-template>
 			</td>
 		</ng-container>
 
