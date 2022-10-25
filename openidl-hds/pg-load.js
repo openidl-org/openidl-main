@@ -180,7 +180,7 @@ async function main(){
     //let response = await clientDemo(client)
     //console.log('response: '+response.now)    
     await client.connect();
-    // await insertRecords(client,records)
+    await insertRecords(client,records)
     let premiums = await getPremiums(client)
     await client.end();
 
