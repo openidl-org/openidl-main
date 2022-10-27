@@ -149,61 +149,61 @@ function makeInsertQuery(record){
 function makeInsertQueryForLoss(record){
 
     let query = `set datestyle to DMY; INSERT INTO ${config.db.schema}.au_losses
-    (LineOfBusiness,
-	 Subline,
-	 SublineCategory,
-	 AccountingDate,
-	 CompanyCode,
-	 CompanyID,
-	 State,
-	 Territory,
-	 OptionalZipCodeIndicator,
-	 Program,
-	 EffectiveDate,
-	 ExpirationDate,
-	 NCProgramEnhancement,
-	 ZipCode,
-	 ZipCodeSuffix,
-	 CoverageCategory,
-	 Coverage,
-	 CoverageCode,
-	 DeductibleAmount,
-	 DeductibleCode,
-	 Terrorism,
-	 Packaging,
-	 PoolAffiliation,
-	 UMUIMStacking,
-	 PassiveRestraintDiscount,
-	 AntiLockBrakesDiscount,
-	 DefensiveDriverDiscount,
-	 OperatorAge,
-	 OperatorAgeCode,
-	 Gender,
-	 MaritalStatus,
-	 MaritalStatusCode,
-	 PrincipalSecondary,
-	 DriversTraining,
-	 GoodStudentDiscount,
-	 PenaltyPoints,
-	 VehicleUse,
-	 VehicleUseOperator,
-	 CommuteDistance,
-	 AnnualDistance,
-	 VehiclePerformance,
-	 ModelYear,
-	 Symbol,
-	 LossAmount,
-	 ClaimCount,
-	 CauseOfLoss,
-	 AccidentDate,
-	 OccurrenceIdentifier,
-	 ClaimIdentifier,
-	 LimitedCodingLossTransaction,
-	 createdTime,
-	 RecordType,
-	 TransactionType,
-	 TransactionCode,
-	 chunkId)
+    (line_of_business,
+	 subline,
+	 subline_category,
+	 accounting_date,
+	 company_code,
+	 company_id,
+	 state,
+	 territory,
+	 optional_zip_code_indicator,
+	 program,
+	 effective_date,
+	 expiration_date,
+	 nc_program_enhancement,
+	 zip_code,
+	 zip_code_suffix,
+	 coverage_category,
+	 coverage,
+	 coverage_code,
+	 deductible_amount,
+	 deductible_code,
+	 terrorism,
+	 packaging,
+	 pool_affiliation,
+	 umuim_stacking,
+	 passive_restraint_discount,
+	 anti_lock_brakes_discount,
+	 defensive_driver_discount,
+	 operator_age,
+	 operator_age_code,
+	 gender,
+	 marital_status,
+	 marital_status_code,
+	 principal_secondary,
+	 drivers_training,
+	 good_student_discount,
+	 penalty_points,
+	 vehicle_use,
+	 vehicle_use_operator,
+	 commute_distance,
+	 annual_distance,
+	 vehicle_performance,
+	 model_year,
+	 symbol,
+	 loss_amount,
+	 claim_count,
+	 cause_of_loss,
+	 accident_date,
+	 occurrence_identifier,
+	 claim_identifier,
+	 limited_coding_loss_transaction,
+	 created_time,
+	 record_type,
+	 transaction_type,
+	 transaction_code,
+	 chunk_id)
      Values (
          '${record.Policy.LineOfBusiness}',
          '${record.Policy.Subline}',
@@ -283,7 +283,7 @@ async function insertRecords(client,records){
         if (record.TransactionCode == '1') {
             //console.log('premium record')
             try{
-            //await insertPremium(client,record)
+            await insertPremium(client,record)
             console.log('premium record')
             }
             catch (e){
@@ -296,7 +296,7 @@ async function insertRecords(client,records){
         } if (record.TransactionCode == '2' || record.TransactionCode == '3' || record.TransactionCode == '7'	|| record.TransactionCode == '8') {
             //console.log('Loss record')
             try{
-            //await insertLosses(client,record)
+            await insertLosses(client,record)
             console.log('Loss record')
             }
 			catch (e){
@@ -311,19 +311,10 @@ async function insertRecords(client,records){
 
 async function main(){
     const client = new Client(credentials);
-    //let response = await clientDemo(client)
-    //console.log('response: '+response.now)    
     await client.connect();
-    // await insertRecords(client,records)
-    let premiums = await getPremiums(client)
-	let Losses = await getLosses(client)
+    await insertRecords(client,records)
+
     await client.end();
-
-    
-    
-
-    console.log(premiums[0])
-	console.log(losses[0])
 }
 
 main()
