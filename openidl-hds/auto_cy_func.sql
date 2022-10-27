@@ -9,21 +9,21 @@ BEGIN
             FROM   openidl.au_premium
             WHERE  accountingdate >= start_date
             AND accountingtermexpiration =< end_date) 
-        union
+        union all
             (SELECT 2 ggroup,                                                                
             Datediff(accountingtermexpiration, start_date)/12*exposure cy
             FROM   openidl.au_premium
             WHERE  accountingdate < start_date
             and accountingtermexpiration> start_date
             and accountingtermexpiration< end_date)
-        union
+        union all
             (select 3 ggroup,
             Datediff(accountingdate, end_date)/12*exposure cy
             FROM   openidl.au_premium
             WHERE  accountingdate > start_date
             and accountingdate < end_date
             AND accountingtermexpiration > end_date)
-        union
+        union all
             (select 4 ggroup,       
             Datediff(end_date, start_date)/12*exposure cy
             FROM   openidl.au_premium
