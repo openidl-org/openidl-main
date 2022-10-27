@@ -148,7 +148,12 @@ function makeInsertQuery(record){
 
 function makeInsertQueryForLoss(record){
 
-    let query = `set datestyle to DMY; INSERT INTO ${config.db.schema}.au_losses
+    let loss =record.Claim.LossAmount;
+    if(loss==null){
+        loss=0;
+    }
+
+    let query = `set datestyle to DMY; INSERT INTO ${config.db.schema}.au_loss
     (line_of_business,
 	 subline,
 	 subline_category,
@@ -159,8 +164,6 @@ function makeInsertQueryForLoss(record){
 	 territory,
 	 optional_zip_code_indicator,
 	 program,
-	 effective_date,
-	 expiration_date,
 	 nc_program_enhancement,
 	 zip_code,
 	 zip_code_suffix,
@@ -215,8 +218,6 @@ function makeInsertQueryForLoss(record){
          '${record.Policy.Territory}',
          '${record.Policy.OptionalZipCodeIndicator}',
          '${record.Policy.Program}',
-         '${record.Policy.EffectiveDate}',
-         '${record.Policy.ExpirationDate}',
          '${record.Policy.NCProgramEnhancement}',
          '${record.Policy.ZipCode}',
          '${record.Policy.ZipCodeSuffix}',
@@ -248,7 +249,7 @@ function makeInsertQueryForLoss(record){
          '${record.Vehicle.VehiclePerformance}',
          '${record.Vehicle.ModelYear}',
          '${record.Vehicle.Symbol}',
-         '${record.Claim.LossAmount}',
+         '${loss}',
          '${record.Claim.ClaimCount}',
          '${record.Claim.CauseOfLoss}',
          '${record.Claim.AccidentDate}',
@@ -291,6 +292,7 @@ async function insertRecords(client,records){
                 console.log(record)
                 console.log('error')
                 console.log(e)
+                
             }
 
         } if (record.TransactionCode == '2' || record.TransactionCode == '3' || record.TransactionCode == '7'	|| record.TransactionCode == '8') {

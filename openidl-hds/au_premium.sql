@@ -1,3 +1,4 @@
+-- drop table openidl_base.au_premium;
 create table openidl_base.au_premium
 (
 id Numeric (20,6),
@@ -36,7 +37,7 @@ single_multi_car_rating VARCHAR,
 terrorism VARCHAR,
 packaging VARCHAR,
 pool_affiliation VARCHAR,
-umuims_tacking VARCHAR,
+umuim_stacking VARCHAR,
 passive_restraint_discount VARCHAR,
 anti_lock_brakes_discount VARCHAR,
 defensive_driver_discount VARCHAR,

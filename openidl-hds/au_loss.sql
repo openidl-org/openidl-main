@@ -1,4 +1,5 @@
-create table openidl_base.au_losses
+-- drop table openidl_base.au_loss;
+create table openidl_base.au_loss
 (
 line_of_business VARCHAR ,
 subline VARCHAR ,
@@ -35,7 +36,7 @@ marital_status_code VARCHAR ,
 principal_secondary VARCHAR ,
 drivers_training VARCHAR ,
 good_student_discount VARCHAR ,
-penalty_points Numeric (20,6),
+penalty_points varchar,
 vehicle_use VARCHAR ,
 vehicle_use_operator VARCHAR ,
 commute_distance VARCHAR ,
