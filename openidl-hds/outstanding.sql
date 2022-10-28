@@ -1,5 +1,5 @@
 --max 4775818.900000
-SELECT Sum(x.loss_amount)
+SELECT Sum(x.loss_amount) outstanding_loss
 FROM  (SELECT t2.coverage_code,
               t2.occurrence_identifier,
               Max(t2.loss_amount) loss_amount
@@ -18,7 +18,7 @@ FROM  (SELECT t2.coverage_code,
                  t2.occurrence_identifier,
                  t2.accounting_date) x; 
 -- min: 4484485.550000
-SELECT Sum(x.loss_amount) SELECT Sum(x.loss_amount) 
+SELECT Sum(x.loss_amount) outstanding_loss
 FROM  (SELECT t2.coverage_code,
               t2.occurrence_identifier,
               min(t2.loss_amount) loss_amount
