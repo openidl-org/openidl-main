@@ -1,7 +1,7 @@
 -- drop table openidl_base.au_premium;
 create table openidl_base.au_premium
 (
-id Numeric (20,6),
+id SERIAL PRIMARY KEY,
 annual_statement_line VARCHAR,
 line_of_business VARCHAR,
 subline VARCHAR,

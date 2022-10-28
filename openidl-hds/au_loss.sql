@@ -1,6 +1,7 @@
 -- drop table openidl_base.au_loss;
 create table openidl_base.au_loss
 (
+id SERIAL PRIMARY KEY,
 line_of_business VARCHAR ,
 subline VARCHAR ,
 subline_category VARCHAR ,
