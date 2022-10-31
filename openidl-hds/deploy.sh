@@ -9,8 +9,10 @@ port=$5
 psql -h $host -U $username -d $database -p $port au_premium.sql
 #loss
 #views
-#users load_user, reporting_user
+
 #ep function
 #cy function
+# auto_outstanding
 #auto incurred count function
 #auto incurred loss function
+#users load_user, reporting_user, - load_user -> grant write to the base tables, reporting user, grant permisison to write to ep schema, and read from all tables both schema, plus call the functions. 
