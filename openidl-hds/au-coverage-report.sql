@@ -7,6 +7,15 @@ select coverage_category, coverage
 from openidl_base.au_coverage_vw
 order by coverage_category;
 
+
+
+
+
+
+
+
+
+
 --report ep: 649045.1341
 select sum(a.auto_ep)
 from (select coveragecategory, coverage
