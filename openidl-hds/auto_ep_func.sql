@@ -1,3 +1,5 @@
+--what to do if months covered is wrong. 
+
 drop function auto_ep;    
 
 CREATE OR replace FUNCTION auto_ep(IN start_date date,IN end_date date, IN pv_coverage_code VARCHAR)
