@@ -16,49 +16,34 @@ async function callPG(client,query){
     return returnData;
 }
 
-function parseQuery(queryString){
+async function queryMachine(client,queryString){
     let queries = queryString.split(';')
-    let creates = []
-    let selects = []
-    let tearDowns = []
-    let queryDict = {}
+    let returnVal = null
     for (let query of queries){
         console.log(query)
         queryWord = query.split(' ')[0].toLowerCase()
         if (queryWord == 'create'){
-            creates.push(query)
-
+            await callPG(client,query)
         }
         if (queryWord == 'select'){
-            selects.push(query)
+            returnVal= await callPG(client,query)
         }
         if (queryWord == 'drop'){
-            tearDowns.push(query)
+            await callPG(client,query)
         }
     }
-    queryDict.creates=creates
-    queryDict.selects=selects;
-    queryDict.tearDowns=tearDowns
-    return queryDict
+    return returnVal
 }
 
 
 async function main(queryString){
-    let queryDict = parseQuery(queryString)
-    console.log(queryDict)
+    
     const client = new Client(credentials);
     await client.connect();
-    for (let create of queryDict.creates){
-        let response = await callPG(client,create)
-    }
-    for (let select of queryDict.selects){
-        let response = await callPG(client,select)
-    }
-    for (let tearDown of queryDict.tearDowns){
-        let response = await callPG(client, tearDown)
-    }
 
+    let result = await queryMachine(client,queryString)
     await client.end();
+    return result
 }
 
 let setUpQuery = 'create table openidl_ep.tmp_connector as select * from openidl_base.au_premium limit 5;'
@@ -75,4 +60,4 @@ let tearDownQuery = 'drop table openidl_ep.tmp_connector;'
 
 let masterQueryString = setUpQuery+auQuery+tearDownQuery
 
-main(masterQueryString)
+let masterResult = main(masterQueryString)
