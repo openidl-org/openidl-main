@@ -29,7 +29,7 @@ async function getLosses(client){
 
 function makeInsertQuery(record){
 
-    let query = `set datestyle to DMY; INSERT INTO ${config.db.schema}.au_premium
+    let query = `set datestyle to DMY; INSERT INTO ${config.db.schema.base}.au_premium
     (line_of_business,
      subline,
      record_type,
@@ -153,7 +153,7 @@ function makeInsertQueryForLoss(record){
         loss=0;
     }
 
-    let query = `set datestyle to DMY; INSERT INTO ${config.db.schema}.au_loss
+    let query = `set datestyle to DMY; INSERT INTO ${config.db.schema.base}.au_loss
     (line_of_business,
 	 subline,
 	 subline_category,
