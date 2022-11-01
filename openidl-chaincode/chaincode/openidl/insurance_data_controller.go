@@ -124,6 +124,8 @@ func (this *SmartContract) SaveInsuranceData(stub shim.ChaincodeStubInterface, a
 	insuranceDataAsBytes, _ := json.Marshal(insurance)
 	err = stub.PutPrivateData(private_data_collection, key, insuranceDataAsBytes)
 
+	// err = stub.PurgePrivateData(private_data_collection, key)
+
 	logger.Info("SaveInsuranceData: put private data done")
 	if err != nil {
 		logger.Error("Error commiting pdc data:", err)
@@ -162,6 +164,77 @@ func (this *SmartContract) SaveInsuranceData(stub shim.ChaincodeStubInterface, a
 	}
 
 	logger.Info("SaveInsuranceData: set event done")
+	return shim.Success(nil)
+}
+
+//this function Purges the Insurance data extracted based on extraction pattern into private data collection
+func (this *SmartContract) purgeInsuranceData(stub shim.ChaincodeStubInterface, args []string) pb.Response {
+	logger.Info("PurgeInsuranceData: enter")
+	defer logger.Info("PurgeInsuranceData: exit")
+	var insurance InsuranceData
+	transientMapKey := INSURANCE_TRANSACTIONAL_RECORD_PREFIX
+
+	//getting trnasientMap data (using INSURANCE_TRANSACTIONAL_RECORD_PREFIX as key)
+	InsuranceDataTransMap, err := stub.GetTransient()
+	if err != nil {
+		return shim.Error("PurgeInsuranceData: Error getting InsuranceDataTransMap: " + err.Error())
+	}
+	if _, ok := InsuranceDataTransMap[transientMapKey]; !ok {
+		return shim.Error("PurgeInsuranceData: Invalid key in the transient map")
+	}
+	err = json.Unmarshal([]byte(InsuranceDataTransMap[transientMapKey]), &insurance)
+	logger.Info("PurgeInsuranceData: got transient map")
+
+	if err != nil {
+		logger.Error("PurgeInsuranceData: Error during json.Unmarshal: ", err)
+		return shim.Error(errors.New("PurgeInsuranceData: Error during json.Unmarshal").Error())
+	}
+	pageNumber := insurance.PageNumber
+	pageNumberAsString := strconv.Itoa(pageNumber)
+
+	if insurance.CarrierId == "" {
+		return shim.Error("CarrierId should not be Empty")
+	} else if insurance.DataCallId == "" {
+		return shim.Error("DataCallId should not be Empty")
+	} else if insurance.DataCallVersion == "" {
+		return shim.Error("DataCallVersion should not be Empty")
+		// } else if pageNumber == 0 {
+		// 	return shim.Error("PageNumber should not be Empty")
+	}
+
+	logger.Info("SaveInsuranceData: all necessary params found")
+	//Identify the pdc name based on channelName
+	channelName := stub.GetChannelID()
+	private_data_collection := getPDCNameByChannelName(channelName)
+
+	namespacePrefix := INSURANCE_TRANSACTIONAL_RECORD_PREFIX
+	key, _ := stub.CreateCompositeKey(namespacePrefix, []string{insurance.DataCallId, insurance.DataCallVersion, insurance.CarrierId, pageNumberAsString})
+
+	err = stub.PurgePrivateData(private_data_collection, key)
+
+	logger.Info("PurgeInsuranceData: put private data done")
+	if err != nil {
+		logger.Error("Error purging pdc data:", err)
+		return shim.Error("PurgeInsuranceData: Error purging data for key: " + key)
+	}
+
+	//insurance data has been ingested, now creating audit record
+	var auditRecord InsuranceRecordAudit
+	auditRecord.DataCallId = insurance.DataCallId
+	auditRecord.DataCallVersion = insurance.DataCallVersion
+	auditRecord.CarrierId = insurance.CarrierId
+
+	namespacePrefixForAudit := AUDIT_INSURANCE_TRANSACTIONAL_RECORD_PURGED_PREFIX
+	auditRecordKey, _ := stub.CreateCompositeKey(namespacePrefixForAudit, []string{auditRecord.DataCallId, auditRecord.DataCallVersion, auditRecord.CarrierId})
+
+	auditRecordAsBytes, _ := json.Marshal(auditRecord)
+	err = stub.PutState(auditRecordKey, auditRecordAsBytes)
+	logger.Info("PurgeInsuranceData: put audit key done")
+
+	if err != nil {
+		return shim.Error("PurgeInsuranceData: Creating Audit Record: Error committing data for key: " + auditRecordKey)
+	}
+
 	return shim.Success(nil)
 }
 
