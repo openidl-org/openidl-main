@@ -1,0 +1,17 @@
+{
+  "name": "utils_js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "example.js",
+  "scripts": {
+    "test": "node ./utils_example.js",
+    "rest-test": "node ./REST_example.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.1.3",
+    "pg": "^8.8.0"
+  }
+}
