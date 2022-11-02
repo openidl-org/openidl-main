@@ -1,4 +1,5 @@
 const {get} = require("axios");
+const {post} = require("axios");
 const fs = require("fs");
 
 const REPORT_QUERY = `
@@ -30,7 +31,7 @@ async function restExampleExecution(){
         // if(customQueryParam){
         //     query = customQueryParam.split("=")[1];
         // }
-        const result = await get("http://localhost:3000/query/execute", {
+        const result = await post("http://localhost:3000/query/execute", {
             params: {
                 auth_key: "y0dTTafTsmiB2gzjU2BVPOsJLrqZ#o@VjRQILI!Y16mzo3C9eL7hV&$#7fm@Vv4O874SOD%aM&34#XTofDKypRTWwX!",
                 query
