@@ -450,7 +450,7 @@ class MongoDBManager {
         const regexString = "^" + query.transactionMonth
         return new Promise(function (resolve, reject) {
             mongodb.collection(DBCollection)
-                .find({ TransactionDate: {"$regex": regexString}, organizationID: query.organizationId })
+                .find({ transactionDate: {"$regex": regexString}, organizationID: query.organizationId })
                 .toArray(function (err, results) {
                     if (err) {
                         reject(err);
