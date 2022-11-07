@@ -1,4 +1,3 @@
-const {get} = require("axios");
 const {post} = require("axios");
 const fs = require("fs");
 
@@ -19,22 +18,11 @@ const SELECT_QUERY = `
 async function restExampleExecution(){
     try{
         let query = REPORT_QUERY;
-        // let customQueryParam = process.argv.find((element)=>{
-        //     return element.startsWith("--query")
-        // });
-        // if(process.argv.indexOf("--select")){
-        //     query = SELECT_QUERY;
-        // }else if(process.argv.indexOf("--report")){
-        //     query = REPORT_QUERY;
-        // }
-        
-        // if(customQueryParam){
-        //     query = customQueryParam.split("=")[1];
-        // }
         const result = await post("http://localhost:3000/query/execute", {
-            params: {
-                auth_key: "y0dTTafTsmiB2gzjU2BVPOsJLrqZ#o@VjRQILI!Y16mzo3C9eL7hV&$#7fm@Vv4O874SOD%aM&34#XTofDKypRTWwX!",
-                query
+            query
+        }, {
+            headers: {
+                auth_key: "y0dTTafTsmiB2gzjU2BVPOsJLrqZ#o@VjRQILI!Y16mzo3C9eL7hV&$#7fm@Vv4O874SOD%aM&34#XTofDKypRTWwX!"
             }
         })
         const data = result.data;

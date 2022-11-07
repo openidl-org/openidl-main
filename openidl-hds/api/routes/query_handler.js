@@ -1,22 +1,15 @@
 var express = require('express');
 var { ConfigurationManager } = require('../../utils_js/configuration');
-var {ConfigurationManager: LocalConfig} = require('..//utils/config');
+var {ConfigurationManager: LocalConfig} = require('../utils/config');
 var { DBHelper } = require('../../utils_js/db');
+const { authMiddleware } = require('../middlewares/auth');
 var router = express.Router();
 var helper = new DBHelper({credentials: ConfigurationManager.mySQLDBCredentials});
 
 
 /* post queryString */
-router.post('/execute', async function(req, res, next) {
-    const authorizedKey = LocalConfig.queryAuthKey;
-    const requestAuthKey = req.get('auth_key') || req.query['auth_key'];
-    const query = req.query["query"];
-    if(!requestAuthKey || !authorizedKey || authorizedKey !== requestAuthKey){
-        return res.status(401).json({
-            ok: false,
-            error: "ERROR: Invalid key provided."
-        })
-    }
+router.post('/execute', authMiddleware, async function(req, res, next) {
+    const query = req.body["query"];
     if(!query){
         return res.status(400).json({
             ok: false,
@@ -24,31 +17,7 @@ router.post('/execute', async function(req, res, next) {
         });
     }
     const result = await helper.runQuery(query);
-    console.log({result});
-    return res.json({
-        ok: true,
-        result: result
-    })
-});
 
-router.post('/execute2', async function(req, res, next) {
-    const authorizedKey = LocalConfig.queryAuthKey;
-    const requestAuthKey = req.get('auth_key') || req.query['auth_key'];
-    const query = req.query["query"];
-    if(!requestAuthKey || !authorizedKey || authorizedKey !== requestAuthKey){
-        return res.status(401).json({
-            ok: false,
-            error: "ERROR: Invalid key provided."
-        })
-    }
-    if(!query){
-        return res.status(400).json({
-            ok: false,
-            error: "Invalid query parameter provided: you need to provide a valid Postgres query on the 'query' query parameter."
-        });
-    }
-    const result = await helper.runQuery(query);
-    console.log({result});
     return res.json({
         ok: true,
         result: result
