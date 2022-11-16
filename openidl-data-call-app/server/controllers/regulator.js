@@ -40,6 +40,12 @@ regulator.createDataCall = async (req, res) => {
         req.body['updatedTs'] = new Date().toISOString();
         logger.debug('createDataCall req body :');
         logger.debug(req.body);
+        if (req.body.deadline) {
+            const deadlineDate = new Date(req.body.deadline);
+            deadlineDate.setUTCHours(0,0,0,0);
+            logger.debug("Setting deadline to ", deadlineDate.toISOString());
+            req.body.deadline = deadlineDate.toISOString();
+        }
         logger.debug('createDataCall submitTransaction invoke ');
         const result = await transactionFactory.getDefaultChannelTransaction().submitTransaction('CreateDataCall', JSON.stringify(req.body));
         logger.debug('createDataCall submitTransaction complete ');
@@ -70,6 +76,12 @@ regulator.updateDataCall = async (req, res) => {
         req.body['updatedTs'] = new Date().toISOString();
         logger.debug('updateDataCall req body :');
         logger.debug(req.body);
+        if (req.body.deadline) {
+            const deadlineDate = new Date(req.body.deadline);
+            deadlineDate.setUTCHours(0,0,0,0);
+            logger.debug("Setting deadline to ", deadlineDate.toISOString());
+            req.body.deadline = deadlineDate.toISOString();
+        }
         logger.debug('updateDataCall submitTransaction invoke ');
         const result = await transactionFactory.getDefaultChannelTransaction().submitTransaction('UpdateDataCall', JSON.stringify(req.body));
         logger.debug('updateDataCall submitTransaction complete ');
@@ -163,6 +175,12 @@ regulator.saveNewDraft = async (req, res) => {
         req.body['updatedTs'] = new Date().toISOString();
         logger.debug('saveNewDraft req body :');
         logger.debug(req.body);
+        if (req.body.deadline) {
+            const deadlineDate = new Date(req.body.deadline);
+            deadlineDate.setUTCHours(0,0,0,0);
+            logger.debug("Setting deadline to ", deadlineDate.toISOString());
+            req.body.deadline = deadlineDate.toISOString();
+        }
         logger.debug('saveNewDraft submitTransaction invoke ');
         const result = await transactionFactory.getDefaultChannelTransaction().submitTransaction('SaveNewDraft', JSON.stringify(req.body));
         logger.debug('saveNewDraft submitTransaction complete ');
@@ -193,6 +211,12 @@ regulator.issueDataCall = async (req, res) => {
         req.body['updatedTs'] = new Date().toISOString();
         logger.debug('issueDataCall req body :');
         logger.debug(req.body);
+        if (req.body.deadline) {
+            const deadlineDate = new Date(req.body.deadline);
+            deadlineDate.setUTCHours(0,0,0,0);
+            logger.debug("Setting deadline to ", deadlineDate.toISOString());
+            req.body.deadline = deadlineDate.toISOString();
+        }
         logger.debug('issueDataCall submitTransaction invoke ');
         const result = await transactionFactory.getDefaultChannelTransaction().submitTransaction('IssueDataCall', JSON.stringify(req.body));
         logger.debug('issueDataCall submitTransaction complete ');
