@@ -1,6 +1,7 @@
 {
     "Policy": {
       "LineOfBusiness": "Auto",
+      "LineOfBusinessCode": "56",
       "Subline": "Private Passenger Auto",
       "SublineCategory": "Personal",
       "AccountingDate": "2000-03-15",
