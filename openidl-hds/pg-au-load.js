@@ -84,7 +84,9 @@ function makeInsertQuery(record){
      body_style,
      body_size,
      model_year,
-     symbol)
+     symbol,
+     reg_reporting_code,
+     reg_reporting_name)
      Values (
          '${record.Policy.LineOfBusiness}',
          '${record.Policy.Subline}',
@@ -140,7 +142,9 @@ function makeInsertQuery(record){
          '${record.Vehicle.BodyStyle}',
          '${record.Vehicle.BodySize}',
          '${record.Vehicle.ModelYear}',
-         '${record.Vehicle.Symbol}'
+         '${record.Vehicle.Symbol}',
+         '${record.Policy.RegReportingCode}',
+         '${record.Policy.RegReportingName}'
      )
  `
  return query
@@ -206,7 +210,9 @@ function makeInsertQueryForLoss(record){
 	 record_type,
 	 transaction_type,
 	 transaction_code,
-	 chunk_id)
+	 chunk_id,
+     reg_reporting_code,
+     reg_reporting_name )
      Values (
          '${record.Policy.LineOfBusiness}',
          '${record.Policy.Subline}',
@@ -260,7 +266,9 @@ function makeInsertQueryForLoss(record){
          '${record.RecordType}',
          '${record.TransactionType}',
          '${record.TransactionCode}',
-         '${record.chunkId}'
+         '${record.chunkId}',
+         '${record.Policy.RegReportingCode}',
+         '${record.Policy.RegReportingName}'
 	 )   
  `
  return query
@@ -280,33 +288,35 @@ async function insertLosses(client,record){
 
 async function insertRecords(client,records){
     for (let record of records){
-        //console.log(record)
+        console.log(record)
         if (record.TransactionCode == '1') {
             //console.log('premium record')
-            try{
             await insertPremium(client,record)
-            console.log('premium record')
-            }
-            catch (e){
-                console.log('error record')
-                console.log(record)
-                console.log('error')
-                console.log(e)
+            // try{
+            // await insertPremium(client,record)
+            // console.log('premium record')
+            // }
+            // catch (e){
+            //     console.log('error record')
+            //     console.log(record)
+            //     console.log('error')
+            //     console.log(e)
                 
-            }
+            // }
 
         } if (record.TransactionCode == '2' || record.TransactionCode == '3' || record.TransactionCode == '7'	|| record.TransactionCode == '8') {
             //console.log('Loss record')
-            try{
             await insertLosses(client,record)
-            console.log('Loss record')
-            }
-			catch (e){
-                console.log('error record')
-                console.log(record)
-                console.log('error')
-                console.log(e)
-			}
+            // try{
+            // await insertLosses(client,record)
+            // console.log('Loss record')
+            // }
+			// catch (e){
+            //     console.log('error record')
+            //     console.log(record)
+            //     console.log('error')
+            //     console.log(e)
+			// }
             }
     }
 }

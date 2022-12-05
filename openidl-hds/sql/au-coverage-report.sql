@@ -9,7 +9,8 @@ order by coverage_category;
 
 
 
-
+select *, auto_ep_reporting('2000-01-01'::DATE, '2002-01-01'::DATE,a.reg_reporting_code) 
+from openidl_base.au_reg_reporting_ref a; 
 
 
 

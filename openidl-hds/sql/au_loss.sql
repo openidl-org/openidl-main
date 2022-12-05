@@ -56,5 +56,7 @@ created_time VARCHAR ,
 record_type VARCHAR ,
 transaction_type VARCHAR ,
 transaction_code VARCHAR ,
-chunk_id VARCHAR 
+chunk_id VARCHAR,
+reg_reporting_code varchar,
+reg_reporting_name varchar 
 );

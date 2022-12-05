@@ -59,5 +59,7 @@ vehicle_performance VARCHAR,
 body_style VARCHAR,
 body_size VARCHAR,
 model_year Numeric (20,6),
-symbol VARCHAR
+symbol VARCHAR,
+reg_reporting_code varchar,
+reg_reporting_name varchar 
 );
