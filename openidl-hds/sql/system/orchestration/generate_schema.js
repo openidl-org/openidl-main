@@ -1,5 +1,7 @@
 const fs = require('fs');
-const masterFile = require('../../../../../../con-data/hds-chain.json')
+const carYears = require('./ref/function/auto_cy_reporting')
+const masterFile = require('../../../../../../con-data/hds-chain.json');
+const getCarYears = require('./ref/function/auto_cy_reporting');
 
 function write(path, value){
   fs.writeFile(path, value, function(err) {
@@ -214,7 +216,16 @@ if (!checkFileExists(path)){
 
 }
 
-
+function createCarYears(companyId){
+  sql = getCarYears(companyId)
+  path = `./company/${companyId}/car_years_function.sql`
+  if (!checkFileExists(path)){
+    console.log(`Car Years Function ${companyId} not found. Creating now.`)
+    write(path, sql)
+  }else {
+    console.log(`Car Years Function ${companyId} exists. Skipping Generation`)
+  }
+}
 
 function main(buildObject){
     let name = buildObject.name
@@ -234,6 +245,8 @@ function main(buildObject){
     createCompanyDirectory(companyId)
     createSchemas(companyId)
     generateTables(companyId)
+    createCarYears(companyId)
+
 
 
 
