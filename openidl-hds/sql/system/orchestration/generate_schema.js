@@ -1,5 +1,6 @@
 const fs = require('fs');
 const masterFile = require('../../../../../../con-data/hds-chain.json');
+const getCoverageReport = require('./ref/function/auto_coverage_report');
 const getCarYears = require('./ref/function/auto_cy_reporting');
 const getEarnedPremium = require('./ref/function/auto_ep_reporting')
 const getIncurredCount = require('./ref/function/auto_ic_reporting')
@@ -104,13 +105,24 @@ function createIncurredCount(companyId){
 }
 
 function createIncurredLoss(companyId){
-  sql = getIncurredCount(companyId)
+  sql = getIncurredLoss(companyId)
   path = `./company/${companyId}/incurred_loss.sql`
   if (!checkFileExists(path)){
     console.log(`Incurred Loss Function ${companyId} not found. Creating now.`)
     write(path, sql)
   }else {
     console.log(`Incurred Loss Function ${companyId} exists. Skipping Generation`)
+  }
+}
+
+function createAutoCoverageReport(companyId){
+  sql = getCoverageReport(companyId)
+  path = `./company/${companyId}/auto_coverage_report.sql`
+  if (!checkFileExists(path)){
+    console.log(`Auto Coverage Report ${companyId} not found. Creating now.`)
+    write(path, sql)
+  }else {
+    console.log(`Auto Coverage Report ${companyId} exists. Skipping Generation`)
   }
 }
 
@@ -148,6 +160,7 @@ function initCompany(build){
   createIncurredLoss(companyId)
   createAutoLoss(companyId)
   createAutoPremium(companyId)
+  createAutoCoverageReport(companyId)
 
 }
 
