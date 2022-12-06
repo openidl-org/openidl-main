@@ -7,7 +7,7 @@ function getIncurredLoss(companyId){
             from 
             ((select sum(loss_amount) loss_amount from openidl_ep_${companyId}.tmp_au_coverage
             where transaction_code = '2'
-            and reg_reporting_code =  pv_reporting_code
+            and reporting_code =  pv_reporting_code
             and accident_date > start_date
             and accident_date < end_date
             union

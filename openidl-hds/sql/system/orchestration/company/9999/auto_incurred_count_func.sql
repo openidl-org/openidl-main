@@ -4,7 +4,7 @@ CREATE OR replace FUNCTION openidl_ep_9999.tmp_au_incurred_count(IN start_date d
         select count(distinct(occurrence_identifier)) incurred_count 
         from openidl_ep_9999.tmp_au_coverage
         where transaction_code in ('2','3','6','7')
-        and reg_reporting_code = pv_reporting_code
+        and reporting_code = pv_reporting_code
         and accident_date > start_date
         and accident_date < end_date into ep;
         RETURN ep;

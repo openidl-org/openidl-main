@@ -9,6 +9,8 @@ const getAutoPremium = require('./ref/function/auto_premium_tbl.js');
 const getPreTable = require('./ref/function/auto_tmp_pre_tbl.js')
 const getReportingTable = require('./ref/function/auto_tmp_reporting_tbl.js')
 const getTearDown = require('./ref/function/auto_tear_down.js')
+const getAutoOutstanding = require('./ref/function/auto_outstanding.js')
+const getHandTests = require('./ref/function/auto_hand_tests.js')
 
 
 function write(path, value){
@@ -75,7 +77,7 @@ function createSchemas(companyId){
 
 function createCarYears(companyId){
   sql = getCarYears(companyId)
-  path = `./company/${companyId}/car_years_func.sql`
+  path = `./company/${companyId}/auto_car_years_func.sql`
   if (!checkFileExists(path)){
     console.log(`Car Years Function ${companyId} not found. Creating now.`)
     write(path, sql)
@@ -86,7 +88,7 @@ function createCarYears(companyId){
 
 function createEarnedPremium(companyId){
   sql = getEarnedPremium(companyId)
-  path = `./company/${companyId}/earned_premium_func.sql`
+  path = `./company/${companyId}/auto_earned_premium_func.sql`
   if (!checkFileExists(path)){
     console.log(`Earned Premium Function ${companyId} not found. Creating now.`)
     write(path, sql)
@@ -97,7 +99,7 @@ function createEarnedPremium(companyId){
 
 function createIncurredCount(companyId){
   sql = getIncurredCount(companyId)
-  path = `./company/${companyId}/incurred_count_func.sql`
+  path = `./company/${companyId}/auto_incurred_count_func.sql`
   if (!checkFileExists(path)){
     console.log(`Incurred Count Function ${companyId} not found. Creating now.`)
     write(path, sql)
@@ -108,7 +110,7 @@ function createIncurredCount(companyId){
 
 function createIncurredLoss(companyId){
   sql = getIncurredLoss(companyId)
-  path = `./company/${companyId}/incurred_loss_func.sql`
+  path = `./company/${companyId}/auto_incurred_loss_func.sql`
   if (!checkFileExists(path)){
     console.log(`Incurred Loss Function ${companyId} not found. Creating now.`)
     write(path, sql)
@@ -175,6 +177,18 @@ function createReportingTable(companyId){
   }
 }
 
+function createOutstanding(companyId){
+  sql = getAutoOutstanding(companyId)
+
+  path = `./company/${companyId}/auto_outstanding_func.sql`
+  if (!checkFileExists(path)){
+    console.log(`Auto Outstanding function ${companyId} not found. Creating now.`)
+    write(path, sql)
+  }else {
+    console.log(`Auto Outstanding function ${companyId} exists. Skipping Generation`)
+  }
+}
+
 function createTearDown(companyId){
   sql = getTearDown(companyId)
 
@@ -184,6 +198,18 @@ function createTearDown(companyId){
     write(path, sql)
   }else {
     console.log(`Auto Tear Down ${companyId} exists. Skipping Generation`)
+  }
+}
+
+function createHandTests(companyId){
+  sql = getHandTests(companyId)
+
+  path = `./company/${companyId}/auto_hand_tests.sql`
+  if (!checkFileExists(path)){
+    console.log(`Auto Hand Tests ${companyId} not found. Creating now.`)
+    write(path, sql)
+  }else {
+    console.log(`Auto Hand Tests ${companyId} exists. Skipping Generation`)
   }
 }
 
@@ -202,6 +228,8 @@ function initCompany(build){
   createPreTable(companyId)
   createReportingTable(companyId)
   createTearDown(companyId)
+  createOutstanding(companyId)
+  createHandTests(companyId)
 
 }
 

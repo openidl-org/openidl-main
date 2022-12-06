@@ -6,7 +6,7 @@ CREATE OR replace FUNCTION openidl_ep_4.tmp_au_incurred_loss(IN start_date date,
             from 
             ((select sum(loss_amount) loss_amount from openidl_ep_4.tmp_au_coverage
             where transaction_code = '2'
-            and reg_reporting_code =  pv_reporting_code
+            and reporting_code =  pv_reporting_code
             and accident_date > start_date
             and accident_date < end_date
             union
