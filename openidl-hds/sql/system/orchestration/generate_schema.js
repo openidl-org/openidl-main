@@ -4,6 +4,9 @@ const getCarYears = require('./ref/function/auto_cy_reporting');
 const getEarnedPremium = require('./ref/function/auto_ep_reporting')
 const getIncurredCount = require('./ref/function/auto_ic_reporting')
 const getIncurredLoss = require('./ref/function/auto_il_reporting')
+const getAutoLoss = require('./ref/function/auto_loss_table.js');
+const getAutoPremium = require('./ref/function/auto_premium_table.js');
+
 
 function write(path, value){
   // console.log(`write, path: ${path}\n value: ${value}`)
@@ -43,6 +46,8 @@ function checkFileExists(path){
 
 function createCompanyDirectory(companyId){
   console.log('create dir: '+companyId)
+
+
   if (!checkDirExists(`./company/${companyId}`)){
     console.log('Company DNE')
     fs.mkdirSync(`./company/${companyId}`)
@@ -64,51 +69,6 @@ function createSchemas(companyId){
   
 }
 
-function generateTables(companyId){
-  generateAULoss(companyId)
-  generateAUPremium(companyId)
-}
-
-function generateAUPremium(companyId){
-  sql = getEarnedPremium(companyId)
-  path = `./company/${companyId}/au_premium.sql`
-  if (!checkFileExists(path)){
-    console.log(`AU Premium table ${companyId} not found. Creating now.`)
-    write(path, sql)
-  }else {
-    console.log(`AU Premium table ${companyId} exists. Skipping Generation`)
-  }
-}
-
-function generateAULoss(companyId){
-
-sql = getIncurredLoss(companyId)
-
-path = `./company/${companyId}/au_loss.sql`
-if (!checkFileExists(path)){
-  console.log(`AU Loss table ${companyId} not found. Creating now.`)
-  write(path, sql)
-}else {
-  console.log(`AU Loss table ${companyId} exists. Skipping Generation`)
-}
-
-}
-
-function getCompanyId(buildObject){
-  
-  let name = buildObject.Name
-  console.log('name: '+name+' ID: '+buildObject.ID)
-  companyId = null
-  if (!('ID' in buildObject)){
-
-    companyId = Math.round(Date.now())
-    buildObject.id = companyId
-  } else {
-    companyId = buildObject.id
-  }
-  console.log(`name: ${name} id: ${companyId}`)
-  return buildObject
-}
 
 function createCarYears(companyId){
   sql = getCarYears(companyId)
@@ -154,28 +114,53 @@ function createIncurredLoss(companyId){
   }
 }
 
+function createAutoPremium(companyId){
+  sql = getAutoPremium(companyId)
+  path = `./company/${companyId}/auto_premium.sql`
+  if (!checkFileExists(path)){
+    console.log(`Auto Premium Table ${companyId} not found. Creating now.`)
+    write(path, sql)
+  }else {
+    console.log(`Auto Premium Table ${companyId} exists. Skipping Generation`)
+  }
+}
 
+function createAutoLoss(companyId){
+  sql = getAutoLoss(companyId)
+
+  path = `./company/${companyId}/auto_loss.sql`
+  if (!checkFileExists(path)){
+    console.log(`Auto Loss Table ${companyId} not found. Creating now.`)
+    write(path, sql)
+  }else {
+    console.log(`Auto Loss Table ${companyId} exists. Skipping Generation`)
+  }
+}
 
 function initCompany(build){
-  companyId = build.id
+  companyId = build.ID
+  console.log('init company: '+companyId)
   createCompanyDirectory(companyId)
   createSchemas(companyId)
-  generateTables(companyId)
   createCarYears(companyId)
   createEarnedPremium(companyId)
   createIncurredCount(companyId)
   createIncurredLoss(companyId)
+  createAutoLoss(companyId)
+  createAutoPremium(companyId)
 
 }
 
-function main(buildObject){
-    completeBuildObject = getCompanyId(buildObject)
-    console.table(completeBuildObject)
-    initCompany(completeBuildObject)
-    
+function main(buildObjects){
+    for (object of buildObjects){
+        console.table(object)
+        initCompany(object)
+    }    
 
 }
 
-buildObject = {"Name": "Shepard Mutual",
- "Lines": ["AU", "HO"],"ID":"3"}
+buildObject = [{"Name": "Shepard Mutual",
+ "ID": "3"},{"Name": "Lab Insurance Group",
+ "ID": "4"},{"Name": "York Farmers INC",
+ "ID": "5"}]
 main(buildObject)
