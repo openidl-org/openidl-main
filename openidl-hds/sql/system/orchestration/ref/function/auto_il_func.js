@@ -5,7 +5,7 @@ function getIncurredLoss(companyId){
         
         select sum(loss_amount) loss_amount
             from 
-            ((select sum(loss_amount) loss_amount from openidl_base.au_loss
+            ((select sum(loss_amount) loss_amount from openidl_base_${companyId}.au_loss
             where transaction_code = '2'
             and reg_reporting_code =  pv_reporting_code
             and accident_date > start_date

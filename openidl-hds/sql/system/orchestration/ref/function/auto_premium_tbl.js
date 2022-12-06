@@ -31,6 +31,7 @@ function getAutoPremium(companyId){
     liability_limits_name VARCHAR,
     liability_limits_amount VARCHAR ,
     deductible_code VARCHAR,
+    deductible_amount VARCHAR,
     exposure Numeric (20,6),
     months_covered Numeric (20,6),
     single_multi_car_rating VARCHAR,
@@ -59,9 +60,7 @@ function getAutoPremium(companyId){
     body_style VARCHAR,
     body_size VARCHAR,
     model_year Numeric (20,6),
-    symbol VARCHAR,
-    reg_reporting_code varchar,
-    reg_reporting_name varchar 
+    symbol VARCHAR
     );`
     return sql
 }

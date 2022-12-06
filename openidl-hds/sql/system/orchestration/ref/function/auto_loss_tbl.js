@@ -5,7 +5,7 @@ function getAutoLoss(companyId){
     line_of_business VARCHAR ,
     subline VARCHAR ,
     subline_category VARCHAR ,
-    accounting_date VARCHAR ,
+    accounting_date DATE ,
     company_code VARCHAR ,
     company_id VARCHAR ,
     state VARCHAR ,
@@ -56,9 +56,7 @@ function getAutoLoss(companyId){
     record_type VARCHAR ,
     transaction_type VARCHAR ,
     transaction_code VARCHAR ,
-    chunk_id VARCHAR,
-    reg_reporting_code varchar,
-    reg_reporting_name varchar 
+    chunk_id VARCHAR
     );`
     return sql
 }

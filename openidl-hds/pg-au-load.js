@@ -29,7 +29,7 @@ async function getLosses(client){
 
 function makeInsertQuery(record){
 
-    let query = `set datestyle to DMY; INSERT INTO ${config.db.schema.base}.au_premium
+    let query = `set datestyle to DMY; INSERT INTO ${config.db.schema.base}_${config.db.companyId}.au_premium
     (line_of_business,
      subline,
      record_type,
@@ -56,6 +56,7 @@ function makeInsertQuery(record){
      liability_limits_name,
      liability_limits_amount,
      deductible_code,
+     deductible_amount,
      exposure,
      months_covered,
      single_multi_car_rating,
@@ -84,9 +85,7 @@ function makeInsertQuery(record){
      body_style,
      body_size,
      model_year,
-     symbol,
-     reg_reporting_code,
-     reg_reporting_name)
+     symbol)
      Values (
          '${record.Policy.LineOfBusiness}',
          '${record.Policy.Subline}',
@@ -114,6 +113,7 @@ function makeInsertQuery(record){
          '${record.Coverage.LiabilityLimitsName}',
          '${record.Coverage.LiabilityLimitsAmount}',
          '${record.Coverage.DeductibleCode}',
+         '${record.Coverage.DeductibleAmount}',
          '${record.Coverage.Exposure}',
          '${record.Coverage.MonthsCovered}',
          '${record.Coverage.SingleMultiCarRating}',
@@ -142,9 +142,7 @@ function makeInsertQuery(record){
          '${record.Vehicle.BodyStyle}',
          '${record.Vehicle.BodySize}',
          '${record.Vehicle.ModelYear}',
-         '${record.Vehicle.Symbol}',
-         '${record.Policy.RegReportingCode}',
-         '${record.Policy.RegReportingName}'
+         '${record.Vehicle.Symbol}'
      )
  `
  return query
@@ -157,7 +155,7 @@ function makeInsertQueryForLoss(record){
         loss=0;
     }
 
-    let query = `set datestyle to DMY; INSERT INTO ${config.db.schema.base}.au_loss
+    let query = `set datestyle to DMY; INSERT INTO ${config.db.schema.base}_${config.db.companyId}.au_loss
     (line_of_business,
 	 subline,
 	 subline_category,
@@ -210,9 +208,7 @@ function makeInsertQueryForLoss(record){
 	 record_type,
 	 transaction_type,
 	 transaction_code,
-	 chunk_id,
-     reg_reporting_code,
-     reg_reporting_name )
+	 chunk_id )
      Values (
          '${record.Policy.LineOfBusiness}',
          '${record.Policy.Subline}',
@@ -266,9 +262,7 @@ function makeInsertQueryForLoss(record){
          '${record.RecordType}',
          '${record.TransactionType}',
          '${record.TransactionCode}',
-         '${record.chunkId}',
-         '${record.Policy.RegReportingCode}',
-         '${record.Policy.RegReportingName}'
+         '${record.chunkId}'
 	 )   
  `
  return query
@@ -276,13 +270,13 @@ function makeInsertQueryForLoss(record){
 
 async function insertPremium(client,record){
     let query = makeInsertQuery(record)
-    // console.log(query)
+    console.log(query)
     await client.query(query)
 }
 
 async function insertLosses(client,record){
     let query = makeInsertQueryForLoss(record)
-    // console.log(query)
+    console.log(query)
     await client.query(query)
 }
 
@@ -325,7 +319,6 @@ async function main(){
     const client = new Client(credentials);
     await client.connect();
     await insertRecords(client,records)
-
     await client.end();
 }
 
