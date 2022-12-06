@@ -1,0 +1,2 @@
+CREATE SCHEMA openidl_base_undefined;
+CREATE SCHEMA openidl_ep_undefined;
