@@ -11,6 +11,7 @@ const getReportingTable = require('./ref/function/auto_tmp_reporting_tbl.js')
 const getTearDown = require('./ref/function/auto_tear_down.js')
 const getAutoOutstanding = require('./ref/function/auto_outstanding.js')
 const getHandTests = require('./ref/function/auto_hand_tests.js')
+const getRefTable = require('./ref/function/auto_tmp_report_ref_tbl.js')
 
 
 function write(path, value){
@@ -164,6 +165,17 @@ function createPreTable(companyId){
     console.log(`Auto Pre Reporting Table ${companyId} exists. Skipping Generation`)
   }
 }
+function createReportingTableRef(companyId){
+  sql = getRefTable(companyId)
+
+  path = `./company/${companyId}/auto_tmp_report_ref_tbl.sql`
+  if (!checkFileExists(path)){
+    console.log(`Auto Reporting Table Ref ${companyId} not found. Creating now.`)
+    write(path, sql)
+  }else {
+    console.log(`Auto Reporting Table Ref ${companyId} exists. Skipping Generation`)
+  }
+}
 
 function createReportingTable(companyId){
   sql = getReportingTable(companyId)
@@ -230,6 +242,7 @@ function initCompany(build){
   createTearDown(companyId)
   createOutstanding(companyId)
   createHandTests(companyId)
+  createReportingTableRef(companyId)
 
 }
 
