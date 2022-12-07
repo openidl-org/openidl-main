@@ -9,7 +9,7 @@ function getIncurredCount(companyId){
         and accident_date > start_date
         and accident_date < end_date into ep;
         RETURN ep;
-    END$$ language plpgsql`
+    END$$ language plpgsql;`
     return sql
 }
 

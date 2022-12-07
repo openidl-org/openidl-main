@@ -25,7 +25,7 @@ function getAutoOutstanding(companyId){
                             t2.occurrence_identifier,
                             t2.accounting_date) x into ep; 
         RETURN ep;
-    END$$ language plpgsql`
+    END$$ language plpgsql;`
 
     return sql
 }

@@ -14,11 +14,11 @@ function getBackOut(companyId){
     DELETE FROM openidl_ep_${companyId}.tmp_pre_au_coverage;
     DELETE FROM openidl_ep_${companyId}.tmp_au_coverage;
 
-    --Functions (note should be torn down after each extraction)
-    DROP FUNCTION openidl_ep_${companyId}.tmp_car_years
-    DROP FUNCTION openidl_ep_${companyId}.tmp_earned_premium
-    DROP FUNCTION openidl_ep_${companyId}.tmp_incurred_loss
-    DROP FUNCTION openidl_ep_${companyId}.tmp_incurred_count
+    --Functions (note should be torn down after each extraction);
+    DROP FUNCTION openidl_ep_${companyId}.tmp_car_years;
+    DROP FUNCTION openidl_ep_${companyId}.tmp_earned_premium;
+    DROP FUNCTION openidl_ep_${companyId}.tmp_incurred_loss;
+    DROP FUNCTION openidl_ep_${companyId}.tmp_incurred_count;
     `
     return sql
 }

@@ -13,7 +13,7 @@ const getAutoOutstanding = require('./ref/function/auto_outstanding.js')
 const getHandTests = require('./ref/function/auto_hand_tests.js')
 const getRefTable = require('./ref/function/auto_tmp_report_ref_tbl.js')
 const getBackOut = require(`./ref/function/auto_back_out.js`)
-
+const getBuilder = require(`./ref/function/auto_build_extraction.js`)
 
 function write(path, value){
   // console.log(`write, path: ${path}\n value: ${value}`)
@@ -238,6 +238,18 @@ function createHandTests(companyId){
   }
 }
 
+function createBuilder(companyId){
+  bash = getBuilder(companyId)
+
+  path = `./company/${companyId}/auto_extraction_builder.sh`
+  if (!checkFileExists(path)){
+    console.log(`Auto Extraction Builder ${companyId} not found. Creating now.`)
+    write(path, bash)
+  }else {
+    console.log(`Auto Extraction Builder ${companyId} exists. Skipping Generation`)
+  }
+}
+
 function initCompany(build){
   companyId = build.ID
   console.log('init company: '+companyId)
@@ -257,6 +269,7 @@ function initCompany(build){
   createHandTests(companyId)
   createReportingTableRef(companyId)
   createBackOut(companyId)
+  createBuilder(companyId)
 
 }
 

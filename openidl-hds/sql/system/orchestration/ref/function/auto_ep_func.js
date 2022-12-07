@@ -39,7 +39,7 @@ function getEarnedPremium(companyId){
                 and transaction_code = '1'
                 and reporting_code = pv_reporting_code)) a into ep;
         RETURN ep;
-    END$$ language plpgsql`
+    END$$ language plpgsql;`
     return earnedPremium
 }
 
