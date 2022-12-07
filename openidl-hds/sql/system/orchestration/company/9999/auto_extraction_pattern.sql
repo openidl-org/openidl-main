@@ -127,8 +127,7 @@ BEGIN
     RETURN cy;
 END$$ language plpgsql;CREATE OR replace FUNCTION openidl_ep_9999.auto_outstanding(IN start_date date,IN end_date date, IN pv_coverage_code VARCHAR)
     returns      numeric AS $$DECLARE ep numeric;
-    BEGIN
-        
+    BEGIN 
         SELECT Sum(x.loss_amount) outstanding_loss
             FROM  (SELECT t2.coverage_code,
                         t2.occurrence_identifier,

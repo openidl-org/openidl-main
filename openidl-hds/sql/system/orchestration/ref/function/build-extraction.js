@@ -16,8 +16,9 @@ function getBuilder(companyId){
     echo '\n#report\n'>>auto_extraction_pattern.sql
     cat auto_coverage_report.sql>>auto_extraction_pattern.sql
     echo 'tear down'>>auto_extraction_pattern.sql
-
-
+    echo 'tear down'
+    echo '\n#teardown\n'
+    cat auto_tear_down.sql>>auto_extraction_pattern.sql
     `
     return bash
 }

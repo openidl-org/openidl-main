@@ -12,6 +12,7 @@ const getTearDown = require('./ref/function/auto_tear_down.js')
 const getAutoOutstanding = require('./ref/function/auto_outstanding.js')
 const getHandTests = require('./ref/function/auto_hand_tests.js')
 const getRefTable = require('./ref/function/auto_tmp_report_ref_tbl.js')
+const getBackOut = require(`./ref/function/auto_back_out.js`)
 
 
 function write(path, value){
@@ -213,6 +214,18 @@ function createTearDown(companyId){
   }
 }
 
+function createBackOut(companyId){
+  sql = getBackOut(companyId)
+
+  path = `./company/${companyId}/auto_back_out.sql`
+  if (!checkFileExists(path)){
+    console.log(`Auto Back Out ${companyId} not found. Creating now.`)
+    write(path, sql)
+  }else {
+    console.log(`Auto Back Out ${companyId} exists. Skipping Generation`)
+  }
+}
+
 function createHandTests(companyId){
   sql = getHandTests(companyId)
 
@@ -243,6 +256,7 @@ function initCompany(build){
   createOutstanding(companyId)
   createHandTests(companyId)
   createReportingTableRef(companyId)
+  createBackOut(companyId)
 
 }
 
