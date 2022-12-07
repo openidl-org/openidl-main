@@ -239,12 +239,12 @@ function createHandTests(companyId){
 }
 
 function createBuilder(companyId){
-  bash = getBuilder(companyId)
+  sql = getBuilder(companyId)
 
-  path = `./company/${companyId}/auto_extraction_builder.sh`
+  path = `./company/${companyId}/auto_coverage_extraction.sql`
   if (!checkFileExists(path)){
     console.log(`Auto Extraction Builder ${companyId} not found. Creating now.`)
-    write(path, bash)
+    write(path, sql)
   }else {
     console.log(`Auto Extraction Builder ${companyId} exists. Skipping Generation`)
   }

@@ -24,4 +24,4 @@ CREATE OR replace FUNCTION openidl_ep_9999.auto_outstanding(IN start_date date,I
                             t2.occurrence_identifier,
                             t2.accounting_date) x into ep; 
         RETURN ep;
-    END$$ language plpgsql
+    END$$ language plpgsql;

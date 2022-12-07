@@ -12,4 +12,4 @@ CREATE OR replace FUNCTION openidl_ep_9999.tmp_au_incurred_loss(IN start_date da
             union
             (select auto_outstanding(start_date, end_date,'1') loss_amount))) a into ep; 
         RETURN ep;
-    END$$ language plpgsql
+    END$$ language plpgsql;

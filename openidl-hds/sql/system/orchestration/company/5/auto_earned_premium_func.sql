@@ -38,4 +38,4 @@ CREATE OR replace FUNCTION openidl_ep_5.tmp_au_earned_premium(IN start_date date
                 and transaction_code = '1'
                 and reporting_code = pv_reporting_code)) a into ep;
         RETURN ep;
-    END$$ language plpgsql
+    END$$ language plpgsql;

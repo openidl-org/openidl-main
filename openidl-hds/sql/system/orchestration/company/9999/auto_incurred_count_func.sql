@@ -8,4 +8,4 @@ CREATE OR replace FUNCTION openidl_ep_9999.tmp_au_incurred_count(IN start_date d
         and accident_date > start_date
         and accident_date < end_date into ep;
         RETURN ep;
-    END$$ language plpgsql
+    END$$ language plpgsql;
