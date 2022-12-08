@@ -52,7 +52,8 @@ module.exports.DBHelper = class DBHelper {
     }
 
     async queryMachine(queryString){
-        let queries = queryString.split(';')
+        //queryString.replaceAll('@comp','9999')
+        let queries = queryString.split('|')
         let returnVal = []
         let logVal = []
         for (let query of queries){

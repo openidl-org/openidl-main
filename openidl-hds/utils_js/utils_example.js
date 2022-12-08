@@ -5,8 +5,10 @@ async function runThisExample(){
     const dbHelper = new DBHelper({credentials: ConfigurationManager.mySQLDBCredentials});
     const result = await dbHelper.runQuery(`
         select count(1)
-        from openidl_base.au_premium;
+        from openidl_base_9999.au_premium;|
     `)
+    console.log('result')
+    console.log(result[0].result)
     return result;
 }
 

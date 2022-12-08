@@ -54,13 +54,28 @@ function checkFileExists(path){
 function createCompanyDirectory(companyId){
   console.log('create dir: '+companyId)
 
-
-  if (!checkDirExists(`./company/${companyId}`)){
+  if (!checkDirExists(`./company/`)){
     console.log('Company DNE')
-    fs.mkdirSync(`./company/${companyId}`)
+    fs.mkdirSync(`./company/`)
   } else {
     console.log('Company Exists')
   }
+
+  if (!checkDirExists(`./company/${companyId}`)){
+    console.log(`Company ${companyId} DNE`)
+    fs.mkdirSync(`./company/${companyId}`)
+  } else {
+    console.log(`Company Exists ${companyId}`)
+  }
+
+  if (!checkDirExists(`./company/${companyId}/reporting`)){
+    console.log(`Company ${companyId}/reporting DNE`)
+    fs.mkdirSync(`./company/${companyId}/reporting`)
+  } else {
+    console.log(`Company Exists ${companyId}/reporting`)
+  }
+
+
 }
 
 function createSchemas(companyId){
@@ -90,7 +105,7 @@ function createCarYears(companyId){
 
 function createEarnedPremium(companyId){
   sql = getEarnedPremium(companyId)
-  path = `./company/${companyId}/auto_earned_premium_func.sql`
+  path = `./company/${companyId}/reporting/auto_earned_premium_func.sql`
   if (!checkFileExists(path)){
     console.log(`Earned Premium Function ${companyId} not found. Creating now.`)
     write(path, sql)
@@ -101,7 +116,7 @@ function createEarnedPremium(companyId){
 
 function createIncurredCount(companyId){
   sql = getIncurredCount(companyId)
-  path = `./company/${companyId}/auto_incurred_count_func.sql`
+  path = `./company/${companyId}/reporting/auto_incurred_count_func.sql`
   if (!checkFileExists(path)){
     console.log(`Incurred Count Function ${companyId} not found. Creating now.`)
     write(path, sql)
@@ -112,7 +127,7 @@ function createIncurredCount(companyId){
 
 function createIncurredLoss(companyId){
   sql = getIncurredLoss(companyId)
-  path = `./company/${companyId}/auto_incurred_loss_func.sql`
+  path = `./company/${companyId}/reporting/auto_incurred_loss_func.sql`
   if (!checkFileExists(path)){
     console.log(`Incurred Loss Function ${companyId} not found. Creating now.`)
     write(path, sql)
@@ -123,7 +138,7 @@ function createIncurredLoss(companyId){
 
 function createAutoCoverageReport(companyId){
   sql = getCoverageReport(companyId)
-  path = `./company/${companyId}/auto_coverage_report.sql`
+  path = `./company/${companyId}/reporting/auto_coverage_report.sql`
   if (!checkFileExists(path)){
     console.log(`Auto Coverage Report ${companyId} not found. Creating now.`)
     write(path, sql)
@@ -158,7 +173,7 @@ function createAutoLoss(companyId){
 function createPreTable(companyId){
   sql = getPreTable(companyId)
 
-  path = `./company/${companyId}/auto_tmp_pre_report_tbl.sql`
+  path = `./company/${companyId}/reporting/auto_tmp_pre_report_tbl.sql`
   if (!checkFileExists(path)){
     console.log(`Auto Pre Reporting Table ${companyId} not found. Creating now.`)
     write(path, sql)
@@ -169,7 +184,7 @@ function createPreTable(companyId){
 function createReportingTableRef(companyId){
   sql = getRefTable(companyId)
 
-  path = `./company/${companyId}/auto_tmp_report_ref_tbl.sql`
+  path = `./company/${companyId}/reporting/auto_tmp_report_ref_tbl.sql`
   if (!checkFileExists(path)){
     console.log(`Auto Reporting Table Ref ${companyId} not found. Creating now.`)
     write(path, sql)
@@ -181,7 +196,7 @@ function createReportingTableRef(companyId){
 function createReportingTable(companyId){
   sql = getReportingTable(companyId)
 
-  path = `./company/${companyId}/auto_tmp_report_tbl.sql`
+  path = `./company/${companyId}/reporting/auto_tmp_report_tbl.sql`
   if (!checkFileExists(path)){
     console.log(`Auto Reporting Table ${companyId} not found. Creating now.`)
     write(path, sql)
@@ -193,7 +208,7 @@ function createReportingTable(companyId){
 function createOutstanding(companyId){
   sql = getAutoOutstanding(companyId)
 
-  path = `./company/${companyId}/auto_outstanding_func.sql`
+  path = `./company/${companyId}/reporting/auto_outstanding_func.sql`
   if (!checkFileExists(path)){
     console.log(`Auto Outstanding function ${companyId} not found. Creating now.`)
     write(path, sql)
@@ -205,7 +220,7 @@ function createOutstanding(companyId){
 function createTearDown(companyId){
   sql = getTearDown(companyId)
 
-  path = `./company/${companyId}/auto_tear_down.sql`
+  path = `./company/${companyId}/reporting/auto_tear_down.sql`
   if (!checkFileExists(path)){
     console.log(`Auto Tear Down ${companyId} not found. Creating now.`)
     write(path, sql)
@@ -229,7 +244,7 @@ function createBackOut(companyId){
 function createHandTests(companyId){
   sql = getHandTests(companyId)
 
-  path = `./company/${companyId}/auto_hand_tests.sql`
+  path = `./company/${companyId}/reporting/auto_hand_tests.sql`
   if (!checkFileExists(path)){
     console.log(`Auto Hand Tests ${companyId} not found. Creating now.`)
     write(path, sql)
@@ -241,12 +256,33 @@ function createHandTests(companyId){
 function createBuilder(companyId){
   sql = getBuilder(companyId)
 
-  path = `./company/${companyId}/auto_coverage_extraction.sql`
+  path = `./company/${companyId}/reporting/auto_coverage_extraction.sql`
   if (!checkFileExists(path)){
     console.log(`Auto Extraction Builder ${companyId} not found. Creating now.`)
     write(path, sql)
   }else {
     console.log(`Auto Extraction Builder ${companyId} exists. Skipping Generation`)
+  }
+}
+
+function createExtractionPattern(){
+  companyId = '@comp'
+  sql = getBuilder(companyId)
+
+  if (!checkDirExists(`./stat_agent/`)){
+    console.log('Stat Agent DNE')
+    fs.mkdirSync(`./stat_agent/`)
+  } else {
+    console.log('stat_agent')
+  }
+
+
+  path = `./stat_agent/auto_coverage_extraction.sql`
+  if (!checkFileExists(path)){
+    console.log(`Auto Extraction Pattern not found. Creating now.`)
+    write(path, sql)
+  }else {
+    console.log(`Auto Extraction Pattern exists. Skipping Generation`)
   }
 }
 
@@ -270,6 +306,7 @@ function initCompany(build){
   createReportingTableRef(companyId)
   createBackOut(companyId)
   createBuilder(companyId)
+  createExtractionPattern()
 
 }
 
