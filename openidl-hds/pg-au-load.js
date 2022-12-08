@@ -1,6 +1,6 @@
 const config = require('./config/config.json')
 const { Pool, Client } = require("pg");
-const records = require('../../../con-data/auto.json').records
+const records = require('../../../con-data/auto9999.json').records
 const credentials = {
   user: config.db.username,
   host: config.db.host,
@@ -9,21 +9,6 @@ const credentials = {
   port: config.db.port,
 };
 
-
-
-async function getPremiums(client){
-    const premiums = await client.query(`select * from openidl.au_premium ap ;`)
-    console.log(premiums.rows)
-  
-    return premiums;
-}
-
-async function getLosses(client){
-    const losses = await client.query(`select * from openidl.au_losses al ;`)
-    console.log(losses.rows)
-  
-    return losses;
-}
 
 
 
