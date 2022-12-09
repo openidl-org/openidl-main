@@ -14,8 +14,8 @@ function getBuilder(companyId){
 
     sqlArray = []
     sqlArray.push(getPreTable(companyId))
-    sqlArray.push(getRefTable(companyId))
     sqlArray.push(getReportingTable(companyId))
+    sqlArray.push(getRefTable(companyId))
     sqlArray.push(getCarYears(companyId))
     sqlArray.push(getEarnedPremium(companyId))
     sqlArray.push(getAutoOutstanding(companyId))

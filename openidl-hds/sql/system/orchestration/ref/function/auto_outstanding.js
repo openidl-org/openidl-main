@@ -1,5 +1,6 @@
 function getAutoOutstanding(companyId){
-    sql = `CREATE OR replace FUNCTION openidl_ep_${companyId}.auto_outstanding(IN start_date date,IN end_date date, IN pv_coverage_code VARCHAR)
+    sql = `
+    CREATE OR replace FUNCTION openidl_ep_${companyId}.auto_outstanding(IN start_date date,IN end_date date, IN pv_coverage_code VARCHAR)
     returns      numeric AS $$DECLARE ep numeric;
     BEGIN
         
@@ -25,7 +26,9 @@ function getAutoOutstanding(companyId){
                             t2.occurrence_identifier,
                             t2.accounting_date) x into ep; 
         RETURN ep;
-    END$$ language plpgsql;`
+    END$$ language plpgsql;
+    
+    `
 
     return sql
 }

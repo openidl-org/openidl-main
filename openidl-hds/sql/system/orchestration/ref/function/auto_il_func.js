@@ -1,5 +1,6 @@
 function getIncurredLoss(companyId){
-    sql = `CREATE OR replace FUNCTION openidl_ep_${companyId}.tmp_au_incurred_loss(IN start_date date,IN end_date date, IN  pv_reporting_code VARCHAR)
+    sql = `
+    CREATE OR replace FUNCTION openidl_ep_${companyId}.tmp_au_incurred_loss(IN start_date date,IN end_date date, IN  pv_reporting_code VARCHAR)
     returns      numeric AS $$DECLARE ep numeric;
     BEGIN
         
@@ -13,7 +14,9 @@ function getIncurredLoss(companyId){
             union
             (select auto_outstanding(start_date, end_date,'1') loss_amount))) a into ep; 
         RETURN ep;
-    END$$ language plpgsql;`
+    END$$ language plpgsql;
+    
+    `
     return sql
 }
 

@@ -1,4 +1,5 @@
-create table openidl_ep_9997.tmp_au_coverage as
+
+    create table openidl_ep_9997.tmp_au_coverage as
     select 
            case when a.coverage_code = '1' then '1'
                   when a.coverage_code = '2' then '2'
@@ -58,3 +59,5 @@ create table openidl_ep_9997.tmp_au_coverage as
                   else null end as reporting_name,
                   a.*
     from openidl_ep_9997.tmp_pre_au_coverage a;
+    
+    

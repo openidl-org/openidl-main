@@ -1,3 +1,4 @@
+
 CREATE OR replace FUNCTION openidl_ep_9997.tmp_car_years(IN start_date date,IN end_date date, IN pv_reporting_code VARCHAR)
 returns      numeric AS $$DECLARE cy numeric;
 BEGIN
@@ -39,3 +40,4 @@ BEGIN
             ) a into cy;
     RETURN cy;
 END$$ language plpgsql;
+

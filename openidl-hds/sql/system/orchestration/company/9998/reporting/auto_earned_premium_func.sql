@@ -1,4 +1,5 @@
-CREATE OR replace FUNCTION openidl_ep_9998.tmp_au_earned_premium(IN start_date date,IN end_date date, IN pv_reporting_code VARCHAR)
+
+    CREATE OR replace FUNCTION openidl_ep_9998.tmp_au_earned_premium(IN start_date date,IN end_date date, IN pv_reporting_code VARCHAR)
     returns      numeric AS $$DECLARE ep numeric;
     BEGIN
         select sum(a.ep)
@@ -39,3 +40,5 @@ CREATE OR replace FUNCTION openidl_ep_9998.tmp_au_earned_premium(IN start_date d
                 and reporting_code = pv_reporting_code)) a into ep;
         RETURN ep;
     END$$ language plpgsql;
+    
+    

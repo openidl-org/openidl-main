@@ -1,6 +1,7 @@
 
 function getCarYears(companyId) {
-carYears = `CREATE OR replace FUNCTION openidl_ep_${companyId}.tmp_car_years(IN start_date date,IN end_date date, IN pv_reporting_code VARCHAR)
+carYears = `
+CREATE OR replace FUNCTION openidl_ep_${companyId}.tmp_car_years(IN start_date date,IN end_date date, IN pv_reporting_code VARCHAR)
 returns      numeric AS $$DECLARE cy numeric;
 BEGIN
     select sum(a.cy)
@@ -40,7 +41,9 @@ BEGIN
             and reporting_code = pv_reporting_code)
             ) a into cy;
     RETURN cy;
-END$$ language plpgsql;` 
+END$$ language plpgsql;
+
+` 
 return carYears
 }
 

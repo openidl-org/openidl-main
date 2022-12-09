@@ -1,5 +1,6 @@
 function getEarnedPremium(companyId){
-    earnedPremium = `CREATE OR replace FUNCTION openidl_ep_${companyId}.tmp_au_earned_premium(IN start_date date,IN end_date date, IN pv_reporting_code VARCHAR)
+    earnedPremium = `
+    CREATE OR replace FUNCTION openidl_ep_${companyId}.tmp_au_earned_premium(IN start_date date,IN end_date date, IN pv_reporting_code VARCHAR)
     returns      numeric AS $$DECLARE ep numeric;
     BEGIN
         select sum(a.ep)
@@ -39,7 +40,9 @@ function getEarnedPremium(companyId){
                 and transaction_code = '1'
                 and reporting_code = pv_reporting_code)) a into ep;
         RETURN ep;
-    END$$ language plpgsql;`
+    END$$ language plpgsql;
+    
+    `
     return earnedPremium
 }
 

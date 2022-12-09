@@ -1,5 +1,6 @@
 function getReportingTable(companyId){
-    sql =  `create table openidl_ep_${companyId}.tmp_au_coverage as
+    sql =  `
+    create table openidl_ep_${companyId}.tmp_au_coverage as
     select 
            case when a.coverage_code = '1' then '1'
                   when a.coverage_code = '2' then '2'
@@ -58,7 +59,9 @@ function getReportingTable(companyId){
                   when a.coverage_code = '9' then 'Bodily Injury'
                   else null end as reporting_name,
                   a.*
-    from openidl_ep_${companyId}.tmp_pre_au_coverage a;`
+    from openidl_ep_${companyId}.tmp_pre_au_coverage a;
+    
+    `
     return sql
 }
 

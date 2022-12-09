@@ -1,15 +1,15 @@
-create table openidl_ep_9999.tmp_pre_au_coverage as
+
+    create table openidl_ep_9999.tmp_pre_au_coverage as
     (select a.accounting_date, a.transaction_code, a.accounting_term_expiration, a.exposure, a.monthly_premium_amount
     , null as occurrence_identifier, null as accident_date, null as loss_amount, a.deductible_amount, a.deductible_code, a.coverage_code
     from openidl_base_9999.au_premium a)
     union all
     (select b.accounting_date::date, b.transaction_code, null as accounting_term_expiration, null as exposure, null as monthly_premium_amount,
     b.occurrence_identifier, b.accident_date, b.loss_amount, b.deductible_amount, b.deductible_code, b.coverage_code
-    from openidl_base_9999.au_loss b);|create table openidl_ep_9999.tmp_au_coverage_ref as
-    select reporting_code, reporting_name 
-    from openidl_ep_9999.tmp_au_coverage 
-    group by reporting_code, reporting_name 
-    order by reporting_code::numeric ;|create table openidl_ep_9999.tmp_au_coverage as
+    from openidl_base_9999.au_loss b);
+    
+    |
+    create table openidl_ep_9999.tmp_au_coverage as
     select 
            case when a.coverage_code = '1' then '1'
                   when a.coverage_code = '2' then '2'
@@ -68,7 +68,17 @@ create table openidl_ep_9999.tmp_pre_au_coverage as
                   when a.coverage_code = '9' then 'Bodily Injury'
                   else null end as reporting_name,
                   a.*
-    from openidl_ep_9999.tmp_pre_au_coverage a;|CREATE OR replace FUNCTION openidl_ep_9999.tmp_car_years(IN start_date date,IN end_date date, IN pv_reporting_code VARCHAR)
+    from openidl_ep_9999.tmp_pre_au_coverage a;
+    
+    |
+    create table openidl_ep_9999.tmp_au_coverage_ref as
+    select reporting_code, reporting_name 
+    from openidl_ep_9999.tmp_au_coverage 
+    group by reporting_code, reporting_name 
+    order by reporting_code::numeric ;
+    
+    |
+CREATE OR replace FUNCTION openidl_ep_9999.tmp_car_years(IN start_date date,IN end_date date, IN pv_reporting_code VARCHAR)
 returns      numeric AS $$DECLARE cy numeric;
 BEGIN
     select sum(a.cy)
@@ -108,7 +118,10 @@ BEGIN
             and reporting_code = pv_reporting_code)
             ) a into cy;
     RETURN cy;
-END$$ language plpgsql;|CREATE OR replace FUNCTION openidl_ep_9999.tmp_au_earned_premium(IN start_date date,IN end_date date, IN pv_reporting_code VARCHAR)
+END$$ language plpgsql;
+
+|
+    CREATE OR replace FUNCTION openidl_ep_9999.tmp_au_earned_premium(IN start_date date,IN end_date date, IN pv_reporting_code VARCHAR)
     returns      numeric AS $$DECLARE ep numeric;
     BEGIN
         select sum(a.ep)
@@ -148,7 +161,10 @@ END$$ language plpgsql;|CREATE OR replace FUNCTION openidl_ep_9999.tmp_au_earned
                 and transaction_code = '1'
                 and reporting_code = pv_reporting_code)) a into ep;
         RETURN ep;
-    END$$ language plpgsql;|CREATE OR replace FUNCTION openidl_ep_9999.auto_outstanding(IN start_date date,IN end_date date, IN pv_coverage_code VARCHAR)
+    END$$ language plpgsql;
+    
+    |
+    CREATE OR replace FUNCTION openidl_ep_9999.auto_outstanding(IN start_date date,IN end_date date, IN pv_coverage_code VARCHAR)
     returns      numeric AS $$DECLARE ep numeric;
     BEGIN
         
@@ -174,7 +190,10 @@ END$$ language plpgsql;|CREATE OR replace FUNCTION openidl_ep_9999.tmp_au_earned
                             t2.occurrence_identifier,
                             t2.accounting_date) x into ep; 
         RETURN ep;
-    END$$ language plpgsql;|CREATE OR replace FUNCTION openidl_ep_9999.tmp_au_incurred_loss(IN start_date date,IN end_date date, IN  pv_reporting_code VARCHAR)
+    END$$ language plpgsql;
+    
+    |
+    CREATE OR replace FUNCTION openidl_ep_9999.tmp_au_incurred_loss(IN start_date date,IN end_date date, IN  pv_reporting_code VARCHAR)
     returns      numeric AS $$DECLARE ep numeric;
     BEGIN
         
@@ -188,7 +207,10 @@ END$$ language plpgsql;|CREATE OR replace FUNCTION openidl_ep_9999.tmp_au_earned
             union
             (select auto_outstanding(start_date, end_date,'1') loss_amount))) a into ep; 
         RETURN ep;
-    END$$ language plpgsql;|CREATE OR replace FUNCTION openidl_ep_9999.tmp_au_incurred_count(IN start_date date,IN end_date date, IN pv_reporting_code VARCHAR)
+    END$$ language plpgsql;
+    
+    |
+    CREATE OR replace FUNCTION openidl_ep_9999.tmp_au_incurred_count(IN start_date date,IN end_date date, IN pv_reporting_code VARCHAR)
     returns      numeric AS $$DECLARE ep numeric;
     BEGIN
         select count(distinct(occurrence_identifier)) incurred_count 
@@ -198,19 +220,25 @@ END$$ language plpgsql;|CREATE OR replace FUNCTION openidl_ep_9999.tmp_au_earned
         and accident_date > start_date
         and accident_date < end_date into ep;
         RETURN ep;
-    END$$ language plpgsql;|select *, round(openidl_ep_9999.tmp_au_earned_premium('2000-01-01'::DATE, '2002-01-01'::DATE,a.reg_reporting_code)) earned_premium 
-    ,round(openidl_ep_9999.tmp_car_years('2000-01-01'::DATE, '2002-01-01'::DATE,a.reg_reporting_code)) car_years
-    ,round(openidl_ep_9999.tmp_au_incurred_count('2000-01-01'::DATE, '2002-01-01'::DATE,a.reg_reporting_code)) incurred_count
-    ,round(openidl_ep_9999.tmp_au_incurred_loss('2000-01-01'::DATE, '2002-01-01'::DATE,a.reg_reporting_code)) incurred_loss
-    from openidl_ep_9999.au_reg_reporting_ref a; |
-    -- Temp Tables
-    DROP TABLE openidl_ep_9999.tmp_pre_au_coverage;
-    DROP TABLE openidl_ep_9999.tmp_au_coverage;
-
-    --Functions (note should be torn down after each extraction);
-    DROP FUNCTION openidl_ep_9999.tmp_car_years;
-    DROP FUNCTION openidl_ep_9999.tmp_earned_premium;
-    DROP FUNCTION openidl_ep_9999.tmp_incurred_loss;
-    DROP FUNCTION openidl_ep_9999.tmp_incurred_count;
-    DROP FUNCTION openidl_ep_9999.tmp_auto_outstanding;
+    END$$ language plpgsql;
+    
+    |
+    select *, round(openidl_ep_9999.tmp_au_earned_premium('2000-01-01'::DATE, '2002-01-01'::DATE,a.reporting_code)) earned_premium 
+    ,round(openidl_ep_9999.tmp_car_years('2000-01-01'::DATE, '2002-01-01'::DATE,a.reporting_code)) car_years
+    ,round(openidl_ep_9999.tmp_au_incurred_count('2000-01-01'::DATE, '2002-01-01'::DATE,a.reporting_code)) incurred_count
+    ,round(openidl_ep_9999.tmp_au_incurred_loss('2000-01-01'::DATE, '2002-01-01'::DATE,a.reporting_code)) incurred_loss
+    from openidl_ep_9999.tmp_au_coverage_ref a; 
+    
+    |
+ 
+    DROP TABLE IF EXISTS openidl_ep_9999.tmp_au_coverage;|
+    DROP TABLE IF EXISTS openidl_ep_9999.tmp_au_coverage_ref;|
+    DROP TABLE IF EXISTS openidl_ep_9999.tmp_pre_au_coverage;|
+    
+    DROP FUNCTION IF EXISTS openidl_ep_9999.tmp_car_years;|
+    DROP FUNCTION IF EXISTS openidl_ep_9999.tmp_earned_premium;|
+    DROP FUNCTION IF EXISTS openidl_ep_9999.tmp_incurred_loss;|
+    DROP FUNCTION IF EXISTS openidl_ep_9999.tmp_incurred_count;|
+    DROP FUNCTION IF EXISTS openidl_ep_9999.tmp_auto_outstanding;|
+    
     
