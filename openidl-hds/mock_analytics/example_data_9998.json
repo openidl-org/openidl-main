@@ -2,30 +2,141 @@
     "ok": true,
     "result": [
         {
-            "query": "select count(1) from openidl_base_9999.au_premium;",
+            "query": "\n    select *, round(openidl_ep_9999.tmp_au_earned_premium('2000-01-01'::DATE, '2002-01-01'::DATE,a.reporting_code)) earned_premium \n    ,round(openidl_ep_9999.tmp_car_years('2000-01-01'::DATE, '2002-01-01'::DATE,a.reporting_code)) car_years\n    ,round(openidl_ep_9999.tmp_au_incurred_count('2000-01-01'::DATE, '2002-01-01'::DATE,a.reporting_code)) incurred_count\n    ,round(openidl_ep_9999.tmp_au_incurred_loss('2000-01-01'::DATE, '2002-01-01'::DATE,a.reporting_code)) incurred_loss\n    from openidl_ep_9999.tmp_au_coverage_ref a; \n    \n    ",
             "result": {
-                "query": "select count(1) from openidl_base_9999.au_premium;",
+                "query": "\n    select *, round(openidl_ep_9999.tmp_au_earned_premium('2000-01-01'::DATE, '2002-01-01'::DATE,a.reporting_code)) earned_premium \n    ,round(openidl_ep_9999.tmp_car_years('2000-01-01'::DATE, '2002-01-01'::DATE,a.reporting_code)) car_years\n    ,round(openidl_ep_9999.tmp_au_incurred_count('2000-01-01'::DATE, '2002-01-01'::DATE,a.reporting_code)) incurred_count\n    ,round(openidl_ep_9999.tmp_au_incurred_loss('2000-01-01'::DATE, '2002-01-01'::DATE,a.reporting_code)) incurred_loss\n    from openidl_ep_9999.tmp_au_coverage_ref a; \n    \n    ",
                 "result": {
                     "command": "SELECT",
-                    "rowCount": 1,
+                    "rowCount": 8,
                     "oid": null,
                     "rows": [
                         {
-                            "count": "501"
+                            "reporting_code": "1",
+                            "reporting_name": "Bodily Injury",
+                            "earned_premium": "823",
+                            "car_years": "2",
+                            "incurred_count": "0",
+                            "incurred_loss": "369558"
+                        },
+                        {
+                            "reporting_code": "2",
+                            "reporting_name": "Property Damage",
+                            "earned_premium": "251",
+                            "car_years": "2",
+                            "incurred_count": "0",
+                            "incurred_loss": "369558"
+                        },
+                        {
+                            "reporting_code": "3",
+                            "reporting_name": "Single BI/PD Limit",
+                            "earned_premium": "16279",
+                            "car_years": "25",
+                            "incurred_count": "0",
+                            "incurred_loss": "369558"
+                        },
+                        {
+                            "reporting_code": "4",
+                            "reporting_name": "PIP",
+                            "earned_premium": "968",
+                            "car_years": "20",
+                            "incurred_count": "0",
+                            "incurred_loss": "369558"
+                        },
+                        {
+                            "reporting_code": "5",
+                            "reporting_name": "Medical Payments",
+                            "earned_premium": "16",
+                            "car_years": "1",
+                            "incurred_count": "0",
+                            "incurred_loss": "369558"
+                        },
+                        {
+                            "reporting_code": "6",
+                            "reporting_name": "Uninsured/underinsured",
+                            "earned_premium": "3146",
+                            "car_years": "27",
+                            "incurred_count": "0",
+                            "incurred_loss": "369558"
+                        },
+                        {
+                            "reporting_code": "17",
+                            "reporting_name": "Phy Dam - Coll - ALL OTHER",
+                            "earned_premium": "9290",
+                            "car_years": "25",
+                            "incurred_count": "0",
+                            "incurred_loss": "369558"
+                        },
+                        {
+                            "reporting_code": "18",
+                            "reporting_name": "Phy Dam - Comp - ALL OTHER",
+                            "earned_premium": "3344",
+                            "car_years": "43",
+                            "incurred_count": "0",
+                            "incurred_loss": "369558"
                         }
                     ],
                     "fields": [
                         {
-                            "name": "count",
+                            "name": "reporting_code",
+                            "tableID": 17779,
+                            "columnID": 1,
+                            "dataTypeID": 25,
+                            "dataTypeSize": -1,
+                            "dataTypeModifier": -1,
+                            "format": "text"
+                        },
+                        {
+                            "name": "reporting_name",
+                            "tableID": 17779,
+                            "columnID": 2,
+                            "dataTypeID": 25,
+                            "dataTypeSize": -1,
+                            "dataTypeModifier": -1,
+                            "format": "text"
+                        },
+                        {
+                            "name": "earned_premium",
                             "tableID": 0,
                             "columnID": 0,
-                            "dataTypeID": 20,
-                            "dataTypeSize": 8,
+                            "dataTypeID": 1700,
+                            "dataTypeSize": -1,
+                            "dataTypeModifier": -1,
+                            "format": "text"
+                        },
+                        {
+                            "name": "car_years",
+                            "tableID": 0,
+                            "columnID": 0,
+                            "dataTypeID": 1700,
+                            "dataTypeSize": -1,
+                            "dataTypeModifier": -1,
+                            "format": "text"
+                        },
+                        {
+                            "name": "incurred_count",
+                            "tableID": 0,
+                            "columnID": 0,
+                            "dataTypeID": 1700,
+                            "dataTypeSize": -1,
+                            "dataTypeModifier": -1,
+                            "format": "text"
+                        },
+                        {
+                            "name": "incurred_loss",
+                            "tableID": 0,
+                            "columnID": 0,
+                            "dataTypeID": 1700,
+                            "dataTypeSize": -1,
                             "dataTypeModifier": -1,
                             "format": "text"
                         }
                     ],
                     "_parsers": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
                         null
                     ],
                     "_types": {

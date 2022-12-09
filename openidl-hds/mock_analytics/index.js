@@ -46,14 +46,14 @@ async function main(){
     console.log(ep())
     response = await restExampleExecution_9999()
     response = await restExampleExecution_9998()
-    n9999 = require("./example_data_9999.json").result
-    count9999 = (n9999[0].result.result.rows[0].count)
+    // n9999 = require("./example_data_9999.json").result
+    // count9999 = (n9999[0].result.result.rows[0].count)
 
-    n9998 = require("./example_data_9998.json").result
-    count9998 = (n9999[0].result.result.rows[0].count)
+    // n9998 = require("./example_data_9998.json").result
+    // count9998 = (n9999[0].result.result.rows[0].count)
 
-    total = parseInt(count9998) + parseInt(count9999)
-    console.log(total)
+    // total = parseInt(count9998) + parseInt(count9999)
+    // console.log(total)
 }
 
 main()
