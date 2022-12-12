@@ -41,11 +41,31 @@ async function restExampleExecution_9998(){
     }
 }
 
+async function restExampleExecution_9997(){
+    try{
+        let query = ep();
+        const result = await post("http://localhost:3000/query/execute_9997", {
+            query
+        }, {
+            headers: {
+                auth_key: "y0dTTafTsmiB2gzjU2BVPOsJLrqZ#o@VjRQILI!Y16mzo3C9eL7hV&$#7fm@Vv4O874SOD%aM&34#XTofDKypRTWwX!"
+            }
+        })
+        const data = result.data;
+        fs.writeFileSync("./example_data_9997.json", JSON.stringify(data, null, 4));
+        return data;
+    }catch(restExampleExecution_e){
+        console.log({restExampleExecution_e});
+        return null;
+    }
+}
+
 
 async function main(){
     console.log(ep())
     response = await restExampleExecution_9999()
     response = await restExampleExecution_9998()
+    response = await restExampleExecution_9997()
     // n9999 = require("./example_data_9999.json").result
     // count9999 = (n9999[0].result.result.rows[0].count)
 
