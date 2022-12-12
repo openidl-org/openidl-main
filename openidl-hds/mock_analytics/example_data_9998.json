@@ -78,7 +78,7 @@
                     "fields": [
                         {
                             "name": "reporting_code",
-                            "tableID": 17779,
+                            "tableID": 17857,
                             "columnID": 1,
                             "dataTypeID": 25,
                             "dataTypeSize": -1,
@@ -87,7 +87,7 @@
                         },
                         {
                             "name": "reporting_name",
-                            "tableID": 17779,
+                            "tableID": 17857,
                             "columnID": 2,
                             "dataTypeID": 25,
                             "dataTypeSize": -1,

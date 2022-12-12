@@ -1,9 +1,9 @@
 function getTearDown(companyId){
     sql = `
  
-    DROP TABLE IF EXISTS openidl_ep_${companyId}.tmp_au_coverage;|
-    DROP TABLE IF EXISTS openidl_ep_${companyId}.tmp_au_coverage_ref;|
-    DROP TABLE IF EXISTS openidl_ep_${companyId}.tmp_pre_au_coverage;|
+    DROP TABLE openidl_ep_${companyId}.tmp_au_coverage;|
+    DROP TABLE openidl_ep_${companyId}.tmp_au_coverage_ref;|
+    DROP TABLE openidl_ep_${companyId}.tmp_pre_au_coverage;|
     
     DROP FUNCTION IF EXISTS openidl_ep_${companyId}.tmp_car_years;|
     DROP FUNCTION IF EXISTS openidl_ep_${companyId}.tmp_earned_premium;|
