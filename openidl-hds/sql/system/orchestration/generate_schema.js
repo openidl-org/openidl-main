@@ -301,7 +301,7 @@ function createBuilder(companyId) {
 }
 
 function createExtractionPattern() {
-	companyId = '@comp';
+	companyId = '@org';
 	sql = getBuilder(companyId);
 
 	if (!checkDirExists(`./stat_agent/`)) {
