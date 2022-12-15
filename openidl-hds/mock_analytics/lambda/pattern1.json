@@ -1,0 +1,138 @@
+[
+	{
+		"car_years": "440",
+		"earned_premium": "194959",
+		"incurred_count": "38",
+		"incurred_loss": "471724",
+		"reporting_code": "1",
+		"reporting_name": "Bodily Injury"
+	},
+	{
+		"car_years": "438",
+		"earned_premium": "67550",
+		"incurred_count": "154",
+		"incurred_loss": "975576",
+		"reporting_code": "2",
+		"reporting_name": "Property Damage"
+	},
+	{
+		"car_years": "244",
+		"earned_premium": "142391",
+		"incurred_count": "34",
+		"incurred_loss": "489894",
+		"reporting_code": "3",
+		"reporting_name": "Single BI/PD Limit"
+	},
+	{
+		"car_years": "152",
+		"earned_premium": "6521",
+		"incurred_count": "4",
+		"incurred_loss": "385165",
+		"reporting_code": "4",
+		"reporting_name": "PIP"
+	},
+	{
+		"car_years": "170",
+		"earned_premium": "3100",
+		"incurred_count": "20",
+		"incurred_loss": "426895",
+		"reporting_code": "5",
+		"reporting_name": "Medical Payments"
+	},
+	{
+		"car_years": "721",
+		"earned_premium": "97887",
+		"incurred_count": "5",
+		"incurred_loss": "369558",
+		"reporting_code": "6",
+		"reporting_name": "Uninsured/underinsured"
+	},
+	{
+		"car_years": "0",
+		"earned_premium": "811",
+		"incurred_count": "11",
+		"incurred_loss": "379884",
+		"reporting_code": "8",
+		"reporting_name": "Phy Dam - Comp - FULL"
+	},
+	{
+		"car_years": "2",
+		"earned_premium": "1627",
+		"incurred_count": "0",
+		"incurred_loss": "369558",
+		"reporting_code": "9",
+		"reporting_name": "Phy Dam - Coll - $100"
+	},
+	{
+		"car_years": "110",
+		"earned_premium": "12527",
+		"incurred_count": "18",
+		"incurred_loss": "415083",
+		"reporting_code": "10",
+		"reporting_name": "Phy Dam - Comp - $100"
+	},
+	{
+		"car_years": "21",
+		"earned_premium": "11748",
+		"incurred_count": "7",
+		"incurred_loss": "395611",
+		"reporting_code": "11",
+		"reporting_name": "Phy Dam - Coll - $250"
+	},
+	{
+		"car_years": "71",
+		"earned_premium": "7494",
+		"incurred_count": "30",
+		"incurred_loss": "407841",
+		"reporting_code": "12",
+		"reporting_name": "Phy Dam - Comp - $250"
+	},
+	{
+		"car_years": "473",
+		"earned_premium": "175047",
+		"incurred_count": "230",
+		"incurred_loss": "1565847",
+		"reporting_code": "13",
+		"reporting_name": "Phy Dam - Coll - $500"
+	},
+	{
+		"car_years": "369",
+		"earned_premium": "38965",
+		"incurred_count": "244",
+		"incurred_loss": "747284",
+		"reporting_code": "14",
+		"reporting_name": "Phy Dam - Comp - $500"
+	},
+	{
+		"car_years": "53",
+		"earned_premium": "18627",
+		"incurred_count": "39",
+		"incurred_loss": "597236",
+		"reporting_code": "15",
+		"reporting_name": "Phy Dam - Coll - $1000"
+	},
+	{
+		"car_years": "29",
+		"earned_premium": "3474",
+		"incurred_count": "22",
+		"incurred_loss": "405574",
+		"reporting_code": "16",
+		"reporting_name": "Phy Dam - Comp - $1000"
+	},
+	{
+		"car_years": "40",
+		"earned_premium": "16072",
+		"incurred_count": "2",
+		"incurred_loss": "382560",
+		"reporting_code": "17",
+		"reporting_name": "Phy Dam - Coll - ALL OTHER"
+	},
+	{
+		"car_years": "745",
+		"earned_premium": "22916",
+		"incurred_count": "231",
+		"incurred_loss": "474115",
+		"reporting_code": "18",
+		"reporting_name": "Phy Dam - Comp - ALL OTHER"
+	}
+]

@@ -1,0 +1,5 @@
+{
+	"map": "t1",
+	"reduce": "\n    select *, round(openidl_ep_@org.tmp_au_earned_premium('2000-01-01'::DATE, '2002-01-01'::DATE,a.reporting_code)) earned_premium \n    ,round(openidl_ep_@org.tmp_car_years('2000-01-01'::DATE, '2002-01-01'::DATE,a.reporting_code)) car_years\n    ,round(openidl_ep_@org.tmp_au_incurred_count('2000-01-01'::DATE, '2002-01-01'::DATE,a.reporting_code)) incurred_count\n    ,round(openidl_ep_@org.tmp_au_incurred_loss('2000-01-01'::DATE, '2002-01-01'::DATE,a.reporting_code)) incurred_loss\n    from openidl_ep_@org.tmp_au_coverage_ref a; \n    \n    ",
+	"clean": "\n \n    DROP TABLE IF EXISTS openidl_ep_@org.tmp_au_coverage;\n    DROP TABLE IF EXISTS openidl_ep_@org.tmp_au_coverage_ref;\n    DROP TABLE IF EXISTS openidl_ep_@org.tmp_pre_au_coverage;\n    \n    DROP FUNCTION IF EXISTS openidl_ep_@org.tmp_car_years;\n    DROP FUNCTION IF EXISTS openidl_ep_@org.tmp_earned_premium;\n    DROP FUNCTION IF EXISTS openidl_ep_@org.tmp_incurred_loss;\n    DROP FUNCTION IF EXISTS openidl_ep_@org.tmp_incurred_count;\n    DROP FUNCTION IF EXISTS openidl_ep_@org.tmp_auto_outstanding;\n    \n    "
+}

@@ -287,12 +287,15 @@ function createHandTests(companyId) {
 function createBuilder(companyId) {
 	sql = getBuilder(companyId);
 
-	path = `./company/${companyId}/reporting/auto_coverage_extraction.sql`;
+	path = `./company/${companyId}/reporting/auto_coverage_extraction.json`;
 	if (!checkFileExists(path)) {
 		console.log(
 			`Auto Extraction Builder ${companyId} not found. Creating now.`
 		);
-		write(path, sql);
+		console.table(sql)
+		data = JSON.stringify(sql)
+		
+		fs.writeFileSync(path,data)
 	} else {
 		console.log(
 			`Auto Extraction Builder ${companyId} exists. Skipping Generation`
@@ -311,10 +314,11 @@ function createExtractionPattern() {
 		console.log('stat_agent');
 	}
 
-	path = `./stat_agent/auto_coverage_extraction.sql`;
+	path = `./stat_agent/auto_coverage_extraction.json`;
 	if (!checkFileExists(path)) {
 		console.log(`Auto Extraction Pattern not found. Creating now.`);
-		write(path, sql);
+		//console.log('317 gs')
+		fs.writeFileSync(path,JSON.stringify(sql))
 	} else {
 		console.log(`Auto Extraction Pattern exists. Skipping Generation`);
 	}

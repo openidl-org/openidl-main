@@ -12,7 +12,18 @@ const getRefTable = require('./auto_tmp_report_ref_tbl.js')
 
 function getBuilder(companyId){
 
+    extractionPattern = {}
+    map = getMap(companyId)
+    reduce = getCoverageReport(companyId)
+    clean = getTearDown(companyId)
+    extractionPattern = {"map": map, "reduce": reduce, "clean": clean}
+    extractionPattern = {"map": map, "reduce": reduce, "clean": clean}
+    return extractionPattern
+}
+
+function getMap(companyId){
     sqlArray = []
+    sqlArray.push(getTearDown(companyId))
     sqlArray.push(getPreTable(companyId))
     sqlArray.push(getReportingTable(companyId))
     sqlArray.push(getRefTable(companyId))
@@ -22,9 +33,10 @@ function getBuilder(companyId){
     sqlArray.push(getIncurredLoss(companyId))
     sqlArray.push(getIncurredCount(companyId))
     sqlArray.push(getCoverageReport(companyId))
-    sqlArray.push(getTearDown(companyId))
-    sqlString = sqlArray.join('|')
-    return sqlString
+    sqlString = sqlArray.join(' ') //join on what? 
+    return sqlString    
 }
+
+
 
 module.exports = getBuilder

@@ -11,7 +11,7 @@
             and accident_date > start_date
             and accident_date < end_date
             union
-            (select auto_outstanding(start_date, end_date,'1') loss_amount))) a into ep; 
+            (select openidl_ep_9999.auto_outstanding(start_date, end_date,'1') loss_amount))) a into ep; 
         RETURN ep;
     END$$ language plpgsql;
     
