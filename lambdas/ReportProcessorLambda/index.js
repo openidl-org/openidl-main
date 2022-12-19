@@ -42,7 +42,7 @@ exports.handler = async (event, context) => {
         }
         logger.debug("Data reading Done from DMV data and result")
         const reportContent = await rp.createReportContent(resultData, JSON.parse(JSON.stringify (dmvData.result)));
-        logger.debug("reportContent is: ", JSON.stringify(reportContent, null, 2))
+        logger.debug("Publishing report")
         await rp.publishCSV(reportContent, datacallId);
         await rp.getCSV("report-" + datacallId + ".csv");
         const reportUrl = "" + s3Config.urlPrefix + s3Config.bucketName + "/report-" + datacallId + ".csv";
