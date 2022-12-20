@@ -20,6 +20,7 @@ data = combineData(names)
 console.log(data)
 html = getLayout(data)
 
+//note I needed to brew install + npm install wkhtmltopdf
 wkhtmltopdf(html, {
     output: "./openidl-auto-coverage-report.pdf",
     "viewport-size": "1280x1024",
