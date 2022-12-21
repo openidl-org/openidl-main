@@ -28,7 +28,7 @@ const run = async () => {
     outputPath: path.join(__dirname, ".", "assets", "output.pdf"),
     //templatePath: path.join(__dirname, "templates", "basic"),
     include: [
-      path.join(__dirname, "assets", "basic.css"),
+      path.join(__dirname, "assets", "basic1.css"),
       //path.join(__dirname, "assets", "custom-margin.css"),
     ],
   })

@@ -145,6 +145,7 @@ layout = `<h1>Auto Coverage Report</h1>
         <td>${data[1].IncurredCount}</td>
     </tr>
 </table>`
+console.log(layout)
 return layout
 }
 
