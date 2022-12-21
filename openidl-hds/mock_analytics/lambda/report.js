@@ -16,9 +16,11 @@ function getFileNames(path){
 }
 
 names = getFileNames('1a-au')
+console.table(names)
 data = combineData(names)
 console.log(data)
 html = getLayout(data)
+console.log(html)
 
 //note I needed to brew install + npm install wkhtmltopdf
 wkhtmltopdf(html, {
