@@ -45,7 +45,6 @@ CronHandler.pollForMaturedDataCall = async (deadlineWindow) => {
             logger.debug("Constructing Deadline window...")
             const startTime = new Date()
             const endTime = new Date()
-            logger.info("--- pollintervalindays: ", config.pollIntervalInDays);
             if (config.pollIntervalInDays) {
                 pollIntervalInDays = config.pollIntervalInDays
             }
@@ -67,7 +66,7 @@ CronHandler.pollForMaturedDataCall = async (deadlineWindow) => {
             logger.error('error during ListDataCallsByCriteria inside onerror ', err)
         }
         logger.debug('pollForMaturedDataCall: ListDataCallsByCriteria submitTransaction complete ');
-        logger.info("** Transaction completed for listMatureDataCalls at : End_Time= " + new Date().toISOString() + " result= " + JSON.stringify(queryResponse));
+        logger.info("** Transaction completed for listMatureDataCalls at : End_Time= " + new Date().toISOString());
 
         //iterate over the results and emit events
         if (queryResponse && queryResponse.dataCallsList) {

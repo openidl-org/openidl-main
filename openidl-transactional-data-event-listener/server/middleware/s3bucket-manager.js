@@ -80,7 +80,6 @@ class S3BucketManager {
         let insertObjectParam = { Bucket: bucketConfig.bucketName, Key: input._id, Body: JSON.stringify(input.records) };
         try {
             const data = await bucket.putObject(insertObjectParam).promise();
-            logger.debug("After  putobject " + JSON.stringify(data))
             logger.debug('Records Inserted Successfully');
         } catch (err) {
             logger.error(err);

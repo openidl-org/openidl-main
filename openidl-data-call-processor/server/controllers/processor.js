@@ -24,7 +24,7 @@ class Processor {
         logger.debug("in getProcessorInstance Database " + name);
         logger.debug("in getProcessorInstance carrierID " + carrierID);
         if (name == "mongo") {
-            logger.debug("carrierID++++++++++++++++++++++++++++++++" + carrierID);
+            logger.debug("carrierID: " + carrierID);
             logger.info('Inside getProcessorInstance mongo');
             let startDataProcessor = new mongoDataProcessor(dataCallId, dataCallVersion, carrierID, extractionPattern, targetChannelTransaction, reduceCollectionName);
             return startDataProcessor;
