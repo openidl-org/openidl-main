@@ -120,7 +120,6 @@ class MongoDBManager {
                         logger.error("error  >>>>>>>>>>>>>" + err);
                         reject(err);
                     } else {
-                        logger.debug(("  getByCarrierIdNew.results: " + results))
                         resolve(results);
                     }
                 });
@@ -448,9 +447,14 @@ class MongoDBManager {
     async getFilteredDocuments(DBCollection, query) {
         logger.info('Inside mongodb getFilteredDocuments');
         const regexString = "^" + query.transactionMonth
+        let projection = {};
+        if(query.isReport){
+            projection = {VINHash: 1, VIN: 1, _ID: 0}
+        }
         return new Promise(function (resolve, reject) {
             mongodb.collection(DBCollection)
                 .find({ transactionDate: {"$regex": regexString}, organizationID: query.organizationId })
+                .project(projection)
                 .toArray(function (err, results) {
                     if (err) {
                         reject(err);

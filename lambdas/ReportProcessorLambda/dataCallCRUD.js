@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 const defaultconfig = require('config');
-const  logger  = require('loglevel');
+const logger = require('loglevel');
 logger.setLevel(defaultconfig.get('loglevel'));
 const config = require('./config/datacall-config.json')
 
@@ -94,11 +94,11 @@ module.exports.getReport = async function (datacallId, version) {
     let URL = config.loginURL
     let userToken = await login(URL, config.username, config.password)
     payload = "";
-    URL = config.getReportURL 
+    URL = config.getReportURL
         + new URLSearchParams({
             dataCallId: datacallId,
             dataCallVersion: version
-            })
+        })
     logger.debug("URL for getReport: ", URL)
     const datacall = await callAPI(URL, "GET", payload, userToken);
     logger.debug("getReport done")
@@ -110,11 +110,12 @@ module.exports.getDMVData = async function (organizationId, transactionMonth) {
     let URL = config.loginURL
     let userToken = await login(URL, config.username, config.password)
     payload = "";
-    URL = config.getDMVDataURL 
+    URL = config.getDMVDataURL
         + new URLSearchParams({
             organizationId: organizationId,
-            transactionMonth: transactionMonth
-            })
+            transactionMonth: transactionMonth,
+            isReport: true
+        })
     logger.debug("URL for getDMVData: ", URL)
     const dmvData = await callAPI(URL, "GET", payload, userToken);
     logger.debug("getDMVData done")
