@@ -1,9 +1,10 @@
 function getLayout(data){
-// console.log(data[0])
+console.log('layout')
+console.log(data[0])
 // t()
-layout = `<!DOCTYPE html>
-<html lang="en">
-
+layout = `
+${data[0]}
+${data[0].ReportingName}
 <head>
     <meta charset="UTF-8">
     <title>Auto Coverage Report</title>
@@ -209,8 +210,8 @@ layout = `<!DOCTYPE html>
         </div>
     </section>
 </body>
-
-</html>`
+`
+console.log(layout)
 return layout
 }
 
