@@ -75,7 +75,6 @@ eventFunction.ConsentedEvent = async function processConsentEvent(payload, block
                     //check if insurance data already exist
                     logger.info(args);
                     let checkInsuranceData = await targetChannelTransaction.executeTransaction('CheckInsuranceDataExists', JSON.stringify(args2));
-                    logger.info('Insurance document is ' + checkInsuranceData);
                     if (checkInsuranceData === 'false') {
                         //retrive jurisdiction and extraction pattern for the corresponding data call and replace the value of state code in extraction pattern
                         let datacallDetails = await defaultChannel.executeTransaction('GetDataCallAndExtractionPattern', JSON.stringify(args));
@@ -114,7 +113,7 @@ eventFunction.ConsentedEvent = async function processConsentEvent(payload, block
                             logger.info('Starting the dataProcessor');
                             var viewName = "";
                             let processor = new Processor();
-                            logger.info("payload.carrierID>>>>>>>>>>>" + payload.carrierID);
+                            logger.info("payload.carrierID: " + payload.carrierID);
                             let dataProcessor = await processor.getProcessorInstance(payload.datacallID, payload.dataCallVersion, payload.carrierID, extractionPattern, targetChannelTransaction, viewName);
                             var view = await dataProcessor.isView();
                             logger.info('payload.carrierID' + payload.carrierID);
@@ -197,7 +196,6 @@ eventFunction.ExtractionPatternSpecified = async function processExtractionPatte
             logger.info('args for ListConsentsByDataCall', args);
             logger.debug("payload.dataCallId" + payload.dataCallId);
             let queryResponse = await targetChannelTransaction.executeTransaction('ListConsentsByDataCall', JSON.stringify(args));
-            logger.debug("queryResponse" + queryResponse);
             queryResponse = JSON.parse(queryResponse);
             if (queryResponse !== null) {
                 for (var i = 0; i < queryResponse.length; i++) {
@@ -210,13 +208,12 @@ eventFunction.ExtractionPatternSpecified = async function processExtractionPatte
                             };
                             logger.info(args);
                             const checkInsuranceData = await targetChannelTransaction.executeTransaction('CheckInsuranceDataExists', JSON.stringify(args));
-                            logger.info('Insurance document is ' + checkInsuranceData);
                             if (checkInsuranceData === 'false') {
                                 // retrive jurisdiction for the corresponding data call and replace the value of state code in extraction pattern
                                 let defaultChannel = await eventFunction.getDefaultChannelTransaction();
                                 let datacallDetails = await defaultChannel.executeTransaction('GetDataCallAndExtractionPattern', JSON.stringify(getDataCallArgs));
                                 datacallDetails = JSON.parse(datacallDetails);
-                                logger.debug('GetDataCallAndExtractionPattern executeTransaction complete ' + datacallDetails);
+                                logger.debug('GetDataCallAndExtractionPattern executeTransaction complete ');
                                 extractionPattern = datacallDetails.extractionPattern;
                                 let jurisdictionDesc = datacallDetails.jurisdiction;
                                 //let jurisdictionDesc = "Virginia";

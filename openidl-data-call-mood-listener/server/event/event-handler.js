@@ -40,7 +40,6 @@ eventFunction.ConsentedEvent = async function processConsentEvent(payload, block
         logger.info('processConsentEvent function entry payload');
         if (payload) {
             payload = JSON.parse(payload.toString('utf8'));
-            logger.debug(payload);
             logger.debug(' processConsentEvent block number ==>' + blockNumber);
             if ((!payload.datacallID) || (!payload.dataCallVersion)) {
                 logger.error('processConsentEvent submit transaction error: invalid conscent payload :');

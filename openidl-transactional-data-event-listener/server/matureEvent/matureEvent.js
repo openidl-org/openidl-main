@@ -10,9 +10,9 @@ MatureEvent.handleMatureEvent = async (data) => {
 	logger.info("in handleMatureEvent", data)
 	//creating instance factory object 
 	let factoryObject = new InstanceFactory();
-	logger.info("config storage env ", config.insuranceDataStorageEnv)
+	logger.debug("config storage env ", config.insuranceDataStorageEnv)
 	let targetObject = await factoryObject.getInstance(config.insuranceDataStorageEnv);
-        logger.info("targetObject: ", typeof targetObject)
+	logger.debug("targetObject: ", typeof targetObject)
 	logger.info("Gathering all results");
 	let allInsuranceData = await targetObject.getTransactionalDataByDatacall(data.dataCalls.id);
 	logger.info("all insurance data fetched.");
