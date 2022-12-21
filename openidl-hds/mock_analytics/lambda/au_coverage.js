@@ -42,46 +42,46 @@ ${data[0].ReportingName}
                     <th>Incurred Count</th>
                 </tr>
                 <tr>
-                    <td>${data[0].reporting_name}</td>
-                    <td>${data[0].earned_premium}</td>
-                    <td>${data[0].car_years}</td>
-                    <td>${data[0].incurred_loss}</td>
-                    <td>${data[0].incurred_count}</td>
+                    <td>${data[0].ReportingName}</td>
+                    <td>${data[0].EarnedPremium}</td>
+                    <td>${data[0].CarYears}</td>
+                    <td>${data[0].IncurredLoss}</td>
+                    <td>${data[0].IncurredCount}</td>
                 </tr>
                 <tr>
-                    <td>${data[1].reporting_name}</td>
-                    <td>${data[1].earned_premium}</td>
-                    <td>${data[1].car_years}</td>
-                    <td>${data[1].incurred_loss}</td>
-                    <td>${data[1].incurred_count}</td>
+                    <td>${data[1].ReportingName}</td>
+                    <td>${data[1].EarnedPremium}</td>
+                    <td>${data[1].CarYears}</td>
+                    <td>${data[1].IncurredLoss}</td>
+                    <td>${data[1].IncurredCount}</td>
                 </tr>
                 <tr>
-                    <td>${data[2].reporting_name}</td>
-                    <td>${data[2].earned_premium}</td>
-                    <td>${data[2].car_years}</td>
-                    <td>${data[2].incurred_loss}</td>
-                    <td>${data[2].incurred_count}</td>
+                    <td>${data[2].ReportingName}</td>
+                    <td>${data[2].EarnedPremium}</td>
+                    <td>${data[2].CarYears}</td>
+                    <td>${data[2].IncurredLoss}</td>
+                    <td>${data[2].IncurredCount}</td>
                 </tr>
                 <tr>
-                    <td>${data[3].reporting_name}</td>
-                    <td>${data[3].earned_premium}</td>
-                    <td>${data[3].car_years}</td>
-                    <td>${data[3].incurred_loss}</td>
-                    <td>${data[3].incurred_count}</td>
+                    <td>${data[3].ReportingName}</td>
+                    <td>${data[3].EarnedPremium}</td>
+                    <td>${data[3].CarYears}</td>
+                    <td>${data[3].IncurredLoss}</td>
+                    <td>${data[3].IncurredCount}</td>
                 </tr>
                 <tr>
-                    <td>${data[4].reporting_name}</td>
-                    <td>${data[4].earned_premium}</td>
-                    <td>${data[4].car_years}</td>
-                    <td>${data[4].incurred_loss}</td>
-                    <td>${data[4].incurred_count}</td>
+                    <td>${data[4].ReportingName}</td>
+                    <td>${data[4].EarnedPremium}</td>
+                    <td>${data[4].CarYears}</td>
+                    <td>${data[4].IncurredLoss}</td>
+                    <td>${data[4].IncurredCount}</td>
                 </tr>
                 <tr>
                     <td>Liability Total</td>
-                    <td>${data[16].earned_premium}</td>
-                    <td>${data[16].car_years}</td>
-                    <td>${data[16].incurred_loss}</td>
-                    <td>${data[16].incurred_count}</td>
+                    <td>${data[16].EarnedPremium}</td>
+                    <td>${data[16].CarYears}</td>
+                    <td>${data[16].IncurredLoss}</td>
+                    <td>${data[16].IncurredCount}</td>
                 </tr>
             </table>
         </div>
@@ -100,53 +100,53 @@ ${data[0].ReportingName}
                     <th>Incurred Count</th>
                 </tr>
                 <tr>
-                    <td>${data[5].reporting_name}</td>
-                    <td>${data[5].earned_premium}</td>
-                    <td>${data[5].car_years}</td>
-                    <td>${data[5].incurred_loss}</td>
-                    <td>${data[5].incurred_count}</td>
+                    <td>${data[5].ReportingName}</td>
+                    <td>${data[5].EarnedPremium}</td>
+                    <td>${data[5].CarYears}</td>
+                    <td>${data[5].IncurredLoss}</td>
+                    <td>${data[5].IncurredCount}</td>
                 </tr>
                 <tr>
-                    <td>${data[6].reporting_name}</td>
-                    <td>${data[6].earned_premium}</td>
-                    <td>${data[6].car_years}</td>
-                    <td>${data[6].incurred_loss}</td>
-                    <td>${data[6].incurred_count}</td>
+                    <td>${data[6].ReportingName}</td>
+                    <td>${data[6].EarnedPremium}</td>
+                    <td>${data[6].CarYears}</td>
+                    <td>${data[6].IncurredLoss}</td>
+                    <td>${data[6].IncurredCount}</td>
                 </tr>
                 <tr>
-                    <td>${data[7].reporting_name}</td>
-                    <td>${data[7].earned_premium}</td>
-                    <td>${data[7].car_years}</td>
-                    <td>${data[7].incurred_loss}</td>
-                    <td>${data[7].incurred_count}</td>
+                    <td>${data[7].ReportingName}</td>
+                    <td>${data[7].EarnedPremium}</td>
+                    <td>${data[7].CarYears}</td>
+                    <td>${data[7].IncurredLoss}</td>
+                    <td>${data[7].IncurredCount}</td>
                 </tr>
                 <tr>
-                    <td>${data[8].reporting_name}</td>
-                    <td>${data[8].earned_premium}</td>
-                    <td>${data[8].car_years}</td>
-                    <td>${data[8].incurred_loss}</td>
-                    <td>${data[8].incurred_count}</td>
+                    <td>${data[8].ReportingName}</td>
+                    <td>${data[8].EarnedPremium}</td>
+                    <td>${data[8].CarYears}</td>
+                    <td>${data[8].IncurredLoss}</td>
+                    <td>${data[8].IncurredCount}</td>
                 </tr>
                 <tr>
-                    <td>${data[9].reporting_name}</td>
-                    <td>${data[9].earned_premium}</td>
-                    <td>${data[9].car_years}</td>
-                    <td>${data[9].incurred_loss}</td>
-                    <td>${data[9].incurred_count}</td>
+                    <td>${data[9].ReportingName}</td>
+                    <td>${data[9].EarnedPremium}</td>
+                    <td>${data[9].CarYears}</td>
+                    <td>${data[9].IncurredLoss}</td>
+                    <td>${data[9].IncurredCount}</td>
                 </tr>
                 <tr>
-                    <td>${data[10].reporting_name}</td>
-                    <td>${data[10].earned_premium}</td>
-                    <td>${data[10].car_years}</td>
-                    <td>${data[10].incurred_loss}</td>
-                    <td>${data[10].incurred_count}</td>
+                    <td>${data[10].ReportingName}</td>
+                    <td>${data[10].EarnedPremium}</td>
+                    <td>${data[10].CarYears}</td>
+                    <td>${data[10].IncurredLoss}</td>
+                    <td>${data[10].IncurredCount}</td>
                 </tr>
                 <tr>
                     <td>Comprehensive Total</td>
-                    <td>${data[16].earned_premium}</td>
-                    <td>${data[16].car_years}</td>
-                    <td>${data[16].incurred_loss}</td>
-                    <td>${data[16].incurred_count}</td>
+                    <td>${data[16].EarnedPremium}</td>
+                    <td>${data[16].CarYears}</td>
+                    <td>${data[16].IncurredLoss}</td>
+                    <td>${data[16].IncurredCount}</td>
                 </tr>
             </table>
         </div>
@@ -165,46 +165,46 @@ ${data[0].ReportingName}
                     <th>Incurred Count</th>
                 </tr>
                 <tr>
-                    <td>${data[11].reporting_name}</td>
-                    <td>${data[11].earned_premium}</td>
-                    <td>${data[11].car_years}</td>
-                    <td>${data[11].incurred_loss}</td>
-                    <td>${data[11].incurred_count}</td>
+                    <td>${data[11].ReportingName}</td>
+                    <td>${data[11].EarnedPremium}</td>
+                    <td>${data[11].CarYears}</td>
+                    <td>${data[11].IncurredLoss}</td>
+                    <td>${data[11].IncurredCount}</td>
                 </tr>
                 <tr>
-                    <td>${data[12].reporting_name}</td>
-                    <td>${data[12].earned_premium}</td>
-                    <td>${data[12].car_years}</td>
-                    <td>${data[12].incurred_loss}</td>
-                    <td>${data[12].incurred_count}</td>
+                    <td>${data[12].ReportingName}</td>
+                    <td>${data[12].EarnedPremium}</td>
+                    <td>${data[12].CarYears}</td>
+                    <td>${data[12].IncurredLoss}</td>
+                    <td>${data[12].IncurredCount}</td>
                 </tr>
                 <tr>
-                    <td>${data[13].reporting_name}</td>
-                    <td>${data[13].earned_premium}</td>
-                    <td>${data[13].car_years}</td>
-                    <td>${data[13].incurred_loss}</td>
-                    <td>${data[13].incurred_count}</td>
+                    <td>${data[13].ReportingName}</td>
+                    <td>${data[13].EarnedPremium}</td>
+                    <td>${data[13].CarYears}</td>
+                    <td>${data[13].IncurredLoss}</td>
+                    <td>${data[13].IncurredCount}</td>
                 </tr>
                 <tr>
-                    <td>${data[14].reporting_name}</td>
-                    <td>${data[14].earned_premium}</td>
-                    <td>${data[14].car_years}</td>
-                    <td>${data[14].incurred_loss}</td>
-                    <td>${data[14].incurred_count}</td>
+                    <td>${data[14].ReportingName}</td>
+                    <td>${data[14].EarnedPremium}</td>
+                    <td>${data[14].CarYears}</td>
+                    <td>${data[14].IncurredLoss}</td>
+                    <td>${data[14].IncurredCount}</td>
                 </tr>
                 <tr>
-                    <td>${data[15].reporting_name}</td>
-                    <td>${data[15].earned_premium}</td>
-                    <td>${data[15].car_years}</td>
-                    <td>${data[15].incurred_loss}</td>
-                    <td>${data[15].incurred_count}</td>
+                    <td>${data[15].ReportingName}</td>
+                    <td>${data[15].EarnedPremium}</td>
+                    <td>${data[15].CarYears}</td>
+                    <td>${data[15].IncurredLoss}</td>
+                    <td>${data[15].IncurredCount}</td>
                 </tr>
                 <tr>
                     <td>Collision Total</td>
-                    <td>${data[16].earned_premium}</td>
-                    <td>${data[16].car_years}</td>
-                    <td>${data[16].incurred_loss}</td>
-                    <td>${data[16].incurred_count}</td>
+                    <td>${data[16].EarnedPremium}</td>
+                    <td>${data[16].CarYears}</td>
+                    <td>${data[16].IncurredLoss}</td>
+                    <td>${data[16].IncurredCount}</td>
                 </tr>
             </table>
         </div>
