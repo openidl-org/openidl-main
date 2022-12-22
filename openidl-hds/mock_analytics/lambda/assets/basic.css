@@ -29,7 +29,8 @@
 table {
   text-align: center;
   table-layout: fixed;
-  width: 1200px;
+  /* width: 600px; */
+  width: auto;
   /*border-spacing: 10px;*/
 }
 
@@ -50,11 +51,16 @@ table {
 th {
   column-width: auto;
   text-align: center;
+  font-size: 18px;
 }
 
 table, th, td {
   border: 1px solid #000;
   border-collapse: collapse;
+}
+
+td{
+    font-size: 12px;
 }
 
 th, td {

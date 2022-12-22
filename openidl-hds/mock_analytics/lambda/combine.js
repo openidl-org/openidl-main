@@ -1,10 +1,31 @@
-function combineData(names) {
+const fs = require('fs');
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function getFileNames(path){
+	filePaths = []
+	fs.readdirSync(path).forEach(file => {
+		filePath = `./${path}/${file}`
+		//console.log(filePath);
+		filePaths.push(filePath)
+	  });
+	  return filePaths
+  }
+
+
+function combineData(folder) {
+	console.log(`folder: ${folder}`)
+	names = getFileNames(folder)
+	console.log('files: '+names)
 	data = {};
 	for (index in names) {
 		//console.log(index)
 		data[index] = require(names[index]);
 	}
 	keys = Object.keys(data);
+	console.log(data)
 	//console.log(data['1'])
 	combinedData = [];
 	for (index in data[keys[0]]) {
@@ -26,14 +47,14 @@ function combineData(names) {
 			ic += parseFloat(dict.incurred_count);
 			cy += parseFloat(dict.car_years);
 		}
-
+		
 		frame = {
 			ReportingCode: code,
 			ReportingName: name,
-			EarnedPremium: ep,
-			CarYears: cy,
-			IncurredLoss: il,
-			IncurredCount: ic
+			EarnedPremium: numberWithCommas(ep),
+			CarYears: numberWithCommas(cy),
+			IncurredLoss: numberWithCommas(il),
+			IncurredCount: numberWithCommas(ic)
 		};
 		combinedData.push(frame);
 	}

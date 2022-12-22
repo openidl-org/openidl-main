@@ -3,21 +3,13 @@ const path = require("path")
 const combineData = require('./combine')
 const getLayout = require('./au_coverage.js')
 console.log('report')
-const fs = require('fs');
 
 
-function getFileNames(path){
-  filePaths = []
-  fs.readdirSync(path).forEach(file => {
-      filePath = `./${path}/${file}`
-      //console.log(filePath);
-      filePaths.push(filePath)
-    });
-    return filePaths
-}
 
-names = getFileNames('1a-au')
-data = combineData(names)
+
+
+
+data = combineData('1a-au')
 console.log(data)
 html = getLayout(data)
  

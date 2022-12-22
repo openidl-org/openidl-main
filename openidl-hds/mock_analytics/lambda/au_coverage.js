@@ -1,10 +1,9 @@
 function getLayout(data){
 console.log('layout')
 console.log(data[0])
+state = {name: "Virginia", code: 45}
 // t()
 layout = `
-${data[0]}
-${data[0].ReportingName}
 <head>
     <meta charset="UTF-8">
     <title>Auto Coverage Report</title>
@@ -19,16 +18,16 @@ ${data[0].ReportingName}
             <h1>AMERICAN ASSOCIATION OF INSURANCE SERVICES</h1>
             <h2>PRIVATE PASSENGER AUTOMOBILE</h2>
             <h1>CALENDAR ACCIDENT YEAR 2010 NAIC COVERAGE REPORT</h1>
+            <h2>Voluntary Market</h2>
+            <h2>STATE: ${state.code} ${state.name}</h2>
         </div>
     </header>
 
     <header id="header-inner">
         <div class="float-1">
-            <h2>STATE: 01 Alabama</h2>
+            <h2>STATE: ${state.code} ${state.name}</h2>
         </div>
-        <div class="float-2">
-            <h2>VOLUNTARY MARKET</h2>
-        </div>
+
     </header>
 
     <section id="table-a">
@@ -43,52 +42,52 @@ ${data[0].ReportingName}
                 </tr>
                 <tr>
                     <td>${data[0].ReportingName}</td>
-                    <td>${data[0].EarnedPremium}</td>
+                    <td>$${data[0].EarnedPremium}</td>
                     <td>${data[0].CarYears}</td>
-                    <td>${data[0].IncurredLoss}</td>
+                    <td>$${data[0].IncurredLoss}</td>
                     <td>${data[0].IncurredCount}</td>
                 </tr>
                 <tr>
                     <td>${data[1].ReportingName}</td>
-                    <td>${data[1].EarnedPremium}</td>
+                    <td>$${data[1].EarnedPremium}</td>
                     <td>${data[1].CarYears}</td>
-                    <td>${data[1].IncurredLoss}</td>
+                    <td>$${data[1].IncurredLoss}</td>
                     <td>${data[1].IncurredCount}</td>
                 </tr>
                 <tr>
                     <td>${data[2].ReportingName}</td>
-                    <td>${data[2].EarnedPremium}</td>
+                    <td>$${data[2].EarnedPremium}</td>
                     <td>${data[2].CarYears}</td>
-                    <td>${data[2].IncurredLoss}</td>
+                    <td>$${data[2].IncurredLoss}</td>
                     <td>${data[2].IncurredCount}</td>
                 </tr>
                 <tr>
                     <td>${data[3].ReportingName}</td>
-                    <td>${data[3].EarnedPremium}</td>
+                    <td>$${data[3].EarnedPremium}</td>
                     <td>${data[3].CarYears}</td>
-                    <td>${data[3].IncurredLoss}</td>
+                    <td>$${data[3].IncurredLoss}</td>
                     <td>${data[3].IncurredCount}</td>
                 </tr>
                 <tr>
                     <td>${data[4].ReportingName}</td>
-                    <td>${data[4].EarnedPremium}</td>
+                    <td>$${data[4].EarnedPremium}</td>
                     <td>${data[4].CarYears}</td>
-                    <td>${data[4].IncurredLoss}</td>
+                    <td>$${data[4].IncurredLoss}</td>
                     <td>${data[4].IncurredCount}</td>
                 </tr>
                 <tr>
                     <td>Liability Total</td>
-                    <td>${data[16].EarnedPremium}</td>
+                    <td>$${data[16].EarnedPremium}</td>
                     <td>${data[16].CarYears}</td>
-                    <td>${data[16].IncurredLoss}</td>
+                    <td>$${data[16].IncurredLoss}</td>
                     <td>${data[16].IncurredCount}</td>
                 </tr>
             </table>
         </div>
     </section>
 
-    <br>
-
+    <br><br>
+   
     <section id="table-b">
         <div class="container">
             <table>
