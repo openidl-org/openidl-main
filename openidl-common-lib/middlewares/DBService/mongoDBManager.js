@@ -449,7 +449,7 @@ class MongoDBManager {
         const regexString = "^" + query.transactionMonth
         let projection = {};
         if(query.isReport){
-            projection = {VINHash: 1, VIN: 1, _ID: 0}
+            projection = {VINHash: 1, VIN: 1, _id: 0}
         }
         return new Promise(function (resolve, reject) {
             mongodb.collection(DBCollection)
