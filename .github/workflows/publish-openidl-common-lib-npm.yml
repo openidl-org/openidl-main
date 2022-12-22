@@ -4,6 +4,7 @@ on:
     branches:
       - openidl-nd-poc-main       
       - develop
+      - remove-huge-data-logs
     paths:
       - 'openidl-common-lib/**'
   
