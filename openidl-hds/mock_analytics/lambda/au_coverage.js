@@ -1,7 +1,7 @@
 function getLayout(data){
 console.log('layout')
 console.log(data[0])
-state = {name: "Virginia", code: 45}
+state = {name: "Alabama", code: '01'}
 // t()
 layout = `
 <head>
@@ -23,12 +23,6 @@ layout = `
         </div>
     </header>
 
-    <header id="header-inner">
-        <div class="float-1">
-            <h2>STATE: ${state.code} ${state.name}</h2>
-        </div>
-
-    </header>
 
     <section id="table-a">
         <div class="container">
@@ -100,51 +94,51 @@ layout = `
                 </tr>
                 <tr>
                     <td>${data[5].ReportingName}</td>
-                    <td>${data[5].EarnedPremium}</td>
+                    <td>$${data[5].EarnedPremium}</td>
                     <td>${data[5].CarYears}</td>
-                    <td>${data[5].IncurredLoss}</td>
+                    <td>$${data[5].IncurredLoss}</td>
                     <td>${data[5].IncurredCount}</td>
                 </tr>
                 <tr>
                     <td>${data[6].ReportingName}</td>
-                    <td>${data[6].EarnedPremium}</td>
+                    <td>$${data[6].EarnedPremium}</td>
                     <td>${data[6].CarYears}</td>
-                    <td>${data[6].IncurredLoss}</td>
+                    <td>$${data[6].IncurredLoss}</td>
                     <td>${data[6].IncurredCount}</td>
                 </tr>
                 <tr>
                     <td>${data[7].ReportingName}</td>
-                    <td>${data[7].EarnedPremium}</td>
+                    <td>$${data[7].EarnedPremium}</td>
                     <td>${data[7].CarYears}</td>
-                    <td>${data[7].IncurredLoss}</td>
+                    <td>$${data[7].IncurredLoss}</td>
                     <td>${data[7].IncurredCount}</td>
                 </tr>
                 <tr>
                     <td>${data[8].ReportingName}</td>
-                    <td>${data[8].EarnedPremium}</td>
+                    <td>$${data[8].EarnedPremium}</td>
                     <td>${data[8].CarYears}</td>
-                    <td>${data[8].IncurredLoss}</td>
+                    <td>$${data[8].IncurredLoss}</td>
                     <td>${data[8].IncurredCount}</td>
                 </tr>
                 <tr>
                     <td>${data[9].ReportingName}</td>
-                    <td>${data[9].EarnedPremium}</td>
+                    <td>$${data[9].EarnedPremium}</td>
                     <td>${data[9].CarYears}</td>
-                    <td>${data[9].IncurredLoss}</td>
+                    <td>$${data[9].IncurredLoss}</td>
                     <td>${data[9].IncurredCount}</td>
                 </tr>
                 <tr>
                     <td>${data[10].ReportingName}</td>
-                    <td>${data[10].EarnedPremium}</td>
+                    <td>$${data[10].EarnedPremium}</td>
                     <td>${data[10].CarYears}</td>
-                    <td>${data[10].IncurredLoss}</td>
+                    <td>$${data[10].IncurredLoss}</td>
                     <td>${data[10].IncurredCount}</td>
                 </tr>
                 <tr>
                     <td>Comprehensive Total</td>
-                    <td>${data[16].EarnedPremium}</td>
+                    <td>$${data[16].EarnedPremium}</td>
                     <td>${data[16].CarYears}</td>
-                    <td>${data[16].IncurredLoss}</td>
+                    <td>$${data[16].IncurredLoss}</td>
                     <td>${data[16].IncurredCount}</td>
                 </tr>
             </table>
@@ -165,44 +159,44 @@ layout = `
                 </tr>
                 <tr>
                     <td>${data[11].ReportingName}</td>
-                    <td>${data[11].EarnedPremium}</td>
+                    <td>$${data[11].EarnedPremium}</td>
                     <td>${data[11].CarYears}</td>
-                    <td>${data[11].IncurredLoss}</td>
+                    <td>$${data[11].IncurredLoss}</td>
                     <td>${data[11].IncurredCount}</td>
                 </tr>
                 <tr>
                     <td>${data[12].ReportingName}</td>
-                    <td>${data[12].EarnedPremium}</td>
+                    <td>$${data[12].EarnedPremium}</td>
                     <td>${data[12].CarYears}</td>
-                    <td>${data[12].IncurredLoss}</td>
+                    <td>$${data[12].IncurredLoss}</td>
                     <td>${data[12].IncurredCount}</td>
                 </tr>
                 <tr>
                     <td>${data[13].ReportingName}</td>
-                    <td>${data[13].EarnedPremium}</td>
+                    <td>$${data[13].EarnedPremium}</td>
                     <td>${data[13].CarYears}</td>
-                    <td>${data[13].IncurredLoss}</td>
+                    <td>$${data[13].IncurredLoss}</td>
                     <td>${data[13].IncurredCount}</td>
                 </tr>
                 <tr>
                     <td>${data[14].ReportingName}</td>
-                    <td>${data[14].EarnedPremium}</td>
+                    <td>$${data[14].EarnedPremium}</td>
                     <td>${data[14].CarYears}</td>
-                    <td>${data[14].IncurredLoss}</td>
+                    <td>$${data[14].IncurredLoss}</td>
                     <td>${data[14].IncurredCount}</td>
                 </tr>
                 <tr>
                     <td>${data[15].ReportingName}</td>
-                    <td>${data[15].EarnedPremium}</td>
+                    <td>$${data[15].EarnedPremium}</td>
                     <td>${data[15].CarYears}</td>
-                    <td>${data[15].IncurredLoss}</td>
+                    <td>$${data[15].IncurredLoss}</td>
                     <td>${data[15].IncurredCount}</td>
                 </tr>
                 <tr>
                     <td>Collision Total</td>
-                    <td>${data[16].EarnedPremium}</td>
+                    <td>$${data[16].EarnedPremium}</td>
                     <td>${data[16].CarYears}</td>
-                    <td>${data[16].IncurredLoss}</td>
+                    <td>$${data[16].IncurredLoss}</td>
                     <td>${data[16].IncurredCount}</td>
                 </tr>
             </table>
