@@ -59,7 +59,7 @@ function getReportingTable(companyId){
                   when a.coverage_code = '9' then 'Bodily Injury'
                   else null end as reporting_name,
                   a.*
-    from openidl_ep_${companyId}.tmp_pre_au_coverage a;
+    from openidl_ep_${companyId}.tmp_au_pc a;
     
     `
     return sql

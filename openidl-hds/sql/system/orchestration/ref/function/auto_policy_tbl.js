@@ -1,5 +1,5 @@
-function getAutoPremium(companyId){
-    sql = `create table openidl_base_${companyId}.au_premium
+function getAutoPolicy(companyId){
+    sql = `create table openidl_base_${companyId}.au_policy
     (
     id SERIAL PRIMARY KEY,
     annual_statement_line VARCHAR,
@@ -65,4 +65,4 @@ function getAutoPremium(companyId){
     return sql
 }
 
-module.exports = getAutoPremium
+module.exports = getAutoPolicy

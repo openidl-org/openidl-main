@@ -1,5 +1,5 @@
-function getAutoLoss(companyId){
-    sql = `create table openidl_base_${companyId}.au_loss
+function getAutoClaim(companyId){
+    sql = `create table openidl_base_${companyId}.au_claim
     (
     id SERIAL PRIMARY KEY,
     line_of_business VARCHAR ,
@@ -61,4 +61,4 @@ function getAutoLoss(companyId){
     return sql
 }
 
-module.exports = getAutoLoss
+module.exports = getAutoClaim
