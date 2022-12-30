@@ -1,1 +1,0 @@
-rm example_data_*
