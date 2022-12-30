@@ -14,7 +14,7 @@ const credentials = {
 
 function makeInsertQuery(record){
 
-    let query = `set datestyle to DMY; INSERT INTO ${config.db.schema.base}_${config.db.companyId}.ho_premium
+    let query = `set datestyle to DMY; INSERT INTO ${config.db.schema.base}_${config.db.companyId}.ho_policy
     (line_of_business,
      accounting_date,
      company_code,
@@ -27,8 +27,10 @@ function makeInsertQuery(record){
      transaction_type,
      transaction_code,
      premium_amount,
+     monthly_premium_amount,
      exposure,
      program,
+     accounting_term_expiration,
      policy_form,
      policy_category,
      policy_type,
@@ -96,8 +98,10 @@ function makeInsertQuery(record){
          '${record.TransactionType}',
          '${record.TransactionCode}',
          '${record.Policy.PremiumAmount}',
+         '${record.Coverage.MonthlyPremiumAmount}',
          '${record.Coverage.Exposure}',
          '${record.Policy.Program}',
+         '${record.Policy.AccountingTermExpiration}',
          '${record.Policy.PolicyFormCode}',
          '${record.Policy.PolicyCategory}',
          '${record.Policy.PolicyType}',
@@ -159,7 +163,7 @@ function makeInsertQuery(record){
 
 function makeLossQuery(record){
 
-    let query = `set datestyle to DMY; INSERT INTO ${config.db.schema.base}_${config.db.companyId}.ho_loss
+    let query = `set datestyle to DMY; INSERT INTO ${config.db.schema.base}_${config.db.companyId}.ho_claim
     (line_of_business,
     accounting_date,
     company_code,

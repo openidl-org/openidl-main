@@ -1,4 +1,4 @@
-create table openidl_base_9999.ho_loss
+create table openidl_base_9999.ho_claim
     (
         id SERIAL PRIMARY KEY,
         line_of_business VARCHAR,
@@ -15,6 +15,8 @@ create table openidl_base_9999.ho_loss
         loss_amount Numeric (20,6),
         claim_count Numeric (20,6),
         program VARCHAR,
+        effective_date DATE,
+        expiration_date DATE,
         policy_form VARCHAR,
         policy_category VARCHAR,
         policy_type VARCHAR,
