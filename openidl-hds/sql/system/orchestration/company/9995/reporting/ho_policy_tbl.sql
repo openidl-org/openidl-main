@@ -1,5 +1,4 @@
-function getHomeownerPolicy(companyId){
-    sql = `create table openidl_base_${companyId}.ho_policy
+create table openidl_base_9995.ho_policy
     (
     id SERIAL PRIMARY KEY,
     annual_statement_line VARCHAR,
@@ -61,8 +60,4 @@ function getHomeownerPolicy(companyId){
     body_size VARCHAR,
     model_year Numeric (20,6),
     symbol VARCHAR
-    );`
-    return sql
-}
-
-module.exports = getHomeownerPolicy
+    );
