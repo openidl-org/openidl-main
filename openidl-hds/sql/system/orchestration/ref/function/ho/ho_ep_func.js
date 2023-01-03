@@ -1,4 +1,4 @@
-function getHoEarnedPremium(companyId){
+function getEarnedPremium(companyId){
     earnedPremium = `
     CREATE OR replace FUNCTION openidl_ep_9999.tmp_ho_earned_premium(IN start_date date,IN end_date date, IN pv_policy_form VARCHAR)
     returns      numeric AS $$DECLARE ep numeric;
@@ -45,4 +45,4 @@ function getHoEarnedPremium(companyId){
     return earnedPremium
 }
 
-module.exports = getHoEarnedPremium
+module.exports = getEarnedPremium
