@@ -1,2 +1,0 @@
-CREATE SCHEMA openidl_base_1234;
-CREATE SCHEMA openidl_ep_1234;
