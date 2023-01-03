@@ -1,14 +1,12 @@
-// earned premium
-function getEarnedPremium(companyId){
-    earnedPremium = `
-    CREATE OR replace FUNCTION openidl_ep_${companyId}.tmp_ho_earned_premium(IN start_date date,IN end_date date, IN pv_policy_form VARCHAR)
+
+    CREATE OR replace FUNCTION openidl_ep_9995.tmp_ho_earned_premium(IN start_date date,IN end_date date, IN pv_policy_form VARCHAR)
     returns      numeric AS $$DECLARE ep numeric;
     BEGIN
         select sum(a.ep)
         from (
             (SELECT 1 ggroup,
                 Datediff(accounting_term_expiration, accounting_date) * monthly_premium_amount ep
-                FROM   openidl_ep_${companyId}.tmp_ho_pc
+                FROM   openidl_ep_9995.tmp_ho_pc
                 WHERE  accounting_date >= start_date
                 AND accounting_term_expiration < end_date
                 and transaction_code = '1'
@@ -16,7 +14,7 @@ function getEarnedPremium(companyId){
             union all 
                 (SELECT 2 ggroup,                                                      
                 Datediff(start_date, accounting_term_expiration) * monthly_premium_amount ep   
-                FROM   openidl_ep_${companyId}.tmp_ho_pc
+                FROM   openidl_ep_9995.tmp_ho_pc
                 WHERE  accounting_date < start_date
                 and accounting_term_expiration> start_date
                 and accounting_term_expiration< end_date
@@ -25,7 +23,7 @@ function getEarnedPremium(companyId){
             union all 
                 (select 3 ggroup,
                 Datediff(accounting_date, end_date) * monthly_premium_amount ep
-                FROM   openidl_ep_${companyId}.tmp_ho_pc
+                FROM   openidl_ep_9995.tmp_ho_pc
                 WHERE  accounting_date > start_date
                 and accounting_date < end_date
                 AND accounting_term_expiration > end_date
@@ -34,7 +32,7 @@ function getEarnedPremium(companyId){
             union all
                 (select 4 ggroup,       
                 Datediff(start_date, end_date) * monthly_premium_amount ep
-                FROM   openidl_ep_${companyId}.tmp_ho_pc
+                FROM   openidl_ep_9995.tmp_ho_pc
                 WHERE  accounting_date < start_date
                 AND accounting_term_expiration > end_date
                 and transaction_code = '1'
@@ -42,8 +40,4 @@ function getEarnedPremium(companyId){
         RETURN ep;
     END$$ language plpgsql;
     
-    `
-    return earnedPremium
-}
-
-module.exports = getEarnedPremium
+    

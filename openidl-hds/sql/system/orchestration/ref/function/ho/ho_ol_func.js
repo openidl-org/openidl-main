@@ -1,11 +1,11 @@
 //outstanding loss
 function getOutstandingLoss(companyId) {
 	sql = `
-    CREATE OR replace FUNCTION openidl_ep_9999.tmp_ho_outstanding_loss(in pv_policy_form VARCHAR)
+    CREATE OR replace FUNCTION openidl_ep_${companyId}.tmp_ho_outstanding_loss(in pv_policy_form VARCHAR)
     returns      numeric AS $$DECLARE pl numeric;
     begin
         SELECT sum(loss_amount) into pl
-        FROM   openidl_base_9999.ho_claim
+        FROM   openidl_base_${companyId}.ho_claim
         where  transaction_code = '3'
         and policy_form = pv_policy_form;
     RETURN pl;

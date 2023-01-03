@@ -12,7 +12,7 @@ const getEarnedPremium = require('./ref/function/ho/ho_ep_func');
 const getIncurredLoss = require('./ref/function/ho/ho_il_func');
 const getWrittenPremium = require('./ref/function/ho/ho_wp_func')
 const getPaidLoss = require('./ref/function/ho/ho_pl_func')
-const getOutstanding = require('./ref/function/ho/ho_ol_func')
+const getOutstandingLoss = require('./ref/function/ho/ho_ol_func')
 //report tables
 
 function createHOPolicy(companyId) {
@@ -258,18 +258,18 @@ function createReportingTable(companyId) {
 	}
 }
 
-function createOutstanding(companyId) {
-	sql = getOutstanding(companyId);
+function createOutstandingLoss(companyId) {
+	sql = getOutstandingLoss(companyId);
 
-	path = `./company/${companyId}/reporting/ho_outstanding_func.sql`;
+	path = `./company/${companyId}/reporting/ho_outstanding_loss_func.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
-			`ho Outstanding function ${companyId} not found. Creating now.`
+			`HO Outstanding function ${companyId} not found. Creating now.`
 		);
 		write(path, sql);
 	} else {
 		console.log(
-			`ho Outstanding function ${companyId} exists. Skipping Generation`
+			`HO Outstanding function ${companyId} exists. Skipping Generation`
 		);
 	}
 }
@@ -337,10 +337,10 @@ function initCompany(build) {
 	createHOPolicy(companyId);
 
 	createEarnedPremium(companyId)
-	createIncurredCount(companyId)
+	// createIncurredCount(companyId)
 	createWrittenPremium(companyId)
 	createPaidLoss(companyId)
-	createOutstanding(companyId)
+	createOutstandingLoss(companyId)
 
 	
 	createBuilder(companyId);

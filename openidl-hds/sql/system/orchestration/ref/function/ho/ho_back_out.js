@@ -3,11 +3,11 @@ function getBackOut(companyId){
     -- Tables
     DROP TABLE IF EXISTS openidl_base_${companyId}.ho_policy;
     DROP TABLE IF EXISTS openidl_base_${companyId}.ho_claim;
-    DROP TABLE IF EXISTS openidl_ep_${companyId}.ho_final_report;
+    DROP TABLE IF EXISTS openidl_ep_${companyId}.ho_doi_report;
 
     DELETE FROM  openidl_base_${companyId}.ho_policy;
     DELETE FROM  TABLE openidl_base_${companyId}.ho_claim;
-    DELETE FROM  openidl_ep_${companyId}.ho_final_report;
+    DELETE FROM  openidl_ep_${companyId}.ho_doi_report;
 
 
     -- Temp Tables

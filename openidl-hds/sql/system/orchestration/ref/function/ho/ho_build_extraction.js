@@ -1,13 +1,12 @@
 const getHoDoiReport = require('./ho_doi_report');
-// const getCarYears = require('./ho_cy_func');
 const getEarnedPremium = require('./ho_ep_func')
-const getIncurredCount = require('./ho_ic_func')
+// const getIncurredCount = require('./ho_ic_func')
 const getIncurredLoss = require('./ho_il_func')
 const getPreTable = require('./ho_tmp_pc.js')
-const getReportingTable = require('./ho_tmp_reporting_tbl.js')
+//const getReportingTable = require('./tmp_ho_reporting_ref_tbl.js')
 const getTearDown = require('./ho_tear_down.js')
-const getHomeownerOutstanding = require('./ho_outstanding.js')
-const getRefTable = require('./ho_tmp_report_ref_tbl.js')
+const getHomeownerOutstandingLoss = require('./ho_ol_func.js')
+const getRefTable = require('./tmp_ho_report_ref_tbl.js')
 
 
 function getBuilder(companyId){
@@ -25,13 +24,12 @@ function getMap(companyId){
     sqlArray = []
     sqlArray.push(getTearDown(companyId))
     sqlArray.push(getPreTable(companyId))
-    sqlArray.push(getReportingTable(companyId))
+    //sqlArray.push(getReportingTable(companyId))
     sqlArray.push(getRefTable(companyId))
-    sqlArray.push(getCarYears(companyId))
     sqlArray.push(getEarnedPremium(companyId))
-    sqlArray.push(getHomeownerOutstanding(companyId))
+    sqlArray.push(getHomeownerOutstandingLoss(companyId))
     sqlArray.push(getIncurredLoss(companyId))
-    sqlArray.push(getIncurredCount(companyId))
+    // sqlArray.push(getIncurredCount(companyId))
     sqlArray.push(getHoDoiReport(companyId))
     sqlString = sqlArray.join(' ') //join on what? 
     return sqlString    
