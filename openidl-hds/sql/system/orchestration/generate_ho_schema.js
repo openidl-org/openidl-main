@@ -366,3 +366,6 @@ buildObject = [
 ];
 
 main(buildObject);
+
+
+module.exports = initCompany
