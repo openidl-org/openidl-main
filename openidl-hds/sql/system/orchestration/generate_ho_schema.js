@@ -10,6 +10,8 @@ const getReportTable = require('./ref/function/ho/tmp_ho_report_ref_tbl')
 const getEarnedPremium = require('./ref/function/ho/ho_ep_func');
 const getIncurredCount = require('./ref/function/ho/ho_ic_func');
 const getIncurredLoss = require('./ref/function/ho/ho_il_func');
+const getWrittenPremium = require('./ref/function/ho/ho_wp_func')
+const getPaidLoss = require('./ref/function/ho/ho_pl_func')
 //report tables
 
 function createHOPolicy(companyId) {
@@ -171,11 +173,41 @@ function createIncurredLoss(companyId) {
 	}
 }
 
+function createPaidLoss(companyId) {
+	sql = getPaidLoss(companyId);
+	path = `./company/${companyId}/reporting/ho_paid_loss_func.sql`;
+	if (!checkFileExists(path)) {
+		console.log(
+			`Paid Loss Function ${companyId} not found. Creating now.`
+		);
+		write(path, sql);
+	} else {
+		console.log(
+			`Paid Loss Function ${companyId} exists. Skipping Generation`
+		);
+	}
+}
+
+function createWrittenPremium(companyId) {
+	sql = getWrittenPremium(companyId);
+	path = `./company/${companyId}/reporting/ho_written_premium_func.sql`;
+	if (!checkFileExists(path)) {
+		console.log(
+			`Written Premium Function ${companyId} not found. Creating now.`
+		);
+		write(path, sql);
+	} else {
+		console.log(
+			`Written Premium Function ${companyId} exists. Skipping Generation`
+		);
+	}
+}
+
 
 
 function createHoDoiReport(companyId) {
 	sql = getHoDoiReport(companyId);
-	path = `./company/${companyId}/reporting/ho_coverage_report.sql`;
+	path = `./company/${companyId}/reporting/ho_doi_report.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
 			`Homeowner DOI Report ${companyId} not found. Creating now.`
