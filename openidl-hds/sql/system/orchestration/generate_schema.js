@@ -1,19 +1,19 @@
 const fs = require('fs');
-const getCoverageReport = require('./ref/function/auto_coverage_report');
-const getCarYears = require('./ref/function/auto_cy_func');
-const getEarnedPremium = require('./ref/function/auto_ep_func');
-const getIncurredCount = require('./ref/function/auto_ic_func');
-const getIncurredLoss = require('./ref/function/auto_il_func');
-const getAutoLoss = require('./ref/function/auto_loss_tbl.js');
-const getAutoPremium = require('./ref/function/auto_premium_tbl.js');
-const getPreTable = require('./ref/function/auto_tmp_pre_tbl.js');
-const getReportingTable = require('./ref/function/auto_tmp_reporting_tbl.js');
-const getTearDown = require('./ref/function/auto_tear_down.js');
-const getAutoOutstanding = require('./ref/function/auto_outstanding.js');
-const getHandTests = require('./ref/function/auto_hand_tests.js');
-const getRefTable = require('./ref/function/auto_tmp_report_ref_tbl.js');
-const getBackOut = require(`./ref/function/auto_back_out.js`);
-const getBuilder = require(`./ref/function/auto_build_extraction.js`);
+const getCoverageReport = require('./ref/function/auto/auto_coverage_report');
+const getCarYears = require('./ref/function/auto/auto_cy_func');
+const getEarnedPremium = require('./ref/function/auto/auto_ep_func');
+const getIncurredCount = require('./ref/function/auto/auto_ic_func');
+const getIncurredLoss = require('./ref/function/auto/auto_il_func');
+const getAutoClaim = require('./ref/function/auto/auto_claim_tbl.js');
+const getAutoPremium = require('./ref/function/auto/auto_policy_tbl.js');
+const getPreTable = require('./ref/function/auto/auto_tmp_pc.js');
+const getReportingTable = require('./ref/function/auto/auto_tmp_reporting_tbl.js');
+const getTearDown = require('./ref/function/auto/auto_tear_down.js');
+const getAutoOutstanding = require('./ref/function/auto/auto_outstanding.js');
+const getHandTests = require('./ref/function/auto/auto_hand_tests.js');
+const getRefTable = require('./ref/function/auto/auto_tmp_report_ref_tbl.js');
+const getBackOut = require(`./ref/function/auto/auto_back_out.js`);
+const getBuilder = require(`./ref/function/auto/auto_build_extraction.js`);
 
 function write(path, value) {
 	// console.log(`write, path: ${path}\n value: ${value}`)
@@ -160,7 +160,7 @@ function createAutoCoverageReport(companyId) {
 	}
 }
 
-function createAutoPremium(companyId) {
+function createAutoPolicy(companyId) {
 	sql = getAutoPremium(companyId);
 	path = `./company/${companyId}/auto_premium_tbl.sql`;
 	if (!checkFileExists(path)) {
@@ -173,8 +173,8 @@ function createAutoPremium(companyId) {
 	}
 }
 
-function createAutoLoss(companyId) {
-	sql = getAutoLoss(companyId);
+function createAutoClaim(companyId) {
+	sql = getAutoClaim(companyId);
 
 	path = `./company/${companyId}/auto_loss_tbl.sql`;
 	if (!checkFileExists(path)) {
@@ -188,7 +188,7 @@ function createAutoLoss(companyId) {
 function createPreTable(companyId) {
 	sql = getPreTable(companyId);
 
-	path = `./company/${companyId}/reporting/auto_tmp_pre_report_tbl.sql`;
+	path = `./company/${companyId}/reporting/auto_tmp_pc_tbl.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
 			`Auto Pre Reporting Table ${companyId} not found. Creating now.`
@@ -333,8 +333,8 @@ function initCompany(build) {
 	createEarnedPremium(companyId);
 	createIncurredCount(companyId);
 	createIncurredLoss(companyId);
-	createAutoLoss(companyId);
-	createAutoPremium(companyId);
+	createAutoClaim(companyId);
+	createAutoPolicy(companyId);
 	createAutoCoverageReport(companyId);
 	createPreTable(companyId);
 	createReportingTable(companyId);
