@@ -7,7 +7,7 @@ BEGIN
     select sum(a.cy)
     from (
         (SELECT 1 ggroup,            
-            Datediff(accounting_term_expiration, accounting_date)/12*exposure cy
+            Datediff(accounting_date,accounting_term_expiration )/12*exposure cy
             FROM   openidl_ep_${companyId}.tmp_au_coverage
             WHERE  accounting_date >= start_date
             AND accounting_term_expiration < end_date
@@ -15,7 +15,7 @@ BEGIN
             and reporting_code = pv_reporting_code) 
         union all
             (SELECT 2 ggroup,                                                                
-            Datediff(accounting_term_expiration, start_date)/12*exposure cy
+            Datediff(start_date, accounting_term_expiration)/12*exposure cy
             FROM   openidl_ep_${companyId}.tmp_au_coverage
             WHERE  accounting_date < start_date
             and accounting_term_expiration> start_date
@@ -33,7 +33,7 @@ BEGIN
             and reporting_code = pv_reporting_code)
         union all
             (select 4 ggroup,       
-            Datediff(end_date, start_date)/12*exposure cy
+            Datediff(start_date,end_date)/12*exposure cy
             FROM   openidl_ep_${companyId}.tmp_au_coverage
             WHERE  accounting_date < start_date
             AND accounting_term_expiration > end_date
