@@ -10,15 +10,6 @@ const getAutoOutstanding = require('./auto_outstanding.js')
 const getRefTable = require('./auto_tmp_report_ref_tbl.js')
 
 
-function getBuilder(companyId){
-
-    extractionPattern = {}
-    map = getMap(companyId)
-    reduce = getCoverageReport(companyId)
-    clean = getTearDown(companyId)
-    extractionPattern = {"map": map, "reduce": reduce, "clean": clean}
-    return extractionPattern
-}
 
 function getMap(companyId){
     sqlArray = []
@@ -36,6 +27,14 @@ function getMap(companyId){
     return sqlString    
 }
 
+function getBuilder(companyId){
 
+    extractionPattern = {}
+    map = getMap(companyId)
+    reduce = getCoverageReport(companyId)
+    
+    extractionPattern = map+reduce
+    return extractionPattern
+}
 
 module.exports = getBuilder

@@ -14,6 +14,7 @@ const getHandTests = require('./ref/function/auto/auto_hand_tests.js');
 const getRefTable = require('./ref/function/auto/auto_tmp_report_ref_tbl.js');
 const getBackOut = require(`./ref/function/auto/auto_back_out.js`);
 const getBuilder = require(`./ref/function/auto/auto_build_extraction.js`);
+const getSQLReport = require(`./ref/function/auto/auto_coverage_report_sql`);
 
 function write(path, value) {
 	// console.log(`write, path: ${path}\n value: ${value}`)
@@ -292,16 +293,37 @@ function createBuilder(companyId) {
 		console.log(
 			`Auto Extraction Builder ${companyId} not found. Creating now.`
 		);
-		console.table(sql)
-		data = JSON.stringify(sql)
-		
-		fs.writeFileSync(path,data)
+		console.table(sql);
+		data = JSON.stringify(sql);
+
+		fs.writeFileSync(path, data);
 	} else {
 		console.log(
 			`Auto Extraction Builder ${companyId} exists. Skipping Generation`
 		);
 	}
 }
+
+function createSQLBuilder(companyId) {
+	sql = getSQLReport(companyId);
+
+	path = `./company/${companyId}/reporting/auto_coverage_extraction.sql`;
+	if (!checkFileExists(path)) {
+		console.log(
+			`Auto Extraction SQL ${companyId} not found. Creating now.`
+		);
+		//console.table(sql);
+		
+
+		fs.writeFileSync(path, sql);
+	} else {
+		console.log(
+			`Auto Extraction SQL ${companyId} exists. Skipping Generation`
+		);
+	}
+}
+
+
 
 function createExtractionPattern() {
 	companyId = '@org';
@@ -318,13 +340,14 @@ function createExtractionPattern() {
 	if (!checkFileExists(path)) {
 		console.log(`Auto Extraction Pattern not found. Creating now.`);
 		//console.log('317 gs')
-		fs.writeFileSync(path,JSON.stringify(sql))
+		fs.writeFileSync(path, JSON.stringify(sql));
 	} else {
 		console.log(`Auto Extraction Pattern exists. Skipping Generation`);
 	}
 }
 
 function initCompany(build) {
+	console.log(build)
 	companyId = build.ID;
 	console.log('init company: ' + companyId);
 	createCompanyDirectory(companyId);
@@ -344,6 +367,7 @@ function initCompany(build) {
 	createReportingTableRef(companyId);
 	createBackOut(companyId);
 	createBuilder(companyId);
+	createSQLBuilder(companyId);
 	createExtractionPattern();
 }
 
@@ -354,13 +378,15 @@ function main(buildObjects) {
 	}
 }
 
-buildObject = [
-	{ Name: 'Shepard Mutual', ID: '9999' },
-	{ Name: 'Lab Insurance Group', ID: '9998' },
-	{ Name: 'York Farmers INC', ID: '9997' },
-  { Name: 'Idaho Group', ID: '9996' },
-  { Name: 'Carolina Insurance Group', ID: '9995' },
-  { Name: 'Burke Farmers', ID: '9990'},
-  { Name: 'Company X', ID: '1234'}
-];
-main(buildObject);
+// buildObject = [
+// 	{ Name: 'Shepard Mutual', ID: '9999' },
+// 	{ Name: 'Lab Insurance Group', ID: '9998' },
+// 	{ Name: 'York Farmers INC', ID: '9997' },
+// 	{ Name: 'Idaho Group', ID: '9996' },
+// 	{ Name: 'Carolina Insurance Group', ID: '9995' },
+// 	{ Name: 'Burke Farmers', ID: '9990' },
+// 	{ Name: 'Company X', ID: '1234' }
+// ];
+//main(buildObject);
+
+module.exports = initCompany;
