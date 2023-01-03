@@ -1,23 +1,56 @@
-// GENERATE HO SCHEMA
-
-
-
 const fs = require('fs');
-const getHoDoiReport = require('./ref/function/homeowners/ho_doi_report');
-// const getCarYears = require('./ref/function/auto_cy_func');
-// const getEarnedPremium = require('./ref/function/auto_ep_func');
-// const getIncurredCount = require('./ref/function/auto_ic_func');
-// const getIncurredLoss = require('./ref/function/auto_il_func');
-// const getAutoLoss = require('./ref/function/auto_loss_tbl.js');
-// const getAutoPremium = require('./ref/function/auto_premium_tbl.js');
-// const getPreTable = require('./ref/function/auto_tmp_pre_tbl.js');
-// const getReportingTable = require('./ref/function/auto_tmp_reporting_tbl.js');
-// const getTearDown = require('./ref/function/auto_tear_down.js');
-// const getAutoOutstanding = require('./ref/function/auto_outstanding.js');
-// const getHandTests = require('./ref/function/auto_hand_tests.js');
-// const getRefTable = require('./ref/function/auto_tmp_report_ref_tbl.js');
-// const getBackOut = require(`./ref/function/auto_back_out.js`);
-// const getBuilder = require(`./ref/function/auto_build_extraction.js`);
+//tables
+const getHOClaim = require('./ref/function/ho/ho_claim_tbl.js');
+const getHOPolicy = require('./ref/function/ho/ho_policy_tbl.js');
+
+const getReportTable = require('./ref/function/ho/tmp_ho_report_ref_tbl')
+
+
+//functions
+const getEarnedPremium = require('./ref/function/ho/ho_ep_func');
+const getIncurredCount = require('./ref/function/ho/ho_ic_func');
+const getIncurredLoss = require('./ref/function/ho/ho_il_func');
+//report tables
+
+function createHOPolicy(companyId) {
+	sql = getHOPolicy(companyId);
+
+	path = `./company/${companyId}/reporting/ho_policy_tbl.sql`;
+	if (!checkFileExists(path)) {
+		console.log(`ho policy ${companyId} not found. Creating now.`);
+		write(path, sql);
+	} else {
+		console.log(`ho policy ${companyId} exists. Skipping Generation`);
+	}
+}
+
+function createHOReportTable(companyId) {
+	sql = getRefTable(companyId);
+
+	path = `./company/${companyId}/reporting/ho_tmp_report_tbl.sql`;
+	if (!checkFileExists(path)) {
+		console.log(`ho policy ${companyId} not found. Creating now.`);
+		write(path, sql);
+	} else {
+		console.log(`ho policy ${companyId} exists. Skipping Generation`);
+	}
+}
+
+function createHOClaim(companyId) {
+	sql = getHOClaim(companyId);
+
+	path = `./company/${companyId}/reporting/ho_claim_tbl.sql`;
+	if (!checkFileExists(path)) {
+		console.log(`ho claim ${companyId} not found. Creating now.`);
+		write(path, sql);
+	} else {
+		console.log(`ho claim ${companyId} exists. Skipping Generation`);
+	}
+}
+
+
+//const getHoDoiReport = require('./ref/function/homeowners/ho_doi_report');
+
 
 function write(path, value) {
 	// console.log(`write, path: ${path}\n value: ${value}`)
@@ -91,22 +124,11 @@ function createSchemas(companyId) {
 	}
 }
 
-function createCarYears(companyId) {
-	sql = getCarYears(companyId);
-	path = `./company/${companyId}/reporting/auto_car_years_func.sql`;
-	if (!checkFileExists(path)) {
-		console.log(`Car Years Function ${companyId} not found. Creating now.`);
-		write(path, sql);
-	} else {
-		console.log(
-			`Car Years Function ${companyId} exists. Skipping Generation`
-		);
-	}
-}
+
 
 function createEarnedPremium(companyId) {
 	sql = getEarnedPremium(companyId);
-	path = `./company/${companyId}/reporting/auto_earned_premium_func.sql`;
+	path = `./company/${companyId}/reporting/ho_earned_premium_func.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
 			`Earned Premium Function ${companyId} not found. Creating now.`
@@ -121,7 +143,7 @@ function createEarnedPremium(companyId) {
 
 function createIncurredCount(companyId) {
 	sql = getIncurredCount(companyId);
-	path = `./company/${companyId}/reporting/auto_incurred_count_func.sql`;
+	path = `./company/${companyId}/reporting/ho_incurred_count_func.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
 			`Incurred Count Function ${companyId} not found. Creating now.`
@@ -136,7 +158,7 @@ function createIncurredCount(companyId) {
 
 function createIncurredLoss(companyId) {
 	sql = getIncurredLoss(companyId);
-	path = `./company/${companyId}/reporting/auto_incurred_loss_func.sql`;
+	path = `./company/${companyId}/reporting/ho_incurred_loss_func.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
 			`Incurred Loss Function ${companyId} not found. Creating now.`
@@ -150,12 +172,10 @@ function createIncurredLoss(companyId) {
 }
 
 
-// fix pathing
-openidl-hds/sql/ho-system/ho_orchestration/ho_sql_reports/ho_doi_report.sql
 
 function createHoDoiReport(companyId) {
 	sql = getHoDoiReport(companyId);
-	path = `./company/${companyId}/reporting/auto_coverage_report.sql`;
+	path = `./company/${companyId}/reporting/ho_coverage_report.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
 			`Homeowner DOI Report ${companyId} not found. Creating now.`
@@ -168,58 +188,23 @@ function createHoDoiReport(companyId) {
 	}
 }
 
-function createAutoPremium(companyId) {
-	sql = getAutoPremium(companyId);
-	path = `./company/${companyId}/auto_premium_tbl.sql`;
-	if (!checkFileExists(path)) {
-		console.log(`Auto Premium Table ${companyId} not found. Creating now.`);
-		write(path, sql);
-	} else {
-		console.log(
-			`Auto Premium Table ${companyId} exists. Skipping Generation`
-		);
-	}
-}
 
-function createAutoLoss(companyId) {
-	sql = getAutoLoss(companyId);
 
-	path = `./company/${companyId}/auto_loss_tbl.sql`;
-	if (!checkFileExists(path)) {
-		console.log(`Auto Loss Table ${companyId} not found. Creating now.`);
-		write(path, sql);
-	} else {
-		console.log(`Auto Loss Table ${companyId} exists. Skipping Generation`);
-	}
-}
 
-function createPreTable(companyId) {
-	sql = getPreTable(companyId);
 
-	path = `./company/${companyId}/reporting/auto_tmp_pre_report_tbl.sql`;
-	if (!checkFileExists(path)) {
-		console.log(
-			`Auto Pre Reporting Table ${companyId} not found. Creating now.`
-		);
-		write(path, sql);
-	} else {
-		console.log(
-			`Auto Pre Reporting Table ${companyId} exists. Skipping Generation`
-		);
-	}
-}
+
 function createReportingTableRef(companyId) {
 	sql = getRefTable(companyId);
 
-	path = `./company/${companyId}/reporting/auto_tmp_report_ref_tbl.sql`;
+	path = `./company/${companyId}/reporting/ho_tmp_report_ref_tbl.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
-			`Auto Reporting Table Ref ${companyId} not found. Creating now.`
+			`ho Reporting Table Ref ${companyId} not found. Creating now.`
 		);
 		write(path, sql);
 	} else {
 		console.log(
-			`Auto Reporting Table Ref ${companyId} exists. Skipping Generation`
+			`ho Reporting Table Ref ${companyId} exists. Skipping Generation`
 		);
 	}
 }
@@ -227,31 +212,31 @@ function createReportingTableRef(companyId) {
 function createReportingTable(companyId) {
 	sql = getReportingTable(companyId);
 
-	path = `./company/${companyId}/reporting/auto_tmp_report_tbl.sql`;
+	path = `./company/${companyId}/reporting/ho_tmp_report_tbl.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
-			`Auto Reporting Table ${companyId} not found. Creating now.`
+			`ho Reporting Table ${companyId} not found. Creating now.`
 		);
 		write(path, sql);
 	} else {
 		console.log(
-			`Auto Reporting Table ${companyId} exists. Skipping Generation`
+			`ho Reporting Table ${companyId} exists. Skipping Generation`
 		);
 	}
 }
 
 function createOutstanding(companyId) {
-	sql = getAutoOutstanding(companyId);
+	sql = gethoOutstanding(companyId);
 
-	path = `./company/${companyId}/reporting/auto_outstanding_func.sql`;
+	path = `./company/${companyId}/reporting/ho_outstanding_func.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
-			`Auto Outstanding function ${companyId} not found. Creating now.`
+			`ho Outstanding function ${companyId} not found. Creating now.`
 		);
 		write(path, sql);
 	} else {
 		console.log(
-			`Auto Outstanding function ${companyId} exists. Skipping Generation`
+			`ho Outstanding function ${companyId} exists. Skipping Generation`
 		);
 	}
 }
@@ -259,46 +244,24 @@ function createOutstanding(companyId) {
 function createTearDown(companyId) {
 	sql = getTearDown(companyId);
 
-	path = `./company/${companyId}/reporting/auto_tear_down.sql`;
+	path = `./company/${companyId}/reporting/ho_tear_down.sql`;
 	if (!checkFileExists(path)) {
-		console.log(`Auto Tear Down ${companyId} not found. Creating now.`);
+		console.log(`ho Tear Down ${companyId} not found. Creating now.`);
 		write(path, sql);
 	} else {
-		console.log(`Auto Tear Down ${companyId} exists. Skipping Generation`);
+		console.log(`ho Tear Down ${companyId} exists. Skipping Generation`);
 	}
 }
 
-function createBackOut(companyId) {
-	sql = getBackOut(companyId);
 
-	path = `./company/${companyId}/auto_back_out.sql`;
-	if (!checkFileExists(path)) {
-		console.log(`Auto Back Out ${companyId} not found. Creating now.`);
-		write(path, sql);
-	} else {
-		console.log(`Auto Back Out ${companyId} exists. Skipping Generation`);
-	}
-}
-
-function createHandTests(companyId) {
-	sql = getHandTests(companyId);
-
-	path = `./company/${companyId}/reporting/auto_hand_tests.sql`;
-	if (!checkFileExists(path)) {
-		console.log(`Auto Hand Tests ${companyId} not found. Creating now.`);
-		write(path, sql);
-	} else {
-		console.log(`Auto Hand Tests ${companyId} exists. Skipping Generation`);
-	}
-}
 
 function createBuilder(companyId) {
 	sql = getBuilder(companyId);
 
-	path = `./company/${companyId}/reporting/auto_coverage_extraction.json`;
+	path = `./company/${companyId}/reporting/ho_coverage_extraction.json`;
 	if (!checkFileExists(path)) {
 		console.log(
-			`Auto Extraction Builder ${companyId} not found. Creating now.`
+			`ho Extraction Builder ${companyId} not found. Creating now.`
 		);
 		console.table(sql)
 		data = JSON.stringify(sql)
@@ -306,7 +269,7 @@ function createBuilder(companyId) {
 		fs.writeFileSync(path,data)
 	} else {
 		console.log(
-			`Auto Extraction Builder ${companyId} exists. Skipping Generation`
+			`ho Extraction Builder ${companyId} exists. Skipping Generation`
 		);
 	}
 }
@@ -322,13 +285,13 @@ function createExtractionPattern() {
 		console.log('stat_agent');
 	}
 
-	path = `./stat_agent/auto_coverage_extraction.json`;
+	path = `./stat_agent/ho_coverage_extraction.json`;
 	if (!checkFileExists(path)) {
-		console.log(`Auto Extraction Pattern not found. Creating now.`);
+		console.log(`ho Extraction Pattern not found. Creating now.`);
 		//console.log('317 gs')
 		fs.writeFileSync(path,JSON.stringify(sql))
 	} else {
-		console.log(`Auto Extraction Pattern exists. Skipping Generation`);
+		console.log(`ho Extraction Pattern exists. Skipping Generation`);
 	}
 }
 
@@ -337,22 +300,11 @@ function initCompany(build) {
 	console.log('init company: ' + companyId);
 	createCompanyDirectory(companyId);
 	createSchemas(companyId);
-	createCarYears(companyId);
-	createEarnedPremium(companyId);
-	createIncurredCount(companyId);
-	createIncurredLoss(companyId);
-	createAutoLoss(companyId);
-	createAutoPremium(companyId);
-	createAutoCoverageReport(companyId);
-	createPreTable(companyId);
-	createReportingTable(companyId);
-	createTearDown(companyId);
-	createOutstanding(companyId);
-	createHandTests(companyId);
-	createReportingTableRef(companyId);
-	createBackOut(companyId);
-	createBuilder(companyId);
-	createExtractionPattern();
+	createHOClaim(companyId);
+	createHOPolicy(companyId);
+	//createBackOut(companyId);
+	//createBuilder(companyId);
+	//createExtractionPattern();
 }
 
 function main(buildObjects) {

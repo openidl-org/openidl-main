@@ -329,12 +329,12 @@ function initCompany(build) {
 	console.log('init company: ' + companyId);
 	createCompanyDirectory(companyId);
 	createSchemas(companyId);
+	createAutoClaim(companyId);
+	createAutoPolicy(companyId);
 	createCarYears(companyId);
 	createEarnedPremium(companyId);
 	createIncurredCount(companyId);
 	createIncurredLoss(companyId);
-	createAutoClaim(companyId);
-	createAutoPolicy(companyId);
 	createAutoCoverageReport(companyId);
 	createPreTable(companyId);
 	createReportingTable(companyId);
