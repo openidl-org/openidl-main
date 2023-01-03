@@ -4,14 +4,15 @@ const getHOClaim = require('./ref/function/ho/ho_claim_tbl.js');
 const getHOPolicy = require('./ref/function/ho/ho_policy_tbl.js');
 
 const getReportTable = require('./ref/function/ho/tmp_ho_report_ref_tbl')
-
+const getBuilder = require('./ref/function/ho/ho_build_extraction')
 
 //functions
 const getEarnedPremium = require('./ref/function/ho/ho_ep_func');
-const getIncurredCount = require('./ref/function/ho/ho_ic_func');
+//const getIncurredCount = require('./ref/function/ho/ho_ic_func');
 const getIncurredLoss = require('./ref/function/ho/ho_il_func');
 const getWrittenPremium = require('./ref/function/ho/ho_wp_func')
 const getPaidLoss = require('./ref/function/ho/ho_pl_func')
+const getOutstanding = require('./ref/function/ho/ho_ol_func')
 //report tables
 
 function createHOPolicy(companyId) {
@@ -258,7 +259,7 @@ function createReportingTable(companyId) {
 }
 
 function createOutstanding(companyId) {
-	sql = gethoOutstanding(companyId);
+	sql = getOutstanding(companyId);
 
 	path = `./company/${companyId}/reporting/ho_outstanding_func.sql`;
 	if (!checkFileExists(path)) {
@@ -334,9 +335,17 @@ function initCompany(build) {
 	createSchemas(companyId);
 	createHOClaim(companyId);
 	createHOPolicy(companyId);
-	//createBackOut(companyId);
-	//createBuilder(companyId);
-	//createExtractionPattern();
+
+	createEarnedPremium(companyId)
+	createIncurredCount(companyId)
+	createWrittenPremium(companyId)
+	createPaidLoss(companyId)
+	createOutstanding(companyId)
+
+	
+	createBuilder(companyId);
+	createExtractionPattern(companyId)
+
 }
 
 function main(buildObjects) {
@@ -355,4 +364,5 @@ buildObject = [
   { Name: 'Burke Farmers', ID: '9990'},
   { Name: 'Company X', ID: '1234'}
 ];
+
 main(buildObject);
