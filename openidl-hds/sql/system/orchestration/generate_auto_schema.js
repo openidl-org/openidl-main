@@ -5,7 +5,7 @@ const getEarnedPremium = require('./ref/function/auto/auto_ep_func');
 const getIncurredCount = require('./ref/function/auto/auto_ic_func');
 const getIncurredLoss = require('./ref/function/auto/auto_il_func');
 const getAutoClaim = require('./ref/function/auto/auto_claim_tbl.js');
-const getAutoPremium = require('./ref/function/auto/auto_policy_tbl.js');
+const getAutoPolicy = require('./ref/function/auto/auto_policy_tbl.js');
 const getPreTable = require('./ref/function/auto/auto_tmp_pc.js');
 const getReportingTable = require('./ref/function/auto/auto_tmp_reporting_tbl.js');
 const getTearDown = require('./ref/function/auto/auto_tear_down.js');
@@ -171,8 +171,8 @@ function createAutoCoverageReport(companyId) {
 }
 
 function createAutoPolicy(companyId) {
-	sql = getAutoPremium(companyId);
-	path = `./company/${companyId}/auto_premium_tbl.sql`;
+	sql = getAutoPolicy(companyId);
+	path = `./company/${companyId}/auto_policy_tbl.sql`;
 	if (!checkFileExists(path)) {
 		console.log(`Auto Premium Table ${companyId} not found. Creating now.`);
 		write(path, sql);
