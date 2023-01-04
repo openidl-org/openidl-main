@@ -3,14 +3,14 @@ const getMap = require('./auto_coverage_map')
 
 
 
-function getBuilder(companyId){
+function getSQLReport(companyId){
 
     extractionPattern = {}
-    map = getMap(companyId)
+    map = getMap(companyId,'|')
     reduce = getCoverageReport(companyId)
     
-    extractionPattern = map+reduce
+    extractionPattern = map+'|'+reduce
     return extractionPattern
 }
 
-module.exports = getBuilder
+module.exports = getSQLReport

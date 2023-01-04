@@ -295,7 +295,7 @@ function createHandTests(companyId) {
 }
 
 function createBuilder(companyId) {
-	sql = getBuilder(companyId);
+	sql = getBuilder(companyId,' ');
 
 	path = `./company/${companyId}/reporting/auto/auto_coverage_extraction.json`;
 	if (!checkFileExists(path)) {

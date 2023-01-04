@@ -5,7 +5,7 @@ var { DBHelper } = require('../../utils_js/db');
 const { authMiddleware } = require('../middlewares/auth');
 var router = express.Router();
 var helper = new DBHelper({credentials: ConfigurationManager.mySQLDBCredentials});
-
+const fs = require("fs");
 
 /* post queryString */
 router.post('/execute', authMiddleware, async function(req, res, next) {
@@ -27,7 +27,8 @@ router.post('/execute', authMiddleware, async function(req, res, next) {
 router.post('/execute_9999', authMiddleware, async function(req, res, next) {
     
     let query = req.body["query"];
-    query = query.replaceAll('@org','9999')
+    query = query.replaceAll('@comp','9999')
+    fs.writeFileSync('./junk/api-query.txt',query)
     if(!query){
         return res.status(400).json({
             ok: false,
@@ -35,6 +36,7 @@ router.post('/execute_9999', authMiddleware, async function(req, res, next) {
         });
     }
     const result = await helper.runQuery(query);
+    // const result = await helper.queryMachine(query);
 
     return res.json({
         ok: true,

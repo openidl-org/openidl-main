@@ -5,7 +5,7 @@ const getTearDown = require('./auto_tear_down.js')
 function getBuilder(companyId){
 
     extractionPattern = {}
-    map = getMap(companyId)
+    map = getMap(companyId,' ')
     reduce = getCoverageReport(companyId)
     clean = getTearDown(companyId)
     extractionPattern = {"map": map, "reduce": reduce, "clean": clean}

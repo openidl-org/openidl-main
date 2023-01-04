@@ -22,17 +22,22 @@ function combineData(folder) {
 	data = {};
 	for (index in names) {
 		//console.log(index)
-		data[index] = require(names[index]);
+		
+		//openIDL
+		//data[index] = require(names[index]);
+		
+		//api
+		data[index] = require(names[index])['result'][0]['result']['result']['rows'];
 	}
 	keys = Object.keys(data);
 	console.log(data)
-	//console.log(data['1'])
+	console.log(data['0'])
 	combinedData = [];
 	for (index in data[keys[0]]) {
 		//console.log(index)
 		let name = data[keys[0]][index].reporting_name;
         // console.log(data[keys[0]][0])
-        // t()
+        
 		code = data[keys[0]][index].reporting_code;
 		ep = 0;
 		il = 0;

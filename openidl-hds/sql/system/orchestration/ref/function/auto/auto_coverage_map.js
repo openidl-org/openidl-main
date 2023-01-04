@@ -12,7 +12,7 @@ const getRefTable = require('./auto_tmp_report_ref_tbl.js')
 
 
 
-function getMap(companyId){
+function getMap(companyId, delimiter){
     sqlArray = []
     sqlArray.push(getTearDown(companyId))
     sqlArray.push(getPreTable(companyId))
@@ -24,7 +24,7 @@ function getMap(companyId){
     sqlArray.push(getIncurredLoss(companyId))
     sqlArray.push(getIncurredCount(companyId))
     //sqlArray.push(getCoverageReport(companyId))
-    sqlString = sqlArray.join(' ') //join on what? 
+    sqlString = sqlArray.join(delimiter) //join on what? 
     return sqlString    
 }
 
