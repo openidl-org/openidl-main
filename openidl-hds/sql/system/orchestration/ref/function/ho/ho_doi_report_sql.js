@@ -10,16 +10,6 @@ const getHomeownerOutstandingLoss = require('./ho_ol_func.js')
 
 
 
-function getBuilder(companyId){
-
-    extractionPattern = {}
-    map = getMap(companyId)
-    reduce = getHoDoiReport(companyId)
-    clean = getTearDown(companyId)
-    extractionPattern = {"map": map, "reduce": reduce, "clean": clean}
-    return extractionPattern
-}
-// needs to follow the same order as 
 function getMap(companyId){
     sqlArray = []
     sqlArray.push(getTearDown(companyId))
@@ -32,6 +22,16 @@ function getMap(companyId){
     sqlArray.push(getIncurredLoss(companyId))
     sqlString = sqlArray.join(' ') //join on what? 
     return sqlString    
+}
+
+function getBuilder(companyId){
+
+    extractionPattern = {}
+    map = getMap(companyId)
+    reduce = getHoDoiReport(companyId)
+    
+    extractionPattern = map + reduce
+    return extractionPattern
 }
 
 module.exports = getBuilder

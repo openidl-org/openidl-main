@@ -1,4 +1,4 @@
-function getReportingTable(companyId){
+function getReportingRefTable(companyId){
     sql =  `
     create table openidl_ep_${companyId}.tmp_ho_reporting_ref as
     SELECT reporting_category, reporting_form, policy_form
@@ -8,4 +8,4 @@ function getReportingTable(companyId){
     return sql
 }
 
-module.exports = getReportingTable
+module.exports = getReportingRefTable

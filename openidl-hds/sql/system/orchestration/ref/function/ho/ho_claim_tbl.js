@@ -16,6 +16,8 @@ function getHomeownerClaim(companyId){
         loss_amount Numeric (20,6),
         claim_count Numeric (20,6),
         program VARCHAR,
+        effective_date DATE,
+        expiration_date DATE,
         policy_form VARCHAR,
         policy_category VARCHAR,
         policy_type VARCHAR,
