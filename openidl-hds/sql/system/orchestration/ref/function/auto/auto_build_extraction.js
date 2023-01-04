@@ -1,5 +1,6 @@
 const getCoverageReport = require('./auto_coverage_report');
 const getMap = require('./auto_coverage_map')
+const getTearDown = require('./auto_tear_down.js')
 
 function getBuilder(companyId){
 
