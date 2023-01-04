@@ -186,7 +186,7 @@ function createAutoPolicy(companyId) {
 function createAutoClaim(companyId) {
 	sql = getAutoClaim(companyId);
 
-	path = `./company/${companyId}/auto_loss_tbl.sql`;
+	path = `./company/${companyId}/auto_claim_tbl.sql`;
 	if (!checkFileExists(path)) {
 		console.log(`Auto Loss Table ${companyId} not found. Creating now.`);
 		write(path, sql);

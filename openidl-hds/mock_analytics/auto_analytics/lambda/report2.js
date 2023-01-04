@@ -9,7 +9,9 @@ console.log('report')
 
 
 
-data = combineData('1a-au')
+// data = combineData('1a-au')
+data = combineData(`../response/auto`)
+
 console.log(data)
 html = getLayout(data)
  

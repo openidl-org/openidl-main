@@ -14,7 +14,7 @@ const credentials = {
 
 function makeInsertQuery(record){
 
-    let query = `set datestyle to DMY; INSERT INTO ${config.db.schema.base}_${config.db.companyId}.au_premium
+    let query = `set datestyle to DMY; INSERT INTO ${config.db.schema.base}_${config.db.companyId}.au_policy
     (line_of_business,
      subline,
      record_type,
@@ -140,7 +140,7 @@ function makeInsertQueryForLoss(record){
         loss=0;
     }
 
-    let query = `set datestyle to DMY; INSERT INTO ${config.db.schema.base}_${config.db.companyId}.au_loss
+    let query = `set datestyle to DMY; INSERT INTO ${config.db.schema.base}_${config.db.companyId}.au_claim
     (line_of_business,
 	 subline,
 	 subline_category,

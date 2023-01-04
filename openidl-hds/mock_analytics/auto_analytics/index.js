@@ -3,6 +3,17 @@ const fs = require("fs");
 
 const ep = require('./extraction')
 
+function unixTimestamp () {  
+    stampString = Math.round(Math.floor(Date.now() / 1000)).toString()
+    stampString.slice(stampString.length - 5)
+    return stampString
+  }
+
+
+  function getStamp(){
+    return Math.floor(Date.now() / 1000)
+  }
+
 async function restExampleExecution_9999(){
     try{
         let query = ep();
@@ -14,7 +25,8 @@ async function restExampleExecution_9999(){
             }
         })
         const data = result.data;
-        fs.writeFileSync("./example_data_9999.json", JSON.stringify(data, null, 4));
+        stamp = getStamp()
+        fs.writeFileSync(`./response/auto/auto_data_9999_${stamp}.json`, JSON.stringify(data, null, 4));
         return data;
     }catch(restExampleExecution_e){
         console.log({restExampleExecution_e});
@@ -33,7 +45,8 @@ async function restExampleExecution_9998(){
             }
         })
         const data = result.data;
-        fs.writeFileSync("./example_data_9998.json", JSON.stringify(data, null, 4));
+        stamp = getStamp()
+        fs.writeFileSync(`./response/auto/auto_data_9998_${stamp}.json`, JSON.stringify(data, null, 4));
         return data;
     }catch(restExampleExecution_e){
         console.log({restExampleExecution_e});
@@ -52,7 +65,8 @@ async function restExampleExecution_9997(){
             }
         })
         const data = result.data;
-        fs.writeFileSync("./example_data_9997.json", JSON.stringify(data, null, 4));
+        stamp = getStamp()
+        fs.writeFileSync(`./response/auto/auto_data_9997_${stamp}.json`, JSON.stringify(data, null, 4));
         return data;
     }catch(restExampleExecution_e){
         console.log({restExampleExecution_e});
