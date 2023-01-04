@@ -1,6 +1,10 @@
 
-    select *, round(openidl_ep_9999.tmp_au_earned_premium('2000-01-01'::DATE, '2002-01-01'::DATE,a.reporting_code)) earned_premium 
-    ,round(openidl_ep_9999.tmp_car_years('2000-01-01'::DATE, '2002-01-01'::DATE,a.reporting_code)) car_years
-    ,round(openidl_ep_9999.tmp_au_incurred_count('2000-01-01'::DATE, '2002-01-01'::DATE,a.reporting_code)) incurred_count
-    ,round(openidl_ep_9999.tmp_au_incurred_loss('2000-01-01'::DATE, '2002-01-01'::DATE,a.reporting_code)) incurred_loss
-    from openidl_ep_9999.tmp_au_coverage_ref a;
+    SELECT  policy_form,
+     	    reporting_form,
+        	openidl_ep_9999.Tmp_ho_written_premium(policy_form) written_premium,
+        	openidl_ep_9999.Tmp_ho_paid_loss(policy_form) paid_loss,
+        	round(openidl_ep_9999.Tmp_ho_paid_loss(policy_form) * 100 / openidl_ep_9999.Tmp_ho_written_premium(policy_form), 2) loss_ratio,
+        	openidl_ep_9999.tmp_ho_earned_premium( '2002-08-15', '2003-08-15', policy_form) ep,
+        	openidl_ep_9999.tmp_ho_incurred_loss(policy_form) incurred_loss,
+        	round(openidl_ep_9999.tmp_ho_incurred_loss(policy_form) * 100 / openidl_ep_9999.tmp_ho_earned_premium( '2002-08-15', '2003-08-15', policy_form), 2) ep_loss_ratio
+    FROM 	openidl_ep_9999.tmp_ho_reporting_ref;

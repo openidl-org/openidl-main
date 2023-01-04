@@ -12,7 +12,7 @@ const getHomeownerOutstandingLoss = require('./ho_ol_func.js')
 
 
 
-function getMap(companyId){
+function getMap(companyId, delimiter){
     sqlArray = []
     sqlArray.push(getTearDown(companyId))
     sqlArray.push(getPreTable(companyId))
@@ -22,7 +22,7 @@ function getMap(companyId){
     sqlArray.push(getPaidLoss(companyId))
     sqlArray.push(getHomeownerOutstandingLoss(companyId))
     sqlArray.push(getIncurredLoss(companyId))
-    sqlString = sqlArray.join(' ') //join on what? 
+    sqlString = sqlArray.join(delimiter) //join on what? 
     return sqlString    
 }
 

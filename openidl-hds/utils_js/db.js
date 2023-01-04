@@ -59,7 +59,7 @@ module.exports.DBHelper = class DBHelper {
         let logVal = []
         let count = 0
         for (let query of queries){
-            fs.writeFileSync(`./junk/query-${count}`,query)
+            // fs.writeFileSync(`./junk/query-${count}`,query)
             count+=1
             try{
                 const queryWord = query.trim().split(/\s/)[0].toLowerCase()
@@ -73,7 +73,7 @@ module.exports.DBHelper = class DBHelper {
                 }else if (queryWord === "select"){
                     fs.writeFileSync('./junk/api-db-query-select.txt',query)
                     const result = await this.callPG(query.toString())
-                    //fs.writeFileSync('./junk/api-db-result.txt',JSON.stringify(result))
+                    fs.writeFileSync('./junk/api-db-result.txt',JSON.stringify(result))
                     
                     returnVal.push({
                         query, result

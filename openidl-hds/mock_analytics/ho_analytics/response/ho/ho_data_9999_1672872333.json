@@ -1,0 +1,443 @@
+{
+    "ok": true,
+    "result": [
+        {
+            "query": "\n    SELECT  policy_form,\n     \t    reporting_form,\n        \topenidl_ep_9999.Tmp_ho_written_premium(policy_form) written_premium,\n        \topenidl_ep_9999.Tmp_ho_paid_loss(policy_form) paid_loss,\n        \tround(openidl_ep_9999.Tmp_ho_paid_loss(policy_form) * 100 / openidl_ep_9999.Tmp_ho_written_premium(policy_form), 2) loss_ratio,\n        \topenidl_ep_9999.tmp_ho_earned_premium( '2002-08-15', '2003-08-15', policy_form) ep,\n        \topenidl_ep_9999.tmp_ho_incurred_loss(policy_form) incurred_loss,\n        \tround(openidl_ep_9999.tmp_ho_incurred_loss(policy_form) * 100 / openidl_ep_9999.tmp_ho_earned_premium( '2002-08-15', '2003-08-15', policy_form), 2) ep_loss_ratio\n    FROM \topenidl_ep_9999.tmp_ho_reporting_ref;",
+            "result": {
+                "query": "\n    SELECT  policy_form,\n     \t    reporting_form,\n        \topenidl_ep_9999.Tmp_ho_written_premium(policy_form) written_premium,\n        \topenidl_ep_9999.Tmp_ho_paid_loss(policy_form) paid_loss,\n        \tround(openidl_ep_9999.Tmp_ho_paid_loss(policy_form) * 100 / openidl_ep_9999.Tmp_ho_written_premium(policy_form), 2) loss_ratio,\n        \topenidl_ep_9999.tmp_ho_earned_premium( '2002-08-15', '2003-08-15', policy_form) ep,\n        \topenidl_ep_9999.tmp_ho_incurred_loss(policy_form) incurred_loss,\n        \tround(openidl_ep_9999.tmp_ho_incurred_loss(policy_form) * 100 / openidl_ep_9999.tmp_ho_earned_premium( '2002-08-15', '2003-08-15', policy_form), 2) ep_loss_ratio\n    FROM \topenidl_ep_9999.tmp_ho_reporting_ref;",
+                "result": {
+                    "command": "SELECT",
+                    "rowCount": 27,
+                    "oid": null,
+                    "rows": [
+                        {
+                            "policy_form": "60",
+                            "reporting_form": "All Other Property",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "06",
+                            "reporting_form": "Form 6 - Broad Perils",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "41",
+                            "reporting_form": "Care Provided for Others",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "53",
+                            "reporting_form": "Golf Cart Liability",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "03",
+                            "reporting_form": "Form 3",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "80",
+                            "reporting_form": "Resident of Assisted Living Facility",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "40",
+                            "reporting_form": "All Other HBB Liability Coverages",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "04",
+                            "reporting_form": "Form 4 - Broad Perils",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "84",
+                            "reporting_form": "Form 4 - Special Perils",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "44",
+                            "reporting_form": "Personal Injury",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "47",
+                            "reporting_form": "Lead Poisoning Coverage",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "63",
+                            "reporting_form": "Motorized Golf Cart - Physical Damage Coverage",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "02",
+                            "reporting_form": "Form 2",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "62",
+                            "reporting_form": "Water Damage - Sewers, Drains, and Sumps",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "46",
+                            "reporting_form": "Snowmobile",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "86",
+                            "reporting_form": "Form 6 - Special Perils",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "81",
+                            "reporting_form": "Student Living Away / All Other Indivisible Endorsements",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "01",
+                            "reporting_form": "Form 1",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "64",
+                            "reporting_form": "Identity Fraud Expense Coverage",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "61",
+                            "reporting_form": "Earthquake",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "45",
+                            "reporting_form": "Watercraft",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "08",
+                            "reporting_form": "Form 8",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "05",
+                            "reporting_form": "Form 5",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "54",
+                            "reporting_form": "Fuel Oil Liability Coverage",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "42",
+                            "reporting_form": "Business Activities",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "43",
+                            "reporting_form": "Office, Professional, Private School or Studio Use",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        },
+                        {
+                            "policy_form": "75",
+                            "reporting_form": "Equipment Breakdown Coverage",
+                            "written_premium": "123839.070000",
+                            "paid_loss": "38220.370000",
+                            "loss_ratio": "30.86",
+                            "ep": "79729.759400",
+                            "incurred_loss": "59067.360000",
+                            "ep_loss_ratio": "74.08"
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "name": "policy_form",
+                            "tableID": 18194,
+                            "columnID": 3,
+                            "dataTypeID": 1043,
+                            "dataTypeSize": -1,
+                            "dataTypeModifier": -1,
+                            "format": "text"
+                        },
+                        {
+                            "name": "reporting_form",
+                            "tableID": 18194,
+                            "columnID": 2,
+                            "dataTypeID": 1043,
+                            "dataTypeSize": -1,
+                            "dataTypeModifier": -1,
+                            "format": "text"
+                        },
+                        {
+                            "name": "written_premium",
+                            "tableID": 0,
+                            "columnID": 0,
+                            "dataTypeID": 1700,
+                            "dataTypeSize": -1,
+                            "dataTypeModifier": -1,
+                            "format": "text"
+                        },
+                        {
+                            "name": "paid_loss",
+                            "tableID": 0,
+                            "columnID": 0,
+                            "dataTypeID": 1700,
+                            "dataTypeSize": -1,
+                            "dataTypeModifier": -1,
+                            "format": "text"
+                        },
+                        {
+                            "name": "loss_ratio",
+                            "tableID": 0,
+                            "columnID": 0,
+                            "dataTypeID": 1700,
+                            "dataTypeSize": -1,
+                            "dataTypeModifier": -1,
+                            "format": "text"
+                        },
+                        {
+                            "name": "ep",
+                            "tableID": 0,
+                            "columnID": 0,
+                            "dataTypeID": 1700,
+                            "dataTypeSize": -1,
+                            "dataTypeModifier": -1,
+                            "format": "text"
+                        },
+                        {
+                            "name": "incurred_loss",
+                            "tableID": 0,
+                            "columnID": 0,
+                            "dataTypeID": 1700,
+                            "dataTypeSize": -1,
+                            "dataTypeModifier": -1,
+                            "format": "text"
+                        },
+                        {
+                            "name": "ep_loss_ratio",
+                            "tableID": 0,
+                            "columnID": 0,
+                            "dataTypeID": 1700,
+                            "dataTypeSize": -1,
+                            "dataTypeModifier": -1,
+                            "format": "text"
+                        }
+                    ],
+                    "_parsers": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                    ],
+                    "_types": {
+                        "_types": {
+                            "arrayParser": {},
+                            "builtins": {
+                                "BOOL": 16,
+                                "BYTEA": 17,
+                                "CHAR": 18,
+                                "INT8": 20,
+                                "INT2": 21,
+                                "INT4": 23,
+                                "REGPROC": 24,
+                                "TEXT": 25,
+                                "OID": 26,
+                                "TID": 27,
+                                "XID": 28,
+                                "CID": 29,
+                                "JSON": 114,
+                                "XML": 142,
+                                "PG_NODE_TREE": 194,
+                                "SMGR": 210,
+                                "PATH": 602,
+                                "POLYGON": 604,
+                                "CIDR": 650,
+                                "FLOAT4": 700,
+                                "FLOAT8": 701,
+                                "ABSTIME": 702,
+                                "RELTIME": 703,
+                                "TINTERVAL": 704,
+                                "CIRCLE": 718,
+                                "MACADDR8": 774,
+                                "MONEY": 790,
+                                "MACADDR": 829,
+                                "INET": 869,
+                                "ACLITEM": 1033,
+                                "BPCHAR": 1042,
+                                "VARCHAR": 1043,
+                                "DATE": 1082,
+                                "TIME": 1083,
+                                "TIMESTAMP": 1114,
+                                "TIMESTAMPTZ": 1184,
+                                "INTERVAL": 1186,
+                                "TIMETZ": 1266,
+                                "BIT": 1560,
+                                "VARBIT": 1562,
+                                "NUMERIC": 1700,
+                                "REFCURSOR": 1790,
+                                "REGPROCEDURE": 2202,
+                                "REGOPER": 2203,
+                                "REGOPERATOR": 2204,
+                                "REGCLASS": 2205,
+                                "REGTYPE": 2206,
+                                "UUID": 2950,
+                                "TXID_SNAPSHOT": 2970,
+                                "PG_LSN": 3220,
+                                "PG_NDISTINCT": 3361,
+                                "PG_DEPENDENCIES": 3402,
+                                "TSVECTOR": 3614,
+                                "TSQUERY": 3615,
+                                "GTSVECTOR": 3642,
+                                "REGCONFIG": 3734,
+                                "REGDICTIONARY": 3769,
+                                "JSONB": 3802,
+                                "REGNAMESPACE": 4089,
+                                "REGROLE": 4096
+                            }
+                        },
+                        "text": {},
+                        "binary": {}
+                    },
+                    "RowCtor": null,
+                    "rowAsArray": false
+                }
+            }
+        }
+    ]
+}
