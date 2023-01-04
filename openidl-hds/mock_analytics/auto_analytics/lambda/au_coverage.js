@@ -1,6 +1,5 @@
 function getLayout(data){
-console.log('layout')
-console.log(data[0])
+
 state = {name: "Alabama", code: '01'}
 // t()
 layout = `
