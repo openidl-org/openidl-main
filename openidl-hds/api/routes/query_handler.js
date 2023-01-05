@@ -28,7 +28,7 @@ router.post('/execute_9999', authMiddleware, async function(req, res, next) {
     
     let query = req.body["query"];
     query = query.replaceAll('@comp','9999')
-    fs.writeFileSync('./junk/api-query.txt',query)
+    // fs.writeFileSync('./junk/api-query.txt',query)
     if(!query){
         return res.status(400).json({
             ok: false,

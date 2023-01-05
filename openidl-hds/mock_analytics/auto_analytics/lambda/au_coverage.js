@@ -1,5 +1,5 @@
 function getLayout(data){
-
+console.log(data)
 state = {name: "Alabama", code: '01'}
 // t()
 layout = `
@@ -203,7 +203,7 @@ layout = `
     </section>
 </body>
 `
-console.log(layout)
+//console.log(layout)
 return layout
 }
 

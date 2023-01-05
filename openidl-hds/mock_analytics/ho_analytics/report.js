@@ -3,7 +3,7 @@
 
 const HTML5ToPDF = require("html5-to-pdf")
 const path = require("path")
-// const combineData = require('./combine')
+const combineData = require('./combine')
 const getLayout = require('./ho_doi.js')
 console.log('report')
 
@@ -14,16 +14,11 @@ console.log('report')
 // don't worry about this for now
 ////////
 // // data = combineData('1a-au')
-// data = combineData(`../response/auto`)
+data = combineData('./response/ho')
+console.log(data)
 //////////
 
-data = require('./response/ho/ho_data_9999_1672872333.json')['result'][0]['result']['result']['rows']
-console.log(data)
 
-// todo: make layout for single json
-
-
-console.log(data)
 html = getLayout(data)
  
 const run = async () => {

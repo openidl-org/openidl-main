@@ -35,31 +35,45 @@ function combineData(folder) {
 	combinedData = [];
 	for (index in data[keys[0]]) {
 		//console.log(index)
-		let name = data[keys[0]][index].reporting_name;
+		let name = data[keys[0]][index].reporting_form;
+		let category = data[keys[0]][index].reporting_category
         // console.log(data[keys[0]][0])
         
-		code = data[keys[0]][index].reporting_code;
+		code = data[keys[0]][index].policy_form;
 		ep = 0;
+		wp = 0;
+		pl = 0;
 		il = 0;
-		ic = 0;
-		cy = 0;
+		lr = 0;
+		elr = 0
+
+		
+		
 
 		for (key of keys) {
 			//console.log('   '+key)
 			dict = data[key][index];
-			ep += parseFloat(dict.earned_premium);
+			ep += parseFloat(dict.ep);
+			wp += parseFloat(dict.written_premium)
+			pl += parseFloat(dict.paid_loss)
 			il += parseFloat(dict.incurred_loss);
-			ic += parseFloat(dict.incurred_count);
-			cy += parseFloat(dict.car_years);
+			
 		}
 		
 		frame = {
 			ReportingCode: code,
-			ReportingName: name,
+			PolicyForm: name,
+			Category: category,
 			EarnedPremium: numberWithCommas(ep),
-			CarYears: numberWithCommas(cy),
+			WrittenPremium: numberWithCommas(wp),
+			PaidLoss: numberWithCommas(pl),
 			IncurredLoss: numberWithCommas(il),
-			IncurredCount: numberWithCommas(ic)
+			LossRatio: ((pl/wp)*100).toFixed(2).toString()+'%',
+			EPLossRatio: ((il/ep)*100).toFixed(2).toString()+'%',
+			
+
+			//loss ratio = paidloss/written premium
+		//ep loss ratio incurredloss/earned premium
 		};
 		combinedData.push(frame);
 	}
