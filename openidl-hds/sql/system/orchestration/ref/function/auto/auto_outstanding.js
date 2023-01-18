@@ -1,6 +1,6 @@
 function getAutoOutstanding(companyId){
     sql = `
-    CREATE OR replace FUNCTION openidl_ep_${companyId}.auto_outstanding(IN start_date date,IN end_date date, IN pv_coverage_code VARCHAR)
+    CREATE OR replace FUNCTION openidl_ep_${companyId}.tmp_auto_outstanding(IN start_date date,IN end_date date, IN pv_coverage_code VARCHAR)
     returns      numeric AS $$DECLARE ep numeric;
     BEGIN
         

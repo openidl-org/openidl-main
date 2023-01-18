@@ -1,5 +1,5 @@
 function getAutoClaim(companyId){
-    sql = `create table openidl_base_${companyId}.au_claim
+    sql = `create table openidl_base_${companyId}.personal_auto_claim
     (
     id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
     line_of_business VARCHAR ,
