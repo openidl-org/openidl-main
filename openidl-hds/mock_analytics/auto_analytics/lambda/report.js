@@ -19,7 +19,7 @@ const run = async () => {
   const html5ToPDF = new HTML5ToPDF({
     //inputPath: path.join(__dirname, "assets", "au_coverage.html"),
     inputBody: html,
-    outputPath: path.join(__dirname, ".", "assets", "output.pdf"),
+    outputPath: path.join(__dirname, ".", "assets", "auto-coverage-2020.pdf"),
     //templatePath: path.join(__dirname, "templates", "basic"),
     include: [
       path.join(__dirname, "assets", "basic.css"),

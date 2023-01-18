@@ -9,7 +9,7 @@ function getHoDoiReport(companyId){
         	openidl_ep_${companyId}.tmp_ho_earned_premium( '2002-08-15', '2003-08-15', policy_form) ep,
         	openidl_ep_${companyId}.tmp_ho_incurred_loss(policy_form) incurred_loss,
         	round(openidl_ep_${companyId}.tmp_ho_incurred_loss(policy_form) * 100 / openidl_ep_${companyId}.tmp_ho_earned_premium( '2002-08-15', '2003-08-15', policy_form), 2) ep_loss_ratio
-    FROM 	openidl_ep_${companyId}.tmp_ho_reporting_ref order by reporting_category;
+    FROM 	openidl_ep_${companyId}.tmp_ho_reporting_ref order by reporting_category,reporting_form;
     `
     return sql
 }
