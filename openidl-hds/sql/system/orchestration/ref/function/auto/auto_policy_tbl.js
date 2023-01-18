@@ -1,5 +1,5 @@
 function getAutoPolicy(companyId){
-    sql = `create table openidl_base_${companyId}.au_policy
+    sql = `create table openidl_base_${companyId}.personal_auto_policy
     (
     id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
     annual_statement_line VARCHAR,

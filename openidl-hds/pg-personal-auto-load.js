@@ -1,6 +1,6 @@
 const config = require('./config/config.json')
 const { Pool, Client } = require("pg");
-const records = require('../../../con-data/openidl9999.json').records
+const records = require('../../../con-data/auto.json').records
 const credentials = {
   user: config.db.username,
   host: config.db.host,
@@ -14,7 +14,7 @@ const credentials = {
 
 function makeInsertQuery(record){
 
-    let query = `set datestyle to DMY; INSERT INTO ${config.db.schema.base}_${config.db.companyId}.au_policy
+    let query = `set datestyle to DMY; INSERT INTO ${config.db.schema.base}_${config.db.companyId}.personal_auto_policy
     (line_of_business,
      subline,
      record_type,
@@ -140,7 +140,7 @@ function makeInsertQueryForLoss(record){
         loss=0;
     }
 
-    let query = `set datestyle to DMY; INSERT INTO ${config.db.schema.base}_${config.db.companyId}.au_claim
+    let query = `set datestyle to DMY; INSERT INTO ${config.db.schema.base}_${config.db.companyId}.personal_auto_claim
     (line_of_business,
 	 subline,
 	 subline_category,
@@ -266,38 +266,41 @@ async function insertLosses(client,record){
 }
 
 async function insertRecords(client,records){
+    errors = 0
     for (let record of records){
         console.log(record)
         if (record.TransactionCode == '1') {
             //console.log('premium record')
+            //await insertPremium(client,record)
+            try{
             await insertPremium(client,record)
-            // try{
-            // await insertPremium(client,record)
-            // console.log('premium record')
-            // }
-            // catch (e){
-            //     console.log('error record')
-            //     console.log(record)
-            //     console.log('error')
-            //     console.log(e)
-                
-            // }
+            console.log('premium record')
+            }
+            catch (e){
+                console.log('error record')
+                console.log(record)
+                console.log('error')
+                console.log(e)
+                errors += 1
+            }
 
         } if (record.TransactionCode == '2' || record.TransactionCode == '3' || record.TransactionCode == '7'	|| record.TransactionCode == '8') {
             //console.log('Loss record')
+            //await insertLosses(client,record)
+            try{
             await insertLosses(client,record)
-            // try{
-            // await insertLosses(client,record)
-            // console.log('Loss record')
-            // }
-			// catch (e){
-            //     console.log('error record')
-            //     console.log(record)
-            //     console.log('error')
-            //     console.log(e)
-			// }
+            console.log('Loss record')
+            }
+			catch (e){
+                console.log('error record')
+                console.log(record)
+                console.log('error')
+                console.log(e)
+                errors += 1
+			}
             }
     }
+    console.log('LOAD ERRORS: ' + errors)
 }
 
 async function main(){
