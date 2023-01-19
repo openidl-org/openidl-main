@@ -255,52 +255,73 @@ function makeInsertQueryForLoss(record){
 
 async function insertPremium(client,record){
     let query = makeInsertQuery(record)
-    console.log(query)
+    //console.log(query)
     await client.query(query)
 }
 
 async function insertLosses(client,record){
     let query = makeInsertQueryForLoss(record)
-    console.log(query)
+    //console.log(query)
     await client.query(query)
 }
 
 async function insertRecords(client,records){
-    errors = 0
+    let premiumErrors = 0
+    let lossErrors = 0
+    let errorRecords = []
+    let premiumLoad = 0
+    let lossLoad = 0
+    let recordCount = 0
+    let uncountedRecords = 0
     for (let record of records){
-        console.log(record)
-        if (record.TransactionCode == '1') {
+        //console.log(record)
+        recordCount += 1
+        if (record.TransactionCode == '1'	|| record.TransactionCode == '8') {
             //console.log('premium record')
             //await insertPremium(client,record)
             try{
             await insertPremium(client,record)
-            console.log('premium record')
+            premiumLoad += 1
+            //console.log('premium record')
             }
             catch (e){
                 console.log('error record')
-                console.log(record)
+                //console.log(record)
                 console.log('error')
                 console.log(e)
-                errors += 1
+                errorRecords.push(e)
+                errorRecords.push(record)
+                premiumErrors += 1
             }
 
-        } if (record.TransactionCode == '2' || record.TransactionCode == '3' || record.TransactionCode == '7'	|| record.TransactionCode == '8') {
+        } else if (record.TransactionCode == '2' || record.TransactionCode == '3' || record.TransactionCode == '6'	|| record.TransactionCode == '7') {
             //console.log('Loss record')
             //await insertLosses(client,record)
             try{
             await insertLosses(client,record)
-            console.log('Loss record')
+            lossLoad += 1
+            //console.log('Loss record')
             }
 			catch (e){
                 console.log('error record')
-                console.log(record)
+                //console.log(record)
                 console.log('error')
                 console.log(e)
-                errors += 1
+                lossErrors += 1
 			}
+            } else {
+                console.log('WARNING! Uncounted Transaction Code: ' + record.TransactionCode)
+                uncountedRecords += 1
             }
+
     }
-    console.log('LOAD ERRORS: ' + errors)
+    console.log('Premium Load Errors: ' + premiumErrors)
+    console.log('Loss Load Errors: ' + lossErrors)
+    console.log('Total Records: ' + recordCount)
+    console.log('Premium Count: ' + premiumLoad)
+    console.log('Loss Load: ' + lossLoad)
+    console.log('Uncounted Records: ' + uncountedRecords)
+    console.log(errorRecords)
 }
 
 async function main(){
