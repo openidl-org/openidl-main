@@ -1,0 +1,2 @@
+CREATE SCHEMA openidl_base_9990;
+CREATE SCHEMA openidl_ep_9990;

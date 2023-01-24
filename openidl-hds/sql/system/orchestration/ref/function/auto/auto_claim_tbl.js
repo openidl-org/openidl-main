@@ -5,6 +5,7 @@ function getAutoClaim(companyId){
     line_of_business VARCHAR ,
     subline VARCHAR ,
     subline_category VARCHAR ,
+    subline_code VARCHAR ,
     accounting_date DATE ,
     company_code VARCHAR ,
     company_id VARCHAR ,

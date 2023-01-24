@@ -5,6 +5,7 @@ function getAutoPolicy(companyId){
     annual_statement_line VARCHAR,
     line_of_business VARCHAR,
     subline VARCHAR,
+    subline_code varchar,
     record_type VARCHAR,
     transaction_type VARCHAR,
     transaction_code  VARCHAR,
