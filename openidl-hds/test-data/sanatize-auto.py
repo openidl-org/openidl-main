@@ -79,7 +79,7 @@ with open(target_file, 'w') as o:
             print(f'Scanning Record: {record_count}, {policy_count} policy, {claim_count} claim')
       
             line.rstrip()
-            line = line[0:39]+'04'+line[41:]
+            #line = line[0:39]+'04'+line[41:]
             transaction_code = line[15]
             if transaction_code == '1' or transaction_code == '8':
                 if policy_count < policy_target:
