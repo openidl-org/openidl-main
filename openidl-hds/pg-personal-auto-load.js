@@ -17,6 +17,7 @@ function makeInsertQuery(record){
     let query = `set datestyle to DMY; INSERT INTO ${config.db.schema.base}_${config.db.companyId}.personal_auto_policy
     (line_of_business,
      subline,
+     subline_code,
      record_type,
      transaction_type,
      transaction_code,
@@ -74,6 +75,7 @@ function makeInsertQuery(record){
      Values (
          '${record.Policy.LineOfBusiness}',
          '${record.Policy.Subline}',
+         '${record.Policy.SublineCode}',
          '${record.RecordType}',
          '${record.TransactionType}',
          '${record.TransactionCode}',
@@ -144,6 +146,7 @@ function makeInsertQueryForLoss(record){
     (line_of_business,
 	 subline,
 	 subline_category,
+     subline_code,
 	 accounting_date,
 	 company_code,
 	 company_id,
@@ -198,6 +201,7 @@ function makeInsertQueryForLoss(record){
          '${record.Policy.LineOfBusiness}',
          '${record.Policy.Subline}',
          '${record.Policy.SublineCategory}',
+         '${record.Policy.SublineCode}',
          '${record.Policy.AccountingDate}',
          '${record.Policy.CompanyCode}',
          '${record.Policy.CompanyID}',
@@ -274,7 +278,10 @@ async function insertRecords(client,records){
     let recordCount = 0
     let uncountedRecords = 0
     for (let record of records){
-        //console.log(record)
+        console.log(`Loading: ${recordCount}`)
+        // console.log(record)
+
+        if (record.Policy.SublineCode =='1'){
         recordCount += 1
         if (record.TransactionCode == '1'	|| record.TransactionCode == '8') {
             //console.log('premium record')
@@ -312,7 +319,7 @@ async function insertRecords(client,records){
             } else {
                 console.log('WARNING! Uncounted Transaction Code: ' + record.TransactionCode)
                 uncountedRecords += 1
-            }
+            }}
 
     }
     console.log('Premium Load Errors: ' + premiumErrors)
