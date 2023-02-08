@@ -1,4 +1,4 @@
-function getAutoPolicy(companyId){
+function getPersonalAutoPolicy(companyId){
     sql = `create table openidl_base_${companyId}.personal_auto_policy
     (
     id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
@@ -66,4 +66,4 @@ function getAutoPolicy(companyId){
     return sql
 }
 
-module.exports = getAutoPolicy
+module.exports = getPersonalAutoPolicy

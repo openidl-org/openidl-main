@@ -1,4 +1,3 @@
-
 function getCarYears(companyId) {
 carYears = `
 CREATE OR replace FUNCTION openidl_ep_${companyId}.tmp_car_years(IN start_date date,IN end_date date, IN pv_reporting_code VARCHAR)

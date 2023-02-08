@@ -1,20 +1,20 @@
 const fs = require('fs');
-const getCoverageReport = require('./ref/function/auto/auto_coverage_report');
-const getCarYears = require('./ref/function/auto/auto_cy_func');
-const getEarnedPremium = require('./ref/function/auto/auto_ep_func');
-const getIncurredCount = require('./ref/function/auto/auto_ic_func');
-const getIncurredLoss = require('./ref/function/auto/auto_il_func');
-const getAutoClaim = require('./ref/function/auto/auto_claim_tbl.js');
-const getAutoPolicy = require('./ref/function/auto/auto_policy_tbl.js');
-const getPreTable = require('./ref/function/auto/auto_tmp_pc.js');
-const getReportingTable = require('./ref/function/auto/auto_tmp_reporting_tbl.js');
-const getTearDown = require('./ref/function/auto/auto_tear_down.js');
-const getAutoOutstanding = require('./ref/function/auto/auto_outstanding.js');
-const getHandTests = require('./ref/function/auto/auto_hand_tests.js');
-const getRefTable = require('./ref/function/auto/auto_tmp_report_ref_tbl.js');
-const getBackOut = require(`./ref/function/auto/auto_back_out.js`);
-const getBuilder = require(`./ref/function/auto/auto_build_extraction.js`);
-const getSQLReport = require(`./ref/function/auto/auto_coverage_report_sql`);
+const getCoverageReport = require('./ref/function/personal-auto/personal_auto_coverage_report');
+const getCarYears = require('./ref/function/personal-auto/personal_auto_cy_func');
+const getEarnedPremium = require('./ref/function/personal-auto/personal_auto_ep_func');
+const getIncurredCount = require('./ref/function/personal-auto/personal_auto_ic_func');
+const getIncurredLoss = require('./ref/function/personal-auto/personal_auto_il_func');
+const getPersonalAutoClaim = require('./ref/function/personal-auto/personal_auto_claim_tbl');
+const getPersonalAutoPolicy = require('./ref/function/personal-auto/personal_auto_policy_tbl');
+const getPreTable = require('./ref/function/personal-auto/personal_auto_tmp_pc');
+const getReportingTable = require('./ref/function/personal-auto/personal_auto_tmp_reporting_tbl');
+const getTearDown = require('./ref/function/personal-auto/personal_auto_tear_down');
+const getPersonalAutoOutstanding = require('./ref/function/personal-auto/personal_auto_outstanding');
+const getHandTests = require('./ref/function/personal-auto/personal_auto_hand_tests');
+const getRefTable = require('./ref/function/personal-auto/personal_auto_tmp_report_ref_tbl');
+const getBackOut = require(`./ref/function/personal-auto/personal_auto_back_out`);
+const getBuilder = require(`./ref/function/personal-auto/personal_auto_build_extraction`);
+const getSQLReport = require(`./ref/function/personal-auto/personal_auto_coverage_report_sql`);
 
 function write(path, value) {
 	// console.log(`write, path: ${path}\n value: ${value}`)
@@ -78,11 +78,11 @@ function createCompanyDirectory(companyId) {
 		console.log(`Company Exists ${companyId}/reporting`);
 	}
 
-	if (!checkDirExists(`./company/${companyId}/reporting/auto`)) {
-		console.log(`Company ${companyId}/reporting/auto/ DNE`);
-		fs.mkdirSync(`./company/${companyId}/reporting/auto`);
+	if (!checkDirExists(`./company/${companyId}/reporting/personal-auto`)) {
+		console.log(`Company ${companyId}/reporting/personal-auto/ DNE`);
+		fs.mkdirSync(`./company/${companyId}/reporting/personal-auto`);
 	} else {
-		console.log(`Company Exists ${companyId}/reporting/auto/ `);
+		console.log(`Company Exists ${companyId}/reporting/personal-auto/ `);
 	}
 }
 
@@ -99,7 +99,7 @@ function createSchemas(companyId) {
 
 function createCarYears(companyId) {
 	sql = getCarYears(companyId);
-	path = `./company/${companyId}/reporting/auto/auto_car_years_func.sql`;
+	path = `./company/${companyId}/reporting/personal-auto/personal_auto_car_years_func.sql`;
 	if (!checkFileExists(path)) {
 		console.log(`Car Years Function ${companyId} not found. Creating now.`);
 		write(path, sql);
@@ -112,7 +112,7 @@ function createCarYears(companyId) {
 
 function createEarnedPremium(companyId) {
 	sql = getEarnedPremium(companyId);
-	path = `./company/${companyId}/reporting/auto/auto_earned_premium_func.sql`;
+	path = `./company/${companyId}/reporting/personal-auto/personal_auto_earned_premium_func.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
 			`Earned Premium Function ${companyId} not found. Creating now.`
@@ -127,7 +127,7 @@ function createEarnedPremium(companyId) {
 
 function createIncurredCount(companyId) {
 	sql = getIncurredCount(companyId);
-	path = `./company/${companyId}/reporting/auto/auto_incurred_count_func.sql`;
+	path = `./company/${companyId}/reporting/personal-auto/personal_auto_incurred_count_func.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
 			`Incurred Count Function ${companyId} not found. Creating now.`
@@ -142,7 +142,7 @@ function createIncurredCount(companyId) {
 
 function createIncurredLoss(companyId) {
 	sql = getIncurredLoss(companyId);
-	path = `./company/${companyId}/reporting/auto/auto_incurred_loss_func.sql`;
+	path = `./company/${companyId}/reporting/personal-auto/personal_auto_incurred_loss_func.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
 			`Incurred Loss Function ${companyId} not found. Creating now.`
@@ -155,73 +155,73 @@ function createIncurredLoss(companyId) {
 	}
 }
 
-function createAutoCoverageReport(companyId) {
+function createPersonalAutoCoverageReport(companyId) {
 	sql = getCoverageReport(companyId);
-	path = `./company/${companyId}/reporting/auto/auto_coverage_report.sql`;
+	path = `./company/${companyId}/reporting/personal-auto/personal_auto_coverage_report.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
-			`Auto Coverage Report ${companyId} not found. Creating now.`
+			`Personal Auto Coverage Report ${companyId} not found. Creating now.`
 		);
 		write(path, sql);
 	} else {
 		console.log(
-			`Auto Coverage Report ${companyId} exists. Skipping Generation`
-		);
-	}
-}
-
-function createAutoPolicy(companyId) {
-	sql = getAutoPolicy(companyId);
-	path = `./company/${companyId}/auto_policy_tbl.sql`;
-	if (!checkFileExists(path)) {
-		console.log(`Auto Premium Table ${companyId} not found. Creating now.`);
-		write(path, sql);
-	} else {
-		console.log(
-			`Auto Premium Table ${companyId} exists. Skipping Generation`
+			`Personal Auto Coverage Report ${companyId} exists. Skipping Generation`
 		);
 	}
 }
 
-function createAutoClaim(companyId) {
-	sql = getAutoClaim(companyId);
-
-	path = `./company/${companyId}/auto_claim_tbl.sql`;
+function createPersonalAutoPolicy(companyId) {
+	sql = getPersonalAutoPolicy(companyId);
+	path = `./company/${companyId}/personal_auto_policy_tbl.sql`;
 	if (!checkFileExists(path)) {
-		console.log(`Auto Loss Table ${companyId} not found. Creating now.`);
+		console.log(`Personal Auto Premium Table ${companyId} not found. Creating now.`);
 		write(path, sql);
 	} else {
-		console.log(`Auto Loss Table ${companyId} exists. Skipping Generation`);
+		console.log(
+			`Personal Auto Premium Table ${companyId} exists. Skipping Generation`
+		);
+	}
+}
+
+function createPersonalAutoClaim(companyId) {
+	sql = getPersonalAutoClaim(companyId);
+
+	path = `./company/${companyId}/personal_auto_claim_tbl.sql`;
+	if (!checkFileExists(path)) {
+		console.log(`Personal Auto Loss Table ${companyId} not found. Creating now.`);
+		write(path, sql);
+	} else {
+		console.log(`Personal Auto Loss Table ${companyId} exists. Skipping Generation`);
 	}
 }
 
 function createPreTable(companyId) {
 	sql = getPreTable(companyId);
 
-	path = `./company/${companyId}/reporting/auto/auto_tmp_pc_tbl.sql`;
+	path = `./company/${companyId}/reporting/personal-auto/personal_auto_tmp_pc_tbl.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
-			`Auto Pre Reporting Table ${companyId} not found. Creating now.`
+			`Personal Auto Pre Reporting Table ${companyId} not found. Creating now.`
 		);
 		write(path, sql);
 	} else {
 		console.log(
-			`Auto Pre Reporting Table ${companyId} exists. Skipping Generation`
+			`Personal Auto Pre Reporting Table ${companyId} exists. Skipping Generation`
 		);
 	}
 }
 function createReportingTableRef(companyId) {
 	sql = getRefTable(companyId);
 
-	path = `./company/${companyId}/reporting/auto/auto_tmp_report_ref_tbl.sql`;
+	path = `./company/${companyId}/reporting/personal-auto/personal_auto_tmp_report_ref_tbl.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
-			`Auto Reporting Table Ref ${companyId} not found. Creating now.`
+			`Personal Auto Reporting Table Ref ${companyId} not found. Creating now.`
 		);
 		write(path, sql);
 	} else {
 		console.log(
-			`Auto Reporting Table Ref ${companyId} exists. Skipping Generation`
+			`Personal Auto Reporting Table Ref ${companyId} exists. Skipping Generation`
 		);
 	}
 }
@@ -229,31 +229,31 @@ function createReportingTableRef(companyId) {
 function createReportingTable(companyId) {
 	sql = getReportingTable(companyId);
 
-	path = `./company/${companyId}/reporting/auto/auto_tmp_report_tbl.sql`;
+	path = `./company/${companyId}/reporting/personal-auto/personal_auto_tmp_report_tbl.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
-			`Auto Reporting Table ${companyId} not found. Creating now.`
+			`Personal Auto Reporting Table ${companyId} not found. Creating now.`
 		);
 		write(path, sql);
 	} else {
 		console.log(
-			`Auto Reporting Table ${companyId} exists. Skipping Generation`
+			`Personal Auto Reporting Table ${companyId} exists. Skipping Generation`
 		);
 	}
 }
 
 function createOutstanding(companyId) {
-	sql = getAutoOutstanding(companyId);
+	sql = getPersonalAutoOutstanding(companyId);
 
-	path = `./company/${companyId}/reporting/auto/auto_outstanding_func.sql`;
+	path = `./company/${companyId}/reporting/personal-auto/personal_auto_outstanding_func.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
-			`Auto Outstanding function ${companyId} not found. Creating now.`
+			`Personal Auto Outstanding function ${companyId} not found. Creating now.`
 		);
 		write(path, sql);
 	} else {
 		console.log(
-			`Auto Outstanding function ${companyId} exists. Skipping Generation`
+			`Personal Auto Outstanding function ${companyId} exists. Skipping Generation`
 		);
 	}
 }
@@ -261,46 +261,46 @@ function createOutstanding(companyId) {
 function createTearDown(companyId) {
 	sql = getTearDown(companyId);
 
-	path = `./company/${companyId}/reporting/auto/auto_tear_down.sql`;
+	path = `./company/${companyId}/reporting/personal-auto/personal_auto_tear_down.sql`;
 	if (!checkFileExists(path)) {
-		console.log(`Auto Tear Down ${companyId} not found. Creating now.`);
+		console.log(`Personal Auto Tear Down ${companyId} not found. Creating now.`);
 		write(path, sql);
 	} else {
-		console.log(`Auto Tear Down ${companyId} exists. Skipping Generation`);
+		console.log(`Personal Auto Tear Down ${companyId} exists. Skipping Generation`);
 	}
 }
 
 function createBackOut(companyId) {
 	sql = getBackOut(companyId);
 
-	path = `./company/${companyId}/auto_back_out.sql`;
+	path = `./company/${companyId}/personal_auto_back_out.sql`;
 	if (!checkFileExists(path)) {
-		console.log(`Auto Back Out ${companyId} not found. Creating now.`);
+		console.log(`Personal Auto Back Out ${companyId} not found. Creating now.`);
 		write(path, sql);
 	} else {
-		console.log(`Auto Back Out ${companyId} exists. Skipping Generation`);
+		console.log(`Personal Auto Back Out ${companyId} exists. Skipping Generation`);
 	}
 }
 
 function createHandTests(companyId) {
 	sql = getHandTests(companyId);
 
-	path = `./company/${companyId}/reporting/auto/auto_hand_tests.sql`;
+	path = `./company/${companyId}/reporting/personal-auto/personal_auto_hand_tests.sql`;
 	if (!checkFileExists(path)) {
-		console.log(`Auto Hand Tests ${companyId} not found. Creating now.`);
+		console.log(`Personal Auto Hand Tests ${companyId} not found. Creating now.`);
 		write(path, sql);
 	} else {
-		console.log(`Auto Hand Tests ${companyId} exists. Skipping Generation`);
+		console.log(`Personal Auto Hand Tests ${companyId} exists. Skipping Generation`);
 	}
 }
 
 function createBuilder(companyId) {
 	sql = getBuilder(companyId,' ');
 
-	path = `./company/${companyId}/reporting/auto/auto_coverage_extraction.json`;
+	path = `./company/${companyId}/reporting/personal-auto/personal_auto_coverage_extraction.json`;
 	if (!checkFileExists(path)) {
 		console.log(
-			`Auto Extraction Builder ${companyId} not found. Creating now.`
+			`Personal Auto Extraction Builder ${companyId} not found. Creating now.`
 		);
 		console.table(sql);
 		data = JSON.stringify(sql);
@@ -308,7 +308,7 @@ function createBuilder(companyId) {
 		fs.writeFileSync(path, data);
 	} else {
 		console.log(
-			`Auto Extraction Builder ${companyId} exists. Skipping Generation`
+			`Personal Auto Extraction Builder ${companyId} exists. Skipping Generation`
 		);
 	}
 }
@@ -316,10 +316,10 @@ function createBuilder(companyId) {
 function createSQLBuilder(companyId) {
 	sql = getSQLReport(companyId);
 
-	path = `./company/${companyId}/reporting/auto/auto_coverage_extraction.sql`;
+	path = `./company/${companyId}/reporting/personal-auto/personal_auto_coverage_extraction.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
-			`Auto Extraction SQL ${companyId} not found. Creating now.`
+			`Personal Auto Extraction SQL ${companyId} not found. Creating now.`
 		);
 		//console.table(sql);
 		
@@ -327,7 +327,7 @@ function createSQLBuilder(companyId) {
 		fs.writeFileSync(path, sql);
 	} else {
 		console.log(
-			`Auto Extraction SQL ${companyId} exists. Skipping Generation`
+			`Personal Auto Extraction SQL ${companyId} exists. Skipping Generation`
 		);
 	}
 }
@@ -345,13 +345,13 @@ function createExtractionPattern() {
 		console.log('stat_agent');
 	}
 
-	path = `./stat_agent/auto_coverage_extraction.json`;
+	path = `./stat_agent/personal_auto_coverage_extraction.json`;
 	if (!checkFileExists(path)) {
-		console.log(`Auto Extraction Pattern not found. Creating now.`);
+		console.log(`Personal Auto Extraction Pattern not found. Creating now.`);
 		//console.log('317 gs')
 		fs.writeFileSync(path, JSON.stringify(sql));
 	} else {
-		console.log(`Auto Extraction Pattern exists. Skipping Generation`);
+		console.log(`Personal Auto Extraction Pattern exists. Skipping Generation`);
 	}
 }
 
@@ -361,13 +361,13 @@ function initCompany(build) {
 	console.log('init company: ' + companyId);
 	createCompanyDirectory(companyId);
 	createSchemas(companyId);
-	createAutoClaim(companyId);
-	createAutoPolicy(companyId);
+	createPersonalAutoClaim(companyId);
+	createPersonalAutoPolicy(companyId);
 	createCarYears(companyId);
 	createEarnedPremium(companyId);
 	createIncurredCount(companyId);
 	createIncurredLoss(companyId);
-	createAutoCoverageReport(companyId);
+	createPersonalAutoCoverageReport(companyId);
 	createPreTable(companyId);
 	createReportingTable(companyId);
 	createTearDown(companyId);

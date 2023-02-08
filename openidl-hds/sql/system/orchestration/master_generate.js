@@ -1,4 +1,4 @@
-const auto = require('./generate_auto_schema')
+const personalAuto = require('./generate_personal_auto_schema')
 const homeOwners = require('./generate_ho_schema')
 
 
@@ -6,7 +6,7 @@ const homeOwners = require('./generate_ho_schema')
 function main(buildObjects) {
 	for (object of buildObjects) {
 		console.table(object);
-		auto(object);
+		personalAuto(object);
         homeOwners(object)
 	}
 }
