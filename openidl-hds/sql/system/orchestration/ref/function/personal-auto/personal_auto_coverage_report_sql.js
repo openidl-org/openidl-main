@@ -1,5 +1,5 @@
-const getCoverageReport = require('./auto_coverage_report');
-const getMap = require('./auto_coverage_map')
+const getCoverageReport = require('./personal_auto_coverage_report');
+const getMap = require('./personal_auto_coverage_map')
 
 
 

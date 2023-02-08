@@ -1,4 +1,4 @@
-function getAutoClaim(companyId){
+function getPersonalAutoClaim(companyId){
     sql = `create table openidl_base_${companyId}.personal_auto_claim
     (
     id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
@@ -62,4 +62,4 @@ function getAutoClaim(companyId){
     return sql
 }
 
-module.exports = getAutoClaim
+module.exports = getPersonalAutoClaim
