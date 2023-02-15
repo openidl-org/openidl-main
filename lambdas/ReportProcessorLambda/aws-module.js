@@ -104,5 +104,21 @@ class S3BucketManager {
             logger.error(err);
         }
     }
+    async uploadCSVMetadata(data, datacallId) {
+        try {
+            const csvData = csvjson.toCSV(data, { headers: 'key' });
+            logger.debug("Inside uploadCSVMetadata");
+            let bucket = new AWS.S3();
+            const params = {
+                Bucket: bucketConfig.bucketName, // your bucket name
+                Key: "metadata-" + datacallId + ".csv",
+                Body: csvData,
+                ContentType: 'text/csv',
+            };
+            await bucket.upload(params).promise();
+        } catch (err) {
+            logger.error(err);
+        }
+    }
 }
 module.exports = S3BucketManager;
