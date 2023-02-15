@@ -63,12 +63,47 @@ class ReportProcessor {
 		return reportData
 	}
 
+	async createReportMetadataContent(resultData, dmvData) {
+		const dmvDataIds = dmvData.map(data => data.VIN);
+		const dmvDataSetObject = new Set(dmvDataIds);
+		let matchCount = 0;
+		let nonmatchCount = 0;
+		const totalCount = resultData.length;
+
+		for (let i = 0; i < resultData.length; i = i + 1) {
+			if (dmvDataSetObject.has(resultData[i]._id) ) {
+				matchCount = matchCount + 1;
+			}
+			else {
+				nonmatchCount = nonmatchCount +1;
+			}
+		}
+		const reportMetadata = [{
+			"Match With DMV: Count": matchCount,
+			"Non-match With DMV: Count": nonmatchCount,
+			"Match With DMV: Percentage": (100.0*matchCount/totalCount).toFixed(2),
+			"Non-match With DMV: Percentage": (100.0*nonmatchCount/totalCount).toFixed(2),
+			"Total DMV Records: Count": dmvData.length,
+			"Total Registered Records: Count": resultData.length,
+		}]
+		return reportMetadata
+	}
+
 	async publishCSV(data, datacallId) {
 		const s3b = new S3BucketManager();
 		try {
 			await s3b.uploadCSV(data, datacallId);
 		} catch (err) {
 			logger.error("Error in publishing CSV: ", err)
+		}
+	}
+
+	async publishCSVMetadata(data, datacallId) {
+		const s3b = new S3BucketManager();
+		try {
+			await s3b.uploadCSVMetadata(data, datacallId);
+		} catch (err) {
+			logger.error("Error in publishing CSV Metadata: ", err)
 		}
 	}
 

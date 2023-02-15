@@ -42,6 +42,16 @@ exports.handler = async (event, context) => {
         }
         logger.debug("Data reading Done from DMV data and result")
         const reportContent = await rp.createReportContent(resultData, JSON.parse(JSON.stringify(dmvData.result)));
+        try {
+            logger.debug("Generating report Metadata")
+            const reportMetadataContent = await rp.createReportMetadataContent(
+                resultData, JSON.parse(JSON.stringify(dmvData.result)));
+            logger.debug("Publishing report Metadata")
+            await rp.publishCSVMetadata(reportMetadataContent, datacallId);
+        }
+        catch(err) {
+            logger.error("Could not process/publish metadata: ", err)
+        }
         logger.debug("Publishing report")
         await rp.publishCSV(reportContent, datacallId);
         await rp.getCSV("report-" + datacallId + ".csv");
