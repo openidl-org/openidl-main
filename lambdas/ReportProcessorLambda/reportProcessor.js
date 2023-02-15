@@ -64,7 +64,7 @@ class ReportProcessor {
 	}
 
 	async createReportMetadataContent(resultData, dmvData) {
-		const dmvDataIds = dmvData.map(data => data.VIN);
+		const dmvDataIds = dmvData.map(data => data.VINHash);
 		const dmvDataSetObject = new Set(dmvDataIds);
 		let matchCount = 0;
 		let nonmatchCount = 0;
