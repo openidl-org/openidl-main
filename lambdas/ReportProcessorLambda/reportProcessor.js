@@ -84,7 +84,7 @@ class ReportProcessor {
 			"Match With DMV: Percentage": (100.0*matchCount/totalCount).toFixed(2),
 			"Non-match With DMV: Percentage": (100.0*nonmatchCount/totalCount).toFixed(2),
 			"Total DMV Records: Count": dmvData.length,
-			"Total Registered Records: Count": resultData.length,
+			"Total Insured Records: Count": resultData.length,
 		}]
 		return reportMetadata
 	}
