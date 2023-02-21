@@ -1,5 +1,6 @@
 const personalAuto = require('./generate_personal_auto_schema')
 const homeOwners = require('./generate_ho_schema')
+//const mobileHomeowners = require('./generate_mho_schema')
 
 
 
@@ -7,7 +8,8 @@ function main(buildObjects) {
 	for (object of buildObjects) {
 		console.table(object);
 		personalAuto(object);
-        homeOwners(object)
+    homeOwners(object);
+    //mobileHomeowners(object);
 	}
 }
 

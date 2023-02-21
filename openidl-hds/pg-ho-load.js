@@ -1,6 +1,6 @@
 const config = require('./config/config.json')
 const { Pool, Client } = require("pg");
-const records = require('../../../con-data/homeowner.json').records
+const records = require('../../../con-data/Homeowners/homeowner.json').records
 const credentials = {
   user: config.db.username,
   host: config.db.host,
