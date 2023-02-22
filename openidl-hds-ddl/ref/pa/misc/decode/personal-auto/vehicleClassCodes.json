@@ -1,0 +1,41 @@
+{
+    "bodyStyle": {
+        "01": "Sedan (2 or 4 door)*",
+        "02": "Station Wagon",
+        "03": "Convertible",
+        "04": "Vans — Passenger",
+        "05": "Vans — Cargo",
+        "06": "Pick-Up or Panel Truck",
+        "07": "Buses",
+        "08": "Truck (Not including Truck Tractors or Dump Trucks)",
+        "09": "Motor Homes and Auto Homes (self-propelled)",
+        "10": "Campers and Travel Trailers",
+        "11": "Dune Buggies",
+        "12": "All Terrain Vehicles",
+        "13": "Antique Autos",
+        "14": "Amphibious Autos",
+        "15": "Snowmobiles",
+        "16": "Golf Carts",
+        "17": "Motorcycles, Motorscooters, Motorbikes, Trail Bikes and Mopeds",
+        "18": "Named Non-owner",
+        "19": "Sedan 2-door",
+        "20": "Sedan 4-door",
+        "21": "Semitrailer",
+        "22": "Trailer",
+        "23": "Trailer - Service or Utility",
+        "24": "Truck Tractor (Including Semitractors)",
+        "25": "Dump Trucks",
+        "30": "Taxis, Limousines or Van Pools",
+        "99": "All Other"
+    },
+    "bodySize": {
+        "1": "Private Passenger",
+        "2": "Sports Car",
+        "3": "Oversized Car or Limousine",
+        "4": "Light Truck (10,000 lbs. or less empty weight) or bus",
+        "5": "Medium Truck (10,001 - 20,000 lbs. empty weight)",
+        "6": "Heavy Truck (20,001 - 45,000 lbs. empty weight)",
+        "7": "Extra Heavy Truck (Over 45,000 lbs. empty weight)",
+        "9": "All Other"
+    }
+}
