@@ -1,4 +1,4 @@
-create table openidl_base_1234.personal_auto_claim
+create table openidl_base_1234.pa_claim
     (
     id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
     annual_statement_line VARCHAR, -- aslob varchar
