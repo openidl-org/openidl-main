@@ -1,4 +1,0 @@
-_stg
-_ref
-_vw
-_mvm
