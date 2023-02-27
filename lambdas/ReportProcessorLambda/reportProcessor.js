@@ -2,6 +2,7 @@ const config = require('config');
 const logger = require('loglevel');
 logger.setLevel(config.get('loglevel'));
 const S3BucketManager = require('./aws-module.js');
+const _ = require('lodash');
 class ReportProcessor {
 	async readResult(params) {
 		const s3b = new S3BucketManager();
@@ -50,19 +51,51 @@ class ReportProcessor {
 
 	async createReportContent(resultData, dmvData) {
 		const reportData = [];
-		const resultDataIds = resultData.map(data => data._id);
-		const resultDataSetObject = new Set(resultDataIds);
+		const hasOrgId = _.get(resultData[0], ['value', 'Organization ID']) ? true : false
+		const hasState = _.get(resultData[0], ['value', 'State']) ? true : false
+		const hasTxDate = _.get(resultData[0], ['value', 'Transaction Date']) ? true : false
+		resultDataMap = new Map()
+		resultData.forEach(obj => {
+		  resultDataMap.set(obj._id, obj)
+		});
 		for (let i = 0; i < dmvData.length; i = i + 1) {
-			const row = { "vin": dmvData[i].VIN, "isInsured": "no" };
-			const isDmvDataExists = resultDataSetObject.has(dmvData[i].VINHash);
-			if (isDmvDataExists) {
+			const resultDataObject = resultDataMap.get(dmvData[i].VINHash)
+			const doesDmvDataExist = resultDataMap.has(dmvData[i].VINHash);
+			const row = {
+				"VIN": dmvData[i].VIN,
+        "VINHash": dmvData[i].VINHash,
+				...(hasOrgId) && { "Organization ID": _.get(resultDataObject, ['value', 'Organization ID'], "")},
+        ...(hasState) && { "State": _.get(resultDataObject,['value', 'State'], "")},
+        ...(hasTxDate) && { "Transaction Date": _.get(resultDataObject,['value', 'Transaction Date'], "")},
+        "isRegistered":"yes",
+				"isInsured": "no"
+			};
+			if (doesDmvDataExist) {
 				row["isInsured"] = "yes";
 			}
 			reportData.push(row);
 		}
+
+		// Add the Vins that don't match
+		const dmvDataIds = dmvData.map(data => data.VINHash);
+		const dmvDataSetObject = new Set(dmvDataIds);
+		for (let i = 0; i < resultData.length; i = i + 1) {
+			if (!dmvDataSetObject.has(resultData[i]._id) ) {
+				const row = {
+					"VIN": _.get(resultData[i], ['value', 'VIN'], ""),
+					"VINHash": resultData[i]._id,
+					...(hasOrgId) && {"Organization ID": _.get(resultData[i], ['value', 'Organization ID'], "")},
+					...(hasState) && {"State": _.get(resultData[i],['value', 'State'], "")},
+					...(hasTxDate) && {"Transaction Date": _.get(resultData[i],['value', 'Transaction Date'], "")},
+					"isRegistered":"no",
+					"isInsured": "yes"
+				};
+				reportData.push(row);
+			}
+		}
 		return reportData
 	}
-
+	
 	async createReportMetadataContent(resultData, dmvData) {
 		const dmvDataIds = dmvData.map(data => data.VINHash);
 		const dmvDataSetObject = new Set(dmvDataIds);
