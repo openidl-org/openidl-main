@@ -22,7 +22,8 @@ To get started quickly, follow these steps. This assumes you don't need to updat
 $ cd PATH_OF_OPENIDL/openidl-hds-ddl
 # Example Syntax: >SCHEMA=YOUR_SCHEMA_NAME docker compose up
 # The following will create the database in a schema called test1
-$ SCHEMA=test1 docker compose up
+# The -d runs the script in detach mode
+$ SCHEMA=test1 docker compose up -d
 ```
 
 ### Changing database name and user information

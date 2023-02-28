@@ -6,10 +6,11 @@ services:
     image: postgres:15.2
     ports:
       - "5432:5432"
+    env_file: ./.env
     environment:
-      POSTGRES_USER: idl_user
-      POSTGRES_PASSWORD: "PasSw0rd!"
-      POSTGRES_DB: open_idl
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB}
     volumes:
       - "database-data:/var/lib/postgresql/data"
     restart: unless-stopped
@@ -20,15 +21,16 @@ services:
     command: -locations=filesystem:/migrations -connectRetries=60 migrate
     volumes:
       - ./ref:/migrations
+    env_file: .env
     environment:
-      FLYWAY_PASSWORD: "PasSw0rd!"
-      FLYWAY_URL: jdbc:postgresql://openidl-data:5432/open_idl
-      FLYWAY_USER: idl_user
+      FLYWAY_PASSWORD: ${DB_PASSWORD}
+      FLYWAY_URL: jdbc:postgresql://openidl-data:5432/${DB}
+      FLYWAY_USER: ${DB_USER}
       FLYWAY_SCHEMAS: ${SCHEMA}
     networks:
       - openidl-network
-    depends_on:
-      - database
+#    depends_on:
+#      - database
 volumes:
   database-data:
 networks:
