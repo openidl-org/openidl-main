@@ -1,4 +1,4 @@
-create table openidl_base_3333.pa_claim (
+create table pa_claim (
 accident_date date,
 accounting_date date,
 pa_anti_lock_brakes_discount_code_anti_theft_device_discount_code varchar2,

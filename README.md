@@ -1,6 +1,6 @@
 # openIDL Main
 
-This is the main repostiory for openidl
+This is the main repository for openidl
 
 All projects are contained in subdirectories
 

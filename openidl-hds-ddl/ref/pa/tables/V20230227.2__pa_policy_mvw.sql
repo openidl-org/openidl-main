@@ -1,4 +1,4 @@
-create table openidl_base_1234.pa_policy
+create table pa_policy
     (
     id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
     naic_lob VARCHAR, -- aslob varchar
