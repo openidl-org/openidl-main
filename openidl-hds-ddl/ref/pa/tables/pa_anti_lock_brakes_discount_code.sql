@@ -2,6 +2,7 @@ do $$
 begin
 create table if not exists pa_anti_lock_brakes_discount_code (
     id int,
+    fk_state_id int,
     code varchar,
     description varchar
 );

@@ -1,14 +1,3 @@
-do $$ 
-begin
-create table if not exists pa_coverage_code (
-    id int,
-    code varchar,
-    fk_state_id int,
-    name varchar,
-    category varchar
-);
-
-if not exists (select * from pa_coverage_code) then
 insert into pa_coverage_code values(1,'1',1,'Bodily Injury Liability','Liability');
 insert into pa_coverage_code values(2,'2',1,'Property Damage Liability','Liability');
 insert into pa_coverage_code values(3,'3',1,'Bodily Injury and Property Damage Liability - Indivisible Premium','Liability');
@@ -774,9 +763,3 @@ insert into pa_coverage_code values(762,'U',3,'Loss of Income','Loss of Income')
 insert into pa_coverage_code values(763,'V',3,'Accidental Death','Accidental Death');
 insert into pa_coverage_code values(764,'W',3,'Certified acts of terrorism covered (coverage not excluded) -- physical damage only','Terrorism Coverages ');
 insert into pa_coverage_code values(765,'Z',3,'Certified acts of terrorism covered (coverage not excluded) -- liability and physical damage','Terrorism Coverages ');
-end if; 
-
-end $$
-
-
-
