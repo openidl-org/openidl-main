@@ -27,13 +27,11 @@ $ SCHEMA=test1 docker compose up -d
 ```
 
 ### Changing database name and user information
-* Open the docker-compose.yml file and change the respective Database and user information.
-> **Database Changes:**
-> You will have to change the DB and User information for both flyway and database.
+* Open the .env file and change the respective Database and user information.
 
 ### Using an already installed database:
 > Point your FLYWAY scripts to the URL of the database you want to use with respective login information
 
 ### Future enhancements:
 * Make all connection information to be passed as parameters.
-* Single setting for connection information in the docker-compose.yml file.
+* Add profiles for running the containers local or remote (for the database)
