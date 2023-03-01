@@ -54,7 +54,7 @@ class ReportProcessor {
 		const hasOrgId = _.get(resultData[0], ['value', 'Organization ID']) ? true : false
 		const hasState = _.get(resultData[0], ['value', 'State']) ? true : false
 		const hasTxDate = _.get(resultData[0], ['value', 'Transaction Date']) ? true : false
-		resultDataMap = new Map()
+		const resultDataMap = new Map()
 		resultData.forEach(obj => {
 		  resultDataMap.set(obj._id, obj)
 		});
