@@ -33,5 +33,5 @@ $ SCHEMA=test1 docker compose up -d
 > Point your FLYWAY scripts to the URL of the database you want to use with respective login information
 
 ### Future enhancements:
-* Make all connection information to be passed as parameters.
+* Make all connection information to be passed as parameters or .env file.
 * Add profiles for running the containers local or remote (for the database)
