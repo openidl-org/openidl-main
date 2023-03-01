@@ -55,7 +55,7 @@ function buildNormal(normal) {
 	for (let state of normal) {
 		for (let item of Object.keys(multi)) {
             coverageCode = item
-			line = `INSERT INTO pa_coverage_code VALUES(${id},${multi[item].id},${state.id});`;
+			line = `INSERT INTO pa_state_coverage_code VALUES(${id},${multi[item].id},${state.id});`;
 			console.log(line);
 			id += 1;
 		}
