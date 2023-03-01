@@ -1,5 +1,5 @@
 let states = require('../../state.json').states;
-let codeMap = require('../coverageCodes.json');
+let codeMap = require('../complex/coverageCodes.json');
 
 function getSpecialStates() {
 	let specialStates = Object.keys(codeMap);
@@ -55,7 +55,7 @@ function buildNormal(normal) {
 	for (let state of normal) {
 		for (let item of Object.keys(multi)) {
             coverageCode = item
-			line = `insert into pa_coverage_code values(${id},'${coverageCode}',${state.id},'${multi[item].name}','${multi[item].category}');`;
+			line = `INSERT INTO pa_coverage_code VALUES(${id},${multi[item].id},${state.id});`;
 			console.log(line);
 			id += 1;
 		}
@@ -70,14 +70,10 @@ function buildSpecial(specials, id) {
 		codeKeys = Object.keys(codes);
 		for (key of codeKeys) {
 			coverageCode = key;
-			line = `insert into pa_coverage_code values(${id},'${coverageCode}',${stateId},'${codes[key].name}','${codes[key].category}');`;
+			line = `INSERT INTO pa_state_coverage_code VALUES(${id},${codes[key].id},${stateId});`;
 			console.log(line);
 			id += 1;
 		}
-		break;
-		// for (let code of Object.keys(codes)){
-		//     console.log(code)
-		// }
 	}
 }
 
