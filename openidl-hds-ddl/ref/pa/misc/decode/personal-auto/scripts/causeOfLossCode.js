@@ -10,7 +10,7 @@ for (let coverageCode of lossCodes){
     for (let lossCode of coverageCodes){
         let description = codeMap[coverageCode][lossCode]
         let coverageId = codeMap[coverageCode]['coverageId']
-        console.log(`INSERT INTO pa_cause_of_loss VALUES (${lossCodeId},${coverageId},${lossCode},'${description}');`)
+        console.log(`INSERT INTO pa_cause_of_loss_code VALUES (${lossCodeId},${coverageId},${lossCode},'${description}');`)
         lossCodeId+=1
         
     }

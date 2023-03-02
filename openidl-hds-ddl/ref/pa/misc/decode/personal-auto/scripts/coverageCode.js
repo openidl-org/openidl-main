@@ -17,10 +17,8 @@ function getSpecialStates() {
 
 function getStateDetail(stateABV) {
 	let position = null;
-	let statePosition = 0;
 	for (let state of states) {
 		if (stateABV == state.abv) {
-			statePosition = position;
 			return state;
 		}
 		position += 1;
