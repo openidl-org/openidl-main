@@ -5,9 +5,9 @@ CREATE TABLE IF NOT EXISTS pa_liability_limit_code (
     id INT,
     fk_coverage_id int,
     fk_state_id int,
-    code varchar,
     name varchar,
-    limit varchar
+    code varchar,
+    limitt varchar
 
 );
 
@@ -3305,7 +3305,6 @@ INSERT INTO pa_liability_limit_code  VALUES (3290,32,37,'Limits','4','$100,000')
 INSERT INTO pa_liability_limit_code  VALUES (3291,32,37,'Limits','5','$177,500');
 INSERT INTO pa_liability_limit_code  VALUES (3292,32,37,'Limits','6','$200,000');
 INSERT INTO pa_liability_limit_code  VALUES (3293,32,37,'Limits','7','$277,500');
-
 END IF;
 
 END $$

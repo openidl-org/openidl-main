@@ -39,11 +39,11 @@ AS
 
 
 CREATE OR REPLACE VIEW pa_state_coverage_code_vw as (
-    SELECT b.code coverage_code, b.id coverage_id, b.name coverage, c.abbreviation state, c.id state_id
+    SELECT b.code coverage_code, b.id coverage_id, b.name coverage, c.abbreviation state, c.id fk_state_id
         FROM pa_state_coverage_code a, pa_coverage_code b, state_code c
         WHERE a.fk_coverage_code_id = b.id 
         AND a.fk_state_id = c.id
-        ORDER BY state,coverage_code;
+        ORDER BY state,coverage_code
 );
 
 IF NOT EXISTS (SELECT * FROM pa_coverage_category) THEN
