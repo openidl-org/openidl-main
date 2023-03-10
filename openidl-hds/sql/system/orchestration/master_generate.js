@@ -8,8 +8,8 @@ function main(buildObjects) {
 	for (object of buildObjects) {
 		console.table(object);
 		personalAuto(object);
-    homeOwners(object);
-    //mobileHomeowners(object);
+    	homeOwners(object);
+    	//mobileHomeowners(object);
 	}
 }
 
