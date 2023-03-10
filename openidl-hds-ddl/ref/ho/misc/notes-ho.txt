@@ -1,0 +1,48 @@
+_stg: stage
+_code: lookup tables.
+_vw: view 
+_mvm: materialized view
+
+
+
+
+ho_policy
+ho_policy_mvw
+
+ho_stat_stg (p&c coded)
+ho_stat_vw (p&c coded + id)
+ho_claim_vw (c +id + desc [decoded])
+ho_claim_mvw (c +id + desc [decoded])
+ho_policy_vw (p +id + desc [decoded])
+ho_policy_mvw (p +id + desc [decoded])
+
+
+
+
+
+--ref
+ho_annual_statement_line_of_business_code (simple)
+ho_area_indicator_code (simple)
+ho_building_code_effectiveness_code (simple)
+ho_cause_of_loss_code (simple)
+ho_class_code (complex)
+ho_construction_code (simple)
+ho_deductible_amount_code (complex)
+ho_deductible_type_code (simple)
+ho_escaped_liquid_fuel_and_lead_coverage_liability_code (simple)
+ho_escaped_liquid_fuel_coverage_property_code (simple)
+ho_fire_protection_code (simple)
+ho_home_based_business_indicator_code (simple)
+ho_mold_damage_coverage_code (simple)
+ho_nc_program_enhancement_indicator_code (simple)
+ho_number_of_families_code (complex)
+ho_occupancy_code (simple)
+ho_ordinance_of_law_code (simple)
+ho_policy_form_code (simple)
+ho_pool_code (simple)
+ho_program_code (simple)
+state_code (complete)
+ho_state_exception_code (complex)
+ho_theft_deductible_amount_code (simple)
+ho_transaction_code (simple)
+ho_windstorm_or_hail_deductible_code (simple)
