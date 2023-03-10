@@ -122,12 +122,12 @@
     "exposure": {
         "inboundName": "exposure",
         "stageName": "EXPOSURE",
-        "dataType": "NUMERIC"
+        "dataType": "INT"
     },
     "claimCount": {
         "inboundName": "claimCount",
         "stageName": "CLM_CNT",
-        "dataType": "VARCHAR"
+        "dataType": "INT"
     },
     "causeOfLoss": {
         "inboundName": "causeOfLoss",
