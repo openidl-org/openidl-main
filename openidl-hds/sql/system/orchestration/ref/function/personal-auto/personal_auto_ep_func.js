@@ -14,7 +14,7 @@ function getEarnedPremium(companyId){
                 and reporting_code = pv_reporting_code) 
             union all 
                 (SELECT 2 ggroup,                                                      
-                Datediff(accounting_date, end_date) * monthly_premium_amount  ep   
+                Datediff(start_date, accounting_term_expiration) * monthly_premium_amount  ep   
                 FROM   openidl_ep_${companyId}.tmp_au_coverage
                 WHERE  accounting_date < start_date
                 and accounting_term_expiration> start_date
