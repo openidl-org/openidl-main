@@ -2,11 +2,11 @@ DO $$
 
 BEGIN
 
-CREATE TABLE IF NOT EXISTS openidl_lob_code (
+CREATE TABLE IF NOT EXISTS openidl_lob (
     id INT,
     code varchar,
     name varchar
-)
+);
 
 IF NOT EXISTS (SELECT * FROM openidl_lob) THEN
    INSERT INTO openidl_lob VALUES(	1,'PA','Personal Auto');

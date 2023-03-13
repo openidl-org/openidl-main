@@ -2,11 +2,11 @@ DO $$
 
 BEGIN 
 
-CREATE TABLE IF NOT EXISTS pa_state_exception(
+CREATE TABLE IF NOT EXISTS pa_state_exception (
     id int,
     name VARCHAR,
     description VARCHAR
-)
+);
 
 CREATE TABLE IF NOT EXISTS pa_state_exception_code (
     id int,
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS pa_state_exception_code (
     code varchar,
     name varchar, 
     description varchar
-)
+);
 
 IF NOT EXISTS (SELECT * FROM pa_state_exception) THEN
     INSERT INTO pa_state_exception (id,name) VALUES (1, 'State Exception A');
