@@ -2,9 +2,9 @@ do $$
 begin
 create table if not exists pa_anti_theft_device_discount_code (
     id int,
-    code varchar,
-    description varchar,
     fk_state_id int,
+    code varchar,
+    description varchar
 );
 
 if not exists (select * from pa_anti_theft_device_discount_code) then

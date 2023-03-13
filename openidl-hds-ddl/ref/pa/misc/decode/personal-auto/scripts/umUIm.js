@@ -53,7 +53,7 @@ function buildNormal(normal) {
 	for (let state of normal) {
 		for (let umUimCode of umUimCodes) {
 			let description = multi[umUimCode];
-			line = `INSERT INTO pa_liability_limit_code  VALUES (${id},${state.id},'${umUimCode}','${description}');`;
+			line = `INSERT INTO pa_um_uim_motorist_code VALUES (${id},${state.id},'${umUimCode}','${description}');`;
 			console.log(line)
             id += 1;
 		}
@@ -67,7 +67,7 @@ function buildSpecial(specials, id) {
 		let umUimCodes = Object.keys(multi);
 		for (let umUimCode of umUimCodes) {
 			let description = multi[umUimCode];
-			line = `INSERT INTO pa_liability_limit_code  VALUES (${id},${state.id},'${umUimCode}','${description}');`;
+			line = `INSERT INTO pa_um_uim_motorist_code VALUES (${id},${state.id},'${umUimCode}','${description}');`;
 			console.log(line)
             id += 1;
 		}
