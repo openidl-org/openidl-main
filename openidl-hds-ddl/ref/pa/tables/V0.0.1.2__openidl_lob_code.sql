@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS openidl_lob_code (
 
 IF NOT EXISTS (SELECT * FROM openidl_lob_code) THEN
    INSERT INTO openidl_lob_code VALUES(	1,'56','PA','Personal Auto');
-    --INSERT INTO openidl_lob VALUES(	2,'HO','Homeowners');
+   --INSERT INTO openidl_lob VALUES(	2,'HO','Homeowners');
     --INSERT INTO openidl_lob VALUES(	3,'IM','Inland Marine');
     --INSERT INTO openidl_lob VALUES(	4,'FP','Farm Properties');
     --INSERT INTO openidl_lob VALUES(	5,'AP','Artisans (small contractors)');

@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS pa_state_coverage_code (
 );
 
 
-CREATE VIEW pa_coverage_code_vw
+CREATE OR REPLACE VIEW pa_coverage_code_vw
 AS
   SELECT a.code        coverage_code,
          b.name        coverage_category,
