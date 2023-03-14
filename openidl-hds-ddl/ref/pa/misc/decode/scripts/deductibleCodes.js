@@ -1,5 +1,5 @@
 fs = require('fs')
-var file = fs.createWriteStream('array.txt');
+
 let codeMap = require('../simple/deductibleCodes.json');
 let fileLines = []
 let tableDDL = `

@@ -1,4 +1,5 @@
-let states = require('../../state.json').states;
+fs = require('fs')
+let states = require('./state.json').states;
 let codeMap = require('../complex/liabilityLimitCodes.json');
 
 function getSpecialStates() {
@@ -64,9 +65,9 @@ function buildNormal(normal) {
 
 			for (let liabilityCode of liabilityCodes) {
 				liabilityLimit = multi[coverageCode][liabilityCode];
-				console.log(
-					`INSERT INTO pa_liability_limit_code  VALUES (${id},${coverageId},${state.id},'${name}','${liabilityCode}','${liabilityLimit}');`
-				);
+				
+				fileLines.push(`	INSERT INTO pa_liability_limit_code  VALUES (${id},${coverageId},${state.id},'${name}','${liabilityCode}','${liabilityLimit}');`)
+				
 				id += 1;
 			}
 		}
@@ -91,16 +92,51 @@ function buildSpecial(specials, id) {
 
 			for (let liabilityCode of liabilityCodes) {
 				liabilityLimit = multi[coverageCode][liabilityCode];
-				console.log(
-					`INSERT INTO pa_liability_limit_code  VALUES (${id},${coverageId},${state.id},'${name}','${liabilityCode}','${liabilityLimit}');`
-				);
+				
+				fileLines.push(`		INSERT INTO pa_liability_limit_code  VALUES (${id},${coverageId},${state.id},'${name}','${liabilityCode}','${liabilityLimit}');`)
 				id += 1;
 			}
 		}
 	}
+
 }
+
+
+let fileLines = []
+
+
+
+let head = `DO $$
+BEGIN 
+
+CREATE TABLE IF NOT EXISTS pa_liability_limit_code (
+    id INT,
+    fk_coverage_id int,
+    fk_state_id int,
+    name varchar,
+    code varchar,
+    limitt varchar
+);
+IF NOT EXISTS (SELECT * FROM pa_liability_limit_code) THEN
+`;
+fileLines.push(head)
 
 let specialStates = getSpecialStates();
 let normalStates = getNormalStates(specialStates);
 id = buildNormal(normalStates);
+id =1 
 buildSpecial(specialStates, id);
+
+let end = `END IF;
+END $$`
+
+fileLines.push(end)
+
+// for (let line of fileLines){
+// 	console.log(line)
+// }
+
+var file = fs.createWriteStream('../../../tables/V0.0.1.13__pa_liability_limit_code.sql');
+file.on('error', function(err) { /* error handling */ });
+fileLines.forEach(function(v) { file.write(v + '\n'); });
+file.end();

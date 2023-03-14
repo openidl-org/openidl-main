@@ -1,4 +1,4 @@
-let states = require('../../state.json').states;
+let states = require('./state.json').states;
 let codeMap = require('../complex/coverageCodes.json');
 
 function getSpecialStates() {
@@ -26,7 +26,6 @@ function getStateDetail(stateABV) {
 }
 
 function getNormalStates(specialStates) {
-	let lclStates = states;
 	indexesToRemove = [];
 	position = 0;
 	for (let state of states) {
