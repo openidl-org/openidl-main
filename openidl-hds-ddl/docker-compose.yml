@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  database:
+    container_name: openidl-data
+    hostname: openidl-data
+    image: postgres:15.2
+    ports:
+      - "5432:5432"
+    env_file: ./.env
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB}
+    volumes:
+      - "database-data:/var/lib/postgresql/data"
+    restart: unless-stopped
+    networks:
+      - openidl-network
+  flyway:
+    image: flyway/flyway
+    command: -locations=filesystem:/migrations -connectRetries=60 migrate
+    volumes:
+      - ./ref:/migrations
+    env_file: .env
+    environment:
+      FLYWAY_PASSWORD: ${DB_PASSWORD}
+      FLYWAY_URL: jdbc:postgresql://openidl-data:5432/${DB}
+      FLYWAY_USER: ${DB_USER}
+      FLYWAY_SCHEMAS: ${SCHEMA}
+    networks:
+      - openidl-network
+#    depends_on:
+#      - database
+volumes:
+  database-data:
+networks:
+  openidl-network:
