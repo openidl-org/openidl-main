@@ -18,7 +18,7 @@ let codes = Object.keys(codeMap)
 let index = 1
 for (let code of codes){
     //console.log(code)
-    line = `INSERT INTO pa_deductible_code values(${index},'${code}','${codeMap[code]}');`
+    line = `    INSERT INTO pa_deductible_code values(${index},'${code}','${codeMap[code]}');`
     fileLines.push(line)
     index+=1
 }

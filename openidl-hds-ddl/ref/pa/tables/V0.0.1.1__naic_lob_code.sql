@@ -1,15 +1,15 @@
 DO $$
 
-BEGIN
+-- BEGIN
 
-CREATE TABLE IF NOT EXISTS openidl_lob (
-    id INT,
-    code varchar,
-    name varchar
-);
+-- CREATE TABLE IF NOT EXISTS openidl_lob (
+--     id INT,
+--     code varchar,
+--     name varchar
+-- );
 
-IF NOT EXISTS (SELECT * FROM openidl_lob) THEN
-   INSERT INTO openidl_lob VALUES(	1,'PA','Personal Auto');
+-- IF NOT EXISTS (SELECT * FROM openidl_lob) THEN
+--    INSERT INTO openidl_lob VALUES(	1,'PA','Personal Auto');
     --INSERT INTO openidl_lob VALUES(	2,'HO','Homeowners');
     --INSERT INTO openidl_lob VALUES(	3,'IM','Inland Marine');
     --INSERT INTO openidl_lob VALUES(	4,'FP','Farm Properties');
