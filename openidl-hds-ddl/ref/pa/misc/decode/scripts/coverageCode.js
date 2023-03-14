@@ -74,6 +74,8 @@ function buildSpecial(specials, id) {
 	}
 }
 
+fileLines = [``]
+
 let specialStates = getSpecialStates();
 let normalStates = getNormalStates(specialStates);
 id = buildNormal(normalStates);

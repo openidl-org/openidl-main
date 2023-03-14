@@ -118,7 +118,7 @@ for (let line of tableLines){
     console.log(line)
 }
 
-var file = fs.createWriteStream('../../../tables/V0.0.1.4__pa_anti_theft_device_discount_code');
+var file = fs.createWriteStream('../../../tables/V0.0.1.4__pa_anti_theft_device_discount_code.sql');
 file.on('error', function(err) { /* error handling */ });
 tableLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();
