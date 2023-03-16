@@ -71,6 +71,10 @@ class DataProcessorMongo {
             if (distinctChunkid.length > 0) {
                 logger.info("Length condition is passed")
                 let payload = await this.constructJSON(distinctChunkid, reduceCollectionName, datacallID, dataCallVersion, this.carrierId)
+                logger.info("Inserting status for datacall ID ", datacallID, ", payload is: ", JSON.stringify(payload, 0, 2))
+                if (!payload.datacallid || !payload.versionid) {
+                    logger.warn("Warning: Inserting null datacall id and/or datacall version!")
+                }
                 let result = await this.dbManager.insertChunkID(payload)
                 if (result.status == "success") {
                     logger.info('Successfully inserted chunkIDs into extract_pattern_migration collection -  ' + distinctChunkid)
@@ -85,6 +89,10 @@ class DataProcessorMongo {
             } else {
                 logger.info("No distinct chunkId is found")
                 let payload = await this.constructJSONnoChunkId(reduceCollectionName, datacallID, dataCallVersion, this.carrierId)
+                logger.info("No chunk ID: Inserting status for datacall ID ", datacallID, ", payload is: ", JSON.stringify(payload, 0, 2))
+                if (!payload.datacallid || !payload.versionid) {
+                    logger.warn("Warning: Inserting null datacall id and/or datacall version!(No chunkId path)")
+                }
                 let result = await this.dbManager.insertChunkID(payload)
                 if (result.status == "success") {
                     logger.info('Successfully inserted chunkIDs into extract_pattern_migration collection -  ' + distinctChunkid)
@@ -232,6 +240,7 @@ class DataProcessorMongo {
             }
 
             try {
+                logger.info("Finding and updating record in extract_pattern_migration, payload is: ", JSON.stringify(jsonDocument, 0, 2))
                 await dbManager.findAndUpdate(jsonDocument)
             } catch (ex) {
                 logger.error("Failed to update PDC & S3 update into extract_pattern_migration collection failed " + ex)
