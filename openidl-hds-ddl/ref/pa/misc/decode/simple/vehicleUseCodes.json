@@ -66,9 +66,9 @@
         "operator": "N/A"
     },
     "9": {
-        "use": "BUG",
-        "commuteDistance": "BUG",
-        "annualDistance": "BUG",
-        "operator": "BUG"
+        "use": "Error!-showed up in data/does not exist in stat plan",
+        "commuteDistance": "Error!-showed up in data/does not exist in stat plan",
+        "annualDistance": "Error!-showed up in data/does not exist in stat plan",
+        "operator": "Error!-showed up in data/does not exist in stat plan"
     }
 }

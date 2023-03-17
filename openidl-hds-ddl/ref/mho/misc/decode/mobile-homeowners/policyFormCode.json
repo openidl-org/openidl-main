@@ -1,0 +1,218 @@
+{
+  "01": {
+    "type": "AAIS - ML-1, ML-1R, ML 0001, Form 1, or HO 0001 / ISO - HO 00 01",
+    "category": "Basic Policy Forms",
+    "reportingForm": "Form 1",
+    "reportingCategory": "Owners Policy Forms"
+  },
+  "02": {
+    "type": "AAIS - ML-2, ML 0002, Form 2, or HO 0002 / ISO - HO 00 02",
+    "category": "Basic Policy Forms",
+    "reportingForm": "Form 2",
+    "reportingCategory": "Owners Policy Forms"
+  },
+  "03": {
+    "type": "AAIS - ML-3, ML 0003, Form 3, or HO 0003 / ISO - HO 00 03",
+    "category": "Basic Policy Forms",
+    "reportingForm": "Form 3",
+    "reportingCategory": "Owners Policy Forms"
+  },
+  "04": {
+    "type": "AAIS - ML-4, ML 0004, Form 4, or HO 0004 / ISO - HO 00 04",
+    "category": "Basic Policy Forms",
+    "reportingForm": "Form 4 - Broad Perils",
+    "reportingCategory": "Renters and Condominiums"
+  },
+  "84": {
+    "type": "AAIS - Form 4 w/ ML-430 or HO 0004 w/ HO 0430 or HO 0004 w/ HO 2730 / ISO - HO 00 04 w/ HO 05 24",
+    "category": "Basic Policy Forms",
+    "reportingForm": "Form 4 - Special Perils",
+    "reportingCategory": "Renters and Condominiums"
+  },
+  "05": {
+    "type": "AAIS - Form 5 or HO 0005 / ISO - HO 00 05 and HO 00 03 w/ HO 00 15",
+    "category": "Basic Policy Forms",
+    "reportingForm": "Form 5",
+    "reportingCategory": "Owners Policy Forms"
+  },
+  "06": {
+    "type": "AAIS - ML 0006, Form 6, or HO 0006 / ISO - HO 00 06",
+    "category": "Basic Policy Forms",
+    "reportingForm": "Form 6 - Broad Perils",
+    "reportingCategory": "Renters and Condominiums"
+  },
+  "86": {
+    "type": "AAIS - Form 6 w/ ML-429 or HO 0006 w/ HO 0429 or HO 0006 w/ HO 7029 / ISO - HO 00 06 w/ HO 17 31",
+    "category": "Basic Policy Forms",
+    "reportingForm": "Form 6 - Special Perils",
+    "reportingCategory": "Renters and Condominiums"
+  },
+  "08": {
+    "type": "AAIS - ML-8, ML 0008, Form 8, or HO 0008 / ISO - HO 00 08",
+    "category": "Basic Policy Forms",
+    "reportingForm": "Form 8",
+    "reportingCategory": "Owners Policy Forms"
+  },
+  "41": {
+    "type": "Care Provided for Others",
+    "category": "Liability Endorsements",
+    "reportingForm": "Care Provided for Others",
+    "reportingCategory": "Liability Endorsements"
+  },
+  "42": {
+    "type": "Business Activities",
+    "category": "Liability Endorsements",
+    "reportingForm": "Business Activities",
+    "reportingCategory": "Liability Endorsements"
+  },
+  "43": {
+    "type": "Office, Professional, Private School or Studio Use",
+    "category": "Liability Endorsements",
+    "reportingForm": "Office, Professional, Private School or Studio Use",
+    "reportingCategory": "Liability Endorsements"
+  },
+  "44": {
+    "type": "Personal Injury",
+    "category": "Liability Endorsements",
+    "reportingForm": "Personal Injury",
+    "reportingCategory": "Liability Endorsements"
+  },
+  "45": {
+    "type": "Watercraft",
+    "category": "Liability Endorsements",
+    "reportingForm": "Watercraft",
+    "reportingCategory": "Liability Endorsements"
+  },
+  "46": {
+    "type": "Snowmobile",
+    "category": "Liability Endorsements",
+    "reportingForm": "Snowmobile",
+    "reportingCategory": "Liability Endorsements"
+  },
+  "47": {
+    "type": "Lead Poisoning Coverage",
+    "category": "Liability Endorsements",
+    "reportingForm": "Lead Poisoning Coverage",
+    "reportingCategory": "Liability Endorsements"
+  },
+  "53": {
+    "type": "Golf Cart Liability",
+    "category": "Liability Endorsements",
+    "reportingForm": "Golf Cart Liability",
+    "reportingCategory": "Liability Endorsements"
+  },
+  "54": {
+    "type": "Fuel Oil Liability Coverage",
+    "category": "Liability Endorsements",
+    "reportingForm": "Fuel Oil Liability Coverage",
+    "reportingCategory": "Liability Endorsements"
+  },
+  "40": {
+    "type": "All Other Liability Endorsements",
+    "category": "Liability Endorsements",
+    "reportingForm": "All Other Liability Endorsements",
+    "reportingCategory": "Liability Endorsements"
+  },
+  "61": {
+    "type": "Earthquake",
+    "category": "Property Endorsements",
+    "reportingForm": "Earthquake",
+    "reportingCategory": "Property Endorsements"
+  },
+  "62": {
+    "type": "Water Damage - Sewers, Drains, and Sumps",
+    "category": "Property Endorsements",
+    "reportingForm": "Water Damage - Sewers, Drains, and Sumps",
+    "reportingCategory": "Property Endorsements"
+  },
+  "63": {
+    "type": "Motorized Golf Cart - Physical Damage Coverage",
+    "category": "Property Endorsements",
+    "reportingForm": "Motorized Golf Cart - Physical Damage Coverage",
+    "reportingCategory": "Property Endorsements"
+  },
+  "64": {
+    "type": "Identity Fraud Expense Coverage",
+    "category": "Property Endorsements",
+    "reportingForm": "Identity Fraud Expense Coverage",
+    "reportingCategory": "Property Endorsements"
+  },
+  "75": {
+    "type": "Equipment Breakdown Coverage",
+    "category": "Property Endorsements",
+    "reportingForm": "Equipment Breakdown Coverage",
+    "reportingCategory": "Property Endorsements"
+  },
+  "60": {
+    "type": "All Other Property",
+    "category": "Property Endorsements",
+    "reportingForm": "All Other Property",
+    "reportingCategory": "Property Endorsements"
+  },
+  "80": {
+    "type": "Resident of Assisted Living Facility",
+    "category": "Endorsements Providing Both Property and Liability Coverage",
+    "reportingForm": "Resident of Assisted Living Facility",
+    "reportingCategory": "Indivisible Property & Liability Endorsements"
+  },
+  "81": {
+    "type": "Student Living Away From the Described Location",
+    "category": "Endorsements Providing Both Property and Liability Coverage",
+    "reportingForm": "Student Living Away / All Other Indivisible Endorsements",
+    "reportingCategory": "Indivisible Property & Liability Endorsements"
+  },
+  "19": {
+    "type": "Basic Coverage",
+    "category": "Home Based Business (HBB) Coverage",
+    "reportingForm": "Basic Coverage",
+    "reportingCategory": "Home Based Business (HBB) Coverage"
+  },
+  "51": {
+    "type": "Non-Owned Auto and Hired Auto Liability",
+    "category": "HBB Liability Coverages",
+    "reportingForm": "Non-Owned Auto and Hired Auto Liability",
+    "reportingCategory": "HBB Liability Coverages"
+  },
+  "52": {
+    "type": "Cosmetologists' Liability",
+    "category": "HBB Liability Coverages",
+    "reportingForm": "Cosmetologists' Liability",
+    "reportingCategory": "HBB Liability Coverages"
+  },
+  "40": {
+    "type": "All Other HBB Liability Coverages",
+    "category": "HBB Liability Coverages",
+    "reportingForm": "All Other HBB Liability Coverages",
+    "reportingCategory": "HBB Liability Coverages"
+  },
+  "72": {
+    "type": "Spoilage Coverage",
+    "category": "HBB Property Coverages",
+    "reportingForm": "Spoilage Coverage",
+    "reportingCategory": "HBB Liability Coverages"
+  },
+  "73": {
+    "type": "Related Private Structures Used for HBB Purposes",
+    "category": "HBB Property Coverages",
+    "reportingForm": "Related Private Structures Used for HBB Purposes",
+    "reportingCategory": "HBB Liability Coverages"
+  },
+  "74": {
+    "type": "Business Property Away from Premises",
+    "category": "HBB Property Coverages",
+    "reportingForm": "Business Property Away from Premises",
+    "reportingCategory": "HBB Liability Coverages"
+  },
+  "96": {
+    "type": "Miscellaneous Property/Liability Combined End. Coverage",
+    "category": "Other",
+    "reportingForm": "Miscellaneous Property/Liability Combined End. Coverage",
+    "reportingCategory": "Other"
+  },
+  "99": {
+    "type": "Minimum Premium Record Subject to SECTION I, PART C, Rule 3.b",
+    "category": "Other",
+    "reportingForm": "Minimum Premium Record Subject to SECTION I, PART C, Rule 3.b",
+    "reportingCategory": "Other"
+  }
+}

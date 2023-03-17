@@ -1,3 +1,4 @@
+
 DO $$ 
 BEGIN
 CREATE TABLE IF NOT EXISTS pa_subline_code (
@@ -8,8 +9,7 @@ CREATE TABLE IF NOT EXISTS pa_subline_code (
 );
 
 IF NOT EXISTS (SELECT * FROM pa_subline_code) THEN 
-INSERT INTO pa_subline_code (id, code, name, category) VALUES( 1,'1','Private Passenger Auto','Personal' );
-INSERT INTO pa_subline_code VALUES( 2,'2','Commercial Auto','Commercial' );
+    INSERT INTO pa_subline_code VALUES(1,'1','Private Passenger Auto','Personal');
+    INSERT INTO pa_subline_code VALUES(2,'2','Commercial Auto','Commercial');
 END IF;
-
 END $$;
