@@ -1,5 +1,7 @@
-let states = require('../../state.json').states;
+let fs = require('fs')
+let states = require('./state.json').states;
 let codeMap = require('../complex/umUimCodes.json').state;
+fileLines = []
 
 function getSpecialStates() {
 	let specialStates = Object.keys(codeMap);
@@ -53,9 +55,10 @@ function buildNormal(normal) {
 	for (let state of normal) {
 		for (let umUimCode of umUimCodes) {
 			let description = multi[umUimCode];
-			line = `INSERT INTO pa_um_uim_motorist_code VALUES (${id},${state.id},'${umUimCode}','${description}');`;
-			console.log(line)
-            id += 1;
+			line = `	INSERT INTO pa_um_uim_motorist_code VALUES (${id},${state.id},'${umUimCode}','${description}');`;
+			//console.log(line)
+            fileLines.push(line)
+			id += 1;
 		}
 	}
 	return id;
@@ -67,15 +70,43 @@ function buildSpecial(specials, id) {
 		let umUimCodes = Object.keys(multi);
 		for (let umUimCode of umUimCodes) {
 			let description = multi[umUimCode];
-			line = `INSERT INTO pa_um_uim_motorist_code VALUES (${id},${state.id},'${umUimCode}','${description}');`;
-			console.log(line)
-            id += 1;
+			line = `	INSERT INTO pa_um_uim_motorist_code VALUES (${id},${state.id},'${umUimCode}','${description}');`;
+			//console.log(line)
+            fileLines.push(line)
+			id += 1;
 		}
 	}
 	return id;
 }
 
+function buildHead(){
+	fileLines.push(`DO $$
+
+BEGIN 
+
+CREATE TABLE IF NOT EXISTS pa_um_uim_motorist_code(
+	id int,
+	fk_state_id VARCHAR,
+	code VARCHAR,
+	description VARCHAR
+);
+
+
+IF NOT EXISTS (select * from pa_um_uim_motorist_code) THEN`)
+}
+
+function buildTail(){
+	fileLines.push(`END IF;
+
+END $$`)
+}
+buildHead()
 let specialStates = getSpecialStates();
 let normalStates = getNormalStates(specialStates);
 id = buildNormal(normalStates);
 buildSpecial(specialStates, id);
+buildTail()
+
+for (let line of fileLines){
+	console.log(line)
+}

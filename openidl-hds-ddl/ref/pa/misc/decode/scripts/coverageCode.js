@@ -1,6 +1,8 @@
+fs = require('fs')
 let states = require('./state.json').states;
 let codeMap = require('../complex/coverageCodes.json');
-let coverageCategories = require('../complex/coverageCategory.json') 
+let coverageCategoriesMap = require('../complex/coverageCategory.json');
+let fileLines = [];
 
 function getSpecialStates() {
 	let specialStates = Object.keys(codeMap);
@@ -29,6 +31,7 @@ function getStateDetail(stateABV) {
 function getNormalStates(specialStates) {
 	indexesToRemove = [];
 	position = 0;
+	let lclStates = states
 	for (let state of states) {
 		for (let special of specialStates) {
 			if (state.id == special.id) {
@@ -52,9 +55,10 @@ function buildNormal(normal) {
 	let multi = codeMap['MU'];
 	for (let state of normal) {
 		for (let item of Object.keys(multi)) {
-            coverageCode = item
-			line = `INSERT INTO pa_state_coverage_code VALUES(${id},${multi[item].id},${state.id});`;
-			console.log(line);
+			coverageCode = item;
+			line = `	INSERT INTO pa_state_coverage_code VALUES(${id},${multi[item].id},${state.id});`;
+			//console.log(line);
+			fileLines.push(line);
 			id += 1;
 		}
 	}
@@ -68,20 +72,25 @@ function buildSpecial(specials, id) {
 		codeKeys = Object.keys(codes);
 		for (key of codeKeys) {
 			coverageCode = key;
-			line = `INSERT INTO pa_state_coverage_code VALUES(${id},${codes[key].id},${stateId});`;
-			console.log(line);
+			line = `	INSERT INTO pa_state_coverage_code VALUES(${id},${codes[key].id},${stateId});`;
+			//console.log(line);
 			id += 1;
+			fileLines.push(line);
 		}
 	}
 }
 
-function buildCoverageCategory(){
-
+function buildCoverageCategory() {
+	let coverageCategories = Object.keys(coverageCategoriesMap);
+	for (let category in coverageCategoriesMap) {
+		let line = `	INSERT INTO pa_coverage_category (id, name) VALUES (${category},'${coverageCategoriesMap[category]}');`;
+		//console.log(line)
+		fileLines.push(line);
+	}
 }
 
-fileLines = []
-
-filsLines.push(`
+function buildPt1() {
+	fileLines.push(`
 DO $$ 
 BEGIN
 
@@ -131,10 +140,62 @@ CREATE OR REPLACE VIEW pa_state_coverage_code_vw as (
 );
 
 IF NOT EXISTS (SELECT * FROM pa_coverage_category) THEN
-`)
+`);
+}
 
+function buildPt2() {
+	fileLines.push(`END IF;
+
+IF NOT EXISTS (select * from pa_coverage_code) THEN`);
+}
+
+function buildCoverageCode() {
+	let mu = codeMap['MU'];
+	let ar = codeMap['AR'];
+	let pa = codeMap['PA'];
+	id = 1;
+	for (let m in mu) {
+		line = `	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id) VALUES (${id},'${m}','${mu[m].name}',${mu[m].id});`;
+		fileLines.push(line);
+		//console.log(line)
+		id+=1
+	}
+	for (let a in ar) {
+		line = `	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (${id},'${a}','${ar[a].name}',${ar[a].id},3);`;
+		fileLines.push(line);
+		//console.log(line)
+		id+=1
+	}
+	for (let p in pa) {
+		line = `	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (${id},'${p}','${pa[p].name}',${pa[p].id},37);`;
+		fileLines.push(line);
+		//console.log(line)
+		id+=1
+	}
+}
+function buildPt3(){
+	fileLines.push(`END IF;
+		IF NOT EXISTS (SELECT * FROM pa_state_coverage_code) THEN`)
+}
+
+buildPt1();
+buildCoverageCategory();
+buildPt2();
+buildCoverageCode();
+buildPt3()
 let specialStates = getSpecialStates();
 let normalStates = getNormalStates(specialStates);
 id = buildNormal(normalStates);
 buildSpecial(specialStates, id);
+fileLines.push(`END IF; 
+END $$`)
 
+
+for (let l of fileLines){
+	console.log(l)
+}
+
+var file = fs.createWriteStream('../../../tables/V0.0.1.8__pa_coverage_code.sql');
+file.on('error', function(err) { /* error handling */ });
+fileLines.forEach(function(v) { file.write(v + '\n'); });
+file.end();
