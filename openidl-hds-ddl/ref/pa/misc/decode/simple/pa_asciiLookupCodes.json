@@ -1,0 +1,122 @@
+{
+    "}": {
+        "digit": 0,
+        "multiplier": -1
+    },
+    "J": {
+        "digit": 1,
+        "multiplier": -1
+    },
+    "K": {
+        "digit": 2,
+        "multiplier": -1
+    },
+    "L": {
+        "digit": 3,
+        "multiplier": -1
+    },
+    "M": {
+        "digit": 4,
+        "multiplier": -1
+    },
+    "N": {
+        "digit": 5,
+        "multiplier": -1
+    },
+    "O": {
+        "digit": 6,
+        "multiplier": -1
+    },
+    "P": {
+        "digit": 7,
+        "multiplier": -1
+    },
+    "Q": {
+        "digit": 8,
+        "multiplier": -1
+    },
+    "R": {
+        "digit": 9,
+        "multiplier": -1
+    },
+    "0": {
+        "digit": 0,
+        "multiplier": 1
+    },
+    "1": {
+        "digit": 1,
+        "multiplier": 1
+    },
+    "2": {
+        "digit": 2,
+        "multiplier": 1
+    },
+    "3": {
+        "digit": 3,
+        "multiplier": 1
+    },
+    "4": {
+        "digit": 4,
+        "multiplier": 1
+    },
+    "5": {
+        "digit": 5,
+        "multiplier": 1
+    },
+    "6": {
+        "digit": 6,
+        "multiplier": 1
+    },
+    "7": {
+        "digit": 7,
+        "multiplier": 1
+    },
+    "8": {
+        "digit": 8,
+        "multiplier": 1
+    },
+    "9": {
+        "digit": 9,
+        "multiplier": 1
+    },
+    "{": {
+        "digit": 0,
+        "multiplier": 1
+    },
+    "A": {
+        "digit": 1,
+        "multiplier": 1
+    },
+    "B": {
+        "digit": 2,
+        "multiplier": 1
+    },
+    "C": {
+        "digit": 3,
+        "multiplier": 1
+    },
+    "D": {
+        "digit": 4,
+        "multiplier": 1
+    },
+    "E": {
+        "digit": 5,
+        "multiplier": 1
+    },
+    "F": {
+        "digit": 6,
+        "multiplier": 1
+    },
+    "G": {
+        "digit": 7,
+        "multiplier": 1
+    },
+    "H": {
+        "digit": 8,
+        "multiplier": 1
+    },
+    "I": {
+        "digit": 9,
+        "multiplier": 1
+    }
+}

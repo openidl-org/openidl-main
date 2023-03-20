@@ -1,0 +1,42 @@
+{
+    "1": {
+        "type": "Commercial Automobile",
+        "description": "Non-fleet including trucks, trailer, and semitrailers"
+    },
+    "2": {
+        "type": "Commercial Automobile",
+        "description": "Fleet including trucks, trailers, and semitrailers"
+    },
+    "3": {
+        "type": "Private Passenger",
+        "description": "Non-fleet"
+    },
+    "4": {
+        "type": "Private Passenger",
+        "description": "Fleet"
+    },
+    "5": {
+        "type": "Garage Risks",
+        "description": "Garage Risks"
+    },
+    "6": {
+        "type": "Dealers",
+        "description": "Dealers"
+    },
+    "7": {
+        "type": "Public",
+        "description": "Taxicabs, Public Livery and Public Buses"
+    },
+    "8": {
+        "type": "School Buses",
+        "description": "School Buses"
+    },
+    "9": {
+        "type": "All Other",
+        "description": "All Other"
+    },
+    "C": {
+        "type": "Erroneous Data",
+        "description": "Erroneous Data"
+    }
+}
