@@ -54,6 +54,7 @@ class ReportProcessor {
 		const hasOrgId = _.get(resultData[0], ['value', 'Organization ID']) ? true : false
 		const hasState = _.get(resultData[0], ['value', 'State']) ? true : false
 		const hasTxDate = _.get(resultData[0], ['value', 'Transaction Date']) ? true : false
+		const hasCleartextVin = _.get(resultData[0], ['value', 'VIN']) ? true : false
 		const resultDataMap = new Map()
 		resultData.forEach(obj => {
 		  resultDataMap.set(obj._id, obj)
@@ -67,7 +68,7 @@ class ReportProcessor {
 				...(hasOrgId) && { "Organization ID": _.get(resultDataObject, ['value', 'Organization ID'], "")},
         ...(hasState) && { "State": _.get(resultDataObject,['value', 'State'], "")},
         ...(hasTxDate) && { "Transaction Date": _.get(resultDataObject,['value', 'Transaction Date'], "")},
-        "isRegistered":"yes",
+        ...(hasCleartextVin) && { "isRegistered": "yes"},
 				"isInsured": "no"
 			};
 			if (doesDmvDataExist) {
@@ -76,21 +77,23 @@ class ReportProcessor {
 			reportData.push(row);
 		}
 
-		// Add the Vins that don't match
-		const dmvDataIds = dmvData.map(data => data.VINHash);
-		const dmvDataSetObject = new Set(dmvDataIds);
-		for (let i = 0; i < resultData.length; i = i + 1) {
-			if (!dmvDataSetObject.has(resultData[i]._id) ) {
-				const row = {
-					"VIN": _.get(resultData[i], ['value', 'VIN'], ""),
-					"VINHash": resultData[i]._id,
-					...(hasOrgId) && {"Organization ID": _.get(resultData[i], ['value', 'Organization ID'], "")},
-					...(hasState) && {"State": _.get(resultData[i],['value', 'State'], "")},
-					...(hasTxDate) && {"Transaction Date": _.get(resultData[i],['value', 'Transaction Date'], "")},
-					"isRegistered":"no",
-					"isInsured": "yes"
-				};
-				reportData.push(row);
+		if(hasCleartextVin) {
+			// Add the Vins that don't match
+			const dmvDataIds = dmvData.map(data => data.VINHash);
+			const dmvDataSetObject = new Set(dmvDataIds);
+			for (let i = 0; i < resultData.length; i = i + 1) {
+				if (!dmvDataSetObject.has(resultData[i]._id) ) {
+					const row = {
+						"VIN": _.get(resultData[i], ['value', 'VIN'], ""),
+						"VINHash": resultData[i]._id,
+						...(hasOrgId) && {"Organization ID": _.get(resultData[i], ['value', 'Organization ID'], "")},
+						...(hasState) && {"State": _.get(resultData[i],['value', 'State'], "")},
+						...(hasTxDate) && {"Transaction Date": _.get(resultData[i],['value', 'Transaction Date'], "")},
+						"isRegistered":"no",
+						"isInsured": "yes"
+					};
+					reportData.push(row);
+				}
 			}
 		}
 		return reportData

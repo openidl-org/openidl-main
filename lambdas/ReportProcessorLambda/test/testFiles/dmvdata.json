@@ -1,0 +1,6 @@
+[
+    {"VIN": "abc", "VINHash": "123"},
+    {"VIN": "def", "VINHash": "456"},
+    {"VIN": "ghi", "VINHash": "789"},
+    {"VIN": "jkl", "VINHash": "012"}
+  ]
