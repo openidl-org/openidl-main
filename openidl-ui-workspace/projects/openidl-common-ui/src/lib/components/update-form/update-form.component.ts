@@ -311,7 +311,7 @@ export class UpdateFormComponent implements OnInit {
 				premiumToDate: ['', [Validators.required]],
 				lossFromDate: ['', [Validators.required]],
 				lossToDate: ['', [Validators.required]],
-				transactionMonth: [this.model.transactionMonth, [Validators.required]],
+				transactionMonth: [moment(this.model.transactionMonth), [Validators.required]],
 				deadline: ['', [Validators.required]],
 				purpose: ['', [Validators.required]],
 				isShowParticipants: [true],
@@ -517,7 +517,7 @@ export class UpdateFormComponent implements OnInit {
 			isShowParticipants: data.isShowParticipants,
 			comments: data.comments,
 			deadline: data.deadline,
-			transactionMonth: data.transactionMonth
+			transactionMonth: moment(data.transactionMonth)
 		});
 	}
 
