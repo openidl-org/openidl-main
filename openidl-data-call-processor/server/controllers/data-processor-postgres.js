@@ -43,13 +43,27 @@ class DataProcessorPostgres {
         const dbManager = await new DBManagerFactory().getInstance(options, extractionPattern.dbType);
         logger.info('Db manager:', dbManager);
 
-        const result = await this.executeExtractionPattern(extractionPattern, dbManager);
-        logger.info(`Extraction result: ${result}`);
+        await executeExtractionPatternMap(extractionPattern, dbManager)
+
+        const pageSize = getPageSize(extractionPattern, dbManager)
+        let recordsCount = pageSize
+        let page = 1
+        const cursor = await executeExtractionPatternReduceWithCursor(extractionPattern, dbManager)
         try {
-            await this.pushToPDC(this.carrierId, result.rows, 1, this.dataCallId, 'v1', this.targetChannelTransaction);
-            await this.submitTransaction(this.dataCallId, "v1", this.carrierId);
+            while(recordsCount === pageSize) {
+                const records = await this.readFromCursor(cursor, pageSize)
+                recordsCount = records.length;
+                logger.info(`Extraction result: ${records}`);
+    
+                await this.pushToPDC(this.carrierId, records, page, this.dataCallId, 'v1', this.targetChannelTransaction);
+                await this.submitTransaction(this.dataCallId, "v1", this.carrierId);
+                page++;
+            }
+
         } catch (err) {
             logger.error("Error while saving data to PDC", err);
+        } finally {
+            cursor.close();
         }
     }
 
@@ -72,13 +86,7 @@ class DataProcessorPostgres {
     async pushToPDC(carrierId, records, pageNumber, datacallid, versionid, target) {
 
         try {
-            let insuranceObject = {
-                pageNumber: pageNumber,
-                dataCallId: datacallid,
-                dataCallVersion: versionid,
-                carrierId: carrierId,
-                records: records
-            }
+            let insuranceObject = constructInstanceObject(pageNumber, datacallid, versionid, carrierId, records);
             logger.debug("insuranceObject " + JSON.stringify(insuranceObject))
             if (insuranceObject.records.length === 0) {
                 logger.info('Insurance Records not available in SQL Database');
@@ -96,6 +104,27 @@ class DataProcessorPostgres {
             throw ex
         }
 
+    }
+
+    async executeExtractionPatternMap(extractionPattern, dbManager) {
+        if (extractionPattern.viewDefinition.map) {
+            const mapScript = await this.decodeToAscii(extractionPattern.viewDefinition.map);
+            logger.debug("Map script:" + typeof mapScript);
+            const mapResult = await dbManager.executeSql(mapScript.replace(/@org/g, this.carrierId));
+            logger.info("Map result: " + mapResult);
+            if (!mapResult) {
+                logger.warn("Map did not execute successfully");
+            }
+        }
+    }
+
+    async executeExtractionPatternReduceWithCursor(extractionPattern, dbManager) {
+        if (extractionPattern.viewDefinition.reduce) {
+            const reduceScript = await this.decodeToAscii(extractionPattern.viewDefinition.reduce);
+            const result = await dbManager.executeSqlWithCursor(reduceScript.replace(/@org/g, this.carrierId));
+
+            return result;
+        }
     }
 
     async executeExtractionPattern(extractionPattern, dbManager) {
@@ -123,6 +152,40 @@ class DataProcessorPostgres {
             return buff.toString('ascii');
         }
         return '';
+    }
+
+    constructInstanceObject(pageNumber, dataCallId, dataCallVersion, carrierId, records) {
+        return {
+            pageNumber,
+            dataCallId,
+            dataCallVersion,
+            carrierId,
+            records
+        }
+    }
+
+    async getPageSize(extractionPattern, dbManager) {
+        const cursor = await executeExtractionPatternReduceWithCursor(extractionPattern, dbManager)
+        const oneRowResult = await this.readFromCursor(cursor, 1)
+        const oneRowInstanceObject = constructInstanceObject(1, this.dataCallId, 'v1', this.carrierId, oneRowResult);
+        cursor.close();
+        return Math.floor(calculateRecordsPerPageBasedOnOneRecordSize(JSON.stringify(oneRowInstanceObject)));;
+    }
+
+    calculateRecordsPerPageBasedOnOneRecordSize(obj) {
+        const sizeInBytes = sizeof(obj)
+        return parseFloat(5242880) / sizeInBytes
+      }
+
+    async readFromCursor(cursor, rowsCount) {
+        return new Promise((resolve, reject) => {
+            cursor.read(rowsCount, (err, rows) => {
+                if (err) {
+                    reject(err);
+                }
+                resolve(rows);
+            });
+        })
     }
 
 }
