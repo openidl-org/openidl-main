@@ -1,0 +1,48 @@
+_stg: stage
+_code: lookup tables.
+_vw: view 
+_mvm: materialized view
+
+
+
+
+ho_policy
+ho_policy_mvw
+
+ho_stat_stg (p&c coded)
+ho_stat_vw (p&c coded + id)
+ho_claim_vw (c +id + desc [decoded])
+ho_claim_mvw (c +id + desc [decoded])
+ho_policy_vw (p +id + desc [decoded])
+ho_policy_mvw (p +id + desc [decoded])
+
+
+
+
+
+--ref
+mho_annual_statement_line_of_business_code (simple)
+mho_area_indicator_code (simple)
+mho_cause_of_loss_code ()
+mho_class_codes_code
+mho_deductible_amount_code
+mho_escaped_liquid_fuel_and_lead_coverage_liability_code
+mho_escaped_liquid_fuel_coverage_property_code
+mho_fire_protection_code
+mho_home_based_business_indicator_code
+mho_limited_coding_loss_transaction_code
+mho_loss_settlement_indicator_code
+mho_mold_damage_coverage_code
+mho_occupancy_code
+mho_ordinance_or_law_coverage_code
+mho_policy_form_code
+mho_pool_code
+mho_program_code
+state_code (complete)
+mho_state_exception_A_code
+mho_state_exception_B_code
+mho_state_exception_code
+mho_theft_deductible_amount_code
+mho_tie_down_code
+mho_transaction_code
+mho_windstorm_or_hail_deductible_code

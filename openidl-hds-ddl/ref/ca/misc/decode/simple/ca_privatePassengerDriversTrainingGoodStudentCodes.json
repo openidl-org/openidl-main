@@ -1,0 +1,22 @@
+{
+    "1": {
+        "driversTraining": "Yes",
+        "goodStudentDiscount": "Yes"
+    },
+    "2": {
+        "driversTraining": "Yes",
+        "goodStudentDiscount": "No"
+    },
+    "3": {
+        "driversTraining": "No",
+        "goodStudentDiscount": "Yes"
+    },
+    "4": {
+        "driversTraining": "No",
+        "goodStudentDiscount": "No"
+    },
+    "5": {
+        "driversTraining": "N/A",
+        "goodStudentDiscount": "N/A"
+    }
+}

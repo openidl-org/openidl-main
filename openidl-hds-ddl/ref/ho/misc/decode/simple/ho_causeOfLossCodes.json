@@ -1,0 +1,182 @@
+{
+    "01": {
+        "name": "Aircraft",
+        "type": "Property Coverage"
+    },
+    "02": {
+        "name": "Breakage",
+        "type": "Property Coverage"
+    },
+    "32": {
+        "name": "Collapse, other than Sinkhole",
+        "type": "Property Coverage"
+    },
+    "03": {
+        "name": "Collision, including Upset/Overturn",
+        "type": "Property Coverage"
+    },
+    "04": {
+        "name": "Credit Card - Theft or unauthorized use of credit cards, debit cards, or fund transfer cards and loss due to forgery or acceptance of counterfeit money",
+        "type": "Property Coverage"
+    },
+    "05": {
+        "name": "Earthquake",
+        "type": "Property Coverage"
+    },
+    "45": {
+        "name": "Escaped Liquid Fuel (Property Related)",
+        "type": "Property Coverage"
+    },
+    "39": {
+        "name": "Expenses Related to Identity Fraud",
+        "type": "Property Coverage"
+    },
+    "06": {
+        "name": "Explosion",
+        "type": "Property Coverage"
+    },
+    "33": {
+        "name": "Fire - from a Woodburning Stove",
+        "type": "Property Coverage"
+    },
+    "07": {
+        "name": "Fire - NOT from a Woodburning Stove",
+        "type": "Property Coverage"
+    },
+    "08": {
+        "name": "Flood",
+        "type": "Property Coverage"
+    },
+    "09": {
+        "name": "Freezing",
+        "type": "Property Coverage"
+    },
+    "10": {
+        "name": "Glass Breakage",
+        "type": "Property Coverage"
+    },
+    "11": {
+        "name": "Hail",
+        "type": "Property Coverage"
+    },
+    "77": {
+        "name": "Ice Dams",
+        "type": "Property Coverage"
+    },
+    "12": {
+        "name": "Lightning",
+        "type": "Property Coverage"
+    },
+    "44": {
+        "name": "Mold (Property Related)",
+        "type": "Property Coverage"
+    },
+    "40": {
+        "name": "Power Surge, including Brownouts and Blackouts",
+        "type": "Property Coverage"
+    },
+    "16": {
+        "name": "Riot and Civil Commotion",
+        "type": "Property Coverage"
+    },
+    "23": {
+        "name": "Sewer Back Up / Water Damage",
+        "type": "Property Coverage"
+    },
+    "37": {
+        "name": "Sinkhole Collapse",
+        "type": "Property Coverage"
+    },
+    "34": {
+        "name": "Smoke - from a Woodburning Stove",
+        "type": "Property Coverage"
+    },
+    "17": {
+        "name": "Smoke - NOT from a Woodburning Stove",
+        "type": "Property Coverage"
+    },
+    "76": {
+        "name": "Sprinkler Leakage",
+        "type": "Property Coverage"
+    },
+    "18": {
+        "name": "Theft - From Auto",
+        "type": "Property Coverage"
+    },
+    "19": {
+        "name": "Theft - On Premises",
+        "type": "Property Coverage"
+    },
+    "20": {
+        "name": "Theft - Off Premises",
+        "type": "Property Coverage"
+    },
+    "21": {
+        "name": "Vandalism",
+        "type": "Property Coverage"
+    },
+    "22": {
+        "name": "Vehicles",
+        "type": "Property Coverage"
+    },
+    "38": {
+        "name": "Volcanic Action",
+        "type": "Property Coverage"
+    },
+    "41": {
+        "name": "Weight of Ice, Snow, or Sleet",
+        "type": "Property Coverage"
+    },
+    "24": {
+        "name": "Windstorm",
+        "type": "Property Coverage"
+    },
+    "25": {
+        "name": "All Other Physical Damage",
+        "type": "Property Coverage"
+    },
+    "26": {
+        "name": "Bodily Injury - All Other",
+        "type": "Liability Coverage"
+    },
+    "28": {
+        "name": "Fire Legal Liability",
+        "type": "Liability Coverage"
+    },
+    "53": {
+        "name": "Liability (BI, PD, and Med-Pay) for Dog Bite",
+        "type": "Liability Coverage"
+    },
+    "57": {
+        "name": "Liability (BI, PD, and Med-Pay) for Escaped Liquid Fuel",
+        "type": "Liability Coverage"
+    },
+    "58": {
+        "name": "Liability (BI, PD, and Med-Pay) for Lead Poisoning",
+        "type": "Liability Coverage"
+    },
+    "54": {
+        "name": "Liability (BI, PD, and Med-Pay) for Mold",
+        "type": "Liability Coverage"
+    },
+    "55": {
+        "name": "Liability (BI, PD, and Med-Pay) for Swimming Pool",
+        "type": "Liability Coverage"
+    },
+    "56": {
+        "name": "Liability (BI, PD, and Med-Pay) for Trampoline",
+        "type": "Liability Coverage"
+    },
+    "30": {
+        "name": "Medical Payments - All Other",
+        "type": "Liability Coverage"
+    },
+    "27": {
+        "name": "Property Damage - All Other",
+        "type": "Liability Coverage"
+    },
+    "29": {
+        "name": "All Other Liability",
+        "type": "Liability Coverage"
+    }
+}

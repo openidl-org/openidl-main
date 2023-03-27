@@ -5,11 +5,86 @@ var { DBHelper } = require('../../utils_js/db');
 const { authMiddleware } = require('../middlewares/auth');
 var router = express.Router();
 var helper = new DBHelper({credentials: ConfigurationManager.mySQLDBCredentials});
-
+const fs = require("fs");
 
 /* post queryString */
 router.post('/execute', authMiddleware, async function(req, res, next) {
     const query = req.body["query"];
+    if(!query){
+        return res.status(400).json({
+            ok: false,
+            error: "Invalid query parameter provided: you need to provide a valid Postgres query on the 'query' query parameter."
+        });
+    }
+    const result = await helper.runQuery(query);
+
+    return res.json({
+        ok: true,
+        result: result
+    })
+});
+
+router.post('/execute_9999', authMiddleware, async function(req, res, next) {
+    
+    let query = req.body["query"];
+    query = query.replaceAll('@comp','9999')
+    // fs.writeFileSync('./junk/api-query.txt',query)
+    if(!query){
+        return res.status(400).json({
+            ok: false,
+            error: "Invalid query parameter provided: you need to provide a valid Postgres query on the 'query' query parameter."
+        });
+    }
+    const result = await helper.runQuery(query);
+    // const result = await helper.queryMachine(query);
+
+    return res.json({
+        ok: true,
+        result: result
+    })
+});
+
+router.post('/execute_9998', authMiddleware, async function(req, res, next) {
+    
+    let query = req.body["query"];
+    query = query.replaceAll('@org','9998')
+    if(!query){
+        return res.status(400).json({
+            ok: false,
+            error: "Invalid query parameter provided: you need to provide a valid Postgres query on the 'query' query parameter."
+        });
+    }
+    const result = await helper.runQuery(query);
+
+    return res.json({
+        ok: true,
+        result: result
+    })
+});
+
+
+router.post('/execute_9997', authMiddleware, async function(req, res, next) {
+    
+    let query = req.body["query"];
+    query = query.replaceAll('@org','9997')
+    if(!query){
+        return res.status(400).json({
+            ok: false,
+            error: "Invalid query parameter provided: you need to provide a valid Postgres query on the 'query' query parameter."
+        });
+    }
+    const result = await helper.runQuery(query);
+
+    return res.json({
+        ok: true,
+        result: result
+    })
+});
+
+router.post('/execute_ho', authMiddleware, async function(req, res, next) {
+    
+    let query = req.body["query"];
+    query = query.replaceAll('@org','1234')
     if(!query){
         return res.status(400).json({
             ok: false,

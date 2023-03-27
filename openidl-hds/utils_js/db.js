@@ -1,5 +1,6 @@
 const { DatabaseCredentials } = require("./dbCredentials.js");
 const PG = require("pg");
+const fs = require("fs");
 
 /**
  * @typedef {{
@@ -52,10 +53,14 @@ module.exports.DBHelper = class DBHelper {
     }
 
     async queryMachine(queryString){
-        let queries = queryString.split(';')
+        //queryString.replaceAll('@comp','9999')
+        let queries = queryString.split('|')
         let returnVal = []
         let logVal = []
+        let count = 0
         for (let query of queries){
+            // fs.writeFileSync(`./junk/query-${count}`,query)
+            count+=1
             try{
                 const queryWord = query.trim().split(/\s/)[0].toLowerCase()
                 if (queryWord === "create"){
@@ -66,7 +71,10 @@ module.exports.DBHelper = class DBHelper {
                         });
                     }
                 }else if (queryWord === "select"){
-                    const result = await this.callPG(query)
+                    fs.writeFileSync('./junk/api-db-query-select.txt',query)
+                    const result = await this.callPG(query.toString())
+                    fs.writeFileSync('./junk/api-db-result.txt',JSON.stringify(result))
+                    
                     returnVal.push({
                         query, result
                     });
@@ -84,16 +92,20 @@ module.exports.DBHelper = class DBHelper {
                 returnVal.push({
                     query: {
                         error: true,
-                        text: runQuery_query_e+""
+                        text: runQuery_query_e+""+query
                     }
                 });
+
+                fs.writeFileSync('./junk/api-error.txt',runQuery_query_e+""+query)
             }
         }
+        fs.writeFileSync(`./junk/returnVal.json`,JSON.stringify(returnVal))
         return returnVal
     }
 
 
     async runQuery(queryString){
+        fs.writeFileSync('./junk/querystring.txt',JSON.stringify(queryString))
         let result = await this.queryMachine(queryString.trim());
         return result
     }
