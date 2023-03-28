@@ -17,12 +17,12 @@ IF NOT EXISTS (SELECT * FROM pa_body_style_code) THEN `
 fileLines.push(tableDDL)
 
 let codes = codeMap.bodyStyle;
-console.log(codes);
+//console.log(codes);
 let index = 1
 for (let code in codes){
-    console.log(`body style:  ${code}`);
+    //console.log(`body style:  ${code}`);
     let description = codes[code]
-    console.log(`description: ${description}`);
+    //console.log(`description: ${description}`);
     line = `    INSERT INTO pa_body_style_code VALUES(${index},'${code}','${description}');`
     fileLines.push(line)
     index+=1

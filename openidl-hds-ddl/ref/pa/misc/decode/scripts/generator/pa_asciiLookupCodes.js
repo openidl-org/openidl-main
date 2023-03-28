@@ -20,12 +20,12 @@ fileLines.push(tableDDL)
 let codes = Object.keys(codeMap)
 let index = 1
 for (let code of codes){
-    console.log(code)
+    //console.log(code)
     let data = codeMap[code];
     let digit = data['digit'];
     let multiplier = data['multiplier'];
-    console.log(digit)
-    console.log(multiplier)
+    //console.log(digit)
+    //console.log(multiplier)
     line = `    INSERT INTO pa_ascii_lookup_code VALUES(${index},'${code}',${digit},${multiplier});`
     fileLines.push(line)
     index+=1

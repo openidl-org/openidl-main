@@ -133,7 +133,7 @@ exceptionC();
 buildEnd();
 
 for (line of fileLines) {
-	console.log(line);
+	//console.log(line);
 }
 
 var file = fs.createWriteStream('../../../../tables/V0.0.1.1.17__pa_state_exception_code.sql');

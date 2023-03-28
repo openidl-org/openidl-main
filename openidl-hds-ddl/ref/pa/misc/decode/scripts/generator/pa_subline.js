@@ -20,12 +20,12 @@ fileLines.push(tableDDL)
 let codes = Object.keys(codeMap)
 let index = 1
 for (let code of codes){
-    console.log(code)
+    //console.log(code)
     let data = codeMap[code];
     let name = data['name'];
     let category = data['category'];
-    console.log(name)
-    console.log(category)
+    //console.log(name)
+    //console.log(category)
     line = `    INSERT INTO pa_subline_code VALUES(${index},'${code}','${name}','${category}');`
     fileLines.push(line)
     index+=1

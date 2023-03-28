@@ -112,3 +112,8 @@ buildTail()
 for (let line of fileLines){
 	console.log(line)
 }
+
+var file = fs.createWriteStream('../../../../tables/V0.0.1.1.11__pa_um_uim_motorist_code.sql');
+file.on('error', function(err) { /* error handling */ });
+fileLines.forEach(function(v) { file.write(v + '\n'); });
+file.end();

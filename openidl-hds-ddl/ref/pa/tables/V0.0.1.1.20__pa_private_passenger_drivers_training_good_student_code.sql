@@ -4,8 +4,8 @@ BEGIN
 CREATE TABLE IF NOT EXISTS pa_private_passenger_drivers_training_good_student_code (
     id INT,
     code VARCHAR,
-    driversTraining VARCHAR,
-    goodStudentDiscount VARCHAR,
+    drivers_training VARCHAR,
+    good_student_discount VARCHAR,
     effective_date date not null default '1900-01-01',
     expiration_date date not null default '9999-12-31'
 );

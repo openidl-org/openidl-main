@@ -20,14 +20,14 @@ fileLines.push(tableDDL)
 let codes = Object.keys(codeMap)
 let index = 1
 for (let code of codes){
-    console.log(code)
+    //console.log(code)
     let data = codeMap[code];
     //let driversTraining = data.driversTraining;
     //let goodStudentDiscount = data.goodStudentDiscount;
     let driversTraining = data['driversTraining'];
     let goodStudentDiscount = data['goodStudentDiscount'];
-    console.log(driversTraining)
-    console.log(goodStudentDiscount)
+    //console.log(driversTraining)
+    //console.log(goodStudentDiscount)
     line = `    INSERT INTO pa_private_passenger_drivers_training_good_student_code VALUES(${index},'${code}','${driversTraining}','${goodStudentDiscount}');`
     fileLines.push(line)
     index+=1

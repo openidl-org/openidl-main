@@ -19,7 +19,7 @@ fileLines.push(tableDDL)
 let codes = Object.keys(codeMap)
 let index = 1
 for (let code of codes){
-    console.log(code)
+    //console.log(code)
     line = `    INSERT INTO pa_passive_restraint_discount_code VALUES(${index},'${code}','${codeMap[code]}');`
     fileLines.push(line)
     index+=1

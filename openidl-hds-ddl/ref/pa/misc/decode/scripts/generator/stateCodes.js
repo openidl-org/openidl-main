@@ -18,7 +18,7 @@ fileLines.push(tableDDL)
 
 let abbreviations = codeMap.abbreviations;
 // let codes = codeMap.codes;
-console.log(abbreviations);
+//console.log(abbreviations);
 let index = 1
 for (let abbreviation in abbreviations){
     //console.log(`abbr ${abbreviation}`);

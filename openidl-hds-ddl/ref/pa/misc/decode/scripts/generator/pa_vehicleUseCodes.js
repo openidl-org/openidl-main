@@ -22,7 +22,7 @@ fileLines.push(tableDDL)
 let codes = Object.keys(codeMap)
 let index = 1
 for (let code of codes){
-    console.log(code)
+    //console.log(code)
     let data = codeMap[code];
     //let use = data.use;
     //let commuteDistance = data.commuteDistance;
@@ -30,14 +30,14 @@ for (let code of codes){
     let commuteDistance = data['commuteDistance'];
     let annualDistance = data['annualDistance'];
     let operator = data['operator'];
-    console.log('use:');
-    console.log(use);
-    console.log('commuteDistance:');
-    console.log(commuteDistance);
-    console.log('annualDistance:');
-    console.log(annualDistance);
-    console.log('operator');
-    console.log(operator);
+    //console.log('use:');
+    //console.log(use);
+    //console.log('commuteDistance:');
+    //console.log(commuteDistance);
+    //console.log('annualDistance:');
+    //console.log(annualDistance);
+    //console.log('operator');
+    //console.log(operator);
     line = `    INSERT INTO pa_vehicle_use_code VALUES(${index},'${code}','${use}','${commuteDistance}','${annualDistance}','${operator}');`
     fileLines.push(line)
     index+=1

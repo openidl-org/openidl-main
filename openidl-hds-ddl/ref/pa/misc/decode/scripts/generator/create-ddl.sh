@@ -1,4 +1,3 @@
-create-ddl.sh
 node pa_anti-theft.js
 node pa_antiLockBrakesDiscountCodes.js
 node pa_asciiLookupCodes.js

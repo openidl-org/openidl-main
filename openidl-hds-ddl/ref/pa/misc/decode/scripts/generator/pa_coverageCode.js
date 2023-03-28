@@ -194,7 +194,7 @@ END $$`)
 
 
 for (let l of fileLines){
-	console.log(l)
+	//console.log(l)
 }
 
 var file = fs.createWriteStream('../../../../tables/V0.0.1.1.8__pa_coverage_code.sql');
