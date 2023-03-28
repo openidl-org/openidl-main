@@ -7,7 +7,9 @@ CREATE TABLE IF NOT EXISTS pa_vehicle_use_code (
     use VARCHAR,
     commute_distance VARCHAR,
     annual_distance VARCHAR,
-    operator VARCHAR
+    operator VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
 );
 
 IF NOT EXISTS (SELECT * FROM pa_vehicle_use_code) THEN 

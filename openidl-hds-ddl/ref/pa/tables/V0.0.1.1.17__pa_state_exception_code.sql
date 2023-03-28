@@ -4,7 +4,9 @@ BEGIN
 CREATE TABLE IF NOT EXISTS pa_state_exception_category_code (
     id int,
     name VARCHAR,
-    description VARCHAR
+    description VARCHAR,
+	effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
 );
     
 CREATE TABLE IF NOT EXISTS pa_state_exception_code (
@@ -13,7 +15,9 @@ CREATE TABLE IF NOT EXISTS pa_state_exception_code (
     fk_state_id int,
     code varchar,
     name varchar, 
-    description varchar
+    description varchar,
+	effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
     );
     
 IF NOT EXISTS (SELECT * FROM pa_state_exception_category_code) THEN

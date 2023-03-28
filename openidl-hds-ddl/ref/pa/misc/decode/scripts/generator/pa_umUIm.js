@@ -88,7 +88,9 @@ CREATE TABLE IF NOT EXISTS pa_um_uim_motorist_code(
 	id int,
 	fk_state_id VARCHAR,
 	code VARCHAR,
-	description VARCHAR
+	description VARCHAR,
+	effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
 );
 
 

@@ -1,0 +1,32 @@
+create-ddl.sh
+node pa_anti-theft.js
+node pa_antiLockBrakesDiscountCodes.js
+node pa_asciiLookupCodes.js
+node pa_bodySizeCodes.js
+node pa_bodyStyleCodes.js
+node pa_causeOfLossCode.js
+node pa_coverageCode.js
+node pa_deductibleCodes.js
+node pa_defensiveDriverDiscountCodes.js
+node pa_experiencedRatingModificationFactorCodes.js
+node pa_liabilityLimit.js
+node pa_limitedCodingLossTransactionCodes.js
+node pa_ncProgramEnhancementCodes.js
+node pa_operatorAgeCodes.js
+node pa_packageCodes.js
+node pa_passiveRestraintDiscountCodes.js
+node pa_penaltyPointsCodes.js
+node pa_poolAffiliationCodes.js
+node pa_privatePassengerDriversTrainingGoodStudentCodes.js
+node pa_programCodes.js
+node pa_sexAndMaritalStatusCodes.js
+node pa_singleMultiCarCodes.js
+node pa_stateException.js
+node pa_subline.js
+node pa_terrorismIndicatorCodes.js
+node pa_transactionCodes.js
+node pa_umUIm.js
+node pa_umuimStackingCodes.js
+node pa_vehiclePerformanceCodes.js
+node pa_vehicleUseCodes.js
+

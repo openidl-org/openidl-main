@@ -6,7 +6,9 @@ CREATE TABLE IF NOT EXISTS pa_sex_and_marital_status_code (
     code VARCHAR,
     marital_status VARCHAR,
     gender VARCHAR,
-    principal_secondary VARCHAR
+    principal_secondary VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
 );
 
 IF NOT EXISTS (SELECT * FROM pa_sex_and_marital_status_code) THEN 
