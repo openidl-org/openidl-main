@@ -38,3 +38,9 @@ openidl-k8s/*
 openidl-hds/config/*
 awx-automation/*
 jenkins-jobs/*
+
+#### IntelliJ IDEA  ######
+.idea
+*.iws
+*.iml
+*.ipr
