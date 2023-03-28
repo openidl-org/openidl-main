@@ -1,7 +1,7 @@
-const config = require('../../../../../../../openidl-hds/config/config.json');
+const config = require('../openidl-hds/config/config.json');
 const { Pool, Client } = require('pg');
 const records =
-	require('../../../../../../../../../con-data/pa_load_stg.json').records;
+	require('../openidl-hds-ddl/ref/pa/misc/pa_load_stg.js').records;
 const credentials = {
 	user: config.db.username,
 	host: config.db.host,
@@ -11,7 +11,7 @@ const credentials = {
 };
 
 // const sample = require("./sample.json")
-const mapping = require('./mapping.json');
+const mapping = require('./../openidl-hds-ddl/ref/pa/misc/decode/scripts/load/mapping_claim.json');
 
 function ASCIItoREALInt(input){
 	//console.log(`input: ${input}`)

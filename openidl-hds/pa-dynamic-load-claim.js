@@ -11,7 +11,7 @@ const credentials = {
 };
 
 // const sample = require("./sample.json")
-const mapping = require('./mapping.json');
+const mapping = require('../openidl-hds-ddl/ref/pa/misc/decode/scripts/load/mapping_claim.json');
 
 function ASCIItoREALInt(input){
 	//console.log(`input: ${input}`)
