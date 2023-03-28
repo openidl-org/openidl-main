@@ -1,6 +1,6 @@
 const config = require('./config/config.json')
 const { Pool, Client } = require("pg");
-const records = require('../../../con-data/personal-auto.json').records
+const records = require('../../../con-data/Personal_Auto/pre-test-1234-json.json').records
 const credentials = {
   user: config.db.username,
   host: config.db.host,
@@ -259,82 +259,86 @@ function makeInsertQueryForLoss(record){
 
 async function insertPremium(client,record){
     let query = makeInsertQuery(record)
-    //console.log(query)
+    console.log(query)
     await client.query(query)
 }
 
 async function insertLosses(client,record){
     let query = makeInsertQueryForLoss(record)
-    //console.log(query)
+    console.log(query)
     await client.query(query)
 }
 
 async function insertRecords(client,records){
-    let premiumErrors = 0
-    let lossErrors = 0
-    let errorRecords = []
-    let premiumLoad = 0
-    let lossLoad = 0
-    let recordCount = 0
-    let uncountedRecords = 0
+    // let premiumErrors = 0
+    // let lossErrors = 0
+    // let errorRecords = []
+    // let premiumLoad = 0
+    // let lossLoad = 0
+    // let recordCount = 0
+    // let uncountedRecords = 0
     for (let record of records){
-        console.log(`Loading: ${recordCount}`)
-        // console.log(record)
+        //console.log(`Loading: ${recordCount}`)
+        //console.log(record)
 
-        if (record.Policy.SublineCode =='1'){
-        recordCount += 1
+        // if (record.Policy.SublineCode =='1'){
+        // recordCount += 1
         if (record.TransactionCode == '1'	|| record.TransactionCode == '8') {
-            //console.log('premium record')
-            //await insertPremium(client,record)
-            try{
-            await insertPremium(client,record)
-            premiumLoad += 1
-            //console.log('premium record')
-            }
-            catch (e){
-                console.log('error record')
-                //console.log(record)
-                console.log('error')
-                console.log(e)
-                errorRecords.push(e)
-                errorRecords.push(record)
-                premiumErrors += 1
-            }
-
-        } else if (record.TransactionCode == '2' || record.TransactionCode == '3' || record.TransactionCode == '6'	|| record.TransactionCode == '7') {
-            //console.log('Loss record')
-            //await insertLosses(client,record)
-            try{
-            await insertLosses(client,record)
-            lossLoad += 1
-            //console.log('Loss record')
-            }
-			catch (e){
-                console.log('error record')
-                //console.log(record)
-                console.log('error')
-                console.log(e)
-                lossErrors += 1
-			}
-            } else {
-                console.log('WARNING! Uncounted Transaction Code: ' + record.TransactionCode)
-                uncountedRecords += 1
-            }}
+            console.log('premium record')
+            await insertPremium(client, record)
+            // try{
+            // await insertPremium(client,record)
+            // premiumLoad += 1
+            // //console.log('premium record')
+            // }
+            // catch (e){
+            //     console.log('error record')
+            //     //console.log(record)
+            //     console.log('error')
+            //     console.log(e)
+            //     errorRecords.push(e)
+            //     errorRecords.push(record)
+            //     premiumErrors += 1
+            // }
+        } else {
+            console.log('loss record');
+			await insertLosses(client, record);
+			//console.log('loss');
+		}
+        // } else if (record.TransactionCode == '2' || record.TransactionCode == '3' || record.TransactionCode == '6'	|| record.TransactionCode == '7') {
+        //     console.log('Loss record')
+        //     await insertLosses(client,record)
+            // try{
+            // await insertLosses(client,record)
+            // lossLoad += 1
+            // //console.log('Loss record')
+            // }
+			// catch (e){
+            //     console.log('error record')
+            //     //console.log(record)
+            //     console.log('error')
+            //     console.log(e)
+            //     lossErrors += 1
+			// }
+            // } else {
+            //     console.log('WARNING! Uncounted Transaction Code: ' + record.TransactionCode)
+            //     uncountedRecords += 1
+            // }}
 
     }
-    console.log('Premium Load Errors: ' + premiumErrors)
-    console.log('Loss Load Errors: ' + lossErrors)
-    console.log('Total Records: ' + recordCount)
-    console.log('Premium Count: ' + premiumLoad)
-    console.log('Loss Load: ' + lossLoad)
-    console.log('Uncounted Records: ' + uncountedRecords)
-    console.log(errorRecords)
+    // console.log('Premium Load Errors: ' + premiumErrors)
+    // console.log('Loss Load Errors: ' + lossErrors)
+    // console.log('Total Records: ' + recordCount)
+    // console.log('Premium Count: ' + premiumLoad)
+    // console.log('Loss Load: ' + lossLoad)
+    // console.log('Uncounted Records: ' + uncountedRecords)
+    // console.log(errorRecords)
 }
 
 async function main(){
     const client = new Client(credentials);
     await client.connect();
-    await insertRecords(client,records)
+    await insertRecords(client, records)
     await client.end();
 }
 
