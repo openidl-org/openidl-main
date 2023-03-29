@@ -39,11 +39,6 @@
         "stageName": "PREM_AMT",
         "dataType": "NUMERIC"
     },
-    "lossAmount": {
-        "inboundName": "lossAmount",
-        "stageName": "LOSS_AMT",
-        "dataType": "NUMERIC"
-    },
     "program": {
         "inboundName": "program",
         "stageName": "PROG_CD",
@@ -124,16 +119,6 @@
         "stageName": "EXPOSURE",
         "dataType": "INT"
     },
-    "claimCount": {
-        "inboundName": "claimCount",
-        "stageName": "CLM_CNT",
-        "dataType": "INT"
-    },
-    "causeOfLoss": {
-        "inboundName": "causeOfLoss",
-        "stageName": "COL",
-        "dataType": "VARCHAR"
-    },
     "monthsCovered": {
         "inboundName": "monthsCovered",
         "stageName": "MOS_COV",
@@ -149,16 +134,6 @@
         "stageName": "SING_MULT_CAR",
         "dataType": "VARCHAR"
     },
-    "accidentMonth": {
-        "inboundName": "accidentMonth",
-        "stageName": "ACCIDENT_MON",
-        "dataType": "VARCHAR"
-    },
-    "accidentYear": {
-        "inboundName": "accidentYear",
-        "stageName": "ACCIDENT_YR",
-        "dataType": "VARCHAR"
-    },
     "packageCode": {
         "inboundName": "packageCode",
         "stageName": "PACKAGE_ID",
@@ -169,19 +144,9 @@
         "stageName": "POOL",
         "dataType": "VARCHAR"
     },
-    "occurrenceIdentification": {
-        "inboundName": "occurrenceIdentification",
-        "stageName": "CLAIM_NUM",
-        "dataType": "VARCHAR"
-      },
     "policyIdentification": {
       "inboundName": "policyIdentification",
       "stageName": "POLICY_NUM",
-      "dataType": "VARCHAR"
-    },
-    "claimIdentifier": {
-      "inboundName": "claimIdentifier",
-      "stageName": "CLAIM_ID",
       "dataType": "VARCHAR"
     },
     "zipCode": {
@@ -272,6 +237,11 @@
     "limitedCodingLossTransaction": {
         "inboundName": "limitedCodingLossTransaction",
         "stageName": "LIMIT_LOSS_CD_ID",
+        "dataType": "VARCHAR"
+    },
+    "optionalZipCodeIndicator": {
+        "inboundName": "optionalZipCodeIndicator",
+        "stageName": "OPT_ZIP_CD_IND",
         "dataType": "VARCHAR"
     }
   }

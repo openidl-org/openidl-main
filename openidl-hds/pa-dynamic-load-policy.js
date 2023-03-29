@@ -11,7 +11,7 @@ const credentials = {
 };
 
 // const sample = require("./sample.json")
-const mapping = require('./../openidl-hds-ddl/ref/pa/misc/decode/scripts/load/mapping_claim.json');
+const mapping = require('./../openidl-hds-ddl/ref/pa/misc/decode/scripts/load/mapping_policy.json');
 
 function ASCIItoREALInt(input){
 	//console.log(`input: ${input}`)
@@ -170,7 +170,7 @@ function makeQuery(record){
     }
   }
   // change table name HERE
-  let query = 'INSERT INTO pa_stat_stg (';
+  let query = 'INSERT INTO personal_auto_policy (';
 
   for (let column of goodColumns) {
     //console.log(column);

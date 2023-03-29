@@ -9,9 +9,9 @@
 -Join the pa_stat_stg with all code tables
 */
 
-const config = require('./config/config.json')
+const config = require('../../../../openidl-hds/config/config.json')
 const { Pool, Client } = require("pg");
-const records = require('../../../con-data/Personal_Auto/personalAuto.json').records
+const records = require('../../../../../../con-data/Personal_Auto/pre-test-1234-json.json').records
 const credentials = {
   user: config.db.username,
   host: config.db.host,

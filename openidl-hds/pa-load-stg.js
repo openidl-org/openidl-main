@@ -44,9 +44,9 @@ function makeInsertQuery(record) {
     bodyStyle = convertBodyStyle(record.vehicleClass)
     bodySize = convertBodySize(record.vehicleClass)
 
-    console.log(record.vehicleClass)
-    console.log(`bodyStyle: ${bodyStyle}, bodySize: ${bodySize}`)
-    console.log('exposure: ' + record.exposure)
+    // console.log(record.vehicleClass)
+    // console.log(`bodyStyle: ${bodyStyle}, bodySize: ${bodySize}`)
+    // console.log('exposure: ' + record.exposure)
     let query = ` 
     INSERT INTO openidl_base_9999.pa_stat_stg 
     (LINE,
