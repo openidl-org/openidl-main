@@ -1,7 +1,8 @@
 const config = require('../../../../../../../openidl-hds/config/config.json');
+const fs = require('fs')
 const { Pool, Client } = require('pg');
 const records =
-	require('../../../../../../../../../con-data/pa_load_stg.json').records;
+	require('../../../../../../../../../con-data/auto.json').records;
 const credentials = {
 	user: config.db.username,
 	host: config.db.host,
@@ -135,6 +136,7 @@ function ASCIItoREALFloat(input){
 
 
 function makeQuery(record){
+  console.log(record)
   let accountingDate = record.accountingDate
   record['accountingMonth'] = accountingDate.slice(0,2)
   record['accountingYear'] = accountingDate.slice(-1)
@@ -170,7 +172,7 @@ function makeQuery(record){
     }
   }
   // change table name HERE
-  let query = 'INSERT INTO pa_stat_stg (';
+  let query = 'INSERT INTO openidl_base_9997.pa_stat_stg (';
 
   for (let column of goodColumns) {
     //console.log(column);
@@ -195,8 +197,14 @@ function makeQuery(record){
   query = query.slice(0, -2) + ');';
 
   console.log(query);
+  return query
+}
+queries = []
+for (let record of records){
+  queries.push(makeQuery(record))
 }
 
-for (let record of records){
-  makeQuery(record)
-}
+var file = fs.createWriteStream('../../../../../../../../../con-data/pa-insert.sql');
+file.on('error', function(err) { /* error handling */ });
+queries.forEach(function(v) { file.write(v + '\n'); });
+file.end();
