@@ -1,7 +1,7 @@
 const config = require('../openidl-hds/config/config.json');
 const { Pool, Client } = require('pg');
 const records =
-	require('../openidl-hds-ddl/ref/pa/misc/pa_load_stg.js').records;
+	require('../../../con-data/Personal_Auto/pre-test-1234-json.json').records;
 const credentials = {
 	user: config.db.username,
 	host: config.db.host,
@@ -135,8 +135,10 @@ function ASCIItoREALFloat(input){
 
 
 function makeQuery(record){
+	console.log(record);
   let accountingDate = record.accountingDate
-  record['accountingMonth'] = accountingDate.slice(0,2)
+  //record['accountingMonth'] = accountingDate.slice(0,2)
+  record.
   record['accountingYear'] = accountingDate.slice(-1)
   totalColumns = Object.keys(record);
 
