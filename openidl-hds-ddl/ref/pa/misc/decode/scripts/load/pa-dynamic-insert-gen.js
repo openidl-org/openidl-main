@@ -1,6 +1,6 @@
 const config = require('../../../../../../../openidl-hds/config/config.json');
 const fs = require('fs')
-const { Pool, Client } = require('pg');
+//const { Pool, Client } = require('pg');
 const records =
 	require('../../../../../../../../../con-data/auto.json').records;
 const credentials = {
