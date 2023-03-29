@@ -6,8 +6,8 @@ let tableDDL = `
 DO $$
 BEGIN
 CREATE TABLE IF NOT EXISTS pa_terrorism_indicator_code (
-    id INT
-    code VARCHAR
+    id INT,
+    code VARCHAR,
     description VARCHAR,
     effective_date date not null default '1900-01-01',
     expiration_date date not null default '9999-12-31'
