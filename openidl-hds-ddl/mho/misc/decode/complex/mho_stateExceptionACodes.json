@@ -1,0 +1,34 @@
+{
+    "exceptionField": {
+        "stateExceptionA": {
+            "FL": {
+                "hdsName": "WindStormProtectiveDevices",
+                "statPlanName": "windStormProtectiveDevices",
+                "type": "code",
+                "codes": {
+                    "0": "Properties WITHOUT windstorm protective device credit OR Does Not Apply",
+                    "1": "Properties WITH properly installed and maintained windstorm protective devices (ML-415) and mobile home meets wind load provisions set forth in the ANSI/ASCE 7-88",
+                    "2": "Properties WITH properly installed and maintained windstorm protective devices (ML-415) and mobile home DOES NOT meet wind load provisions set forth in the ANSI/ASCE 7-88"
+                }
+            },
+            "NY": {
+                "hdsName": "WindStormProtectiveDevices",
+                "statPlanName": "windStormProtectiveDevices",
+                "type": "code",
+                "codes": {
+                    "0": "Properties WITHOUT windstorm protective device credit OR Does Not Apply",
+                    "1": "Properties WITH windstorm protective device credit for having installed protective devices on all openings: AAIS ML-415 Endorsement or equivalent / ISO HO 04 21 Endorsement or equivalent"
+                }
+            },
+            "NC": {
+                "hdsName": "ConsentToRate",
+                "statPlanName": "consentToRate",
+                "type": "code",
+                "codes": {
+                    "0": "Policies NOT written on a consent-to-rate basis OR Does Not Apply'",
+                    "1": "Policies written on a consent-to-rate basis"
+                }
+            }
+        }
+    }
+}

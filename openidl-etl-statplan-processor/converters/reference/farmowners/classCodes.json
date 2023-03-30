@@ -1,0 +1,692 @@
+{ 
+  "00": {
+    "name": "Does not apply",
+    "category": "Does not apply",
+    "class": "Does not apply"
+  },
+  "02": {
+    "name": "Erroneous Data",
+    "category": "Erroneous Data",
+    "class": "Erroneous Data"
+  },
+  "52": {
+    "name": "Erroneous Data",
+    "category": "Erroneous Data",
+    "class": "Erroneous Data"
+  },
+  "01": {
+    "name": "Livestock",
+    "category": "Scheduled Farm Personal Property",
+    "class": "Class of Property"
+  },
+  "66": {
+    "name": "Equipment and machinery - Tractors (Including Attachments)",
+    "category": "Scheduled Farm Personal Property",
+    "class": "Class of Property"
+  },
+  "67": {
+    "name": "Equipment and machinery - Combines and Harvesters",
+    "category": "Scheduled Farm Personal Property",
+    "class": "Class of Property"
+  },
+  "68": {
+    "name": "Equipment and machinery - Other Than Tractors, Combines, and Harvesters",
+    "category": "Scheduled Farm Personal Property",
+    "class": "Class of Property"
+  },
+  "69": {
+    "name": "Equipment and machinery - Machinery Not Described",
+    "category": "Scheduled Farm Personal Property",
+    "class": "Class of Property"
+  },
+  "03": {
+    "name": "Poultry",
+    "category": "Scheduled Farm Personal Property",
+    "class": "Class of Property"
+  },
+  "04": {
+    "name": "Turkeys",
+    "category": "Scheduled Farm Personal Property",
+    "class": "Class of Property"
+  },
+  "05": {
+    "name": "Hay/Straw/Fodder in buildings",
+    "category": "Scheduled Farm Personal Property",
+    "class": "Class of Property"
+  },
+  "06": {
+    "name": "Hay/Straw/Fodder in the open",
+    "category": "Scheduled Farm Personal Property",
+    "class": "Class of Property"
+  },
+  "07": {
+    "name": "Household contents",
+    "category": "Scheduled Farm Personal Property",
+    "class": "Class of Property"
+  },
+  "08": {
+    "name": "Farm products (including dairy) and supplies - NOC",
+    "category": "Scheduled Farm Personal Property",
+    "class": "Class of Property"
+  },
+  "70": {
+    "name": "Grain - In the Open",
+    "category": "Scheduled Farm Personal Property",
+    "class": "Class of Property"
+  },
+  "71": {
+    "name": "Grain - Metal Structures - Threshed Grain and Seeds",
+    "category": "Scheduled Farm Personal Property",
+    "class": "Class of Property"
+  },
+  "72": {
+    "name": "Grain - Metal Structures - General Contents",
+    "category": "Scheduled Farm Personal Property",
+    "class": "Class of Property"
+  },
+  "73": {
+    "name": "Grain - In Other Structures",
+    "category": "Scheduled Farm Personal Property",
+    "class": "Class of Property"
+  },
+  "10": {
+    "name": "Computers",
+    "category": "Scheduled Farm Personal Property",
+    "class": "Class of Property"
+  },
+  "74": {
+    "name": "Tobacco and Hemp",
+    "category": "Scheduled Farm Personal Property",
+    "class": "Class of Property"
+  },
+  "75": {
+    "name": "Trays, Boxes, Box Shook",
+    "category": "Scheduled Farm Personal Property",
+    "class": "Class of Property"
+  },
+  "76": {
+    "name": "Wool",
+    "category": "Scheduled Farm Personal Property",
+    "class": "Class of Property"
+  },
+  "49": {
+    "name": "All other property",
+    "category": "Scheduled Farm Personal Property",
+    "class": "Class of Property"
+  },
+  "51": {
+    "name": "Dwellings",
+    "category": "Farm Barns, Buildings, and Other Structures",
+    "class": "Class of Property"
+  },
+  "77": {
+    "name": "Barns",
+    "category": "Farm Barns, Buildings, and Other Structures",
+    "class": "Class of Property"
+  },
+  "78": {
+    "name": "Outbuildings",
+    "category": "Farm Barns, Buildings, and Other Structures",
+    "class": "Class of Property"
+  },
+  "53": {
+    "name": "Silos",
+    "category": "Farm Barns, Buildings, and Other Structures",
+    "class": "Class of Property"
+  },
+  "54": {
+    "name": "Sheds, such as implement, machine, and tool",
+    "category": "Farm Barns, Buildings, and Other Structures",
+    "class": "Class of Property"
+  },
+  "55": {
+    "name": "Houses, such as incubator, brooder, milk, hen",
+    "category": "Farm Barns, Buildings, and Other Structures",
+    "class": "Class of Property"
+  },
+  "56": {
+    "name": "Windmills and windchargers",
+    "category": "Farm Barns, Buildings, and Other Structures",
+    "class": "Class of Property"
+  },
+  "58": {
+    "name": "Granaries",
+    "category": "Farm Barns, Buildings, and Other Structures",
+    "class": "Class of Property"
+  },
+  "59": {
+    "name": "Dairy barns",
+    "category": "Farm Barns, Buildings, and Other Structures",
+    "class": "Class of Property"
+  },
+  "60": {
+    "name": "Hog confinement buildings",
+    "category": "Farm Barns, Buildings, and Other Structures",
+    "class": "Class of Property"
+  },
+  "61": {
+    "name": "Potato houses",
+    "category": "Farm Barns, Buildings, and Other Structures",
+    "class": "Class of Property"
+  },
+  "62": {
+    "name": "Fences, corrals, chutes, power and light poles, wiring, solar, cell towers",
+    "category": "Farm Barns, Buildings, and Other Structures",
+    "class": "Class of Property"
+  },
+  "64": {
+    "name": "Tanks",
+    "category": "Farm Barns, Buildings, and Other Structures",
+    "class": "Class of Property"
+  },
+  "65": {
+    "name": "Greenhouses",
+    "category": "Farm Barns, Buildings, and Other Structures",
+    "class": "Class of Property"
+  },
+  "99": {
+    "name": "All other structures",
+    "category": "Farm Barns, Buildings, and Other Structures",
+    "class": "Class of Property"
+  },
+  "11": {
+    "name": "Livestock -- Additional Perils -- excluding sheep (AAIS FO-356 / FO 0356 or",
+    "category": "Livestock Perils Options",
+    "class": "Class of Property"
+  },
+  "12": {
+    "name": "equivalent)",
+    "category": "Livestock Perils Options",
+    "class": "Class of Property"
+  },
+  "13": {
+    "name": "Livestock -- Additional Perils -- including sheep (AAIS FO-356 / FO 0356 or",
+    "category": "Livestock Perils Options",
+    "class": "Class of Property"
+  },
+  "14": {
+    "name": "equivalent)",
+    "category": "Livestock Perils Options",
+    "class": "Class of Property"
+  },
+  "15": {
+    "name": "Livestock -- Winter Perils (AAIS FO-324 / FO 0324 or equivalent)",
+    "category": "Livestock Perils Options",
+    "class": "Class of Property"
+  },
+  "16": {
+    "name": "Livestock -- Loading and Unloading Accidents (FL-334) -- excluding sheep || Livestock -- Loading and Unloading Accidents (FL-334) - including sheep || Livestock -- Suffocation (AAIS FO-349 / FO 0349 or equivalent)",
+    "category": "Livestock Perils Options",
+    "class": "Class of Property"
+  },
+  "10010": {
+    "name": "Baskets",
+    "category": "Crafts",
+    "class": "Home-Based Business"
+  },
+  "10020": {
+    "name": "Candles",
+    "category": "Crafts",
+    "class": "Home-Based Business"
+  },
+  "10030": {
+    "name": "Ceramics",
+    "category": "Crafts",
+    "class": "Home-Based Business"
+  },
+  "10040": {
+    "name": "Decorative clothing",
+    "category": "Crafts",
+    "class": "Home-Based Business"
+  },
+  "10050": {
+    "name": "Dolls",
+    "category": "Crafts",
+    "class": "Home-Based Business"
+  },
+  "10060": {
+    "name": "Fabrics",
+    "category": "Crafts",
+    "class": "Home-Based Business"
+  },
+  "10070": {
+    "name": "Flower Arrangements",
+    "category": "Crafts",
+    "class": "Home-Based Business"
+  },
+  "10080": {
+    "name": "Glass",
+    "category": "Crafts",
+    "class": "Home-Based Business"
+  },
+  "10090": {
+    "name": "Jewelry",
+    "category": "Crafts",
+    "class": "Home-Based Business"
+  },
+  "10100": {
+    "name": "Metalwork",
+    "category": "Crafts",
+    "class": "Home-Based Business"
+  },
+  "10110": {
+    "name": "Needlework",
+    "category": "Crafts",
+    "class": "Home-Based Business"
+  },
+  "10120": {
+    "name": "Quilts",
+    "category": "Crafts",
+    "class": "Home-Based Business"
+  },
+  "10130": {
+    "name": "Sculptures",
+    "category": "Crafts",
+    "class": "Home-Based Business"
+  },
+  "10140": {
+    "name": "Wall hangings",
+    "category": "Crafts",
+    "class": "Home-Based Business"
+  },
+  "10150": {
+    "name": "Wind chimes",
+    "category": "Crafts",
+    "class": "Home-Based Business"
+  },
+  "10160": {
+    "name": "Wood products",
+    "category": "Crafts",
+    "class": "Home-Based Business"
+  },
+  "10170": {
+    "name": "Wreaths",
+    "category": "Crafts",
+    "class": "Home-Based Business"
+  },
+  "20010": {
+    "name": "Baked Goods",
+    "category": "Foods",
+    "class": "Home-Based Business"
+  },
+  "20020": {
+    "name": "Beverages (i.e. coffee and tea",
+    "category": "Foods",
+    "class": "Home-Based Business"
+  },
+  "20030": {
+    "name": "Candy, nuts, or confections",
+    "category": "Foods",
+    "class": "Home-Based Business"
+  },
+  "20040": {
+    "name": "Canning (i.e. jellies and jams",
+    "category": "Foods",
+    "class": "Home-Based Business"
+  },
+  "20050": {
+    "name": "Deli Foods",
+    "category": "Foods",
+    "class": "Home-Based Business"
+  },
+  "20060": {
+    "name": "Fruit and Vegetable Stand (no 'pick your own' operations)",
+    "category": "Foods",
+    "class": "Home-Based Business"
+  },
+  "20070": {
+    "name": "Gourmet Foods",
+    "category": "Foods",
+    "class": "Home-Based Business"
+  },
+  "20080": {
+    "name": "Picnic Baskets",
+    "category": "Foods",
+    "class": "Home-Based Business"
+  },
+  "20090": {
+    "name": "Smoked and Dressed Meats, Poultry, and Fish",
+    "category": "Foods",
+    "class": "Home-Based Business"
+  },
+  "20100": {
+    "name": "Wine and Spirits",
+    "category": "Foods",
+    "class": "Home-Based Business"
+  },
+  "30010": {
+    "name": "Accounting",
+    "category": "Offices",
+    "class": "Home-Based Business"
+  },
+  "30020": {
+    "name": "Billing",
+    "category": "Offices",
+    "class": "Home-Based Business"
+  },
+  "30030": {
+    "name": "Bookkeeping",
+    "category": "Offices",
+    "class": "Home-Based Business"
+  },
+  "30040": {
+    "name": "Business consulting",
+    "category": "Offices",
+    "class": "Home-Based Business"
+  },
+  "30050": {
+    "name": "Calligraphy",
+    "category": "Offices",
+    "class": "Home-Based Business"
+  },
+  "30060": {
+    "name": "Career Consulting",
+    "category": "Offices",
+    "class": "Home-Based Business"
+  },
+  "30070": {
+    "name": "Computer Consulting",
+    "category": "Offices",
+    "class": "Home-Based Business"
+  },
+  "30080": {
+    "name": "Counseling",
+    "category": "Offices",
+    "class": "Home-Based Business"
+  },
+  "30090": {
+    "name": "Desktop Publishing",
+    "category": "Offices",
+    "class": "Home-Based Business"
+  },
+  "30100": {
+    "name": "Financial Planning",
+    "category": "Offices",
+    "class": "Home-Based Business"
+  },
+  "30110": {
+    "name": "Freelance Writing",
+    "category": "Offices",
+    "class": "Home-Based Business"
+  },
+  "30120": {
+    "name": "Graphic Art",
+    "category": "Offices",
+    "class": "Home-Based Business"
+  },
+  "30130": {
+    "name": "Insurance Agent",
+    "category": "Offices",
+    "class": "Home-Based Business"
+  },
+  "30140": {
+    "name": "Mailing and Addressing",
+    "category": "Offices",
+    "class": "Home-Based Business"
+  },
+  "30150": {
+    "name": "Public Relations",
+    "category": "Offices",
+    "class": "Home-Based Business"
+  },
+  "30160": {
+    "name": "Real Estate Agent",
+    "category": "Offices",
+    "class": "Home-Based Business"
+  },
+  "30170": {
+    "name": "Resume Writing",
+    "category": "Offices",
+    "class": "Home-Based Business"
+  },
+  "30180": {
+    "name": "Telephone Answering",
+    "category": "Offices",
+    "class": "Home-Based Business"
+  },
+  "30190": {
+    "name": "Tutoring",
+    "category": "Offices",
+    "class": "Home-Based Business"
+  },
+  "30200": {
+    "name": "Word Processing",
+    "category": "Offices",
+    "class": "Home-Based Business"
+  },
+  "40010": {
+    "name": "Antiques",
+    "category": "Retail",
+    "class": "Home-Based Business"
+  },
+  "40020": {
+    "name": "Art Supplies",
+    "category": "Retail",
+    "class": "Home-Based Business"
+  },
+  "40030": {
+    "name": "Art Work",
+    "category": "Retail",
+    "class": "Home-Based Business"
+  },
+  "40040": {
+    "name": "Books, Magazines, and Videos",
+    "category": "Retail",
+    "class": "Home-Based Business"
+  },
+  "40050": {
+    "name": "Candles",
+    "category": "Retail",
+    "class": "Home-Based Business"
+  },
+  "40060": {
+    "name": "Clothing",
+    "category": "Retail",
+    "class": "Home-Based Business"
+  },
+  "40070": {
+    "name": "Coins and Stamps",
+    "category": "Retail",
+    "class": "Home-Based Business"
+  },
+  "40080": {
+    "name": "Collectibles",
+    "category": "Retail",
+    "class": "Home-Based Business"
+  },
+  "40090": {
+    "name": "Cosmetics",
+    "category": "Retail",
+    "class": "Home-Based Business"
+  },
+  "40100": {
+    "name": "Costume Jewelry",
+    "category": "Retail",
+    "class": "Home-Based Business"
+  },
+  "40110": {
+    "name": "Decorative Housewares",
+    "category": "Retail",
+    "class": "Home-Based Business"
+  },
+  "40120": {
+    "name": "Gifts",
+    "category": "Retail",
+    "class": "Home-Based Business"
+  },
+  "40130": {
+    "name": "Household and Kitchen Products",
+    "category": "Retail",
+    "class": "Home-Based Business"
+  },
+  "40140": {
+    "name": "Personal Care Products",
+    "category": "Retail",
+    "class": "Home-Based Business"
+  },
+  "40150": {
+    "name": "Plants and Flowers",
+    "category": "Retail",
+    "class": "Home-Based Business"
+  },
+  "40160": {
+    "name": "Stationary and Paper Products",
+    "category": "Retail",
+    "class": "Home-Based Business"
+  },
+  "40170": {
+    "name": "Tackle and Bait",
+    "category": "Retail",
+    "class": "Home-Based Business"
+  },
+  "40180": {
+    "name": "Toys",
+    "category": "Retail",
+    "class": "Home-Based Business"
+  },
+  "40190": {
+    "name": "Vitamins and Health Care Products",
+    "category": "Retail",
+    "class": "Home-Based Business"
+  },
+  "50010": {
+    "name": "Aesthetician",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50020": {
+    "name": "Barber",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50030": {
+    "name": "Beautician",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50040": {
+    "name": "Bicycle Repair",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50050": {
+    "name": "Camera Repair",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50060": {
+    "name": "Carpet and Upholstery Cleaning",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50070": {
+    "name": "Clock, Jewelry, or Watch Repair",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50080": {
+    "name": "Computer Repair",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50090": {
+    "name": "Dog or Cat Boarding, Breeding, or Training",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50100": {
+    "name": "Dressmaker, Seamstress, or Tailor",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50110": {
+    "name": "Flower Arranging",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50120": {
+    "name": "Furniture Upholstering",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50130": {
+    "name": "Gift Delivery Service",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50140": {
+    "name": "Hair Stylist",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50150": {
+    "name": "House Cleaning",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50160": {
+    "name": "House Sitting",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50170": {
+    "name": "Instruction (music, etiquette, etc.)",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50180": {
+    "name": "Interior Decorating",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50190": {
+    "name": "Manicurist",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50200": {
+    "name": "Musical Instrument Repair",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50210": {
+    "name": "Personal Shopper",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50220": {
+    "name": "Pet Sitting and Walking",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50230": {
+    "name": "Photography",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50240": {
+    "name": "Picture Framing",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50250": {
+    "name": "Printer",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50260": {
+    "name": "Shoe Repair",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50270": {
+    "name": "Videotaping",
+    "category": "Services",
+    "class": "Home-Based Business"
+  },
+  "50280": {
+    "name": "Wedding or Party Planning",
+    "category": "Services",
+    "class": "Home-Based Business"
+  }
+}

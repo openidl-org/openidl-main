@@ -1,0 +1,10 @@
+{
+  "stateExceptionCode": {
+    "MA": {
+      "codes": {
+        "1": "Liability coverage excludes lead poisoning liability",
+        "2": "Liability coverage includes lead poisoning liability"
+      }
+    }
+  }
+}

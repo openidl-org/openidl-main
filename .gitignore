@@ -38,3 +38,4 @@ openidl-k8s/*
 openidl-hds/config/*
 awx-automation/*
 jenkins-jobs/*
+openidl-hds-etl/config/*
