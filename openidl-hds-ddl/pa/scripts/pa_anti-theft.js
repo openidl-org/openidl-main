@@ -1,7 +1,7 @@
 fs = require('fs')
 
-let states = require('./state.json').states
-let codeMap = require('../../complex/pa_antiTheftDeviceDiscountCodes.json').state;
+let states = require('../codes/state.json').states
+let codeMap = require('../codes/pa_antiTheftDeviceDiscountCodes.json').state;
 
 
 
@@ -120,7 +120,7 @@ END $$
 //     console.log(line)
 // }
 
-var file = fs.createWriteStream('../../../../tables/V0.0.1.1.4__pa_anti_theft_device_discount_code.sql');
+var file = fs.createWriteStream('../tables/V0.0.1.1.4__pa_anti_theft_device_discount_code.sql');
 file.on('error', function(err) { /* error handling */ });
 tableLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();

@@ -1,6 +1,6 @@
 fs = require('fs')
 
-let codeMap = require('../../simple/pa_asciiLookupCodes.json');
+let codeMap = require('../codes/simple/pa_asciiLookupCodes.json');
 let fileLines = []
 let tableDDL = `
 DO $$ 

@@ -1,5 +1,5 @@
 fs = require('fs')
-let codeMap = require('../../complex/pa_causeOfLossCodes.json').coverage;
+let codeMap = require('../codes/pa_causeOfLossCodes.json').coverage;
 fileLines = []
 //console.log(codeMap)
 

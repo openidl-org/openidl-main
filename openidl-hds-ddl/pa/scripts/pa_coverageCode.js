@@ -1,7 +1,7 @@
 fs = require('fs')
-let states = require('./state.json').states;
-let codeMap = require('../../complex/pa_coverageCodes.json');
-let coverageCategoriesMap = require('../../complex/pa_coverageCategory.json');
+let states = require('../codes/state.json').states;
+let codeMap = require('../codes/pa_coverageCodes.json');
+let coverageCategoriesMap = require('../codes/pa_coverageCategory.json');
 let fileLines = [];
 
 function getSpecialStates() {

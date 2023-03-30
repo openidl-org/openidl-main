@@ -1,6 +1,6 @@
 let fs = require('fs')
-let states = require('./state.json').states;
-let codeMap = require('../../complex/pa_umUimCodes.json').state;
+let states = require('../codes/state.json').states;
+let codeMap = require('../codes/pa_umUimCodes.json').state;
 fileLines = []
 
 function getSpecialStates() {

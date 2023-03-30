@@ -1,6 +1,6 @@
 fs = require('fs')
 
-let codeMap = require('../../simple/pa_sublineCodes.json');
+let codeMap = require('../codes/pa_sublineCodes.json');
 let fileLines = []
 let tableDDL = `
 DO $$ 

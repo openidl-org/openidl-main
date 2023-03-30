@@ -1,6 +1,6 @@
 fs = require('fs')
-let states = require('./state.json').states;
-let codeMap = require('../../complex/pa_liabilityLimitCodes.json');
+let states = require('../codes/state.json').states;
+let codeMap = require('../codes/pa_liabilityLimitCodes.json');
 
 function getSpecialStates() {
 	let specialStates = Object.keys(codeMap.state);

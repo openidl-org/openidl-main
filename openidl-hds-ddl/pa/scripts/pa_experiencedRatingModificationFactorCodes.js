@@ -1,6 +1,6 @@
 fs = require('fs')
 
-let codeMap = require('../../simple/pa_experiencedRatingModificationFactorCodes.json');
+let codeMap = require('../codes/pa_experiencedRatingModificationFactorCodes.json');
 let fileLines = []
 let tableDDL = `
 DO $$ 
