@@ -138,7 +138,7 @@ fileLines.push(end)
 // 	console.log(line)
 // }
 
-var file = fs.createWriteStream('../../../../tables/V0.0.1.1.13__pa_liability_limit_code.sql');
+var file = fs.createWriteStream('../tables/V0.0.1.1.13__pa_liability_limit_code.sql');
 file.on('error', function(err) { /* error handling */ });
 fileLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();

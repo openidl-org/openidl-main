@@ -38,7 +38,7 @@ END $$;`
 fileLines.push(end)
 
 
-var file = fs.createWriteStream('../../../../tables/V0.0.1.1.20__pa_private_passenger_drivers_training_good_student_code.sql');
+var file = fs.createWriteStream('../tables/V0.0.1.1.20__pa_private_passenger_drivers_training_good_student_code.sql');
 file.on('error', function(err) { /* error handling */ });
 fileLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();

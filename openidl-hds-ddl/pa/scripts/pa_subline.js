@@ -36,7 +36,7 @@ END $$;`
 fileLines.push(end)
 
 
-var file = fs.createWriteStream('../../../../tables/V0.0.1.1.10__pa_subline_code.sql');
+var file = fs.createWriteStream('../tables/V0.0.1.1.10__pa_subline_code.sql');
 file.on('error', function(err) { /* error handling */ });
 fileLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();

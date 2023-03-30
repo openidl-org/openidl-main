@@ -1,6 +1,6 @@
 fs = require('fs')
 
-let codeMap = require('../codes/simple/pa_asciiLookupCodes.json');
+let codeMap = require('../codes/pa_asciiLookupCodes.json');
 let fileLines = []
 let tableDDL = `
 DO $$ 
@@ -36,7 +36,7 @@ END $$;`
 fileLines.push(end)
 
 
-var file = fs.createWriteStream('../../../../tables/V0.0.1.1.33__pa_ascii_lookup_code.sql');
+var file = fs.createWriteStream('../tables/V0.0.1.1.33__pa_ascii_lookup_code.sql');
 file.on('error', function(err) { /* error handling */ });
 fileLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();

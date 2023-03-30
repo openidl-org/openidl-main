@@ -103,7 +103,7 @@ let end = `END $$;`
 fileLines.push(end)
 
 
-var file = fs.createWriteStream('../../../../tables/V0.0.1.1.6__pa_stat_stg_tbl.sql');
+var file = fs.createWriteStream('../tables/V0.0.1.1.6__pa_stat_stg_tbl.sql');
 file.on('error', function(err) { /* error handling */ });
 fileLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();

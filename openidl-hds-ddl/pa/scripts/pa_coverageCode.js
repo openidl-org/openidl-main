@@ -197,7 +197,7 @@ for (let l of fileLines){
 	//console.log(l)
 }
 
-var file = fs.createWriteStream('../../../../tables/V0.0.1.1.8__pa_coverage_code.sql');
+var file = fs.createWriteStream('../tables/V0.0.1.1.8__pa_coverage_code.sql');
 file.on('error', function(err) { /* error handling */ });
 fileLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();

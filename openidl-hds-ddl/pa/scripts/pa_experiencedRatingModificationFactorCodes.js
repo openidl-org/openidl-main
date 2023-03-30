@@ -30,7 +30,7 @@ END $$;`
 fileLines.push(end)
 
 
-var file = fs.createWriteStream('../../../../tables/V0.0.1.1.26__pa_experienced_rating_modification_factor_code.sql');
+var file = fs.createWriteStream('../tables/V0.0.1.1.26__pa_experienced_rating_modification_factor_code.sql');
 file.on('error', function(err) { /* error handling */ });
 fileLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();

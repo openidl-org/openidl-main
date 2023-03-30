@@ -37,7 +37,7 @@ fileLines.push(`END IF;
 END $$
 `)
 
-var file = fs.createWriteStream('../../../../tables/V0.0.1.1.9__pa_cause_of_loss_code.sql');
+var file = fs.createWriteStream('../tables/V0.0.1.1.9__pa_cause_of_loss_code.sql');
 file.on('error', function(err) { /* error handling */ });
 fileLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();
