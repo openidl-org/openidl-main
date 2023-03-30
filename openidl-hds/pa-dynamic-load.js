@@ -14,33 +14,65 @@ const fs = require('fs')
 
 
 
-
 async function main(){
-    const client = new Client(credentials);
-    await client.connect();
-    batches = []
-    batch = []
-    const allFileContents = fs.readFileSync('../../../con-data/pa-insert.sql', 'utf-8');
-    allFileContents.split(/\r?\n/).forEach(line =>  {
-      //console.log(`Line from file: ${line}`);
-      batch.push(line)
-      if (batch.length > 25){
-        let statement = batch.join(' ')
-        batches.push(statement)
-        batch = []
-      }
-    });
-    count = 0
-    for (let b of batches){
-        await client.query(b)
-        count+=1
-        console.log('batch: '+count)
+  const client = new Client(credentials);
+  await client.connect();
+  batches = []
+  batch = []
+  const allFileContents = fs.readFileSync('../../../con-data/Personal_Auto/pa-insert.sql', 'utf-8');
+  allFileContents.split(/\r?\n/).forEach(line =>  {
+    //console.log(`Line from file: ${line}`);
+    batch.push(line)
+    if (batch.length > 25){
+      let statement = batch.join(' ')
+      batches.push(statement)
+      batch = []
     }
-    
-    const used = process.memoryUsage().heapUsed / 1024 / 1024;
-    console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
-    
-    await client.end();
+  });
+  if (batch.length > 0){
+      let statement = batch.join(' ')
+      batches.push(statement)
+  }
+  count = 0
+  for (let b of batches){
+      await client.query(b)
+      count+=1
+      console.log('batch: '+count)
+  }
+  
+  const used = process.memoryUsage().heapUsed / 1024 / 1024;
+  console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
+  
+  await client.end();
 }
+
+
+// async function main(){
+//     const client = new Client(credentials);
+//     await client.connect();
+//     batches = []
+//     batch = []
+//     const allFileContents = fs.readFileSync('../../../con-data/Personal_Auto/pa-insert.sql', 'utf-8');
+//     allFileContents.split(/\r?\n/).forEach(line =>  {
+//       //console.log(`Line from file: ${line}`);
+//       batch.push(line)
+//       if (batch.length > 25){
+//         let statement = batch.join(' ')
+//         batches.push(statement)
+//         batch = []
+//       }
+//     });
+//     count = 0
+//     for (let b of batches){
+//         await client.query(b)
+//         count+=1
+//         console.log('batch: '+count)
+//     }
+    
+//     const used = process.memoryUsage().heapUsed / 1024 / 1024;
+//     console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
+    
+//     await client.end();
+// }
 
 main()
