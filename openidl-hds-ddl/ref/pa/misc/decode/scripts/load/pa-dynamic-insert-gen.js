@@ -2,7 +2,7 @@ const config = require('../../../../../../../openidl-hds/config/config.json');
 const fs = require('fs')
 //const { Pool, Client } = require('pg');
 const records =
-	require('../../../../../../../../../con-data/auto.json').records;
+	require('../../../../../../../../../con-data/Personal_Auto/pre-test-1234-json.json').records;
 const credentials = {
 	user: config.db.username,
 	host: config.db.host,
@@ -172,7 +172,7 @@ function makeQuery(record){
     }
   }
   // change table name HERE
-  let query = 'INSERT INTO openidl_base_9997.pa_stat_stg (';
+  let query = 'INSERT INTO openidl_base_9999.personal_auto_policy (';
 
   for (let column of goodColumns) {
     //console.log(column);
@@ -204,7 +204,7 @@ for (let record of records){
   queries.push(makeQuery(record))
 }
 
-var file = fs.createWriteStream('../../../../../../../../../con-data/pa-insert.sql');
+var file = fs.createWriteStream('../../../../../../../../../con-data/Personal_Auto/pa-insert.sql');
 file.on('error', function(err) { /* error handling */ });
 queries.forEach(function(v) { file.write(v + '\n'); });
 file.end();
