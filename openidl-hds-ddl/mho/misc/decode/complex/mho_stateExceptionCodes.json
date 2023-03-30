@@ -1,0 +1,100 @@
+{
+    "exceptionField": {
+        "stateExceptionA": {
+            "FL": {
+                "hdsName": "WindStormProtectiveDevices",
+                "statPlanName": "windStormProtectiveDevices",
+                "type": "code",
+                "codes": {
+                    "0": "Properties WITHOUT windstorm protective device credit OR Does Not Apply",
+                    "1": "Properties WITH properly installed and maintained windstorm protective devices (ML-415) and mobile home meets wind load provisions set forth in the ANSI/ASCE 7-88",
+                    "2": "Properties WITH properly installed and maintained windstorm protective devices (ML-415) and mobile home DOES NOT meet wind load provisions set forth in the ANSI/ASCE 7-88"
+                }
+            },
+            "NY": {
+                "hdsName": "WindStormProtectiveDevices",
+                "statPlanName": "windStormProtectiveDevices",
+                "type": "code",
+                "codes": {
+                    "0": "Properties WITHOUT windstorm protective device credit OR Does Not Apply",
+                    "1": "Properties WITH windstorm protective device credit for having installed protective devices on all openings: AAIS ML-415 Endorsement or equivalent / ISO HO 04 21 Endorsement or equivalent"
+                }
+            },
+            "NC": {
+                "hdsName": "ConsentToRate",
+                "statPlanName": "consentToRate",
+                "type": "code",
+                "codes": {
+                    "0": "Policies NOT written on a consent-to-rate basis OR Does Not Apply",
+                    "1": "Policies written on a consent-to-rate basis"
+                }
+            }
+        },
+        "stateExceptionB": {
+            "FL": {
+                "hdsName": "ManufacturingStandardCredit",
+                "statPlanName": "manufacturingStandardCredit",
+                "type": "code",
+                "codes": {
+                    "0": "Properties WITHOUT manufacturing standard credit OR Does Not Apply",
+                    "1": "Properties WITH manufacturing standard credit"
+                }
+            },
+            "NY": {
+                "hdsName": "AwayFromPremisesTheft",
+                "statPlanName": "awayFromPremisesTheft",
+                "type": "code",
+                "codes": {
+                    "0": "Does not apply",
+                    "1": "Properties with away from premises theft exclusion: AAIS ML-185 Endorsement or equivalent / ISO HO 23 95 Endorsement or equivalent",
+                    "2": "Properties with away from premises theft limitation: AAIS ML-186 Endorsement or equivalent"
+                }
+            }
+        },
+        "stateExceptionCode": {
+            "CA": {
+                "hdsName": "CaliWrapAroundEndorsement",
+                "statPlanName": "caliWrapAroundEndorsement",
+                "type": "code",
+                "codes": {
+                    "0": "Does not apply",
+                    "1": "California Homeowners policy with wrap-around endorsement"
+                } 
+            },
+            "HI": {
+                "hdsName": "HurricaneCoverage",
+                "statPlanName": "hurricaneCoverage",
+                "type": "code",
+                "codes": {
+                    "0": "Policies without Hurricane Exclusion Endorsement OR Does Not Apply",
+                    "1": "Policies with Hurricane Exclusion Endorsement (ISO HO 05 18 or equivalent) and WITHOUT the Hurricane Coverage Endorsement (ISO HO 05 19 or equivalent)",
+                    "2": "Policies with Hurricane Exclusion Endorsement (ISO HO 05 18 or equivalent) and WITH the Hurricane Coverage Endorsement (ISO HO 05 19 or equivalent)"
+                }
+            },
+            "MD": {
+                "hdsName": "LeadPoisoning",
+                "statPlanName": "leadPoisoning",
+                "type": "code",
+                "codes": {
+                    "0": "Lead poisoning liability coverage not excluded OR Does Not Apply",
+                    "1": "Liability coverage excludes lead poisoning liability (ISO HO 24 51 or equivalent) - limited coverage for lead liability DOES NOT apply",
+                    "2": "Liability coverage excludes lead poisoning liability (ISO HO 24 51 or equivalent) - limited coverage for lead liability DOES apply (ISO HO 24 52 or equivalent)"
+                }
+            },
+            "MA": {
+                "hdsName": "LeadLiabilityExclusionEndorsement",
+                "statPlanName": "leadLiabilityExclusionEndorsement",
+                "type": "copy"
+            },
+            "NY": {
+                "hdsName": "NyWrapAroundEndorsement",
+                "statPlanName": "nyWrapAroundEndorsement",
+                "type": "code",
+                "codes": {
+                    "0": "Does Not Apply",
+                    "1": "New York Homeowners policy with wrap-around endorsement"
+                }
+            }
+        }
+    }
+}

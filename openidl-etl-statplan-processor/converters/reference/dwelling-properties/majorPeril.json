@@ -1,0 +1,49 @@
+{
+    "majorPeril": {
+        "option1": {
+            "20": "Fire perils",
+            "25": "Extended coverage excluding vandalism",
+            "26": "Extended coverage including vandalism",
+            "28": "Extended coverage, vandalism, and broad form perils",
+            "29": "Extended coverage, vandalism, and special form perils with theft (not valid with AAIS and ISO DP/FP Programs)",
+            "30": "Extended coverage, vandalism, and special form perils without theft"
+        },
+        "option2": {
+            "20": "Fire perils",
+            "25": "Extended coverage excluding vandalism",
+            "26": "Extended coverage including vandalism Broad form perils",
+            "31": "Broad Form Perils",
+            "32": "Special form perils with theft (not valid with AAIS and ISO DP/FP Programs)",
+            "33": "Special form perils without theft"
+        },
+        "option3": {
+            "34": "Fire and extended coverage excluding vandalism",
+            "35": "Fire and extended coverage including vandalism",
+            "36": "Fire, extended coverage, vandalism, and broad form perils",
+            "37": "Fire, extended coverage, vandalism, and special form perils with theft",
+            "38": "Fire, extended coverage, vandalism, and special form perils without theft"
+        },
+        "premiumBearingEndorsements": {
+            "61": "Earthquake coverage for the dwelling (including farm dwellings) and related contents",
+            "71": "Earthquake coverage for the farm property",
+            "62": "Water damage - Back up of sewers, drains, or sumps",
+            "63": "Motorized golf cart - physical damage coverage",
+            "64": "Identity fraud expense coverage",
+            "70": "Theft of dwelling contents",
+            "75": "Equipment breakdown coverage",
+            "76": "Weight of ice, snow, and sleet on farm property",
+            "77": "Livestock perils options",
+            "80": "Resident of Assisted Living Facility",
+            "60": "All other premium bearing endorsements"
+        },
+        "terrorismCoverage": {
+            "90": "Certified acts of terrorism covered (coverage not excluded)",
+            "91": "Certified acts of terrorism excluded subject to Standard Fire Policy statutes when applicable, producing fire-only coverage for certified acts of terrorism",
+            "92": "Non-certified acts of terrorism covered (coverage not excluded)",
+            "93": "Non-certified acts of terrorism covered, except acts of terrorism arising out of nuclear, biological or chemical events"
+        },
+        "other": {
+            "99": "Minimum Premium record subject to SECTION I, PART C, Rule 3.b"
+        }
+    }
+}

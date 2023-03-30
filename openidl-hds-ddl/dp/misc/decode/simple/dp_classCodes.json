@@ -1,0 +1,202 @@
+{
+    "00": {
+        "name": "Does not apply",
+        "type": "Does not apply",
+        "code": "Does not apply"
+    },
+    "01": {
+        "name": "Livestock - basic only",
+        "type": "Scheduled Farm Personal Property",
+        "code": "Coverage Code 16"
+    },
+    "02": {
+        "name": "Equipment and machinery",
+        "type": "Scheduled Farm Personal Property",
+        "code": "Coverage Code 16"
+    },
+    "03": {
+        "name": "Poultry",
+        "type": "Scheduled Farm Personal Property",
+        "code": "Coverage Code 16"
+    },
+    "04": {
+        "name": "Turkeys",
+        "type": "Scheduled Farm Personal Property",
+        "code": "Coverage Code 16"
+    },
+    "05": {
+        "name": "Hay/Straw/Fodder in buildings",
+        "type": "Scheduled Farm Personal Property",
+        "code": "Coverage Code 16"
+    },
+    "06": {
+        "name": "Hay/Straw/Fodder in the open",
+        "type": "Scheduled Farm Personal Property",
+        "code": "Coverage Code 16"
+    },
+    "07": {
+        "name": "Household contents",
+        "type": "Scheduled Farm Personal Property",
+        "code": "Coverage Code 16"
+    },
+    "08": {
+        "name": "Farm products (including dairy) and supplies - Excluding loss to dairy/farm products in the open caused by wind/hail (w/o FO-347)",
+        "type": "Scheduled Farm Personal Property",
+        "code": "Coverage Code 16"
+    },
+    "18": {
+        "name": "Farm products (including dairy) and supplies - Including loss to dairy and farm products in the open caused by wind/hail (FO-347)",
+        "type": "Scheduled Farm Personal Property",
+        "code": "Coverage Code 16"
+    },
+    "09": {
+        "name": "Grain",
+        "type": "Scheduled Farm Personal Property",
+        "code": "Coverage Code 16"
+    },
+    "10": {
+        "name": "Computers",
+        "type": "Scheduled Farm Personal Property",
+        "code": "Coverage Code 16"
+    },
+    "49": {
+        "name": "All other property",
+        "type": "Scheduled Farm Personal Property",
+        "code": "Coverage Code 16"
+    },
+    "51": {
+        "name": "Dwellings",
+        "type": "Farm Barns, Buildings, and Other Structures",
+        "code": "Coverage Code 14"
+    },
+    "52": {
+        "name": "Barns/Outbuildings",
+        "type": "Farm Barns, Buildings, and Other Structures",
+        "code": "Coverage Code 14"
+    },
+    "53": {
+        "name": "Silos",
+        "type": "Farm Barns, Buildings, and Other Structures",
+        "code": "Coverage Code 14"
+    },
+    "54": {
+        "name": "Sheds - Implement, machine, tool, etc.",
+        "type": "Farm Barns, Buildings, and Other Structures",
+        "code": "Coverage Code 14"
+    },
+    "55": {
+        "name": "Houses - Incubator, brooder, milk, hen, etc.",
+        "type": "Farm Barns, Buildings, and Other Structures",
+        "code": "Coverage Code 14"
+    },
+    "56": {
+        "name": "Windmills and windchargers",
+        "type": "Farm Barns, Buildings, and Other Structures",
+        "code": "Coverage Code 14"
+    },
+    "57": {
+        "name": "Outdoor radio & TV equipment and private power & light poles",
+        "type": "Farm Barns, Buildings, and Other Structures",
+        "code": "Coverage Code 14"
+    },
+    "58": {
+        "name": "Granaries",
+        "type": "Farm Barns, Buildings, and Other Structures",
+        "code": "Coverage Code 14"
+    },
+    "59": {
+        "name": "Dairy barns",
+        "type": "Farm Barns, Buildings, and Other Structures",
+        "code": "Coverage Code 14"
+    },
+    "60": {
+        "name": "Hog confinement buildings",
+        "type": "Farm Barns, Buildings, and Other Structures",
+        "code": "Coverage Code 14"
+    },
+    "61": {
+        "name": "Potato houses",
+        "type": "Farm Barns, Buildings, and Other Structures",
+        "code": "Coverage Code 14"
+    },
+    "62": {
+        "name": "Fences, corrals, chutes, power and light poles, wiring",
+        "type": "Farm Barns, Buildings, and Other Structures",
+        "code": "Coverage Code 14"
+    },
+    "64": {
+        "name": "Tanks",
+        "type": "Farm Barns, Buildings, and Other Structures",
+        "code": "Coverage Code 14"
+    },
+    "65": {
+        "name": "Greenhouses",
+        "type": "Farm Barns, Buildings, and Other Structures",
+        "code": "Coverage Code 14"
+    },
+    "99": {
+        "name": "All other structures",
+        "type": "Farm Barns, Buildings, and Other Structures",
+        "code": "Coverage Code 14"
+    },
+    "11": {
+        "name": "Livestock -- Additional Perils (FO-356) - excluding sheep",
+        "type": "Livestock Perils Options",
+        "code": "Major Peril Code 77"
+    },
+    "12": {
+        "name": "Livestock -- Additional Perils (FO-356) - including sheep",
+        "type": "Livestock Perils Options",
+        "code": "Major Peril Code 77"
+    },
+    "13": {
+        "name": "Livestock -- Winter Perils (FO-324)",
+        "type": "Livestock Perils Options",
+        "code": "Major Peril Code 77"
+    },
+    "14": {
+        "name": "Livestock -- Loading and Unloading Accidents (FL-334) - excluding sheep",
+        "type": "Livestock Perils Options",
+        "code": "Major Peril Code 77"
+    },
+    "15": {
+        "name": "Livestock -- Loading and Unloading Accidents (FL-334) - including sheep",
+        "type": "Livestock Perils Options",
+        "code": "Major Peril Code 77"
+    },
+    "21": {
+        "name": "Earthquake Coverage (FL-56)",
+        "type": "Earthquake Coverage - California Only",
+        "code": "Major Peril Code 61"
+    },
+    "23": {
+        "name": "Reconstruction Cost Coverage (FL 0678)",
+        "type": "Earthquake Coverage - California Only",
+        "code": "Major Peril Code 61"
+    },
+    "36": {
+        "name": "With collision",
+        "type": "Motorized golf cart - physical damage coverage",
+        "code": "Major Peril Code 63"
+    },
+    "37": {
+        "name": "Without collision",
+        "type": "Motorized golf cart - physical damage coverage",
+        "code": "Major Peril Code 63"
+    },
+    "31": {
+        "name": "Broad on-premises theft coverage (AAIS FL-34, ISO DP 04 72, or equivalent)",
+        "type": "Theft of Dwelling Contents",
+        "code": "Major Peril Code 70"
+    },
+    "32": {
+        "name": "Broad off-premises theft coverage (AAIS FL-34, ISO DP 04 72, or equivalent)",
+        "type": "Theft of Dwelling Contents",
+        "code": "Major Peril Code 70"
+    },
+    "33": {
+        "name": "Limited on-premises theft coverage (AAIS FL-35, ISO DP 04 73, or equivalent)",
+        "type": "Theft of Dwelling Contents",
+        "code": "Major Peril Code 70"
+    }
+}

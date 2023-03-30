@@ -1,0 +1,46 @@
+{
+    "0": {
+        "name": "Without Property Remediation For Escaped Liquid Fuel / Limited lead Liability Coverage / or Does Not Apply",
+        "type": "N/A"
+    },
+    "1": {
+        "name": "Basic Limits ($50,000)",
+        "type": "N/A"
+    },
+    "2": {
+        "name": "$100,000",
+        "type": "All Tanks Are Above Ground"
+    }, 
+    "3": {
+        "name": "$300,000",
+        "type": "All Tanks Are Above Ground"
+    }, 
+    "A": {
+        "name": "Up to Policy's Liability Limit",
+        "type": "All Tanks Are Above Ground"
+    },
+    "4": {
+        "name": "$100,000",
+        "type": "One or More Tanks are Below Ground (partially or full)"
+    }, 
+    "5": {
+        "name": "$300,000",
+        "type": "One or More Tanks are Below Ground (partially or full)"
+    }, 
+    "B": {
+        "name": "Up to Policy's Liability Limit",
+        "type": "One or More Tanks are Below Ground (partially or full)"
+    },
+    "6": {
+        "name": "$100,000",
+        "type": "No Tanks At All"
+    }, 
+    "7": {
+        "name": "$300,000",
+        "type": "No Tanks At All"
+    }, 
+    "C": {
+        "name": "Up to Policy's Liability Limit",
+        "type": "No Tanks At All"
+    }
+}
