@@ -1,4 +1,7 @@
+fs = require('fs')
 
+let fileLines = []
+let tableDDL = `
 DO $$ 
 BEGIN
 CREATE OR replace VIEW pa_stat_vw
@@ -100,5 +103,14 @@ AS
                 ON a.symbol = ab.code
          left join pa_anti_theft_device_discount_code ac
                 ON a.anti_theft = ac.code
-                   AND ac.fk_state_id = d.id;
-END $$;
+                   AND ac.fk_state_id = d.id;`
+fileLines.push(tableDDL)
+ 
+let end = `END $$;`
+fileLines.push(end)
+
+
+var file = fs.createWriteStream('../views/V0.0.1.33__pa_stat_vw.sql');
+file.on('error', function(err) { /* error handling */ });
+fileLines.forEach(function(v) { file.write(v + '\n'); });
+file.end();

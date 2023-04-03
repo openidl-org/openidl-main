@@ -40,7 +40,6 @@ AS
   WHERE  a.fk_coverage_category_id = b.id
   ORDER  BY a.id; 
 
-
 CREATE OR REPLACE VIEW pa_state_coverage_code_vw as (
     SELECT b.code coverage_code, b.id coverage_id, b.name coverage, c.abbreviation state, c.id fk_state_id
         FROM pa_state_coverage_code a, pa_coverage_code b, state_code c
@@ -50,7 +49,6 @@ CREATE OR REPLACE VIEW pa_state_coverage_code_vw as (
 );
 
 IF NOT EXISTS (SELECT * FROM pa_coverage_category) THEN
-
 	INSERT INTO pa_coverage_category (id, name) VALUES (1,'Liability');
 	INSERT INTO pa_coverage_category (id, name) VALUES (2,'Physical Damage Coverages');
 	INSERT INTO pa_coverage_category (id, name) VALUES (3,'All Other Property and Liability Coverages');
@@ -109,7 +107,8 @@ IF NOT EXISTS (select * from pa_coverage_code) THEN
 	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (48,'P','Combined First Party Benefits',31,37);
 	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (49,'R','Combined First Party Benefits - Indivisible Premium Policies',32,37);
 END IF;
-		IF NOT EXISTS (SELECT * FROM pa_state_coverage_code) THEN
+
+IF NOT EXISTS (SELECT * FROM pa_state_coverage_code) THEN
 	INSERT INTO pa_state_coverage_code VALUES(1,1,1);
 	INSERT INTO pa_state_coverage_code VALUES(2,2,1);
 	INSERT INTO pa_state_coverage_code VALUES(3,3,1);

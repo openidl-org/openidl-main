@@ -132,7 +132,6 @@ AS
   WHERE  a.fk_coverage_category_id = b.id
   ORDER  BY a.id; 
 
-
 CREATE OR REPLACE VIEW pa_state_coverage_code_vw as (
     SELECT b.code coverage_code, b.id coverage_id, b.name coverage, c.abbreviation state, c.id fk_state_id
         FROM pa_state_coverage_code a, pa_coverage_code b, state_code c
@@ -141,8 +140,7 @@ CREATE OR REPLACE VIEW pa_state_coverage_code_vw as (
         ORDER BY state,coverage_code
 );
 
-IF NOT EXISTS (SELECT * FROM pa_coverage_category) THEN
-`);
+IF NOT EXISTS (SELECT * FROM pa_coverage_category) THEN`);
 }
 
 function buildPt2() {
@@ -177,7 +175,8 @@ function buildCoverageCode() {
 }
 function buildPt3(){
 	fileLines.push(`END IF;
-		IF NOT EXISTS (SELECT * FROM pa_state_coverage_code) THEN`)
+
+IF NOT EXISTS (SELECT * FROM pa_state_coverage_code) THEN`)
 }
 
 buildPt1();
