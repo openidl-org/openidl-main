@@ -15,17 +15,22 @@ const credentials = {
 const mapping = require('./mapping.json');
 
 function ASCIItoREALInt(input){
-	//console.log(`input: ${input}`)
-	try {
+	//console.log(`[int] input: ${input}`)
+	
+	if (!isNaN(input)){
+		//console.log('try')
 		value = parseInt(input)
+		//console.log('value: '+value)
 		return value }
 
-	catch { 
+	
 	value = null
 	input=`${input}`.toUpperCase()
+	//console.log('input '+input)
 	if (input.includes('{' )){
 		value = parseInt(input.replace('{', ''))
 	} else if ( input.includes('A' )){
+		//console.log('A found')
 		value = parseInt(input.replace('A', '1'))
 	} else if ( input.includes('B' )){
 		value = parseInt(input.replace('B', '2'))
@@ -71,15 +76,13 @@ function ASCIItoREALInt(input){
 	console.log(`ascii2_input: ${input}, output: ${value}`)
 	return value
 
-	}}
+	}
 
 function ASCIItoREALFloat(input){
 	//console.log(`input: ${input}`)
-	try {
+	if (!isNaN(input)){
 		value = parseFloat(input)
 		return value }
-
-	catch { 
 	value = null
 	input=`${input}`.toUpperCase()
 	if (input.includes('{' )){
@@ -130,13 +133,13 @@ function ASCIItoREALFloat(input){
 	console.log(`ascii2_input: ${input}, output: ${value}`)
 	return value
 
-	}}
+	}
 
 
 
 
 function makeQuery(record){
-  console.log(record)
+  //console.log(record)
   let accountingDate = record.accountingDate
   record['accountingMonth'] = accountingDate.slice(0,2)
   record['accountingYear'] = accountingDate.slice(-1)
@@ -172,7 +175,7 @@ function makeQuery(record){
     }
   }
   // change table name HERE
-  let query = 'INSERT INTO openidl_base_9999.personal_auto_policy (';
+  let query = 'INSERT INTO openidl_base_9997.pa_stat_stg (';
 
   for (let column of goodColumns) {
     //console.log(column);
