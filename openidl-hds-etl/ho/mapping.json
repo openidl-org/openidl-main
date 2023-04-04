@@ -164,114 +164,99 @@
         "stageName": "SEC_PAOI",
         "dataType": "VARCHAR"
     },
-    "": {
-        "inboundName": "",
-        "stageName": "",
-        "dataType": ""
+    "moldDamageCoverageCode": {
+        "inboundName": "moldDamageCoverageCode",
+        "stageName": "MOLD",
+        "dataType": "VARCHAR"
     },
-    "": {
-        "inboundName": "",
-        "stageName": "",
-        "dataType": ""
+    "poolCode": {
+        "inboundName": "poolCode",
+        "stageName": "POOL",
+        "dataType": "VARCHAR"
     },
-    "": {
-        "inboundName": "",
-        "stageName": "",
-        "dataType": ""
+    "monthsCovered": {
+        "inboundName": "monthsCovered",
+        "stageName": "MOS_COV",
+        "dataType": "VARCHAR"
     },
-    "": {
-        "inboundName": "",
-        "stageName": "",
-        "dataType": ""
+    "causeOfLoss": {
+        "inboundName": "causeOfLoss",
+        "stageName": "COL",
+        "dataType": "VARCHAR"
     },
-    "": {
-        "inboundName": "",
-        "stageName": "",
-        "dataType": ""
+    "accidentMonth": {
+        "inboundName": "accidentMonth",
+        "stageName": "ACCIDENT_MON",
+        "dataType": "VARCHAR"
     },
-    "": {
-        "inboundName": "",
-        "stageName": "",
-        "dataType": ""
+    "accidentDay": {
+        "inboundName": "accidentDay",
+        "stageName": "ACCIDENT_DAY",
+        "dataType": "VARCHAR"
     },
-    "": {
-        "inboundName": "",
-        "stageName": "",
-        "dataType": ""
+    "accidentYear": {
+        "inboundName": "accidentYear",
+        "stageName": "ACCIDENT_YR",
+        "dataType": "VARCHAR"
     },
-    "": {
-        "inboundName": "",
-        "stageName": "",
-        "dataType": ""
+    "zipCode": {
+        "inboundName": "zipCode",
+        "stageName": "ZIP",
+        "dataType": "VARCHAR"
     },
-    "": {
-        "inboundName": "",
-        "stageName": "",
-        "dataType": ""
+    "zipCodeSuffix": {
+        "inboundName": "zipCodeSuffix",
+        "stageName": "ZIP_SUFF",
+        "dataType": "VARCHAR"
     },
-    "": {
-        "inboundName": "",
-        "stageName": "",
-        "dataType": ""
+    "buildingCodeEffectivenessGrade": {
+        "inboundName": "buildingCodeEffectivenessGrade",
+        "stageName": "BCEG",
+        "dataType": "VARCHAR"
     },
-    "": {
-        "inboundName": "",
-        "stageName": "",
-        "dataType": ""
+    "stateExceptionA": {
+        "inboundName": "stateExceptionA",
+        "stageName": "ST_EXC_A",
+        "dataType": "VARCHAR"
     },
-    "": {
-        "inboundName": "",
-        "stageName": "",
-        "dataType": ""
+    "stateExceptionB": {
+        "inboundName": "stateExceptionB",
+        "stageName": "ST_EXC_B",
+        "dataType": "VARCHAR"
     },
-    "": {
-        "inboundName": "",
-        "stageName": "",
-        "dataType": ""
+    "stateExceptionC": {
+        "inboundName": "stateExceptionC",
+        "stageName": "ST_EXC_C",
+        "dataType": "VARCHAR"
     },
-    "": {
-        "inboundName": "",
-        "stageName": "",
-        "dataType": ""
+    "stateExceptionCode": {
+        "inboundName": "stateExceptionCode",
+        "stageName": "ST_EXC",
+        "dataType": "VARCHAR"
     },
-    "": {
-        "inboundName": "",
-        "stageName": "",
-        "dataType": ""
+    "policyNumber": {
+        "inboundName": "policyNumber",
+        "stageName": "POLICY_NUM",
+        "dataType": "VARCHAR"
     },
-    "": {
-        "inboundName": "",
-        "stageName": "",
-        "dataType": ""
+    "claimNumber": {
+        "inboundName": "claimNumber",
+        "stageName": "CLAIM_NUM",
+        "dataType": "VARCHAR"
     },
-    "": {
-        "inboundName": "",
-        "stageName": "",
-        "dataType": ""
+    "claimIdentifier": {
+        "inboundName": "claimIdentifier",
+        "stageName": "CLAIM_ID",
+        "dataType": "VARCHAR"
     },
-    "": {
-        "inboundName": "",
-        "stageName": "",
-        "dataType": ""
+    "companyUse": {
+        "inboundName": "companyUse",
+        "stageName": "CO_USE",
+        "dataType": "VARCHAR"
     },
-    "": {
-        "inboundName": "",
-        "stageName": "",
-        "dataType": ""
-    },
-    "": {
-        "inboundName": "",
-        "stageName": "",
-        "dataType": ""
-    },
-    "": {
-        "inboundName": "",
-        "stageName": "",
-        "dataType": ""
-    },
-    "": {
-        "inboundName": "",
-        "stageName": "",
-        "dataType": ""
+    "smallPremiumIndicator": {
+        "inboundName": "smallPremiumIndicator",
+        "stageName": "SM_PREM_IND",
+        "dataType": "VARCHAR"
     }
   }
