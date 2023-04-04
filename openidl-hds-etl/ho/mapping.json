@@ -1,0 +1,277 @@
+{
+    "lineOfInsurance": {
+        "inboundName": "lineOfInsurance",
+        "stageName": "LINE",
+        "dataType": "VARCHAR"
+    },
+    "accountingMonth": {
+        "inboundName": "accountingMonth",
+        "stageName": "REP_MO",
+        "dataType": "VARCHAR"
+    },
+    "accountingYear": {
+        "inboundName": "accountingYear",
+        "stageName": "REP_YR",
+        "dataType": "VARCHAR"
+    },
+    "companyCode": {
+        "inboundName": "companyCode",
+        "stageName": "COMP",
+        "dataType": "VARCHAR"
+    },
+    "stateCode": {
+        "inboundName": "stateCode",
+        "stageName": "STATE",
+        "dataType": "VARCHAR"
+    },
+    "territoryCode": {
+        "inboundName": "territory",
+        "stageName": "TERRITORY",
+        "dataType": "VARCHAR"
+    },
+    "transactionCode": {
+        "inboundName": "transactionCode",
+        "stageName": "TRANS",
+        "dataType": "VARCHAR"
+    },
+    "premiumAmount": {
+        "inboundName": "premiumAmount",
+        "stageName": "PREM_AMT",
+        "dataType": "DECIMAL"
+    },
+    "lossAmount": {
+        "inboundName": "lossAmount",
+        "stageName": "LOSS_AMT",
+        "dataType": "DECIMAL"
+    },
+    "exposure": {
+        "inboundName": "exposure",
+        "stageName": "EXPOSURE",
+        "dataType": "INT"
+    },
+    "claimCount": {
+        "inboundName": "claimCount",
+        "stageName": "CLM_CNT",
+        "dataType": "INT"
+    },
+    "annualStatementLineOfBusiness": {
+        "inboundName": "annualStatementLineOfBusiness",
+        "stageName": "ASLOB",
+        "dataType": "VARCHAR"
+    },
+    "programCode": {
+        "inboundName": "programCode",
+        "stageName": "PROG_CD",
+        "dataType": "VARCHAR"
+    },
+    "policyForm": {
+        "inboundName": "policyForm",
+        "stageName": "POL_FRM",
+        "dataType": "VARCHAR"
+    },
+    "lossSettlementIndicator": {
+        "inboundName": "lossSettlementIndicator",
+        "stageName": "LSI",
+        "dataType": "VARCHAR"
+    },
+    "primaryPropertyAmountOfInsurance": {
+        "inboundName": "primaryPropertyAmountOfInsurance",
+        "stageName": "PAOI",
+        "dataType": "VARCHAR"
+    },
+    "deductibleType": {
+        "inboundName": "deductibleType",
+        "stageName": "DED_TYPE",
+        "dataType": "VARCHAR"
+    },
+    "deductibleAmount": {
+        "inboundName": "deductibleAmount",
+        "stageName": "DED_AMT",
+        "dataType": "VARCHAR"
+    },
+    "windstormOrHailCoverageDeductibleAmount": {
+        "inboundName": "windstormOrHailCoverageDeductibleAmount",
+        "stageName": "WIND_DED",
+        "dataType": "VARCHAR"
+    },
+    "classCode": {
+        "inboundName": "classCode",
+        "stageName": "CLASS_CODE",
+        "dataType": "VARCHAR"
+    },
+    "constructionCode": {
+        "inboundName": "constructionCode",
+        "stageName": "CONSTRUCTION",
+        "dataType": "VARCHAR"
+    },
+    "fireProtectionCode": {
+        "inboundName": "fireProtectionCode",
+        "stageName": "FIRE_PROT",
+        "dataType": "VARCHAR"
+    },
+    "yearOfConstruction": {
+        "inboundName": "yearOfConstruction",
+        "stageName": "YR_CON",
+        "dataType": "VARCHAR"
+    },
+    "liabilityLimit": {
+        "inboundName": "liabilityLimit",
+        "stageName": "LIA_LIM",
+        "dataType": "VARCHAR"
+    },
+    "medicalPayments": {
+        "inboundName": "medicalPayments",
+        "stageName": "MED_PAY_LIM",
+        "dataType": "VARCHAR"
+    },
+    "escapedLiquidFuelCoverageProperty": {
+        "inboundName": "escapedLiquidFuelCoverageProperty",
+        "stageName": "ELF_PROP",
+        "dataType": "VARCHAR"
+    },
+    "escapedLiquidFuelAndLeadCoverageLiability": {
+        "inboundName": "escapedLiquidFuelAndLeadCoverageLiability",
+        "stageName": "ELF_LIAB",
+        "dataType": "VARCHAR"
+    },
+    "occupancyCode": {
+        "inboundName": "occupancyCode",
+        "stageName": "OCCUPANCY",
+        "dataType": "VARCHAR"
+    },
+    "hbbIndicator": {
+        "inboundName": "homeBasedBusinessIndicator",
+        "stageName": "HBB_IND",
+        "dataType": "VARCHAR"
+    },
+    "numberOfFamilies": {
+        "inboundName": "numberOfFamilies",
+        "stageName": "NUM_FAM",
+        "dataType": "VARCHAR"
+    },
+    "ordinanceOrLawCoverage": {
+        "inboundName": "ordinanceOrLawCoverage",
+        "stageName": "ORD_LAW",
+        "dataType": "VARCHAR"
+    },
+    "theftDeductibleAmount": {
+        "inboundName": "theftDeductibleAmount",
+        "stageName": "THEFT_DED",
+        "dataType": "VARCHAR"
+    },
+    "secondaryPropertyAmountOfInsurance": {
+        "inboundName": "secondaryPropertyAmountOfInsurance",
+        "stageName": "SEC_PAOI",
+        "dataType": "VARCHAR"
+    },
+    "": {
+        "inboundName": "",
+        "stageName": "",
+        "dataType": ""
+    },
+    "": {
+        "inboundName": "",
+        "stageName": "",
+        "dataType": ""
+    },
+    "": {
+        "inboundName": "",
+        "stageName": "",
+        "dataType": ""
+    },
+    "": {
+        "inboundName": "",
+        "stageName": "",
+        "dataType": ""
+    },
+    "": {
+        "inboundName": "",
+        "stageName": "",
+        "dataType": ""
+    },
+    "": {
+        "inboundName": "",
+        "stageName": "",
+        "dataType": ""
+    },
+    "": {
+        "inboundName": "",
+        "stageName": "",
+        "dataType": ""
+    },
+    "": {
+        "inboundName": "",
+        "stageName": "",
+        "dataType": ""
+    },
+    "": {
+        "inboundName": "",
+        "stageName": "",
+        "dataType": ""
+    },
+    "": {
+        "inboundName": "",
+        "stageName": "",
+        "dataType": ""
+    },
+    "": {
+        "inboundName": "",
+        "stageName": "",
+        "dataType": ""
+    },
+    "": {
+        "inboundName": "",
+        "stageName": "",
+        "dataType": ""
+    },
+    "": {
+        "inboundName": "",
+        "stageName": "",
+        "dataType": ""
+    },
+    "": {
+        "inboundName": "",
+        "stageName": "",
+        "dataType": ""
+    },
+    "": {
+        "inboundName": "",
+        "stageName": "",
+        "dataType": ""
+    },
+    "": {
+        "inboundName": "",
+        "stageName": "",
+        "dataType": ""
+    },
+    "": {
+        "inboundName": "",
+        "stageName": "",
+        "dataType": ""
+    },
+    "": {
+        "inboundName": "",
+        "stageName": "",
+        "dataType": ""
+    },
+    "": {
+        "inboundName": "",
+        "stageName": "",
+        "dataType": ""
+    },
+    "": {
+        "inboundName": "",
+        "stageName": "",
+        "dataType": ""
+    },
+    "": {
+        "inboundName": "",
+        "stageName": "",
+        "dataType": ""
+    },
+    "": {
+        "inboundName": "",
+        "stageName": "",
+        "dataType": ""
+    }
+  }
