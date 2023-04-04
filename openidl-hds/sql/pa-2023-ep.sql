@@ -8,12 +8,14 @@ SELECT
        a.fk_transaction_code_id,
        a.fk_state_code_id,
        a.policy_identifier,
+       a.occurrence_identifier,
        a.months_covered,
        a.fk_deductible_code_id,
        a.fk_coverage_code_id,
        a.exposure,
        case when a.fk_transaction_code_id in (1,8) then round((a.premium_amount / a.months_covered)) end as monthly_premium_amount,
        (concat('01-',a.accounting_month,'-',a.accounting_year)::date + interval '1 month' * a.months_covered)::date accounting_term_expiration,
+       CASE when a.fk_transaction_code_id in (2,3,4,5,6) THEN concat('01-',a.accident_month,'-',a.accident_year)::date else null end as accident_date,
        CASE
          WHEN a.fk_coverage_code_id IN ( 1, 13, 26 ) THEN b.code
          WHEN a.fk_coverage_code_id IN ( 2, 14, 27 ) THEN b.code
@@ -47,7 +49,7 @@ WHERE  a.fk_coverage_code_id = b.id;
     select reporting_code, reporting_name 
     from tmp_pa_coverage 
     group by reporting_code, reporting_name 
-    order by reporting_code::numeric ;
+    order by reporting_code;
 
 CREATE OR replace FUNCTION  tmp_car_years(IN start_date date,IN end_date date, IN pv_reporting_code VARCHAR)
 returns      numeric AS $$DECLARE cy numeric;
@@ -134,6 +136,36 @@ END$$ language plpgsql;
                 and reporting_code = pv_reporting_code)) a into ep;
         RETURN ep;
 END$$ language plpgsql;
+
+
+drop function tmp_auto_outstanding;
+CREATE OR replace FUNCTION tmp_auto_outstanding(IN start_date date,IN end_date date, IN pv_coverage_code_id VARCHAR)
+    returns      numeric AS $$DECLARE ep numeric;
+    BEGIN
+        SELECT Sum(x.loss_amount) outstanding_loss
+            FROM  (SELECT t2.  fk_coverage_code_id,
+                        t2.occurrence_identifier,
+                        Max(t2.loss_amount) loss_amount
+                FROM   (SELECT   fk_coverage_code_id,
+                                occurrence_identifier,
+                                Max(accounting_date) accounting_date
+                        FROM   tmp_pa_coverage
+                        WHERE  fk_transaction_code_id = 3
+                        and   fk_coverage_code_id = pv_coverage_code_id
+                        and accident_date > start_date
+                        and accident_date < end_date
+                        GROUP  BY   fk_coverage_code_id,
+                                    occurrence_identifier) t,
+                        tmp_pa_coverage t2
+                WHERE  t.  fk_coverage_code_id = t2.  fk_coverage_code_id
+                        AND t.occurrence_identifier = t2.occurrence_identifier
+                        AND t.accounting_date = t2.accounting_date
+                GROUP  BY t2.  fk_coverage_code_id,
+                            t2.occurrence_identifier,
+                            t2.accounting_date) x into ep; 
+        RETURN ep;
+    END$$ language plpgsql;
+
 
 
 SELECT a.reporting_code,

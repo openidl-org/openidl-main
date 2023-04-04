@@ -139,7 +139,7 @@ function ASCIItoREALFloat(input){
 
 
 function makeQuery(record){
-  //console.log(record)
+  console.log(record)
   let accountingDate = record.accountingDate
   record['accountingMonth'] = accountingDate.slice(0,2)
   record['accountingYear'] = accountingDate.slice(-1)
@@ -204,7 +204,11 @@ function makeQuery(record){
 }
 queries = []
 for (let record of records){
-  queries.push(makeQuery(record))
+  keys = Object.keys(record)
+  if (keys.length > 0){
+	queries.push(makeQuery(record))
+  }
+  
 }
 
 var file = fs.createWriteStream('../../../../con-data/pa-insert.sql');

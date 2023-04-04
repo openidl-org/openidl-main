@@ -1,9 +1,9 @@
-
 CREATE OR replace VIEW pa_stat_vw
 AS
   SELECT a.id           openidl_id,
          a.policy_num   policy_identifier,
          a.claim_id     claim_identifier,
+         a.claim_num occurrence_identifier,
          a.zip,
          a.zip_suff,
          a.rep_mo       accounting_month,
@@ -40,7 +40,7 @@ AS
          r.id           fk_passive_restraint_discount_code_id,
          s.id           fk_anti_lock_brakes_discount_code_id,
          t.id           fk_defensive_driver_discount_code_id,
-         w.id           fk_deducitble_code_id_id,
+         w.id           fk_deductible_code_id,
          x.id           fk_cause_of_loss_code_id,
          y.id           fk_um_uim_motorist_code_id,
          z.id           fk_um_uim_stacking_code_id,
@@ -103,4 +103,3 @@ AS
          left join pa_anti_theft_device_discount_code ac
                 ON a.anti_theft = ac.code
                    AND ac.fk_state_id = d.id;
-END $$;
