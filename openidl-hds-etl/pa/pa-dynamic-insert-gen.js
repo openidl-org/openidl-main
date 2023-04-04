@@ -143,6 +143,7 @@ function makeQuery(record){
   let accountingDate = record.accountingDate
   record['accountingMonth'] = accountingDate.slice(0,2)
   record['accountingYear'] = accountingDate.slice(-1)
+
   totalColumns = Object.keys(record);
 
   availableColumns = {};

@@ -1,8 +1,8 @@
 drop table tmp_pa_coverage;
 create table tmp_pa_coverage as
 SELECT 
-	case when a.fk_transaction_code_id in (1,8) then 'Premium'
-		when a.fk_transaction_code_id in (2,3,4,5,6) then  'Claim'
+	case when a.fk_transaction_code_id in (1,6) then 'Premium'
+		when a.fk_transaction_code_id in (2,3,4,5) then  'Claim'
 		else null end as record_type,
        concat('01-',a.accounting_month,'-',a.accounting_year)::date accounting_date,
        a.fk_transaction_code_id,
@@ -13,9 +13,10 @@ SELECT
        a.fk_deductible_code_id,
        a.fk_coverage_code_id,
        a.exposure,
-       case when a.fk_transaction_code_id in (1,8) then round((a.premium_amount / a.months_covered)) end as monthly_premium_amount,
+       a.loss_amount,
+       case when a.fk_transaction_code_id in (1,6) then round((a.premium_amount / a.months_covered)) end as monthly_premium_amount,
        (concat('01-',a.accounting_month,'-',a.accounting_year)::date + interval '1 month' * a.months_covered)::date accounting_term_expiration,
-       CASE when a.fk_transaction_code_id in (2,3,4,5,6) THEN concat('01-',a.accident_month,'-',a.accident_year)::date else null end as accident_date,
+       CASE when a.fk_transaction_code_id in (2,3,4,5) THEN concat('01-',a.accident_month,'-',a.accident_year)::date else null end as accident_date,
        CASE
          WHEN a.fk_coverage_code_id IN ( 1, 13, 26 ) THEN b.code
          WHEN a.fk_coverage_code_id IN ( 2, 14, 27 ) THEN b.code
@@ -139,28 +140,28 @@ END$$ language plpgsql;
 
 
 drop function tmp_auto_outstanding;
-CREATE OR replace FUNCTION tmp_auto_outstanding(IN start_date date,IN end_date date, IN pv_coverage_code_id VARCHAR)
+CREATE OR replace FUNCTION tmp_auto_outstanding(IN start_date date,IN end_date date, IN pv_coverage_code VARCHAR)
     returns      numeric AS $$DECLARE ep numeric;
     BEGIN
         SELECT Sum(x.loss_amount) outstanding_loss
-            FROM  (SELECT t2.  fk_coverage_code_id,
+            FROM  (SELECT t2.  reporting_code,
                         t2.occurrence_identifier,
                         Max(t2.loss_amount) loss_amount
-                FROM   (SELECT   fk_coverage_code_id,
+                FROM   (SELECT   reporting_code,
                                 occurrence_identifier,
                                 Max(accounting_date) accounting_date
                         FROM   tmp_pa_coverage
                         WHERE  fk_transaction_code_id = 3
-                        and   fk_coverage_code_id = pv_coverage_code_id
+                        and   reporting_code = pv_coverage_code
                         and accident_date > start_date
                         and accident_date < end_date
-                        GROUP  BY   fk_coverage_code_id,
+                        GROUP  BY   reporting_code,
                                     occurrence_identifier) t,
                         tmp_pa_coverage t2
-                WHERE  t.  fk_coverage_code_id = t2.  fk_coverage_code_id
+                WHERE  t.  reporting_code = t2.  reporting_code
                         AND t.occurrence_identifier = t2.occurrence_identifier
                         AND t.accounting_date = t2.accounting_date
-                GROUP  BY t2.  fk_coverage_code_id,
+                GROUP  BY t2.  reporting_code,
                             t2.occurrence_identifier,
                             t2.accounting_date) x into ep; 
         RETURN ep;

@@ -113,7 +113,7 @@ function convertTextRecordToJsonUsingSchema(record, premiumSchema, lossSchema) {
 			if (transactionCode == '1' || transactionCode == '8') {
 				schema = premiumSchema;
 				// console.log('premium record found')
-				result = processRecord(record, schema);
+				//result = processRecord(record, schema);
 			}
 
 			if (
@@ -125,6 +125,12 @@ function convertTextRecordToJsonUsingSchema(record, premiumSchema, lossSchema) {
 				schema = lossSchema;
 				// console.log('loss record found')
 				result = processRecord(record, schema);
+        console.log(result)
+        accidentDate = result['accidentDate']
+        result['accidentMonth'] = accidentDate.slice(0,2)
+        //result['accidentYear'] = accidentDate.slice(2)
+        result['accidentYear'] = '20'
+        console.table(result)
 			}
 			return result;
 		}
