@@ -4,7 +4,9 @@ BEGIN
 CREATE TABLE IF NOT EXISTS state_code (
     id INT,
     abbreviation VARCHAR,
-    code VARCHAR
+    code VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
 );
 
 IF NOT EXISTS (SELECT * FROM state_code) THEN 
