@@ -1,3 +1,4 @@
+-- drop table tmp_pa_coverage;
 create table tmp_pa_coverage as
 SELECT 
 	case when a.fk_transaction_code_id in (1,6) then 'Premium'

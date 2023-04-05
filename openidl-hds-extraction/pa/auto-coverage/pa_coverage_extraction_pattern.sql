@@ -1,4 +1,10 @@
--- drop table tmp_pa_coverage;
+-- drop table tmp_pa_coverage_ref;
+ create table tmp_pa_coverage_ref as
+    select reporting_code, reporting_name 
+    from tmp_pa_coverage 
+    where reporting_code is not null
+    group by reporting_code, reporting_name 
+    order by reporting_name;-- drop table tmp_pa_coverage;
 create table tmp_pa_coverage as
 SELECT 
 	case when a.fk_transaction_code_id in (1,6) then 'Premium'
@@ -75,17 +81,33 @@ SELECT
        END AS reporting_name
 FROM   pa_stat_vw a,
        pa_coverage_code b
-WHERE  a.fk_coverage_code_id = b.id;
-
--- drop table tmp_pa_coverage_ref;
- create table tmp_pa_coverage_ref as
-    select reporting_code, reporting_name 
-    from tmp_pa_coverage 
-    where reporting_code is not null
-    group by reporting_code, reporting_name 
-    order by reporting_name;
-
-CREATE OR replace FUNCTION  tmp_car_years(IN start_date date,IN end_date date, IN pv_reporting_code VARCHAR)
+WHERE  a.fk_coverage_code_id = b.id;drop function tmp_pa_auto_outstanding;
+CREATE OR replace FUNCTION tmp_pa_auto_outstanding(IN start_date date,IN end_date date, IN pv_coverage_code VARCHAR)
+    returns      numeric AS $$DECLARE ep numeric;
+    BEGIN
+        SELECT Sum(x.loss_amount) outstanding_loss
+            FROM  (SELECT t2.  reporting_code,
+                        t2.occurrence_identifier,
+                        Max(t2.loss_amount) loss_amount
+                FROM   (SELECT   reporting_code,
+                                occurrence_identifier,
+                                Max(accounting_date) accounting_date
+                        FROM   tmp_pa_coverage
+                        WHERE  fk_transaction_code_id = 3
+                        and   reporting_code = pv_coverage_code
+                        and accident_date > start_date
+                        and accident_date < end_date
+                        GROUP  BY   reporting_code,
+                                    occurrence_identifier) t,
+                        tmp_pa_coverage t2
+                WHERE  t.  reporting_code = t2.  reporting_code
+                        AND t.occurrence_identifier = t2.occurrence_identifier
+                        AND t.accounting_date = t2.accounting_date
+                GROUP  BY t2.  reporting_code,
+                            t2.occurrence_identifier,
+                            t2.accounting_date) x into ep; 
+        RETURN ep;
+    END$$ language plpgsql;CREATE OR replace FUNCTION  tmp_pa_car_years(IN start_date date,IN end_date date, IN pv_reporting_code VARCHAR)
 returns      numeric AS $$DECLARE cy numeric;
 BEGIN
     select sum(a.cy)
@@ -125,11 +147,7 @@ BEGIN
             and reporting_code = pv_reporting_code)
             ) a into cy;
     RETURN cy;
-END$$ language plpgsql;
-
-
-
-    CREATE OR replace FUNCTION  tmp_pa_earned_premium(IN start_date date,IN end_date date, IN pv_reporting_code VARCHAR)
+END$$ language plpgsql;    CREATE OR replace FUNCTION  tmp_pa_earned_premium(IN start_date date,IN end_date date, IN pv_reporting_code VARCHAR)
     returns      numeric AS $$DECLARE ep numeric;
     BEGIN
         select sum(a.ep)
@@ -169,37 +187,17 @@ END$$ language plpgsql;
                 and fk_transaction_code_id in (1,8)
                 and reporting_code = pv_reporting_code)) a into ep;
         RETURN ep;
-END$$ language plpgsql;
-
-
-drop function tmp_auto_outstanding;
-CREATE OR replace FUNCTION tmp_auto_outstanding(IN start_date date,IN end_date date, IN pv_coverage_code VARCHAR)
+END$$ language plpgsql; CREATE OR replace FUNCTION tmp_pa_incurred_count(IN start_date date,IN end_date date, IN pv_reporting_code VARCHAR)
     returns      numeric AS $$DECLARE ep numeric;
     BEGIN
-        SELECT Sum(x.loss_amount) outstanding_loss
-            FROM  (SELECT t2.  reporting_code,
-                        t2.occurrence_identifier,
-                        Max(t2.loss_amount) loss_amount
-                FROM   (SELECT   reporting_code,
-                                occurrence_identifier,
-                                Max(accounting_date) accounting_date
-                        FROM   tmp_pa_coverage
-                        WHERE  fk_transaction_code_id = 3
-                        and   reporting_code = pv_coverage_code
-                        and accident_date > start_date
-                        and accident_date < end_date
-                        GROUP  BY   reporting_code,
-                                    occurrence_identifier) t,
-                        tmp_pa_coverage t2
-                WHERE  t.  reporting_code = t2.  reporting_code
-                        AND t.occurrence_identifier = t2.occurrence_identifier
-                        AND t.accounting_date = t2.accounting_date
-                GROUP  BY t2.  reporting_code,
-                            t2.occurrence_identifier,
-                            t2.accounting_date) x into ep; 
+        select count(distinct(occurrence_identifier)) incurred_count 
+        from tmp_pa_coverage
+        where fk_transaction_code_id in (2,3,4,5)
+        and reporting_code = pv_reporting_code
+        and accident_date > start_date
+        and accident_date < end_date into ep;
         RETURN ep;
     END$$ language plpgsql;
-
  drop function tmp_pa_incurred_loss;
  CREATE OR replace FUNCTION tmp_pa_incurred_loss(IN start_date date,IN end_date date, IN  pv_reporting_code VARCHAR)
     returns      numeric AS $$DECLARE ep numeric;
@@ -215,21 +213,7 @@ CREATE OR replace FUNCTION tmp_auto_outstanding(IN start_date date,IN end_date d
             union
             (select tmp_pa_auto_outstanding(start_date, end_date,'1') loss_amount))) a into ep; 
         RETURN ep;
-    END$$ language plpgsql;
-
- CREATE OR replace FUNCTION tmp_pa_incurred_count(IN start_date date,IN end_date date, IN pv_reporting_code VARCHAR)
-    returns      numeric AS $$DECLARE ep numeric;
-    BEGIN
-        select count(distinct(occurrence_identifier)) incurred_count 
-        from tmp_pa_coverage
-        where fk_transaction_code_id in (2,3,4,5)
-        and reporting_code = pv_reporting_code
-        and accident_date > start_date
-        and accident_date < end_date into ep;
-        RETURN ep;
-    END$$ language plpgsql;
-
-SELECT a.reporting_code,
+    END$$ language plpgsql;SELECT a.reporting_code,
        a.reporting_name,
 		Round(tmp_au_earned_premium('2020-01-01' :: DATE,'2021-01-01' :: DATE, a.reporting_code)) earned_premium,
 		Round(tmp_car_years('2020-01-01' :: DATE, '2021-01-01' :: DATE, a.reporting_code)) car_years,
