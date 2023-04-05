@@ -48,7 +48,7 @@ async function main() {
 				} catch (ee) {
 					console.log(statement);
 					console.log('error: ');
-					console.log(e);
+					console.log(ee);
 				}
 			}
 		}
