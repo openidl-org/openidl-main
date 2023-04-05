@@ -45,10 +45,10 @@ FROM   pa_stat_vw a,
        pa_coverage_code b
 WHERE  a.fk_coverage_code_id = b.id;
 
-
  create table tmp_pa_coverage_ref as
     select reporting_code, reporting_name 
     from tmp_pa_coverage 
+    where reporting_code is not null
     group by reporting_code, reporting_name 
     order by reporting_code;
 
@@ -167,10 +167,39 @@ CREATE OR replace FUNCTION tmp_auto_outstanding(IN start_date date,IN end_date d
         RETURN ep;
     END$$ language plpgsql;
 
+ drop function tmp_pa_incurred_loss;
+ CREATE OR replace FUNCTION tmp_pa_incurred_loss(IN start_date date,IN end_date date, IN  pv_reporting_code VARCHAR)
+    returns      numeric AS $$DECLARE ep numeric;
+    BEGIN
+        
+        select sum(loss_amount) loss_amount
+            from 
+            ((select sum(loss_amount) loss_amount from tmp_pa_coverage
+            where fk_transaction_code_id = 2
+            and reporting_code =  pv_reporting_code
+            and accident_date > start_date
+            and accident_date < end_date
+            union
+            (select tmp_auto_outstanding(start_date, end_date,'1') loss_amount))) a into ep; 
+        RETURN ep;
+    END$$ language plpgsql;
 
+ CREATE OR replace FUNCTION tmp_pa_incurred_count(IN start_date date,IN end_date date, IN pv_reporting_code VARCHAR)
+    returns      numeric AS $$DECLARE ep numeric;
+    BEGIN
+        select count(distinct(occurrence_identifier)) incurred_count 
+        from tmp_pa_coverage
+        where fk_transaction_code_id in (2,3,4,5)
+        and reporting_code = pv_reporting_code
+        and accident_date > start_date
+        and accident_date < end_date into ep;
+        RETURN ep;
+    END$$ language plpgsql;
 
 SELECT a.reporting_code,
        a.reporting_name,
 		Round(tmp_au_earned_premium('2020-01-01' :: DATE,'2021-01-01' :: DATE, a.reporting_code)) earned_premium,
-		Round(tmp_car_years('2020-01-01' :: DATE, '2021-01-01' :: DATE, a.reporting_code)) car_years
+		Round(tmp_car_years('2020-01-01' :: DATE, '2021-01-01' :: DATE, a.reporting_code)) car_years,
+        Round(tmp_pa_incurred_loss('2020-01-01'::DATE, '2021-01-01'::DATE,a.reporting_code)) incurred_loss,
+        round(tmp_pa_incurred_count('2020-01-01'::DATE, '2021-01-01'::DATE,a.reporting_code)) incurred_count
 FROM   tmp_pa_coverage_ref a; 

@@ -6,6 +6,7 @@ AS
   SELECT a.id           openidl_id,
          a.policy_num   policy_identifier,
          a.claim_id     claim_identifier,
+         a.claim_num occurrence_identifier,
          a.zip,
          a.zip_suff,
          a.rep_mo       accounting_month,
