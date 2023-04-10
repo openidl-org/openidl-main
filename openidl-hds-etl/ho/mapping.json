@@ -37,12 +37,12 @@
     "premiumAmount": {
         "inboundName": "premiumAmount",
         "stageName": "PREM_AMT",
-        "dataType": "DECIMAL"
+        "dataType": "NUMERIC"
     },
     "lossAmount": {
         "inboundName": "lossAmount",
         "stageName": "LOSS_AMT",
-        "dataType": "DECIMAL"
+        "dataType": "NUMERIC"
     },
     "exposure": {
         "inboundName": "exposure",
