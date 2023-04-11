@@ -6,7 +6,7 @@ const getMap = require('./pa_coverage_map')
 function getSQLReport(companyId){
 
     extractionPattern = {}
-    map = getMap(companyId,'|')
+    map = getMap(companyId,' ')
     reduce = getCoverageReport(companyId)
     
     extractionPattern = map+' '+reduce

@@ -5,7 +5,8 @@ select reporting_code, reporting_name
 from openidl_ep_${companyId}.tmp_pa_coverage 
 where reporting_code is not null
 group by reporting_code, reporting_name 
-order by reporting_name;
+order by reporting_code::numeric;
+
     `
     return sql
 }

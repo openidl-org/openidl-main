@@ -1,6 +1,5 @@
-function getReportingTable(){
-    sql =  `
-    create table openidl_ep_${companyId}.tmp_pa_coverage as
+
+    create table openidl_ep_9997.tmp_pa_coverage as
     SELECT 
         case when a.fk_transaction_code_id in (1,6) then 'Premium'
             when a.fk_transaction_code_id in (2,3,4,5) then  'Claim'
@@ -74,12 +73,8 @@ function getReportingTable(){
              WHEN a.fk_coverage_code_id IN (9,20,32) AND a.fk_deductible_code_id = 7 THEN 'Bodily Injury'
              else NULL
            END AS reporting_name
-    FROM   openidl_base_${companyId}.pa_stat_vw a,
-          openidl_base_${companyId}.pa_coverage_code b
+    FROM   openidl_base_9997.pa_stat_vw a,
+          openidl_base_9997.pa_coverage_code b
     WHERE  a.fk_coverage_code_id = b.id;
     
-    `
-    return sql
-}
-
-module.exports = getReportingTable
+    
