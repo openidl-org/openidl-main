@@ -1,0 +1,15 @@
+function getTearDown(){
+    let sql = `
+DROP FUNCTION IF EXISTS tmp_pa_car_years;
+DROP FUNCTION IF EXISTS tmp_pa_earned_premium;
+DROP FUNCTION IF EXISTS tmp_pa_auto_outstanding;
+DROP FUNCTION IF EXISTS tmp_pa_incurred_loss;
+DROP FUNCTION IF EXISTS tmp_pa_incurred_count;
+DROP TABLE IF EXISTS tmp_pa_coverage_ref;
+DROP TABLE IF EXISTS tmp_pa_coverage;
+    
+    `
+    return sql
+}
+
+module.exports = getTearDown
