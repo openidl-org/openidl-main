@@ -16,7 +16,6 @@ const getReportingTable = require('./pa_coverage_tbl')
 function getMap(companyId, delimiter){
     sqlArray = []
     sqlArray.push(getTearDown(companyId))
-    sqlArray.push(getPreTable(companyId))
     sqlArray.push(getReportingTable(companyId))
     sqlArray.push(getRefTable(companyId))
     sqlArray.push(getCarYears(companyId))

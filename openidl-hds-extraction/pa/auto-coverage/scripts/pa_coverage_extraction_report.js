@@ -1,4 +1,4 @@
-function getReport(){
+function getReport(companyId){
     sql = `
     SELECT a.reporting_code,
        a.reporting_name,
@@ -6,7 +6,7 @@ function getReport(){
 		Round(tmp_car_years('2020-01-01' :: DATE, '2021-01-01' :: DATE, a.reporting_code)) car_years,
         Round(tmp_pa_incurred_loss('2020-01-01'::DATE, '2021-01-01'::DATE,a.reporting_code)) incurred_loss,
         round(tmp_pa_incurred_count('2020-01-01'::DATE, '2021-01-01'::DATE,a.reporting_code)) incurred_count
-    FROM   tmp_pa_coverage_ref a; 
+    FROM   openidl_ep_${companyId}.tmp_pa_coverage_ref a; 
 
     `
     return sql
