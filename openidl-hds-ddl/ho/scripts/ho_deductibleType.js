@@ -21,7 +21,7 @@ for (let code of codes){
     let data = codeMap[code];
     let description = data['name'];
     let type = data['type'];
-    line = `    INSERT INTO ho_construction_code VALUES(${index},'${code}','${description}','${type}');`
+    line = `    INSERT INTO ho_deductible_type_code VALUES(${index},'${code}','${description}','${type}');`
     fileLines.push(line)
     index+=1
 }
