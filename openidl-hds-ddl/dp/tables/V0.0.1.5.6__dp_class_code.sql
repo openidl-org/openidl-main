@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS dp_class_code (
     code VARCHAR,
     name VARCHAR,
     type VARCHAR,
-    category VARCHAR
+    category_code VARCHAR
 );
 
 IF NOT EXISTS (SELECT * FROM dp_class_code) THEN 
