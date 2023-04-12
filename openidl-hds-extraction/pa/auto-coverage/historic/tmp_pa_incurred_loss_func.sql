@@ -11,6 +11,6 @@
             and accident_date > start_date
             and accident_date < end_date
             union
-            (select tmp_pa_auto_outstanding(start_date, end_date,'1') loss_amount))) a into ep; 
+            (select tmp_pa_auto_outstanding(start_date, end_date,pv_reporting_code))) a into ep; 
         RETURN ep;
     END$$ language plpgsql;

@@ -19,12 +19,12 @@ function getReportingTable(){
            (concat('01-',a.accounting_month,'-',a.accounting_year)::date + interval '1 month' * a.months_covered)::date accounting_term_expiration,
            CASE when a.fk_transaction_code_id in (2,3,4,5) THEN concat('01-',a.accident_month,'-',a.accident_year)::date else null end as accident_date,
            CASE
-             WHEN a.fk_coverage_code_id IN ( 1, 13, 26 ) THEN b.code
-             WHEN a.fk_coverage_code_id IN ( 2, 14, 27 ) THEN b.code
-             WHEN a.fk_coverage_code_id IN ( 3, 15, 28 ) THEN b.code
-             WHEN a.fk_coverage_code_id = 4 THEN b.code
-             WHEN a.fk_coverage_code_id IN ( 5, 16, 29 ) THEN b.code
-             WHEN a.fk_coverage_code_id IN ( 6, 17, 10, 21, 33, 11, 22, 34 ) THEN b.code
+             WHEN a.fk_coverage_code_id IN ( 1, 13, 26 ) THEN '1'
+             WHEN a.fk_coverage_code_id IN ( 2, 14, 27 ) THEN '2'
+             WHEN a.fk_coverage_code_id IN ( 3, 15, 28 ) THEN '3'
+             WHEN a.fk_coverage_code_id = 4 THEN '4'
+             WHEN a.fk_coverage_code_id IN ( 5, 16, 29 ) THEN '5'
+             WHEN a.fk_coverage_code_id IN ( 6, 17, 10, 21, 33, 11, 22, 34 ) THEN '6'
              WHEN a.fk_coverage_code_id IN ( 7, 18, 30 ) AND a.fk_deductible_code_id = 1 THEN '7'
              WHEN a.fk_coverage_code_id IN ( 8,19,31) AND a.fk_deductible_code_id = 1 THEN '8'
              WHEN a.fk_coverage_code_id IN ( 12,35) AND a.fk_deductible_code_id = 1 THEN '8'

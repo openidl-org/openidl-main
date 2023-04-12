@@ -8,7 +8,8 @@ const getPersonalAutoOutstanding = require('./pa_auto_outstanding_func.js')
 const getTearDown = require('./pa_tear_down.js')
 const getRefTable = require('./pa_coverage_ref_tbl.js')
 const getReportingTable = require('./pa_coverage_tbl')
-
+const getBasicLimitIl = require('./pa_basic_limit_il')
+const getExcessLimitIl = require('./pa_excess_limit_il')
 const getBuilder = require('./pa_build_extraction');
 const getSQLReport = require(`./pa_coverage_generate_extraction_pattern_sql`);
 
@@ -174,6 +175,38 @@ function createOutstanding(companyId) {
 	}
 }
 
+function createBasicLimitIl(companyId) {
+	sql = getBasicLimitIl(companyId);
+
+	path = `../sql/tmp_pa_basic_limit_il.sql`;
+	if (!checkFileExists(path)) {
+		console.log(
+			`Personal Auto Basic Limit function ${companyId} not found. Creating now.`
+		);
+		write(path, sql);
+	} else {
+		console.log(
+			`Personal Auto Basic Limit function ${companyId} exists. Skipping Generation`
+		);
+	}
+}
+
+function createExcessLimitIl(companyId) {
+	sql = getExcessLimitIl(companyId);
+
+	path = `../sql/tmp_pa_basic_excess_il.sql`;
+	if (!checkFileExists(path)) {
+		console.log(
+			`Personal Auto Basic Excess function ${companyId} not found. Creating now.`
+		);
+		write(path, sql);
+	} else {
+		console.log(
+			`Personal Auto Basic Excess function ${companyId} exists. Skipping Generation`
+		);
+	}
+}
+
 function createTearDown(companyId) {
 	sql = getTearDown(companyId);
 
@@ -249,6 +282,8 @@ function initCompany(build) {
 	createEarnedPremium(companyId);
 	createIncurredCount(companyId);
 	createIncurredLoss(companyId);
+	createBasicLimitIl(companyId)
+	createExcessLimitIl(companyId)
 	createPersonalAutoCoverageReport(companyId);
 	createReportingTable(companyId);
 	createTearDown(companyId);
@@ -260,7 +295,7 @@ function initCompany(build) {
 }
 
 function main() {
-	let build = {ID:'9997'}
+	let build = {ID:'9997', startDate: '', endDate: ''}
 	initCompany(build)
 }
 

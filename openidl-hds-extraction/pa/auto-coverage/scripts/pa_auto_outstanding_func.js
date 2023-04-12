@@ -14,8 +14,8 @@ CREATE OR replace FUNCTION openidl_ep_${companyId}.tmp_pa_auto_outstanding(IN st
                         FROM   openidl_ep_${companyId}.tmp_pa_coverage
                         WHERE  fk_transaction_code_id = 3
                         and   reporting_code = pv_coverage_code
-                        and accident_date > start_date
-                        and accident_date < end_date
+                        and accounting_date >= start_date
+                        and accounting_date =< end_date
                         GROUP  BY   reporting_code,
                                     occurrence_identifier) t,
                         openidl_ep_${companyId}.tmp_pa_coverage t2

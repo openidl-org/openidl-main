@@ -40,9 +40,7 @@ select q.state_code, q.state_name, q.territory_key,q.zip_code, q.year,
        else (coalesce(q.paid_losses, 0) + coalesce(q.outstanding_losses, 0)) end) as basic_limit_il,
        
        
-       sum(case when (coalesce(q.paid_losses, 0) + coalesce(q.outstanding_losses, 0)) <= 25000 then 0 
-       else (coalesce(q.paid_losses, 0) + coalesce(q.outstanding_losses, 0)) - 25000 end) as excess_limit_il,
-       
+       sum(case when (coalesce(q.paid_losses, 0) + coalesce(q.outstanding_losses, 0)) <= 25000 then 0 else (coalesce(q.paid_losses, 0) + coalesce(q.outstanding_losses, 0)) - 25000 end) as excess_limit_il,
        (sum(case when (coalesce(q.paid_losses, 0) + coalesce(q.outstanding_losses, 0)) > 25000 then 25000 else (coalesce(q.paid_losses, 0) + coalesce(q.outstanding_losses, 0)) end) * 1.06 * 1.20) as LDBL,
        (sum(case when (coalesce(q.paid_losses, 0) + coalesce(q.outstanding_losses, 0)) <= 25000 then 0 else (coalesce(q.paid_losses, 0) + coalesce(q.outstanding_losses, 0)) - 25000 end) * 1.06 * 1.20) as LDEL      
 
