@@ -3,11 +3,11 @@ const getMap = require('./pa_coverage_map')
 
 
 
-function getSQLReport(companyId){
+function getSQLReport(companyId, startDate, endDate){
 
     extractionPattern = {}
-    map = getMap(companyId,' ')
-    reduce = getCoverageReport(companyId)
+    map = getMap(companyId,' ', startDate, endDate)
+    reduce = getCoverageReport(companyId, startDate, endDate)
     
     extractionPattern = map+' '+reduce
     return extractionPattern

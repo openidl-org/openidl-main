@@ -1,11 +1,11 @@
 function getRefTable(companyId){
     sql = `
-create table openidl_ep_${companyId}.tmp_pa_coverage_ref as
-select reporting_code, reporting_name 
-from openidl_ep_${companyId}.tmp_pa_coverage 
-where reporting_code is not null
-group by reporting_code, reporting_name 
-order by reporting_code::numeric;
+CREATE TABLE openidl_ep_${companyId}.tmp_pa_coverage_ref as
+SELECT reporting_code, reporting_name 
+FROM openidl_ep_${companyId}.tmp_pa_coverage 
+WHERE reporting_code IS NOT NULL
+GROUP BY reporting_code, reporting_name 
+ORDER BY reporting_code::numeric;
 
     `
     return sql

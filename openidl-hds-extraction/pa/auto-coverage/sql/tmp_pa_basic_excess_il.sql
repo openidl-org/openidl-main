@@ -1,6 +1,6 @@
 
 CREATE OR replace FUNCTION openidl_ep_9997.tmp_pa_excess_limit_il(IN start_date date,IN end_date date, IN pv_reporting_code varchar)
-returns numeric AS $$declare ex numeric;BEGIN
+RETURNS NUMERIC AS $$declare ex numeric;BEGIN
 SELECT
         CASE
             WHEN b.paid_loss + c.outstanding_loss <= 2500 THEN 0
@@ -14,8 +14,9 @@ FROM   (
             AND    a.accounting_date >= start_date
             AND    a.accounting_date <= end_date) b,
         (
-            SELECT openidl_ep_9997.Tmp_pa_auto_outstanding(start_date, end_date,pv_reporting_code) outstanding_loss) c
-into   ex;
+            SELECT openidl_ep_9997.tmp_pa_auto_outstanding(start_date, end_date,pv_reporting_code) outstanding_loss) c
+INTO   ex;
 
 RETURN ex;
 end$$ language plpgsql;
+

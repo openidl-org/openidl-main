@@ -1,18 +1,17 @@
 const fs = require('fs');
-const getCoverageReport = require('./pa_coverage_extraction_report')
+const getCoverageReport = require('./pa_coverage_extraction_report');
 const getCarYears = require('./pa_car_years_func');
-const getEarnedPremium = require('./pa_earned_premium_func')
-const getIncurredCount = require('./pa_incurred_count_func')
-const getIncurredLoss = require('./pa_incurred_loss_func')
-const getPersonalAutoOutstanding = require('./pa_auto_outstanding_func.js')
-const getTearDown = require('./pa_tear_down.js')
-const getRefTable = require('./pa_coverage_ref_tbl.js')
-const getReportingTable = require('./pa_coverage_tbl')
-const getBasicLimitIl = require('./pa_basic_limit_il')
-const getExcessLimitIl = require('./pa_excess_limit_il')
+const getEarnedPremium = require('./pa_earned_premium_func');
+const getIncurredCount = require('./pa_incurred_count_func');
+const getIncurredLoss = require('./pa_incurred_loss_func');
+const getPersonalAutoOutstanding = require('./pa_auto_outstanding_func.js');
+const getTearDown = require('./pa_tear_down.js');
+const getRefTable = require('./pa_coverage_ref_tbl.js');
+const getReportingTable = require('./pa_coverage_tbl');
+const getBasicLimitIl = require('./pa_basic_limit_il');
+const getExcessLimitIl = require('./pa_excess_limit_il');
 const getBuilder = require('./pa_build_extraction');
 const getSQLReport = require(`./pa_coverage_generate_extraction_pattern_sql`);
-
 
 function write(path, value) {
 	// console.log(`write, path: ${path}\n value: ${value}`)
@@ -23,20 +22,6 @@ function write(path, value) {
 		console.log('The file was saved!');
 	});
 }
-// function checkDirExists(path) {
-// 	console.log(path)
-// 	try {
-// 		if (fs.existsSync(path)) {
-// 			console.log('Directory exists.');
-// 			return true;
-// 		} else {
-// 			console.log('Directory does not exist.');
-// 			return false;
-// 		}
-// 	} catch (e) {
-// 		console.log('An error occurred.');
-// 	}
-// }
 
 function checkFileExists(path) {
 	//console.log('file path: '+path)
@@ -52,12 +37,11 @@ function checkFileExists(path) {
 	}
 }
 
-
 function createCarYears(companyId) {
-	sql = getCarYears(companyId);
 	path = '../sql/tmp_pa_car_years_func.sql';
 	if (!checkFileExists(path)) {
 		console.log(`Car Years Function ${companyId} not found. Creating now.`);
+		sql = getCarYears(companyId);
 		write(path, sql);
 	} else {
 		console.log(
@@ -67,12 +51,12 @@ function createCarYears(companyId) {
 }
 
 function createEarnedPremium(companyId) {
-	sql = getEarnedPremium(companyId);
 	path = '../sql/tmp_pa_earned_premium_func.sql';
 	if (!checkFileExists(path)) {
 		console.log(
 			`Earned Premium Function ${companyId} not found. Creating now.`
 		);
+		sql = getEarnedPremium(companyId);
 		write(path, sql);
 	} else {
 		console.log(
@@ -82,12 +66,12 @@ function createEarnedPremium(companyId) {
 }
 
 function createIncurredCount(companyId) {
-	sql = getIncurredCount(companyId);
 	path = '../sql/tmp_incurred_count_func.sql';
 	if (!checkFileExists(path)) {
 		console.log(
 			`Incurred Count Function ${companyId} not found. Creating now.`
 		);
+		sql = getIncurredCount(companyId);
 		write(path, sql);
 	} else {
 		console.log(
@@ -97,12 +81,12 @@ function createIncurredCount(companyId) {
 }
 
 function createIncurredLoss(companyId) {
-	sql = getIncurredLoss(companyId);
-	path = '../sql/tmp_pa_incurred_loss_func.sql'
+	path = '../sql/tmp_pa_incurred_loss_func.sql';
 	if (!checkFileExists(path)) {
 		console.log(
 			`Incurred Loss Function ${companyId} not found. Creating now.`
 		);
+		sql = getIncurredLoss(companyId);
 		write(path, sql);
 	} else {
 		console.log(
@@ -111,13 +95,13 @@ function createIncurredLoss(companyId) {
 	}
 }
 
-function createPersonalAutoCoverageReport(companyId) {
-	sql = getCoverageReport(companyId);
+function createPersonalAutoCoverageReport(companyId, startDate, endDate) {
 	path = `../sql/pa_coverage_report.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
 			`Personal Auto Coverage Report ${companyId} not found. Creating now.`
 		);
+		sql = getCoverageReport(companyId, startDate, endDate);
 		write(path, sql);
 	} else {
 		console.log(
@@ -126,15 +110,13 @@ function createPersonalAutoCoverageReport(companyId) {
 	}
 }
 
-
 function createReportingTableRef(companyId) {
-	sql = getRefTable(companyId);
-
 	path = `../sql/tmp_pa_coverage_ref_tbl.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
 			`Personal Auto Reporting Table Ref ${companyId} not found. Creating now.`
 		);
+		sql = getRefTable(companyId);
 		write(path, sql);
 	} else {
 		console.log(
@@ -143,14 +125,13 @@ function createReportingTableRef(companyId) {
 	}
 }
 
-function createReportingTable(companyId) {
-	sql = getReportingTable(companyId);
-
+function createReportingTable(companyId, startDate, endDate) {
 	path = `../sql/tmp_pa_coverage_tbl.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
 			`Personal Auto Reporting Table ${companyId} not found. Creating now.`
 		);
+		sql = getReportingTable(companyId, startDate, endDate);
 		write(path, sql);
 	} else {
 		console.log(
@@ -160,13 +141,12 @@ function createReportingTable(companyId) {
 }
 
 function createOutstanding(companyId) {
-	sql = getPersonalAutoOutstanding(companyId);
-
 	path = `../sql/tmp_pa_auto_outstanding.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
 			`Personal Auto Outstanding function ${companyId} not found. Creating now.`
 		);
+		sql = getPersonalAutoOutstanding(companyId);
 		write(path, sql);
 	} else {
 		console.log(
@@ -176,13 +156,12 @@ function createOutstanding(companyId) {
 }
 
 function createBasicLimitIl(companyId) {
-	sql = getBasicLimitIl(companyId);
-
 	path = `../sql/tmp_pa_basic_limit_il.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
 			`Personal Auto Basic Limit function ${companyId} not found. Creating now.`
 		);
+		sql = getBasicLimitIl(companyId);
 		write(path, sql);
 	} else {
 		console.log(
@@ -192,13 +171,12 @@ function createBasicLimitIl(companyId) {
 }
 
 function createExcessLimitIl(companyId) {
-	sql = getExcessLimitIl(companyId);
-
 	path = `../sql/tmp_pa_basic_excess_il.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
 			`Personal Auto Basic Excess function ${companyId} not found. Creating now.`
 		);
+		sql = getExcessLimitIl(companyId);
 		write(path, sql);
 	} else {
 		console.log(
@@ -208,28 +186,27 @@ function createExcessLimitIl(companyId) {
 }
 
 function createTearDown(companyId) {
-	sql = getTearDown(companyId);
-
 	path = '../sql/tmp_pa_tear_down.sql';
 	if (!checkFileExists(path)) {
-		console.log(`Personal Auto Tear Down ${companyId} not found. Creating now.`);
+		console.log(
+			`Personal Auto Tear Down ${companyId} not found. Creating now.`
+		);
+		sql = getTearDown(companyId);
 		write(path, sql);
 	} else {
-		console.log(`Personal Auto Tear Down ${companyId} exists. Skipping Generation`);
+		console.log(
+			`Personal Auto Tear Down ${companyId} exists. Skipping Generation`
+		);
 	}
 }
 
-
-
-function createBuilder(companyId) {
-	sql = getBuilder(companyId,' ');
-
+function createBuilder(companyId, startDate, endDate) {
 	path = `../sql/pa_coverage_extraction.json`;
 	if (!checkFileExists(path)) {
 		console.log(
 			`Personal Auto Extraction Builder ${companyId} not found. Creating now.`
 		);
-		console.table(sql);
+		sql = getBuilder(companyId, ' ', startDate, endDate);
 		data = JSON.stringify(sql);
 
 		fs.writeFileSync(path, data);
@@ -240,17 +217,13 @@ function createBuilder(companyId) {
 	}
 }
 
-function createSQLBuilder(companyId) {
-	sql = getSQLReport(companyId);
-
+function createSQLBuilder(companyId, startDate, endDate) {
 	path = `../sql/pa_coverage_extraction_pattern.sql`;
 	if (!checkFileExists(path)) {
 		console.log(
 			`Personal Auto Extraction SQL ${companyId} not found. Creating now.`
 		);
-		//console.table(sql);
-		
-
+		sql = getSQLReport(companyId, startDate, endDate);
 		fs.writeFileSync(path, sql);
 	} else {
 		console.log(
@@ -259,47 +232,48 @@ function createSQLBuilder(companyId) {
 	}
 }
 
-
-
-function createExtractionPattern() {
+function createExtractionPattern(startDate, endDate) {
 	companyId = '@org';
-	sql = getBuilder(companyId);
+	
 
 	path = `../sql/pa_coverage_report_org.json`;
 	if (!checkFileExists(path)) {
-		console.log(`Personal Auto Extraction Pattern not found. Creating now.`);
-		//console.log('317 gs')
+		console.log(
+			`Personal Auto Extraction Pattern not found. Creating now.`
+		);
+		sql = getBuilder(companyId, startDate, endDate);
 		fs.writeFileSync(path, JSON.stringify(sql));
 	} else {
-		console.log(`Personal Auto Extraction Pattern exists. Skipping Generation`);
+		console.log(
+			`Personal Auto Extraction Pattern exists. Skipping Generation`
+		);
 	}
 }
 
 function initCompany(build) {
-	console.log(build)
+	console.log(build);
 	companyId = build.ID;
+	startDate = build.startDate;
+	endDate = build.endDate;
 	createCarYears(companyId);
 	createEarnedPremium(companyId);
 	createIncurredCount(companyId);
 	createIncurredLoss(companyId);
-	createBasicLimitIl(companyId)
-	createExcessLimitIl(companyId)
-	createPersonalAutoCoverageReport(companyId);
-	createReportingTable(companyId);
+	createBasicLimitIl(companyId);
+	createExcessLimitIl(companyId);
+	createPersonalAutoCoverageReport(companyId, startDate, endDate);
+	createReportingTable(companyId, startDate, endDate);
 	createTearDown(companyId);
 	createOutstanding(companyId);
 	createReportingTableRef(companyId);
-	createBuilder(companyId);
-	createSQLBuilder(companyId);
-	createExtractionPattern();
+	createBuilder(companyId, startDate, endDate);
+	createSQLBuilder(companyId, startDate, endDate);
+	createExtractionPattern(startDate, endDate);
 }
 
 function main() {
-	let build = {ID:'9997', startDate: '', endDate: ''}
-	initCompany(build)
+	let build = { ID: '9997', startDate: '2020-01-01', endDate: '2021-01-01' };
+	initCompany(build);
 }
 
-
 main();
-
-
