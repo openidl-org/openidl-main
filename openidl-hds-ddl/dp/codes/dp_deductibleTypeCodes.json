@@ -1,0 +1,34 @@
+{
+    "0": {
+      "name": "Does Not Apply",
+      "type": "Does Not Apply"
+    },
+    "1": {
+      "name": "No Deductible ($0)",
+      "type": "Does Not Apply"
+    },
+    "6": {
+      "name": "Flat Deductible",
+      "type": "Flat"
+    },
+    "2": {
+      "name": "Flat, With a Higher (Flat or Percentage) Hurricane or Catastrophic Windstorm Deductible",
+      "type": "Flat"
+    },
+    "7": {
+      "name": "Flat, With a Higher (Flat or Percentage) Non-Hurricane/Catastrophic Windstorm Deductible",
+      "type": "Flat"
+    },
+    "5": {
+      "name": "Percentage Deductible on All Perils",
+      "type": "Percentage"
+    },
+    "4": {
+      "name": "Disappearing Deductible",
+      "type": "Does Not Apply"
+    },
+    "9": {
+      "name": "All Other Deductible Types",
+      "type": "Does Not Apply"
+    }
+  }

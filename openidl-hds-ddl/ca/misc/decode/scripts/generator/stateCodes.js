@@ -15,13 +15,10 @@ IF NOT EXISTS (SELECT * FROM state_code) THEN `
 fileLines.push(tableDDL)
 
 let abbreviations = codeMap.abbreviations;
-// let codes = codeMap.codes;
 console.log(abbreviations);
 let index = 1
 for (let abbreviation in abbreviations){
-    //console.log(`abbr ${abbreviation}`);
     let code = abbreviations[abbreviation]
-    //console.log(`code ${code}`);
     line = `    INSERT INTO state_code VALUES(${index},'${abbreviation}','${code}');`
     fileLines.push(line)
     index+=1

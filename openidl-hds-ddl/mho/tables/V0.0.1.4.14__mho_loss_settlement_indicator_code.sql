@@ -1,5 +1,5 @@
 
-DO $$ 
+DO $$
 BEGIN
 CREATE TABLE IF NOT EXISTS mho_loss_settlement_indicator_code (
     id INT,
