@@ -1,0 +1,125 @@
+{
+    "exceptionField": {
+        "stateExceptionA": {
+            "KY": {
+                "hdsName": "TortLimitation",
+                "statPlanName": "tortLimitation",
+                "type": "code",
+                "codes": {
+                    "01": "No rejection of tort limitation - Residual Bodily Injury record only",
+                    "02": "All other liability records"
+                }
+            },
+            "MI": {
+                "hdsName": "IntrastateInterstate",
+                "statPlanName": "intrastateInterstateCode",
+                "type": "code",
+                "codes": {
+                    "03": "Vehicles written on an intrastate basis",
+                    "04": "Vehicles written on an interstate basis"
+                }
+            },
+            "NJ": {
+                "hdsName": "ThresholdTortLimitation",
+                "statPlanName": "thresholdTortLimitation",
+                "type": "code",
+                "codes": {
+                    "04": "No Threshold/No Tort Limitation",
+                    "05": "Verbal Threshold/Tort Limitation",
+                    "99": "Liability with Unknown Threshold/Tort Limitation",
+                    "06": "No Threshold/No Tort Limitation",
+                    "08": "Verbal Threshold/Tort Limitation",
+                    "07": "No Threshold/No Tort Limitation",
+                    "09": "Verbal Threshold/Tort Limitation"
+                }
+            },
+            "NY": {
+                "hdsName": "AccidentPreventionCredit",
+                "statPlanName": "accidentPreventionCredit",
+                "type": "code",
+                "codes": {
+                    "01": "Vehicle with accident prevention credit",
+                    "02": "Vehicle without accident prevention credit"
+                }
+            },
+            "PA": {
+                "hdsName": "TortLimitation",
+                "statPlanName": "tortLimitation",
+                "type": "code",
+                "codes": {
+                    "04": "Full Tort selected by the insured",
+                    "05": "Limited Tort selected by insured"
+                }
+            },
+            "SC": {
+                "hdsName": "SCReinsuranceFacility",
+                "statPlanName": "scReinsuranceFacility",
+                "type": "code",
+                "codes": {
+                    "01": "Business written under the S.C.R.F. and ceded to S.C.R.F.",
+                    "02": "Business written under the S.C.R.F. and retained by the company",
+                    "09": "Business not written under the S.C.R.F."
+                }
+            }
+        },
+        "stateExceptionB": {
+            "NJ": {
+                "hdsName": "MultiCarRisks",
+                "statPlanName": "multiCarRisks",
+                "type": "code",
+                "codes": {
+                    "17": "Principal Automobile - Not Discounted",
+                    "27": "Additional Automobile(s) - Discounted",
+                    "47": "The number of automobiles insured by the same insurer exceeds the number of licensed drivers customarily operating such automobiles.",
+                    "37": "All Other Automobiles"
+                }
+            },
+            "NY": {
+                "hdsName": "PrimaryNoFaultHealthPlan",
+                "statPlanName": "primaryNoFaultHealthPlan",
+                "type": "code",
+                "codes": {
+                    "01": "Employer's work loss plan primary",
+                    "02": "Medicare primary",
+                    "03": "No basic PIP medical expense because medical coverage is provided under an approved health plan",
+                    "04": "Employer's work loss plan and medicare coordination, both primary",
+                    "05": "Employer's work loss plan primary with no basic PIP medical expense because medical coverage is provided under an approved health plan",
+                    "09": "PIP is primary insurance",
+                    "99": "Unknown"
+                }
+            },
+            "PA": {
+                "hdsName": "55AndOverDiscount",
+                "statPlanName": "55AndOverDiscount",
+                "type": "code",
+                "codes": {
+                    "00": "Not Applicable",
+                    "05": "'55 & Over' discount for successful completion of PA certified training course."
+                }
+            }
+        },
+        "stateExceptionC": {
+            "NJ": {
+                "hdsName": "EngineSize",
+                "statPlanName": "engineSize",
+                "type": "code",
+                "codes": {
+                    "01": "0 - 50 cc",
+                    "02": "51 - 100 cc",
+                    "03": "101 - 200 cc",
+                    "04": "201 - 360 cc",
+                    "05": "361 - 500 cc",
+                    "06": "501 - 800 cc",
+                    "07": "801 -1000 cc",
+                    "08": "Over 1000 cc Passenger",
+                    "09": "Hazard excluded"
+                }
+            },
+            "PA": {
+                "hdsName": "CombinedFirstPartyBenefitsCode",
+                "statPlanName": "combinedFirstPartyBenefitsIndivisiblePremiumPolicies",
+                "type": "copy"
+            }
+        }
+    }
+}

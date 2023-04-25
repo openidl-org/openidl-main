@@ -1,0 +1,32 @@
+{
+	"1": {
+		"driversTraining": "Yes",
+		"goodStudentDiscount": "Yes",
+		"effectiveDate": "1900-01-01",
+		"expirationDate": "9999-12-31"
+	},
+	"2": {
+		"driversTraining": "Yes",
+		"goodStudentDiscount": "No",
+		"effectiveDate": "1900-01-01",
+		"expirationDate": "9999-12-31"
+	},
+	"3": {
+		"driversTraining": "No",
+		"goodStudentDiscount": "Yes",
+		"effectiveDate": "1900-01-01",
+		"expirationDate": "9999-12-31"
+	},
+	"4": {
+		"driversTraining": "No",
+		"goodStudentDiscount": "No",
+		"effectiveDate": "1900-01-01",
+		"expirationDate": "9999-12-31"
+	},
+	"5": {
+		"driversTraining": "N/A",
+		"goodStudentDiscount": "N/A",
+		"effectiveDate": "1900-01-01",
+		"expirationDate": "9999-12-31"
+	}
+}

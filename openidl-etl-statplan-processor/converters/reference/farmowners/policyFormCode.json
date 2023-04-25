@@ -1,0 +1,67 @@
+{
+  "policyFormCode": {
+    "dwellingAndLiabilityCoverage": {
+        "01": "Form 1 or FO-1",
+        "02": "Form 2 or FO-2",
+        "03": "Form 3 or FO-3",
+        "04": "Form 4 or FO-4",
+        "05": "FO-5",
+        "08": "Form 8" 
+      },
+    "liabilityCoverage": {
+      "13": "Liability coverage only (dwelling coverage omitted)"
+    },
+    "homeBasedBusinessHBBCoverageForm": {
+      "19": "Basic Coverage"
+    },
+    "hbbLiabilityCoverages": {
+      "51": "Non-owned auto and hired auto liability",
+      "52": "Cosmetologist liability",
+      "40": "All other HBB liability coverages"
+    },
+    "hbbPropertyCoverages": {
+      "72": "Spoilage coverage",
+      "73": "Related private structures used for HBB purposes",
+      "74": "Business property away from premises",
+      "60": "All other HBB property coverages"
+    },
+    "terrorismCoverage": {
+      "90": "Certified acts of terrorism covered (coverage not excluded)",
+      "91": "Certified acts of terrorism excluded subject to Standard Fire Policy statutes when applicable, producing 'fire only' coverage for certified acts of terrorism",
+      "92": "Non-certified acts of terrorism covered (coverage not excluded)",
+      "93": "Non-certified acts of terrorism covered, except acts of terrorism arising out of nuclear, biological or chemical events"
+    },
+    "farmCoverage": {
+      "10": "Farm barns, buildings, and other structures",
+      "11": "Blanket farm personal property",
+      "12": "Scheduled farm personal property"
+    },
+    "liabilityEndorsements": {
+      "41": "Care provided for others",
+      "42": "Business activities",
+      "43": "Office, professional, private school or studio use",
+      "44": "Personal injury",
+      "45": "Watercraft",
+      "46": "Snowmobile",
+      "47": "Lead poisoning coverage",
+      "53": "Golf cart liability",
+      "54": "Fuel oil liability coverage",
+      "40": "All other liability endorsements"
+    },
+    "propertyEndorsements": {
+      "61": "Earthquake - Dwelling",
+      "62": "Water damage - Sewers, drains, and sumps",
+      "63": "Motorized golf cart - physical damage coverage",
+      "64": "Identity fraud expense coverage",
+      "71": "Earthquake - Farm property",
+      "75": "Equipment breakdown coverage",
+      "76": "Weight of ice, snow, and sleet",
+      "77": "Livestock perils options",
+      "60": "All other property endorsements"
+    },
+    "other": {
+      "96": "Miscellaneous property/liability combined end. coverage",
+      "99": "Minimum Premium record subject to SECTION I, PART C, Rule 3.b"
+    }
+  }
+}

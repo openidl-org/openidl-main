@@ -1,0 +1,22 @@
+{
+    "1": {
+        "name": "Occurrence Policy",
+        "type": "Occurrence Policy"
+    },
+    "2": {
+        "name": "Basic policy - with a retroactive date",
+        "type": "Claims made policy"
+    },
+    "3": {
+        "name": "Basic policy - no retroactive date",
+        "type": "Claims made policy"
+    },
+    "4": {
+        "name": "Supplemental Extended Reporting Period Coverage - with a retroactive date",
+        "type": "Claims made policy"
+    },
+    "5": {
+        "name": "Supplemental Extended Reporting Period Coverage - no retroactive date",
+        "type": "Claims made policy"
+    }
+}

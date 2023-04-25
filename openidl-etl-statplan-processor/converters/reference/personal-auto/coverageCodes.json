@@ -1,0 +1,224 @@
+{
+    "MU": {
+        "1": {
+            "name": "Bodily Injury Liability",
+            "category": "Liability"
+        },
+        "2": {
+            "name": "Property Damage Liability",
+            "category": "Liability"
+        },
+        "3": {
+            "name": "Bodily Injury and Property Damage Liability - Indivisible Premium",
+            "category": "Liability"
+        },
+        "4": {
+            "name": "Personal Injury Protection",
+            "category": "Liability"
+        },
+        "5": {
+            "name": "Medical Payments",
+            "category": "Liability"
+        },
+        "6": {
+            "name": "Uninsured/Underinsured Motorists - Indivisible Premium",
+            "category": "Liability"
+        },
+        "X": {
+            "name": "Uninsured Motorist",
+            "category": "Liability"
+        },
+        "Y": {
+            "name": "Underinsured Motorist",
+            "category": "Liability"
+        },
+        "7": {
+            "name": "Physical Damage - Collision",
+            "category": "Physical Damage"
+        },
+        "8": {
+            "name": "Physical Damage - Other Than Collision",
+            "category": "Physical Damage"
+        },
+        "T": {
+            "name": "Physical Damage - Other Than Collision - Additional Coverage Records",
+            "category": "Physical Damage"
+        },
+        "9": {
+            "name": "All Other Property and Liability Coverages",
+            "category": "All Other"
+        },
+        "H": {
+            "name": "Certified acts of terrorism covered (coverage not excluded) -- liability only",
+            "category": "Terrorism Coverages"
+        },
+        "W": {
+            "name": "Certified acts of terrorism covered (coverage not excluded) -- physical damage only",
+            "category": "Terrorism Coverages"
+        },
+        "Z": {
+            "name": "Certified acts of terrorism covered (coverage not excluded) -- liability and physical damage",
+            "category": "Terrorism Coverages"
+        }
+    },
+    "AR": {
+        "1": {
+            "name": "Bodily Injury Liability",
+            "category": "Liability"
+        },
+        "2": {
+            "name": "Property Damage Liability",
+            "category": "Liability"
+        },
+        "3": {
+            "name": "Bodily Injury and Property Damage Liability Combined",
+            "category": "Liability"
+        },
+        "5": {
+            "name": "Medical Payments",
+            "category": "Liability"
+        },
+        "6": {
+            "name": "Uninsured/Underinsured Motorists Indivisible Premium",
+            "category": "Liability"
+        },
+        "X": {
+            "name": "Uninsured Motorist",
+            "category": "Liability"
+        },
+        "Y": {
+            "name": "Underinsured Motorist",
+            "category": "Liability"
+        },
+        "7": {
+            "name": "Physical Damage - Collision",
+            "category": "Physical Damage"
+        },
+        "8": {
+            "name": "Physical Damage - Other Than Collision",
+            "category": "Physical Damage"
+        },
+        "S": {
+            "name": "Medical Benefits",
+            "category": "Medical Benefits"
+        },
+        "U": {
+            "name": "Loss of Income",
+            "category": "Loss of Income"
+        },
+        "V": {
+            "name": "Accidental Death",
+            "category": "Accidental Death"
+        },
+        "9": {
+            "name": "All Other",
+            "category": "All Other"
+        },
+        "W": {
+            "name": "Certified acts of terrorism covered (coverage not excluded) -- physical damage only",
+            "category": "Terrorism Coverages "
+        },
+        "Z": {
+            "name": "Certified acts of terrorism covered (coverage not excluded) -- liability and physical damage",
+            "category": "Terrorism Coverages "
+        }
+    },
+    "PA": {
+        "1": {
+            "name": "Bodily Injury Liability",
+            "category": "Liability"
+        },
+        "2": {
+            "name": "Property Damage Liability",
+            "category": "Liability"
+        },
+        "3": {
+            "name": "Bodily Injury and Property Damage Liability Combined",
+            "category": "Liability"
+        },
+        "5": {
+            "name": "Extraordinary Medical Payments",
+            "category": "Liability"
+        },
+        "X": {
+            "name": "Uninsured Motorist",
+            "category": "Liability"
+        },
+        "Y": {
+            "name": "Underinsured Motorist",
+            "category": "Liability"
+        },
+        "7": {
+            "name": "Physical Damage - Collision",
+            "category": "Physical Damage"
+        },
+        "8": {
+            "name": "Physical Damage - Other Than Collision",
+            "category": "Physical Damage"
+        },
+        "T": {
+            "name": "Physical Damage - Other Than Collision - Additional Coverage Records",
+            "category": "Physical Damage"
+        },
+        "9": {
+            "name": "All Other",
+            "category": "All Other"
+        },
+        "A": {
+            "name": "Medical Benefits",
+            "category": "Policies Not Subject to Worker's Compensation First Party Benefits Coverage"
+        },
+        "B": {
+            "name": "Medical Benefits plus any Funeral Benefits Limit",
+            "category": "Policies Not Subject to Worker's Compensation First Party Benefits Coverage"
+        },
+        "C": {
+            "name": "Loss of Income",
+            "category": "Policies Not Subject to Worker's Compensation First Party Benefits Coverage"
+        },
+        "D": {
+            "name": "Death Benefit",
+            "category": "Policies Not Subject to Worker's Compensation First Party Benefits Coverage"
+        },
+        "E": {
+            "name": "Funderal Benefit",
+            "category": "Policies Not Subject to Worker's Compensation First Party Benefits Coverage"
+        },
+        "F": {
+            "name": "Combined First Party Benefits",
+            "category": "Policies Not Subject to Worker's Compensation First Party Benefits Coverage"
+        },
+        "G": {
+            "name": "Combined First Party Benefits - Indivisible Premium Policies",
+            "category": "Policies Not Subject to Worker's Compensation First Party Benefits Coverage"
+        },
+        "J": {
+            "name": "Medical Benefits",
+            "category": "Policies Subject to Worker's Compensation First Party Benefits Coverage"
+        },
+        "K": {
+            "name": "Medical Benefits plus any Funeral Benefits Limit",
+            "category": "Policies Subject to Worker's Compensation First Party Benefits Coverage"
+        },
+        "L": {
+            "name": "Loss of Income",
+            "category": "Policies Subject to Worker's Compensation First Party Benefits Coverage"
+        },
+        "M": {
+            "name": "Death Benefit",
+            "category": "Policies Subject to Worker's Compensation First Party Benefits Coverage"
+        },
+        "N": {
+            "name": "Funeral Benefit",
+            "category": "Policies Subject to Worker's Compensation First Party Benefits Coverage"
+        },
+        "P": {
+            "name": "Combined First Party Benefits",
+            "category": "Policies Subject to Worker's Compensation First Party Benefits Coverage"
+        },
+        "R": {
+            "name": "Combined First Party Benefits - Indivisible Premium Policies",
+            "category": "Policies Subject to Worker's Compensation First Party Benefits Coverage"
+        }
+    }
+}

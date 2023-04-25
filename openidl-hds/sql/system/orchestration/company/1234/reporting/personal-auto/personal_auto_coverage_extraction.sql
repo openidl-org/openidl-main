@@ -32,25 +32,36 @@
                   when a.coverage_code = '6' then '6'
                   when a.coverage_code = 'X' then '6'
                   when a.coverage_code = 'Y' then '6'
-                  when a.coverage_code = '7' and a.deductible_code in ('0') then '7'
-                  when a.coverage_code = '8' and a.deductible_code in ('0') then '8'
-                  when a.coverage_code = 'T' and a.deductible_code in ('0') then '8'
-                  when a.coverage_code = '7' and a.deductible_code in ('2') then '9'
-                  when a.coverage_code = '8' and a.deductible_code in ('2') then '10'
-                  when a.coverage_code = 'T' and a.deductible_code in ('2') then '10'
-                  when a.coverage_code = '7' and a.deductible_code in ('4') then '11'
-                  when a.coverage_code = '8' and a.deductible_code in ('4') then '12'
-                  when a.coverage_code = 'T' and a.deductible_code in ('4') then '12'
-                  when a.coverage_code = '7' and a.deductible_code in ('5') then '13'
-                  when a.coverage_code = '8' and a.deductible_code in ('5') then '14'
-                  when a.coverage_code = 'T' and a.deductible_code in ('5') then '14'
-                  when a.coverage_code = '7' and a.deductible_code in ('6') then '15'
-                  when a.coverage_code = '8' and a.deductible_code in ('6') then '16'
-                  when a.coverage_code = 'T' and a.deductible_code in ('6') then '16'
-                  when a.coverage_code = '7' and a.deductible_code not in ('0', '2', '4', '5', '6') then '17'
-                  when a.coverage_code = '8' and a.deductible_code not in ('0', '2', '4', '5', '6') then '18'
-                  when a.coverage_code = 'T' and a.deductible_code not in ('0', '2', '4', '5', '6') then '18'              
-                  when a.coverage_code = '9' then '1'
+                  when a.coverage_code = '7'7,18,30 and a.deductible_code in ('0'1) then '7'
+                  when a.coverage_code = '8'8,19,31 and a.deductible_code in ('0'1) then '8' 
+                  when a.coverage_code = 'T'12,35 and a.deductible_code in ('0'1) then '8'
+                  when a.coverage_code = '7'7,18,30 and a.deductible_code in ('2'3) then '9'
+                  when a.coverage_code = '8'8,19,31 and a.deductible_code in ('2'3) then '10'
+                  when a.coverage_code = 'T'12,35 and a.deductible_code in ('2'3) then '10'
+
+                  when a.coverage_code = '7'7,18,30 and a.deductible_code in ('4'5) then '11'
+
+                  when a.coverage_code = '8'8,19,31 and a.deductible_code in ('4'5) then '12'
+                  when a.coverage_code = 'T'12,35 and a.deductible_code in ('4'5) then '12'
+                  
+                  when a.coverage_code = '7'7,18,30 and a.deductible_code in ('5'6) then '13'
+                  
+                  when a.coverage_code = '8'8,19,31 and a.deductible_code in ('5'6) then '14'
+                  when a.coverage_code = 'T'12,35 and a.deductible_code in ('5'6) then '14'
+                  
+                  when a.coverage_code = '7'7,18,30 and a.deductible_code in ('6'7) then '15'
+                  
+                  when a.coverage_code = '8'8,19,31 and a.deductible_code in ('6'7) then '16'
+                  when a.coverage_code = 'T'12,35 and a.deductible_code in ('6'7) then '16'
+                  
+                  when a.coverage_code = '7'7,18,30 and a.deductible_code not in ('0'1, '2'3, '4'5, '5'6, '6'7) then '17'
+                  
+                  when a.coverage_code = '8'8,19,31 and a.deductible_code not in ('0'1, '2'3, '4'5, '5'6, '6'7) then '18'
+                  
+                  when a.coverage_code = 'T'12,35 and a.deductible_code not in ('0'1, '2'3, '4'5, '5'6, '6'7) then '18'              
+                  
+                  when a.coverage_code = '9'9,20,32 then '1'1
+                  
                   else null end as reporting_code,
                   case when a.coverage_code = '1' then 'Bodily Injury'
                   when a.coverage_code = '2' then 'Property Damage'

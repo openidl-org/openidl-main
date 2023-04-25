@@ -1,0 +1,25 @@
+{
+    "exceptionField": {
+        "stateExceptionB": {
+            "FL": {
+                "hdsName": "ManufacturingStandardCredit",
+                "statPlanName": "manufacturingStandardCredit",
+                "type": "code",
+                "codes": {
+                    "0": "Properties WITHOUT manufacturing standard credit OR Does Not Apply",
+                    "1": "Properties WITH manufacturing standard credit"
+                }
+            },
+            "NY": {
+                "hdsName": "AwayFromPremisesTheft",
+                "statPlanName": "awayFromPremisesTheft",
+                "type": "code",
+                "codes": {
+                    "0": "Does Not Apply",
+                    "1": "Properties with away from premises theft exclusion: AAIS ML-185 Endorsement or equivalent / ISO HO 23 95 Endorsement or equivalent",
+                    "2": "Properties with away from premises theft limitation: AAIS ML-186 Endorsement or equivalent"
+                }
+            }
+        }
+    }
+}

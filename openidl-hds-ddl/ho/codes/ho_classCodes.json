@@ -1,0 +1,670 @@
+{ 
+  "00000": {
+    "name": "Does Not Apply",
+    "type": "Does Not Apply"
+  },
+  "75001": {
+    "name": "1 - 160 acres",
+    "type": "Farm Liability Exposure"
+  },
+  "75101": {
+    "name": "161 - 500 acres",
+    "type": "Farm Liability Exposure"
+  },
+  "75201": {
+    "name": "over 500 acres",
+    "type": "Farm Liability Exposure"
+  },
+  "75011": {
+    "name": "1 - 1000 acres",
+    "type": "Farm Liability Exposure"
+  },
+  "75111": {
+    "name": "1,001 - 2,000 acres",
+    "type": "Farm Liability Exposure"
+  },
+  "75211": {
+    "name": "over 2,000 acres",
+    "type": "Farm Liability Exposure"
+  },
+  "40001": {
+    "name": "Trust/Trustee only (beneficiary and grantor not named in the endorsement)",
+    "type": "Owners and Condo Beneficiary"
+  },
+  "40002": {
+    "name": "Beneficiary OR grantor named in the endorsement; AND Trustee resides on the residence premises",
+    "type": "Owners and Condo Beneficiary"
+  },
+  "40003": {
+    "name": "Beneficiary OR grantor named in the endorsement; AND Trustee DOES NOT reside on the residence premises",
+    "type": "Owners and Condo Beneficiary"
+  },
+  "40004": {
+    "name": "Beneficiary AND grantor named in the endorsement; AND Trustee resides on the residence premises",
+    "type": "Owners and Condo Beneficiary"
+  },
+  "40005": {
+    "name": "Beneficiary AND grantor named in the endorsement; AND Trustee DOES NOT reside on the residence premises",
+    "type": "Owners and Condo Beneficiary"
+  },
+  "63401": {
+    "name": "With collision",
+    "type": "Motorized Golf Carts"
+  },
+  "63402": {
+    "name": "Without collision",
+    "type": "Motorized Golf Carts"
+  },
+  "54001": {
+    "name": "Below ground tank",
+    "type": "Tank Classification"
+  },
+  "54002": {
+    "name": "Above ground tank, inside the insured premises",
+    "type": "Tank Classification"
+  },
+  "54003": {
+    "name": "Above ground tank, outside the insured premises",
+    "type": "Tank Classification"
+  },
+  "74201": {
+    "name": "Each outboard motor ─ 25-50HP",
+    "type": "Watercraft (AAIS)"
+  },
+  "74202": {
+    "name": "Each outboard motor ─ over 50HP",
+    "type": "Watercraft (AAIS)"
+  },
+  "74299": {
+    "name": "Each outboard motor ─ all watercraft powered by outboard engines or motors, regardless of HP (New Hampshire only)",
+    "type": "Watercraft (AAIS)"
+  },
+  "73501": {
+    "name": "Inboard / Inboard-outboard / sailboats with auxiliary power ─ Less than 26 feet and under 16 MPH",
+    "type": "Watercraft (AAIS)"
+  },
+  "73502": {
+    "name": "Inboard / Inboard-outboard / sailboats with auxiliary power ─ Less than 26 feet and 16-30 MPH",
+    "type": "Watercraft (AAIS)"
+  },
+  "73503": {
+    "name": "Inboard / Inboard-outboard / sailboats with auxiliary power ─ Less than 26 feet and over 30 MPH",
+    "type": "Watercraft (AAIS)"
+  },
+  "73601": {
+    "name": "Inboard / Inboard-outboard / sailboats with auxiliary power ─ 26 to 40 feet and under 16 MPH",
+    "type": "Watercraft (AAIS)"
+  },
+  "73602": {
+    "name": "Inboard / Inboard-outboard / sailboats with auxiliary power ─ 26 to 40 feet and 16-30 MPH",
+    "type": "Watercraft (AAIS)"
+  },
+  "73603": {
+    "name": "Inboard / Inboard-outboard / sailboats with auxiliary power ─ 26 to 40 feet and over 30 MPH",
+    "type": "Watercraft (AAIS)"
+  },
+  "73701": {
+    "name": "Inboard / Inboard-outboard / sailboats with auxiliary power ─ Over 40 feet and under 16 MPH",
+    "type": "Watercraft (AAIS)"
+  },
+  "73702": {
+    "name": "Inboard / Inboard-outboard / sailboats with auxiliary power ─ Over 40 feet and 16-30 MPH",
+    "type": "Watercraft (AAIS)"
+  },
+  "74101": {
+    "name": "Sailboats with no auxiliary power ─ 26 to 40 feet",
+    "type": "Watercraft (AAIS)"
+  },
+  "00780": {
+    "name": "Outboard, Inboard or Inboard-Outdrive Motors ─ Up to 15 feet and up to 50 hp",
+    "type": "Watercraft (ISO)"
+  },
+  "00781": {
+    "name": "Outboard, Inboard or Inboard-Outdrive Motors ─ Up to 15 feet and 51-100 hp",
+    "type": "Watercraft (ISO)"
+  },
+  "00782": {
+    "name": "Outboard, Inboard or Inboard-Outdrive Motors ─ Up to 15 feet and 101-150 hp",
+    "type": "Watercraft (ISO)"
+  },
+  "00783": {
+    "name": "Outboard, Inboard or Inboard-Outdrive Motors ─ Up to 15 feet and 151-200 hp",
+    "type": "Watercraft (ISO)"
+  },
+  "00784": {
+    "name": "Outboard, Inboard or Inboard-Outdrive Motors ─ Up to 15 feet and over 200 hp",
+    "type": "Watercraft (ISO)"
+  },
+  "00785": {
+    "name": "Outboard, Inboard or Inboard-Outdrive Motors ─ Over 15 to 26 feet and up to 50 hp",
+    "type": "Watercraft (ISO)"
+  },
+  "00786": {
+    "name": "Outboard, Inboard or Inboard-Outdrive Motors ─ Over 15 to 26 feet and 51-100 hp",
+    "type": "Watercraft (ISO)"
+  },
+  "00787": {
+    "name": "Outboard, Inboard or Inboard-Outdrive Motors ─ Over 15 to 26 feet and 101-150 hp",
+    "type": "Watercraft (ISO)"
+  },
+  "00788": {
+    "name": "Outboard, Inboard or Inboard-Outdrive Motors ─ Over 15 to 26 feet and 151-200 hp",
+    "type": "Watercraft (ISO)"
+  },
+  "00789": {
+    "name": "Outboard, Inboard or Inboard-Outdrive Motors ─ Over 15 to 26 feet and over 200 hp",
+    "type": "Watercraft (ISO)"
+  },
+  "00763": {
+    "name": "Sailboats with or without Auxiliary Power ─ 26 to 40 feet",
+    "type": "Watercraft (ISO)"
+  },
+  "00764": {
+    "name": "Sailboats with or without Auxiliary Power ─ Over 40 feet",
+    "type": "Watercraft (ISO)"
+  },
+  "00999": {
+    "name": "All other (applicable to liability coverage for any type of watercraft under an AAIS, ISO, or Independent Program not identified through one of the above listed codes)",
+    "type": "Watercraft (Independent Program Users should report from the most appropriate set of Class Codes above (AAIS or ISO))"
+  },
+  "40851": {
+    "name": "Out-servant domestic employee",
+    "type": "Type of Domestic Employee"
+  },
+  "40852": {
+    "name": "In-servant domestic employee",
+    "type": "Type of Domestic Employee"
+  },
+  "61721": {
+    "name": "Earthquake Coverage - AAIS Endorsement ML 0054, HO 0054, or equivalent",
+    "type": "Earthquake Coverage"
+  },
+  "61722": {
+    "name": "Limited Earthquake Coverage - AAIS Endorsement ML 0498, HO 0498, or equivalent",
+    "type": "Earthquake Coverage"
+  },
+  "61723": {
+    "name": "Reconstruction Cost Coverage - AAIS Endorsement ML 0678, HO 0678, or equivalent",
+    "type": "Earthquake Coverage"
+  },
+  "10010": {
+    "name": "Crafts: Baskets",
+    "type": "Home-Based Business"
+  },
+  "10020": {
+    "name": "Crafts: Candles",
+    "type": "Home-Based Business"
+  },
+  "10030": {
+    "name": "Crafts: Ceramics",
+    "type": "Home-Based Business"
+  },
+  "10040": {
+    "name": "Crafts: Decorative Clothing",
+    "type": "Home-Based Business"
+  },
+  "10050": {
+    "name": "Crafts: Dolls",
+    "type": "Home-Based Business"
+  },
+  "10060": {
+    "name": "Crafts: Fabrics",
+    "type": "Home-Based Business"
+  },
+  "10070": {
+    "name": "Crafts: Flower Arrangements",
+    "type": "Home-Based Business"
+  },
+  "10080": {
+    "name": "Crafts: Glass",
+    "type": "Home-Based Business"
+  },
+  "10085": {
+    "name": "Crafts: Hobby Stores",
+    "type": "Home-Based Business"
+  },
+  "10090": {
+    "name": "Crafts: Jewelry",
+    "type": "Home-Based Business"
+  },
+  "10100": {
+    "name": "Crafts: Metalwork",
+    "type": "Home-Based Business"
+  },
+  "10110": {
+    "name": "Crafts: Needlework",
+    "type": "Home-Based Business"
+  },
+  "10120": {
+    "name": "Crafts: Quilts",
+    "type": "Home-Based Business"
+  },
+  "10130": {
+    "name": "Crafts: Sculptures",
+    "type": "Home-Based Business"
+  },
+  "10140": {
+    "name": "Crafts: Wall Hangings",
+    "type": "Home-Based Business"
+  },
+  "10150": {
+    "name": "Crafts: Wind Chimes",
+    "type": "Home-Based Business"
+  },
+  "10160": {
+    "name": "Crafts: Wood Products",
+    "type": "Home-Based Business"
+  },
+  "10170": {
+    "name": "Crafts: Wreaths",
+    "type": "Home-Based Business"
+  },
+  "10999": {
+    "name": "Crafts: Not otherwise classified",
+    "type": "Home-Based Business"
+  },
+  "20010": {
+    "name": "Foods: Baked Goods",
+    "type": "Home-Based Business"
+  },
+  "20020": {
+    "name": "Foods: Beverages (i.e. Coffee and Tea",
+    "type": "Home-Based Business"
+  },
+  "20030": {
+    "name": "Foods: Candy, Nuts, or Confections",
+    "type": "Home-Based Business"
+  },
+  "20040": {
+    "name": "Foods: Canning (i.e. Jellies and Jams",
+    "type": "Home-Based Business"
+  },
+  "20050": {
+    "name": "Foods: Deli Foods",
+    "type": "Home-Based Business"
+  },
+  "20060": {
+    "name": "Foods: Fruit and Vegetable Stand (No Pick-your-own Operations)",
+    "type": "Home-Based Business"
+  },
+  "20070": {
+    "name": "Foods: Gourmet Foods",
+    "type": "Home-Based Business"
+  },
+  "20080": {
+    "name": "Foods: Picnic Baskets",
+    "type": "Home-Based Business"
+  },
+  "20090": {
+    "name": "Foods: Smoked and Dressed Meats, Poultry, and Fish",
+    "type": "Home-Based Business"
+  },
+  "20100": {
+    "name": "Foods: Wine and Spirits",
+    "type": "Home-Based Business"
+  },
+  "20999": {
+    "name": "Foods: Not Otherwise Classified",
+    "type": "Home-Based Business"
+  },
+  "30010": {
+    "name": "Offices - Accounting",
+    "type": "Home-Based Business"
+  },
+  "30020": {
+    "name": "Offices - Billing",
+    "type": "Home-Based Business"
+  },
+  "30030": {
+    "name": "Offices - Bookkeeping",
+    "type": "Home-Based Business"
+  },
+  "30040": {
+    "name": "Offices - Business Consulting",
+    "type": "Home-Based Business"
+  },
+  "30050": {
+    "name": "Offices - Calligraphy",
+    "type": "Home-Based Business"
+  },
+  "30060": {
+    "name": "Offices - Career Consulting",
+    "type": "Home-Based Business"
+  },
+  "30070": {
+    "name": "Offices - Computer Consulting",
+    "type": "Home-Based Business"
+  },
+  "30080": {
+    "name": "Offices - Counseling",
+    "type": "Home-Based Business"
+  },
+  "30090": {
+    "name": "Offices - Desktop Publishing",
+    "type": "Home-Based Business"
+  },
+  "30095": {
+    "name": "Offices - Employment Agencies",
+    "type": "Home-Based Business"
+  },
+  "30100": {
+    "name": "Offices - Financial Planning",
+    "type": "Home-Based Business"
+  },
+  "30110": {
+    "name": "Offices - Freelance Writing",
+    "type": "Home-Based Business"
+  },
+  "30120": {
+    "name": "Offices - Graphic Art",
+    "type": "Home-Based Business"
+  },
+  "30130": {
+    "name": "Offices - Insurance Agent",
+    "type": "Home-Based Business"
+  },
+  "30140": {
+    "name": "Offices - Mailing and Addressing",
+    "type": "Home-Based Business"
+  },
+  "30150": {
+    "name": "Offices - Public Relations",
+    "type": "Home-Based Business"
+  },
+  "30160": {
+    "name": "Offices - Real Estate Agent",
+    "type": "Home-Based Business"
+  },
+  "30170": {
+    "name": "Offices - Resume Writing",
+    "type": "Home-Based Business"
+  },
+  "30180": {
+    "name": "Offices - Telephone Answering",
+    "type": "Home-Based Business"
+  },
+  "30190": {
+    "name": "Offices - Tutoring",
+    "type": "Home-Based Business"
+  },
+  "30200": {
+    "name": "Offices - Word Processing",
+    "type": "Home-Based Business"
+  },
+  "30999": {
+    "name": "Offices - Not Otherwise Classified",
+    "type": "Home-Based Business"
+  },
+  "40010": {
+    "name": "Retail - Antiques",
+    "type": "Home-Based Business"
+  },
+  "40020": {
+    "name": "Retail - Art Supplies",
+    "type": "Home-Based Business"
+  },
+  "40030": {
+    "name": "Retail - Art Work",
+    "type": "Home-Based Business"
+  },
+  "40034": {
+    "name": "Retail - Barber / Beauty Supply Stores",
+    "type": "Home-Based Business"
+  },
+  "40037": {
+    "name": "Retail - Bicycle Stores",
+    "type": "Home-Based Business"
+  },
+  "40040": {
+    "name": "Retail - Books, Magazines, and Videos",
+    "type": "Home-Based Business"
+  },
+  "40045": {
+    "name": "Retail - Camera Stores",
+    "type": "Home-Based Business"
+  },
+  "40050": {
+    "name": "Retail - Candles",
+    "type": "Home-Based Business"
+  },
+  "40060": {
+    "name": "Retail - Clothing",
+    "type": "Home-Based Business"
+  },
+  "40070": {
+    "name": "Retail - Coins and Stamps",
+    "type": "Home-Based Business"
+  },
+  "40080": {
+    "name": "Retail - Collectibles",
+    "type": "Home-Based Business"
+  },
+  "40090": {
+    "name": "Retail - Cosmetics",
+    "type": "Home-Based Business"
+  },
+  "40100": {
+    "name": "Retail - Costume Jewelry",
+    "type": "Home-Based Business"
+  },
+  "40110": {
+    "name": "Retail - Decorative Housewares",
+    "type": "Home-Based Business"
+  },
+  "40120": {
+    "name": "Retail - Gifts",
+    "type": "Home-Based Business"
+  },
+  "40130": {
+    "name": "Retail - Household and Kitchen Products",
+    "type": "Home-Based Business"
+  },
+  "40140": {
+    "name": "Retail - Personal Care Products",
+    "type": "Home-Based Business"
+  },
+  "40150": {
+    "name": "Retail - Plants and Flowers",
+    "type": "Home-Based Business"
+  },
+  "40160": {
+    "name": "Retail - Stationary and Paper Products",
+    "type": "Home-Based Business"
+  },
+  "40170": {
+    "name": "Retail - Tackle and Bait",
+    "type": "Home-Based Business"
+  },
+  "40180": {
+    "name": "Retail - Toys",
+    "type": "Home-Based Business"
+  },
+  "40190": {
+    "name": "Retail - Vitamins and Health Care Products",
+    "type": "Home-Based Business"
+  },
+  "40999": {
+    "name": "Retail - Not Otherwise Classified",
+    "type": "Home-Based Business"
+  },
+  "50010": {
+    "name": "Services - Aesthetician",
+    "type": "Home-Based Business"
+  },
+  "50015": {
+    "name": "Services - Appliance Repair",
+    "type": "Home-Based Business"
+  },
+  "50020": {
+    "name": "Services - Barber",
+    "type": "Home-Based Business"
+  },
+  "50030": {
+    "name": "Services - Beautician",
+    "type": "Home-Based Business"
+  },
+  "50040": {
+    "name": "Services - Bicycle Repair",
+    "type": "Home-Based Business"
+  },
+  "50050": {
+    "name": "Services - Camera Repair",
+    "type": "Home-Based Business"
+  },
+  "50060": {
+    "name": "Services - Carpet and Upholstery Cleaning",
+    "type": "Home-Based Business"
+  },
+  "50070": {
+    "name": "Services - Clock, Jewelry, or Watch Repair",
+    "type": "Home-Based Business"
+  },
+  "50080": {
+    "name": "Services - Computer Repair",
+    "type": "Home-Based Business"
+  },
+  "50085": {
+    "name": "Services - Copying / Duplicating",
+    "type": "Home-Based Business"
+  },
+  "50090": {
+    "name": "Services - Dog or Cat Boarding, Breeding, or Training",
+    "type": "Home-Based Business"
+  },
+  "50100": {
+    "name": "Services - Dressmaker, Seamstress, or Tailor",
+    "type": "Home-Based Business"
+  },
+  "50110": {
+    "name": "Services - Flower Arranging",
+    "type": "Home-Based Business"
+  },
+  "50120": {
+    "name": "Services - Furniture Upholstering",
+    "type": "Home-Based Business"
+  },
+  "50125": {
+    "name": "Services - Furniture / Woodwork Stripping",
+    "type": "Home-Based Business"
+  },
+  "50130": {
+    "name": "Services - Gift Delivery Service",
+    "type": "Home-Based Business"
+  },
+  "50140": {
+    "name": "Services - Hair Stylist",
+    "type": "Home-Based Business"
+  },
+  "50150": {
+    "name": "Services - House Cleaning",
+    "type": "Home-Based Business"
+  },
+  "50160": {
+    "name": "Services - House Sitting",
+    "type": "Home-Based Business"
+  },
+  "50170": {
+    "name": "Services - Instruction (Music, Etiquette, etc.)",
+    "type": "Home-Based Business"
+  },
+  "50180": {
+    "name": "Services - Interior Decorating",
+    "type": "Home-Based Business"
+  },
+  "50182": {
+    "name": "Services - Janitorial Services",
+    "type": "Home-Based Business"
+  },
+  "50185": {
+    "name": "Services - Landscape Gardening",
+    "type": "Home-Based Business"
+  },
+  "50188": {
+    "name": "Services - Mailing or Addressing",
+    "type": "Home-Based Business"
+  },
+  "50190": {
+    "name": "Services - Manicurist",
+    "type": "Home-Based Business"
+  },
+  "50200": {
+    "name": "Services - Musical Instrument Repair",
+    "type": "Home-Based Business"
+  },
+  "50205": {
+    "name": "Services - Painting",
+    "type": "Home-Based Business"
+  },
+  "50210": {
+    "name": "Services - Personal Shopper",
+    "type": "Home-Based Business"
+  },
+  "50215": {
+    "name": "Services - Pet Grooming",
+    "type": "Home-Based Business"
+  },
+  "50220": {
+    "name": "Services - Pet Sitting and Walking",
+    "type": "Home-Based Business"
+  },
+  "50230": {
+    "name": "Services - Photography",
+    "type": "Home-Based Business"
+  },
+  "50240": {
+    "name": "Services - Picture Framing",
+    "type": "Home-Based Business"
+  },
+  "50245": {
+    "name": "Services - Plumbing",
+    "type": "Home-Based Business"
+  },
+  "50250": {
+    "name": "Services - Printer",
+    "type": "Home-Based Business"
+  },
+  "50260": {
+    "name": "Services - Shoe Repair",
+    "type": "Home-Based Business"
+  },
+  "50270": {
+    "name": "Services - Videotaping",
+    "type": "Home-Based Business"
+  },
+  "50280": {
+    "name": "Services - Wedding or Party Planning",
+    "type": "Home-Based Business"
+  },
+  "50999": {
+    "name": "Services - Not Otherwise Listed",
+    "type": "Home-Based Business"
+  },
+  "60001": {
+    "name": "Bed and Breakfast - B&B Operations - One Guest Room",
+    "type": "Home-Based Business"
+  },
+  "60002": {
+    "name": "Bed and Breakfast - B&B Operations - Two Guest Rooms",
+    "type": "Home-Based Business"
+  },
+  "60003": {
+    "name": "Bed and Breakfast - B&B Operations - Three Guest Rooms",
+    "type": "Home-Based Business"
+  },
+  "60004": {
+    "name": "Bed and Breakfast - B&B Operations - Four Guest Rooms",
+    "type": "Home-Based Business"
+  },
+  "60005": {
+    "name": "Bed and Breakfast - B&B Operations - Five Guest Rooms",
+    "type": "Home-Based Business"
+  },
+  "60006": {
+    "name": "Bed and Breakfast - B&B Operations - Six Guest Rooms",
+    "type": "Home-Based Business"
+  },
+  "60999": {
+    "name": "Bed and Breakfast - B&B Operations - More Than Six Guest Rooms",
+    "type": "Home-Based Business"
+  }
+}

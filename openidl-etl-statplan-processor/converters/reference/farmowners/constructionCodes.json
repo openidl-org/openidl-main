@@ -1,0 +1,62 @@
+{
+    "00": {
+        "name": "Does Not Apply",
+        "type": "N/A"
+    },
+    "01": {
+        "name": "Frame",
+        "type": "Frame Buildings"
+    } ,
+    "05": {
+        "name": "Aluminum, Plastic, or Steel Sliding Over Frame",
+        "type": "Frame Buildings"
+    } ,
+    "06": {
+        "name": "Stucco",
+        "type": "Frame Buildings"
+    },
+    "02": {
+        "name": "Veneer (Brick, Stone, or Masonry)",
+        "type": "Joisted Masonry Buildings"
+    } ,
+    "03": {
+        "name": "Joisted Masonry",
+        "type": "Joisted Masonry Buildings"
+    },
+    "04": {
+        "name": "Fire Resistive",
+        "type": "Buildings of Superior Construction"
+    },
+    "14": {
+        "name": "Modified Fire Resistive",
+        "type": "Buildings of Superior Construction"
+    },
+    "08": {
+        "name": "Non-Combustible (Exposed Metal Construction",
+        "type": "Buildings of Superior Construction"
+    },
+    "09": {
+        "name": "Masonry Non-Combustive (Non-combustible Construction with Masonry Walls",
+        "type": "Buildings of Superior Construction"
+    },
+    "11": {
+        "name": "Wind Resistive",
+        "type": "Buildings of Superior Construction"
+    },
+    "12": {
+        "name": "Semi-Wind Resistive",
+        "type": "Buildings of Superior Construction"
+    },
+    "07": {
+        "name": "Mobile Homes",
+        "type": "Miscellaneous Building Types"
+    } ,
+    "10": {
+        "name": "Earth Homes",
+        "type": "Miscellaneous Building Types"
+    } ,
+    "99": {
+        "name": "All Other Construction Types",
+        "type": "Miscellaneous Building Types"
+    }
+}

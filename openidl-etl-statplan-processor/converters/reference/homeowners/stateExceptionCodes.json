@@ -1,0 +1,20 @@
+{
+    "exceptionField": {
+        "stateExceptionA": {
+            "FL": {
+                "hdsName": "windStorms",
+                "statPlanName": "windStorms",
+                "type": "code",
+                "codes": {
+                    "0": "Does Not Apply",
+                    "1": "Existence of Storm Shutters - Roof Shape - Hip",
+                    "2": "Existence of Storm Shutters - Roof Shape - Other (Including Braced Gable)",
+                    "3": "Non-Existence of Storm Shutters - Roof Shape - Hip",
+                    "4": "Non-Existence of Storm Shutters - Roof Shape - Other (Including Braced Gable)",
+                    "9": "No building features exist which resulted in the application of loss mitigation factors" 
+                }
+            }
+        }
+
+    }
+}
