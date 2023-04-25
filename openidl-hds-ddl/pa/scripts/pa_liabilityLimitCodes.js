@@ -93,7 +93,7 @@ function buildSpecial(specials, id) {
 			for (let liabilityCode of liabilityCodes) {
 				liabilityLimit = multi[coverageCode][liabilityCode];
 				
-				fileLines.push(`		INSERT INTO pa_liability_limit_code  VALUES (${id},${coverageId},${state.id},'${name}','${liabilityCode}','${liabilityLimit}');`)
+				fileLines.push(`	INSERT INTO pa_liability_limit_code  VALUES (${id},${coverageId},${state.id},'${name}','${liabilityCode}','${liabilityLimit}');`)
 				id += 1;
 			}
 		}
@@ -126,7 +126,6 @@ fileLines.push(head)
 let specialStates = getSpecialStates();
 let normalStates = getNormalStates(specialStates);
 id = buildNormal(normalStates);
-id =1 
 buildSpecial(specialStates, id);
 
 let end = `END IF;
