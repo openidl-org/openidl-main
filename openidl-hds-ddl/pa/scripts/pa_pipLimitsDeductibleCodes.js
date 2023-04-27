@@ -120,7 +120,7 @@ END $$
 //     console.log(line)
 // }
 
-var file = fs.createWriteStream('../tables/V0.0.1.1.32__pa_pip_limits_deductible_code.sql');
+var file = fs.createWriteStream('../tables/V0.0.1.1.37__pa_pip_limits_deductible_code.sql');
 file.on('error', function(err) { /* error handling */ });
 tableLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();

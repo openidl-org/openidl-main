@@ -22,6 +22,7 @@ let index = 1
 // loops over flat fees
 for (let key in flatCodes){
     let flatCode = flatCodes[key];
+    console.log('flatCode: ' + flatCode);
     line = `    INSERT INTO ho_windstorm_or_hail_deductible_code VALUES(${index},'${flatCode.code}','${flatCode.description}','${flatCode.type}');`
     fileLines.push(line)
     index+=1

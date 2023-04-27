@@ -24,7 +24,7 @@ IF NOT EXISTS (SELECT * FROM pa_state_exception_category_code) THEN
    INSERT INTO pa_state_exception_category_code (id, name) values (1,'stateExceptionA');
    INSERT INTO pa_state_exception_category_code (id, name) values (2,'stateExceptionB');
    INSERT INTO pa_state_exception_category_code (id, name) values (3,'stateExceptionC');
-   INSERT INTO pa_state_exception_category_code (id, name) values (4,'stateExceptionCCWIP');
+   INSERT INTO pa_state_exception_category_code (id, name) values (4,'stateExceptionD');
 END IF;
 
 IF NOT EXISTS (SELECT * FROM pa_state_exception_code) THEN

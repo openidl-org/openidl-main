@@ -1,12 +1,115 @@
 {
-    "0": "",
-    "G": "",
-    "J": "",
-    "P": "",
-    "R": "",
-    "H": "",
-    "K": "",
-    "L": "",
-    "M": "",
-    "N": ""
+	"coverageAorB": {
+		"0": {
+			"id": "0",
+			"code": "0",
+			"description": "No modifications to loss settlement terms of underlying policy OR Does Not Apply",
+            "type": "",
+            "category": ""
+		},
+		"3": {
+			"id": "3",
+			"code": "3",
+			"description": "",
+            "type": "",
+            "category": ""
+		},
+		"A": {
+			"id": "",
+			"code": "",
+			"description": ""
+		},
+		"6": {
+			"id": "",
+			"code": "",
+			"description": ""
+		},
+		"F": {
+			"id": "",
+			"code": "",
+			"description": ""
+		},
+		"4": {
+			"id": "",
+			"code": "",
+			"description": ""
+		},
+		"B": {
+			"id": "",
+			"code": "",
+			"description": ""
+		},
+		"C": {
+			"id": "",
+			"code": "",
+			"description": ""
+		},
+		"D": {
+			"id": "",
+			"code": "",
+			"description": ""
+		},
+		"E": {
+			"id": "",
+			"code": "",
+			"description": ""
+		},
+		"7": {
+			"id": "",
+			"code": "",
+			"description": ""
+		}
+	},
+	"coverageAandB": {
+		"0": {
+			"id": "0",
+			"code": "0",
+			"description": "No modifications to loss settlement terms of underlying policy OR Does Not Apply"
+		},
+		"G": {
+			"id": "",
+			"code": "",
+			"description": ""
+		},
+		"J": {
+			"id": "",
+			"code": "",
+			"description": ""
+		},
+		"P": {
+			"id": "",
+			"code": "",
+			"description": ""
+		},
+		"R": {
+			"id": "",
+			"code": "",
+			"description": ""
+		},
+		"H": {
+			"id": "",
+			"code": "",
+			"description": ""
+		},
+		"K": {
+			"id": "",
+			"code": "",
+			"description": ""
+		},
+		"L": {
+			"id": "",
+			"code": "",
+			"description": ""
+		},
+		"M": {
+			"id": "",
+			"code": "",
+			"description": ""
+		},
+		"N": {
+			"id": "",
+			"code": "",
+			"description": ""
+		}
+	}
 }
