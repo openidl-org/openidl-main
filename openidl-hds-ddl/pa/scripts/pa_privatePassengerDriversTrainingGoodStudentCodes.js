@@ -10,8 +10,8 @@ CREATE TABLE IF NOT EXISTS pa_private_passenger_drivers_training_good_student_co
     code VARCHAR,
     drivers_training VARCHAR,
     good_student_discount VARCHAR,
-    effective_date date not null default '1900-01-01',
-    expiration_date date not null default '9999-12-31'
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
 IF NOT EXISTS (SELECT * FROM pa_private_passenger_drivers_training_good_student_code) THEN `

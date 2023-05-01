@@ -9,7 +9,9 @@ CREATE TABLE IF NOT EXISTS ho_cause_of_loss_code (
     id INT,
     code VARCHAR,
     name VARCHAR,
-    type VARCHAR
+    type VARCHAR,
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
 IF NOT EXISTS (SELECT * FROM ho_cause_of_loss_code) THEN `

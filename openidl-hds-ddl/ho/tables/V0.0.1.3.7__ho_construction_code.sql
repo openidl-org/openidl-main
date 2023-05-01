@@ -5,7 +5,9 @@ CREATE TABLE IF NOT EXISTS ho_construction_code (
     id INT,
     code VARCHAR,
     name VARCHAR,
-    type VARCHAR
+    type VARCHAR,
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
 IF NOT EXISTS (SELECT * FROM ho_construction_code) THEN 
@@ -14,7 +16,7 @@ IF NOT EXISTS (SELECT * FROM ho_construction_code) THEN
     INSERT INTO ho_construction_code VALUES(3,'12','Semi-Wind Resistive','Dwellings of Superior Construction');
     INSERT INTO ho_construction_code VALUES(4,'14','Modified Fire Resistive','Dwellings of Superior Construction');
     INSERT INTO ho_construction_code VALUES(5,'99','All Other Construction Types','Miscellaneous Dwelling Types');
-    INSERT INTO ho_construction_code VALUES(6,'00','Does Not Apply','N/A');
+    INSERT INTO ho_construction_code VALUES(6,'00','Does Not Apply','Does Not Apply');
     INSERT INTO ho_construction_code VALUES(7,'01','Frame','Frame Dwellings');
     INSERT INTO ho_construction_code VALUES(8,'05','Aluminum, Plastic, or Steel Sliding Over Frame','Frame Dwellings');
     INSERT INTO ho_construction_code VALUES(9,'06','Stucco','Frame Dwellings');

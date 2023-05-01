@@ -4,7 +4,9 @@ BEGIN
 CREATE TABLE IF NOT EXISTS ho_ordinance_or_law_coverage_code (
     id INT,
     code VARCHAR,
-    description VARCHAR
+    description VARCHAR,
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
 IF NOT EXISTS (SELECT * FROM ho_ordinance_or_law_coverage_code) THEN 

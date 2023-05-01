@@ -8,9 +8,9 @@ BEGIN
 CREATE TABLE IF NOT EXISTS pa_single_multi_car_code (
     id INT,
     code VARCHAR,
-    description VARCHAR,    
-    effective_date date not null default '1900-01-01',
-    expiration_date date not null default '9999-12-31'
+    description VARCHAR,
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
 IF NOT EXISTS (SELECT * FROM pa_single_multi_car_code) THEN `

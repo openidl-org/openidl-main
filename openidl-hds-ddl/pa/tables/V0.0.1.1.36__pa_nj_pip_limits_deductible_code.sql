@@ -5,7 +5,9 @@ CREATE TABLE IF NOT EXISTS pa_nj_pip_limits_deductible_code (
     id INT,
     code VARCHAR,
     description VARCHAR,
-    type VARCHAR
+    type VARCHAR,
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
 IF NOT EXISTS (SELECT * FROM pa_nj_pip_limits_deductible_code) THEN 

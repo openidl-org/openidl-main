@@ -1,20 +1,80 @@
 {
-    "exceptionField": {
-        "stateExceptionA": {
-            "FL": {
-                "hdsName": "windStorms",
-                "statPlanName": "windStorms",
-                "type": "code",
-                "codes": {
-                    "0": "Does Not Apply",
-                    "1": "Existence of Storm Shutters - Roof Shape - Hip",
-                    "2": "Existence of Storm Shutters - Roof Shape - Other (Including Braced Gable)",
-                    "3": "Non-Existence of Storm Shutters - Roof Shape - Hip",
-                    "4": "Non-Existence of Storm Shutters - Roof Shape - Other (Including Braced Gable)",
-                    "9": "No building features exist which resulted in the application of loss mitigation factors" 
-                }
-            }
-        }
-
-    }
+	"exceptionField": {
+		"stateExceptionA": {
+			"FL": {
+				"hdsName": "Windstorms",
+				"statPlanName": "windstorms",
+				"type": "code",
+				"codes": {
+					"0": "Does Not Apply",
+					"1": "Existence of Storm Shutters - Roof Shape - Hip",
+					"2": "Existence of Storm Shutters - Roof Shape - Other (Including Braced Gable)",
+					"3": "Non-Existence of Storm Shutters - Roof Shape - Hip",
+					"4": "Non-Existence of Storm Shutters - Roof Shape - Other (Including Braced Gable)",
+					"9": "No building features exist which resulted in the application of loss mitigation factors",
+					"A": "Superior Roof Covering - Braced Gable Roof Shape - No Opening Protection",
+					"B": "Superior Roof Covering - ",
+					"C": "Superior Roof Covering - ",
+					"D": "Superior Roof Covering - ",
+					"E": "Superior Roof Covering - ",
+					"F": "Superior Roof Covering - ",
+					"G": "Superior Roof Covering - ",
+					"H": "Superior Roof Covering - ",
+					"J": "Superior Roof Covering - ",
+					"K": "",
+					"L": "",
+					"M": "",
+					"N": "",
+					"P": "",
+					"R": "",
+					"S": "",
+					"T": "",
+					"U": ""
+				}
+			},
+			"NY": {
+				"hdsName": "Windstorm Protective Device",
+				"statPlanName": "windstormProtectionDevice",
+				"type": "code",
+				"codes": {
+					"0": "Properties without windstorm protective device credit OR Does Not Apply",
+					"1": "Properties with windstorm protective device credit for having installed protective devices on all openings: | AAIS ML-415 Endorsement or equivalent | ISO HO 04 21 Endorsement or equivalent"
+				}
+			},
+			"NC": {
+				"hdsName": "Consent-to-rate",
+				"statPlanName": "consentToRate",
+				"type": "code",
+				"codes": {
+					"0": "Policies not written on a consent-to-rate basis OR Does Not Apply",
+					"1": "Policies written on a consent-to-rate basis"
+				}
+			}
+		},
+		"stateExceptionB": {
+			"FL": {
+				"hdsName": "Windstorms",
+				"statPlanName": "windstorms",
+				"type": "code",
+				"codes": {
+					"1": "Roof Deck Attachment - Deck attached with 6 penny nails",
+					"2": "Roof Deck Attachment - Deck attached with 6 penny nails",
+					"3": "Roof Deck Attachment - Deck attached with 6 penny nails",
+					"4": "Roof Deck Attachment - Deck attached with 6 penny nails",
+					"5": "Roof Deck Attachment - Deck attached with 6 penny nails",
+					"6": "Roof Deck Attachment - Deck attached with 6 penny nails",
+					"7": "Roof Deck Attachment - Deck attached with 6 penny nails",
+					"8": "Roof Deck Attachment - Deck attached with 6 penny nails",
+					"A": "",
+					"B": "",
+					"C": "",
+					"D": "",
+					"E": "",
+					"F": "",
+					"G": "",
+					"H": ""
+				}
+			}
+		}
+	}
 }

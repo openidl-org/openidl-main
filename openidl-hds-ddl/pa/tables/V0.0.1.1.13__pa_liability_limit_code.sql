@@ -3,13 +3,13 @@ BEGIN
 
 CREATE TABLE IF NOT EXISTS pa_liability_limit_code (
     id INT,
-    fk_coverage_id int,
-    fk_state_id int,
-    name varchar,
-    code varchar,
-    limitt varchar,
-	effective_date date not null default '1900-01-01',
-    expiration_date date not null default '9999-12-31'
+    fk_coverage_id INT,
+    fk_state_id INT,
+    name VARCHAR,
+    code VARCHAR,
+    limitt VARCHAR,
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 IF NOT EXISTS (SELECT * FROM pa_liability_limit_code) THEN
 

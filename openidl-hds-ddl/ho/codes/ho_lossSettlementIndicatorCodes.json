@@ -1,115 +1,140 @@
 {
-	"coverageAorB": {
+	"coverageA": {
 		"0": {
 			"id": "0",
 			"code": "0",
 			"description": "No modifications to loss settlement terms of underlying policy OR Does Not Apply",
-            "type": "",
-            "category": ""
+			"type": "Modification to Coverage A (building), but not to Coverage C (personal property)"
 		},
 		"3": {
 			"id": "3",
 			"code": "3",
-			"description": "",
-            "type": "",
-            "category": ""
+			"description": "Functional Replacement Cost Coverage OR Repair Cost Terms (Coverages A and B) | AAIS Endorsement ML-255, ML 0255, HO 0255, HO 4857, or equivalent | ISO Endorsement HO 05 30, HO 23 89 MI, or equivalent",
+			"type": "Modification to Coverage A (building), but not to Coverage C (personal property)"
 		},
 		"A": {
-			"id": "",
-			"code": "",
-			"description": ""
+			"id": "A",
+			"code": "A",
+			"description": "Expanded Replacement Cost (Coverage A only) -- not applicable to ISO Program | AAIS Endorsement ML-145, ML 0145, or equivalent",
+			"type": "Modification to Coverage A (building), but not to Coverage C (personal property)"
 		},
 		"6": {
-			"id": "",
-			"code": "",
-			"description": ""
+			"id": "6",
+			"code": "6",
+			"description": "Actual Cash Value Coverage (Coverages A and B) | AAIS Form ML-1 under AAIS Standard HO Program (1978 edition ML forms) | AAIS Form ML-1 under AAIS Expanded HO Program (1988 edition ML forms) | AAIS Endorsement ML-15, ML 0015, HO 0015, HO 4815, or equivalent | ISO Endorsement HO 04 81 or equivalent",
+			"type": "Modification to Coverage A (building), but not to Coverage C (personal property)"
 		},
 		"F": {
-			"id": "",
-			"code": "",
-			"description": ""
+			"id": "F",
+			"code": "F",
+			"description": "Actual Cash Value Loss Settlement - Windstorm or Hail Losses to Roof Surfacing | AAIS Endorsement HO 4835 or equivalent | ISO Endorsement HO 04 93 or equivalent",
+			"type": "Modification to Coverage A (building), but not to Coverage C (personal property)"
 		},
 		"4": {
-			"id": "",
-			"code": "",
-			"description": ""
+			"id": "4",
+			"code": "4",
+			"description": "Modified Replacement Cost Terms or Special Loss Settlement Endorsement | AAIS Endorsement ML-256, ML 0256, HO 0256, HO 4856, or equivalent | ISO Endorsement HO 04 56 or equivalent",
+			"type": "Modification to Coverage A (building), but not to Coverage C (personal property)"
 		},
 		"B": {
-			"id": "",
-			"code": "",
-			"description": ""
+			"id": "B",
+			"code": "B",
+			"description": "Specified Additional Amount of Insurance (Coverage A) AAIS Endorsement HO 0444, HO 4844, or equivalent | ISO Endorsement HO 04 20 or equivalent | > At 25% of Coverage A limit",
+			"type": "Modification to Coverage A (building), but not to Coverage C (personal property)"
 		},
 		"C": {
-			"id": "",
-			"code": "",
-			"description": ""
+			"id": "C",
+			"code": "C",
+			"description": "Specified Additional Amount of Insurance (Coverage A) AAIS Endorsement HO 0444, HO 4844, or equivalent | ISO Endorsement HO 04 20 or equivalent | > At 50% of Coverage A limit",
+			"type": "Modification to Coverage A (building), but not to Coverage C (personal property)"
 		},
 		"D": {
-			"id": "",
-			"code": "",
-			"description": ""
+			"id": "D",
+			"code": "D",
+			"description": "Specified Additional Amount of Insurance (Coverage A) AAIS Endorsement HO 0444, HO 4844, or equivalent | ISO Endorsement HO 04 20 or equivalent | > Other than 25% or 50% of Coverage A limit",
+			"type": "Modification to Coverage A (building), but not to Coverage C (personal property)"
 		},
 		"E": {
-			"id": "",
-			"code": "",
-			"description": ""
-		},
-		"7": {
-			"id": "",
-			"code": "",
-			"description": ""
+			"id": "E",
+			"code": "E",
+			"description": "Additional Limits (Coverages A, B, C, and D) | AAIS Endorsement HO 0443, HO 4843, or equivalent | ISO Endorsement HO 04 11 or equivalent",
+			"type": "Modification to Coverage A (building), but not to Coverage C (personal property)"
 		}
 	},
-	"coverageAandB": {
+	"coverageC": {
 		"0": {
 			"id": "0",
 			"code": "0",
-			"description": "No modifications to loss settlement terms of underlying policy OR Does Not Apply"
+			"description": "No modifications to loss settlement terms of underlying policy OR Does Not Apply",
+			"type": "Modification to Coverage C (personal property), but not to Coverage A (building)"
+		},
+		"7": {
+			"id": "7",
+			"code": "7",
+			"description": "Replacement Value (Coverage C - Personal Property) | AAIS Endorsement ML-55, ML 0055, HO 0055, HO 4855, or equivalent | ISO Endorsement HO-290 or HO 04 90 or equivalent",
+			"type": "Modification to Coverage C (personal property), but not to Coverage A (building)"
+		}
+	},
+	"coverageAandC": {
+		"0": {
+			"id": "0",
+			"code": "0",
+			"description": "No modifications to loss settlement terms of underlying policy OR Does Not Apply",
+			"type": "Modifications to both Coverage A (building) and Coverage C (personal property)"
 		},
 		"G": {
-			"id": "",
-			"code": "",
-			"description": ""
+			"id": "G",
+			"code": "G",
+			"description": "With Replacement Cost on Coverage C | AAIS Endorsement ML-55, ML 0055, HO 0055, HO 4855, or equivalent | ISO Endorsement HO 290, HO 0490, or equivalent AND Functional Replacement Cost Coverage OR Repair Cost Terms (Coverages A and B) | AAIS Endorsement ML-255, ML 0255, HO 0255, HO 4857, or equivalent | ISO Endorsement HO 05 30, HO 23 89 MI, or equivalent",
+			"type": "Modifications to both Coverage A (building) and Coverage C (personal property)"
 		},
 		"J": {
-			"id": "",
-			"code": "",
-			"description": ""
+			"id": "J",
+			"code": "J",
+			"description": "With Replacement Cost on Coverage C | AAIS Endorsement ML-55, ML 0055, HO 0055, HO 4855, or equivalent | ISO Endorsement HO 290, HO 0490, or equivalent AND Expanded Replacement Cost (Coverage A only) -- not applicable to ISO Program | AAIS Endorsement ML-145, ML 0145, or equivalent",
+			"type": "Modifications to both Coverage A (building) and Coverage C (personal property)"
 		},
 		"P": {
-			"id": "",
-			"code": "",
-			"description": ""
+			"id": "P",
+			"code": "P",
+			"description": "With Replacement Cost on Coverage C | AAIS Endorsement ML-55, ML 0055, HO 0055, HO 4855, or equivalent | ISO Endorsement HO 290, HO 0490, or equivalent AND Actual Cash Value Coverage (Coverages A and B) | AAIS Form ML-1 under AAIS Standard HO Program (1978 edition ML forms) | AAIS Form ML-1 under AAIS Expanded HO Program (1988 edition ML forms) | AAIS Endorsement ML-15, ML 0015, HO 0015, HO 4815, or equivalent | ISO Endorsement HO 04 81 or equivalent",
+			"type": "Modifications to both Coverage A (building) and Coverage C (personal property)"
 		},
 		"R": {
-			"id": "",
-			"code": "",
-			"description": ""
+			"id": "R",
+			"code": "R",
+			"description": "With Replacement Cost on Coverage C | AAIS Endorsement ML-55, ML 0055, HO 0055, HO 4855, or equivalent | ISO Endorsement HO 290, HO 0490, or equivalent AND Actual Cash Value Loss Settlement - Windstorm or Hail Losses to Roof Surfacing | AAIS Endorsement HO 4835 or equivalent | ISO Endorsement HO 04 93 or equivalent",
+			"type": "Modifications to both Coverage A (building) and Coverage C (personal property)"
 		},
 		"H": {
-			"id": "",
-			"code": "",
-			"description": ""
+			"id": "H",
+			"code": "H",
+			"description": "With Replacement Cost on Coverage C | AAIS Endorsement ML-55, ML 0055, HO 0055, HO 4855, or equivalent | ISO Endorsement HO 290, HO 0490, or equivalent AND Modified Replacement Cost Terms or Special Loss Settlement Endorsement | AAIS Endorsement ML-256, ML 0256, HO 0256, HO 4856, or equivalent | ISO Endorsement HO 04 56 or equivalent",
+			"type": "Modifications to both Coverage A (building) and Coverage C (personal property)"
 		},
 		"K": {
-			"id": "",
-			"code": "",
-			"description": ""
+			"id": "K",
+			"code": "K",
+			"description": "With Replacement Cost on Coverage C | AAIS Endorsement ML-55, ML 0055, HO 0055, HO 4855, or equivalent | ISO Endorsement HO 290, HO 0490, or equivalent AND Specified Additional Amount of Insurance (Coverage A) | AAIS Endorsement HO 0444, HO 4844, or equivalent | ISO Endorsement HO 04 20 or equivalent | > At 25% of Coverage A limit",
+			"type": "Modifications to both Coverage A (building) and Coverage C (personal property)"
 		},
 		"L": {
-			"id": "",
-			"code": "",
-			"description": ""
+			"id": "L",
+			"code": "L",
+			"description": "With Replacement Cost on Coverage C | AAIS Endorsement ML-55, ML 0055, HO 0055, HO 4855, or equivalent | ISO Endorsement HO 290, HO 0490, or equivalent AND Specified Additional Amount of Insurance (Coverage A) | AAIS Endorsement HO 0444, HO 4844, or equivalent | ISO Endorsement HO 04 20 or equivalent | > At 50% of Coverage A limit",
+			"type": "Modifications to both Coverage A (building) and Coverage C (personal property)"
 		},
 		"M": {
-			"id": "",
-			"code": "",
-			"description": ""
+			"id": "M",
+			"code": "M",
+			"description": "With Replacement Cost on Coverage C | AAIS Endorsement ML-55, ML 0055, HO 0055, HO 4855, or equivalent | ISO Endorsement HO 290, HO 0490, or equivalent AND Specified Additional Amount of Insurance (Coverage A) | AAIS Endorsement HO 0444, HO 4844, or equivalent | ISO Endorsement HO 04 20 or equivalent | > Other than 25% or 50% of Coverage A limit",
+			"type": "Modifications to both Coverage A (building) and Coverage C (personal property)"
 		},
 		"N": {
-			"id": "",
-			"code": "",
-			"description": ""
+			"id": "N",
+			"code": "N",
+			"description": "With Replacement Cost on Coverage C | AAIS Endorsement ML-55, ML 0055, HO 0055, HO 4855, or equivalent | ISO Endorsement HO 290, HO 0490, or equivalent AND Additional Limits (Coverages A, B, C, and D) | AAIS Endorsement HO 0443, HO 4843, or equivalent | ISO Endorsement HO 04 11 or equivalent",
+			"type": "Modifications to both Coverage A (building) and Coverage C (personal property)"
 		}
 	}
 }

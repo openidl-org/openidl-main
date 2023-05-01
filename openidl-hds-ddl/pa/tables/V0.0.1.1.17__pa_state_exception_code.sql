@@ -5,26 +5,26 @@ CREATE TABLE IF NOT EXISTS pa_state_exception_category_code (
     id int,
     name VARCHAR,
     description VARCHAR,
-	effective_date date not null default '1900-01-01',
-    expiration_date date not null default '9999-12-31'
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
     
 CREATE TABLE IF NOT EXISTS pa_state_exception_code (
-    id int,
-    fk_state_exception_category_id int,
-    fk_state_id int,
-    code varchar,
-    name varchar, 
-    description varchar,
-	effective_date date not null default '1900-01-01',
-    expiration_date date not null default '9999-12-31'
+    id INT,
+    fk_state_exception_category_id INT,
+    fk_state_id INT,
+    code VARCHAR,
+    name VARCHAR, 
+    description VARCHAR,
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
     );
     
 IF NOT EXISTS (SELECT * FROM pa_state_exception_category_code) THEN
    INSERT INTO pa_state_exception_category_code (id, name) values (1,'stateExceptionA');
    INSERT INTO pa_state_exception_category_code (id, name) values (2,'stateExceptionB');
    INSERT INTO pa_state_exception_category_code (id, name) values (3,'stateExceptionC');
-   INSERT INTO pa_state_exception_category_code (id, name) values (4,'stateExceptionD');
+   INSERT INTO pa_state_exception_category_code (id, name) values (4,'stateExceptionCCWIP');
 END IF;
 
 IF NOT EXISTS (SELECT * FROM pa_state_exception_code) THEN

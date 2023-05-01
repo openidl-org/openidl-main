@@ -5,9 +5,9 @@ CREATE TABLE IF NOT EXISTS pa_cause_of_loss_code (
     id INT,
     fk_coverage_code_id INT,
     loss_code VARCHAR,
-    description varchar,
-    effective_date date not null default '1900-01-01',
-    expiration_date date not null default '9999-12-31'
+    description VARCHAR,
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
 IF NOT EXISTS (select * from pa_cause_of_loss_code) THEN

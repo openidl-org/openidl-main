@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS pa_vehicle_use_code (
     commute_distance VARCHAR,
     annual_distance VARCHAR,
     operator VARCHAR,
-    effective_date date not null default '1900-01-01',
-    expiration_date date not null default '9999-12-31'
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
 IF NOT EXISTS (SELECT * FROM pa_vehicle_use_code) THEN 
