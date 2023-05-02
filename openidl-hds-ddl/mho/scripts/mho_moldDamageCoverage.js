@@ -10,7 +10,9 @@ CREATE TABLE IF NOT EXISTS mho_mold_damage_coverage_code (
     code VARCHAR,
     property VARCHAR,
     liability VARCHAR,
-    notes VARCHAR
+    notes VARCHAR,
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
 IF NOT EXISTS (SELECT * FROM mho_mold_damage_coverage_code) THEN `

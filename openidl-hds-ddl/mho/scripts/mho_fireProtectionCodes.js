@@ -10,7 +10,9 @@ CREATE TABLE IF NOT EXISTS mho_fire_protection_code (
     code VARCHAR,
     name VARCHAR,
     type VARCHAR,
-    category VARCHAR
+    category VARCHAR,
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
 IF NOT EXISTS (SELECT * FROM mho_fire_protection_code) THEN `

@@ -2,17 +2,17 @@
     "0": {
         "property": "Does Not Apply",
         "liability": "Does Not Apply",
-        "notes": "N/A"
+        "notes": "Does Not Apply"
     },
     "1": {
         "property": "$10,000 (basic)",
         "liability": "$50,000 (basic)",
-        "notes": "N/A"
+        "notes": "Does Not Apply"
     },
     "2": {
         "property": "$10,000 (basic)",
         "liability": "$100,000",
-        "notes": "N/A"
+        "notes": "Does Not Apply"
     },
     "A": {
         "property": "$20,000 (basic)",
@@ -22,22 +22,22 @@
     "3": {
         "property": "$25,000",
         "liability": "$50,000 (basic)",
-        "notes": "N/A"
+        "notes": "Does Not Apply"
     },
     "4": {
         "property": "$25,000",
         "liability": "$100,000",
-        "notes": "N/A"
+        "notes": "Does Not Apply"
     },
     "5": {
         "property": "$50,000",
         "liability": "$50,000 (basic)",
-        "notes": "N/A"
+        "notes": "Does Not Apply"
     },
     "6": {
         "property": "$50,000",
         "liability": "$100,000",
-        "notes": "N/A"
+        "notes": "Does Not Apply"
     },
     "B": {
         "property": "$50,000",
@@ -47,16 +47,16 @@
     "7": {
         "property": "All Other Property and Liability Coverage Combinations",
         "liability": "All Other Property and Liability Coverage Combinations",
-        "notes": "N/A"
+        "notes": "Does Not Apply"
     },
     "8": {
         "property": "Total exclusion of fungi, wet rot, dry rot or bacteria (mold)",
         "liability": "Total exclusion of fungi, wet rot, dry rot or bacteria (mold)",
-        "notes": "N/A"
+        "notes": "Does Not Apply"
     },
     "9": {
         "property": "No exclusion or limitation for fungi, wet rot, dry rot, or bacteria (mold) arising from a peril insured against",
         "liability": "No exclusion or limitation for fungi, wet rot, dry rot, or bacteria (mold) arising from a peril insured against",
-        "notes": "N/A"
+        "notes": "Does Not Apply"
     }
 }

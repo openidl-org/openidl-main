@@ -1,15 +1,15 @@
 {
     "0": {
         "name": "Does Not Apply",
-        "type": "N/A"
+        "type": "Does Not Apply"
     }, 
     "1": {
         "name": "Non-Seasonal",
-        "type": "N/A"
+        "type": "Does Not Apply"
     }, 
     "2": {
         "name": "Seasonal",
-        "type": "N/A"
+        "type": "Does Not Apply"
     },
     "3": {
         "name": "Non-Seasonal",
