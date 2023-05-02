@@ -6,7 +6,7 @@ function getBuilder(companyId, startDate, endDate){
 
     extractionPattern = {}
     map = getMap(companyId,' ', startDate, endDate)
-    reduce = getCoverageReport(companyId)
+    reduce = getCoverageReport(companyId, startDate, endDate)
     clean = getTearDown(companyId)
     extractionPattern = {"map": map, "reduce": reduce, "clean": clean}
     return extractionPattern

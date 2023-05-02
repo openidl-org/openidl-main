@@ -93,7 +93,7 @@ function buildSpecial(specials, id) {
 			for (let liabilityCode of liabilityCodes) {
 				liabilityLimit = multi[coverageCode][liabilityCode];
 				
-				fileLines.push(`		INSERT INTO pa_liability_limit_code  VALUES (${id},${coverageId},${state.id},'${name}','${liabilityCode}','${liabilityLimit}');`)
+				fileLines.push(`	INSERT INTO pa_liability_limit_code  VALUES (${id},${coverageId},${state.id},'${name}','${liabilityCode}','${liabilityLimit}');`)
 				id += 1;
 			}
 		}
@@ -111,13 +111,13 @@ BEGIN
 
 CREATE TABLE IF NOT EXISTS pa_liability_limit_code (
     id INT,
-    fk_coverage_id INT,
-    fk_state_id INT,
-    name VARCHAR,
-    code VARCHAR,
-    limitt VARCHAR,
-    effective_date DATE NOT NULL DEFAULT '1900-01-01',
-    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
+    fk_coverage_id int,
+    fk_state_id int,
+    name varchar,
+    code varchar,
+    limitt varchar,
+	effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
 );
 IF NOT EXISTS (SELECT * FROM pa_liability_limit_code) THEN
 `;
@@ -126,7 +126,6 @@ fileLines.push(head)
 let specialStates = getSpecialStates();
 let normalStates = getNormalStates(specialStates);
 id = buildNormal(normalStates);
-id =1 
 buildSpecial(specialStates, id);
 
 let end = `END IF;

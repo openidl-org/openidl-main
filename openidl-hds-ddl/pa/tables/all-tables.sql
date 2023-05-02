@@ -1,15 +1,299 @@
+
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS state_code (
+    id INT,
+    abbreviation VARCHAR,
+    code VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM state_code) THEN 
+    INSERT INTO state_code VALUES(1,'AL','01');
+    INSERT INTO state_code VALUES(2,'AZ','02');
+    INSERT INTO state_code VALUES(3,'AR','03');
+    INSERT INTO state_code VALUES(4,'CA','04');
+    INSERT INTO state_code VALUES(5,'CO','05');
+    INSERT INTO state_code VALUES(6,'CT','06');
+    INSERT INTO state_code VALUES(7,'DE','07');
+    INSERT INTO state_code VALUES(8,'DC','08');
+    INSERT INTO state_code VALUES(9,'FL','09');
+    INSERT INTO state_code VALUES(10,'GA','10');
+    INSERT INTO state_code VALUES(11,'ID','11');
+    INSERT INTO state_code VALUES(12,'IL','12');
+    INSERT INTO state_code VALUES(13,'IN','13');
+    INSERT INTO state_code VALUES(14,'IA','14');
+    INSERT INTO state_code VALUES(15,'KS','15');
+    INSERT INTO state_code VALUES(16,'KY','16');
+    INSERT INTO state_code VALUES(17,'LA','17');
+    INSERT INTO state_code VALUES(18,'ME','18');
+    INSERT INTO state_code VALUES(19,'MD','19');
+    INSERT INTO state_code VALUES(20,'MA','20');
+    INSERT INTO state_code VALUES(21,'MI','21');
+    INSERT INTO state_code VALUES(22,'MN','22');
+    INSERT INTO state_code VALUES(23,'MS','23');
+    INSERT INTO state_code VALUES(24,'MO','24');
+    INSERT INTO state_code VALUES(25,'MT','25');
+    INSERT INTO state_code VALUES(26,'NE','26');
+    INSERT INTO state_code VALUES(27,'NV','27');
+    INSERT INTO state_code VALUES(28,'NH','28');
+    INSERT INTO state_code VALUES(29,'NJ','29');
+    INSERT INTO state_code VALUES(30,'NM','30');
+    INSERT INTO state_code VALUES(31,'NY','31');
+    INSERT INTO state_code VALUES(32,'NC','32');
+    INSERT INTO state_code VALUES(33,'ND','33');
+    INSERT INTO state_code VALUES(34,'OH','34');
+    INSERT INTO state_code VALUES(35,'OK','35');
+    INSERT INTO state_code VALUES(36,'OR','36');
+    INSERT INTO state_code VALUES(37,'PA','37');
+    INSERT INTO state_code VALUES(38,'RI','38');
+    INSERT INTO state_code VALUES(39,'SC','39');
+    INSERT INTO state_code VALUES(40,'SD','40');
+    INSERT INTO state_code VALUES(41,'TN','41');
+    INSERT INTO state_code VALUES(42,'TX','42');
+    INSERT INTO state_code VALUES(43,'UT','43');
+    INSERT INTO state_code VALUES(44,'VT','44');
+    INSERT INTO state_code VALUES(45,'VA','45');
+    INSERT INTO state_code VALUES(46,'WA','46');
+    INSERT INTO state_code VALUES(47,'WV','47');
+    INSERT INTO state_code VALUES(48,'WI','48');
+    INSERT INTO state_code VALUES(49,'WY','49');
+    INSERT INTO state_code VALUES(50,'HI','52');
+    INSERT INTO state_code VALUES(51,'AK','54');
+    INSERT INTO state_code VALUES(52,'PR','58');
+END IF;
+END $$;
+
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_subline_code (
+    id INT,
+    code VARCHAR,
+    name VARCHAR,
+    category VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_subline_code) THEN 
+    INSERT INTO pa_subline_code VALUES(1,'1','Private Passenger Auto','Personal');
+    INSERT INTO pa_subline_code VALUES(2,'2','Commercial Auto','Commercial');
+END IF;
+END $$;
+DO $$
+
+BEGIN 
+
+CREATE TABLE IF NOT EXISTS pa_um_uim_motorist_code(
+	id int,
+	fk_state_id VARCHAR,
+	code VARCHAR,
+	description VARCHAR,
+	effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+
+IF NOT EXISTS (select * from pa_um_uim_motorist_code) THEN
+	INSERT INTO pa_um_uim_motorist_code VALUES (1,1,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (2,1,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (3,1,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (4,2,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (5,2,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (6,2,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (7,3,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (8,3,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (9,3,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (10,4,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (11,4,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (12,4,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (13,5,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (14,5,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (15,5,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (16,6,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (17,6,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (18,6,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (19,7,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (20,7,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (21,7,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (22,8,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (23,8,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (24,8,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (25,9,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (26,9,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (27,9,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (28,10,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (29,10,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (30,10,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (31,11,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (32,11,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (33,11,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (34,12,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (35,12,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (36,12,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (37,13,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (38,13,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (39,13,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (40,14,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (41,14,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (42,14,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (43,15,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (44,15,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (45,15,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (46,16,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (47,16,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (48,16,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (49,17,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (50,17,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (51,17,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (52,18,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (53,18,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (54,18,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (55,19,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (56,19,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (57,19,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (58,20,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (59,20,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (60,20,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (61,21,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (62,21,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (63,21,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (64,22,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (65,22,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (66,22,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (67,23,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (68,23,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (69,23,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (70,24,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (71,24,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (72,24,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (73,25,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (74,25,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (75,25,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (76,26,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (77,26,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (78,26,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (79,27,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (80,27,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (81,27,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (82,28,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (83,28,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (84,28,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (85,29,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (86,29,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (87,29,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (88,30,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (89,30,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (90,30,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (91,31,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (92,31,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (93,31,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (94,32,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (95,32,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (96,32,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (97,33,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (98,33,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (99,33,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (100,34,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (101,34,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (102,34,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (103,35,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (104,35,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (105,35,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (106,36,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (107,36,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (108,36,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (109,37,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (110,37,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (111,37,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (112,38,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (113,38,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (114,38,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (115,39,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (116,39,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (117,39,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (118,40,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (119,40,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (120,40,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (121,41,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (122,41,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (123,41,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (124,42,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (125,42,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (126,42,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (127,43,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (128,43,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (129,43,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (130,44,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (131,44,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (132,44,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (133,45,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (134,45,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (135,45,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (136,46,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (137,46,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (138,46,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (139,47,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (140,47,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (141,47,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (142,48,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (143,48,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (144,48,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (145,49,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (146,49,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (147,49,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (148,50,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (149,50,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (150,50,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (151,51,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (152,51,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (153,51,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (154,52,'1','Bodily Injury');
+	INSERT INTO pa_um_uim_motorist_code VALUES (155,52,'2','Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (156,52,'3','Bodily Injury and Property Damage');
+	INSERT INTO pa_um_uim_motorist_code VALUES (157,37,'1','Bodily Injury — no stacking of UM/UIM limits');
+	INSERT INTO pa_um_uim_motorist_code VALUES (158,37,'2','Property Damage — no stacking of UM/UIM limits');
+	INSERT INTO pa_um_uim_motorist_code VALUES (159,37,'3','Bodily Injury and Property Damage — no stacking of UM/UIM limits');
+	INSERT INTO pa_um_uim_motorist_code VALUES (160,37,'4','Bodily Injury — stacked multi-car UM/UIM limits');
+	INSERT INTO pa_um_uim_motorist_code VALUES (161,37,'5','Property Damage — stacked multi-car UM/UIM limits');
+	INSERT INTO pa_um_uim_motorist_code VALUES (162,37,'6','Bodily Injury and Property Damage — stacked multi-car UM/UIM limits');
+END IF;
+
+END $$
+
+DO $$
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_vehicle_performance_code (
+    id INT,
+    code VARCHAR,
+    description VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_vehicle_performance_code) THEN 
+    INSERT INTO pa_vehicle_performance_code VALUES(1,'0','Not applicable to Commercial Auto Policies');
+    INSERT INTO pa_vehicle_performance_code VALUES(2,'1','Standard');
+    INSERT INTO pa_vehicle_performance_code VALUES(3,'2','Intermediate');
+    INSERT INTO pa_vehicle_performance_code VALUES(4,'3','High');
+    INSERT INTO pa_vehicle_performance_code VALUES(5,'4','Sports Car');
+    INSERT INTO pa_vehicle_performance_code VALUES(6,'5','Sports Premium (New Jersey Only)');
+    INSERT INTO pa_vehicle_performance_code VALUES(7,'9','All Other');
+END IF;
+END $$
 DO $$
 BEGIN 
 
 CREATE TABLE IF NOT EXISTS pa_liability_limit_code (
     id INT,
-    fk_coverage_id INT,
-    fk_state_id INT,
-    name VARCHAR,
-    code VARCHAR,
-    limitt VARCHAR,
-    effective_date DATE NOT NULL DEFAULT '1900-01-01',
-    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
+    fk_coverage_id int,
+    fk_state_id int,
+    name varchar,
+    code varchar,
+    limitt varchar,
+	effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
 );
 IF NOT EXISTS (SELECT * FROM pa_liability_limit_code) THEN
 
@@ -3133,178 +3417,2111 @@ IF NOT EXISTS (SELECT * FROM pa_liability_limit_code) THEN
 	INSERT INTO pa_liability_limit_code  VALUES (3118,8,52,'Per Person/Per Accident','6','$100,000/300,000');
 	INSERT INTO pa_liability_limit_code  VALUES (3119,8,52,'Per Person/Per Accident','7','$300,000/500,000');
 	INSERT INTO pa_liability_limit_code  VALUES (3120,8,52,'Per Person/Per Accident','8','$1,000,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3121,1,29,'Limits','0','$15,000/30,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3122,1,29,'Limits','1','$25,000/50,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3123,1,29,'Limits','2','$50,000/100,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3124,1,29,'Limits','3','$100,000/300,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3125,1,29,'Limits','4','$250,000/500,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3126,1,29,'Limits','5','$300,000/500,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3127,1,29,'Limits','6','$300,000/600,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3128,1,29,'Limits','7','$500,000/1,000,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3129,1,29,'Limits','8','$1,000,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3130,2,29,'State Statutory Basic Limits Through','0','$5,000 or less');
-	INSERT INTO pa_liability_limit_code  VALUES (3131,2,29,'State Statutory Basic Limits Through','1','$10,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3132,2,29,'State Statutory Basic Limits Through','2','$15,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3133,2,29,'State Statutory Basic Limits Through','3','$25,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3134,2,29,'State Statutory Basic Limits Through','4','$50,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3135,2,29,'State Statutory Basic Limits Through','5','$100,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3136,2,29,'State Statutory Basic Limits Through','6','$250,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3137,2,29,'State Statutory Basic Limits Through','7','$300,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3138,2,29,'State Statutory Basic Limits Through','8','$500,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3139,2,29,'State Statutory Basic Limits Through','A','$20,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3140,2,29,'State Statutory Basic Limits Through','B','$40,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3141,3,29,'Limits','0','$15,000/30,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3142,3,29,'Limits','1','$25,000/50,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3143,3,29,'Limits','2','$50,000/100,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3144,3,29,'Limits','3','$100,000/300,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3145,3,29,'Limits','4','$250,000/500,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3146,3,29,'Limits','5','$300,000/500,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3147,3,29,'Limits','6','$300,000/600,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3148,3,29,'Limits','7','$500,000/1,000,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3149,3,29,'Limits','8','$1,000,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3150,6,29,'Per Person/Per Accident','1','$5,000/10,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3151,6,29,'Per Person/Per Accident','2','$10,000/20,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3152,6,29,'Per Person/Per Accident','3','$15,000/30,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3153,6,29,'Per Person/Per Accident','4','$25,000/50,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3154,6,29,'Per Person/Per Accident','5','$50,000/100,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3155,6,29,'Per Person/Per Accident','6','$100,000/300,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3156,6,29,'Per Person/Per Accident','7','$300,000/500,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3157,6,29,'Per Person/Per Accident','8','$1,000,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3158,6,29,'Per Person/Per Accident','9','$250,000/500,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3159,7,29,'Limit','1','$35,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3160,7,29,'Limit','2','$50,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3161,7,29,'Limit','4','$100,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3162,7,29,'Limit','6','$300,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3163,7,29,'Limit','7','$500,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3164,8,29,'Limit','1','$35,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3165,8,29,'Limit','2','$50,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3166,8,29,'Limit','4','$100,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3167,8,29,'Limit','6','$300,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3168,8,29,'Limit','7','$500,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3169,1,37,'Limits','0','$15,000/30,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3170,1,37,'Limits','1','$25,000/50,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3171,1,37,'Limits','2','$50,000/100,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3172,1,37,'Limits','3','$100,000/300,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3173,1,37,'Limits','4','$250,000/500,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3174,1,37,'Limits','5','$300,000/500,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3175,1,37,'Limits','6','$300,000/600,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3176,1,37,'Limits','7','$500,000/1,000,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3177,1,37,'Limits','8','$1,000,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3178,2,37,'State Statutory Basic Limits Through','0','$5,000 or less');
-	INSERT INTO pa_liability_limit_code  VALUES (3179,2,37,'State Statutory Basic Limits Through','1','$10,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3180,2,37,'State Statutory Basic Limits Through','2','$15,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3181,2,37,'State Statutory Basic Limits Through','3','$25,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3182,2,37,'State Statutory Basic Limits Through','4','$50,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3183,2,37,'State Statutory Basic Limits Through','5','$100,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3184,2,37,'State Statutory Basic Limits Through','6','$250,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3185,2,37,'State Statutory Basic Limits Through','7','$300,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3186,2,37,'State Statutory Basic Limits Through','8','$500,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3187,2,37,'State Statutory Basic Limits Through','A','$20,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3188,2,37,'State Statutory Basic Limits Through','B','$40,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3189,17,37,'Limits','0','$15,000/30,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3190,17,37,'Limits','1','$25,000/50,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3191,17,37,'Limits','2','$50,000/100,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3192,17,37,'Limits','3','$100,000/300,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3193,17,37,'Limits','4','$250,000/500,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3194,17,37,'Limits','5','$300,000/500,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3195,17,37,'Limits','6','$300,000/600,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3196,17,37,'Limits','7','$500,000/1,000,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3197,17,37,'Limits','8','$1,000,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3198,15,37,'Limit Per Person','1','$100,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3199,15,37,'Limit Per Person','2','$300,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3200,15,37,'Limit Per Person','3','$500,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3201,15,37,'Limit Per Person','4','$1,000,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3202,6,37,'Per Person/Per Accident','1','$5,000/10,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3203,6,37,'Per Person/Per Accident','2','$10,000/20,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3204,6,37,'Per Person/Per Accident','3','$15,000/30,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3205,6,37,'Per Person/Per Accident','4','$25,000/50,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3206,6,37,'Per Person/Per Accident','5','$50,000/100,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3207,6,37,'Per Person/Per Accident','6','$100,000/300,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3208,6,37,'Per Person/Per Accident','7','$300,000/500,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3209,6,37,'Per Person/Per Accident','8','$1,000,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3210,7,37,'Per Person/Per Accident','1','$5,000/10,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3211,7,37,'Per Person/Per Accident','2','$10,000/20,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3212,7,37,'Per Person/Per Accident','3','$15,000/30,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3213,7,37,'Per Person/Per Accident','4','$25,000/50,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3214,7,37,'Per Person/Per Accident','5','$50,000/100,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3215,7,37,'Per Person/Per Accident','6','$100,000/300,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3216,7,37,'Per Person/Per Accident','7','$300,000/500,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3217,7,37,'Per Person/Per Accident','8','$1,000,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3218,8,37,'Per Person/Per Accident','1','$5,000/10,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3219,8,37,'Per Person/Per Accident','2','$10,000/20,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3220,8,37,'Per Person/Per Accident','3','$15,000/30,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3221,8,37,'Per Person/Per Accident','4','$25,000/50,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3222,8,37,'Per Person/Per Accident','5','$50,000/100,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3223,8,37,'Per Person/Per Accident','6','$100,000/300,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3224,8,37,'Per Person/Per Accident','7','$300,000/500,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3225,8,37,'Per Person/Per Accident','8','$1,000,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3226,19,37,'Limits','1','$5,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3227,19,37,'Limits','2','$10,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3228,19,37,'Limits','3','$25,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3229,19,37,'Limits','4','$50,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3230,19,37,'Limits','5','$100,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3231,28,37,'Limits','1','$5,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3232,28,37,'Limits','2','$10,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3233,28,37,'Limits','3','$25,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3234,28,37,'Limits','4','$50,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3235,28,37,'Limits','5','$100,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3236,22,37,'Limits','1','$5,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3237,22,37,'Limits','2','$10,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3238,22,37,'Limits','3','$15,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3239,22,37,'Limits','4','$25,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3240,29,37,'Limits','1','$5,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3241,29,37,'Limits','2','$10,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3242,29,37,'Limits','3','$15,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3243,29,37,'Limits','4','$25,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3244,20,37,'Limits','1','$5,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3245,20,37,'Limits','2','$10,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3246,20,37,'Limits','3','$25,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3247,20,37,'Limits','4','$50,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3248,20,37,'Limits','5','$100,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3249,27,37,'Limits','1','$5,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3250,27,37,'Limits','2','$10,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3251,27,37,'Limits','3','$25,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3252,27,37,'Limits','4','$50,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3253,27,37,'Limits','5','$100,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3254,23,37,'Limits','1','$1,500');
-	INSERT INTO pa_liability_limit_code  VALUES (3255,23,37,'Limits','2','$2,500');
-	INSERT INTO pa_liability_limit_code  VALUES (3256,30,37,'Limits','1','$1,500');
-	INSERT INTO pa_liability_limit_code  VALUES (3257,30,37,'Limits','2','$2,500');
-	INSERT INTO pa_liability_limit_code  VALUES (3258,21,37,'Limits','1','$1,000/5,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3259,21,37,'Limits','2','$1,000/15,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3260,21,37,'Limits','3','$1,500/25,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3261,21,37,'Limits','4','$2,500/50,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3262,28,37,'Limits','1','$1,000/5,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3263,28,37,'Limits','2','$1,000/15,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3264,28,37,'Limits','3','$1,500/25,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3265,28,37,'Limits','4','$2,500/50,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3266,24,37,'Limits','1','$12,500');
-	INSERT INTO pa_liability_limit_code  VALUES (3267,24,37,'Limits','2','$17,500');
-	INSERT INTO pa_liability_limit_code  VALUES (3268,24,37,'Limits','3','$50,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3269,24,37,'Limits','4','$100,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3270,24,37,'Limits','5','$177,500');
-	INSERT INTO pa_liability_limit_code  VALUES (3271,24,37,'Limits','6','$200,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3272,24,37,'Limits','7','$277,500');
-	INSERT INTO pa_liability_limit_code  VALUES (3273,25,37,'Limits','1','$12,500');
-	INSERT INTO pa_liability_limit_code  VALUES (3274,25,37,'Limits','2','$17,500');
-	INSERT INTO pa_liability_limit_code  VALUES (3275,25,37,'Limits','3','$50,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3276,25,37,'Limits','4','$100,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3277,25,37,'Limits','5','$177,500');
-	INSERT INTO pa_liability_limit_code  VALUES (3278,25,37,'Limits','6','$200,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3279,25,37,'Limits','7','$277,500');
-	INSERT INTO pa_liability_limit_code  VALUES (3280,31,37,'Limits','1','$12,500');
-	INSERT INTO pa_liability_limit_code  VALUES (3281,31,37,'Limits','2','$17,500');
-	INSERT INTO pa_liability_limit_code  VALUES (3282,31,37,'Limits','3','$50,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3283,31,37,'Limits','4','$100,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3284,31,37,'Limits','5','$177,500');
-	INSERT INTO pa_liability_limit_code  VALUES (3285,31,37,'Limits','6','$200,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3286,31,37,'Limits','7','$277,500');
-	INSERT INTO pa_liability_limit_code  VALUES (3287,32,37,'Limits','1','$12,500');
-	INSERT INTO pa_liability_limit_code  VALUES (3288,32,37,'Limits','2','$17,500');
-	INSERT INTO pa_liability_limit_code  VALUES (3289,32,37,'Limits','3','$50,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3290,32,37,'Limits','4','$100,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3291,32,37,'Limits','5','$177,500');
-	INSERT INTO pa_liability_limit_code  VALUES (3292,32,37,'Limits','6','$200,000');
-	INSERT INTO pa_liability_limit_code  VALUES (3293,32,37,'Limits','7','$277,500');
+		INSERT INTO pa_liability_limit_code  VALUES (1,1,29,'Limits','0','$15,000/30,000');
+		INSERT INTO pa_liability_limit_code  VALUES (2,1,29,'Limits','1','$25,000/50,000');
+		INSERT INTO pa_liability_limit_code  VALUES (3,1,29,'Limits','2','$50,000/100,000');
+		INSERT INTO pa_liability_limit_code  VALUES (4,1,29,'Limits','3','$100,000/300,000');
+		INSERT INTO pa_liability_limit_code  VALUES (5,1,29,'Limits','4','$250,000/500,000');
+		INSERT INTO pa_liability_limit_code  VALUES (6,1,29,'Limits','5','$300,000/500,000');
+		INSERT INTO pa_liability_limit_code  VALUES (7,1,29,'Limits','6','$300,000/600,000');
+		INSERT INTO pa_liability_limit_code  VALUES (8,1,29,'Limits','7','$500,000/1,000,000');
+		INSERT INTO pa_liability_limit_code  VALUES (9,1,29,'Limits','8','$1,000,000');
+		INSERT INTO pa_liability_limit_code  VALUES (10,2,29,'State Statutory Basic Limits Through','0','$5,000 or less');
+		INSERT INTO pa_liability_limit_code  VALUES (11,2,29,'State Statutory Basic Limits Through','1','$10,000');
+		INSERT INTO pa_liability_limit_code  VALUES (12,2,29,'State Statutory Basic Limits Through','2','$15,000');
+		INSERT INTO pa_liability_limit_code  VALUES (13,2,29,'State Statutory Basic Limits Through','3','$25,000');
+		INSERT INTO pa_liability_limit_code  VALUES (14,2,29,'State Statutory Basic Limits Through','4','$50,000');
+		INSERT INTO pa_liability_limit_code  VALUES (15,2,29,'State Statutory Basic Limits Through','5','$100,000');
+		INSERT INTO pa_liability_limit_code  VALUES (16,2,29,'State Statutory Basic Limits Through','6','$250,000');
+		INSERT INTO pa_liability_limit_code  VALUES (17,2,29,'State Statutory Basic Limits Through','7','$300,000');
+		INSERT INTO pa_liability_limit_code  VALUES (18,2,29,'State Statutory Basic Limits Through','8','$500,000');
+		INSERT INTO pa_liability_limit_code  VALUES (19,2,29,'State Statutory Basic Limits Through','A','$20,000');
+		INSERT INTO pa_liability_limit_code  VALUES (20,2,29,'State Statutory Basic Limits Through','B','$40,000');
+		INSERT INTO pa_liability_limit_code  VALUES (21,3,29,'Limits','0','$15,000/30,000');
+		INSERT INTO pa_liability_limit_code  VALUES (22,3,29,'Limits','1','$25,000/50,000');
+		INSERT INTO pa_liability_limit_code  VALUES (23,3,29,'Limits','2','$50,000/100,000');
+		INSERT INTO pa_liability_limit_code  VALUES (24,3,29,'Limits','3','$100,000/300,000');
+		INSERT INTO pa_liability_limit_code  VALUES (25,3,29,'Limits','4','$250,000/500,000');
+		INSERT INTO pa_liability_limit_code  VALUES (26,3,29,'Limits','5','$300,000/500,000');
+		INSERT INTO pa_liability_limit_code  VALUES (27,3,29,'Limits','6','$300,000/600,000');
+		INSERT INTO pa_liability_limit_code  VALUES (28,3,29,'Limits','7','$500,000/1,000,000');
+		INSERT INTO pa_liability_limit_code  VALUES (29,3,29,'Limits','8','$1,000,000');
+		INSERT INTO pa_liability_limit_code  VALUES (30,6,29,'Per Person/Per Accident','1','$5,000/10,000');
+		INSERT INTO pa_liability_limit_code  VALUES (31,6,29,'Per Person/Per Accident','2','$10,000/20,000');
+		INSERT INTO pa_liability_limit_code  VALUES (32,6,29,'Per Person/Per Accident','3','$15,000/30,000');
+		INSERT INTO pa_liability_limit_code  VALUES (33,6,29,'Per Person/Per Accident','4','$25,000/50,000');
+		INSERT INTO pa_liability_limit_code  VALUES (34,6,29,'Per Person/Per Accident','5','$50,000/100,000');
+		INSERT INTO pa_liability_limit_code  VALUES (35,6,29,'Per Person/Per Accident','6','$100,000/300,000');
+		INSERT INTO pa_liability_limit_code  VALUES (36,6,29,'Per Person/Per Accident','7','$300,000/500,000');
+		INSERT INTO pa_liability_limit_code  VALUES (37,6,29,'Per Person/Per Accident','8','$1,000,000');
+		INSERT INTO pa_liability_limit_code  VALUES (38,6,29,'Per Person/Per Accident','9','$250,000/500,000');
+		INSERT INTO pa_liability_limit_code  VALUES (39,7,29,'Limit','1','$35,000');
+		INSERT INTO pa_liability_limit_code  VALUES (40,7,29,'Limit','2','$50,000');
+		INSERT INTO pa_liability_limit_code  VALUES (41,7,29,'Limit','4','$100,000');
+		INSERT INTO pa_liability_limit_code  VALUES (42,7,29,'Limit','6','$300,000');
+		INSERT INTO pa_liability_limit_code  VALUES (43,7,29,'Limit','7','$500,000');
+		INSERT INTO pa_liability_limit_code  VALUES (44,8,29,'Limit','1','$35,000');
+		INSERT INTO pa_liability_limit_code  VALUES (45,8,29,'Limit','2','$50,000');
+		INSERT INTO pa_liability_limit_code  VALUES (46,8,29,'Limit','4','$100,000');
+		INSERT INTO pa_liability_limit_code  VALUES (47,8,29,'Limit','6','$300,000');
+		INSERT INTO pa_liability_limit_code  VALUES (48,8,29,'Limit','7','$500,000');
+		INSERT INTO pa_liability_limit_code  VALUES (49,1,37,'Limits','0','$15,000/30,000');
+		INSERT INTO pa_liability_limit_code  VALUES (50,1,37,'Limits','1','$25,000/50,000');
+		INSERT INTO pa_liability_limit_code  VALUES (51,1,37,'Limits','2','$50,000/100,000');
+		INSERT INTO pa_liability_limit_code  VALUES (52,1,37,'Limits','3','$100,000/300,000');
+		INSERT INTO pa_liability_limit_code  VALUES (53,1,37,'Limits','4','$250,000/500,000');
+		INSERT INTO pa_liability_limit_code  VALUES (54,1,37,'Limits','5','$300,000/500,000');
+		INSERT INTO pa_liability_limit_code  VALUES (55,1,37,'Limits','6','$300,000/600,000');
+		INSERT INTO pa_liability_limit_code  VALUES (56,1,37,'Limits','7','$500,000/1,000,000');
+		INSERT INTO pa_liability_limit_code  VALUES (57,1,37,'Limits','8','$1,000,000');
+		INSERT INTO pa_liability_limit_code  VALUES (58,2,37,'State Statutory Basic Limits Through','0','$5,000 or less');
+		INSERT INTO pa_liability_limit_code  VALUES (59,2,37,'State Statutory Basic Limits Through','1','$10,000');
+		INSERT INTO pa_liability_limit_code  VALUES (60,2,37,'State Statutory Basic Limits Through','2','$15,000');
+		INSERT INTO pa_liability_limit_code  VALUES (61,2,37,'State Statutory Basic Limits Through','3','$25,000');
+		INSERT INTO pa_liability_limit_code  VALUES (62,2,37,'State Statutory Basic Limits Through','4','$50,000');
+		INSERT INTO pa_liability_limit_code  VALUES (63,2,37,'State Statutory Basic Limits Through','5','$100,000');
+		INSERT INTO pa_liability_limit_code  VALUES (64,2,37,'State Statutory Basic Limits Through','6','$250,000');
+		INSERT INTO pa_liability_limit_code  VALUES (65,2,37,'State Statutory Basic Limits Through','7','$300,000');
+		INSERT INTO pa_liability_limit_code  VALUES (66,2,37,'State Statutory Basic Limits Through','8','$500,000');
+		INSERT INTO pa_liability_limit_code  VALUES (67,2,37,'State Statutory Basic Limits Through','A','$20,000');
+		INSERT INTO pa_liability_limit_code  VALUES (68,2,37,'State Statutory Basic Limits Through','B','$40,000');
+		INSERT INTO pa_liability_limit_code  VALUES (69,17,37,'Limits','0','$15,000/30,000');
+		INSERT INTO pa_liability_limit_code  VALUES (70,17,37,'Limits','1','$25,000/50,000');
+		INSERT INTO pa_liability_limit_code  VALUES (71,17,37,'Limits','2','$50,000/100,000');
+		INSERT INTO pa_liability_limit_code  VALUES (72,17,37,'Limits','3','$100,000/300,000');
+		INSERT INTO pa_liability_limit_code  VALUES (73,17,37,'Limits','4','$250,000/500,000');
+		INSERT INTO pa_liability_limit_code  VALUES (74,17,37,'Limits','5','$300,000/500,000');
+		INSERT INTO pa_liability_limit_code  VALUES (75,17,37,'Limits','6','$300,000/600,000');
+		INSERT INTO pa_liability_limit_code  VALUES (76,17,37,'Limits','7','$500,000/1,000,000');
+		INSERT INTO pa_liability_limit_code  VALUES (77,17,37,'Limits','8','$1,000,000');
+		INSERT INTO pa_liability_limit_code  VALUES (78,15,37,'Limit Per Person','1','$100,000');
+		INSERT INTO pa_liability_limit_code  VALUES (79,15,37,'Limit Per Person','2','$300,000');
+		INSERT INTO pa_liability_limit_code  VALUES (80,15,37,'Limit Per Person','3','$500,000');
+		INSERT INTO pa_liability_limit_code  VALUES (81,15,37,'Limit Per Person','4','$1,000,000');
+		INSERT INTO pa_liability_limit_code  VALUES (82,6,37,'Per Person/Per Accident','1','$5,000/10,000');
+		INSERT INTO pa_liability_limit_code  VALUES (83,6,37,'Per Person/Per Accident','2','$10,000/20,000');
+		INSERT INTO pa_liability_limit_code  VALUES (84,6,37,'Per Person/Per Accident','3','$15,000/30,000');
+		INSERT INTO pa_liability_limit_code  VALUES (85,6,37,'Per Person/Per Accident','4','$25,000/50,000');
+		INSERT INTO pa_liability_limit_code  VALUES (86,6,37,'Per Person/Per Accident','5','$50,000/100,000');
+		INSERT INTO pa_liability_limit_code  VALUES (87,6,37,'Per Person/Per Accident','6','$100,000/300,000');
+		INSERT INTO pa_liability_limit_code  VALUES (88,6,37,'Per Person/Per Accident','7','$300,000/500,000');
+		INSERT INTO pa_liability_limit_code  VALUES (89,6,37,'Per Person/Per Accident','8','$1,000,000');
+		INSERT INTO pa_liability_limit_code  VALUES (90,7,37,'Per Person/Per Accident','1','$5,000/10,000');
+		INSERT INTO pa_liability_limit_code  VALUES (91,7,37,'Per Person/Per Accident','2','$10,000/20,000');
+		INSERT INTO pa_liability_limit_code  VALUES (92,7,37,'Per Person/Per Accident','3','$15,000/30,000');
+		INSERT INTO pa_liability_limit_code  VALUES (93,7,37,'Per Person/Per Accident','4','$25,000/50,000');
+		INSERT INTO pa_liability_limit_code  VALUES (94,7,37,'Per Person/Per Accident','5','$50,000/100,000');
+		INSERT INTO pa_liability_limit_code  VALUES (95,7,37,'Per Person/Per Accident','6','$100,000/300,000');
+		INSERT INTO pa_liability_limit_code  VALUES (96,7,37,'Per Person/Per Accident','7','$300,000/500,000');
+		INSERT INTO pa_liability_limit_code  VALUES (97,7,37,'Per Person/Per Accident','8','$1,000,000');
+		INSERT INTO pa_liability_limit_code  VALUES (98,8,37,'Per Person/Per Accident','1','$5,000/10,000');
+		INSERT INTO pa_liability_limit_code  VALUES (99,8,37,'Per Person/Per Accident','2','$10,000/20,000');
+		INSERT INTO pa_liability_limit_code  VALUES (100,8,37,'Per Person/Per Accident','3','$15,000/30,000');
+		INSERT INTO pa_liability_limit_code  VALUES (101,8,37,'Per Person/Per Accident','4','$25,000/50,000');
+		INSERT INTO pa_liability_limit_code  VALUES (102,8,37,'Per Person/Per Accident','5','$50,000/100,000');
+		INSERT INTO pa_liability_limit_code  VALUES (103,8,37,'Per Person/Per Accident','6','$100,000/300,000');
+		INSERT INTO pa_liability_limit_code  VALUES (104,8,37,'Per Person/Per Accident','7','$300,000/500,000');
+		INSERT INTO pa_liability_limit_code  VALUES (105,8,37,'Per Person/Per Accident','8','$1,000,000');
+		INSERT INTO pa_liability_limit_code  VALUES (106,19,37,'Limits','1','$5,000');
+		INSERT INTO pa_liability_limit_code  VALUES (107,19,37,'Limits','2','$10,000');
+		INSERT INTO pa_liability_limit_code  VALUES (108,19,37,'Limits','3','$25,000');
+		INSERT INTO pa_liability_limit_code  VALUES (109,19,37,'Limits','4','$50,000');
+		INSERT INTO pa_liability_limit_code  VALUES (110,19,37,'Limits','5','$100,000');
+		INSERT INTO pa_liability_limit_code  VALUES (111,28,37,'Limits','1','$5,000');
+		INSERT INTO pa_liability_limit_code  VALUES (112,28,37,'Limits','2','$10,000');
+		INSERT INTO pa_liability_limit_code  VALUES (113,28,37,'Limits','3','$25,000');
+		INSERT INTO pa_liability_limit_code  VALUES (114,28,37,'Limits','4','$50,000');
+		INSERT INTO pa_liability_limit_code  VALUES (115,28,37,'Limits','5','$100,000');
+		INSERT INTO pa_liability_limit_code  VALUES (116,22,37,'Limits','1','$5,000');
+		INSERT INTO pa_liability_limit_code  VALUES (117,22,37,'Limits','2','$10,000');
+		INSERT INTO pa_liability_limit_code  VALUES (118,22,37,'Limits','3','$15,000');
+		INSERT INTO pa_liability_limit_code  VALUES (119,22,37,'Limits','4','$25,000');
+		INSERT INTO pa_liability_limit_code  VALUES (120,29,37,'Limits','1','$5,000');
+		INSERT INTO pa_liability_limit_code  VALUES (121,29,37,'Limits','2','$10,000');
+		INSERT INTO pa_liability_limit_code  VALUES (122,29,37,'Limits','3','$15,000');
+		INSERT INTO pa_liability_limit_code  VALUES (123,29,37,'Limits','4','$25,000');
+		INSERT INTO pa_liability_limit_code  VALUES (124,20,37,'Limits','1','$5,000');
+		INSERT INTO pa_liability_limit_code  VALUES (125,20,37,'Limits','2','$10,000');
+		INSERT INTO pa_liability_limit_code  VALUES (126,20,37,'Limits','3','$25,000');
+		INSERT INTO pa_liability_limit_code  VALUES (127,20,37,'Limits','4','$50,000');
+		INSERT INTO pa_liability_limit_code  VALUES (128,20,37,'Limits','5','$100,000');
+		INSERT INTO pa_liability_limit_code  VALUES (129,27,37,'Limits','1','$5,000');
+		INSERT INTO pa_liability_limit_code  VALUES (130,27,37,'Limits','2','$10,000');
+		INSERT INTO pa_liability_limit_code  VALUES (131,27,37,'Limits','3','$25,000');
+		INSERT INTO pa_liability_limit_code  VALUES (132,27,37,'Limits','4','$50,000');
+		INSERT INTO pa_liability_limit_code  VALUES (133,27,37,'Limits','5','$100,000');
+		INSERT INTO pa_liability_limit_code  VALUES (134,23,37,'Limits','1','$1,500');
+		INSERT INTO pa_liability_limit_code  VALUES (135,23,37,'Limits','2','$2,500');
+		INSERT INTO pa_liability_limit_code  VALUES (136,30,37,'Limits','1','$1,500');
+		INSERT INTO pa_liability_limit_code  VALUES (137,30,37,'Limits','2','$2,500');
+		INSERT INTO pa_liability_limit_code  VALUES (138,21,37,'Limits','1','$1,000/5,000');
+		INSERT INTO pa_liability_limit_code  VALUES (139,21,37,'Limits','2','$1,000/15,000');
+		INSERT INTO pa_liability_limit_code  VALUES (140,21,37,'Limits','3','$1,500/25,000');
+		INSERT INTO pa_liability_limit_code  VALUES (141,21,37,'Limits','4','$2,500/50,000');
+		INSERT INTO pa_liability_limit_code  VALUES (142,28,37,'Limits','1','$1,000/5,000');
+		INSERT INTO pa_liability_limit_code  VALUES (143,28,37,'Limits','2','$1,000/15,000');
+		INSERT INTO pa_liability_limit_code  VALUES (144,28,37,'Limits','3','$1,500/25,000');
+		INSERT INTO pa_liability_limit_code  VALUES (145,28,37,'Limits','4','$2,500/50,000');
+		INSERT INTO pa_liability_limit_code  VALUES (146,24,37,'Limits','1','$12,500');
+		INSERT INTO pa_liability_limit_code  VALUES (147,24,37,'Limits','2','$17,500');
+		INSERT INTO pa_liability_limit_code  VALUES (148,24,37,'Limits','3','$50,000');
+		INSERT INTO pa_liability_limit_code  VALUES (149,24,37,'Limits','4','$100,000');
+		INSERT INTO pa_liability_limit_code  VALUES (150,24,37,'Limits','5','$177,500');
+		INSERT INTO pa_liability_limit_code  VALUES (151,24,37,'Limits','6','$200,000');
+		INSERT INTO pa_liability_limit_code  VALUES (152,24,37,'Limits','7','$277,500');
+		INSERT INTO pa_liability_limit_code  VALUES (153,25,37,'Limits','1','$12,500');
+		INSERT INTO pa_liability_limit_code  VALUES (154,25,37,'Limits','2','$17,500');
+		INSERT INTO pa_liability_limit_code  VALUES (155,25,37,'Limits','3','$50,000');
+		INSERT INTO pa_liability_limit_code  VALUES (156,25,37,'Limits','4','$100,000');
+		INSERT INTO pa_liability_limit_code  VALUES (157,25,37,'Limits','5','$177,500');
+		INSERT INTO pa_liability_limit_code  VALUES (158,25,37,'Limits','6','$200,000');
+		INSERT INTO pa_liability_limit_code  VALUES (159,25,37,'Limits','7','$277,500');
+		INSERT INTO pa_liability_limit_code  VALUES (160,31,37,'Limits','1','$12,500');
+		INSERT INTO pa_liability_limit_code  VALUES (161,31,37,'Limits','2','$17,500');
+		INSERT INTO pa_liability_limit_code  VALUES (162,31,37,'Limits','3','$50,000');
+		INSERT INTO pa_liability_limit_code  VALUES (163,31,37,'Limits','4','$100,000');
+		INSERT INTO pa_liability_limit_code  VALUES (164,31,37,'Limits','5','$177,500');
+		INSERT INTO pa_liability_limit_code  VALUES (165,31,37,'Limits','6','$200,000');
+		INSERT INTO pa_liability_limit_code  VALUES (166,31,37,'Limits','7','$277,500');
+		INSERT INTO pa_liability_limit_code  VALUES (167,32,37,'Limits','1','$12,500');
+		INSERT INTO pa_liability_limit_code  VALUES (168,32,37,'Limits','2','$17,500');
+		INSERT INTO pa_liability_limit_code  VALUES (169,32,37,'Limits','3','$50,000');
+		INSERT INTO pa_liability_limit_code  VALUES (170,32,37,'Limits','4','$100,000');
+		INSERT INTO pa_liability_limit_code  VALUES (171,32,37,'Limits','5','$177,500');
+		INSERT INTO pa_liability_limit_code  VALUES (172,32,37,'Limits','6','$200,000');
+		INSERT INTO pa_liability_limit_code  VALUES (173,32,37,'Limits','7','$277,500');
 END IF;
 END $$
+
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_vehicle_use_code (
+    id INT,
+    code VARCHAR,
+    use VARCHAR,
+    commute_distance VARCHAR,
+    annual_distance VARCHAR,
+    operator VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_vehicle_use_code) THEN 
+    INSERT INTO pa_vehicle_use_code VALUES(1,'0','Not Applicable to Private Passenger Assigned Risks','N/A','N/A','N/A');
+    INSERT INTO pa_vehicle_use_code VALUES(2,'1','Work/School','Under 15 Miles','N/A','N/A');
+    INSERT INTO pa_vehicle_use_code VALUES(3,'2','Work/School','Over 15 Miles','N/A','N/A');
+    INSERT INTO pa_vehicle_use_code VALUES(4,'3','Pleasure','N/A','Under 7500 Miles','N/A');
+    INSERT INTO pa_vehicle_use_code VALUES(5,'4','Pleasure','Over 15 Miles','N/A','N/A');
+    INSERT INTO pa_vehicle_use_code VALUES(6,'5','Business','N/A','N/A','No Youthful Operator');
+    INSERT INTO pa_vehicle_use_code VALUES(7,'6','Business','N/A','N/A','Youthful Operator');
+    INSERT INTO pa_vehicle_use_code VALUES(8,'7','Farm','N/A','N/A','No Youthful Operator');
+    INSERT INTO pa_vehicle_use_code VALUES(9,'8','Farm','N/A','N/A','Youthful Operator');
+    INSERT INTO pa_vehicle_use_code VALUES(10,'9','Error!-showed up in data/does not exist in stat plan','Error!-showed up in data/does not exist in stat plan','Error!-showed up in data/does not exist in stat plan','Error!-showed up in data/does not exist in stat plan');
+    INSERT INTO pa_vehicle_use_code VALUES(11,'B','Business','N/A','N/A','Operator Age Unspecified');
+    INSERT INTO pa_vehicle_use_code VALUES(12,'F','Farm','N/A','N/A','Operator Age Unspecified');
+END IF;
+END $$;
+
+DO $$
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_um_uim_stacking_code (
+    id INT,
+    code VARCHAR,
+    description VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_um_uim_stacking_code) THEN 
+    INSERT INTO pa_um_uim_stacking_code VALUES(1,'1','UM and/or UIM limits stacked (per vehicle)');
+    INSERT INTO pa_um_uim_stacking_code VALUES(2,'2','UM and/or UIM limits non-stacked (per policy)');
+END IF;
+END $$
+
+DO $$
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_terrorism_indicator_code (
+    id INT,
+    code VARCHAR,
+    description VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_terrorism_indicator_code) THEN 
+    INSERT INTO pa_terrorism_indicator_code VALUES(1,'7','Certified acts of terrorism not excluded');
+    INSERT INTO pa_terrorism_indicator_code VALUES(2,'8','Certified acts of terrorism excluded');
+END IF;
+END $$
+DO $$
+BEGIN 
+
+CREATE TABLE IF NOT EXISTS pa_state_exception_category_code (
+    id int,
+    name VARCHAR,
+    description VARCHAR,
+	effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+    
+CREATE TABLE IF NOT EXISTS pa_state_exception_code (
+    id int,
+    fk_state_exception_category_id int,
+    fk_state_id int,
+    code varchar,
+    name varchar, 
+    description varchar,
+	effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+    );
+    
+IF NOT EXISTS (SELECT * FROM pa_state_exception_category_code) THEN
+   INSERT INTO pa_state_exception_category_code (id, name) values (1,'stateExceptionA');
+   INSERT INTO pa_state_exception_category_code (id, name) values (2,'stateExceptionB');
+   INSERT INTO pa_state_exception_category_code (id, name) values (3,'stateExceptionC');
+   INSERT INTO pa_state_exception_category_code (id, name) values (4,'stateExceptionCCWIP');
+END IF;
+
+IF NOT EXISTS (SELECT * FROM pa_state_exception_code) THEN
+   INSERT INTO pa_state_exception_code VALUES (1,1,16,'01','Tort Limitation','No rejection of tort limitation - Residual Bodily Injury record only');
+   INSERT INTO pa_state_exception_code VALUES (2,1,16,'02','Tort Limitation','All other liability records');
+   INSERT INTO pa_state_exception_code VALUES (3,1,21,'03','Intrastate Interstate','Vehicles written on an intrastate basis');
+   INSERT INTO pa_state_exception_code VALUES (4,1,21,'04','Intrastate Interstate','Vehicles written on an interstate basis');
+   INSERT INTO pa_state_exception_code VALUES (5,1,29,'99','Threshold Tort Limitation','Liability with Unknown Threshold/Tort Limitation');
+   INSERT INTO pa_state_exception_code VALUES (6,1,29,'04','Threshold Tort Limitation','No Threshold/No Tort Limitation');
+   INSERT INTO pa_state_exception_code VALUES (7,1,29,'05','Threshold Tort Limitation','Verbal Threshold/Tort Limitation');
+   INSERT INTO pa_state_exception_code VALUES (8,1,29,'06','Threshold Tort Limitation','No Threshold/No Tort Limitation');
+   INSERT INTO pa_state_exception_code VALUES (9,1,29,'08','Threshold Tort Limitation','Verbal Threshold/Tort Limitation');
+   INSERT INTO pa_state_exception_code VALUES (10,1,29,'07','Threshold Tort Limitation','No Threshold/No Tort Limitation');
+   INSERT INTO pa_state_exception_code VALUES (11,1,29,'09','Threshold Tort Limitation','Verbal Threshold/Tort Limitation');
+   INSERT INTO pa_state_exception_code VALUES (12,1,31,'01','Accident Prevention Credit','Vehicle with accident prevention credit');
+   INSERT INTO pa_state_exception_code VALUES (13,1,31,'02','Accident Prevention Credit','Vehicle without accident prevention credit');
+   INSERT INTO pa_state_exception_code VALUES (14,1,37,'04','Tort Limitation','Full Tort selected by the insured');
+   INSERT INTO pa_state_exception_code VALUES (15,1,37,'05','Tort Limitation','Limited Tort selected by insured');
+   INSERT INTO pa_state_exception_code VALUES (16,1,39,'01','SC Reinsurance Facility','Business written under the S.C.R.F. and ceded to S.C.R.F.');
+   INSERT INTO pa_state_exception_code VALUES (17,1,39,'02','SC Reinsurance Facility','Business written under the S.C.R.F. and retained by the company');
+   INSERT INTO pa_state_exception_code VALUES (18,1,39,'09','SC Reinsurance Facility','Business not written under the S.C.R.F.');
+   INSERT INTO pa_state_exception_code VALUES (19,2,29,'17','Multi Car Risks','Principal Automobile - Not Discounted');
+   INSERT INTO pa_state_exception_code VALUES (20,2,29,'27','Multi Car Risks','Additional Automobile(s) - Discounted');
+   INSERT INTO pa_state_exception_code VALUES (21,2,29,'37','Multi Car Risks','All Other Automobiles');
+   INSERT INTO pa_state_exception_code VALUES (22,2,29,'47','Multi Car Risks','The number of automobiles insured by the same insurer exceeds the number of licensed drivers customarily operating such automobiles.');
+   INSERT INTO pa_state_exception_code VALUES (23,2,31,'99','Primary No Fault Health Plan','Unknown');
+   INSERT INTO pa_state_exception_code VALUES (24,2,31,'01','Primary No Fault Health Plan','Employer s work loss plan primary');
+   INSERT INTO pa_state_exception_code VALUES (25,2,31,'02','Primary No Fault Health Plan','Medicare primary');
+   INSERT INTO pa_state_exception_code VALUES (26,2,31,'03','Primary No Fault Health Plan','No basic PIP medical expense because medical coverage is provided under an approved health plan');
+   INSERT INTO pa_state_exception_code VALUES (27,2,31,'04','Primary No Fault Health Plan','Employer s work loss plan and medicare coordination, both primary');
+   INSERT INTO pa_state_exception_code VALUES (28,2,31,'05','Primary No Fault Health Plan','Employer s work loss plan primary with no basic PIP medical expense because medical coverage is provided under an approved health plan');
+   INSERT INTO pa_state_exception_code VALUES (29,2,31,'09','Primary No Fault Health Plan','PIP is primary insurance');
+   INSERT INTO pa_state_exception_code VALUES (30,2,37,'00','55 And Over Discount','Not Applicable');
+   INSERT INTO pa_state_exception_code VALUES (31,2,37,'05','55 And Over Discount',' 55 & Over  discount for successful completion of PA certified training course.');
+   INSERT INTO pa_state_exception_code VALUES (32,3,29,'01','Engine Size','0 - 50 cc');
+   INSERT INTO pa_state_exception_code VALUES (33,3,29,'02','Engine Size','51 - 100 cc');
+   INSERT INTO pa_state_exception_code VALUES (34,3,29,'03','Engine Size','101 - 200 cc');
+   INSERT INTO pa_state_exception_code VALUES (35,3,29,'04','Engine Size','201 - 360 cc');
+   INSERT INTO pa_state_exception_code VALUES (36,3,29,'05','Engine Size','361 - 500 cc');
+   INSERT INTO pa_state_exception_code VALUES (37,3,29,'06','Engine Size','501 - 800 cc');
+   INSERT INTO pa_state_exception_code VALUES (38,3,29,'07','Engine Size','801 -1000 cc');
+   INSERT INTO pa_state_exception_code VALUES (39,3,29,'08','Engine Size','Over 1000 cc Passenger');
+   INSERT INTO pa_state_exception_code VALUES (40,3,29,'09','Engine Size','Hazard excluded');
+END IF; 
+
+END $$
+
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_single_multi_car_code (
+    id INT,
+    code VARCHAR,
+    description VARCHAR,    
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_single_multi_car_code) THEN 
+    INSERT INTO pa_single_multi_car_code VALUES(1,'1','Single Car Rated');
+    INSERT INTO pa_single_multi_car_code VALUES(2,'2','Multi-Car Rated');
+    INSERT INTO pa_single_multi_car_code VALUES(3,'9','Not Applicable');
+END IF;
+END $$;
+
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_sex_and_marital_status_code (
+    id INT,
+    code VARCHAR,
+    marital_status VARCHAR,
+    gender VARCHAR,
+    principal_secondary VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_sex_and_marital_status_code) THEN 
+    INSERT INTO pa_sex_and_marital_status_code VALUES(1,'0','N/A','N/A','N/A');
+    INSERT INTO pa_sex_and_marital_status_code VALUES(2,'1','Married','Male','N/A');
+    INSERT INTO pa_sex_and_marital_status_code VALUES(3,'2','Single','Male','Principal');
+    INSERT INTO pa_sex_and_marital_status_code VALUES(4,'3','Single','Male','Secondary');
+    INSERT INTO pa_sex_and_marital_status_code VALUES(5,'4','Married','Female','N/A');
+    INSERT INTO pa_sex_and_marital_status_code VALUES(6,'5','Single','Female','Principal');
+    INSERT INTO pa_sex_and_marital_status_code VALUES(7,'6','Single','Female','Secondary');
+    INSERT INTO pa_sex_and_marital_status_code VALUES(8,'7','Married','N/A','N/A');
+    INSERT INTO pa_sex_and_marital_status_code VALUES(9,'8','Single','N/A','N/A');
+END IF;
+END $$;
+DO $$
+
+BEGIN
+
+CREATE TABLE IF NOT EXISTS openidl_lob_code (
+    id INT,
+    name VARCHAR,
+    code VARCHAR,
+    description VARCHAR,
+	aais_code varchar,
+	aais_subline varchar,
+	effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+IF NOT EXISTS (SELECT * FROM openidl_lob_code) THEN
+    INSERT INTO openidl_lob_code(id,name,aais_code,aais_subline) VALUES(1,'Personal Auto','56','1');
+    INSERT INTO openidl_lob_code(id,name,aais_code,aais_subline) VALUES(2,'Commercial Auto','56','2');
+END IF;
+
+END $$
+
+
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_private_passenger_drivers_training_good_student_code (
+    id INT,
+    code VARCHAR,
+    drivers_training VARCHAR,
+    good_student_discount VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_private_passenger_drivers_training_good_student_code) THEN 
+    INSERT INTO pa_private_passenger_drivers_training_good_student_code VALUES(1,'1','Yes','Yes');
+    INSERT INTO pa_private_passenger_drivers_training_good_student_code VALUES(2,'2','Yes','No');
+    INSERT INTO pa_private_passenger_drivers_training_good_student_code VALUES(3,'3','No','Yes');
+    INSERT INTO pa_private_passenger_drivers_training_good_student_code VALUES(4,'4','No','No');
+    INSERT INTO pa_private_passenger_drivers_training_good_student_code VALUES(5,'5','N/A','N/A');
+END IF;
+END $$;
+
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_pool_affiliation_code (
+    id INT,
+    code VARCHAR,
+    description VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_pool_affiliation_code) THEN 
+    INSERT INTO pa_pool_affiliation_code VALUES(1,'1','Preferred Risk');
+    INSERT INTO pa_pool_affiliation_code VALUES(2,'3','Standard risk not written in a pool, JUA or assigned risk facility, etc., and not shared with another company.');
+    INSERT INTO pa_pool_affiliation_code VALUES(3,'4','Standard risk written in a pool, JUA or assigned risk facility, etc.');
+    INSERT INTO pa_pool_affiliation_code VALUES(4,'5','Substandard risk not written in a pool, JUA or assigned risk facility, etc., and not shared with another company.');
+    INSERT INTO pa_pool_affiliation_code VALUES(5,'6','Substandard risk written in a pool, JUA or assigned risk facility, etc.');
+    INSERT INTO pa_pool_affiliation_code VALUES(6,'7','Servicing carrier');
+END IF;
+END $$;
+
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_body_size_code (
+    id INT,
+    code VARCHAR,
+    description VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_body_size_code) THEN 
+    INSERT INTO pa_body_size_code VALUES(1,'1','Private Passenger');
+    INSERT INTO pa_body_size_code VALUES(2,'2','Sports Car');
+    INSERT INTO pa_body_size_code VALUES(3,'3','Oversized Car or Limousine');
+    INSERT INTO pa_body_size_code VALUES(4,'4','Light Truck (10,000 lbs. or less empty weight) or Bus');
+    INSERT INTO pa_body_size_code VALUES(5,'5','Medium Truck (10,001 - 20,000 lbs. empty weight)');
+    INSERT INTO pa_body_size_code VALUES(6,'6','Heavy Truck (20,001 - 45,000 lbs. empty weight)');
+    INSERT INTO pa_body_size_code VALUES(7,'7','Extra Heavy Truck (Over 45,000 lbs. empty weight)');
+    INSERT INTO pa_body_size_code VALUES(8,'9','All Other');
+END IF;
+END $$;
+
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_body_style_code (
+    id INT,
+    code VARCHAR,
+    description VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_body_style_code) THEN 
+    INSERT INTO pa_body_style_code VALUES(1,'10','Campers and Travel Trailers');
+    INSERT INTO pa_body_style_code VALUES(2,'11','Dune Buggies');
+    INSERT INTO pa_body_style_code VALUES(3,'12','All Terrain Vehicles');
+    INSERT INTO pa_body_style_code VALUES(4,'13','Antique Autos');
+    INSERT INTO pa_body_style_code VALUES(5,'14','Amphibious Autos');
+    INSERT INTO pa_body_style_code VALUES(6,'15','Snowmobiles');
+    INSERT INTO pa_body_style_code VALUES(7,'16','Golf Carts');
+    INSERT INTO pa_body_style_code VALUES(8,'17','Motorcycles, Motorscooters, Motorbikes, Trail Bikes and Mopeds');
+    INSERT INTO pa_body_style_code VALUES(9,'18','Named Non-owner');
+    INSERT INTO pa_body_style_code VALUES(10,'19','Sedan 2-door');
+    INSERT INTO pa_body_style_code VALUES(11,'20','Sedan 4-door');
+    INSERT INTO pa_body_style_code VALUES(12,'21','Semitrailer');
+    INSERT INTO pa_body_style_code VALUES(13,'22','Trailer');
+    INSERT INTO pa_body_style_code VALUES(14,'23','Trailer - Service or Utility');
+    INSERT INTO pa_body_style_code VALUES(15,'24','Truck Tractor (Including Semitractors)');
+    INSERT INTO pa_body_style_code VALUES(16,'25','Dump Trucks');
+    INSERT INTO pa_body_style_code VALUES(17,'30','Taxis, Limousines or Van Pools');
+    INSERT INTO pa_body_style_code VALUES(18,'99','All Other');
+    INSERT INTO pa_body_style_code VALUES(19,'01','Sedan (2 or 4 door)*');
+    INSERT INTO pa_body_style_code VALUES(20,'02','Station Wagon');
+    INSERT INTO pa_body_style_code VALUES(21,'03','Convertible');
+    INSERT INTO pa_body_style_code VALUES(22,'04','Vans — Passenger');
+    INSERT INTO pa_body_style_code VALUES(23,'05','Vans — Cargo');
+    INSERT INTO pa_body_style_code VALUES(24,'06','Pick-Up or Panel Truck');
+    INSERT INTO pa_body_style_code VALUES(25,'07','Buses');
+    INSERT INTO pa_body_style_code VALUES(26,'08','Truck (Not including Truck Tractors or Dump Trucks)');
+    INSERT INTO pa_body_style_code VALUES(27,'09','Motor Homes and Auto Homes (self-propelled)');
+END IF;
+END $$;
+
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_deductible_code (
+    id INT,
+    code VARCHAR,
+    description VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_deductible_code) THEN 
+    INSERT INTO pa_deductible_code VALUES(1,'0','No Deductible');
+    INSERT INTO pa_deductible_code VALUES(2,'1','$50');
+    INSERT INTO pa_deductible_code VALUES(3,'2','$100');
+    INSERT INTO pa_deductible_code VALUES(4,'3','$200');
+    INSERT INTO pa_deductible_code VALUES(5,'4','$250');
+    INSERT INTO pa_deductible_code VALUES(6,'5','$500');
+    INSERT INTO pa_deductible_code VALUES(7,'6','$1,000');
+    INSERT INTO pa_deductible_code VALUES(8,'7','$1,500');
+    INSERT INTO pa_deductible_code VALUES(9,'8','$2,000');
+    INSERT INTO pa_deductible_code VALUES(10,'9','All Other');
+    INSERT INTO pa_deductible_code VALUES(11,'A','$25');
+    INSERT INTO pa_deductible_code VALUES(12,'B','$150');
+    INSERT INTO pa_deductible_code VALUES(13,'C','$300');
+    INSERT INTO pa_deductible_code VALUES(14,'D','$750');
+END IF;
+END $$;
+
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_defensive_driver_discount_code (
+    id INT,
+    code VARCHAR,
+    description VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_defensive_driver_discount_code) THEN 
+    INSERT INTO pa_defensive_driver_discount_code VALUES(1,'1','Defensive driver discount applied to this coverage.');
+    INSERT INTO pa_defensive_driver_discount_code VALUES(2,'2','Driver does not qualify for the defensive driver discount available on this coverage.');
+    INSERT INTO pa_defensive_driver_discount_code VALUES(3,'9','Not Applicable - Program does not offer a defensive driver discount on this coverage.');
+END IF;
+END $$;
+
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_experienced_rating_modification_factor_code (
+    id INT,
+    code VARCHAR,
+    description VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_experienced_rating_modification_factor_code) THEN 
+    INSERT INTO pa_experienced_rating_modification_factor_code VALUES(1,'100','None');
+    INSERT INTO pa_experienced_rating_modification_factor_code VALUES(2,'090','.900');
+    INSERT INTO pa_experienced_rating_modification_factor_code VALUES(3,'067','.665');
+END IF;
+END $$;
+
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_limited_coding_loss_transaction_code (
+    id INT,
+    code VARCHAR,
+    description VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_limited_coding_loss_transaction_code) THEN 
+    INSERT INTO pa_limited_coding_loss_transaction_code VALUES(1,'Y','Loss Limited Coding (includes Paid Loss Limited Coding and Outstanding Loss Limited Coding)');
+END IF;
+END $$;
+
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_nc_program_enhancement_code (
+    id INT,
+    code VARCHAR,
+    description VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_nc_program_enhancement_code) THEN 
+    INSERT INTO pa_nc_program_enhancement_code VALUES(1,'0','Not an enhanced endorsement');
+    INSERT INTO pa_nc_program_enhancement_code VALUES(2,'1','Enhanced Endorsement');
+END IF;
+END $$;
+
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_operator_age_code (
+    id INT,
+    code VARCHAR,
+    description VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_operator_age_code) THEN 
+    INSERT INTO pa_operator_age_code VALUES(1,'0','Multi-car risk - Specific operator not assigned to this automobile');
+    INSERT INTO pa_operator_age_code VALUES(2,'1','17 and Under');
+    INSERT INTO pa_operator_age_code VALUES(3,'2','18');
+    INSERT INTO pa_operator_age_code VALUES(4,'3','19');
+    INSERT INTO pa_operator_age_code VALUES(5,'4','20');
+    INSERT INTO pa_operator_age_code VALUES(6,'5','21 - 24');
+    INSERT INTO pa_operator_age_code VALUES(7,'6','25 - 29');
+    INSERT INTO pa_operator_age_code VALUES(8,'7','30 - 54');
+    INSERT INTO pa_operator_age_code VALUES(9,'8','55 - 64');
+    INSERT INTO pa_operator_age_code VALUES(10,'9','65 and over');
+END IF;
+END $$;
+
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_package_code (
+    id INT,
+    code VARCHAR,
+    description VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_package_code) THEN 
+    INSERT INTO pa_package_code VALUES(1,'0','Auto coverage written as a separate policy and not an endorsement to another policy.');
+    INSERT INTO pa_package_code VALUES(2,'7','Auto coverage written as an endorsement to a CMP, CPP or BOP policy.');
+    INSERT INTO pa_package_code VALUES(3,'9','Auto coverage written as an endorsement to any other type of policy.');
+END IF;
+END $$;
+
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_passive_restraint_discount_code (
+    id INT,
+    code VARCHAR,
+    description VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_passive_restraint_discount_code) THEN 
+    INSERT INTO pa_passive_restraint_discount_code VALUES(1,'1','Air Bags for both front seat occupants.');
+    INSERT INTO pa_passive_restraint_discount_code VALUES(2,'2','Air Bag for the driver only — No passenger belt passive restraint.');
+    INSERT INTO pa_passive_restraint_discount_code VALUES(3,'3','Air Bag for the driver only — With passenger belt passive restraint.');
+    INSERT INTO pa_passive_restraint_discount_code VALUES(4,'4','Belt Passive Restraint System for both front seat occupants.');
+    INSERT INTO pa_passive_restraint_discount_code VALUES(5,'5','Belt Passive Restraint System for the driver only.');
+    INSERT INTO pa_passive_restraint_discount_code VALUES(6,'6','Vehicles with No Passive Restraint System.');
+    INSERT INTO pa_passive_restraint_discount_code VALUES(7,'9','Not Applicable');
+END IF;
+END $$;
+
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_penalty_points_code (
+    id INT,
+    code VARCHAR,
+    description VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_penalty_points_code) THEN 
+    INSERT INTO pa_penalty_points_code VALUES(1,'0','0');
+    INSERT INTO pa_penalty_points_code VALUES(2,'1','1');
+    INSERT INTO pa_penalty_points_code VALUES(3,'2','2');
+    INSERT INTO pa_penalty_points_code VALUES(4,'3','3');
+    INSERT INTO pa_penalty_points_code VALUES(5,'4','4');
+    INSERT INTO pa_penalty_points_code VALUES(6,'5','5');
+    INSERT INTO pa_penalty_points_code VALUES(7,'6','6');
+    INSERT INTO pa_penalty_points_code VALUES(8,'7','7 or more');
+    INSERT INTO pa_penalty_points_code VALUES(9,'8','Inexperienced driver (less than 3 years), but accident and conviction free');
+END IF;
+END $$;
+
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_ascii_lookup_code (
+    id INT,
+    code VARCHAR,
+    digit INT,
+    multiplier INT,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_ascii_lookup_code) THEN 
+    INSERT INTO pa_ascii_lookup_code VALUES(1,'0',0,1);
+    INSERT INTO pa_ascii_lookup_code VALUES(2,'1',1,1);
+    INSERT INTO pa_ascii_lookup_code VALUES(3,'2',2,1);
+    INSERT INTO pa_ascii_lookup_code VALUES(4,'3',3,1);
+    INSERT INTO pa_ascii_lookup_code VALUES(5,'4',4,1);
+    INSERT INTO pa_ascii_lookup_code VALUES(6,'5',5,1);
+    INSERT INTO pa_ascii_lookup_code VALUES(7,'6',6,1);
+    INSERT INTO pa_ascii_lookup_code VALUES(8,'7',7,1);
+    INSERT INTO pa_ascii_lookup_code VALUES(9,'8',8,1);
+    INSERT INTO pa_ascii_lookup_code VALUES(10,'9',9,1);
+    INSERT INTO pa_ascii_lookup_code VALUES(11,'}',0,-1);
+    INSERT INTO pa_ascii_lookup_code VALUES(12,'J',1,-1);
+    INSERT INTO pa_ascii_lookup_code VALUES(13,'K',2,-1);
+    INSERT INTO pa_ascii_lookup_code VALUES(14,'L',3,-1);
+    INSERT INTO pa_ascii_lookup_code VALUES(15,'M',4,-1);
+    INSERT INTO pa_ascii_lookup_code VALUES(16,'N',5,-1);
+    INSERT INTO pa_ascii_lookup_code VALUES(17,'O',6,-1);
+    INSERT INTO pa_ascii_lookup_code VALUES(18,'P',7,-1);
+    INSERT INTO pa_ascii_lookup_code VALUES(19,'Q',8,-1);
+    INSERT INTO pa_ascii_lookup_code VALUES(20,'R',9,-1);
+    INSERT INTO pa_ascii_lookup_code VALUES(21,'{',0,1);
+    INSERT INTO pa_ascii_lookup_code VALUES(22,'A',1,1);
+    INSERT INTO pa_ascii_lookup_code VALUES(23,'B',2,1);
+    INSERT INTO pa_ascii_lookup_code VALUES(24,'C',3,1);
+    INSERT INTO pa_ascii_lookup_code VALUES(25,'D',4,1);
+    INSERT INTO pa_ascii_lookup_code VALUES(26,'E',5,1);
+    INSERT INTO pa_ascii_lookup_code VALUES(27,'F',6,1);
+    INSERT INTO pa_ascii_lookup_code VALUES(28,'G',7,1);
+    INSERT INTO pa_ascii_lookup_code VALUES(29,'H',8,1);
+    INSERT INTO pa_ascii_lookup_code VALUES(30,'I',9,1);
+END IF;
+END $$;
+
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_anti_lock_brakes_discount_code (
+    id INT,
+    code VARCHAR,
+    description VARCHAR,
+	effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_anti_lock_brakes_discount_code) THEN 
+    INSERT INTO pa_anti_lock_brakes_discount_code VALUES(1,'1','Anti-Lock Braking System discount applied to this coverage.');
+    INSERT INTO pa_anti_lock_brakes_discount_code VALUES(2,'2','Program offers an Anti-Lock Braking System discount on this coverage, but the vehicle does not qualify for the discount.');
+    INSERT INTO pa_anti_lock_brakes_discount_code VALUES(3,'9','Not Applicable - Program does not offer an Anti-Lock Braking System discount on this coverage.');
+END IF;
+END $$;
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_anti_theft_device_discount_code (
+    id INT,
+    fk_state_id INT,
+    code VARCHAR,
+    description VARCHAR,
+	effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+IF NOT EXISTS (SELECT * FROM pa_anti_theft_device_discount_code) THEN
+
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(1,1,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(2,1,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(3,1,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(4,1,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(5,1,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(6,1,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(7,1,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(8,2,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(9,2,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(10,2,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(11,2,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(12,2,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(13,2,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(14,2,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(15,3,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(16,3,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(17,3,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(18,3,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(19,3,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(20,3,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(21,3,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(22,4,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(23,4,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(24,4,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(25,4,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(26,4,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(27,4,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(28,4,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(29,5,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(30,5,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(31,5,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(32,5,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(33,5,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(34,5,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(35,5,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(36,6,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(37,6,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(38,6,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(39,6,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(40,6,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(41,6,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(42,6,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(43,7,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(44,7,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(45,7,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(46,7,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(47,7,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(48,7,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(49,7,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(50,8,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(51,8,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(52,8,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(53,8,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(54,8,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(55,8,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(56,8,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(57,9,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(58,9,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(59,9,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(60,9,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(61,9,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(62,9,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(63,9,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(64,10,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(65,10,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(66,10,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(67,10,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(68,10,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(69,10,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(70,10,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(71,11,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(72,11,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(73,11,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(74,11,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(75,11,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(76,11,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(77,11,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(78,12,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(79,12,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(80,12,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(81,12,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(82,12,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(83,12,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(84,12,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(85,13,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(86,13,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(87,13,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(88,13,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(89,13,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(90,13,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(91,13,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(92,14,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(93,14,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(94,14,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(95,14,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(96,14,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(97,14,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(98,14,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(99,15,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(100,15,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(101,15,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(102,15,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(103,15,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(104,15,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(105,15,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(106,16,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(107,16,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(108,16,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(109,16,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(110,16,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(111,16,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(112,16,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(113,17,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(114,17,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(115,17,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(116,17,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(117,17,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(118,17,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(119,17,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(120,18,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(121,18,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(122,18,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(123,18,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(124,18,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(125,18,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(126,18,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(127,19,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(128,19,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(129,19,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(130,19,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(131,19,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(132,19,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(133,19,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(134,20,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(135,20,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(136,20,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(137,20,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(138,20,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(139,20,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(140,20,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(141,21,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(142,21,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(143,21,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(144,21,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(145,21,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(146,21,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(147,21,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(148,22,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(149,22,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(150,22,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(151,22,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(152,22,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(153,22,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(154,22,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(155,23,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(156,23,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(157,23,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(158,23,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(159,23,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(160,23,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(161,23,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(162,24,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(163,24,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(164,24,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(165,24,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(166,24,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(167,24,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(168,24,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(169,25,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(170,25,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(171,25,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(172,25,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(173,25,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(174,25,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(175,25,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(176,26,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(177,26,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(178,26,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(179,26,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(180,26,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(181,26,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(182,26,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(183,27,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(184,27,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(185,27,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(186,27,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(187,27,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(188,27,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(189,27,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(190,28,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(191,28,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(192,28,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(193,28,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(194,28,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(195,28,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(196,28,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(197,30,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(198,30,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(199,30,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(200,30,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(201,30,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(202,30,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(203,30,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(204,32,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(205,32,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(206,32,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(207,32,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(208,32,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(209,32,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(210,32,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(211,33,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(212,33,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(213,33,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(214,33,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(215,33,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(216,33,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(217,33,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(218,34,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(219,34,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(220,34,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(221,34,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(222,34,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(223,34,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(224,34,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(225,35,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(226,35,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(227,35,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(228,35,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(229,35,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(230,35,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(231,35,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(232,36,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(233,36,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(234,36,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(235,36,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(236,36,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(237,36,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(238,36,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(239,37,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(240,37,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(241,37,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(242,37,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(243,37,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(244,37,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(245,37,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(246,38,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(247,38,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(248,38,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(249,38,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(250,38,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(251,38,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(252,38,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(253,39,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(254,39,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(255,39,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(256,39,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(257,39,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(258,39,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(259,39,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(260,40,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(261,40,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(262,40,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(263,40,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(264,40,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(265,40,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(266,40,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(267,41,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(268,41,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(269,41,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(270,41,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(271,41,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(272,41,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(273,41,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(274,42,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(275,42,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(276,42,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(277,42,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(278,42,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(279,42,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(280,42,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(281,43,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(282,43,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(283,43,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(284,43,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(285,43,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(286,43,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(287,43,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(288,44,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(289,44,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(290,44,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(291,44,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(292,44,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(293,44,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(294,44,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(295,45,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(296,45,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(297,45,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(298,45,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(299,45,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(300,45,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(301,45,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(302,46,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(303,46,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(304,46,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(305,46,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(306,46,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(307,46,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(308,46,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(309,47,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(310,47,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(311,47,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(312,47,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(313,47,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(314,47,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(315,47,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(316,48,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(317,48,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(318,48,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(319,48,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(320,48,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(321,48,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(322,48,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(323,49,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(324,49,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(325,49,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(326,49,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(327,49,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(328,49,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(329,49,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(330,50,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(331,50,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(332,50,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(333,50,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(334,50,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(335,50,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(336,50,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(337,51,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(338,51,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(339,51,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(340,51,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(341,51,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(342,51,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(343,51,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(344,52,'99','All other (Vehicles not rated under a discount program)');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(345,52,'01','Vehicles with no discount but rated under a discount program');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(346,52,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(347,52,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(348,52,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(349,52,'05','Vehicles with an alarm and an active device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(350,52,'06','Vehicles with an alarm and a passive device — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(351,31,'10','Vehicles with VIN etched window glass only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(352,31,'11','With discount less than the maximum reduction of 25% per vehicle');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(353,31,'12','With discount equal to the maximum reduction of 25% per vehicle');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(354,31,'01','Vehicles with no discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(355,31,'02','Vehicles with alarm only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(356,31,'03','Vehicles with active devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(357,31,'04','Vehicles with passive devices — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(358,31,'05','Vehicles with electronic homing devices only — with discount');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(359,29,'01','Vehicle qualifies for discount under Category I');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(360,29,'02','Vehicle qualifies for discount under Category II');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(361,29,'03','Vehicle qualifies for discount under Category III');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(362,29,'04','Vehicle qualifies for discount under Category IV');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(363,29,'05','Vehicle qualifies for discount under Category III and IV');
+    INSERT INTO pa_anti_theft_device_discount_code VALUES(364,29,'09','Vehicle without an anti-theft device (no discount)');
+
+END IF;
+
+END $$
+
+
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_transaction_code (
+    id INT,
+    code VARCHAR,
+    name VARCHAR,
+    type VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_transaction_code) THEN 
+    INSERT INTO pa_transaction_code VALUES(1,'1','Premium or Cancellation','Premium');
+    INSERT INTO pa_transaction_code VALUES(2,'2','Paid Loss','Loss');
+    INSERT INTO pa_transaction_code VALUES(3,'3','Outstanding Loss','Loss');
+    INSERT INTO pa_transaction_code VALUES(4,'6','Paid Allocated Loss Adjustment Expense','Loss');
+    INSERT INTO pa_transaction_code VALUES(5,'7','Outstanding Allocated Loss Adjustment Expense','Loss');
+    INSERT INTO pa_transaction_code VALUES(6,'8','Limited Coding','Premium');
+END IF;
+END $$;
+
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_stat_stg(
+    ID SERIAL,
+    TRANSMITTAL_ID INT,
+    CHANGE_COMMENTS VARCHAR(4000) DEFAULT NULL,
+    UPDATED_BY INT DEFAULT NULL,
+    EFF_START_DATE TIMESTAMP DEFAULT NULL,
+    EFF_END_DATE TIMESTAMP,
+    LAST_VALIDATED_DATE TIMESTAMP DEFAULT NULL,
+    REP_YR_4DIGIT DECIMAL(4,0) DEFAULT NULL,
+    LINE VARCHAR(2) DEFAULT NULL,
+    REP_MO VARCHAR(2) DEFAULT NULL,
+    REP_YR VARCHAR(1) DEFAULT NULL,
+    COMP VARCHAR(4) DEFAULT NULL,
+    STATE VARCHAR(2) DEFAULT NULL,
+    TERRITORY VARCHAR(3) DEFAULT NULL,
+    TRANS VARCHAR(1) DEFAULT NULL,
+    PREM_AMT DECIMAL(12,2) DEFAULT NULL,
+    LOSS_AMT DECIMAL(12,2) DEFAULT NULL,
+    PROG_CD VARCHAR(1) DEFAULT NULL,
+    COV_CODE VARCHAR(1) DEFAULT NULL,
+    SUBLINE VARCHAR(1) DEFAULT NULL,
+    RES030 VARCHAR(4) DEFAULT NULL,
+    AGE VARCHAR(1) DEFAULT NULL,
+    SEX_MARITAL VARCHAR(1) DEFAULT NULL,
+    VEHICLE_USE VARCHAR(1) DEFAULT NULL,
+    VEHICLE_PERF VARCHAR(1) DEFAULT NULL,
+    COMMERCIAL_CLASS VARCHAR(1) DEFAULT NULL,
+    DRIV_TRAIN_GOOD_STUDENT VARCHAR(1) DEFAULT NULL,
+    COMMERCIAL_USE VARCHAR(1) DEFAULT NULL,
+    PENALTY_POINTS VARCHAR(1) DEFAULT NULL,
+    LIA_LIM VARCHAR(1) DEFAULT NULL,
+    DED_AMT VARCHAR(1) DEFAULT NULL,
+    BODY_STYLE VARCHAR(2) DEFAULT NULL,
+    BODY_SIZE VARCHAR(1) DEFAULT NULL,
+    MODEL_YEAR VARCHAR(2) DEFAULT NULL,
+    UM_UIM_MOTORIST VARCHAR(1) DEFAULT NULL,
+    EXPOSURE INT DEFAULT NULL,
+    CLM_CNT INT DEFAULT NULL,
+    COL VARCHAR(1) DEFAULT NULL,
+    MOS_COV VARCHAR(2) DEFAULT NULL,
+    RES050 VARCHAR(1) DEFAULT NULL,
+    TERRORISM VARCHAR(1) DEFAULT NULL,
+    RES051 VARCHAR(1) DEFAULT NULL,
+    RES052 VARCHAR(4) DEFAULT NULL,
+    SING_MULT_CAR VARCHAR(1) DEFAULT NULL,
+    ACCIDENT_MON VARCHAR(2) DEFAULT NULL,
+    RES057 VARCHAR(3) DEFAULT NULL,
+    ACCIDENT_YR VARCHAR(2) DEFAULT NULL,
+    RES060 VARCHAR(4) DEFAULT NULL,
+    PACKAGE_ID VARCHAR(1) DEFAULT NULL,
+    POOL VARCHAR(1) DEFAULT NULL,
+    CLAIM_NUM VARCHAR(12) DEFAULT NULL,
+    POLICY_NUM VARCHAR(14) DEFAULT NULL,
+    CLAIM_ID VARCHAR(2) DEFAULT NULL,
+    RES080 VARCHAR(1) DEFAULT NULL,
+    ZIP VARCHAR(5) DEFAULT NULL,
+    ZIP_SUFF VARCHAR(4) DEFAULT NULL,
+    UM_UIM_STACK_IND VARCHAR(1) DEFAULT NULL,
+    RES091 VARCHAR(2) DEFAULT NULL,
+    SYMBOL VARCHAR(2) DEFAULT NULL,
+    PASS_RESTRAINT VARCHAR(1) DEFAULT NULL,
+    ANTI_LOCK VARCHAR(1) DEFAULT NULL,
+    ANTI_THEFT VARCHAR(2) DEFAULT NULL,
+    DEF_DRIVER VARCHAR(1) DEFAULT NULL,
+    PIP_LIMIT_DED VARCHAR(1) DEFAULT NULL,
+    NJ_PIP_LIMIT VARCHAR(2) DEFAULT NULL,
+    RES099 VARCHAR(2) DEFAULT NULL,
+    NJ_PIP_DED VARCHAR(1) DEFAULT NULL,
+    RAT_TERM_ZONE VARCHAR(3) DEFAULT NULL,
+    RES101 VARCHAR(3) DEFAULT NULL,
+    ASSIGN_RISK_RATE_CLASS VARCHAR(4) DEFAULT NULL,
+    ASSIGN_RISK_PTS_SUR VARCHAR(2) DEFAULT NULL,
+    EXP_RATING_MOD VARCHAR(3) DEFAULT NULL,
+    RES110 VARCHAR(3) DEFAULT NULL,
+    RES113 VARCHAR(1) DEFAULT NULL,
+    EXCEPT_A VARCHAR(2) DEFAULT NULL,
+    EXCEPT_B VARCHAR(2) DEFAULT NULL,
+    EXCEPT_C VARCHAR(2) DEFAULT NULL,
+    EXCEPT_D VARCHAR(2) DEFAULT NULL,
+    RES122 VARCHAR(15) DEFAULT NULL,
+    COUNTY VARCHAR(3) DEFAULT NULL,
+    CO_USE VARCHAR(11) DEFAULT NULL,
+    STATUS VARCHAR(20) DEFAULT NULL,
+    LINE_NUMBER INT DEFAULT NULL,
+    NOTES VARCHAR(4000) DEFAULT NULL,
+    VERSION INT  DEFAULT '1',
+    VAL_VER INT  DEFAULT '1',
+    VIN VARCHAR(17) DEFAULT NULL,
+    LIMIT_LOSS_CD_ID VARCHAR(1) DEFAULT NULL,
+    RES111 VARCHAR(2) DEFAULT NULL,
+    OPT_ZIP_CD_IND VARCHAR(1) DEFAULT NULL,
+    PRIMARY KEY (ID)
+); 
+END $$;
+
+DO $$ 
+BEGIN
+CREATE TABLE IF NOT EXISTS pa_program_code (
+    id INT,
+    code VARCHAR,
+    description VARCHAR,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (SELECT * FROM pa_program_code) THEN 
+    INSERT INTO pa_program_code VALUES(1,'3','ISO Program');
+    INSERT INTO pa_program_code VALUES(2,'5','All Other Programs (including independent bureaus)');
+    INSERT INTO pa_program_code VALUES(3,'C','Exempt Commercial Risk: ISO forms and class codes');
+    INSERT INTO pa_program_code VALUES(4,'F','Exempt Commercial Risk: Independent forms but ISO class codes');
+END IF;
+END $$;
+
+DO $$ 
+BEGIN
+
+CREATE TABLE IF NOT EXISTS pa_coverage_category (
+    id INT,
+    name VARCHAR,
+    description VARCHAR,
+	effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+
+CREATE TABLE IF NOT EXISTS pa_coverage_code (
+    id INT,
+    code VARCHAR,
+    name VARCHAR,
+    fk_coverage_category_id INT,
+    fk_state_id int 
+);
+
+
+CREATE TABLE IF NOT EXISTS pa_state_coverage_code (
+    id INT,
+    fk_coverage_code_id int,
+    fk_state_id INT
+);
+
+
+CREATE OR REPLACE VIEW pa_coverage_code_vw
+AS
+  SELECT a.code        coverage_code,
+         b.name        coverage_category,
+         a.name        coverage,
+         a.id          coverage_id,
+         a.fk_state_id state_id_specific,
+         b.id          coverage_category_id
+  FROM   pa_coverage_code a,
+         pa_coverage_category b
+  WHERE  a.fk_coverage_category_id = b.id
+  ORDER  BY a.id; 
+
+CREATE OR REPLACE VIEW pa_state_coverage_code_vw as (
+    SELECT b.code coverage_code, b.id coverage_id, b.name coverage, c.abbreviation state, c.id fk_state_id
+        FROM pa_state_coverage_code a, pa_coverage_code b, state_code c
+        WHERE a.fk_coverage_code_id = b.id 
+        AND a.fk_state_id = c.id
+        ORDER BY state,coverage_code
+);
+
+IF NOT EXISTS (SELECT * FROM pa_coverage_category) THEN
+	INSERT INTO pa_coverage_category (id, name) VALUES (1,'Liability');
+	INSERT INTO pa_coverage_category (id, name) VALUES (2,'Physical Damage Coverages');
+	INSERT INTO pa_coverage_category (id, name) VALUES (3,'All Other Property and Liability Coverages');
+	INSERT INTO pa_coverage_category (id, name) VALUES (4,'Penn Policies Not Subject to Workers Compensation First Party Benefits Coverage ');
+	INSERT INTO pa_coverage_category (id, name) VALUES (5,'Penn Policies Subject to Workers Compensation First Party Benefits Coverage');
+END IF;
+
+IF NOT EXISTS (select * from pa_coverage_code) THEN
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id) VALUES (1,'1','Bodily Injury Liability',1);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id) VALUES (2,'2','Property Damage Liability',2);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id) VALUES (3,'3','Bodily Injury and Property Damage Liability - Indivisible Premium',3);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id) VALUES (4,'4','Personal Injury Protection',4);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id) VALUES (5,'5','Medical Payments',5);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id) VALUES (6,'6','Uninsured/Underinsured Motorists - Indivisible Premium',6);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id) VALUES (7,'7','Physical Damage - Collision',9);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id) VALUES (8,'8','Physical Damage - Other Than Collision',10);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id) VALUES (9,'9','All Other Property and Liability Coverages',12);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id) VALUES (10,'X','Uninsured Motorist',7);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id) VALUES (11,'Y','Underinsured Motorist',8);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id) VALUES (12,'T','Physical Damage - Other Than Collision - Additional Coverage Records',11);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (13,'1','Bodily Injury Liability',1,3);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (14,'2','Property Damage Liability',2,3);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (15,'3','Bodily Injury and Property Damage Liability Combined',13,3);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (16,'5','Medical Payments',5,3);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (17,'6','Uninsured/Underinsured Motorists - Indivisible Premium',6,3);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (18,'7','Physical Damage - Collision',9,3);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (19,'8','Physical Damage - Other Than Collision',10,3);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (20,'9','All Other',12,3);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (21,'X','Uninsured Motorist',7,3);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (22,'Y','Underinsured Motorist',8,3);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (23,'S','Medical Benefits',14,3);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (24,'U','Loss of Income',15,3);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (25,'V','Accidental Death',16,3);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (26,'1','Bodily Injury Liability',1,37);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (27,'2','Property Damage Liability',2,37);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (28,'3','Bodily Injury and Property Damage Liability Combined',17,37);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (29,'5','Extraordinary Medical Payments',18,37);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (30,'7','Physical Damage - Collision',9,37);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (31,'8','Physical Damage - Other Than Collision',10,37);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (32,'9','All Other',12,37);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (33,'X','Uninsured Motorist',7,37);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (34,'Y','Underinsured Motorist',8,37);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (35,'T','Physical Damage - Other Than Collision - Additional Coverage Records',11,37);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (36,'A','Medical Benefits',19,37);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (37,'B','Medical Benefits plus any Funeral Benefits Limit',20,37);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (38,'C','Loss of Income',21,37);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (39,'D','Death Benefit',22,37);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (40,'E','Funeral Benefit',23,37);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (41,'F','Combined First Party Benefits',24,37);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (42,'G','Combined First Party Benefits - Indivisible Premium Policies',25,37);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (43,'J','Medical Benefits',26,37);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (44,'K','Medical Benefits plus any Funeral Benefits Limit',27,37);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (45,'L','Loss of Income',28,37);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (46,'M','Death Benefit',29,37);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (47,'N','Funeral Benefit',30,37);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (48,'P','Combined First Party Benefits',31,37);
+	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (49,'R','Combined First Party Benefits - Indivisible Premium Policies',32,37);
+END IF;
+
+IF NOT EXISTS (SELECT * FROM pa_state_coverage_code) THEN
+	INSERT INTO pa_state_coverage_code VALUES(1,1,1);
+	INSERT INTO pa_state_coverage_code VALUES(2,2,1);
+	INSERT INTO pa_state_coverage_code VALUES(3,3,1);
+	INSERT INTO pa_state_coverage_code VALUES(4,4,1);
+	INSERT INTO pa_state_coverage_code VALUES(5,5,1);
+	INSERT INTO pa_state_coverage_code VALUES(6,6,1);
+	INSERT INTO pa_state_coverage_code VALUES(7,9,1);
+	INSERT INTO pa_state_coverage_code VALUES(8,10,1);
+	INSERT INTO pa_state_coverage_code VALUES(9,12,1);
+	INSERT INTO pa_state_coverage_code VALUES(10,7,1);
+	INSERT INTO pa_state_coverage_code VALUES(11,8,1);
+	INSERT INTO pa_state_coverage_code VALUES(12,11,1);
+	INSERT INTO pa_state_coverage_code VALUES(13,1,2);
+	INSERT INTO pa_state_coverage_code VALUES(14,2,2);
+	INSERT INTO pa_state_coverage_code VALUES(15,3,2);
+	INSERT INTO pa_state_coverage_code VALUES(16,4,2);
+	INSERT INTO pa_state_coverage_code VALUES(17,5,2);
+	INSERT INTO pa_state_coverage_code VALUES(18,6,2);
+	INSERT INTO pa_state_coverage_code VALUES(19,9,2);
+	INSERT INTO pa_state_coverage_code VALUES(20,10,2);
+	INSERT INTO pa_state_coverage_code VALUES(21,12,2);
+	INSERT INTO pa_state_coverage_code VALUES(22,7,2);
+	INSERT INTO pa_state_coverage_code VALUES(23,8,2);
+	INSERT INTO pa_state_coverage_code VALUES(24,11,2);
+	INSERT INTO pa_state_coverage_code VALUES(25,1,4);
+	INSERT INTO pa_state_coverage_code VALUES(26,2,4);
+	INSERT INTO pa_state_coverage_code VALUES(27,3,4);
+	INSERT INTO pa_state_coverage_code VALUES(28,4,4);
+	INSERT INTO pa_state_coverage_code VALUES(29,5,4);
+	INSERT INTO pa_state_coverage_code VALUES(30,6,4);
+	INSERT INTO pa_state_coverage_code VALUES(31,9,4);
+	INSERT INTO pa_state_coverage_code VALUES(32,10,4);
+	INSERT INTO pa_state_coverage_code VALUES(33,12,4);
+	INSERT INTO pa_state_coverage_code VALUES(34,7,4);
+	INSERT INTO pa_state_coverage_code VALUES(35,8,4);
+	INSERT INTO pa_state_coverage_code VALUES(36,11,4);
+	INSERT INTO pa_state_coverage_code VALUES(37,1,5);
+	INSERT INTO pa_state_coverage_code VALUES(38,2,5);
+	INSERT INTO pa_state_coverage_code VALUES(39,3,5);
+	INSERT INTO pa_state_coverage_code VALUES(40,4,5);
+	INSERT INTO pa_state_coverage_code VALUES(41,5,5);
+	INSERT INTO pa_state_coverage_code VALUES(42,6,5);
+	INSERT INTO pa_state_coverage_code VALUES(43,9,5);
+	INSERT INTO pa_state_coverage_code VALUES(44,10,5);
+	INSERT INTO pa_state_coverage_code VALUES(45,12,5);
+	INSERT INTO pa_state_coverage_code VALUES(46,7,5);
+	INSERT INTO pa_state_coverage_code VALUES(47,8,5);
+	INSERT INTO pa_state_coverage_code VALUES(48,11,5);
+	INSERT INTO pa_state_coverage_code VALUES(49,1,6);
+	INSERT INTO pa_state_coverage_code VALUES(50,2,6);
+	INSERT INTO pa_state_coverage_code VALUES(51,3,6);
+	INSERT INTO pa_state_coverage_code VALUES(52,4,6);
+	INSERT INTO pa_state_coverage_code VALUES(53,5,6);
+	INSERT INTO pa_state_coverage_code VALUES(54,6,6);
+	INSERT INTO pa_state_coverage_code VALUES(55,9,6);
+	INSERT INTO pa_state_coverage_code VALUES(56,10,6);
+	INSERT INTO pa_state_coverage_code VALUES(57,12,6);
+	INSERT INTO pa_state_coverage_code VALUES(58,7,6);
+	INSERT INTO pa_state_coverage_code VALUES(59,8,6);
+	INSERT INTO pa_state_coverage_code VALUES(60,11,6);
+	INSERT INTO pa_state_coverage_code VALUES(61,1,7);
+	INSERT INTO pa_state_coverage_code VALUES(62,2,7);
+	INSERT INTO pa_state_coverage_code VALUES(63,3,7);
+	INSERT INTO pa_state_coverage_code VALUES(64,4,7);
+	INSERT INTO pa_state_coverage_code VALUES(65,5,7);
+	INSERT INTO pa_state_coverage_code VALUES(66,6,7);
+	INSERT INTO pa_state_coverage_code VALUES(67,9,7);
+	INSERT INTO pa_state_coverage_code VALUES(68,10,7);
+	INSERT INTO pa_state_coverage_code VALUES(69,12,7);
+	INSERT INTO pa_state_coverage_code VALUES(70,7,7);
+	INSERT INTO pa_state_coverage_code VALUES(71,8,7);
+	INSERT INTO pa_state_coverage_code VALUES(72,11,7);
+	INSERT INTO pa_state_coverage_code VALUES(73,1,8);
+	INSERT INTO pa_state_coverage_code VALUES(74,2,8);
+	INSERT INTO pa_state_coverage_code VALUES(75,3,8);
+	INSERT INTO pa_state_coverage_code VALUES(76,4,8);
+	INSERT INTO pa_state_coverage_code VALUES(77,5,8);
+	INSERT INTO pa_state_coverage_code VALUES(78,6,8);
+	INSERT INTO pa_state_coverage_code VALUES(79,9,8);
+	INSERT INTO pa_state_coverage_code VALUES(80,10,8);
+	INSERT INTO pa_state_coverage_code VALUES(81,12,8);
+	INSERT INTO pa_state_coverage_code VALUES(82,7,8);
+	INSERT INTO pa_state_coverage_code VALUES(83,8,8);
+	INSERT INTO pa_state_coverage_code VALUES(84,11,8);
+	INSERT INTO pa_state_coverage_code VALUES(85,1,9);
+	INSERT INTO pa_state_coverage_code VALUES(86,2,9);
+	INSERT INTO pa_state_coverage_code VALUES(87,3,9);
+	INSERT INTO pa_state_coverage_code VALUES(88,4,9);
+	INSERT INTO pa_state_coverage_code VALUES(89,5,9);
+	INSERT INTO pa_state_coverage_code VALUES(90,6,9);
+	INSERT INTO pa_state_coverage_code VALUES(91,9,9);
+	INSERT INTO pa_state_coverage_code VALUES(92,10,9);
+	INSERT INTO pa_state_coverage_code VALUES(93,12,9);
+	INSERT INTO pa_state_coverage_code VALUES(94,7,9);
+	INSERT INTO pa_state_coverage_code VALUES(95,8,9);
+	INSERT INTO pa_state_coverage_code VALUES(96,11,9);
+	INSERT INTO pa_state_coverage_code VALUES(97,1,10);
+	INSERT INTO pa_state_coverage_code VALUES(98,2,10);
+	INSERT INTO pa_state_coverage_code VALUES(99,3,10);
+	INSERT INTO pa_state_coverage_code VALUES(100,4,10);
+	INSERT INTO pa_state_coverage_code VALUES(101,5,10);
+	INSERT INTO pa_state_coverage_code VALUES(102,6,10);
+	INSERT INTO pa_state_coverage_code VALUES(103,9,10);
+	INSERT INTO pa_state_coverage_code VALUES(104,10,10);
+	INSERT INTO pa_state_coverage_code VALUES(105,12,10);
+	INSERT INTO pa_state_coverage_code VALUES(106,7,10);
+	INSERT INTO pa_state_coverage_code VALUES(107,8,10);
+	INSERT INTO pa_state_coverage_code VALUES(108,11,10);
+	INSERT INTO pa_state_coverage_code VALUES(109,1,11);
+	INSERT INTO pa_state_coverage_code VALUES(110,2,11);
+	INSERT INTO pa_state_coverage_code VALUES(111,3,11);
+	INSERT INTO pa_state_coverage_code VALUES(112,4,11);
+	INSERT INTO pa_state_coverage_code VALUES(113,5,11);
+	INSERT INTO pa_state_coverage_code VALUES(114,6,11);
+	INSERT INTO pa_state_coverage_code VALUES(115,9,11);
+	INSERT INTO pa_state_coverage_code VALUES(116,10,11);
+	INSERT INTO pa_state_coverage_code VALUES(117,12,11);
+	INSERT INTO pa_state_coverage_code VALUES(118,7,11);
+	INSERT INTO pa_state_coverage_code VALUES(119,8,11);
+	INSERT INTO pa_state_coverage_code VALUES(120,11,11);
+	INSERT INTO pa_state_coverage_code VALUES(121,1,12);
+	INSERT INTO pa_state_coverage_code VALUES(122,2,12);
+	INSERT INTO pa_state_coverage_code VALUES(123,3,12);
+	INSERT INTO pa_state_coverage_code VALUES(124,4,12);
+	INSERT INTO pa_state_coverage_code VALUES(125,5,12);
+	INSERT INTO pa_state_coverage_code VALUES(126,6,12);
+	INSERT INTO pa_state_coverage_code VALUES(127,9,12);
+	INSERT INTO pa_state_coverage_code VALUES(128,10,12);
+	INSERT INTO pa_state_coverage_code VALUES(129,12,12);
+	INSERT INTO pa_state_coverage_code VALUES(130,7,12);
+	INSERT INTO pa_state_coverage_code VALUES(131,8,12);
+	INSERT INTO pa_state_coverage_code VALUES(132,11,12);
+	INSERT INTO pa_state_coverage_code VALUES(133,1,13);
+	INSERT INTO pa_state_coverage_code VALUES(134,2,13);
+	INSERT INTO pa_state_coverage_code VALUES(135,3,13);
+	INSERT INTO pa_state_coverage_code VALUES(136,4,13);
+	INSERT INTO pa_state_coverage_code VALUES(137,5,13);
+	INSERT INTO pa_state_coverage_code VALUES(138,6,13);
+	INSERT INTO pa_state_coverage_code VALUES(139,9,13);
+	INSERT INTO pa_state_coverage_code VALUES(140,10,13);
+	INSERT INTO pa_state_coverage_code VALUES(141,12,13);
+	INSERT INTO pa_state_coverage_code VALUES(142,7,13);
+	INSERT INTO pa_state_coverage_code VALUES(143,8,13);
+	INSERT INTO pa_state_coverage_code VALUES(144,11,13);
+	INSERT INTO pa_state_coverage_code VALUES(145,1,14);
+	INSERT INTO pa_state_coverage_code VALUES(146,2,14);
+	INSERT INTO pa_state_coverage_code VALUES(147,3,14);
+	INSERT INTO pa_state_coverage_code VALUES(148,4,14);
+	INSERT INTO pa_state_coverage_code VALUES(149,5,14);
+	INSERT INTO pa_state_coverage_code VALUES(150,6,14);
+	INSERT INTO pa_state_coverage_code VALUES(151,9,14);
+	INSERT INTO pa_state_coverage_code VALUES(152,10,14);
+	INSERT INTO pa_state_coverage_code VALUES(153,12,14);
+	INSERT INTO pa_state_coverage_code VALUES(154,7,14);
+	INSERT INTO pa_state_coverage_code VALUES(155,8,14);
+	INSERT INTO pa_state_coverage_code VALUES(156,11,14);
+	INSERT INTO pa_state_coverage_code VALUES(157,1,15);
+	INSERT INTO pa_state_coverage_code VALUES(158,2,15);
+	INSERT INTO pa_state_coverage_code VALUES(159,3,15);
+	INSERT INTO pa_state_coverage_code VALUES(160,4,15);
+	INSERT INTO pa_state_coverage_code VALUES(161,5,15);
+	INSERT INTO pa_state_coverage_code VALUES(162,6,15);
+	INSERT INTO pa_state_coverage_code VALUES(163,9,15);
+	INSERT INTO pa_state_coverage_code VALUES(164,10,15);
+	INSERT INTO pa_state_coverage_code VALUES(165,12,15);
+	INSERT INTO pa_state_coverage_code VALUES(166,7,15);
+	INSERT INTO pa_state_coverage_code VALUES(167,8,15);
+	INSERT INTO pa_state_coverage_code VALUES(168,11,15);
+	INSERT INTO pa_state_coverage_code VALUES(169,1,16);
+	INSERT INTO pa_state_coverage_code VALUES(170,2,16);
+	INSERT INTO pa_state_coverage_code VALUES(171,3,16);
+	INSERT INTO pa_state_coverage_code VALUES(172,4,16);
+	INSERT INTO pa_state_coverage_code VALUES(173,5,16);
+	INSERT INTO pa_state_coverage_code VALUES(174,6,16);
+	INSERT INTO pa_state_coverage_code VALUES(175,9,16);
+	INSERT INTO pa_state_coverage_code VALUES(176,10,16);
+	INSERT INTO pa_state_coverage_code VALUES(177,12,16);
+	INSERT INTO pa_state_coverage_code VALUES(178,7,16);
+	INSERT INTO pa_state_coverage_code VALUES(179,8,16);
+	INSERT INTO pa_state_coverage_code VALUES(180,11,16);
+	INSERT INTO pa_state_coverage_code VALUES(181,1,17);
+	INSERT INTO pa_state_coverage_code VALUES(182,2,17);
+	INSERT INTO pa_state_coverage_code VALUES(183,3,17);
+	INSERT INTO pa_state_coverage_code VALUES(184,4,17);
+	INSERT INTO pa_state_coverage_code VALUES(185,5,17);
+	INSERT INTO pa_state_coverage_code VALUES(186,6,17);
+	INSERT INTO pa_state_coverage_code VALUES(187,9,17);
+	INSERT INTO pa_state_coverage_code VALUES(188,10,17);
+	INSERT INTO pa_state_coverage_code VALUES(189,12,17);
+	INSERT INTO pa_state_coverage_code VALUES(190,7,17);
+	INSERT INTO pa_state_coverage_code VALUES(191,8,17);
+	INSERT INTO pa_state_coverage_code VALUES(192,11,17);
+	INSERT INTO pa_state_coverage_code VALUES(193,1,18);
+	INSERT INTO pa_state_coverage_code VALUES(194,2,18);
+	INSERT INTO pa_state_coverage_code VALUES(195,3,18);
+	INSERT INTO pa_state_coverage_code VALUES(196,4,18);
+	INSERT INTO pa_state_coverage_code VALUES(197,5,18);
+	INSERT INTO pa_state_coverage_code VALUES(198,6,18);
+	INSERT INTO pa_state_coverage_code VALUES(199,9,18);
+	INSERT INTO pa_state_coverage_code VALUES(200,10,18);
+	INSERT INTO pa_state_coverage_code VALUES(201,12,18);
+	INSERT INTO pa_state_coverage_code VALUES(202,7,18);
+	INSERT INTO pa_state_coverage_code VALUES(203,8,18);
+	INSERT INTO pa_state_coverage_code VALUES(204,11,18);
+	INSERT INTO pa_state_coverage_code VALUES(205,1,19);
+	INSERT INTO pa_state_coverage_code VALUES(206,2,19);
+	INSERT INTO pa_state_coverage_code VALUES(207,3,19);
+	INSERT INTO pa_state_coverage_code VALUES(208,4,19);
+	INSERT INTO pa_state_coverage_code VALUES(209,5,19);
+	INSERT INTO pa_state_coverage_code VALUES(210,6,19);
+	INSERT INTO pa_state_coverage_code VALUES(211,9,19);
+	INSERT INTO pa_state_coverage_code VALUES(212,10,19);
+	INSERT INTO pa_state_coverage_code VALUES(213,12,19);
+	INSERT INTO pa_state_coverage_code VALUES(214,7,19);
+	INSERT INTO pa_state_coverage_code VALUES(215,8,19);
+	INSERT INTO pa_state_coverage_code VALUES(216,11,19);
+	INSERT INTO pa_state_coverage_code VALUES(217,1,20);
+	INSERT INTO pa_state_coverage_code VALUES(218,2,20);
+	INSERT INTO pa_state_coverage_code VALUES(219,3,20);
+	INSERT INTO pa_state_coverage_code VALUES(220,4,20);
+	INSERT INTO pa_state_coverage_code VALUES(221,5,20);
+	INSERT INTO pa_state_coverage_code VALUES(222,6,20);
+	INSERT INTO pa_state_coverage_code VALUES(223,9,20);
+	INSERT INTO pa_state_coverage_code VALUES(224,10,20);
+	INSERT INTO pa_state_coverage_code VALUES(225,12,20);
+	INSERT INTO pa_state_coverage_code VALUES(226,7,20);
+	INSERT INTO pa_state_coverage_code VALUES(227,8,20);
+	INSERT INTO pa_state_coverage_code VALUES(228,11,20);
+	INSERT INTO pa_state_coverage_code VALUES(229,1,21);
+	INSERT INTO pa_state_coverage_code VALUES(230,2,21);
+	INSERT INTO pa_state_coverage_code VALUES(231,3,21);
+	INSERT INTO pa_state_coverage_code VALUES(232,4,21);
+	INSERT INTO pa_state_coverage_code VALUES(233,5,21);
+	INSERT INTO pa_state_coverage_code VALUES(234,6,21);
+	INSERT INTO pa_state_coverage_code VALUES(235,9,21);
+	INSERT INTO pa_state_coverage_code VALUES(236,10,21);
+	INSERT INTO pa_state_coverage_code VALUES(237,12,21);
+	INSERT INTO pa_state_coverage_code VALUES(238,7,21);
+	INSERT INTO pa_state_coverage_code VALUES(239,8,21);
+	INSERT INTO pa_state_coverage_code VALUES(240,11,21);
+	INSERT INTO pa_state_coverage_code VALUES(241,1,22);
+	INSERT INTO pa_state_coverage_code VALUES(242,2,22);
+	INSERT INTO pa_state_coverage_code VALUES(243,3,22);
+	INSERT INTO pa_state_coverage_code VALUES(244,4,22);
+	INSERT INTO pa_state_coverage_code VALUES(245,5,22);
+	INSERT INTO pa_state_coverage_code VALUES(246,6,22);
+	INSERT INTO pa_state_coverage_code VALUES(247,9,22);
+	INSERT INTO pa_state_coverage_code VALUES(248,10,22);
+	INSERT INTO pa_state_coverage_code VALUES(249,12,22);
+	INSERT INTO pa_state_coverage_code VALUES(250,7,22);
+	INSERT INTO pa_state_coverage_code VALUES(251,8,22);
+	INSERT INTO pa_state_coverage_code VALUES(252,11,22);
+	INSERT INTO pa_state_coverage_code VALUES(253,1,23);
+	INSERT INTO pa_state_coverage_code VALUES(254,2,23);
+	INSERT INTO pa_state_coverage_code VALUES(255,3,23);
+	INSERT INTO pa_state_coverage_code VALUES(256,4,23);
+	INSERT INTO pa_state_coverage_code VALUES(257,5,23);
+	INSERT INTO pa_state_coverage_code VALUES(258,6,23);
+	INSERT INTO pa_state_coverage_code VALUES(259,9,23);
+	INSERT INTO pa_state_coverage_code VALUES(260,10,23);
+	INSERT INTO pa_state_coverage_code VALUES(261,12,23);
+	INSERT INTO pa_state_coverage_code VALUES(262,7,23);
+	INSERT INTO pa_state_coverage_code VALUES(263,8,23);
+	INSERT INTO pa_state_coverage_code VALUES(264,11,23);
+	INSERT INTO pa_state_coverage_code VALUES(265,1,24);
+	INSERT INTO pa_state_coverage_code VALUES(266,2,24);
+	INSERT INTO pa_state_coverage_code VALUES(267,3,24);
+	INSERT INTO pa_state_coverage_code VALUES(268,4,24);
+	INSERT INTO pa_state_coverage_code VALUES(269,5,24);
+	INSERT INTO pa_state_coverage_code VALUES(270,6,24);
+	INSERT INTO pa_state_coverage_code VALUES(271,9,24);
+	INSERT INTO pa_state_coverage_code VALUES(272,10,24);
+	INSERT INTO pa_state_coverage_code VALUES(273,12,24);
+	INSERT INTO pa_state_coverage_code VALUES(274,7,24);
+	INSERT INTO pa_state_coverage_code VALUES(275,8,24);
+	INSERT INTO pa_state_coverage_code VALUES(276,11,24);
+	INSERT INTO pa_state_coverage_code VALUES(277,1,25);
+	INSERT INTO pa_state_coverage_code VALUES(278,2,25);
+	INSERT INTO pa_state_coverage_code VALUES(279,3,25);
+	INSERT INTO pa_state_coverage_code VALUES(280,4,25);
+	INSERT INTO pa_state_coverage_code VALUES(281,5,25);
+	INSERT INTO pa_state_coverage_code VALUES(282,6,25);
+	INSERT INTO pa_state_coverage_code VALUES(283,9,25);
+	INSERT INTO pa_state_coverage_code VALUES(284,10,25);
+	INSERT INTO pa_state_coverage_code VALUES(285,12,25);
+	INSERT INTO pa_state_coverage_code VALUES(286,7,25);
+	INSERT INTO pa_state_coverage_code VALUES(287,8,25);
+	INSERT INTO pa_state_coverage_code VALUES(288,11,25);
+	INSERT INTO pa_state_coverage_code VALUES(289,1,26);
+	INSERT INTO pa_state_coverage_code VALUES(290,2,26);
+	INSERT INTO pa_state_coverage_code VALUES(291,3,26);
+	INSERT INTO pa_state_coverage_code VALUES(292,4,26);
+	INSERT INTO pa_state_coverage_code VALUES(293,5,26);
+	INSERT INTO pa_state_coverage_code VALUES(294,6,26);
+	INSERT INTO pa_state_coverage_code VALUES(295,9,26);
+	INSERT INTO pa_state_coverage_code VALUES(296,10,26);
+	INSERT INTO pa_state_coverage_code VALUES(297,12,26);
+	INSERT INTO pa_state_coverage_code VALUES(298,7,26);
+	INSERT INTO pa_state_coverage_code VALUES(299,8,26);
+	INSERT INTO pa_state_coverage_code VALUES(300,11,26);
+	INSERT INTO pa_state_coverage_code VALUES(301,1,27);
+	INSERT INTO pa_state_coverage_code VALUES(302,2,27);
+	INSERT INTO pa_state_coverage_code VALUES(303,3,27);
+	INSERT INTO pa_state_coverage_code VALUES(304,4,27);
+	INSERT INTO pa_state_coverage_code VALUES(305,5,27);
+	INSERT INTO pa_state_coverage_code VALUES(306,6,27);
+	INSERT INTO pa_state_coverage_code VALUES(307,9,27);
+	INSERT INTO pa_state_coverage_code VALUES(308,10,27);
+	INSERT INTO pa_state_coverage_code VALUES(309,12,27);
+	INSERT INTO pa_state_coverage_code VALUES(310,7,27);
+	INSERT INTO pa_state_coverage_code VALUES(311,8,27);
+	INSERT INTO pa_state_coverage_code VALUES(312,11,27);
+	INSERT INTO pa_state_coverage_code VALUES(313,1,28);
+	INSERT INTO pa_state_coverage_code VALUES(314,2,28);
+	INSERT INTO pa_state_coverage_code VALUES(315,3,28);
+	INSERT INTO pa_state_coverage_code VALUES(316,4,28);
+	INSERT INTO pa_state_coverage_code VALUES(317,5,28);
+	INSERT INTO pa_state_coverage_code VALUES(318,6,28);
+	INSERT INTO pa_state_coverage_code VALUES(319,9,28);
+	INSERT INTO pa_state_coverage_code VALUES(320,10,28);
+	INSERT INTO pa_state_coverage_code VALUES(321,12,28);
+	INSERT INTO pa_state_coverage_code VALUES(322,7,28);
+	INSERT INTO pa_state_coverage_code VALUES(323,8,28);
+	INSERT INTO pa_state_coverage_code VALUES(324,11,28);
+	INSERT INTO pa_state_coverage_code VALUES(325,1,29);
+	INSERT INTO pa_state_coverage_code VALUES(326,2,29);
+	INSERT INTO pa_state_coverage_code VALUES(327,3,29);
+	INSERT INTO pa_state_coverage_code VALUES(328,4,29);
+	INSERT INTO pa_state_coverage_code VALUES(329,5,29);
+	INSERT INTO pa_state_coverage_code VALUES(330,6,29);
+	INSERT INTO pa_state_coverage_code VALUES(331,9,29);
+	INSERT INTO pa_state_coverage_code VALUES(332,10,29);
+	INSERT INTO pa_state_coverage_code VALUES(333,12,29);
+	INSERT INTO pa_state_coverage_code VALUES(334,7,29);
+	INSERT INTO pa_state_coverage_code VALUES(335,8,29);
+	INSERT INTO pa_state_coverage_code VALUES(336,11,29);
+	INSERT INTO pa_state_coverage_code VALUES(337,1,30);
+	INSERT INTO pa_state_coverage_code VALUES(338,2,30);
+	INSERT INTO pa_state_coverage_code VALUES(339,3,30);
+	INSERT INTO pa_state_coverage_code VALUES(340,4,30);
+	INSERT INTO pa_state_coverage_code VALUES(341,5,30);
+	INSERT INTO pa_state_coverage_code VALUES(342,6,30);
+	INSERT INTO pa_state_coverage_code VALUES(343,9,30);
+	INSERT INTO pa_state_coverage_code VALUES(344,10,30);
+	INSERT INTO pa_state_coverage_code VALUES(345,12,30);
+	INSERT INTO pa_state_coverage_code VALUES(346,7,30);
+	INSERT INTO pa_state_coverage_code VALUES(347,8,30);
+	INSERT INTO pa_state_coverage_code VALUES(348,11,30);
+	INSERT INTO pa_state_coverage_code VALUES(349,1,31);
+	INSERT INTO pa_state_coverage_code VALUES(350,2,31);
+	INSERT INTO pa_state_coverage_code VALUES(351,3,31);
+	INSERT INTO pa_state_coverage_code VALUES(352,4,31);
+	INSERT INTO pa_state_coverage_code VALUES(353,5,31);
+	INSERT INTO pa_state_coverage_code VALUES(354,6,31);
+	INSERT INTO pa_state_coverage_code VALUES(355,9,31);
+	INSERT INTO pa_state_coverage_code VALUES(356,10,31);
+	INSERT INTO pa_state_coverage_code VALUES(357,12,31);
+	INSERT INTO pa_state_coverage_code VALUES(358,7,31);
+	INSERT INTO pa_state_coverage_code VALUES(359,8,31);
+	INSERT INTO pa_state_coverage_code VALUES(360,11,31);
+	INSERT INTO pa_state_coverage_code VALUES(361,1,32);
+	INSERT INTO pa_state_coverage_code VALUES(362,2,32);
+	INSERT INTO pa_state_coverage_code VALUES(363,3,32);
+	INSERT INTO pa_state_coverage_code VALUES(364,4,32);
+	INSERT INTO pa_state_coverage_code VALUES(365,5,32);
+	INSERT INTO pa_state_coverage_code VALUES(366,6,32);
+	INSERT INTO pa_state_coverage_code VALUES(367,9,32);
+	INSERT INTO pa_state_coverage_code VALUES(368,10,32);
+	INSERT INTO pa_state_coverage_code VALUES(369,12,32);
+	INSERT INTO pa_state_coverage_code VALUES(370,7,32);
+	INSERT INTO pa_state_coverage_code VALUES(371,8,32);
+	INSERT INTO pa_state_coverage_code VALUES(372,11,32);
+	INSERT INTO pa_state_coverage_code VALUES(373,1,33);
+	INSERT INTO pa_state_coverage_code VALUES(374,2,33);
+	INSERT INTO pa_state_coverage_code VALUES(375,3,33);
+	INSERT INTO pa_state_coverage_code VALUES(376,4,33);
+	INSERT INTO pa_state_coverage_code VALUES(377,5,33);
+	INSERT INTO pa_state_coverage_code VALUES(378,6,33);
+	INSERT INTO pa_state_coverage_code VALUES(379,9,33);
+	INSERT INTO pa_state_coverage_code VALUES(380,10,33);
+	INSERT INTO pa_state_coverage_code VALUES(381,12,33);
+	INSERT INTO pa_state_coverage_code VALUES(382,7,33);
+	INSERT INTO pa_state_coverage_code VALUES(383,8,33);
+	INSERT INTO pa_state_coverage_code VALUES(384,11,33);
+	INSERT INTO pa_state_coverage_code VALUES(385,1,34);
+	INSERT INTO pa_state_coverage_code VALUES(386,2,34);
+	INSERT INTO pa_state_coverage_code VALUES(387,3,34);
+	INSERT INTO pa_state_coverage_code VALUES(388,4,34);
+	INSERT INTO pa_state_coverage_code VALUES(389,5,34);
+	INSERT INTO pa_state_coverage_code VALUES(390,6,34);
+	INSERT INTO pa_state_coverage_code VALUES(391,9,34);
+	INSERT INTO pa_state_coverage_code VALUES(392,10,34);
+	INSERT INTO pa_state_coverage_code VALUES(393,12,34);
+	INSERT INTO pa_state_coverage_code VALUES(394,7,34);
+	INSERT INTO pa_state_coverage_code VALUES(395,8,34);
+	INSERT INTO pa_state_coverage_code VALUES(396,11,34);
+	INSERT INTO pa_state_coverage_code VALUES(397,1,35);
+	INSERT INTO pa_state_coverage_code VALUES(398,2,35);
+	INSERT INTO pa_state_coverage_code VALUES(399,3,35);
+	INSERT INTO pa_state_coverage_code VALUES(400,4,35);
+	INSERT INTO pa_state_coverage_code VALUES(401,5,35);
+	INSERT INTO pa_state_coverage_code VALUES(402,6,35);
+	INSERT INTO pa_state_coverage_code VALUES(403,9,35);
+	INSERT INTO pa_state_coverage_code VALUES(404,10,35);
+	INSERT INTO pa_state_coverage_code VALUES(405,12,35);
+	INSERT INTO pa_state_coverage_code VALUES(406,7,35);
+	INSERT INTO pa_state_coverage_code VALUES(407,8,35);
+	INSERT INTO pa_state_coverage_code VALUES(408,11,35);
+	INSERT INTO pa_state_coverage_code VALUES(409,1,36);
+	INSERT INTO pa_state_coverage_code VALUES(410,2,36);
+	INSERT INTO pa_state_coverage_code VALUES(411,3,36);
+	INSERT INTO pa_state_coverage_code VALUES(412,4,36);
+	INSERT INTO pa_state_coverage_code VALUES(413,5,36);
+	INSERT INTO pa_state_coverage_code VALUES(414,6,36);
+	INSERT INTO pa_state_coverage_code VALUES(415,9,36);
+	INSERT INTO pa_state_coverage_code VALUES(416,10,36);
+	INSERT INTO pa_state_coverage_code VALUES(417,12,36);
+	INSERT INTO pa_state_coverage_code VALUES(418,7,36);
+	INSERT INTO pa_state_coverage_code VALUES(419,8,36);
+	INSERT INTO pa_state_coverage_code VALUES(420,11,36);
+	INSERT INTO pa_state_coverage_code VALUES(421,1,38);
+	INSERT INTO pa_state_coverage_code VALUES(422,2,38);
+	INSERT INTO pa_state_coverage_code VALUES(423,3,38);
+	INSERT INTO pa_state_coverage_code VALUES(424,4,38);
+	INSERT INTO pa_state_coverage_code VALUES(425,5,38);
+	INSERT INTO pa_state_coverage_code VALUES(426,6,38);
+	INSERT INTO pa_state_coverage_code VALUES(427,9,38);
+	INSERT INTO pa_state_coverage_code VALUES(428,10,38);
+	INSERT INTO pa_state_coverage_code VALUES(429,12,38);
+	INSERT INTO pa_state_coverage_code VALUES(430,7,38);
+	INSERT INTO pa_state_coverage_code VALUES(431,8,38);
+	INSERT INTO pa_state_coverage_code VALUES(432,11,38);
+	INSERT INTO pa_state_coverage_code VALUES(433,1,39);
+	INSERT INTO pa_state_coverage_code VALUES(434,2,39);
+	INSERT INTO pa_state_coverage_code VALUES(435,3,39);
+	INSERT INTO pa_state_coverage_code VALUES(436,4,39);
+	INSERT INTO pa_state_coverage_code VALUES(437,5,39);
+	INSERT INTO pa_state_coverage_code VALUES(438,6,39);
+	INSERT INTO pa_state_coverage_code VALUES(439,9,39);
+	INSERT INTO pa_state_coverage_code VALUES(440,10,39);
+	INSERT INTO pa_state_coverage_code VALUES(441,12,39);
+	INSERT INTO pa_state_coverage_code VALUES(442,7,39);
+	INSERT INTO pa_state_coverage_code VALUES(443,8,39);
+	INSERT INTO pa_state_coverage_code VALUES(444,11,39);
+	INSERT INTO pa_state_coverage_code VALUES(445,1,40);
+	INSERT INTO pa_state_coverage_code VALUES(446,2,40);
+	INSERT INTO pa_state_coverage_code VALUES(447,3,40);
+	INSERT INTO pa_state_coverage_code VALUES(448,4,40);
+	INSERT INTO pa_state_coverage_code VALUES(449,5,40);
+	INSERT INTO pa_state_coverage_code VALUES(450,6,40);
+	INSERT INTO pa_state_coverage_code VALUES(451,9,40);
+	INSERT INTO pa_state_coverage_code VALUES(452,10,40);
+	INSERT INTO pa_state_coverage_code VALUES(453,12,40);
+	INSERT INTO pa_state_coverage_code VALUES(454,7,40);
+	INSERT INTO pa_state_coverage_code VALUES(455,8,40);
+	INSERT INTO pa_state_coverage_code VALUES(456,11,40);
+	INSERT INTO pa_state_coverage_code VALUES(457,1,41);
+	INSERT INTO pa_state_coverage_code VALUES(458,2,41);
+	INSERT INTO pa_state_coverage_code VALUES(459,3,41);
+	INSERT INTO pa_state_coverage_code VALUES(460,4,41);
+	INSERT INTO pa_state_coverage_code VALUES(461,5,41);
+	INSERT INTO pa_state_coverage_code VALUES(462,6,41);
+	INSERT INTO pa_state_coverage_code VALUES(463,9,41);
+	INSERT INTO pa_state_coverage_code VALUES(464,10,41);
+	INSERT INTO pa_state_coverage_code VALUES(465,12,41);
+	INSERT INTO pa_state_coverage_code VALUES(466,7,41);
+	INSERT INTO pa_state_coverage_code VALUES(467,8,41);
+	INSERT INTO pa_state_coverage_code VALUES(468,11,41);
+	INSERT INTO pa_state_coverage_code VALUES(469,1,42);
+	INSERT INTO pa_state_coverage_code VALUES(470,2,42);
+	INSERT INTO pa_state_coverage_code VALUES(471,3,42);
+	INSERT INTO pa_state_coverage_code VALUES(472,4,42);
+	INSERT INTO pa_state_coverage_code VALUES(473,5,42);
+	INSERT INTO pa_state_coverage_code VALUES(474,6,42);
+	INSERT INTO pa_state_coverage_code VALUES(475,9,42);
+	INSERT INTO pa_state_coverage_code VALUES(476,10,42);
+	INSERT INTO pa_state_coverage_code VALUES(477,12,42);
+	INSERT INTO pa_state_coverage_code VALUES(478,7,42);
+	INSERT INTO pa_state_coverage_code VALUES(479,8,42);
+	INSERT INTO pa_state_coverage_code VALUES(480,11,42);
+	INSERT INTO pa_state_coverage_code VALUES(481,1,43);
+	INSERT INTO pa_state_coverage_code VALUES(482,2,43);
+	INSERT INTO pa_state_coverage_code VALUES(483,3,43);
+	INSERT INTO pa_state_coverage_code VALUES(484,4,43);
+	INSERT INTO pa_state_coverage_code VALUES(485,5,43);
+	INSERT INTO pa_state_coverage_code VALUES(486,6,43);
+	INSERT INTO pa_state_coverage_code VALUES(487,9,43);
+	INSERT INTO pa_state_coverage_code VALUES(488,10,43);
+	INSERT INTO pa_state_coverage_code VALUES(489,12,43);
+	INSERT INTO pa_state_coverage_code VALUES(490,7,43);
+	INSERT INTO pa_state_coverage_code VALUES(491,8,43);
+	INSERT INTO pa_state_coverage_code VALUES(492,11,43);
+	INSERT INTO pa_state_coverage_code VALUES(493,1,44);
+	INSERT INTO pa_state_coverage_code VALUES(494,2,44);
+	INSERT INTO pa_state_coverage_code VALUES(495,3,44);
+	INSERT INTO pa_state_coverage_code VALUES(496,4,44);
+	INSERT INTO pa_state_coverage_code VALUES(497,5,44);
+	INSERT INTO pa_state_coverage_code VALUES(498,6,44);
+	INSERT INTO pa_state_coverage_code VALUES(499,9,44);
+	INSERT INTO pa_state_coverage_code VALUES(500,10,44);
+	INSERT INTO pa_state_coverage_code VALUES(501,12,44);
+	INSERT INTO pa_state_coverage_code VALUES(502,7,44);
+	INSERT INTO pa_state_coverage_code VALUES(503,8,44);
+	INSERT INTO pa_state_coverage_code VALUES(504,11,44);
+	INSERT INTO pa_state_coverage_code VALUES(505,1,45);
+	INSERT INTO pa_state_coverage_code VALUES(506,2,45);
+	INSERT INTO pa_state_coverage_code VALUES(507,3,45);
+	INSERT INTO pa_state_coverage_code VALUES(508,4,45);
+	INSERT INTO pa_state_coverage_code VALUES(509,5,45);
+	INSERT INTO pa_state_coverage_code VALUES(510,6,45);
+	INSERT INTO pa_state_coverage_code VALUES(511,9,45);
+	INSERT INTO pa_state_coverage_code VALUES(512,10,45);
+	INSERT INTO pa_state_coverage_code VALUES(513,12,45);
+	INSERT INTO pa_state_coverage_code VALUES(514,7,45);
+	INSERT INTO pa_state_coverage_code VALUES(515,8,45);
+	INSERT INTO pa_state_coverage_code VALUES(516,11,45);
+	INSERT INTO pa_state_coverage_code VALUES(517,1,46);
+	INSERT INTO pa_state_coverage_code VALUES(518,2,46);
+	INSERT INTO pa_state_coverage_code VALUES(519,3,46);
+	INSERT INTO pa_state_coverage_code VALUES(520,4,46);
+	INSERT INTO pa_state_coverage_code VALUES(521,5,46);
+	INSERT INTO pa_state_coverage_code VALUES(522,6,46);
+	INSERT INTO pa_state_coverage_code VALUES(523,9,46);
+	INSERT INTO pa_state_coverage_code VALUES(524,10,46);
+	INSERT INTO pa_state_coverage_code VALUES(525,12,46);
+	INSERT INTO pa_state_coverage_code VALUES(526,7,46);
+	INSERT INTO pa_state_coverage_code VALUES(527,8,46);
+	INSERT INTO pa_state_coverage_code VALUES(528,11,46);
+	INSERT INTO pa_state_coverage_code VALUES(529,1,47);
+	INSERT INTO pa_state_coverage_code VALUES(530,2,47);
+	INSERT INTO pa_state_coverage_code VALUES(531,3,47);
+	INSERT INTO pa_state_coverage_code VALUES(532,4,47);
+	INSERT INTO pa_state_coverage_code VALUES(533,5,47);
+	INSERT INTO pa_state_coverage_code VALUES(534,6,47);
+	INSERT INTO pa_state_coverage_code VALUES(535,9,47);
+	INSERT INTO pa_state_coverage_code VALUES(536,10,47);
+	INSERT INTO pa_state_coverage_code VALUES(537,12,47);
+	INSERT INTO pa_state_coverage_code VALUES(538,7,47);
+	INSERT INTO pa_state_coverage_code VALUES(539,8,47);
+	INSERT INTO pa_state_coverage_code VALUES(540,11,47);
+	INSERT INTO pa_state_coverage_code VALUES(541,1,48);
+	INSERT INTO pa_state_coverage_code VALUES(542,2,48);
+	INSERT INTO pa_state_coverage_code VALUES(543,3,48);
+	INSERT INTO pa_state_coverage_code VALUES(544,4,48);
+	INSERT INTO pa_state_coverage_code VALUES(545,5,48);
+	INSERT INTO pa_state_coverage_code VALUES(546,6,48);
+	INSERT INTO pa_state_coverage_code VALUES(547,9,48);
+	INSERT INTO pa_state_coverage_code VALUES(548,10,48);
+	INSERT INTO pa_state_coverage_code VALUES(549,12,48);
+	INSERT INTO pa_state_coverage_code VALUES(550,7,48);
+	INSERT INTO pa_state_coverage_code VALUES(551,8,48);
+	INSERT INTO pa_state_coverage_code VALUES(552,11,48);
+	INSERT INTO pa_state_coverage_code VALUES(553,1,49);
+	INSERT INTO pa_state_coverage_code VALUES(554,2,49);
+	INSERT INTO pa_state_coverage_code VALUES(555,3,49);
+	INSERT INTO pa_state_coverage_code VALUES(556,4,49);
+	INSERT INTO pa_state_coverage_code VALUES(557,5,49);
+	INSERT INTO pa_state_coverage_code VALUES(558,6,49);
+	INSERT INTO pa_state_coverage_code VALUES(559,9,49);
+	INSERT INTO pa_state_coverage_code VALUES(560,10,49);
+	INSERT INTO pa_state_coverage_code VALUES(561,12,49);
+	INSERT INTO pa_state_coverage_code VALUES(562,7,49);
+	INSERT INTO pa_state_coverage_code VALUES(563,8,49);
+	INSERT INTO pa_state_coverage_code VALUES(564,11,49);
+	INSERT INTO pa_state_coverage_code VALUES(565,1,50);
+	INSERT INTO pa_state_coverage_code VALUES(566,2,50);
+	INSERT INTO pa_state_coverage_code VALUES(567,3,50);
+	INSERT INTO pa_state_coverage_code VALUES(568,4,50);
+	INSERT INTO pa_state_coverage_code VALUES(569,5,50);
+	INSERT INTO pa_state_coverage_code VALUES(570,6,50);
+	INSERT INTO pa_state_coverage_code VALUES(571,9,50);
+	INSERT INTO pa_state_coverage_code VALUES(572,10,50);
+	INSERT INTO pa_state_coverage_code VALUES(573,12,50);
+	INSERT INTO pa_state_coverage_code VALUES(574,7,50);
+	INSERT INTO pa_state_coverage_code VALUES(575,8,50);
+	INSERT INTO pa_state_coverage_code VALUES(576,11,50);
+	INSERT INTO pa_state_coverage_code VALUES(577,1,51);
+	INSERT INTO pa_state_coverage_code VALUES(578,2,51);
+	INSERT INTO pa_state_coverage_code VALUES(579,3,51);
+	INSERT INTO pa_state_coverage_code VALUES(580,4,51);
+	INSERT INTO pa_state_coverage_code VALUES(581,5,51);
+	INSERT INTO pa_state_coverage_code VALUES(582,6,51);
+	INSERT INTO pa_state_coverage_code VALUES(583,9,51);
+	INSERT INTO pa_state_coverage_code VALUES(584,10,51);
+	INSERT INTO pa_state_coverage_code VALUES(585,12,51);
+	INSERT INTO pa_state_coverage_code VALUES(586,7,51);
+	INSERT INTO pa_state_coverage_code VALUES(587,8,51);
+	INSERT INTO pa_state_coverage_code VALUES(588,11,51);
+	INSERT INTO pa_state_coverage_code VALUES(589,1,52);
+	INSERT INTO pa_state_coverage_code VALUES(590,2,52);
+	INSERT INTO pa_state_coverage_code VALUES(591,3,52);
+	INSERT INTO pa_state_coverage_code VALUES(592,4,52);
+	INSERT INTO pa_state_coverage_code VALUES(593,5,52);
+	INSERT INTO pa_state_coverage_code VALUES(594,6,52);
+	INSERT INTO pa_state_coverage_code VALUES(595,9,52);
+	INSERT INTO pa_state_coverage_code VALUES(596,10,52);
+	INSERT INTO pa_state_coverage_code VALUES(597,12,52);
+	INSERT INTO pa_state_coverage_code VALUES(598,7,52);
+	INSERT INTO pa_state_coverage_code VALUES(599,8,52);
+	INSERT INTO pa_state_coverage_code VALUES(600,11,52);
+	INSERT INTO pa_state_coverage_code VALUES(601,1,3);
+	INSERT INTO pa_state_coverage_code VALUES(602,2,3);
+	INSERT INTO pa_state_coverage_code VALUES(603,13,3);
+	INSERT INTO pa_state_coverage_code VALUES(604,5,3);
+	INSERT INTO pa_state_coverage_code VALUES(605,6,3);
+	INSERT INTO pa_state_coverage_code VALUES(606,9,3);
+	INSERT INTO pa_state_coverage_code VALUES(607,10,3);
+	INSERT INTO pa_state_coverage_code VALUES(608,12,3);
+	INSERT INTO pa_state_coverage_code VALUES(609,7,3);
+	INSERT INTO pa_state_coverage_code VALUES(610,8,3);
+	INSERT INTO pa_state_coverage_code VALUES(611,14,3);
+	INSERT INTO pa_state_coverage_code VALUES(612,15,3);
+	INSERT INTO pa_state_coverage_code VALUES(613,16,3);
+	INSERT INTO pa_state_coverage_code VALUES(614,1,37);
+	INSERT INTO pa_state_coverage_code VALUES(615,2,37);
+	INSERT INTO pa_state_coverage_code VALUES(616,17,37);
+	INSERT INTO pa_state_coverage_code VALUES(617,18,37);
+	INSERT INTO pa_state_coverage_code VALUES(618,9,37);
+	INSERT INTO pa_state_coverage_code VALUES(619,10,37);
+	INSERT INTO pa_state_coverage_code VALUES(620,12,37);
+	INSERT INTO pa_state_coverage_code VALUES(621,7,37);
+	INSERT INTO pa_state_coverage_code VALUES(622,8,37);
+	INSERT INTO pa_state_coverage_code VALUES(623,11,37);
+	INSERT INTO pa_state_coverage_code VALUES(624,19,37);
+	INSERT INTO pa_state_coverage_code VALUES(625,20,37);
+	INSERT INTO pa_state_coverage_code VALUES(626,21,37);
+	INSERT INTO pa_state_coverage_code VALUES(627,22,37);
+	INSERT INTO pa_state_coverage_code VALUES(628,23,37);
+	INSERT INTO pa_state_coverage_code VALUES(629,24,37);
+	INSERT INTO pa_state_coverage_code VALUES(630,25,37);
+	INSERT INTO pa_state_coverage_code VALUES(631,26,37);
+	INSERT INTO pa_state_coverage_code VALUES(632,27,37);
+	INSERT INTO pa_state_coverage_code VALUES(633,28,37);
+	INSERT INTO pa_state_coverage_code VALUES(634,29,37);
+	INSERT INTO pa_state_coverage_code VALUES(635,30,37);
+	INSERT INTO pa_state_coverage_code VALUES(636,31,37);
+	INSERT INTO pa_state_coverage_code VALUES(637,32,37);
+END IF; 
+END $$
+DO $$
+BEGIN 
+
+CREATE TABLE IF NOT EXISTS pa_cause_of_loss_code (
+    id INT,
+    fk_coverage_code_id INT,
+    loss_code VARCHAR,
+    description varchar,
+    effective_date date not null default '1900-01-01',
+    expiration_date date not null default '9999-12-31'
+);
+
+IF NOT EXISTS (select * from pa_cause_of_loss_code) THEN
+  INSERT INTO pa_cause_of_loss_code VALUES (1,1,1,'Bodily Injury');
+  INSERT INTO pa_cause_of_loss_code VALUES (2,1,2,'Death Limit Claim (New York only)');
+  INSERT INTO pa_cause_of_loss_code VALUES (3,2,2,'Property Damage');
+  INSERT INTO pa_cause_of_loss_code VALUES (4,3,1,'Bodily Injury');
+  INSERT INTO pa_cause_of_loss_code VALUES (5,3,2,'Property Damage');
+  INSERT INTO pa_cause_of_loss_code VALUES (6,4,1,'Medical Expenses — Basic');
+  INSERT INTO pa_cause_of_loss_code VALUES (7,4,2,'Loss of Income — Basic');
+  INSERT INTO pa_cause_of_loss_code VALUES (8,4,3,'Survivors Benefits — Basic');
+  INSERT INTO pa_cause_of_loss_code VALUES (9,4,4,'Funeral Expenses — Basic');
+  INSERT INTO pa_cause_of_loss_code VALUES (10,4,5,'Medical Expenses — Excess');
+  INSERT INTO pa_cause_of_loss_code VALUES (11,4,6,'Loss of Income — Excess');
+  INSERT INTO pa_cause_of_loss_code VALUES (12,4,8,'All Other — Excess');
+  INSERT INTO pa_cause_of_loss_code VALUES (13,4,9,'All Other — Basic');
+  INSERT INTO pa_cause_of_loss_code VALUES (14,5,1,'Medical Payments');
+  INSERT INTO pa_cause_of_loss_code VALUES (15,6,1,'Bodily Injury');
+  INSERT INTO pa_cause_of_loss_code VALUES (16,6,2,'Property Damage');
+  INSERT INTO pa_cause_of_loss_code VALUES (17,6,3,'Bodily Injury');
+  INSERT INTO pa_cause_of_loss_code VALUES (18,6,4,'Property Damage');
+  INSERT INTO pa_cause_of_loss_code VALUES (19,6,5,'Other than death limit claims (New York only)');
+  INSERT INTO pa_cause_of_loss_code VALUES (20,6,6,'Death limit claims (New York only)');
+  INSERT INTO pa_cause_of_loss_code VALUES (21,6,7,'Voluntary Coverage (Risk state = NY) (NY only)');
+  INSERT INTO pa_cause_of_loss_code VALUES (22,6,8,'All Other');
+  INSERT INTO pa_cause_of_loss_code VALUES (23,6,9,'All Other');
+  INSERT INTO pa_cause_of_loss_code VALUES (24,9,1,'Collision');
+  INSERT INTO pa_cause_of_loss_code VALUES (25,10,0,'Personal Effects');
+  INSERT INTO pa_cause_of_loss_code VALUES (26,10,1,'Fire');
+  INSERT INTO pa_cause_of_loss_code VALUES (27,10,2,'Theft');
+  INSERT INTO pa_cause_of_loss_code VALUES (28,10,3,'Vandalism');
+  INSERT INTO pa_cause_of_loss_code VALUES (29,10,4,'Glass Breakage');
+  INSERT INTO pa_cause_of_loss_code VALUES (30,10,5,'Wind and Hail');
+  INSERT INTO pa_cause_of_loss_code VALUES (31,10,6,'Earthquake');
+  INSERT INTO pa_cause_of_loss_code VALUES (32,10,7,'Water');
+  INSERT INTO pa_cause_of_loss_code VALUES (33,10,8,'Towing and Labor or Other Transportation');
+  INSERT INTO pa_cause_of_loss_code VALUES (34,10,9,'All Other');
+  INSERT INTO pa_cause_of_loss_code VALUES (35,12,9,'Any Cause of Loss for Coverage Code 9');
+  INSERT INTO pa_cause_of_loss_code VALUES (36,7,1,'Bodily Injury');
+  INSERT INTO pa_cause_of_loss_code VALUES (37,7,2,'Property Damage');
+  INSERT INTO pa_cause_of_loss_code VALUES (38,7,5,'Other than death limit claims (New York only)');
+  INSERT INTO pa_cause_of_loss_code VALUES (39,7,6,'Death limit claims (New York only)');
+  INSERT INTO pa_cause_of_loss_code VALUES (40,7,7,'Voluntary Coverage (Risk state = NY) (NY only)');
+  INSERT INTO pa_cause_of_loss_code VALUES (41,7,8,'All Other');
+  INSERT INTO pa_cause_of_loss_code VALUES (42,8,3,'Bodily Injury');
+  INSERT INTO pa_cause_of_loss_code VALUES (43,8,4,'Property Damage');
+  INSERT INTO pa_cause_of_loss_code VALUES (44,8,9,'All Other');
+  INSERT INTO pa_cause_of_loss_code VALUES (45,11,0,'Personal Effects');
+  INSERT INTO pa_cause_of_loss_code VALUES (46,11,1,'Fire');
+  INSERT INTO pa_cause_of_loss_code VALUES (47,11,2,'Theft');
+  INSERT INTO pa_cause_of_loss_code VALUES (48,11,3,'Vandalism');
+  INSERT INTO pa_cause_of_loss_code VALUES (49,11,4,'Glass Breakage');
+  INSERT INTO pa_cause_of_loss_code VALUES (50,11,5,'Wind and Hail');
+  INSERT INTO pa_cause_of_loss_code VALUES (51,11,6,'Earthquake');
+  INSERT INTO pa_cause_of_loss_code VALUES (52,11,7,'Water');
+  INSERT INTO pa_cause_of_loss_code VALUES (53,11,8,'Towing and Labor or Other Transportation');
+  INSERT INTO pa_cause_of_loss_code VALUES (54,11,9,'All Other');
+  INSERT INTO pa_cause_of_loss_code VALUES (55,19,1,'Medical Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (56,19,2,'Loss of Income');
+  INSERT INTO pa_cause_of_loss_code VALUES (57,19,3,'Survivors Benefits');
+  INSERT INTO pa_cause_of_loss_code VALUES (58,19,4,'Funeral Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (59,20,1,'Medical Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (60,20,2,'Loss of Income');
+  INSERT INTO pa_cause_of_loss_code VALUES (61,20,3,'Survivors Benefits');
+  INSERT INTO pa_cause_of_loss_code VALUES (62,20,4,'Funeral Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (63,21,1,'Medical Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (64,21,2,'Loss of Income');
+  INSERT INTO pa_cause_of_loss_code VALUES (65,21,3,'Survivors Benefits');
+  INSERT INTO pa_cause_of_loss_code VALUES (66,21,4,'Funeral Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (67,22,1,'Medical Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (68,22,2,'Loss of Income');
+  INSERT INTO pa_cause_of_loss_code VALUES (69,22,3,'Survivors Benefits');
+  INSERT INTO pa_cause_of_loss_code VALUES (70,22,4,'Funeral Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (71,23,1,'Medical Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (72,23,2,'Loss of Income');
+  INSERT INTO pa_cause_of_loss_code VALUES (73,23,3,'Survivors Benefits');
+  INSERT INTO pa_cause_of_loss_code VALUES (74,23,4,'Funeral Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (75,24,1,'Medical Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (76,24,2,'Loss of Income');
+  INSERT INTO pa_cause_of_loss_code VALUES (77,24,3,'Survivors Benefits');
+  INSERT INTO pa_cause_of_loss_code VALUES (78,24,4,'Funeral Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (79,25,1,'Medical Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (80,25,2,'Loss of Income');
+  INSERT INTO pa_cause_of_loss_code VALUES (81,25,3,'Survivors Benefits');
+  INSERT INTO pa_cause_of_loss_code VALUES (82,25,4,'Funeral Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (83,26,1,'Medical Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (84,26,2,'Loss of Income');
+  INSERT INTO pa_cause_of_loss_code VALUES (85,26,3,'Survivors Benefits');
+  INSERT INTO pa_cause_of_loss_code VALUES (86,26,4,'Funeral Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (87,27,1,'Medical Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (88,27,2,'Loss of Income');
+  INSERT INTO pa_cause_of_loss_code VALUES (89,27,3,'Survivors Benefits');
+  INSERT INTO pa_cause_of_loss_code VALUES (90,27,4,'Funeral Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (91,28,1,'Medical Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (92,28,2,'Loss of Income');
+  INSERT INTO pa_cause_of_loss_code VALUES (93,28,3,'Survivors Benefits');
+  INSERT INTO pa_cause_of_loss_code VALUES (94,28,4,'Funeral Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (95,29,1,'Medical Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (96,29,2,'Loss of Income');
+  INSERT INTO pa_cause_of_loss_code VALUES (97,29,3,'Survivors Benefits');
+  INSERT INTO pa_cause_of_loss_code VALUES (98,29,4,'Funeral Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (99,30,1,'Medical Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (100,30,2,'Loss of Income');
+  INSERT INTO pa_cause_of_loss_code VALUES (101,30,3,'Survivors Benefits');
+  INSERT INTO pa_cause_of_loss_code VALUES (102,30,4,'Funeral Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (103,31,1,'Medical Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (104,31,2,'Loss of Income');
+  INSERT INTO pa_cause_of_loss_code VALUES (105,31,3,'Survivors Benefits');
+  INSERT INTO pa_cause_of_loss_code VALUES (106,31,4,'Funeral Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (107,32,1,'Medical Expenses');
+  INSERT INTO pa_cause_of_loss_code VALUES (108,32,2,'Loss of Income');
+  INSERT INTO pa_cause_of_loss_code VALUES (109,32,3,'Survivors Benefits');
+  INSERT INTO pa_cause_of_loss_code VALUES (110,32,4,'Funeral Expenses');
+END IF;
+END $$
+
