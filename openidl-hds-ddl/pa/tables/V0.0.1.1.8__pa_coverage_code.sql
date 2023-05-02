@@ -6,8 +6,8 @@ CREATE TABLE IF NOT EXISTS pa_coverage_category (
     id INT,
     name VARCHAR,
     description VARCHAR,
-	effective_date date not null default '1900-01-01',
-    expiration_date date not null default '9999-12-31'
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
 
@@ -16,13 +16,13 @@ CREATE TABLE IF NOT EXISTS pa_coverage_code (
     code VARCHAR,
     name VARCHAR,
     fk_coverage_category_id INT,
-    fk_state_id int 
+    fk_state_id INT 
 );
 
 
 CREATE TABLE IF NOT EXISTS pa_state_coverage_code (
     id INT,
-    fk_coverage_code_id int,
+    fk_coverage_code_id INT,
     fk_state_id INT
 );
 

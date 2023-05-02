@@ -3,12 +3,12 @@ DO $$
 BEGIN 
 
 CREATE TABLE IF NOT EXISTS pa_um_uim_motorist_code(
-	id int,
+	id INT,
 	fk_state_id VARCHAR,
 	code VARCHAR,
 	description VARCHAR,
-	effective_date date not null default '1900-01-01',
-    expiration_date date not null default '9999-12-31'
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
 

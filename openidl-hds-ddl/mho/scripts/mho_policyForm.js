@@ -11,7 +11,9 @@ CREATE TABLE IF NOT EXISTS mho_policy_form_code (
     type VARCHAR,
     category VARCHAR,
     reporting_form VARCHAR,
-    reporting_category VARCHAR
+    reporting_category VARCHAR,
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
 IF NOT EXISTS (SELECT * FROM mho_policy_form_code) THEN `

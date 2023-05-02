@@ -1,39 +1,41 @@
-const fs = require('fs');
+fs = require('fs')
 
-// Load the JSON file
-const jsonFile = require('../codes/ho_classCodes.json');
-
-// Set up the SQL statements
-const tableName = 'ho_class_code';
-const columns = Object.keys(jsonFile[Object.keys(jsonFile)[0]]).join(', ');
-
-let insertStatements = [];
-
-// Loop through the JSON keys and generate the SQL insert statements
-for (const key in jsonFile) {
-  const values = Object.values(jsonFile[key]).map(value => typeof value === 'string' ? `'${value}'` : value).join(', ');
-  insertStatements.push(`INSERT INTO ${tableName} (${columns}) VALUES ('${key}', ${values});`);
-}
-
-// Write the SQL insert statements to a file
-const outputFile = '../tables/V0.0.1.3.2__ho_class_code.sql';
-const tableDDL = `
+let codeMap = require('../codes/ho_classCodes.json');
+let fileLines = []
+let tableDDL = `
 DO $$ 
 BEGIN
-CREATE TABLE IF NOT EXISTS ${tableName} (
-    id VARCHAR,
-    ${columns}
+CREATE TABLE IF NOT EXISTS ho_class_code (
+    id INT,
+    code VARCHAR,
+    name VARCHAR,
+    type VARCHAR,
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
-IF NOT EXISTS (SELECT * FROM ${tableName}) THEN `;
+IF NOT EXISTS (SELECT * FROM ho_class_code) THEN `
+fileLines.push(tableDDL)
+ 
+let codes = Object.keys(codeMap)
+let index = 1
+for (let code of codes){
+    let data = codeMap[code];
+    let name = data['name'];
+    let type = data['type'];
+    line = `    INSERT INTO ho_class_code VALUES(${index},'${code}','${name}','${type}');`
+    fileLines.push(line)
+    index+=1
+}
+let end = `END IF;
+END $$;`
 
-const end = `
-END IF;
-END $$;`;
+fileLines.push(end)
 
-const fileContents = tableDDL + insertStatements.join('\n') + end;
 
-fs.writeFile(outputFile, fileContents, function (err) {
-  if (err) throw err;
-  console.log(`SQL insert statements written to ${outputFile}`);
-});
+var file = fs.createWriteStream('../tables/V0.0.1.3.2__ho_class_code.sql');
+file.on('error', function(err) { /* error handling */ });
+fileLines.forEach(function(v) { file.write(v + '\n'); });
+file.end();
+
+

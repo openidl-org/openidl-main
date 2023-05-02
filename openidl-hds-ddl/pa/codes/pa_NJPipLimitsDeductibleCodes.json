@@ -25,7 +25,7 @@
 			"code": "02",
 			"description": "Basic PIP coverage with Option 1",
             "type": "Named Insurance Including Spouse",
-            "category": ""
+            "category": "Named Insurance Including Spouse"
 		},
 		"03": {
 			"id": "03",
