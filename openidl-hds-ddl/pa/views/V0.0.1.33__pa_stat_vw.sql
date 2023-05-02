@@ -1,5 +1,3 @@
-CREATE OR replace VIEW pa_stat_vw
-AS
   SELECT a.id           openidl_id,
          a.policy_num   policy_identifier,
          a.claim_id     claim_identifier,
@@ -25,6 +23,11 @@ AS
            ELSE Concat(Substring(( Date_part('year',
                 current_date) :: VARCHAR ), 1, 3), a.rep_yr)
          END            accounting_year,
+         CASE
+           WHEN a.rep_yr IS NULL THEN NULL
+           ELSE Concat(Substring(( Date_part('year',
+                current_date) :: VARCHAR ), 1, 3), a.rep_yr,'-',a.rep_mo,'-15')::DATE
+         END            accounting_date,
          b.id           fk_openidl_lob_code_id,
          d.id           fk_state_code_id,
          e.id           fk_transaction_code_id,
@@ -55,6 +58,7 @@ AS
                 ON a.state = d.code
          left join pa_transaction_code e
                 ON a.trans = e.code
+                 
          left join pa_program_code f
                 ON a.prog_cd = f.code
          left join pa_state_coverage_code_vw g
