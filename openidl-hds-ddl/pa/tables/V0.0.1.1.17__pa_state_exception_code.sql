@@ -2,7 +2,7 @@ DO $$
 BEGIN 
 
 CREATE TABLE IF NOT EXISTS pa_state_exception_category_code (
-    id int,
+    id INT,
     name VARCHAR,
     description VARCHAR,
     effective_date DATE NOT NULL DEFAULT '1900-01-01',
