@@ -25,6 +25,7 @@ SELECT
         a.fk_coverage_code_id,
         a.exposure,
         a.loss_amount,
+        case when a.fk_coverage_code_id in (7,8,12,18,19,30,31,35) then 'Physical Damage' else 'Liability' end as physical_or_liability,
         CASE WHEN a.fk_transaction_code_id in (1,6) then round((a.premium_amount / a.months_covered)) end as monthly_premium_amount,
         (CONCAT('01-',a.accounting_month,'-',a.accounting_year)::date + interval '1 month' * a.months_covered)::date accounting_term_expiration,
         CASE WHEN a.fk_transaction_code_id in (2,3,4,5) THEN CONCAT('01-',a.accident_month,'-',a.accident_year)::date else null end as accident_date,
