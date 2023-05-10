@@ -18,6 +18,8 @@ when a.fk_coverage_code_id in (4) then 'No Fault'
 else 'Liability' end as primary_coverage
 from pa_stat_vw a;
 
+LDF factors, can we make it a seperate table and just join in to it?
+
 
 
 
