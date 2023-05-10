@@ -17,12 +17,15 @@ SELECT
        CASE WHEN a.fk_transaction_code_id in (2,3,4,5) THEN CONCAT('01-',a.accident_month,'-',a.accident_year)::date else null end as accident_date,
 
     case when a.fk_coverage_code_id in (7,8,12,18,19,30,31,35) then 'Physical Damage' else 'Liability' end as physical_or_liability,
-case when a.fk_coverage_code_id not in (7,8,12,18,19,30,31,35) and a.fk_transaction_code_id in (2,3,4,5) then a.accident_year 
-else a.accounting_year end as year,
-case when a.fk_coverage_code_id in (7,18,30) then 'Collision'
-when a.fk_coverage_code_id in (8,12,19,31,35) then 'Comprehensive'
-when a.fk_coverage_code_id in (4) then 'No Fault'
-else 'Liability' end as primary_coverage,
+    
+    case when a.fk_coverage_code_id not in (7,8,12,18,19,30,31,35) and a.fk_transaction_code_id in (2,3,4,5) then a.accident_year 
+    else a.accounting_year end as year,
+
+    case when a.fk_coverage_code_id in (7,18,30) then 'Collision'
+    when a.fk_coverage_code_id in (8,12,19,31,35) then 'Comprehensive'
+    when a.fk_coverage_code_id in (4) then 'No Fault'
+    else 'Liability' end as primary_coverage,
+        
         CASE
           WHEN a.fk_coverage_code_id IN ( 1, 13, 26 ) THEN '1'
           WHEN a.fk_coverage_code_id IN ( 2, 14, 27 ) THEN '2'
