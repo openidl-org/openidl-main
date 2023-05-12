@@ -8,7 +8,7 @@ node pa_coverageCode.js
 node pa_deductibleCodes.js
 node pa_defensiveDriverDiscountCodes.js
 node pa_experiencedRatingModificationFactorCodes.js
-node pa_liabilityLimit.js
+node pa_liabilityLimitCodes.js
 node pa_limitedCodingLossTransactionCodes.js
 node pa_ncProgramEnhancementCodes.js
 node pa_operatorAgeCodes.js
@@ -28,4 +28,4 @@ node pa_umUIm.js
 node pa_umuimStackingCodes.js
 node pa_vehiclePerformanceCodes.js
 node pa_vehicleUseCodes.js
-
+node pa_stat_vw.js

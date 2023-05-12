@@ -1,5 +1,5 @@
 
-
+-- cover q1 of year + 1
 CREATE OR replace FUNCTION openidl_ep_1234.tmp_pa_auto_outstanding(IN start_date date,IN end_date date, IN pv_coverage_code VARCHAR)
 RETURNS      numeric AS $$DECLARE ep numeric;
 BEGIN

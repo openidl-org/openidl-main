@@ -1,7 +1,10 @@
 fs = require('fs')
 
 let fileLines = []
-let tableDDL = `CREATE OR replace VIEW pa_stat_vw
+let tableDDL = `
+DO $$ 
+BEGIN
+CREATE OR replace VIEW pa_stat_vw
 AS
   SELECT a.id           openidl_id,
          a.policy_num   policy_identifier,
@@ -9,7 +12,7 @@ AS
          a.claim_num occurrence_identifier,
          a.zip,
          a.zip_suff,
-         a.rep_mo       accounting_month,
+         a.rep_mo::numeric       accounting_month,
          a.comp         company,
          a.territory    territory,
          a.prem_amt     premium_amount,
@@ -17,16 +20,16 @@ AS
          a.exposure,
          a.clm_cnt      claim_count,
          a.mos_cov::numeric      months_covered,
-         a.accident_mon accident_month,
+         a.accident_mon::numeric accident_month,
          CASE
            WHEN a.accident_yr IS NULL THEN NULL
-           WHEN a.accident_yr :: NUMERIC > 90 THEN Concat('19', a.accident_yr)
-           ELSE Concat('20', a.accident_yr)
+           WHEN a.accident_yr :: NUMERIC > 90 THEN Concat('19', a.accident_yr)::numeric
+           ELSE Concat('20', a.accident_yr)::numeric
          END            accident_year,
          CASE
            WHEN a.rep_yr IS NULL THEN NULL
            ELSE Concat(Substring(( Date_part('year',
-                current_date) :: VARCHAR ), 1, 3), a.rep_yr)
+                current_date) :: VARCHAR ), 1, 3), a.rep_yr)::NUMERIC
          END            accounting_year,
          b.id           fk_openidl_lob_code_id,
          d.id           fk_state_code_id,

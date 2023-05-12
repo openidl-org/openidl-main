@@ -1,10 +1,15 @@
+
+DO $$ 
+BEGIN
+CREATE OR replace VIEW pa_stat_vw
+AS
   SELECT a.id           openidl_id,
          a.policy_num   policy_identifier,
          a.claim_id     claim_identifier,
          a.claim_num occurrence_identifier,
          a.zip,
          a.zip_suff,
-         a.rep_mo       accounting_month,
+         a.rep_mo::numeric       accounting_month,
          a.comp         company,
          a.territory    territory,
          a.prem_amt     premium_amount,
@@ -12,22 +17,17 @@
          a.exposure,
          a.clm_cnt      claim_count,
          a.mos_cov::numeric      months_covered,
-         a.accident_mon accident_month,
+         a.accident_mon::numeric accident_month,
          CASE
            WHEN a.accident_yr IS NULL THEN NULL
-           WHEN a.accident_yr :: NUMERIC > 90 THEN Concat('19', a.accident_yr)
-           ELSE Concat('20', a.accident_yr)
+           WHEN a.accident_yr :: NUMERIC > 90 THEN Concat('19', a.accident_yr)::numeric
+           ELSE Concat('20', a.accident_yr)::numeric
          END            accident_year,
          CASE
            WHEN a.rep_yr IS NULL THEN NULL
            ELSE Concat(Substring(( Date_part('year',
-                current_date) :: VARCHAR ), 1, 3), a.rep_yr)
+                current_date) :: VARCHAR ), 1, 3), a.rep_yr)::NUMERIC
          END            accounting_year,
-         CASE
-           WHEN a.rep_yr IS NULL THEN NULL
-           ELSE Concat(Substring(( Date_part('year',
-                current_date) :: VARCHAR ), 1, 3), a.rep_yr,'-',a.rep_mo,'-15')::DATE
-         END            accounting_date,
          b.id           fk_openidl_lob_code_id,
          d.id           fk_state_code_id,
          e.id           fk_transaction_code_id,
@@ -58,7 +58,6 @@
                 ON a.state = d.code
          left join pa_transaction_code e
                 ON a.trans = e.code
-                 
          left join pa_program_code f
                 ON a.prog_cd = f.code
          left join pa_state_coverage_code_vw g
@@ -107,3 +106,4 @@
          left join pa_anti_theft_device_discount_code ac
                 ON a.anti_theft = ac.code
                    AND ac.fk_state_id = d.id;
+END $$;
