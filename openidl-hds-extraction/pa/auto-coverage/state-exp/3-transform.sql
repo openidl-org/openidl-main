@@ -30,6 +30,45 @@ SELECT
     else 'Liability' end as primary_coverage,     
         CASE
           WHEN a.fk_coverage_code_id IN ( 1, 13, 26 ) THEN '1'
+          WHEN a.fk_coverage_code_id IN ( 2, 14, 27 ) THEN '2'
+          WHEN a.fk_coverage_code_id IN ( 3, 15, 28 ) and a.fk_transaction_code_id in (1,6) THEN '3'
+          WHEN a.fk_coverage_code_id IN ( 3, 15, 28 ) and a.fk_transaction_code_id in (2,3,4,5) and a.fk_cause_of_loss_code_id in (4,91) THEN '4'
+          WHEN a.fk_coverage_code_id IN ( 3, 15, 28 ) and a.fk_transaction_code_id in (2,3,4,5) and a.fk_cause_of_loss_code_id in (5,92) THEN '5'
+          WHEN a.fk_coverage_code_id = 4 THEN '6'
+          WHEN a.fk_coverage_code_id IN ( 5, 16, 29 ) THEN '7'
+          WHEN a.fk_coverage_code_id IN ( 6, 10, 11, 17,21,22,33,34) and a.fk_transaction_code_id in (1,6) THEN '8'     
+          WHEN a.fk_coverage_code_id IN ( 6,10,17,21,33 ) and a.fk_transaction_code_id in (2,3,4,5) and a.fk_cause_of_loss_code_id in (15,19,20,21,22,26,30,31,32,33,63) then '9'
+        
+          WHEN a.fk_coverage_code_id IN ( 6, 11, 17, 22, 34 ) and a.fk_transaction_code_id in (2,3,4,5) and a.fk_cause_of_loss_code_id in (17,23,48,54,69) then '10'
+          WHEN a.fk_coverage_code_id IN ( 6,10,17,21,33 ) and a.fk_transaction_code_id in (2,3,4,5) and a.fk_cause_of_loss_code_id in (16,27,64) then '11'
+          WHEN a.fk_coverage_code_id IN ( 6, 11, 17, 22, 34 ) and a.fk_transaction_code_id in (2,3,4,5) and a.fk_cause_of_loss_code_id in (18,48,70) then '12'
+          
+          
+          WHEN a.fk_coverage_code_id IN ( 7, 18, 30 ) AND a.fk_deductible_code_id = 1 THEN '13'
+          WHEN a.fk_coverage_code_id IN ( 8,19,31) AND a.fk_deductible_code_id = 1 THEN '13'       
+          WHEN a.fk_coverage_code_id IN ( 12,35) AND a.fk_deductible_code_id = 1 THEN '13'
+          
+          
+          WHEN a.fk_coverage_code_id IN ( 7,18,30) AND a.fk_deductible_code_id = 3 THEN '14'
+          WHEN a.fk_coverage_code_id IN ( 8,19,31) AND a.fk_deductible_code_id = 3 THEN '14'
+          WHEN a.fk_coverage_code_id IN ( 12,35) AND a.fk_deductible_code_id = 3 THEN '14'
+          
+          WHEN a.fk_coverage_code_id IN (7,18,30) AND a.fk_deductible_code_id = 5 THEN '15'
+          WHEN a.fk_coverage_code_id IN ( 8,19,31) AND a.fk_deductible_code_id = 5 THEN '15'
+          WHEN a.fk_coverage_code_id IN ( 12,35) AND a.fk_deductible_code_id = 5 THEN '15'
+          
+          WHEN a.fk_coverage_code_id IN ( 7,18,30) AND a.fk_deductible_code_id = 6 THEN '16'         
+          WHEN a.fk_coverage_code_id IN ( 8,19,31) AND a.fk_deductible_code_id = 6 THEN '16'
+          WHEN a.fk_coverage_code_id IN ( 12,35) AND a.fk_deductible_code_id = 6 THEN '16'        
+          
+          WHEN a.fk_coverage_code_id IN (7,18,30) AND a.fk_deductible_code_id = 7 THEN '17'      
+          WHEN a.fk_coverage_code_id IN (8,19,31) AND a.fk_deductible_code_id = 7 THEN '17'
+          WHEN a.fk_coverage_code_id IN ( 12,35) AND a.fk_deductible_code_id = 7 THEN '17'
+          
+          WHEN a.fk_coverage_code_id IN ( 7,18,30) AND a.fk_deductible_code_id not in (1,3,5,6,7) THEN '18'        
+          WHEN a.fk_coverage_code_id IN ( 8,19,31) AND a.fk_deductible_code_id not in (1,3,5,6,7) THEN '18'       
+          WHEN a.fk_coverage_code_id IN ( 12,35) AND a.fk_deductible_code_id not in (1,3,5,6,7) THEN '18'
+          WHEN a.fk_coverage_code_id IN (9,20,32) THEN '19'
           ELSE NULL
         END AS reporting_code,
         CASE
