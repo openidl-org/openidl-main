@@ -11,7 +11,9 @@ CREATE TABLE IF NOT EXISTS dp_major_peril_code (
     type VARCHAR,
     category VARCHAR,
     major_peril VARCHAR,
-    major_peril_category VARCHAR
+    major_peril_category VARCHAR,
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
 IF NOT EXISTS (SELECT * FROM dp_major_peril_code) THEN `

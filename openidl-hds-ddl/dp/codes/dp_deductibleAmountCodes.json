@@ -1,7 +1,7 @@
 {
   "deductibleAmount": {
     "flat": {
-      "00": "Does not apply",
+      "00": "Does Not Apply",
       "41": "None ($0)",
       "42": "$50",
       "43": "100",
@@ -28,7 +28,7 @@
       "99": "Over 75,000"
     },
     "percentage": {
-      "00": "Does not apply",
+      "00": "Does Not Apply",
       "01": "1%",
       "02": "2%",
       "03": "3%",
