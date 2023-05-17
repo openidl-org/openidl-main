@@ -24,7 +24,7 @@ for (let code of codes){
     let data = codeMap[code];
     let name = data['name'];
     let type = data['type'];
-    let categoryCode = data['code']
+    let categoryCode = data['categoryCode']
     line = `    INSERT INTO dp_class_code VALUES(${index},'${code}','${name}','${type}','${categoryCode}');`
     fileLines.push(line)
     index+=1

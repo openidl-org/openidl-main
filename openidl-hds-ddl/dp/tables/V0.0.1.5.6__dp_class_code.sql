@@ -6,7 +6,9 @@ CREATE TABLE IF NOT EXISTS dp_class_code (
     code VARCHAR,
     name VARCHAR,
     type VARCHAR,
-    category_code VARCHAR
+    category_code VARCHAR,
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
 IF NOT EXISTS (SELECT * FROM dp_class_code) THEN 
@@ -40,7 +42,7 @@ IF NOT EXISTS (SELECT * FROM dp_class_code) THEN
     INSERT INTO dp_class_code VALUES(28,'64','Tanks','Farm Barns, Buildings, and Other Structures','Coverage Code 14');
     INSERT INTO dp_class_code VALUES(29,'65','Greenhouses','Farm Barns, Buildings, and Other Structures','Coverage Code 14');
     INSERT INTO dp_class_code VALUES(30,'99','All other structures','Farm Barns, Buildings, and Other Structures','Coverage Code 14');
-    INSERT INTO dp_class_code VALUES(31,'00','Does not apply','Does not apply','Does not apply');
+    INSERT INTO dp_class_code VALUES(31,'00','Does Not Apply','Does Not Apply','Does Not Apply');
     INSERT INTO dp_class_code VALUES(32,'01','Livestock - basic only','Scheduled Farm Personal Property','Coverage Code 16');
     INSERT INTO dp_class_code VALUES(33,'02','Equipment and machinery','Scheduled Farm Personal Property','Coverage Code 16');
     INSERT INTO dp_class_code VALUES(34,'03','Poultry','Scheduled Farm Personal Property','Coverage Code 16');

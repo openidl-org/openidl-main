@@ -19,7 +19,6 @@ fileLines.push(tableDDL)
 
 let index = 1
 for (let row of codeMap){
-    //console.log(`abv ${row.abv}`);
     line = `    INSERT INTO state_code VALUES(${index},'${row.abv}','${row.code}');`
     fileLines.push(line)
     index+=1

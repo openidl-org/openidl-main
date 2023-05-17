@@ -16,7 +16,7 @@ SELECT 	a.id				openidl_id,
 		a.comp				company_code,
 		b.id 				fk_state_code_id,
 		a.county			county,
-		c.id				fk_area_indiactor__code_id,
+		c.id				fk_area_indicator_code_id,
 		a.territory 		territory_code,
 		d.id 				fk_transaction_code_id,
 		a.prem_amt			premium_amount,
@@ -66,7 +66,7 @@ SELECT 	a.id				openidl_id,
 		a.co_use			company_use,
 		aa.id				fk_small_premium_indicator_code_id,
 		ab.id				fk_limited_coding_loss_transaction_code_id	
-
+		
 FROM openidl_base_9999.ho_stat_stg a
 	LEFT JOIN state_code b 
 		ON a.state = b.code
@@ -85,25 +85,26 @@ FROM openidl_base_9999.ho_stat_stg a
 	LEFT JOIN ho_deductible_type_code i
 		ON a.ded_type = i.code
 	LEFT JOIN ho_deductible_amount_code j
-		ON a.ded_amt = j.code
+		ON a.ded_amt = j.code	
 	LEFT JOIN ho_windstorm_or_hail_deductible_code k
 		ON a.wind_ded = k.code
 	LEFT JOIN ho_class_code l 
 		ON a.class_code = l.code
 	LEFT JOIN ho_construction_code m
-		ON a.construction = m.code
+		ON a.construction = m.code	
 	LEFT JOIN ho_fire_protection_code n 
-		ON a.fire_prot = n.code
+		ON a.fire_prot = n.code	
 	LEFT JOIN ho_escaped_liquid_fuel_coverage_property_code o
 		ON a.elf_prop = o.code
 	LEFT JOIN ho_escaped_liquid_fuel_and_lead_coverage_liability_code p
-		ON a.elf_liab = P.code 
+		ON a.elf_liab = p.code 
 	LEFT JOIN ho_occupancy_codes_code q
 		ON a.occupancy = q.code
 	LEFT JOIN ho_home_based_business_indicator_code r
 		ON a.hbb_ind = r.code
 	LEFT JOIN ho_number_of_families_code s
 		ON a.num_fam = s.code
+			AND s.policy_form_code = g.code
 	LEFT JOIN ho_ordinance_or_law_coverage_code t
 		ON a.ord_law = t.code
 	LEFT JOIN ho_theft_deductible_amount_code u 
@@ -119,6 +120,6 @@ FROM openidl_base_9999.ho_stat_stg a
 	LEFT JOIN ho_building_effectiveness_grade_code z
 		ON a.bceg = z.code	
 	LEFT JOIN ho_small_premium_indicator_code aa 
-		ON a.sm_prem_ind = aa.code
+		ON a.sm_prem_ind = aa.code		
 	LEFT JOIN ho_limited_coding_loss_transaction_code ab 
-		ON a.res125 = ab.code;
+		ON a.res125 = ab.code;	

@@ -1,11 +1,11 @@
 fs = require('fs');
 
-let codeMap = require('../codes/ho_deductibleAmountCodes.json');
+let codeMap = require('../codes/mho_deductibleAmountCodes.json');
 let fileLines = [];
 let tableDDL = `
 DO $$ 
 BEGIN
-CREATE TABLE IF NOT EXISTS ho_deductible_amount_code (
+CREATE TABLE IF NOT EXISTS mho_deductible_amount_code (
     id INT,
     code VARCHAR,
     description VARCHAR,
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS ho_deductible_amount_code (
     expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
-IF NOT EXISTS (SELECT * FROM ho_deductible_amount_code) THEN `
+IF NOT EXISTS (SELECT * FROM mho_deductible_amount_code) THEN `
 fileLines.push(tableDDL)
  
 let codes = Object.keys(codeMap)
@@ -23,7 +23,7 @@ for (let code of codes){
     let data = codeMap[code];
     let description = data['description'];
     let type = data['type'];
-    line = `    INSERT INTO ho_deductible_amount_code VALUES(${index},'${code}','${description}','${type}');`
+    line = `    INSERT INTO mho_deductible_amount_code VALUES(${index},'${code}','${description}','${type}');`
     fileLines.push(line)
     index+=1
 }
@@ -32,7 +32,7 @@ END $$;`
 
 fileLines.push(end)
 
-var file = fs.createWriteStream('../tables/V0.0.1.3.8__ho_deductible_amount_code.sql');
+var file = fs.createWriteStream('../tables/V0.0.1.4.7__mho_deductible_amount_code.sql');
 file.on('error', function(err) { /* error handling */ });
 fileLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();

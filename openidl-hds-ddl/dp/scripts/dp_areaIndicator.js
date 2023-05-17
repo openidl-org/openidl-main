@@ -19,7 +19,6 @@ fileLines.push(tableDDL);
 let codes = Object.keys(codeMap);
 let index = 1;
 for (let code of codes) {
-	//console.log(code)
 	line = `    INSERT INTO dp_area_indicator_code VALUES(${index},'${code}','${codeMap[code]}');`;
 	fileLines.push(line);
 	index += 1;
