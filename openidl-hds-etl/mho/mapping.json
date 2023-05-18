@@ -99,19 +99,14 @@
         "stageName": "CLASS_CODE",
         "dataType": "VARCHAR"
     },
-    "constructionCode": {
-        "inboundName": "constructionCode",
-        "stageName": "CONSTRUCTION",
-        "dataType": "VARCHAR"
-    },
     "fireProtectionCode": {
         "inboundName": "fireProtectionCode",
         "stageName": "FIRE_PROT",
         "dataType": "VARCHAR"
     },
-    "yearOfConstruction": {
-        "inboundName": "yearOfConstruction",
-        "stageName": "YR_CON",
+    "yearOfManufacture": {
+        "inboundName": "yearOfManufacture",
+        "stageName": "YR_MAN",
         "dataType": "VARCHAR"
     },
     "liabilityLimit": {
@@ -144,9 +139,9 @@
         "stageName": "HBB_IND",
         "dataType": "VARCHAR"
     },
-    "numberOfFamilies": {
-        "inboundName": "numberOfFamilies",
-        "stageName": "NUM_FAM",
+    "tieDown": {
+        "inboundName": "tieDown",
+        "stageName": "TIE_DOWN",
         "dataType": "VARCHAR"
     },
     "ordinanceOrLawCoverage": {
@@ -209,11 +204,6 @@
         "stageName": "ZIP_SUFF",
         "dataType": "VARCHAR"
     },
-    "buildingCodeEffectivenessGrade": {
-        "inboundName": "buildingCodeEffectivenessGrade",
-        "stageName": "BCEG",
-        "dataType": "VARCHAR"
-    },
     "stateExceptionA": {
         "inboundName": "stateExceptionA",
         "stageName": "ST_EXC_A",
@@ -222,11 +212,6 @@
     "stateExceptionB": {
         "inboundName": "stateExceptionB",
         "stageName": "ST_EXC_B",
-        "dataType": "VARCHAR"
-    },
-    "stateExceptionC": {
-        "inboundName": "stateExceptionC",
-        "stageName": "ST_EXC_C",
         "dataType": "VARCHAR"
     },
     "stateExceptionCode": {
@@ -252,11 +237,6 @@
     "companyUse": {
         "inboundName": "companyUse",
         "stageName": "CO_USE",
-        "dataType": "VARCHAR"
-    },
-    "smallPremiumIndicator": {
-        "inboundName": "smallPremiumIndicator",
-        "stageName": "SM_PREM_IND",
         "dataType": "VARCHAR"
     }
   }

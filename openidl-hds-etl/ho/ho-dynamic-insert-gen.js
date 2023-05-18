@@ -198,7 +198,7 @@ function makeQuery(record) {
 // 	return query;
 // }
 	//change table name HERE
-	let query = 'INSERT INTO openidl_base_9999.homeowners_policy (';
+	let query = 'INSERT INTO openidl_base_9999.ho_stat_stg (';
 
 	for (let column of goodColumns) {
 		//console.log(column);
