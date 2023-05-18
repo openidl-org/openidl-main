@@ -1,0 +1,54 @@
+{
+    "0": {
+        "rating": "None",
+        "description": "Does Not Apply"
+    },
+    "1": {
+        "rating": "Admissions",
+        "description": "Total number of persons admitted to the event(s) insured excluding insureds employees"
+    },
+    "2": {
+        "rating": "Area",
+        "description": "Square footage of floor space"
+    },
+    "3": {
+        "rating": "Frontage",
+        "description": "The number of linear feet of the premises bordering a street or public highway"
+    },
+    "4": {
+        "rating": "Payroll",
+        "description": "Entire payment by the insured for the services of the insureds employees"
+    },
+    "5": {
+        "rating": "Receipts",
+        "description": "Gross amount of money charged by the insured for the insureds operations or services rendered"
+    },
+    "6": {
+        "rating": "Sales",
+        "description": "Gross amount of money charged by the insured, concessionaires of the insured, or others trading under the insureds name for products sold or distributed"
+    },
+    "7": {
+        "rating": "Total cost",
+        "description": "Total cost to the insured for each specific project"
+    },
+    "8": {
+        "rating": "Units/Each",
+        "description": "Those exposure bases not mentioned above which are on a per unit or per item basis. (i.e. per acre, per teacher, per landing, per policy, per rental unit, each dwelling, each canoe, per each item at a flat charge, etc.)"
+    },
+    "9": {
+        "rating": "All other",
+        "description": "All those exposure bases as defined in the rating manual that are not listed above"
+    },
+    "F": {
+        "rating": "Tons",
+        "description": "Total number of tons of solid substance"
+    },
+    "G": {
+        "rating": "Gallons",
+        "description": "Total number of gallons of liquid substance. (i.e. oil, gasoline, kerosene, etc.)"
+    },
+    "H": {
+        "rating": "Total Assets",
+        "description": "Total dollar amount of all assets"
+    }
+}
