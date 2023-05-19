@@ -10,7 +10,9 @@ CREATE TABLE IF NOT EXISTS dp_class_code (
     code VARCHAR,
     name VARCHAR,
     type VARCHAR,
-    category_code VARCHAR
+    category_code VARCHAR,
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
 IF NOT EXISTS (SELECT * FROM dp_class_code) THEN `
@@ -22,7 +24,7 @@ for (let code of codes){
     let data = codeMap[code];
     let name = data['name'];
     let type = data['type'];
-    let categoryCode = data['code']
+    let categoryCode = data['categoryCode']
     line = `    INSERT INTO dp_class_code VALUES(${index},'${code}','${name}','${type}','${categoryCode}');`
     fileLines.push(line)
     index+=1

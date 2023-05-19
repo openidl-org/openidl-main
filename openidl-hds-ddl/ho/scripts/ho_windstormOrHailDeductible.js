@@ -14,27 +14,18 @@ CREATE TABLE IF NOT EXISTS ho_windstorm_or_hail_deductible_code (
     expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
-IF NOT EXISTS (SELECT * FROM ho_windstorm_or_hail_deductible_code) THEN `;
-fileLines.push(tableDDL);
-
-const flatCodes = codeMap.flat;
-const percentageCodes = codeMap.percentage;
+IF NOT EXISTS (SELECT * FROM ho_windstorm_or_hail_deductible_code) THEN `
+fileLines.push(tableDDL)
+ 
+let codes = Object.keys(codeMap)
 let index = 1
-
-// loops over flat fees
-for (let key in flatCodes){
-    let flatCode = flatCodes[key];
-    line = `    INSERT INTO ho_windstorm_or_hail_deductible_code VALUES(${index},'${flatCode.code}','${flatCode.description}','${flatCode.type}');`
+for (let code of codes){
+    let data = codeMap[code];
+    let description = data['description'];
+    let type = data['type'];
+    line = `    INSERT INTO ho_windstorm_or_hail_deductible_code VALUES(${index},'${code}','${description}','${type}');`
     fileLines.push(line)
     index+=1
-}
-
-// loops over percentage fees
-for (let key in percentageCodes){
-  let percentageCode = percentageCodes[key];
-  line = `    INSERT INTO ho_windstorm_or_hail_deductible_code VALUES(${index},'${percentageCode.code}','${percentageCode.description}','${percentageCode.type}');`
-  fileLines.push(line)
-  index+=1
 }
 let end = `END IF;
 END $$;`

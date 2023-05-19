@@ -19,7 +19,6 @@ fileLines.push(tableDDL);
 let codes = Object.keys(codeMap);
 let index = 1;
 for (let code of codes) {
-    // console.log('code: '+code)
     line = `    INSERT INTO mho_tie_down_code VALUES(${index},'${code}','${codeMap[code]}');`;
     fileLines.push(line);
     index+=1

@@ -1,0 +1,62 @@
+{
+    "53": {
+        "name": "Dog Bite",
+        "type": "Liability (BI, PD, Med-Pay)"
+    },
+    "54": {
+        "name": "Mold",
+        "type": "Liability (BI, PD, Med-Pay)"
+    },
+    "55": {
+        "name": "Swimming Pool",
+        "type": "Liability (BI, PD, Med-Pay)"
+    },
+    "56": {
+        "name": "Trampoline",
+        "type": "Liability (BI, PD, Med-Pay)"
+    },
+    "57": {
+        "name": "Escaped Liquid Fuel",
+        "type": "Pollution liability (BI, PD, Med-Pay)"
+    },
+    "58": {
+        "name": "Lead Poisoning",
+        "type": "Pollution liability (BI, PD, Med-Pay)"
+    },
+    "59": {
+        "name": "Pollution other than Escaped Liquid Fuel and Lead Poisoning",
+        "type": "Pollution liability (BI, PD, Med-Pay)"
+    },
+    "50": {
+        "name": "Products Liability",
+        "type": "Products Liability"
+    },
+    "52": {
+        "name": "Advertising Injury",
+        "type": "Advertising Injury"
+    },
+    "26": {
+        "name": "Bodily Injury",
+        "type": "Bodily Injury"
+    },
+    "28": {
+        "name": "Fire Legal",
+        "type": "Fire Legal"
+    },
+    "30": {
+        "name": "Medical Payments",
+        "type": "Medical Payments"
+    },
+    "51": {
+        "name": "Personal Injury",
+        "type": "Personal Injury"
+    },
+    "27": {
+        "name": "Property Damage",
+        "type": "Property Damage"
+    },
+    "29": {
+        "name": "All Other Liability",
+        "type": "All Other Liability"
+    }
+}

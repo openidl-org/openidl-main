@@ -1,4 +1,4 @@
-fs = require('fs');
+const fs = require('fs');
 
 let codeMap = require('../codes/ho_numberOfFamiliesCodes.json');
 let fileLines = [];
@@ -7,6 +7,7 @@ DO $$
 BEGIN
 CREATE TABLE IF NOT EXISTS ho_number_of_families_code (
     id INT,
+    policy_form_code VARCHAR,
     code VARCHAR,
     description VARCHAR,
     type VARCHAR,
@@ -17,32 +18,28 @@ CREATE TABLE IF NOT EXISTS ho_number_of_families_code (
 IF NOT EXISTS (SELECT * FROM ho_number_of_families_code) THEN `;
 fileLines.push(tableDDL);
 
-const setACodes = codeMap.setA;
-const setBCodes = codeMap.setB;
-let index = 1
+const policyFormCodes = codeMap.policyFormCodes;
+let index = 1;
 
-// loops over setA codes
-for (let key in setACodes){
-    let setACode = setACodes[key];
-    line = `    INSERT INTO ho_number_of_families_code VALUES(${index},'${setACode.code}','${setACode.description}','${setACode.type}','${setACode.category}');`
-    fileLines.push(line)
-    index+=1
+// Loop over each policy form code
+for (let policyFormCode in policyFormCodes) {
+  let policyFormSet = policyFormCodes[policyFormCode];
+  
+  // Loop over the codes within each policy form code set
+  for (let key in policyFormSet) {
+    let codeItem = policyFormSet[key];
+    line = `    INSERT INTO ho_number_of_families_code VALUES (${index}, '${policyFormCode}', '${codeItem.code}', '${codeItem.description}', '${codeItem.type}');`;
+    fileLines.push(line);
+    index += 1;
+  }
 }
 
-// loops over setB codes
-for (let key in setBCodes){
-  let setBCode = setBCodes[key];
-  line = `    INSERT INTO ho_number_of_families_code VALUES(${index},'${setBCode.code}','${setBCode.description}','${setBCode.type}','${setBCode.category}');`
-  fileLines.push(line)
-  index+=1
-}
 let end = `END IF;
-END $$;`
+END $$;`;
 
-fileLines.push(end)
+fileLines.push(end);
 
 var file = fs.createWriteStream('../tables/V0.0.1.3.17__ho_number_of_families_code.sql');
 file.on('error', function(err) { /* error handling */ });
 fileLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();
-

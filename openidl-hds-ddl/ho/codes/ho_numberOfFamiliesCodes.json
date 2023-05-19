@@ -1,84 +1,84 @@
 {
-  "setA": {
-    "0": {
-      "code": "0",
-      "description": "Does Not Apply",
-      "type": "Does Not Apply",
-      "category": "POLICY FORM CODES 01, 02, 03, 05, AND 08"
+  "policyFormCodes": {
+    "01": {
+      "0": {"policyFormCode": "01", "code": "0", "description": "Does Not Apply", "type": "Does Not Apply"},
+      "1": {"policyFormCode": "01", "code": "1", "description": "One Family", "type": "Not a Townhouse"},
+      "2": {"policyFormCode": "01", "code": "2", "description": "Two Families", "type": "Not a Townhouse"},
+      "3": {"policyFormCode": "01", "code": "3", "description": "Three Families", "type": "Not a Townhouse"},
+      "4": {"policyFormCode": "01", "code": "4", "description": "Four Families", "type": "Not a Townhouse"},
+      "5": {"policyFormCode": "01", "code": "5", "description": "One Unit", "type": "Townhouse"},
+      "6": {"policyFormCode": "01", "code": "6", "description": "Two Units", "type": "Townhouse"},
+      "7": {"policyFormCode": "01", "code": "7", "description": "Three/Four Units", "type": "Townhouse"},
+      "8": {"policyFormCode": "01", "code": "8", "description": "Five through Eight Units", "type": "Townhouse"},
+      "9": {"policyFormCode": "01", "code": "9", "description": "Nine or More Units", "type": "Townhouse"}
     },
-    "1": {
-      "code": "1",
-      "description": "One Family",
-      "type": "Not a Townhouse or Row House",
-      "category": "POLICY FORM CODES 01, 02, 03, 05, AND 08"
+    "02": {
+      "0": {"policyFormCode": "02", "code": "0", "description": "Does Not Apply", "type": "Does Not Apply"},
+      "1": {"policyFormCode": "02", "code": "1", "description": "One Family", "type": "Not a Townhouse"},
+      "2": {"policyFormCode": "02", "code": "2", "description": "Two Families", "type": "Not a Townhouse"},
+      "3": {"policyFormCode": "02", "code": "3", "description": "Three Families", "type": "Not a Townhouse"},
+      "4": {"policyFormCode": "02", "code": "4", "description": "Four Families", "type": "Not a Townhouse"},
+      "5": {"policyFormCode": "02", "code": "5", "description": "One Unit", "type": "Townhouse"},
+      "6": {"policyFormCode": "02", "code": "6", "description": "Two Units", "type": "Townhouse"},
+      "7": {"policyFormCode": "02", "code": "7", "description": "Three/Four Units", "type": "Townhouse"},
+      "8": {"policyFormCode": "02", "code": "8", "description": "Five through Eight Units", "type": "Townhouse"},
+      "9": {"policyFormCode": "02", "code": "9", "description": "Nine or More Units", "type": "Townhouse"}
     },
-    "2": {
-      "code": "2",
-      "description": "Two Families",
-      "type": "Not a Townhouse or Row House",
-      "category": "POLICY FORM CODES 01, 02, 03, 05, AND 08"
+    "03": {
+      "0": {"policyFormCode": "03", "code": "0", "description": "Does Not Apply", "type": "Does Not Apply"},
+      "1": {"policyFormCode": "03", "code": "1", "description": "One Family", "type": "Not a Townhouse"},
+      "2": {"policyFormCode": "03", "code": "2", "description": "Two Families", "type": "Not a Townhouse"},
+      "3": {"policyFormCode": "03", "code": "3", "description": "Three Families", "type": "Not a Townhouse"},
+      "4": {"policyFormCode": "03", "code": "4", "description": "Four Families", "type": "Not a Townhouse"},
+      "5": {"policyFormCode": "03", "code": "5", "description": "One Unit", "type": "Townhouse"},
+      "6": {"policyFormCode": "03", "code": "6", "description": "Two Units", "type": "Townhouse"},
+      "7": {"policyFormCode": "03", "code": "7", "description": "Three/Four Units", "type": "Townhouse"},
+      "8": {"policyFormCode": "03", "code": "8", "description": "Five through Eight Units", "type": "Townhouse"},
+      "9": {"policyFormCode": "03", "code": "9", "description": "Nine or More Units", "type": "Townhouse"}
     },
-    "3": {
-      "code": "3",
-      "description": "Three Families",
-      "type": "Not a Townhouse or Row House",
-      "category": "POLICY FORM CODES 01, 02, 03, 05, AND 08"
+    "05": {
+      "0": {"policyFormCode": "05", "code": "0", "description": "Does Not Apply", "type": "Does Not Apply"},
+      "1": {"policyFormCode": "05", "code": "1", "description": "One Family", "type": "Not a Townhouse"},
+      "2": {"policyFormCode": "05", "code": "2", "description": "Two Families", "type": "Not a Townhouse"},
+      "3": {"policyFormCode": "05", "code": "3", "description": "Three Families", "type": "Not a Townhouse"},
+      "4": {"policyFormCode": "05", "code": "4", "description": "Four Families", "type": "Not a Townhouse"},
+      "5": {"policyFormCode": "05", "code": "5", "description": "One Unit", "type": "Townhouse"},
+      "6": {"policyFormCode": "05", "code": "6", "description": "Two Units", "type": "Townhouse"},
+      "7": {"policyFormCode": "05", "code": "7", "description": "Three/Four Units", "type": "Townhouse"},
+      "8": {"policyFormCode": "05", "code": "8", "description": "Five through Eight Units", "type": "Townhouse"},
+      "9": {"policyFormCode": "05", "code": "9", "description": "Nine or More Units", "type": "Townhouse"}
     },
-    "4": {
-      "code": "4",
-      "description": "Four Families",
-      "type": "Not a Townhouse or Row House",
-      "category": "POLICY FORM CODES 01, 02, 03, 05, AND 08"
+    "08": {
+      "0": {"policyFormCode": "08", "code": "0", "description": "Does Not Apply", "type": "Does Not Apply"},
+      "1": {"policyFormCode": "08", "code": "1", "description": "One Family", "type": "Not a Townhouse"},
+      "2": {"policyFormCode": "08", "code": "2", "description": "Two Families", "type": "Not a Townhouse"},
+      "3": {"policyFormCode": "08", "code": "3", "description": "Three Families", "type": "Not a Townhouse"},
+      "4": {"policyFormCode": "08", "code": "4", "description": "Four Families", "type": "Not a Townhouse"},
+      "5": {"policyFormCode": "08", "code": "5", "description": "One Unit", "type": "Townhouse"},
+      "6": {"policyFormCode": "08", "code": "6", "description": "Two Units", "type": "Townhouse"},
+      "7": {"policyFormCode": "08", "code": "7", "description": "Three/Four Units", "type": "Townhouse"},
+      "8": {"policyFormCode": "08", "code": "8", "description": "Five through Eight Units", "type": "Townhouse"},
+      "9": {"policyFormCode": "08", "code": "9", "description": "Nine or More Units", "type": "Townhouse"}
     },
-    "5": {
-      "code": "5",
-      "description": "One Unit",
-      "type": "Townhouse or Row House",
-      "category": "POLICY FORM CODES 01, 02, 03, 05, AND 08"
+    "04": {
+      "0": {"policyFormCode": "04", "code": "0", "description": "Does Not Apply", "type": "Does Not Apply"},
+      "1": {"policyFormCode": "04", "code": "1", "description": "One through Four Families", "type": "Number of Families"},
+      "2": {"policyFormCode": "04", "code": "2", "description": "Five or More Families", "type": "Number of Families"}
     },
-    "6": {
-      "code": "6",
-      "description": "Two Units",
-      "type": "Townhouse or Row House",
-      "category": "POLICY FORM CODES 01, 02, 03, 05, AND 08"
+    "06": {
+      "0": {"policyFormCode": "06", "code": "0", "description": "Does Not Apply", "type": "Does Not Apply"},
+      "1": {"policyFormCode": "06", "code": "1", "description": "One through Four Families", "type": "Number of Families"},
+      "2": {"policyFormCode": "06", "code": "2", "description": "Five or More Families", "type": "Number of Families"}
     },
-    "7": {
-      "code": "7",
-      "description": "Three or Four Units",
-      "type": "Townhouse or Row House",
-      "category": "POLICY FORM CODES 01, 02, 03, 05, AND 08"
+    "84": {
+      "0": {"policyFormCode": "84", "code": "0", "description": "Does Not Apply", "type": "Does Not Apply"},
+      "1": {"policyFormCode": "84", "code": "1", "description": "One through Four Families", "type": "Number of Families"},
+      "2": {"policyFormCode": "84", "code": "2", "description": "Five or More Families", "type": "Number of Families"}
     },
-    "8": {
-      "code": "8",
-      "description": "Five through Eight Units",
-      "type": "Townhouse or Row House",
-      "category": "POLICY FORM CODES 01, 02, 03, 05, AND 08"
-    },
-    "9": {
-      "code": "9",
-        "description": "Nine of More Units",
-        "type": "Townhouse or Row House",
-        "category": "POLICY FORM CODES 01, 02, 03, 05, AND 08"
-    }
-  },
-  "setB": {
-    "0": {
-      "code": "0",
-      "description": "Does Not Apply",
-      "type": "Does Not Apply",
-      "category": "POLICY FORM CODES 04, 06, 84, AND 86"
-    },
-    "1": {
-      "code": "1",
-      "description": "One through Four Families",
-      "type": "Number of Families",
-      "category": "POLICY FORM CODES 04, 06, 84, AND 86"
-    },
-    "2": {
-      "code": "2",
-      "description": "Five or More Families",
-      "type": "Number of Families",
-      "category": "POLICY FORM CODES 04, 06, 84, AND 86"
+    "86": {
+      "0": {"policyFormCode": "86", "code": "0", "description": "Does Not Apply", "type": "Does Not Apply"},
+      "1": {"policyFormCode": "86", "code": "1", "description": "One through Four Families", "type": "Number of Families"},
+      "2": {"policyFormCode": "86", "code": "2", "description": "Five or More Families", "type": "Number of Families"}
     }
   }
 }

@@ -8,7 +8,9 @@ BEGIN
 CREATE TABLE IF NOT EXISTS dp_area_indicator_code (
     id INT,
     code VARCHAR,
-    description VARCHAR
+    description VARCHAR,
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
 IF NOT EXISTS (SELECT * FROM dp_area_indicator_code) THEN `;
@@ -17,7 +19,6 @@ fileLines.push(tableDDL);
 let codes = Object.keys(codeMap);
 let index = 1;
 for (let code of codes) {
-	//console.log(code)
 	line = `    INSERT INTO dp_area_indicator_code VALUES(${index},'${code}','${codeMap[code]}');`;
 	fileLines.push(line);
 	index += 1;
