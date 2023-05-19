@@ -6,7 +6,9 @@ CREATE TABLE IF NOT EXISTS mho_fire_protection_code (
     code VARCHAR,
     name VARCHAR,
     type VARCHAR,
-    category VARCHAR
+    category VARCHAR,
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
 IF NOT EXISTS (SELECT * FROM mho_fire_protection_code) THEN 
@@ -26,7 +28,7 @@ IF NOT EXISTS (SELECT * FROM mho_fire_protection_code) THEN
     INSERT INTO mho_fire_protection_code VALUES(14,'79','9S - North Carolina Only','Special Fire Protection Class Categories','Fire Protection');
     INSERT INTO mho_fire_protection_code VALUES(15,'80','8A - Washington Only','Special Fire Protection Class Categories','Fire Protection');
     INSERT INTO mho_fire_protection_code VALUES(16,'99','New York City - New York Only','Special Fire Protection Class Categories','Fire Protection');
-    INSERT INTO mho_fire_protection_code VALUES(17,'00','Does Not Apply','N/A','Fire Protection');
+    INSERT INTO mho_fire_protection_code VALUES(17,'00','Does Not Apply','Does Not Apply','Fire Protection');
     INSERT INTO mho_fire_protection_code VALUES(18,'01','1','Fire Protection Grading System','Fire Protection');
     INSERT INTO mho_fire_protection_code VALUES(19,'02','2','Fire Protection Grading System','Fire Protection');
     INSERT INTO mho_fire_protection_code VALUES(20,'03','3','Fire Protection Grading System','Fire Protection');
