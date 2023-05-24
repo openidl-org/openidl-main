@@ -16,7 +16,7 @@ IF NOT EXISTS (SELECT * FROM dp_major_peril_code) THEN
     INSERT INTO dp_major_peril_code VALUES(1,'20','Fire Perils','Separate Premium Calculations','FIRE','DIVISIBLE PREMIUMS');
     INSERT INTO dp_major_peril_code VALUES(2,'25','Extended coverage excluding vandalism','Separate Premium Calculations','EC W/O VANDALISM','DIVISIBLE PREMIUMS');
     INSERT INTO dp_major_peril_code VALUES(3,'26','Extended coverage including vandalism','Separate Premium Calculations','EC W/ VANDALISM','DIVISIBLE PREMIUMS');
-    INSERT INTO dp_major_peril_code VALUES(4,'28','Extended coverage, vandalism, and broad form perils','Separate Premium Calculations','EC, VANDALISM, AND BROAD','');
+    INSERT INTO dp_major_peril_code VALUES(4,'28','Extended coverage, vandalism, and broad form perils','Separate Premium Calculations','EC, VANDALISM, AND BROAD','DIVISIBLE PREMIUMS');
     INSERT INTO dp_major_peril_code VALUES(5,'29','Extended coverage, vandalism, and special form perils with theft','Separate Premium Calculations','EC, VANDALISM, AND SPECIAL','DIVISIBLE PREMIUMS');
     INSERT INTO dp_major_peril_code VALUES(6,'30','Extended coverage, vandalism, and special form perils without theft','Separate Premium Calculations','EC, VANDALISM, AND SPECIAL','DIVISIBLE PREMIUMS');
     INSERT INTO dp_major_peril_code VALUES(7,'31','Broad form perils','Separate Premium Calculations','BROAD W/O FIRE AND EC','DIVISIBLE PREMIUMS');

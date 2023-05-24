@@ -1,0 +1,22 @@
+{
+    "0": {
+        "name": "Does Not Apply",
+        "type": "Does Not Apply"
+    },
+    "3": {
+        "name": "Non-Seasonal",
+        "type": "Owner Occupied"
+    }, 
+    "4": {
+        "name": "Seasonal",
+        "type": "Owner Occupied"
+    },
+    "5": {
+        "name": "Non-Seasonal",
+        "type": "Non-Owner Occupied"
+    }, 
+    "6": {
+        "name": "Seasonal",
+        "type": "Non-Owner Occupied"
+    }
+}
