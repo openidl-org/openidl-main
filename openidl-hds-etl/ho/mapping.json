@@ -24,6 +24,16 @@
         "stageName": "STATE",
         "dataType": "VARCHAR"
     },
+    "countyCode": {
+        "inboundName": "countyCode",
+        "stageName": "COUNTY",
+        "dataType": "VARCHAR"
+    },
+    "areaIndicator": {
+        "inboundName": "areaIndicator",
+        "stageName": "AREA",
+        "dataType": "VARCHAR"
+    },
     "territoryCode": {
         "inboundName": "territory",
         "stageName": "TERRITORY",
