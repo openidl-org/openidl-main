@@ -41,7 +41,7 @@ IF NOT EXISTS (SELECT * FROM dp_deductible_amount_code) THEN
     INSERT INTO dp_deductible_amount_code VALUES(28,'75','$50,000','Flat');
     INSERT INTO dp_deductible_amount_code VALUES(29,'79','$75,000','Flat');
     INSERT INTO dp_deductible_amount_code VALUES(30,'99','Over 75,000 / Over 35%','Flat and Percentage');
-    INSERT INTO dp_deductible_amount_code VALUES(31,'00','Does Not Apply','Flat and Percentage');
+    INSERT INTO dp_deductible_amount_code VALUES(31,'00','Does Not Apply','Does Not Apply');
     INSERT INTO dp_deductible_amount_code VALUES(32,'01','1%','Percentage');
     INSERT INTO dp_deductible_amount_code VALUES(33,'02','2%','Percentage');
     INSERT INTO dp_deductible_amount_code VALUES(34,'03','3%','Percentage');

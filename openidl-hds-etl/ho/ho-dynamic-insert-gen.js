@@ -2,7 +2,7 @@ const config = require('../../openidl-hds-etl/config/config.json');
 const fs = require('fs');
 //const { Pool, Client } = require('pg');
 const records =
-	require('../../../../con-data/Homeowners/homeowner.json').records;
+	require('../../../../con-data/Homeowners/Homeowners_50_PC_json.json').records;
 const credentials = {
 	user: config.db.username,
 	host: config.db.host,
@@ -165,40 +165,9 @@ function makeQuery(record) {
 		}
 	}
 
-// 	let query = 'INSERT INTO openidl_base_9999.homeowners_policy (';
 
-// 	for (let column of goodColumns) {
-// 		//console.log(column);
-// 		query += column.stageName + ', ';
-// 	}
-// 	query = query.slice(0, -2) + ') values( ';
-// 	for (let value of goodColumns) {
-// 		if (value.dataType == 'VARCHAR') {
-// 			query += `'${value.data}', `;
-// 		}
-// 		if (value.dataType == 'NUMERIC') {
-// 			lclValue = ASCIItoREALFloat(value.data);
-
-// 			query += `${lclValue}, `;
-// 		}
-// 		if (value.dataType == 'INT') {
-// 			lclValue = ASCIItoREALInt(value.data);
-
-// 			query += `${lclValue}, `;
-// 		}
-// 		if (value.dataType == 'DECIMAL') {
-// 			lclValue = Number(value.data).toFixed(2);
-
-// 			query += `${lclValue}, `;
-// 		}
-// 	}
-// 	query = query.slice(0, -2) + ');';
-
-// 	console.log(query);
-// 	return query;
-// }
 	//change table name HERE
-	let query = 'INSERT INTO openidl_base_9999.ho_stat_stg (';
+	let query = 'INSERT INTO openidl_base_9998.ho_50_pol_clm (';
 
 	for (let column of goodColumns) {
 		//console.log(column);

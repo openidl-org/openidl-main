@@ -165,38 +165,7 @@ function makeQuery(record) {
 		}
 	}
 
-// 	let query = 'INSERT INTO openidl_base_9999.homeowners_policy (';
 
-// 	for (let column of goodColumns) {
-// 		//console.log(column);
-// 		query += column.stageName + ', ';
-// 	}
-// 	query = query.slice(0, -2) + ') values( ';
-// 	for (let value of goodColumns) {
-// 		if (value.dataType == 'VARCHAR') {
-// 			query += `'${value.data}', `;
-// 		}
-// 		if (value.dataType == 'NUMERIC') {
-// 			lclValue = ASCIItoREALFloat(value.data);
-
-// 			query += `${lclValue}, `;
-// 		}
-// 		if (value.dataType == 'INT') {
-// 			lclValue = ASCIItoREALInt(value.data);
-
-// 			query += `${lclValue}, `;
-// 		}
-// 		if (value.dataType == 'DECIMAL') {
-// 			lclValue = Number(value.data).toFixed(2);
-
-// 			query += `${lclValue}, `;
-// 		}
-// 	}
-// 	query = query.slice(0, -2) + ');';
-
-// 	console.log(query);
-// 	return query;
-// }
 	//change table name HERE
 	let query = 'INSERT INTO openidl_base_9999.mho_stat_stg (';
 

@@ -2,181 +2,181 @@
     "20": {
         "type": "Fire Perils",
         "category": "Separate Premium Calculations",
-        "majorPeril": "FIRE",
-        "majorPerilCategory": "DIVISIBLE PREMIUMS"
+        "majorPeril": "Fire",
+        "majorPerilCategory": "Divisible Premiums"
     },
     "25": {
         "type": "Extended coverage excluding vandalism",
         "category": "Separate Premium Calculations",
-        "majorPeril": "EC W/O VANDALISM",
-        "majorPerilCategory": "DIVISIBLE PREMIUMS"
+        "majorPeril": "EC w/o Vandalism",
+        "majorPerilCategory": "Divisible Premiums"
     },
     "26": {
         "type": "Extended coverage including vandalism",
         "category": "Separate Premium Calculations",
-        "majorPeril": "EC W/ VANDALISM",
-        "majorPerilCategory": "DIVISIBLE PREMIUMS"
+        "majorPeril": "EC w/ Vandalism",
+        "majorPerilCategory": "Divisible Premiums"
     },
     "28": {
         "type": "Extended coverage, vandalism, and broad form perils",
         "category": "Separate Premium Calculations",
-        "majorPeril": "EC, VANDALISM, AND BROAD",
-        "majorPerilCategory": "DIVISIBLE PREMIUMS"
+        "majorPeril": "EC, Vandalism, and Broad",
+        "majorPerilCategory": "Divisible Premiums"
     },
     "29": {
         "type": "Extended coverage, vandalism, and special form perils with theft",
         "category": "Separate Premium Calculations",
-        "majorPeril": "EC, VANDALISM, AND SPECIAL",
-        "majorPerilCategory": "DIVISIBLE PREMIUMS"
+        "majorPeril": "EC, Vandalism, and Special",
+        "majorPerilCategory": "Divisible Premiums"
     },
     "30": {
         "type": "Extended coverage, vandalism, and special form perils without theft",
         "category": "Separate Premium Calculations",
-        "majorPeril": "EC, VANDALISM, AND SPECIAL",
-        "majorPerilCategory": "DIVISIBLE PREMIUMS"
+        "majorPeril": "EC, Vandalism, and Special",
+        "majorPerilCategory": "Divisible Premiums"
     },
     "31": {
         "type": "Broad form perils",
         "category": "Separate Premium Calculations",
-        "majorPeril": "BROAD W/O FIRE AND EC",
-        "majorPerilCategory": "DIVISIBLE PREMIUMS"
+        "majorPeril": "Broad w/o Fire and EC",
+        "majorPerilCategory": "Divisible Premiums"
     },
     "32": {
         "type": "Special form perils with theft",
         "category": "Separate Premium Calculations",
-        "majorPeril": "SPECIAL W/O FIRE AND EC",
-        "majorPerilCategory": "DIVISIBLE PREMIUMS"
+        "majorPeril": "Special w/o Fire and EC",
+        "majorPerilCategory": "Divisible Premiums"
     },
     "33": {
         "type": "Special form perils without theft",
         "category": "Separate Premium Calculations",
-        "majorPeril": "SPECIAL W/O FIRE AND EC",
-        "majorPerilCategory": "DIVISIBLE PREMIUMS"
+        "majorPeril": "Special w/o Fire and EC",
+        "majorPerilCategory": "Divisible Premiums"
     },
     "34": {
         "type": "Fire and extended coverage excluding vandalism",
         "category": "Indivisible Premium Calculations",
-        "majorPeril": "FIRE AND EC (NO VANDALISM)",
-        "majorPerilCategory": "INDIVISIBLE PREMIUMS"
+        "majorPeril": "Fire and EC (No Vandalism)",
+        "majorPerilCategory": "Indivisible Premiums"
     },
     "35": {
         "type": "Fire and extended coverage including vandalism",
         "category": "Indivisible Premium Calculations",
-        "majorPeril": "FIRE, EC, AND VANDALISM",
-        "majorPerilCategory": "INDIVISIBLE PREMIUMS"
+        "majorPeril": "Fire, EC, and Vandalism",
+        "majorPerilCategory": "Indivisible Premiums"
     },
     "36": {
         "type": "Fire, extended coverage, vandalism, and broad form perils",
         "category": "Indivisible Premium Calculations",
-        "majorPeril": "FIRE, EC, VANDALISM, BROAD",
-        "majorPerilCategory": "INDIVISIBLE PREMIUMS"
+        "majorPeril": "Fire, EC, Vandalism, Broad",
+        "majorPerilCategory": "Indivisible Premiums"
     },
     "37": {
         "type": "Fire, extended coverage, vandalism, and special form perils with theft",
         "category": "Indivisible Premium Calculations",
-        "majorPeril": "FIRE, EC, VANDALISM, SPECIAL",
-        "majorPerilCategory": "INDIVISIBLE PREMIUMS"
+        "majorPeril": "Fire, EC, Vandalism, Special",
+        "majorPerilCategory": "Indivisible Premiums"
     },
     "38": {
         "type": "Fire, extended coverage, vandalism, and special form perils without theft",
         "category": "Indivisible Premium Calculations",
-        "majorPeril": "FIRE, EC, VANDALISM, SPECIAL",
-        "majorPerilCategory": "INDIVISIBLE PREMIUMS"
+        "majorPeril": "Fire, EC, Vandalism, Special",
+        "majorPerilCategory": "Indivisible Premiums"
     },
     "61": {
         "type": "Earthquake coverage for the dwelling (including farm dwellings) and related contents",
         "category": "Premium Bearing Endorsements",
-        "majorPeril": "EARTHQUAKE",
-        "majorPerilCategory": "ENDORSEMENTS"
+        "majorPeril": "Earthquake",
+        "majorPerilCategory": "Endorsements"
     },
     "71": {
         "type": "Earthquake coverage for the farm property",
         "category": "Premium Bearing Endorsements",
-        "majorPeril": "EARTHQUAKE",
-        "majorPerilCategory": "ENDORSEMENTS"
+        "majorPeril": "Earthquake",
+        "majorPerilCategory": "Endorsements"
     },
     "62": {
         "type": "Water damage - Back up of sewers, drains, or sumps",
         "category": "Premium Bearing Endorsements",
-        "majorPeril": "WATER DAMAGE - SEWER BACKUP",
-        "majorPerilCategory": "ENDORSEMENTS"
+        "majorPeril": "Water Damage - Sewage Backup",
+        "majorPerilCategory": "Endorsements"
     },
     "63": {
         "type": "Motorized golf cart - physical damage coverage",
         "category": "Premium Bearing Endorsements",
-        "majorPeril": "ALL OTHER",
-        "majorPerilCategory": "ENDORSEMENTS"
+        "majorPeril": "All Other",
+        "majorPerilCategory": "Endorsements"
     },
     "64": {
         "type": "Identity fraud expense coverage",
         "category": "Premium Bearing Endorsements",
-        "majorPeril": "ALL OTHER",
-        "majorPerilCategory": "ENDORSEMENTS"
+        "majorPeril": "All Other",
+        "majorPerilCategory": "Endorsements"
     },
     "70": {
         "type": "Theft of dwelling contents",
         "category": "Premium Bearing Endorsements",
-        "majorPeril": "THEFT OF DWELLING CONTENTS",
-        "majorPerilCategory": "ENDORSEMENTS"
+        "majorPeril": "Theft of Dwelling Contents",
+        "majorPerilCategory": "Endorsements"
     },
     "75": {
         "type": "Equipment breakdown coverage",
         "category": "Premium Bearing Endorsements",
-        "majorPeril": "ALL OTHER",
-        "majorPerilCategory": "ENDORSEMENTS"
+        "majorPeril": "All Other",
+        "majorPerilCategory": "Endorsements"
     },
     "76": {
         "type": "Weight of ice, snow, and sleet on farm property",
         "category": "Premium Bearing Endorsements",
-        "majorPeril": "ALL OTHER",
-        "majorPerilCategory": "ENDORSEMENTS"
+        "majorPeril": "All Other",
+        "majorPerilCategory": "Endorsements"
     },
     "77": {
         "type": "Livestock perils options",
         "category": "Premium Bearing Endorsements",
-        "majorPeril": "ALL OTHER",
-        "majorPerilCategory": "ENDORSEMENTS"
+        "majorPeril": "All Other",
+        "majorPerilCategory": "Endorsements"
     },
     "80": {
         "type": "Resident of Assisted Living Facility",
         "category": "Premium Bearing Endorsements",
-        "majorPeril": "ALL OTHER",
-        "majorPerilCategory": "ENDORSEMENTS"
+        "majorPeril": "All Other",
+        "majorPerilCategory": "Endorsements"
     },
     "60": {
         "type": "All other premium bearing endorsements",
         "category": "Premium Bearing Endorsements",
-        "majorPeril": "ALL OTHER",
-        "majorPerilCategory": "ENDORSEMENTS"
+        "majorPeril": "All Other",
+        "majorPerilCategory": "Endorsements"
     },
     "90": {
         "type": "Certified acts of terrorism covered (coverage not excluded)",
         "category": "Terrorism Coverage",
-        "majorPeril": "TERRORISM COVERAGE",
-        "majorPerilCategory": "TERRORISM COVERAGE"
+        "majorPeril": "Terrorism Coverage",
+        "majorPerilCategory": "Terrorism Coverage"
     },
     "91": {
         "type": "Certified acts of terrorism excluded subject to Standard Fire Policy statutes when applicable, producing fire-only coverage for certified acts of terrorism",
         "category": "Terrorism Coverage",
-        "majorPeril": "TERRORISM COVERAGE",
-        "majorPerilCategory": "TERRORISM COVERAGE"
+        "majorPeril": "Terrorism Coverage",
+        "majorPerilCategory": "Terrorism Coverage"
     },
     "92": {
         "type": "Non-certified acts of terrorism covered (coverage not excluded)",
         "category": "Terrorism Coverage",
-        "majorPeril": "TERRORISM COVERAGE",
-        "majorPerilCategory": "TERRORISM COVERAGE"
+        "majorPeril": "Terrorism Coverage",
+        "majorPerilCategory": "Terrorism Coverage"
     },
     "93": {
         "type": "Non-certified acts of terrorism covered, except acts of terrorism arising out of nuclear, biological or chemical events",
         "category": "Terrorism Coverage",
-        "majorPeril": "TERRORISM COVERAGE",
-        "majorPerilCategory": "TERRORISM COVERAGE"
+        "majorPeril": "Terrorism Coverage",
+        "majorPerilCategory": "Terrorism Coverage"
     },
     "99": {
         "type": "Minimum Premium record subject to SECTION I, PART C, Rule 3.b",
         "category": "Other",
-        "majorPeril": "OTHER",
-        "majorPerilCategory": "OTHER"
+        "majorPeril": "Other",
+        "majorPerilCategory": "Other"
     }
 }
