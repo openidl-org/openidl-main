@@ -235,7 +235,7 @@
             "name": "coverageCode",
             "type": "string",
             "start": 41,
-            "length": "2",
+            "length": 2,
             "enum": [
                 "00",
                 "11",
