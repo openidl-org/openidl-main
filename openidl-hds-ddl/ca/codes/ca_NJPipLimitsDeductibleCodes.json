@@ -1,0 +1,255 @@
+{
+	"driverOnly": {
+		"01": {
+			"id": "01",
+			"code": "01",
+			"description": "Basic PIP coverage only - No added PIP coverage",
+			"type": "Driver Only"
+		},
+		"25": {
+			"id": "25",
+			"code": "25",
+			"description": "Basic PIP coverage - Medical expenses only",
+			"type": "Driver Only"
+		},
+		"26": {
+			"id": "26",
+			"code": "26",
+			"description": "PIP coverage for pedestrian only",
+			"type": "Driver Only"
+		}
+	},
+	"driverSpouse": {
+		"02": {
+			"id": "02",
+			"code": "02",
+			"description": "Basic PIP coverage with Option 1",
+            "type": "Named Insurance Including Spouse",
+            "category": "Named Insurance Including Spouse"
+		},
+		"03": {
+			"id": "03",
+			"code": "03",
+			"description": "Basic PIP coverage with Option 2",
+            "type": "Named Insurance Including Spouse"
+		},
+		"04": {
+			"id": "04",
+			"code": "04",
+			"description": "Basic PIP coverage with Option 3",
+            "type": "Named Insurance Including Spouse"
+		},
+		"05": {
+			"id": "05",
+			"code": "05",
+			"description": "Basic PIP coverage with Option 4",
+            "type": "Named Insurance Including Spouse"
+		},
+		"06": {
+			"id": "06",
+			"code": "06",
+			"description": "Basic PIP coverage with Option 5",
+            "type": "Named Insurance Including Spouse"
+		},
+		"10": {
+			"id": "10",
+			"code": "10",
+			"description": "Basic PIP coverage with Option 6",
+            "type": "Named Insurance Including Spouse"
+		},
+		"11": {
+			"id": "11",
+			"code": "11",
+			"description": "Basic PIP coverage with Option 7",
+            "type": "Named Insurance Including Spouse"
+		},
+		"12": {
+			"id": "12",
+			"code": "12",
+			"description": "Basic PIP coverage with Option 8",
+            "type": "Named Insurance Including Spouse"
+		},
+		"13": {
+			"id": "13",
+			"code": "13",
+			"description": "Basic PIP coverage with Option 9",
+            "type": "Named Insurance Including Spouse"
+		},
+		"14": {
+			"id": "14",
+			"code": "14",
+			"description": "Basic PIP coverage with Option 10",
+            "type": "Named Insurance Including Spouse"
+		},
+		"15": {
+			"id": "15",
+			"code": "15",
+			"description": "Basic PIP coverage with Option 11",
+            "type": "Named Insurance Including Spouse"
+		},
+		"16": {
+			"id": "16",
+			"code": "16",
+			"description": "Basic PIP coverage with Option 12",
+            "type": "Named Insurance Including Spouse"
+		},
+		"17": {
+			"id": "17",
+			"code": "17",
+			"description": "Basic PIP coverage with Option 13",
+            "type": "Named Insurance Including Spouse"
+		},
+		"18": {
+			"id": "18",
+			"code": "18",
+			"description": "Basic PIP coverage with Option 14",
+            "type": "Named Insurance Including Spouse"
+		},
+		"19": {
+			"id": "19",
+			"code": "19",
+			"description": "Basic PIP coverage with Option 15",
+            "type": "Named Insurance Including Spouse"
+		},
+		"20": {
+			"id": "20",
+			"code": "20",
+			"description": "Basic PIP coverage with Option 16",
+            "type": "Named Insurance Including Spouse"
+		},
+		"09": {
+            "id": "09",
+			"code": "09",
+			"description": "All Other",
+            "type": "Named Insurance Including Spouse"
+        },
+        "07": {
+            "id": "07",
+			"code": "07",
+			"description": "Three or more cars",
+            "type": "Named Insurance Including Spouse"
+        },
+        "08": {
+            "id": "08",
+			"code": "08",
+			"description": "Named insurance including spouse and resident relatives (if applicable) and other named insureds - Single or multi-car risks",
+            "type": "Named Insurance Including Spouse"
+        }
+    },
+    "driverRelatives": {
+		"30": {
+			"id": "30",
+			"code": "30",
+			"description": "Basic PIP coverage with Option 1",
+            "type": "Named Insured and One or More Resident Relatives"
+		},
+		"31": {
+			"id": "31",
+			"code": "31",
+			"description": "Basic PIP coverage with Option 2",
+            "type": "Named Insured and One or More Resident Relatives"
+		},
+		"32": {
+			"id": "32",
+			"code": "32",
+			"description": "Basic PIP coverage with Option 3",
+            "type": "Named Insured and One or More Resident Relatives"
+		},
+		"33": {
+			"id": "33",
+			"code": "33",
+			"description": "Basic PIP coverage with Option 4",
+            "type": "Named Insured and One or More Resident Relatives"
+		},
+		"34": {
+			"id": "34",
+			"code": "34",
+			"description": "Basic PIP coverage with Option 5",
+            "type": "Named Insured and One or More Resident Relatives"
+		},
+		"35": {
+			"id": "35",
+			"code": "35",
+			"description": "Basic PIP coverage with Option 6",
+            "type": "Named Insured and One or More Resident Relatives"
+		},
+		"36": {
+			"id": "36",
+			"code": "36",
+			"description": "Basic PIP coverage with Option 7",
+            "type": "Named Insured and One or More Resident Relatives"
+		},
+		"37": {
+			"id": "37",
+			"code": "37",
+			"description": "Basic PIP coverage with Option 8",
+            "type": "Named Insured and One or More Resident Relatives"
+		},
+		"38": {
+			"id": "38",
+			"code": "38",
+			"description": "Basic PIP coverage with Option 9",
+            "type": "Named Insured and One or More Resident Relatives"
+		},
+		"39": {
+			"id": "39",
+			"code": "39",
+			"description": "Basic PIP coverage with Option 10",
+            "type": "Named Insured and One or More Resident Relatives"
+		},
+		"40": {
+			"id": "40",
+			"code": "40",
+			"description": "Basic PIP coverage with Option 11",
+            "type": "Named Insured and One or More Resident Relatives"
+		},
+		"41": {
+			"id": "41",
+			"code": "41",
+			"description": "Basic PIP coverage with Option 12",
+            "type": "Named Insured and One or More Resident Relatives"
+		},
+		"42": {
+			"id": "42",
+			"code": "42",
+			"description": "Basic PIP coverage with Option 13",
+            "type": "Named Insured and One or More Resident Relatives"
+		},
+		"43": {
+			"id": "43",
+			"code": "43",
+			"description": "Basic PIP coverage with Option 14",
+            "type": "Named Insured and One or More Resident Relatives"
+		},
+		"44": {
+			"id": "44",
+			"code": "44",
+			"description": "Basic PIP coverage with Option 15",
+            "type": "Named Insured and One or More Resident Relatives"
+		},
+		"45": {
+			"id": "45",
+			"code": "45",
+			"description": "Basic PIP coverage with Option 16",
+            "type": "Named Insured and One or More Resident Relatives"
+		},
+        "09": {
+            "id": "09",
+			"code": "09",
+			"description": "All Other",
+            "type": "Named Insured and One or More Resident Relatives"
+        },
+        "07": {
+            "id": "07",
+			"code": "07",
+			"description": "Three or more cars",
+            "type": "Named Insured and One or More Resident Relatives"
+        },
+        "08": {
+            "id": "08",
+			"code": "08",
+			"description": "Named insurance including spouse and resident relatives (if applicable) and other named insureds - Single or multi-car risks",
+            "type": "Named Insured and One or More Resident Relatives"
+        }
+    }
+}

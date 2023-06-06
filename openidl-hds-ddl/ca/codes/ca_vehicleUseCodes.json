@@ -1,0 +1,74 @@
+{
+    "1": {
+        "use": "Work/School",
+        "commuteDistance": "Under 15 Miles",
+        "annualDistance": "Does Not Apply",
+        "operator": "Does Not Apply"
+    },
+    "2": {
+        "use": "Work/School",
+        "commuteDistance": "Over 15 Miles",
+        "annualDistance": "Does Not Apply",
+        "operator": "Does Not Apply"
+    },
+    "3": {
+        "use": "Pleasure",
+        "commuteDistance": "Does Not Apply",
+        "annualDistance": "Under 7500 Miles",
+        "operator": "Does Not Apply"
+    },
+    "4": {
+        "use": "Pleasure",
+        "commuteDistance": "Over 15 Miles",
+        "annualDistance": "Does Not Apply",
+        "operator": "Does Not Apply"
+    },
+    "5": {
+        "use": "Business",
+        "commuteDistance": "Does Not Apply",
+        "annualDistance": "Does Not Apply",
+        "operator": "No Youthful Operator"
+    },
+    "6": {
+        "use": "Business",
+        "commuteDistance": "Does Not Apply",
+        "annualDistance": "Does Not Apply",
+        "operator": "Youthful Operator"
+    },
+    "B": {
+        "use": "Business",
+        "commuteDistance": "Does Not Apply",
+        "annualDistance": "Does Not Apply",
+        "operator": "Operator Age Unspecified"
+    },
+    "7": {
+        "use": "Farm",
+        "commuteDistance": "Does Not Apply",
+        "annualDistance": "Does Not Apply",
+        "operator": "No Youthful Operator"
+    },
+    "8": {
+        "use": "Farm",
+        "commuteDistance": "Does Not Apply",
+        "annualDistance": "Does Not Apply",
+        "operator": "Youthful Operator"
+    },
+    "F": {
+        "use": "Farm",
+        "commuteDistance": "Does Not Apply",
+        "annualDistance": "Does Not Apply",
+        "operator": "Operator Age Unspecified"
+    },
+    "0": {
+        "use": "Not Applicable to Commercial Automobile policies",
+        "commuteDistance": "Does Not Apply",
+        "annualDistance": "Does Not Apply",
+        "operator": "Does Not Apply"
+    },
+    "9": {
+        "use": "Error!-showed up in data/does not exist in stat plan",
+        "commuteDistance": "Error!-showed up in data/does not exist in stat plan",
+        "annualDistance": "Error!-showed up in data/does not exist in stat plan",
+        "operator": "Error!-showed up in data/does not exist in stat plan"
+    }
+}

@@ -1,0 +1,47 @@
+{
+    "1": {
+        "maritalStatus": "Married",
+        "gender": "Male",
+        "principalSecondary": "Does Not Apply"
+    },
+    "2": {
+        "maritalStatus": "Single",
+        "gender": "Male",
+        "principalSecondary": "Principal"
+    },
+    "3": {
+        "maritalStatus": "Single",
+        "gender": "Male",
+        "principalSecondary": "Secondary"
+    },
+    "4": {
+        "maritalStatus": "Married",
+        "gender": "Female",
+        "principalSecondary": "Does Not Apply"
+    },
+    "5": {
+        "maritalStatus": "Single",
+        "gender": "Female",
+        "principalSecondary": "Principal"
+    },
+    "6": {
+        "maritalStatus": "Single",
+        "gender": "Female",
+        "principalSecondary": "Secondary"
+    },
+    "7": {
+        "maritalStatus": "Married",
+        "gender": "Does Not Apply",
+        "principalSecondary": "Does Not Apply"
+    },
+    "8": {
+        "maritalStatus": "Single",
+        "gender": "Does Not Apply",
+        "principalSecondary": "Does Not Apply"
+    },
+    "0": {
+        "maritalStatus": "Not Applicable to Commercial Automobile policies",
+        "gender": "Not Applicable to Commercial Automobile policies",
+        "principalSecondary": "Not Applicable to Commercial Automobile policies"
+    }
+}
