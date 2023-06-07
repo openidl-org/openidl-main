@@ -1,11 +1,11 @@
 fs = require('fs')
 
-let codeMap = require('../codes/pa_sexAndMaritalStatusCodes.json');
+let codeMap = require('../codes/ca_sexAndMaritalStatusCodes.json');
 let fileLines = []
 let tableDDL = `
 DO $$ 
 BEGIN
-CREATE TABLE IF NOT EXISTS pa_sex_and_marital_status_code (
+CREATE TABLE IF NOT EXISTS ca_sex_and_marital_status_code (
     id INT,
     code VARCHAR,
     marital_status VARCHAR,
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS pa_sex_and_marital_status_code (
     expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
-IF NOT EXISTS (SELECT * FROM pa_sex_and_marital_status_code) THEN `
+IF NOT EXISTS (SELECT * FROM ca_sex_and_marital_status_code) THEN `
 fileLines.push(tableDDL)
  
 let codes = Object.keys(codeMap)
@@ -29,7 +29,7 @@ for (let code of codes){
     //console.log(maritalStatus)
     //console.log(gender)
     //console.log(principalSecondary);
-    line = `    INSERT INTO pa_sex_and_marital_status_code VALUES(${index},'${code}','${maritalStatus}','${gender}','${principalSecondary}');`
+    line = `    INSERT INTO ca_sex_and_marital_status_code VALUES(${index},'${code}','${maritalStatus}','${gender}','${principalSecondary}');`
     fileLines.push(line)
     index+=1
 }
@@ -39,7 +39,7 @@ END $$;`
 fileLines.push(end)
 
 
-var file = fs.createWriteStream('../tables/V0.0.1.2.19__pa_sex_and_marital_status_code.sql');
+var file = fs.createWriteStream('../tables/V0.0.1.2.19__ca_sex_and_marital_status_code.sql');
 file.on('error', function(err) { /* error handling */ });
 fileLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();

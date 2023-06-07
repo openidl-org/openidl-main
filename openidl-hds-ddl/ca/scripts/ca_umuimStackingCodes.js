@@ -1,11 +1,11 @@
 fs = require('fs');
 
-let codeMap = require('../codes/pa_umuimStackingCodes.json');
+let codeMap = require('../codes/ca_umuimStackingCodes.json');
 let fileLines = [];
 let tableDDL = `
 DO $$
 BEGIN
-CREATE TABLE IF NOT EXISTS pa_um_uim_stacking_code (
+CREATE TABLE IF NOT EXISTS ca_um_uim_stacking_code (
     id INT,
     code VARCHAR,
     description VARCHAR,
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS pa_um_uim_stacking_code (
     expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
-IF NOT EXISTS (SELECT * FROM pa_um_uim_stacking_code) THEN `;
+IF NOT EXISTS (SELECT * FROM ca_um_uim_stacking_code) THEN `;
 fileLines.push(tableDDL);
 
 let codes = Object.keys(codeMap);
@@ -21,7 +21,7 @@ let index = 1;
 for (let code of codes) {
     let description = codeMap[code]
     //console.log(description);
-    line = `    INSERT INTO pa_um_uim_stacking_code VALUES(${index},'${code}','${description}');`
+    line = `    INSERT INTO ca_um_uim_stacking_code VALUES(${index},'${code}','${description}');`
     fileLines.push(line)
     index+=1
 }
@@ -30,7 +30,7 @@ END $$`
 
 fileLines.push(end)
 
-var file = fs.createWriteStream('../tables/V0.0.1.2.15__pa_um_uim_stacking_code.sql');
+var file = fs.createWriteStream('../tables/V0.0.1.2.15__ca_um_uim_stacking_code.sql');
 file.on('error', function(err) { /* error handling */ });
 fileLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();

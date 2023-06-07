@@ -59,6 +59,21 @@
             "name": "All Other Property and Liability Coverages",
             "category": "All Other",
             "id": 12
+        },
+        "H": {
+            "name": "Certified acts of terrorism covered (coverage not excluded) - liability only",
+            "category": "Terrorism",
+            "id": 13
+        },
+        "W": {
+            "name": "Certified acts of terrorism covered (coverage not excluded) - physical damage only",
+            "category": "Terrorism",
+            "id": 14
+        },
+        "Z": {
+            "name": "Certified acts of terrorism covered (coverage not excluded) - liability and physical damage",
+            "category": "Terrorism",
+            "id": 15
         }
     },
     "AR": {

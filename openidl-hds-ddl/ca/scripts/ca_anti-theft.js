@@ -1,7 +1,7 @@
 fs = require('fs')
 
 let states = require('../codes/state.json').states
-let codeMap = require('../codes/pa_antiTheftDeviceDiscountCodes.json').state;
+let codeMap = require('../codes/ca_antiTheftDeviceDiscountCodes.json').state;
 
 
 
@@ -65,7 +65,7 @@ function buildNormal(normal) {
         
 		for (let code of Object.keys(multi)) {
             let description = codeMap['MU'][code]
-			line = `    INSERT INTO pa_anti_theft_device_discount_code VALUES(${id},${state.id},'${code}','${description}');`;
+			line = `    INSERT INTO ca_anti_theft_device_discount_code VALUES(${id},${state.id},'${code}','${description}');`;
 			tableLines.push(line)
             //console.log(line);
 			id += 1;
@@ -83,7 +83,7 @@ function buildSpecial(specials, id) {
 		for (let code of codeKeys) {
             let description = codeMap[special.abv][code]
             //console.log(description)
-			line = `    INSERT INTO pa_anti_theft_device_discount_code VALUES(${id},${special.id},'${code}','${description}');`;
+			line = `    INSERT INTO ca_anti_theft_device_discount_code VALUES(${id},${special.id},'${code}','${description}');`;
 			//console.log(line);
 			tableLines.push(line)
             id += 1;
@@ -94,7 +94,7 @@ function buildSpecial(specials, id) {
 let tableLines = []
 tableLines.push(`DO $$ 
 BEGIN
-CREATE TABLE IF NOT EXISTS pa_anti_theft_device_discount_code (
+CREATE TABLE IF NOT EXISTS ca_anti_theft_device_discount_code (
     id INT,
     fk_state_id INT,
     code VARCHAR,
@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS pa_anti_theft_device_discount_code (
     effective_date DATE NOT NULL DEFAULT '1900-01-01',
     expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
-IF NOT EXISTS (SELECT * FROM pa_anti_theft_device_discount_code) THEN
+IF NOT EXISTS (SELECT * FROM ca_anti_theft_device_discount_code) THEN
 `)
 
 let specialStates = getSpecialStates();
@@ -120,7 +120,7 @@ END $$
 //     console.log(line)
 // }
 
-var file = fs.createWriteStream('../tables/V0.0.1.1.4__pa_anti_theft_device_discount_code.sql');
+var file = fs.createWriteStream('../tables/V0.0.1.2.4__ca_anti_theft_device_discount_code.sql');
 file.on('error', function(err) { /* error handling */ });
 tableLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();

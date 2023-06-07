@@ -4,7 +4,7 @@ let fileLines = []
 let tableDDL = `
 DO $$ 
 BEGIN
-CREATE TABLE IF NOT EXISTS pa_stat_stg(
+CREATE TABLE IF NOT EXISTS ca_stat_stg(
     ID SERIAL,
     TRANSMITTAL_ID INT,
     CHANGE_COMMENTS VARCHAR(4000) DEFAULT NULL,
@@ -103,7 +103,7 @@ let end = `END $$;`
 fileLines.push(end)
 
 
-var file = fs.createWriteStream('../tables/V0.0.1.2.6__pa_stat_stg_tbl.sql');
+var file = fs.createWriteStream('../tables/V0.0.1.2.6__ca_stat_stg_tbl.sql');
 file.on('error', function(err) { /* error handling */ });
 fileLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();

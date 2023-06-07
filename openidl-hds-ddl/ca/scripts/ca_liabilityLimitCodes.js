@@ -1,6 +1,6 @@
 fs = require('fs')
 let states = require('../codes/state.json').states;
-let codeMap = require('../codes/pa_liabilityLimitCodes.json');
+let codeMap = require('../codes/ca_liabilityLimitCodes.json');
 
 function getSpecialStates() {
 	let specialStates = Object.keys(codeMap.state);
@@ -66,7 +66,7 @@ function buildNormal(normal) {
 			for (let liabilityCode of liabilityCodes) {
 				liabilityLimit = multi[coverageCode][liabilityCode];
 				
-				fileLines.push(`	INSERT INTO pa_liability_limit_code  VALUES (${id},${coverageId},${state.id},'${name}','${liabilityCode}','${liabilityLimit}');`)
+				fileLines.push(`	INSERT INTO ca_liability_limit_code  VALUES (${id},${coverageId},${state.id},'${name}','${liabilityCode}','${liabilityLimit}');`)
 				
 				id += 1;
 			}
@@ -93,7 +93,7 @@ function buildSpecial(specials, id) {
 			for (let liabilityCode of liabilityCodes) {
 				liabilityLimit = multi[coverageCode][liabilityCode];
 				
-				fileLines.push(`	INSERT INTO pa_liability_limit_code  VALUES (${id},${coverageId},${state.id},'${name}','${liabilityCode}','${liabilityLimit}');`)
+				fileLines.push(`	INSERT INTO ca_liability_limit_code  VALUES (${id},${coverageId},${state.id},'${name}','${liabilityCode}','${liabilityLimit}');`)
 				id += 1;
 			}
 		}
@@ -109,7 +109,7 @@ let fileLines = []
 let head = `DO $$
 BEGIN 
 
-CREATE TABLE IF NOT EXISTS pa_liability_limit_code (
+CREATE TABLE IF NOT EXISTS ca_liability_limit_code (
     id INT,
     fk_coverage_id int,
     fk_state_id int,
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS pa_liability_limit_code (
 	effective_date date not null default '1900-01-01',
     expiration_date date not null default '9999-12-31'
 );
-IF NOT EXISTS (SELECT * FROM pa_liability_limit_code) THEN
+IF NOT EXISTS (SELECT * FROM ca_liability_limit_code) THEN
 `;
 fileLines.push(head)
 
@@ -137,7 +137,7 @@ fileLines.push(end)
 // 	console.log(line)
 // }
 
-var file = fs.createWriteStream('../tables/V0.0.1.2.13__pa_liability_limit_code.sql');
+var file = fs.createWriteStream('../tables/V0.0.1.2.13__ca_liability_limit_code.sql');
 file.on('error', function(err) { /* error handling */ });
 fileLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();

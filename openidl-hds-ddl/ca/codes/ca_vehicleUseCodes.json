@@ -1,74 +1,50 @@
 {
     "1": {
         "use": "Work/School",
-        "commuteDistance": "Under 15 Miles",
-        "annualDistance": "Does Not Apply",
-        "operator": "Does Not Apply"
+        "description": "Under 15 Miles"
     },
     "2": {
         "use": "Work/School",
-        "commuteDistance": "Over 15 Miles",
-        "annualDistance": "Does Not Apply",
-        "operator": "Does Not Apply"
+        "description": "Over 15 Miles"
     },
     "3": {
         "use": "Pleasure",
-        "commuteDistance": "Does Not Apply",
-        "annualDistance": "Under 7500 Miles",
-        "operator": "Does Not Apply"
+        "description": "Under 7500 Miles"
     },
     "4": {
         "use": "Pleasure",
-        "commuteDistance": "Over 15 Miles",
-        "annualDistance": "Does Not Apply",
-        "operator": "Does Not Apply"
+        "description": "Over 7500 Miles"
     },
     "5": {
         "use": "Business",
-        "commuteDistance": "Does Not Apply",
-        "annualDistance": "Does Not Apply",
-        "operator": "No Youthful Operator"
+        "description": "No Youthful Operator"
     },
     "6": {
         "use": "Business",
-        "commuteDistance": "Does Not Apply",
-        "annualDistance": "Does Not Apply",
-        "operator": "Youthful Operator"
+        "description": "Youthful Operator"
     },
     "B": {
         "use": "Business",
-        "commuteDistance": "Does Not Apply",
-        "annualDistance": "Does Not Apply",
-        "operator": "Operator Age Unspecified"
+        "description": "Operator Age Unspecified"
     },
     "7": {
         "use": "Farm",
-        "commuteDistance": "Does Not Apply",
-        "annualDistance": "Does Not Apply",
-        "operator": "No Youthful Operator"
+        "description": "No Youthful Operator"
     },
     "8": {
         "use": "Farm",
-        "commuteDistance": "Does Not Apply",
-        "annualDistance": "Does Not Apply",
-        "operator": "Youthful Operator"
+        "description": "Youthful Operator"
     },
     "F": {
         "use": "Farm",
-        "commuteDistance": "Does Not Apply",
-        "annualDistance": "Does Not Apply",
-        "operator": "Operator Age Unspecified"
+        "description": "Operator Age Unspecified"
     },
     "0": {
         "use": "Not Applicable to Commercial Automobile policies",
-        "commuteDistance": "Does Not Apply",
-        "annualDistance": "Does Not Apply",
-        "operator": "Does Not Apply"
+        "description": "Does Not Apply"
     },
     "9": {
         "use": "Error!-showed up in data/does not exist in stat plan",
-        "commuteDistance": "Error!-showed up in data/does not exist in stat plan",
-        "annualDistance": "Error!-showed up in data/does not exist in stat plan",
-        "operator": "Error!-showed up in data/does not exist in stat plan"
+        "description": "Error!-showed up in data/does not exist in stat plan"
     }
 }

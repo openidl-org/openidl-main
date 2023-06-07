@@ -1,6 +1,6 @@
 let fs = require('fs')
 let states = require('../codes/state.json').states;
-let codeMap = require('../codes/pa_stateExceptionCodes.json').exceptionField;
+let codeMap = require('../codes/ca_stateExceptionCodes.json').exceptionField;
 
 fileLines = [];
 index = 1;
@@ -26,7 +26,7 @@ function exceptionA() {
 		//console.log(exceptionCodes)
 		for (let exceptionCode of exceptionCodes) {
 			description = exception['codes'][exceptionCode];
-			let line = `   INSERT INTO pa_state_exception_code VALUES (${index},1,${stateId},'${exceptionCode}','${name}','${description}');`;
+			let line = `   INSERT INTO ca_state_exception_code VALUES (${index},1,${stateId},'${exceptionCode}','${name}','${description}');`;
 			//console.log(line)
 			fileLines.push(line);
 			index += 1;
@@ -47,7 +47,7 @@ function exceptionB() {
 		//console.log(exceptionCodes)
 		for (let exceptionCode of exceptionCodes) {
 			description = exception['codes'][exceptionCode];
-			let line = `   INSERT INTO pa_state_exception_code VALUES (${index},2,${stateId},'${exceptionCode}','${name}','${description}');`;
+			let line = `   INSERT INTO ca_state_exception_code VALUES (${index},2,${stateId},'${exceptionCode}','${name}','${description}');`;
 			fileLines.push(line);
 			index += 1;
 		}
@@ -67,7 +67,7 @@ function exceptionC() {
 		// console.log(exceptionCodes)
 		for (let exceptionCode of exceptionCodes) {
 			description = exception['codes'][exceptionCode];
-			line = `   INSERT INTO pa_state_exception_code VALUES (${index},3,${stateId},'${exceptionCode}','${name}','${description}');`;
+			line = `   INSERT INTO ca_state_exception_code VALUES (${index},3,${stateId},'${exceptionCode}','${name}','${description}');`;
 			fileLines.push(line);
 			index += 1;
 		}
@@ -79,7 +79,7 @@ function exceptionCategory() {
 	let exceptions = Object.keys(codeMap);
 
 	for (let exception of exceptions) {
-		line = `   INSERT INTO pa_state_exception_category_code (id, name) values (${lclId},'${exception}');`;
+		line = `   INSERT INTO ca_state_exception_category_code (id, name) values (${lclId},'${exception}');`;
 		//console.log(line)
 		fileLines.push(line);
         lclId+=1
@@ -90,7 +90,7 @@ function buildPt1() {
 	fileLines.push(`DO $$
 BEGIN 
 
-CREATE TABLE IF NOT EXISTS pa_state_exception_category_code (
+CREATE TABLE IF NOT EXISTS ca_state_exception_category_code (
     id int,
     name VARCHAR,
     description VARCHAR,
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS pa_state_exception_category_code (
     expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
     
-CREATE TABLE IF NOT EXISTS pa_state_exception_code (
+CREATE TABLE IF NOT EXISTS ca_state_exception_code (
     id INT,
     fk_state_exception_category_id INT,
     fk_state_id INT,
@@ -109,13 +109,13 @@ CREATE TABLE IF NOT EXISTS pa_state_exception_code (
     expiration_date DATE NOT NULL DEFAULT '9999-12-31'
     );
     
-IF NOT EXISTS (SELECT * FROM pa_state_exception_category_code) THEN`);
+IF NOT EXISTS (SELECT * FROM ca_state_exception_category_code) THEN`);
 }
 
 function buildPT2() {
 	fileLines.push(`END IF;
 
-IF NOT EXISTS (SELECT * FROM pa_state_exception_code) THEN`);
+IF NOT EXISTS (SELECT * FROM ca_state_exception_code) THEN`);
 }
 
 function buildEnd() {
@@ -136,7 +136,7 @@ for (line of fileLines) {
 	//console.log(line);
 }
 
-var file = fs.createWriteStream('../tables/V0.0.1.2.17__pa_state_exception_code.sql');
+var file = fs.createWriteStream('../tables/V0.0.1.2.17__ca_state_exception_code.sql');
 file.on('error', function(err) { /* error handling */ });
 fileLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();

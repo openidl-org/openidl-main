@@ -1,11 +1,11 @@
 fs = require('fs')
 
-let codeMap = require('../codes/pa_singleMultiCarCodes.json');
+let codeMap = require('../codes/ca_singleMultiCarCodes.json');
 let fileLines = []
 let tableDDL = `
 DO $$ 
 BEGIN
-CREATE TABLE IF NOT EXISTS pa_single_multi_car_code (
+CREATE TABLE IF NOT EXISTS ca_single_multi_car_code (
     id INT,
     code VARCHAR,
     description VARCHAR,
@@ -13,14 +13,14 @@ CREATE TABLE IF NOT EXISTS pa_single_multi_car_code (
     expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
-IF NOT EXISTS (SELECT * FROM pa_single_multi_car_code) THEN `
+IF NOT EXISTS (SELECT * FROM ca_single_multi_car_code) THEN `
 fileLines.push(tableDDL)
  
 let codes = Object.keys(codeMap)
 let index = 1
 for (let code of codes){
     //console.log(code)
-    line = `    INSERT INTO pa_single_multi_car_code VALUES(${index},'${code}','${codeMap[code]}');`
+    line = `    INSERT INTO ca_single_multi_car_code VALUES(${index},'${code}','${codeMap[code]}');`
     fileLines.push(line)
     index+=1
 }
@@ -30,7 +30,7 @@ END $$;`
 fileLines.push(end)
 
 
-var file = fs.createWriteStream('../tables/V0.0.1.2.18__pa_single_multi_car_code.sql');
+var file = fs.createWriteStream('../tables/V0.0.1.2.18__ca_single_multi_car_code.sql');
 file.on('error', function(err) { /* error handling */ });
 fileLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();

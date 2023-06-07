@@ -50,7 +50,7 @@ END $$
 //     console.log(line)
 // }
 
-var file = fs.createWriteStream('../tables/V0.0.1.1.1__openidl_lob_code.sql');
+var file = fs.createWriteStream('../tables/V0.0.1.2.1__openidl_lob_code.sql');
 file.on('error', function(err) { /* error handling */ });
 tableLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();

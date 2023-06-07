@@ -1,7 +1,7 @@
 fs = require('fs')
 let states = require('../codes/state.json').states;
-let codeMap = require('../codes/pa_coverageCodes.json');
-let coverageCategoriesMap = require('../codes/pa_coverageCategory.json');
+let codeMap = require('../codes/ca_coverageCodes.json');
+let coverageCategoriesMap = require('../codes/ca_coverageCategory.json');
 let fileLines = [];
 
 function getSpecialStates() {
@@ -56,7 +56,7 @@ function buildNormal(normal) {
 	for (let state of normal) {
 		for (let item of Object.keys(multi)) {
 			coverageCode = item;
-			line = `	INSERT INTO pa_state_coverage_code VALUES(${id},${multi[item].id},${state.id});`;
+			line = `	INSERT INTO ca_state_coverage_code VALUES(${id},${multi[item].id},${state.id});`;
 			//console.log(line);
 			fileLines.push(line);
 			id += 1;
@@ -72,7 +72,7 @@ function buildSpecial(specials, id) {
 		codeKeys = Object.keys(codes);
 		for (key of codeKeys) {
 			coverageCode = key;
-			line = `	INSERT INTO pa_state_coverage_code VALUES(${id},${codes[key].id},${stateId});`;
+			line = `	INSERT INTO ca_state_coverage_code VALUES(${id},${codes[key].id},${stateId});`;
 			//console.log(line);
 			id += 1;
 			fileLines.push(line);
@@ -83,7 +83,7 @@ function buildSpecial(specials, id) {
 function buildCoverageCategory() {
 	let coverageCategories = Object.keys(coverageCategoriesMap);
 	for (let category in coverageCategoriesMap) {
-		let line = `	INSERT INTO pa_coverage_category (id, name) VALUES (${category},'${coverageCategoriesMap[category]}');`;
+		let line = `	INSERT INTO ca_coverage_category (id, name) VALUES (${category},'${coverageCategoriesMap[category]}');`;
 		//console.log(line)
 		fileLines.push(line);
 	}
@@ -94,7 +94,7 @@ function buildPt1() {
 DO $$ 
 BEGIN
 
-CREATE TABLE IF NOT EXISTS pa_coverage_category (
+CREATE TABLE IF NOT EXISTS ca_coverage_category (
     id INT,
     name VARCHAR,
     description VARCHAR,
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS pa_coverage_category (
 );
 
 
-CREATE TABLE IF NOT EXISTS pa_coverage_code (
+CREATE TABLE IF NOT EXISTS ca_coverage_code (
     id INT,
     code VARCHAR,
     name VARCHAR,
@@ -112,14 +112,14 @@ CREATE TABLE IF NOT EXISTS pa_coverage_code (
 );
 
 
-CREATE TABLE IF NOT EXISTS pa_state_coverage_code (
+CREATE TABLE IF NOT EXISTS ca_state_coverage_code (
     id INT,
     fk_coverage_code_id INT,
     fk_state_id INT
 );
 
 
-CREATE OR REPLACE VIEW pa_coverage_code_vw
+CREATE OR REPLACE VIEW ca_coverage_code_vw
 AS
   SELECT a.code        coverage_code,
          b.name        coverage_category,
@@ -127,26 +127,26 @@ AS
          a.id          coverage_id,
          a.fk_state_id state_id_specific,
          b.id          coverage_category_id
-  FROM   pa_coverage_code a,
-         pa_coverage_category b
+  FROM   ca_coverage_code a,
+         ca_coverage_category b
   WHERE  a.fk_coverage_category_id = b.id
   ORDER  BY a.id; 
 
-CREATE OR REPLACE VIEW pa_state_coverage_code_vw as (
+CREATE OR REPLACE VIEW ca_state_coverage_code_vw as (
     SELECT b.code coverage_code, b.id coverage_id, b.name coverage, c.abbreviation state, c.id fk_state_id
-        FROM pa_state_coverage_code a, pa_coverage_code b, state_code c
+        FROM ca_state_coverage_code a, ca_coverage_code b, state_code c
         WHERE a.fk_coverage_code_id = b.id 
         AND a.fk_state_id = c.id
         ORDER BY state,coverage_code
 );
 
-IF NOT EXISTS (SELECT * FROM pa_coverage_category) THEN`);
+IF NOT EXISTS (SELECT * FROM ca_coverage_category) THEN`);
 }
 
 function buildPt2() {
 	fileLines.push(`END IF;
 
-IF NOT EXISTS (select * from pa_coverage_code) THEN`);
+IF NOT EXISTS (select * from ca_coverage_code) THEN`);
 }
 
 function buildCoverageCode() {
@@ -155,19 +155,19 @@ function buildCoverageCode() {
 	let pa = codeMap['PA'];
 	id = 1;
 	for (let m in mu) {
-		line = `	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id) VALUES (${id},'${m}','${mu[m].name}',${mu[m].id});`;
+		line = `	INSERT INTO ca_coverage_code (id, code, name, fk_coverage_category_id) VALUES (${id},'${m}','${mu[m].name}',${mu[m].id});`;
 		fileLines.push(line);
 		//console.log(line)
 		id+=1
 	}
 	for (let a in ar) {
-		line = `	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (${id},'${a}','${ar[a].name}',${ar[a].id},3);`;
+		line = `	INSERT INTO ca_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (${id},'${a}','${ar[a].name}',${ar[a].id},3);`;
 		fileLines.push(line);
 		//console.log(line)
 		id+=1
 	}
 	for (let p in pa) {
-		line = `	INSERT INTO pa_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (${id},'${p}','${pa[p].name}',${pa[p].id},37);`;
+		line = `	INSERT INTO ca_coverage_code (id, code, name, fk_coverage_category_id,fk_state_id) VALUES (${id},'${p}','${pa[p].name}',${pa[p].id},37);`;
 		fileLines.push(line);
 		//console.log(line)
 		id+=1
@@ -176,7 +176,7 @@ function buildCoverageCode() {
 function buildPt3(){
 	fileLines.push(`END IF;
 
-IF NOT EXISTS (SELECT * FROM pa_state_coverage_code) THEN`)
+IF NOT EXISTS (SELECT * FROM ca_state_coverage_code) THEN`)
 }
 
 buildPt1();
@@ -196,7 +196,7 @@ for (let l of fileLines){
 	//console.log(l)
 }
 
-var file = fs.createWriteStream('../tables/V0.0.1.2.8__pa_coverage_code.sql');
+var file = fs.createWriteStream('../tables/V0.0.1.2.8__ca_coverage_code.sql');
 file.on('error', function(err) { /* error handling */ });
 fileLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();

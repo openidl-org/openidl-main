@@ -1,11 +1,11 @@
 fs = require('fs')
 
-let codeMap = require('../codes/pa_transactionCodes.json');
+let codeMap = require('../codes/ca_transactionCodes.json');
 let fileLines = []
 let tableDDL = `
 DO $$ 
 BEGIN
-CREATE TABLE IF NOT EXISTS pa_transaction_code (
+CREATE TABLE IF NOT EXISTS ca_transaction_code (
     id INT,
     code VARCHAR,
     name VARCHAR,
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS pa_transaction_code (
     expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
-IF NOT EXISTS (SELECT * FROM pa_transaction_code) THEN `
+IF NOT EXISTS (SELECT * FROM ca_transaction_code) THEN `
 fileLines.push(tableDDL)
  
 let codes = Object.keys(codeMap)
@@ -26,7 +26,7 @@ for (let code of codes){
     let type = data['type'];
     //console.log(name)
     //console.log(type)
-    line = `    INSERT INTO pa_transaction_code VALUES(${index},'${code}','${name}','${type}');`
+    line = `    INSERT INTO ca_transaction_code VALUES(${index},'${code}','${name}','${type}');`
     fileLines.push(line)
     index+=1
 }
@@ -36,7 +36,7 @@ END $$;`
 fileLines.push(end)
 
 
-var file = fs.createWriteStream('../tables/V0.0.1.2.5__pa_transaction_code.sql');
+var file = fs.createWriteStream('../tables/V0.0.1.2.5__ca_transaction_code.sql');
 file.on('error', function(err) { /* error handling */ });
 fileLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();
