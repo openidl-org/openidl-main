@@ -106,9 +106,9 @@ let fileLines = []
 
 
 
-let head = `DO $$
+let head = `
+DO $$
 BEGIN 
-
 CREATE TABLE IF NOT EXISTS ca_liability_limit_code (
     id INT,
     fk_coverage_id int,
@@ -119,8 +119,8 @@ CREATE TABLE IF NOT EXISTS ca_liability_limit_code (
 	effective_date date not null default '1900-01-01',
     expiration_date date not null default '9999-12-31'
 );
-IF NOT EXISTS (SELECT * FROM ca_liability_limit_code) THEN
-`;
+
+IF NOT EXISTS (SELECT * FROM ca_liability_limit_code) THEN`;
 fileLines.push(head)
 
 let specialStates = getSpecialStates();
@@ -129,7 +129,7 @@ id = buildNormal(normalStates);
 buildSpecial(specialStates, id);
 
 let end = `END IF;
-END $$`
+END $$;`
 
 fileLines.push(end)
 

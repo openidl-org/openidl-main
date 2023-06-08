@@ -92,7 +92,8 @@ function buildSpecial(specials, id) {
 }
 
 let tableLines = []
-tableLines.push(`DO $$ 
+tableLines.push(`
+DO $$ 
 BEGIN
 CREATE TABLE IF NOT EXISTS ca_anti_theft_device_discount_code (
     id INT,
@@ -102,19 +103,16 @@ CREATE TABLE IF NOT EXISTS ca_anti_theft_device_discount_code (
     effective_date DATE NOT NULL DEFAULT '1900-01-01',
     expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
-IF NOT EXISTS (SELECT * FROM ca_anti_theft_device_discount_code) THEN
-`)
+
+IF NOT EXISTS (SELECT * FROM ca_anti_theft_device_discount_code) THEN`)
 
 let specialStates = getSpecialStates();
 let normalStates = getNormalStates(specialStates);
 id = buildNormal(normalStates);
 buildSpecial(specialStates, id);
 
-tableLines.push(`
-END IF;
-
-END $$
-`)
+tableLines.push(`END IF;
+END $$;`)
 
 // for (let line of tableLines){
 //     console.log(line)

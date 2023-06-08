@@ -1,6 +1,6 @@
+
 DO $$
 BEGIN 
-
 CREATE TABLE IF NOT EXISTS ca_liability_limit_code (
     id INT,
     fk_coverage_id int,
@@ -11,8 +11,8 @@ CREATE TABLE IF NOT EXISTS ca_liability_limit_code (
 	effective_date date not null default '1900-01-01',
     expiration_date date not null default '9999-12-31'
 );
-IF NOT EXISTS (SELECT * FROM ca_liability_limit_code) THEN
 
+IF NOT EXISTS (SELECT * FROM ca_liability_limit_code) THEN
 	INSERT INTO ca_liability_limit_code  VALUES (1,1,1,'Limits','1','$25,000/50,000');
 	INSERT INTO ca_liability_limit_code  VALUES (2,1,1,'Limits','2','$50,000/100,000');
 	INSERT INTO ca_liability_limit_code  VALUES (3,1,1,'Limits','3','$100,000/300,000');
@@ -3307,4 +3307,4 @@ IF NOT EXISTS (SELECT * FROM ca_liability_limit_code) THEN
 	INSERT INTO ca_liability_limit_code  VALUES (3292,32,37,'Limits','6','$200,000');
 	INSERT INTO ca_liability_limit_code  VALUES (3293,32,37,'Limits','7','$277,500');
 END IF;
-END $$
+END $$;

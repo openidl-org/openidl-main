@@ -3,9 +3,9 @@ let codeMap = require('../codes/ca_causeOfLossCodes.json').coverage;
 fileLines = []
 //console.log(codeMap)
 
-fileLines.push(`DO $$
+fileLines.push(`
+DO $$
 BEGIN 
-
 CREATE TABLE IF NOT EXISTS ca_cause_of_loss_code (
     id INT,
     fk_coverage_code_id INT,
@@ -34,8 +34,7 @@ for (let coverageCode of lossCodes){
 }
 
 fileLines.push(`END IF;
-END $$
-`)
+END $$;`)
 
 var file = fs.createWriteStream('../tables/V0.0.1.2.9__ca_cause_of_loss_code.sql');
 file.on('error', function(err) { /* error handling */ });

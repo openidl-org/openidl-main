@@ -26,7 +26,7 @@ for (let code of codes) {
     index+=1
 }
 let end = `END IF;
-END $$`
+END $$;`
 
 fileLines.push(end)
 

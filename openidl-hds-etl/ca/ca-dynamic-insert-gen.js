@@ -2,7 +2,7 @@ const config = require('../config/config.json');
 const fs = require('fs');
 //const { Pool, Client } = require('pg');
 const records =
-	require('../../../../con-data/Commercial_Auto/Commercial_Auto_50_PC_json.json').records;
+	require('../../../../con-data/Commercial_Auto/commercialAuto.json').records;
 const credentials = {
 	user: config.db.username,
 	host: config.db.host,

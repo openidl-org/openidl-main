@@ -87,7 +87,8 @@ function exceptionCategory() {
 }
 
 function buildPt1() {
-	fileLines.push(`DO $$
+	fileLines.push(`
+DO $$
 BEGIN 
 
 CREATE TABLE IF NOT EXISTS ca_state_exception_category_code (
@@ -120,8 +121,7 @@ IF NOT EXISTS (SELECT * FROM ca_state_exception_code) THEN`);
 
 function buildEnd() {
 	fileLines.push(`END IF; 
-
-END $$`);
+END $$;`);
 }
 
 buildPt1();

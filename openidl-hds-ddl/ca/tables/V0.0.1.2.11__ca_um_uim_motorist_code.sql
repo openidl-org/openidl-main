@@ -1,7 +1,6 @@
+
 DO $$
-
 BEGIN 
-
 CREATE TABLE IF NOT EXISTS ca_um_uim_motorist_code(
 	id INT,
 	fk_state_id VARCHAR,
@@ -10,7 +9,6 @@ CREATE TABLE IF NOT EXISTS ca_um_uim_motorist_code(
     effective_date DATE NOT NULL DEFAULT '1900-01-01',
     expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
-
 
 IF NOT EXISTS (select * from ca_um_uim_motorist_code) THEN
 	INSERT INTO ca_um_uim_motorist_code VALUES (1,1,'1','Bodily Injury');
@@ -176,5 +174,4 @@ IF NOT EXISTS (select * from ca_um_uim_motorist_code) THEN
 	INSERT INTO ca_um_uim_motorist_code VALUES (161,37,'5','Property Damage — stacked multi-car UM/UIM limits');
 	INSERT INTO ca_um_uim_motorist_code VALUES (162,37,'6','Bodily Injury and Property Damage — stacked multi-car UM/UIM limits');
 END IF;
-
-END $$
+END $$;

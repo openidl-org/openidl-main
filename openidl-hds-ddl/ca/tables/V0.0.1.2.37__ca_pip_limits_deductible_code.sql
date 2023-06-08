@@ -1,3 +1,4 @@
+
 DO $$ 
 BEGIN
 CREATE TABLE IF NOT EXISTS ca_pip_limits_deductible_code (
@@ -8,8 +9,8 @@ CREATE TABLE IF NOT EXISTS ca_pip_limits_deductible_code (
     effective_date DATE NOT NULL DEFAULT '1900-01-01',
     expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
-IF NOT EXISTS (SELECT * FROM ca_pip_limits_deductible_code) THEN
 
+IF NOT EXISTS (SELECT * FROM ca_pip_limits_deductible_code) THEN
     INSERT INTO ca_pip_limits_deductible_code VALUES(1,1,'1','Basic PIP coverage — No deductible');
     INSERT INTO ca_pip_limits_deductible_code VALUES(2,1,'2','Basic PIP coverage — Deductible applies');
     INSERT INTO ca_pip_limits_deductible_code VALUES(3,1,'3','Basic and additional PIP — No deductible');
@@ -224,8 +225,5 @@ IF NOT EXISTS (SELECT * FROM ca_pip_limits_deductible_code) THEN
     INSERT INTO ca_pip_limits_deductible_code VALUES(212,31,'3','$200 deductible');
     INSERT INTO ca_pip_limits_deductible_code VALUES(213,31,'4','$100 deductible');
     INSERT INTO ca_pip_limits_deductible_code VALUES(214,31,'5','All Other deductibles');
-
 END IF;
-
-END $$
-
+END $$;

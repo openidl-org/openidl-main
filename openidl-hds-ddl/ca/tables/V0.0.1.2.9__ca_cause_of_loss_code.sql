@@ -1,6 +1,6 @@
+
 DO $$
 BEGIN 
-
 CREATE TABLE IF NOT EXISTS ca_cause_of_loss_code (
     id INT,
     fk_coverage_code_id INT,
@@ -122,5 +122,4 @@ IF NOT EXISTS (select * from ca_cause_of_loss_code) THEN
   INSERT INTO ca_cause_of_loss_code VALUES (109,32,3,'Survivors Benefits');
   INSERT INTO ca_cause_of_loss_code VALUES (110,32,4,'Funeral Expenses');
 END IF;
-END $$
-
+END $$;

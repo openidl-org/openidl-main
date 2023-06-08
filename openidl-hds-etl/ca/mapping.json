@@ -79,14 +79,14 @@
         "stageName": "VEHICLE_PERF",
         "dataType": "VARCHAR"
     },
-    "privatePassengerDriversTrainingGoodStudent": {
-        "inboundName": "privatePassengerDriversTrainingGoodStudent",
-        "stageName": "DRIV_TRAIN_GOOD_STUDENT",
+    "commercialAutomobileClassification": {
+        "inboundName": "commercialAutomobileClassification",
+        "stageName": "COMMERCIAL_CLASS",
         "dataType": "VARCHAR"
     },
-    "privatePassengerPenaltyPoints": {
-        "inboundName": "privatePassengerPenaltyPoints",
-        "stageName": "PENALTY_POINTS",
+    "commercialAutomobileUse": {
+        "inboundName": "commercialAutomobileUse",
+        "stageName": "COMMERCIAL_USE",
         "dataType": "VARCHAR"
     },
     "liabilityLimitsAmount": {

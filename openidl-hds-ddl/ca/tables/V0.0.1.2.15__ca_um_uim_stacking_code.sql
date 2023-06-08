@@ -13,4 +13,4 @@ IF NOT EXISTS (SELECT * FROM ca_um_uim_stacking_code) THEN
     INSERT INTO ca_um_uim_stacking_code VALUES(1,'1','UM and/or UIM limits stacked (per vehicle)');
     INSERT INTO ca_um_uim_stacking_code VALUES(2,'2','UM and/or UIM limits non-stacked (per policy)');
 END IF;
-END $$
+END $$;

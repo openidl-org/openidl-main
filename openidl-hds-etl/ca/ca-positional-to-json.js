@@ -1,6 +1,6 @@
 const fs = require("fs");
 const convertToJson =
-  require("../../openidl-etl-statplan-processor/commercial-auto-processor").convertTextRecordsToJson;
+  require("../../openidl-etl-statplan-processor/ca-processor").convertTextRecordsToJson;
 
 
 const config = require("../config/config.json");

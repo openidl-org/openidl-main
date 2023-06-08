@@ -18,4 +18,4 @@ IF NOT EXISTS (SELECT * FROM ca_vehicle_performance_code) THEN
     INSERT INTO ca_vehicle_performance_code VALUES(6,'5','Sports Premium (New Jersey Only)');
     INSERT INTO ca_vehicle_performance_code VALUES(7,'9','All Other');
 END IF;
-END $$
+END $$;

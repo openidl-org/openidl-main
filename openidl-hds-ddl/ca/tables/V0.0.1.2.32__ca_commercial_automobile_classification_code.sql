@@ -18,6 +18,7 @@ IF NOT EXISTS (SELECT * FROM ca_commercial_automobile_classification_code) THEN
     INSERT INTO ca_commercial_automobile_classification_code VALUES(6,'6','Dealers');
     INSERT INTO ca_commercial_automobile_classification_code VALUES(7,'7','Public — taxicabs, public livery and public buses');
     INSERT INTO ca_commercial_automobile_classification_code VALUES(8,'8','School Buses');
-    INSERT INTO ca_commercial_automobile_classification_code VALUES(9,'9','All other');
+    INSERT INTO ca_commercial_automobile_classification_code VALUES(9,'9','All Other');
+    INSERT INTO ca_commercial_automobile_classification_code VALUES(10,'C','Carrier Specific Code for Composite Rated Business');
 END IF;
 END $$;

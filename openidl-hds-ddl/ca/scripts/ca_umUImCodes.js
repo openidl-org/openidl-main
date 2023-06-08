@@ -80,10 +80,9 @@ function buildSpecial(specials, id) {
 }
 
 function buildHead(){
-	fileLines.push(`DO $$
-
+	fileLines.push(`
+DO $$
 BEGIN 
-
 CREATE TABLE IF NOT EXISTS ca_um_uim_motorist_code(
 	id INT,
 	fk_state_id VARCHAR,
@@ -93,14 +92,12 @@ CREATE TABLE IF NOT EXISTS ca_um_uim_motorist_code(
     expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
-
 IF NOT EXISTS (select * from ca_um_uim_motorist_code) THEN`)
 }
 
 function buildTail(){
 	fileLines.push(`END IF;
-
-END $$`)
+END $$;`)
 }
 buildHead()
 let specialStates = getSpecialStates();

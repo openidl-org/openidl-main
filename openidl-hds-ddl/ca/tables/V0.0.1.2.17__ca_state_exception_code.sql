@@ -1,3 +1,4 @@
+
 DO $$
 BEGIN 
 
@@ -69,5 +70,4 @@ IF NOT EXISTS (SELECT * FROM ca_state_exception_code) THEN
    INSERT INTO ca_state_exception_code VALUES (39,3,29,'08','Engine Size','Over 1000 cc Passenger');
    INSERT INTO ca_state_exception_code VALUES (40,3,29,'09','Engine Size','Hazard excluded');
 END IF; 
-
-END $$
+END $$;

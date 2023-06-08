@@ -189,7 +189,7 @@ let normalStates = getNormalStates(specialStates);
 id = buildNormal(normalStates);
 buildSpecial(specialStates, id);
 fileLines.push(`END IF; 
-END $$`)
+END $$;`)
 
 
 for (let l of fileLines){
