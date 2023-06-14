@@ -4,10 +4,10 @@ const convertToJson =
 
 
 const config = require("../config/config.json");
-let testPremiumRecordsText = fs.readFileSync(config.farmProperties.inbound, "utf-8");
+let testPremiumRecordsText = fs.readFileSync(config.generalLiability.inbound, "utf-8");
 let jsonPremiumRecords = convertToJson(testPremiumRecordsText);
 console.log(jsonPremiumRecords.length)
 
 let save = {'records': jsonPremiumRecords}
 
-fs.writeFileSync(config.farmProperties.outbound, JSON.stringify(save));
+fs.writeFileSync(config.generalLiability.outbound, JSON.stringify(save));
