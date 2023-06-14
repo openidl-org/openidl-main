@@ -1,38 +1,38 @@
 {
-    "99996": {
+	"99996": {
 		"id": "99996",
 		"code": "99996",
-        "sub-line": "19",
+		"sub-line": "19",
 		"description": "Personal excess policy"
 	},
-    "99997": {
+	"99997": {
 		"id": "99997",
 		"code": "99997",
-        "sub-line": "19",
+		"sub-line": "19",
 		"description": "Commercial excess policy"
 	},
-    "99998": {
+	"99998": {
 		"id": "99998",
 		"code": "99998",
-        "sub-line": "19",
+		"sub-line": "19",
 		"description": "Personal umbrella policy"
 	},
-    "99999": {
+	"99999": {
 		"id": "99999",
 		"code": "99999",
-        "sub-line": "19",
+		"sub-line": "19",
 		"description": "Commercial umbrella policy"
 	},
-    "99985": {
+	"99985": {
 		"id": "99985",
 		"code": "99985",
-        "sub-line": "04 or 11",
+		"sub-line": "04 or 11",
 		"description": "Lead poisoning coverage"
 	},
-    "99994": {
+	"99994": {
 		"id": "99994",
 		"code": "99994",
-        "sub-line": "Any",
+		"sub-line": "Any",
 		"description": "Not otherwise classified - when AAIS or ISO class codes are not available"
 	}
 }

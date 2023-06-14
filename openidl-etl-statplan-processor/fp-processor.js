@@ -1,7 +1,3 @@
-// const premiumSchema = require("./schemas/dwelling_properties/dwellingPropertiesStatPlan-policy.json");
-// const lossSchema = require("./schemas/dwelling_properties/dwellingPropertiesStatPlan-claim.json");
-// const converter = require("./converters/dwellingPropertiesConverter").converter;
-
 const premiumSchema = require("./schemas/farm_properties/farmPropertiesStatPlan-policy.json");
 const lossSchema = require("./schemas/farm_properties/farmPropertiesStatPlan-claim.json");
 const converter = require("./converters/farmPropertiesConverter").converter;

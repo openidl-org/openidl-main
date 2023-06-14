@@ -28,9 +28,7 @@ END $$;`;
 
 fileLines.push(end);
 
-var file = fs.createWriteStream(
-	'../tables/V0.0.1.12.5__gl_coverage_code.sql'
-);
+var file = fs.createWriteStream('../tables/V0.0.1.12.5__gl_coverage_code.sql');
 file.on('error', function (err) {
 	/* error handling */
 });
