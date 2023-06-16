@@ -11,7 +11,7 @@ function combineFiles(folderPath, outputFileName) {
     }
 
     // Filter out hidden files and files that don't match the expected naming convention
-    const filteredFiles = files.filter(file => !(/^\./.test(file)) && /^GL_Test_Data_\d+\.txt$/.test(file));
+    const filteredFiles = files.filter(file => !(/^\./.test(file)) && /^IM_Test_Data_\d+\.txt$/.test(file));
 
     // Sort filtered files based on the numeric value in the file names
     filteredFiles.sort((a, b) => {
@@ -45,4 +45,4 @@ function combineFiles(folderPath, outputFileName) {
 // Usage: combineFiles('folder_path', 'output_file.txt');
 
 // Example usage:
-combineFiles('../../../../../con-data/General_Liability/gl', '../../../../../con-data/General_Liability/gl_filter_and_combine.txt');
+combineFiles('../../../../../con-data/Inland_Marine/IM', '../../../../../con-data/Inland_Marine/im_filter_and_combine.txt');

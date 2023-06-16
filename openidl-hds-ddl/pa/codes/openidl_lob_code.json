@@ -2,5 +2,47 @@
 	"56": [
 		{ "id": 1, "name": "Personal Auto", "sublineCode": "1" },
 		{ "id": 2, "name": "Commercial Auto", "sublineCode": "2" }
+	],
+	"32": [
+		{ "id": 3, "name": "Homeowners" }
+	],
+	"34": [
+		{ "id": 4, "name": "Mobile Homeowners" }
+	],
+	"41": [
+		{ "id": 5, "name": "Dwelling Properties" }
+	],
+	"33": [
+		{ "id": 6, "name": "Farmowners" }
+	],
+	"42": [
+		{ "id": 7, "name": "Farm Properties" }
+	],
+	"31": [
+		{ "id": 8, "name": "Inland Marine" }
+	],
+	"36": [
+		{ "id": 9, "name": "Glass" }
+	],
+	"37": [
+		{ "id": 10, "name": "Crime" }
+	],
+	"47": [
+		{ "id": 11, "name": "Commercial Properties" }
+	],
+	"55": [
+		{ "id": 12, "name": "General Liability" }
+	],
+	"49": [
+		{ "id": 13, "name": "Business Owners" }
+	],
+	"45": [
+		{ "id": 14, "name": "Artisans" }
+	],
+	"16": [
+		{ "id": 15, "name": "Boatowners" }
+	],
+	"23": [
+		{ "id": 16, "name": "Yacht" }
 	]
 }

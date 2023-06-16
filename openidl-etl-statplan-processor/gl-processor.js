@@ -59,8 +59,7 @@ function convertTextRecordToJsonUsingSchema(record, premiumSchema, lossSchema) {
     console.log(`Total Count ${premiumCount + lossCount}`)
     console.log(record)
   }
-// *** Farm Properties has transaction codes that are all over the place. Need to check if there is an updated list of transaction codes for this
-  // if (transactionCode !=="1" || transactionCode !=="8") {
+
   if (transactionCode == "2" || transactionCode == "3" || transactionCode == "6" || transactionCode == "7") {
     schema = lossSchema
     console.log(`loss record ${lossCount} found`)
@@ -68,10 +67,6 @@ function convertTextRecordToJsonUsingSchema(record, premiumSchema, lossSchema) {
     console.log(record)
 
   }
-  // error testing, remove when solved
-  // if (transactionCode == "4" || transactionCode == "5" || transactionCode == "9") {
-  //   console.log(record)
-  // }
 
     for (let fieldName in schema.properties) {
       let field = schema.properties[fieldName];
