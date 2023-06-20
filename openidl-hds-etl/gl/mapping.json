@@ -29,11 +29,6 @@
         "stageName": "COUNTY",
         "dataType": "VARCHAR"
     },
-    "areaIndicator": {
-        "inboundName": "areaIndicator",
-        "stageName": "AREA",
-        "dataType": "VARCHAR"
-    },
     "territoryCode": {
         "inboundName": "territory",
         "stageName": "TERRITORY",
@@ -69,14 +64,14 @@
         "stageName": "ASLOB",
         "dataType": "VARCHAR"
     },
-    "programCode": {
-        "inboundName": "programCode",
+    "programClassCode": {
+        "inboundName": "programClassCode",
         "stageName": "PROG_CD",
         "dataType": "VARCHAR"
     },
-    "majorPeril": {
-        "inboundName": "majorPeril",
-        "stageName": "MAJOR_PERIL",
+    "sub-line": {
+        "inboundName": "sub-line",
+        "stageName": "SUBLINE",
         "dataType": "VARCHAR"
     },
     "coverageCode": {
@@ -89,24 +84,9 @@
         "stageName": "TERRORISM",
         "dataType": "VARCHAR"
     },
-    "propertyAmountOfInsurance": {
-        "inboundName": "propertyAmountOfInsurance",
-        "stageName": "PAOI",
-        "dataType": "VARCHAR"
-    },
-    "deductibleType": {
-        "inboundName": "deductibleType",
-        "stageName": "DED_TYPE",
-        "dataType": "VARCHAR"
-    },
     "deductibleAmount": {
         "inboundName": "deductibleAmount",
         "stageName": "DED_AMT",
-        "dataType": "VARCHAR"
-    },
-    "windstormOrHailCoverageDeductibleAmount": {
-        "inboundName": "windstormOrHailCoverageDeductibleAmount",
-        "stageName": "WIND_DED",
         "dataType": "VARCHAR"
     },
     "classCode": {
@@ -114,34 +94,59 @@
         "stageName": "CLASS_CODE",
         "dataType": "VARCHAR"
     },
-    "constructionCode": {
-        "inboundName": "constructionCode",
-        "stageName": "CONSTRUCTION",
+    "reportDateMonth": {
+        "inboundName": "reportDateMonth",
+        "stageName": "REP_DATE_MO",
         "dataType": "VARCHAR"
     },
-    "fireProtectionCode": {
-        "inboundName": "fireProtectionCode",
-        "stageName": "FIRE_PROT",
+    "reportDateYear": {
+        "inboundName": "reportDateYear",
+        "stageName": "REP_DATE_YR",
         "dataType": "VARCHAR"
     },
-    "yearOfConstruction": {
-        "inboundName": "yearOfConstruction",
-        "stageName": "YR_CON",
+    "incidentLocation": {
+        "inboundName": "incidentLocation",
+        "stageName": "INCIDENT_LOCATION",
         "dataType": "VARCHAR"
     },
-    "occupancyCode": {
-        "inboundName": "occupancyCode",
-        "stageName": "OCCUPANCY",
+    "entryYearIntoClaimsMadeProgram": {
+        "inboundName": "entryYearIntoClaimsMadeProgram",
+        "stageName": "ENT_YR_CLM_MADE",
         "dataType": "VARCHAR"
     },
-    "numberOfFamilies": {
-        "inboundName": "numberOfFamilies",
-        "stageName": "NUM_FAM",
+    "liabilityLimit": {
+        "inboundName": "liabilityLimit",
+        "stageName": "LIA_LIM",
         "dataType": "VARCHAR"
     },
-    "riskType": {
-        "inboundName": "riskType",
-        "stageName": "RISK_TYPE",
+    "medicalPaymentsLimit": {
+        "inboundName": "medicalPaymentsLimit",
+        "stageName": "MED_PAY_LIM",
+        "dataType": "VARCHAR"
+    },
+    "annualAggregateLimit": {
+        "inboundName": "annualAggregateLimit",
+        "stageName": "ANN_AGG_LIM",
+        "dataType": "VARCHAR"
+    },
+    "ratingIdentification": {
+        "inboundName": "ratingIdentification",
+        "stageName": "RATING_ID",
+        "dataType": "VARCHAR"
+    },
+    "statisticalExposureBase": {
+        "inboundName": "statisticalExposureBase",
+        "stageName": "STAT_EXP_BASE",
+        "dataType": "VARCHAR"
+    },
+    "ratingBasis": {
+        "inboundName": "ratingBasis",
+        "stageName": "RATING_BASIS",
+        "dataType": "VARCHAR"
+    },
+    "typeOfPolicy": {
+        "inboundName": "typeOfPolicy",
+        "stageName": "TYPE_POLICY",
         "dataType": "VARCHAR"
     },
     "packageIdentification": {
@@ -149,9 +154,14 @@
         "stageName": "PACKAGE_ID",
         "dataType": "VARCHAR"
     },
-    "poolCode": {
-        "inboundName": "poolCode",
-        "stageName": "POOL",
+    "policyTermEffectiveMonth": {
+        "inboundName": "policyTermEffectiveMonth",
+        "stageName": "POL_EFF_MO",
+        "dataType": "VARCHAR"
+    },
+    "policyTermEffectiveYear": {
+        "inboundName": "policyTermEffectiveYear",
+        "stageName": "POL_EFF_YR",
         "dataType": "VARCHAR"
     },
     "monthsCovered": {
@@ -159,8 +169,8 @@
         "stageName": "MOS_COV",
         "dataType": "VARCHAR"
     },
-    "causeOfLoss": {
-        "inboundName": "causeOfLoss",
+    "typeOfLoss": {
+        "inboundName": "typeOfLoss",
         "stageName": "COL",
         "dataType": "VARCHAR"
     },
@@ -187,6 +197,11 @@
     "zipCodeSuffix": {
         "inboundName": "zipCodeSuffix",
         "stageName": "ZIP_SUFF",
+        "dataType": "VARCHAR"
+    },
+    "limitedCodingLoss": {
+        "inboundName": "limitedCodingLoss",
+        "stageName": "LIMIT_LOSS_CD_ID",
         "dataType": "VARCHAR"
     },
     "policyNumber": {
