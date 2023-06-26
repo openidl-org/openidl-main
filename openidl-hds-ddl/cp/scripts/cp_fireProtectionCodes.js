@@ -1,11 +1,11 @@
 fs = require('fs')
 
-let codeMap = require('../codes/dp_fireProtectionCodes.json');
+let codeMap = require('../codes/cp_fireProtectionCodes.json');
 let fileLines = []
 let tableDDL = `
 DO $$ 
 BEGIN
-CREATE TABLE IF NOT EXISTS dp_fire_protection_code (
+CREATE TABLE IF NOT EXISTS cp_fire_protection_code (
     id INT,
     code VARCHAR,
     name VARCHAR,
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS dp_fire_protection_code (
     expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
-IF NOT EXISTS (SELECT * FROM dp_fire_protection_code) THEN `
+IF NOT EXISTS (SELECT * FROM cp_fire_protection_code) THEN `
 fileLines.push(tableDDL)
  
 let codes = Object.keys(codeMap)
@@ -25,7 +25,7 @@ for (let code of codes){
     let name = data['name'];
     let type = data['type'];
     let category = data['category']
-    line = `    INSERT INTO dp_fire_protection_code VALUES(${index},'${code}','${name}','${type}','${category}');`
+    line = `    INSERT INTO cp_fire_protection_code VALUES(${index},'${code}','${name}','${type}','${category}');`
     fileLines.push(line)
     index+=1
 }
@@ -35,7 +35,7 @@ END $$;`
 fileLines.push(end)
 
 
-var file = fs.createWriteStream('../tables/V0.0.1.5.12__dp_fire_protection_code.sql');
+var file = fs.createWriteStream('../tables/V0.0.1.11.11__cp_fire_protection_code.sql');
 file.on('error', function(err) { /* error handling */ });
 fileLines.forEach(function(v) { file.write(v + '\n'); });
 file.end();

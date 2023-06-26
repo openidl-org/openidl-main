@@ -1,11 +1,11 @@
 fs = require('fs');
 
-let codeMap = require('../codes/dp_limitedCodingLossTransactionCodes.json');
+let codeMap = require('../codes/cp_limitedCodingLossTransactionCodes.json');
 let fileLines = [];
 let tableDDL = `
 DO $$ 
 BEGIN
-CREATE TABLE IF NOT EXISTS dp_limited_coding_loss_transaction_code (
+CREATE TABLE IF NOT EXISTS cp_limited_coding_loss_transaction_code (
     id INT,
     code VARCHAR,
     description VARCHAR,
@@ -13,13 +13,13 @@ CREATE TABLE IF NOT EXISTS dp_limited_coding_loss_transaction_code (
     expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
-IF NOT EXISTS (SELECT * FROM dp_limited_coding_loss_transaction_code) THEN `;
+IF NOT EXISTS (SELECT * FROM cp_limited_coding_loss_transaction_code) THEN `;
 fileLines.push(tableDDL);
 
 let codes = Object.keys(codeMap);
 let index = 1;
 for (let code of codes) {
-	line = `    INSERT INTO dp_limited_coding_loss_transaction_code VALUES(${index},'${code}','${codeMap[code]}');`;
+	line = `    INSERT INTO cp_limited_coding_loss_transaction_code VALUES(${index},'${code}','${codeMap[code]}');`;
 	fileLines.push(line);
 	index += 1;
 }
@@ -29,7 +29,7 @@ END $$;`;
 fileLines.push(end);
 
 var file = fs.createWriteStream(
-	'../tables/V0.0.1.5.13__dp_limited_coding_loss_transaction_code.sql'
+	'../tables/V0.0.1.11.13__cp_limited_coding_loss_transaction_code.sql'
 );
 file.on('error', function (err) {
 	/* error handling */
