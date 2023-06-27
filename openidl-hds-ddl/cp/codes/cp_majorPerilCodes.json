@@ -1,0 +1,126 @@
+{
+    "20": {
+        "name": "Fire perils excluding vandalism and sprinkler leakage",
+        "type": "Not Applicable"
+        },
+    "21": {
+        "name": "Fire perils including vandalism",
+        "type": "Not Applicable"
+        },
+    "22": {
+        "name": "Fire perils including sprinkler leakage",
+        "type": "Not Applicable"
+        },
+    "23": {
+        "name": "Fire perils including vandalism and sprinkler leakage",
+        "type": "Not Applicable"
+        },
+    "25": {
+        "name": "Extended coverage excluding vandalism",
+        "type": "Not Applicable"
+        },
+    "26": {
+        "name": "Extended coverage including vandalism",
+        "type": "Not Applicable"
+        },
+    "32": {
+        "name": "Special form perils with theft",
+        "type": "Not Applicable"
+        },
+    "33": {
+        "name": "Special form perils without theft",
+        "type": "Not Applicable"
+        },
+    "31": {
+        "name": "Broad form perils",
+        "type": "Not Applicable"
+        },
+    "61": {
+        "name": "Earthquake coverage",
+        "type": "Premium Bearing Endorsements"
+        },
+    "62": {
+        "name": "Water damage -- Back up of sewers, drains, or sumps",
+        "type": "Premium Bearing Endorsements"
+        },
+    "72": {
+        "name": "Spoilage coverage",
+        "type": "Premium Bearing Endorsements"
+        },
+    "75": {
+        "name": "Equipment breakdown ",
+        "type": "Premium Bearing Endorsements"
+        },
+    "80": {
+        "name": "Manufacturers Output policy",
+        "type": "Special Property"
+        },
+    "81": {
+        "name": "Commercial Output program / Capital Assets Program",
+        "type": "Special Property"
+        },
+    "82": {
+        "name": "Contractors and Developers Output program",
+        "type": "Special Property"
+        },
+    "83": {
+        "name": "Agricultural Output program / Agricultural Capital Assets Program",
+        "type": "Special Property"
+        },
+    "87": {
+        "name": "Market segments business",
+        "type": "Special Property"
+        },
+    "90": {
+        "name": "Certified acts of terrorism covered (coverage not excluded)",
+        "type": "Terrorism Coverage"
+        },
+    "91": {
+        "name": "Certified acts of terrorism excluded subject to Standard Fire Policy statutes when applicable, producing Fire Only coverage for certified acts of terrorism",
+        "type": "Terrorism Coverage"
+        },
+    "92": {
+        "name": "Non-certified acts of terrorism covered (coverage not excluded)",
+        "type": "Terrorism Coverage"
+        },
+    "93": {
+        "name": "Non-certified acts of terrorism covered, except acts of terrorism arising out of nuclear, biological or chemical events",
+        "type": "Terrorism Coverage"
+        },
+    "99": {
+        "name": "All other allied lines",
+        "type": "Terrorism Coverage"
+    },
+    "28": {
+        "name": "Extended coverage, vandalism, and broad form perils",
+        "type": "NOT For AAIS Program Users"
+    },
+    "29": {
+        "name": "Extended coverage, vandalism, and special form perils with theft",
+        "type": "NOT For AAIS Program Users"
+    },
+    "30": {
+        "name": "Extended coverage, vandalism, and special form perils without theft",
+        "type": "NOT For AAIS Program Users"
+    },
+    "34": {
+        "name": "Fire and extended coverage excluding vandalism",
+        "type": "NOT For AAIS Program Users"
+    },
+    "35": {
+        "name": "Fire and extended coverage including vandalism",
+        "type": "NOT For AAIS Program Users"
+    },
+    "36": {
+        "name": "Fire, extended coverage, vandalism, and broad form perils",
+        "type": "NOT For AAIS Program Users"
+    },
+    "37": {
+        "name": "Fire, extended coverage, vandalism, and special form perils with theft",
+        "type": "NOT For AAIS Program Users"
+    },
+    "38": {
+        "name": "Fire, extended coverage, vandalism, and special form perils without theft",
+        "type": "NOT For AAIS Program Users"
+    }
+}        

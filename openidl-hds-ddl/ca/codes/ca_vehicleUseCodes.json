@@ -1,0 +1,50 @@
+{
+    "1": {
+        "use": "Work/School",
+        "description": "Under 15 Miles"
+    },
+    "2": {
+        "use": "Work/School",
+        "description": "Over 15 Miles"
+    },
+    "3": {
+        "use": "Pleasure",
+        "description": "Under 7500 Miles"
+    },
+    "4": {
+        "use": "Pleasure",
+        "description": "Over 7500 Miles"
+    },
+    "5": {
+        "use": "Business",
+        "description": "No Youthful Operator"
+    },
+    "6": {
+        "use": "Business",
+        "description": "Youthful Operator"
+    },
+    "B": {
+        "use": "Business",
+        "description": "Operator Age Unspecified"
+    },
+    "7": {
+        "use": "Farm",
+        "description": "No Youthful Operator"
+    },
+    "8": {
+        "use": "Farm",
+        "description": "Youthful Operator"
+    },
+    "F": {
+        "use": "Farm",
+        "description": "Operator Age Unspecified"
+    },
+    "0": {
+        "use": "Not Applicable to Commercial Automobile policies",
+        "description": "Does Not Apply"
+    },
+    "9": {
+        "use": "Error!-showed up in data/does not exist in stat plan",
+        "description": "Error!-showed up in data/does not exist in stat plan"
+    }
+}

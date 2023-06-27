@@ -1,0 +1,16 @@
+{
+    "0": "No Deductible",
+    "A": "$25 Deductible",
+    "1": "$50 Deductible",
+    "2": "$100 Deductible",
+    "B": "$150 Deductible",
+    "3": "$200 Deductible",
+    "4": "$250 Deductible",
+    "C": "$300 Deductible",
+    "5": "$500 Deductible",
+    "D": "$750 Deductible",
+    "6": "$1,000 Deductible",
+    "7": "$1,500 Deductible",
+    "8": "$2,000 Deductible",
+    "9": "All Other"
+}

@@ -1,0 +1,62 @@
+{
+    "00": {
+        "name": "Does Not Apply",
+        "type": "Does Not Apply"
+    },
+    "01": {
+        "name": "Frame",
+        "type": "Frame Dwellings"
+    },
+    "05": {
+        "name": "Aluminum, plastic, or steel siding over frame",
+        "type": "Frame Dwellings"
+    },
+    "06": {
+        "name": "Stucco",
+        "type": "Frame Dwellings"
+    },
+    "02": {
+        "name": "Veneer (Brick, stone, or masonry)",
+        "type": "Joisted Masonry Dwellings"
+    },
+    "03": {
+        "name": "Joisted masonry",
+        "type": "Joisted Masonry Dwellings"
+    },
+    "04": {
+        "name": "Fire resistive",
+        "type": "Dwellings of Superior Construction"
+    },
+    "14": {
+        "name": "Modified fire resistive",
+        "type": "Dwellings of Superior Construction"
+    },
+    "08": {
+        "name": "Non-combustible (Exposed metal construction)",
+        "type": "Dwellings of Superior Construction"
+    },
+    "09": {
+        "name": "Masonry non-combustible (Non-combustible construction with masonry walls)",
+        "type": "Dwellings of Superior Construction"
+    },
+    "11": {
+        "name": "Wind resistive",
+        "type": "Dwellings of Superior Construction"
+    },
+    "12": {
+        "name": "Semi-wind resistive",
+        "type": "Dwellings of Superior Construction"
+    },
+    "07": {
+        "name": "Mobile homes",
+        "type": "Miscellaneous Dwelling Types"
+    },
+    "10": {
+        "name": "Earth homes",
+        "type": "Miscellaneous Dwelling Types"
+    },
+    "99": {
+        "name": "All other construction types",
+        "type": "Miscellaneous Dwelling Types"
+    }
+}

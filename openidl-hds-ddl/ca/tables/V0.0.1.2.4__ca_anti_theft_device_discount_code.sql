@@ -1,13 +1,16 @@
+
 DO $$ 
 BEGIN
 CREATE TABLE IF NOT EXISTS ca_anti_theft_device_discount_code (
     id INT,
     fk_state_id INT,
     code VARCHAR,
-    description VARCHAR
+    description VARCHAR,
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
-IF NOT EXISTS (SELECT * FROM ca_anti_theft_device_discount_code) THEN
 
+IF NOT EXISTS (SELECT * FROM ca_anti_theft_device_discount_code) THEN
     INSERT INTO ca_anti_theft_device_discount_code VALUES(1,1,'99','All other (Vehicles not rated under a discount program)');
     INSERT INTO ca_anti_theft_device_discount_code VALUES(2,1,'01','Vehicles with no discount but rated under a discount program');
     INSERT INTO ca_anti_theft_device_discount_code VALUES(3,1,'02','Vehicles with alarm only — with discount');
@@ -372,8 +375,5 @@ IF NOT EXISTS (SELECT * FROM ca_anti_theft_device_discount_code) THEN
     INSERT INTO ca_anti_theft_device_discount_code VALUES(362,29,'04','Vehicle qualifies for discount under Category IV');
     INSERT INTO ca_anti_theft_device_discount_code VALUES(363,29,'05','Vehicle qualifies for discount under Category III and IV');
     INSERT INTO ca_anti_theft_device_discount_code VALUES(364,29,'09','Vehicle without an anti-theft device (no discount)');
-
 END IF;
-
-END $$
-
+END $$;

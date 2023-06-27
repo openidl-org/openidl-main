@@ -5,7 +5,9 @@ CREATE TABLE IF NOT EXISTS ca_ascii_lookup_code (
     id INT,
     code VARCHAR,
     digit INT,
-    multiplier INT
+    multiplier INT,
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
 IF NOT EXISTS (SELECT * FROM ca_ascii_lookup_code) THEN 

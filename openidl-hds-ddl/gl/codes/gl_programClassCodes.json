@@ -1,34 +1,34 @@
 {
-    "1": {
-        "name": "AAIS forms and class codes",
-        "type": "Other than Exempt Commercial Risks"
-    },
-    "3": {
-        "name": "ISO forms and class codes",
-        "type": "Other than Exempt Commercial Risks"
-    },
-    "4": {
-        "name": "Independent forms, but AAIS class codes",
-        "type": "Other than Exempt Commercial Risks"
-    },
-    "6": {
-        "name": "Independent forms, but ISO class codes",
-        "type": "Other than Exempt Commercial Risks"
-    },
-    "A": {
-        "name": "AAIS forms and class codes",
-        "type": "Exempt Commercial Risks"
-    },
-    "C": {
-        "name": "ISO forms and class codes",
-        "type": "Exempt Commercial Risks"
-    },
-    "D": {
-        "name": "Independent forms, but AAIS class codes",
-        "type": "Exempt Commercial Risks"
-    },
-    "F": {
-        "name": "Independent forms, but ISO class codes",
-        "type": "Exempt Commercial Risks"
-    }
+	"1": {
+		"name": "AAIS forms and class codes",
+		"type": "Other than Exempt Commercial Risks"
+	},
+	"3": {
+		"name": "ISO forms and class codes",
+		"type": "Other than Exempt Commercial Risks"
+	},
+	"4": {
+		"name": "Independent forms, but AAIS class codes",
+		"type": "Other than Exempt Commercial Risks"
+	},
+	"6": {
+		"name": "Independent forms, but ISO class codes",
+		"type": "Other than Exempt Commercial Risks"
+	},
+	"A": {
+		"name": "AAIS forms and class codes",
+		"type": "Exempt Commercial Risks"
+	},
+	"C": {
+		"name": "ISO forms and class codes",
+		"type": "Exempt Commercial Risks"
+	},
+	"D": {
+		"name": "Independent forms, but AAIS class codes",
+		"type": "Exempt Commercial Risks"
+	},
+	"F": {
+		"name": "Independent forms, but ISO class codes",
+		"type": "Exempt Commercial Risks"
+	}
 }

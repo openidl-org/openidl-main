@@ -1,0 +1,162 @@
+{
+    "00": {
+        "name": "Does Not Apply",
+        "type": "Does Not Apply",
+        "category": "Does Not Apply"
+    },
+    "01": {
+        "name": "Frame",
+        "type": "Frame Buildings",
+        "category": "Other Than Earthquake Records"
+    },
+    "05": {
+        "name": "Aluminum, plastic, or steel siding over frame",
+        "type": "Frame Buildings",
+        "category": "Other Than Earthquake Records"
+    },
+    "06": {
+        "name": "Stucco",
+        "type": "Frame Buildings",
+        "category": "Other Than Earthquake Records"
+    },
+    "02": {
+        "name": "Veneer (Brick, stone, or masonry)",
+        "type": "Frame Buildings",
+        "category": "Other Than Earthquake Records"
+    },
+    "03": {
+        "name": "Joisted masonry",
+        "type": "Joisted Masonry Buildings",
+        "category": "Other Than Earthquake Records"
+    },
+    "13": {
+        "name": "Heavy timber joisted masonry",
+        "type": "Joisted Masonry Buildings",
+        "category": "Other Than Earthquake Records"
+    },
+    "04": {
+        "name": "Fire resistive",
+        "type": "Buildings of Superior Construction",
+        "category": "Other Than Earthquake Records"
+    },
+    "14": {
+        "name": "Modified fire resistive",
+        "type": "Buildings of Superior Construction",
+        "category": "Other Than Earthquake Records"
+    },
+    "08": {
+        "name": "Non-combustible (Exposed metal construction)",
+        "type": "Buildings of Superior Construction",
+        "category": "Other Than Earthquake Records"
+    },
+    "09": {
+        "name": "Masonry non-combustible (Non-combustible construction with masonry walls)",
+        "type": "Buildings of Superior Construction",
+        "category": "Other Than Earthquake Records"
+    },
+    "11": {
+        "name": "Wind resistive",
+        "type": "Buildings of Superior Construction",
+        "category": "Other Than Earthquake Records"
+    },
+    "12": {
+        "name": "Semi-wind resistive",
+        "type": "Buildings of Superior Construction",
+        "category": "Other Than Earthquake Records"
+    },
+    "99": {
+        "name": "All other construction types",
+        "type": "Miscellaneous Building Types",
+        "category": "Other Than Earthquake Records"
+    },
+    "1C": {
+        "name": "Wood Frame Buildings - Class 1C",
+        "type": "Miscellaneous Building Types",
+        "category": "Earthquake Records Only (Major Peril Code 61)"
+    },
+    "1D": {
+        "name": "Wood Frame Buildings - Class 1D",
+        "type": "Miscellaneous Building Types",
+        "category": "Earthquake Records Only (Major Peril Code 61)"
+    },
+    "2A": {
+        "name": "All Metal Buildings - Class 2A",
+        "type": "Miscellaneous Building Types",
+        "category": "Earthquake Records Only (Major Peril Code 61)"
+    },
+    "2B": {
+        "name": "All Metal Buildings - Class 2B",
+        "type": "Miscellaneous Building Types",
+        "category": "Earthquake Records Only (Major Peril Code 61)"
+    },
+    "3A": {
+        "name": "Steel Frame Buildings - Class 3A",
+        "type": "Miscellaneous Building Types",
+        "category": "Earthquake Records Only (Major Peril Code 61)"
+    },
+    "3B": {
+        "name": "Steel Frame Buildings - Class 3B",
+        "type": "Miscellaneous Building Types",
+        "category": "Earthquake Records Only (Major Peril Code 61)"
+    },
+    "3C": {
+        "name": "Steel Frame Buildings - Class 3C",
+        "type": "Miscellaneous Building Types",
+        "category": "Earthquake Records Only (Major Peril Code 61)"
+    },
+    "4A": {
+        "name": "Reinforced Concrete, Combined Reinforced Concrete, and Structural Steel Buildings - Class 4A",
+        "type": "Miscellaneous Building Types",
+        "category": "Earthquake Records Only (Major Peril Code 61)"
+    },
+    "4B": {
+        "name": "Reinforced Concrete, Combined Reinforced Concrete, and Structural Steel Buildings - Class 4B",
+        "type": "Miscellaneous Building Types",
+        "category": "Earthquake Records Only (Major Peril Code 61)"
+    },
+    "4C": {
+        "name": "Reinforced Concrete, Combined Reinforced Concrete, and Structural Steel Buildings - Class 4C",
+        "type": "Miscellaneous Building Types",
+        "category": "Earthquake Records Only (Major Peril Code 61)"
+    },
+    "4D": {
+        "name": "Reinforced Concrete, Combined Reinforced Concrete, and Structural Steel Buildings - Class 4D",
+        "type": "Miscellaneous Building Types",
+        "category": "Earthquake Records Only (Major Peril Code 61)"
+    },
+    "5A": {
+        "name": "Concrete, Brick, or Block Building - Class 5A",
+        "type": "Miscellaneous Building Types",
+        "category": "Earthquake Records Only (Major Peril Code 61)"
+    },
+    "5Z": {
+        "name": "Concrete, Brick, or Block Building - Class 5AA",
+        "type": "Miscellaneous Building Types",
+        "category": "Earthquake Records Only (Major Peril Code 61)"
+    },
+    "5B": {
+        "name": "Concrete, Brick, or Block Building - Class 5B",
+        "type": "Miscellaneous Building Types",
+        "category": "Earthquake Records Only (Major Peril Code 61)"
+    },
+    "5C": {
+        "name": "Concrete, Brick, or Block Building - Class 5C",
+        "type": "Miscellaneous Building Types",
+        "category": "Earthquake Records Only (Major Peril Code 61)"
+    },
+    "5D": {
+        "name": "Concrete, Brick, or Block Building - Class 5D",
+        "type": "Miscellaneous Building Types",
+        "category": "Earthquake Records Only (Major Peril Code 61)"
+    },
+    "60": {
+        "name": "Earthquake Resistive Buildings - Class 6",
+        "type": "Miscellaneous Building Types",
+        "category": "Earthquake Records Only (Major Peril Code 61)"
+    },
+    "70": {
+        "name": "Special Structures - Class 7",
+        "type": "Miscellaneous Building Types",
+        "category": "Earthquake Records Only (Major Peril Code 61)"
+    }
+}

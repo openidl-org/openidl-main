@@ -5,7 +5,9 @@ CREATE TABLE IF NOT EXISTS ca_transaction_code (
     id INT,
     code VARCHAR,
     name VARCHAR,
-    type VARCHAR
+    type VARCHAR,
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
 IF NOT EXISTS (SELECT * FROM ca_transaction_code) THEN 

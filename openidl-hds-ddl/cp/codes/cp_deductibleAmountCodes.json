@@ -1,0 +1,236 @@
+{
+	"00": {
+		"id": "00",
+		"code": "00",
+		"description": "Does Not Apply",
+		"type": "Does Not Apply"
+	},
+	"99": {
+		"id": "99",
+		"code": "99",
+		"description": "Over $100,000 / Over 35%",
+		"type": "Flat and Percentage"
+	},
+	"41": {
+		"id": "41",
+		"code": "41",
+		"description": "None ($0)",
+		"type": "Flat"
+	},
+	"42": {
+		"id": "42",
+		"code": "42",
+		"description": "$50",
+		"type": "Flat"
+	},
+	"43": {
+		"id": "43",
+		"code": "43",
+		"description": "$100",
+		"type": "Flat"
+	},
+	"44": {
+		"id": "44",
+		"code": "44",
+		"description": "$101 - $199",
+		"type": "Flat"
+	},
+	"45": {
+		"id": "45",
+		"code": "45",
+		"description": "$200 - $249",
+		"type": "Flat"
+	},
+	"46": {
+		"id": "46",
+		"code": "46",
+		"description": "$250",
+		"type": "Flat"
+	},
+	"47": {
+		"id": "47",
+		"code": "47",
+		"description": "$500",
+		"type": "Flat"
+	},
+	"49": {
+		"id": "49",
+		"code": "49",
+		"description": "$750",
+		"type": "Flat"
+	},
+	"51": {
+		"id": "51",
+		"code": "51",
+		"description": "$1,000",
+		"type": "Flat"
+	},
+	"53": {
+		"id": "53",
+		"code": "53",
+		"description": "$1,500",
+		"type": "Flat"
+	},
+	"55": {
+		"id": "55",
+		"code": "55",
+		"description": "$2,500",
+		"type": "Flat"
+	},
+	"59": {
+		"id": "59",
+		"code": "59",
+		"description": "$3,000",
+		"type": "Flat"
+	},
+	"63": {
+		"id": "63",
+		"code": "63",
+		"description": "$5,000",
+		"type": "Flat"
+	},
+	"65": {
+		"id": "65",
+		"code": "65",
+		"description": "$7,500",
+		"type": "Flat"
+	},
+	"67": {
+		"id": "67",
+		"code": "67",
+		"description": "$10,000",
+		"type": "Flat"
+	},
+	"68": {
+		"id": "68",
+		"code": "68",
+		"description": "$12,500",
+		"type": "Flat"
+	},
+	"69": {
+		"id": "69",
+		"code": "69",
+		"description": "$15,000",
+		"type": "Flat"
+	},
+	"70": {
+		"id": "70",
+		"code": "70",
+		"description": "$20,000",
+		"type": "Flat"
+	},
+	"71": {
+		"id": "71",
+		"code": "71",
+		"description": "$25,000",
+		"type": "Flat"
+	},
+	"75": {
+		"id": "75",
+		"code": "75",
+		"description": "$50,000",
+		"type": "Flat"
+	},
+	"79": {
+		"id": "79",
+		"code": "79",
+		"description": "$75,000",
+		"type": "Flat"
+	},
+	"81": {
+		"id": "81",
+		"code": "81",
+		"description": "$100,000",
+		"type": "Flat"
+	},
+	"01": {
+		"id": "01",
+		"code": "01",
+		"description": "1%",
+		"type": "Percentage"
+	},
+	"02": {
+		"id": "02",
+		"code": "02",
+		"description": "2%",
+		"type": "Percentage"
+	},
+	"03": {
+		"id": "03",
+		"code": "03",
+		"description": "3%",
+		"type": "Percentage"
+	},
+	"04": {
+		"id": "04",
+		"code": "04",
+		"description": "4%",
+		"type": "Percentage"
+	},
+	"05": {
+		"id": "05",
+		"code": "05",
+		"description": "5%",
+		"type": "Percentage"
+	},
+	"06": {
+		"id": "06",
+		"code": "06",
+		"description": "6%",
+		"type": "Percentage"
+	},
+	"07": {
+		"id": "07",
+		"code": "07",
+		"description": "7%",
+		"type": "Percentage"
+	},
+	"08": {
+		"id": "08",
+		"code": "08",
+		"description": "8%",
+		"type": "Percentage"
+	},
+	"09": {
+		"id": "09",
+		"code": "09",
+		"description": "9%",
+		"type": "Percentage"
+	},
+	"10": {
+		"id": "10",
+		"code": "10",
+		"description": "10%",
+		"type": "Percentage"
+	},
+	"15": {
+		"id": "15",
+		"code": "15",
+		"description": "15%",
+		"type": "Percentage"
+	},
+	"20": {
+		"id": "20",
+		"code": "20",
+		"description": "20%",
+		"type": "Percentage"
+	},
+	"25": {
+		"id": "25",
+		"code": "25",
+		"description": "25%",
+		"type": "Percentage"
+	},
+	"30": {
+		"id": "30",
+		"code": "30",
+		"description": "30%",
+		"type": "Percentage"
+	},
+	"35": {
+		"id": "35",
+		"code": "35",
+		"description": "35%",
+		"type": "Percentage"
+	}
+}

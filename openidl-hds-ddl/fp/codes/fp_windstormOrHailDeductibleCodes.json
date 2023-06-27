@@ -1,0 +1,146 @@
+{
+	"0": {
+		"id": "0",
+		"code": "0",
+		"description": "Does Not Apply",
+		"type": "Does Not Apply"
+	},
+	"N": {
+		"id": "N",
+		"code": "N",
+		"description": "Wind/Hail Coverage is Excluded from the Policy",
+		"type": "Does Not Apply"
+	},
+	"A": {
+		"id": "A",
+		"code": "A",
+		"description": "250 (Where Applicable)",
+		"type": "Flat"
+	},
+	"1": {
+		"id": "1",
+		"code": "1",
+		"description": "500",
+		"type": "Flat"
+	},
+	"2": {
+		"id": "2",
+		"code": "2",
+		"description": "1,000",
+		"type": "Flat"
+	},
+	"3": {
+		"id": "3",
+		"code": "3",
+		"description": "2,000",
+		"type": "Flat"
+	},
+	"B": {
+		"id": "B",
+		"code": "B",
+		"description": "2,500",
+		"type": "Flat"
+	},
+	"D": {
+		"id": "D",
+		"code": "D",
+		"description": "3,000",
+		"type": "Flat"
+	},
+	"E": {
+		"id": "E",
+		"code": "E",
+		"description": "4,000",
+		"type": "Flat"
+	},
+	"4": {
+		"id": "4",
+		"code": "4",
+		"description": "5,000",
+		"type": "Flat"
+	},
+	"G": {
+		"id": "G",
+		"code": "G",
+		"description": "7,500",
+		"type": "Flat"
+	},
+	"H": {
+		"id": "H",
+		"code": "H",
+		"description": "10,000",
+		"type": "Flat"
+	},
+	"R": {
+		"id": "R",
+		"code": "R",
+		"description": "25,000",
+		"type": "Flat"
+	},
+	"S": {
+		"id": "S",
+		"code": "S",
+		"description": "50,000",
+		"type": "Flat"
+	},
+	"T": {
+		"id": "T",
+		"code": "T",
+		"description": "75,000",
+		"type": "Flat"
+	},
+	"F": {
+		"id": "F",
+		"code": "F",
+		"description": "All Other Flat Windstorm or Hail Deductibles",
+		"type": "Flat"
+	},
+	"6": {
+		"id": "6",
+		"code": "6",
+		"description": "1%",
+		"type": "Percentage"
+	},
+	"7": {
+		"id": "7",
+		"code": "7",
+		"description": "2%",
+		"type": "Percentage"
+	},
+	"C": {
+		"id": "C",
+		"code": "C",
+		"description": "3% (where applicable)",
+		"type": "Percentage"
+	},
+	"J": {
+		"id": "J",
+		"code": "J",
+		"description": "4%",
+		"type": "Percentage"
+	},
+	"8": {
+		"id": "8",
+		"code": "8",
+		"description": "5%",
+		"type": "Percentage"
+	},
+	"K": {
+		"id": "K",
+		"code": "K",
+		"description": "7%",
+		"type": "Percentage"
+	},
+	"9": {
+		"id": "9",
+		"code": "9",
+		"description": "10% (where applicable)",
+		"type": "Percentage"
+	},
+	"P": {
+		"id": "P",
+		"code": "P",
+		"description": "All Other Percentage Windstorm or Hail Deductibles",
+		"type": "Percentage"
+	}
+}

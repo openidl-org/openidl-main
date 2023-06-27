@@ -16,7 +16,7 @@ async function main() {
 	batches = [];
 	batch = [];
 	const allFileContents = fs.readFileSync(
-		'../../../../con-data/pa-insert.sql',
+		'../../../../con-data/Personal_Auto/pa-insert.sql',
 		'utf-8'
 	);
 	allFileContents.split(/\r?\n/).forEach((line) => {
@@ -34,25 +34,11 @@ async function main() {
 	}
 	count = 0;
 	for (let b of batches) {
-		//console.log(b)
-		try {
-			await client.query(b);
-			count += 1;
-			//console.log('batch: '+count)
-		} catch (e) {
-			//serial run
-			let localBatches = b.split(';');
-			for (let statement of localBatches) {
-				try {
-					await client.query(statement);
-				} catch (ee) {
-					console.log(statement);
-					console.log('error: ');
-					console.log(ee);
-				}
-			}
-		}
+		await client.query(b);
+		count += 1;
+		console.log('batch: ' + count);
 	}
+	
 
 	const used = process.memoryUsage().heapUsed / 1024 / 1024;
 	console.log(

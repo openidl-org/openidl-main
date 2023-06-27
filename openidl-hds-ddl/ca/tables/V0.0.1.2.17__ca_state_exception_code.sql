@@ -1,19 +1,24 @@
+
 DO $$
 BEGIN 
 
 CREATE TABLE IF NOT EXISTS ca_state_exception_category_code (
     id int,
     name VARCHAR,
-    description VARCHAR
+    description VARCHAR,
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
     
 CREATE TABLE IF NOT EXISTS ca_state_exception_code (
-    id int,
-    fk_state_exception_category_id int,
-    fk_state_id int,
-    code varchar,
-    name varchar, 
-    description varchar
+    id INT,
+    fk_state_exception_category_id INT,
+    fk_state_id INT,
+    code VARCHAR,
+    name VARCHAR, 
+    description VARCHAR,
+    effective_date DATE NOT NULL DEFAULT '1900-01-01',
+    expiration_date DATE NOT NULL DEFAULT '9999-12-31'
     );
     
 IF NOT EXISTS (SELECT * FROM ca_state_exception_category_code) THEN
@@ -65,5 +70,4 @@ IF NOT EXISTS (SELECT * FROM ca_state_exception_code) THEN
    INSERT INTO ca_state_exception_code VALUES (39,3,29,'08','Engine Size','Over 1000 cc Passenger');
    INSERT INTO ca_state_exception_code VALUES (40,3,29,'09','Engine Size','Hazard excluded');
 END IF; 
-
-END $$
+END $$;
