@@ -4,10 +4,15 @@ const convertToJson =
 
 
 const config = require("../config/config.json");
-let testPremiumRecordsText = fs.readFileSync(config.homeowners.inbound, "utf-8");
+
+
+let inbound = '/Users/peterantley/code/olga/mock-react-data/PA_HO_50_P&C_Sanitized.txt'
+let outbound = '/Users/peterantley/code/olga/mock-react-data/HO_100_P&C.json'
+
+let testPremiumRecordsText = fs.readFileSync(inbound, "utf-8");
 let jsonPremiumRecords = convertToJson(testPremiumRecordsText);
 console.log(jsonPremiumRecords.length)
 
 let save = {'records': jsonPremiumRecords}
 
-fs.writeFileSync(config.homeowners.outbound, JSON.stringify(save));
+fs.writeFileSync(outbound, JSON.stringify(save));

@@ -1,8 +1,8 @@
 create table tmp_auto_factors (
     liability_or_physical_damage varchar,
     year int,
-    ldf numeric,
-    ulae_factor numeric
+    ldf numeric, --accident year
+    ulae_factor numeric --year - set by case statment above
 );
 
 insert into tmp_auto_factors values ('Liability', 2020, 1.009, 1.00);
