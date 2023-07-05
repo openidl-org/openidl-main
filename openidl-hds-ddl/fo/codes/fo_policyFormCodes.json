@@ -1,0 +1,248 @@
+{
+    "01": {
+        "type": "Form 1 or FO-1",
+        "category": "Dwelling & Liability Coverage",
+        "reportingForm": "Form 1",
+        "reportingCategory": "Dwelling & Liability Coverage"
+    },
+    "02": {
+        "type": "Form 2 or FO-2",
+        "category": "Dwelling & Liability Coverage",
+        "reportingForm": "Form 2",
+        "reportingCategory": "Dwelling & Liability Coverage"
+    },
+    "03": {
+        "type": "Form 3 or FO-3",
+        "category": "Dwelling & Liability Coverage",
+        "reportingForm": "Form 3",
+        "reportingCategory": "Dwelling & Liability Coverage"
+    },
+    "04": {
+        "type": "Form 4 or FO-4",
+        "category": "Dwelling & Liability Coverage",
+        "reportingForm": "Form 4",
+        "reportingCategory": "Dwelling & Liability Coverage"
+    },
+    "05": {
+        "type": "FO-5",
+        "category": "Dwelling & Liability Coverage",
+        "reportingForm": "Form 5",
+        "reportingCategory": "Dwelling & Liability Coverage"
+    },
+    "08": {
+        "type": "Form 8",
+        "category": "Dwelling & Liability Coverage",
+        "reportingForm": "Form 8",
+        "reportingCategory": "Dwelling & Liability Coverage"
+    },
+    "13": {
+        "type": "Liability Coverage Only (Dwelling Coverage Omitted)",
+        "category": "Liability Coverage",
+        "reportingForm": "Liability Coverage Only (Dwelling Coverage Omitted)",
+        "reportingCategory": "Farm Liability Only - No Dwell"
+    },
+    "19": {
+        "type": "Basic Coverage",
+        "category": "Home Based Business (HBB) Coverage Form",
+        "reportingForm": "Basic Coverage",
+        "reportingCategory": "Home Based Business (HBB) Coverage Form"
+    },
+    "51": {
+        "type": "Non-Owned Auto And Hired Auto Liability",
+        "category": "HBB Liability Coverages",
+        "reportingForm": "Non-Owned Auto And Hired Auto Liability",
+        "reportingCategory": "HBB Liability Coverages"
+    },
+    "52": {
+        "type": "Cosmetologists Liability",
+        "category": "HBB Liability Coverages",
+        "reportingForm": "Cosmetologists Liability",
+        "reportingCategory": "HBB Liability Coverages"
+    },
+    "40": {
+        "type": "All other HBB liability coverages",
+        "category": "HBB Liability Coverages",
+        "reportingForm": "All other HBB liability coverages",
+        "reportingCategory": "HBB Liability Coverages"
+    },
+    "72": {
+        "type": "Spoilage coverage",
+        "category": "HBB Property Coverages",
+        "reportingForm": "Spoilage coverage",
+        "reportingCategory": "HBB Property Coverages"
+    },
+    "73": {
+        "type": "Related Private Structures Used For HBB Purposes",
+        "category": "HBB Property Coverages",
+        "reportingForm": "Related Private Structures Used For HBB Purposes",
+        "reportingCategory": "HBB Property Coverages"
+    },
+    "74": {
+        "type": "Business Property Away From Premises",
+        "category": "HBB Property Coverages",
+        "reportingForm": "Business Property Away From Premises",
+        "reportingCategory": "HBB Property Coverages"
+    },
+    "60": {
+        "type": "All Other HBB Property Coverages",
+        "category": "HBB Property Coverages",
+        "reportingForm": "All Other HBB Property Coverages",
+        "reportingCategory": "HBB Property Coverages"
+    },
+    "90": {
+        "type": "Certified Acts of Terrorism Covered (Coverage Not Excluded)",
+        "category": "Terrorism Coverage",
+        "reportingForm": "Certified Acts of Terrorism Covered (Coverage Not Excluded)",
+        "reportingCategory": "Terrorism Coverage"
+    },
+    "91": {
+        "type": "Certified Acts of Terrorism Excluded Subject to Standard Fire Policy Statutes When Applicable, Producing \"Fire Only\" Coverage for Certified Acts of Terrorism",
+        "category": "Terrorism Coverage",
+        "reportingForm": "Certified Acts of Terrorism Excluded Subject to Standard Fire Policy Statutes When Applicable, Producing \"Fire Only\" Coverage for Certified Acts of Terrorism",
+        "reportingCategory": "Terrorism Coverage"
+    },
+    "92": {
+        "type": "Non-Certified Acts of Terrorism Covered (Coverage Not Excluded)",
+        "category": "Terrorism Coverage",
+        "reportingForm": "Non-Certified Acts of Terrorism Covered (Coverage Not Excluded)",
+        "reportingCategory": "Terrorism Coverage"
+    },
+    "93": {
+        "type": "Non-certified Acts of Terrorism Covered, Except Acts of Terrorism Arising Out of Nuclear, Biological or Chemical Events",
+        "category": "Terrorism Coverage",
+        "reportingForm": "Non-certified Acts of Terrorism Covered, Except Acts of Terrorism Arising Out of Nuclear, Biological or Chemical Events",
+        "reportingCategory": "Terrorism Coverage"
+    },
+    "10": {
+        "type": "Farm Barns, Buildings, and Other Structures",
+        "category": "Farm Coverage",
+        "reportingForm": "Farm Barns, Buildings, and Other Structures",
+        "reportingCategory": "Farm Coverage"
+    },
+    "11": {
+        "type": "Blanket Farm Personal Property",
+        "category": "Farm Coverage",
+        "reportingForm": "Blanket Farm Personal Property",
+        "reportingCategory": "Farm Coverage"
+    },
+    "12": {
+        "type": "Scheduled Farm Personal Property",
+        "category": "Farm Coverage",
+        "reportingForm": "Scheduled Farm Personal Property",
+        "reportingCategory": "Farm Coverage"
+    },
+    "41": {
+        "type": "Care Provided for Others",
+        "category": "Liability Endorsements",
+        "reportingForm": "Care Provided for Others",
+        "reportingCategory": "Liability Endorsements"
+    },
+    "42": {
+        "type": "Business Activities",
+        "category": "Liability Endorsements",
+        "reportingForm": "Business Activities",
+        "reportingCategory": "Liability Endorsements"
+    },
+    "43": {
+        "type": "Office, Professional, Private School or Studio Use",
+        "category": "Liability Endorsements",
+        "reportingForm": "Office, Professional, Private School or Studio Use",
+        "reportingCategory": "Liability Endorsements"
+    },
+    "44": {
+        "type": "Personal Injury",
+        "category": "Liability Endorsements",
+        "reportingForm": "Personal Injury",
+        "reportingCategory": "Liability Endorsements"
+    },
+    "45": {
+        "type": "Watercraft",
+        "category": "Liability Endorsements",
+        "reportingForm": "Watercraft",
+        "reportingCategory": "Liability Endorsements"
+    },
+    "46": {
+        "type": "Snowmobile",
+        "category": "Liability Endorsements",
+        "reportingForm": "Snowmobile",
+        "reportingCategory": "Liability Endorsements"
+    },
+    "47": {
+        "type": "Lead Poisoning Coverage",
+        "category": "Liability Endorsements",
+        "reportingForm": "Lead Poisoning Coverage",
+        "reportingCategory": "Liability Endorsements"
+    },
+    "53": {
+        "type": "Golf Cart Liability",
+        "category": "Liability Endorsements",
+        "reportingForm": "All Other Liability",
+        "reportingCategory": "Liability Endorsements"
+    },
+    "54": {
+        "type": "Fuel Oil Liability Coverage",
+        "category": "Liability Endorsements",
+        "reportingForm": "All Other Liability",
+        "reportingCategory": "Liability Endorsements"
+    },
+    "61": {
+        "type": "Earthquake - Dwelling",
+        "category": "Property Endorsements",
+        "reportingForm": "All Other Property",
+        "reportingCategory": "Property Endorsements"
+    },
+    "62": {
+        "type": "Water Damage - Sewers, Drains, and Sumps",
+        "category": "Property Endorsements",
+        "reportingForm": "All Other Property",
+        "reportingCategory": "Property Endorsements"
+    },
+    "63": {
+        "type": "Motorized Golf Cart - Physical Damage Coverage",
+        "category": "Property Endorsements",
+        "reportingForm": "All Other Property",
+        "reportingCategory": "Property Endorsements"
+    },
+    "64": {
+        "type": "Identity Fraud Expense Coverage",
+        "category": "Property Endorsements",
+        "reportingForm": "All Other Property",
+        "reportingCategory": "Property Endorsements"
+    },
+    "71": {
+        "type": "Earthquake - Farm Property",
+        "category": "Property Endorsements",
+        "reportingForm": "Earthquake - Farm Property",
+        "reportingCategory": "Property Endorsements"
+    },
+    "75": {
+        "type": "Equipment Breakdown Coverage",
+        "category": "Property Endorsements",
+        "reportingForm": "All Other Property",
+        "reportingCategory": "Property Endorsements"
+    },
+    "76": {
+        "type": "Weight of Ice, Snow, and Sleet",
+        "category": "Property Endorsements",
+        "reportingForm": "Weight of Snow... On Farm",
+        "reportingCategory": "Property Endorsements"
+    },
+    "77": {
+        "type": "Livestock Perils Options",
+        "category": "Property Endorsements",
+        "reportingForm": "All Other Property",
+        "reportingCategory": "Property Endorsements"
+    },
+    "96": {
+        "type": "Miscellaneous Property/Liability Combined End. Coverage",
+        "category": "Property Endorsements",
+        "reportingForm": "All Other Property",
+        "reportingCategory": "Property Endorsements"
+    },
+    "99": {
+        "type": "Minimum Premium record subject to SECTION I, PART C, Rule 3.b",
+        "category": "Property Endorsements",
+        "reportingForm": "All Other Property",
+        "reportingCategory": "Property Endorsements"
+    }
+}

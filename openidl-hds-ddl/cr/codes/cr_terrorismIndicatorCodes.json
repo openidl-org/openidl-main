@@ -1,0 +1,46 @@
+{
+    "0": {
+        "name": "Does not apply",
+        "type": "Does not apply"
+    },
+    "1": {
+        "name": "Certified acts of terrorism not excluded / non-certified acts of terrorism not excluded",
+        "type": "Terrorism Options Under the Terrorism Risk Insurance Act of 2002"
+    },
+    "2": {
+        "name": "Certified acts of terrorism not excluded / non-certified acts of terrorism arising from nuclear, biological, or chemical events excluded",
+        "type": "Terrorism Options Under the Terrorism Risk Insurance Act of 2002"
+    },
+    "3": {
+        "name": "Certified acts of terrorism not excluded / non-certified acts of terrorism excluded, subject to limitations",
+        "type": "Terrorism Options Under the Terrorism Risk Insurance Act of 2002"
+    },
+    "4a": {
+        "name": "Certified terrorism loss excludeda / non-certified acts of terrorism not excluded",
+        "type": "Terrorism Options Under the Terrorism Risk Insurance Act of 2002"
+    },
+    "5a": {
+        "name": "Certified terrorism loss excludeda / non-certified acts of terrorism arising from nuclear, biological, or chemical events excluded",
+        "type": "Terrorism Options Under the Terrorism Risk Insurance Act of 2002"
+    },
+    "6a": {
+        "name": "Certified terrorism loss excludeda / non-certified acts of terrorism excludeda",
+        "type": "Terrorism Options Under the Terrorism Risk Insurance Act of 2002"
+    },
+    "A": {
+        "name": "Total exclusion for all terrorism",
+        "type": "Terrorism Options Post-TRIA"
+    },
+    "B": {
+        "name": "Terrorism is covered, but only when the total property damage for terrorism event is $25,000,000 or less",
+        "type": "Terrorism Options Post-TRIA"
+    },
+    "C": {
+        "name": "All terrorism events are covered, except those attributed to nuclear, biological, or chemical events",
+        "type": "Terrorism Options Post-TRIA"
+    },
+    "D": {
+        "name": "Terrorism not excluded",
+        "type": "Terrorism Options Post-TRIA"
+    }
+}

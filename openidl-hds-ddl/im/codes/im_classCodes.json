@@ -1,0 +1,1522 @@
+{
+    "001": {
+        "name": "Reporting",
+        "type": "Accounts Receivable"
+    },
+    "002": {
+        "name": "Non-reporting",
+        "type": "Accounts Receivable"
+    },
+    "003": {
+        "name": "All classes",
+        "type": "Antique Automobiles"
+    },
+    "004": {
+        "name": "All classes",
+        "type": "Antique Dealers"
+    },
+    "005": {
+        "name": "All classes",
+        "type": "Armored Car and Messenger"
+    },
+    "006": {
+        "name": "All classes",
+        "type": "Aviation Floater"
+    },
+    "007": {
+        "name": "Retailers, Reporting",
+        "type": "Household Appliance Dealers"
+    },
+    "008": {
+        "name": "Retailers, Non-reporting",
+        "type": "Household Appliance Dealers"
+    },
+    "009": {
+        "name": "Wholesalers and distributors",
+        "type": "Household Appliance Dealers"
+    },
+    "010": {
+        "name": "Air Freight",
+        "type": "All classes"
+    },
+    "011": {
+        "name": "Dry cleaners",
+        "type": "Bailees Customers"
+    },
+    "012": {
+        "name": "Laundries",
+        "type": "Bailees Customers"
+    },
+    "013": {
+        "name": "Rugs and carpets",
+        "type": "Bailees Customers"
+    },
+    "014": {
+        "name": "All others",
+        "type": "Bailees Customers"
+    },
+    "015": {
+        "name": "Bicycle Floater",
+        "type": "All classes"
+    },
+    "016": {
+        "name": "Railroad",
+        "type": "Bills of Lading"
+    },
+    "017": {
+        "name": "Non Commercial, Outboards & Canoes, No motor",
+        "type": "Boats, PD Portion"
+    },
+    "018": {
+        "name": "Non Commercial, Outboards & Canoes, Und 16 ft, Restricted from Great Lakes and Coastal",
+        "type": "Boats, PD Portion"
+    },
+    "019": {
+        "name": "Non Commercial, Outboards & Canoes, Und 16 ft, Unrestricted",
+        "type": "Boats, PD Portion"
+    },
+    "020": {
+        "name": "Non Commercial, Outboards & Canoes, 50 to 100 hp",
+        "type": "Boats, PD Portion"
+    },
+    "021": {
+        "name": "Non Commercial, Outboards & Canoes, Over 100 hp",
+        "type": "Boats, PD Portion"
+    },
+    "022": {
+        "name": "Non Commercial, Sailboats, 26 ft & under, Motorized",
+        "type": "Boats, PD Portion"
+    },
+    "023": {
+        "name": "Non Commercial, Sailboats, 26 ft & under, No motor",
+        "type": "Boats, PD Portion"
+    },
+    "024": {
+        "name": "Non Commercial, Sailboats, Over 26 ft, Motorized",
+        "type": "Boats, PD Portion"
+    },
+    "025": {
+        "name": "Non Commercial, Sailboats, Over 26 ft, No motor",
+        "type": "Boats, PD Portion"
+    },
+    "026": {
+        "name": "Non Commercial, Inboard/Outboards, 26 ft & und, 150 hp & und",
+        "type": "Boats, PD Portion"
+    },
+    "027": {
+        "name": "Non Commercial, Inboard/Outboards, 26 ft & und, Over 150 hp",
+        "type": "Boats, PD Portion"
+    },
+    "028": {
+        "name": "Non Commercial, Inboard/Outboards, Over 26 ft, 150 hp & und",
+        "type": "Boats, PD Portion"
+    },
+    "029": {
+        "name": "Non Commercial, Inboard/Outboards, Over 26 ft, Over 150 hp",
+        "type": "Boats, PD Portion"
+    },
+    "030": {
+        "name": "Non Commercial, Inboards, 26 ft & under, 150 hp & und",
+        "type": "Boats, PD Portion"
+    },
+    "031": {
+        "name": "Non Commercial, Inboards, 26 ft & under, Over 150 hp",
+        "type": "Boats, PD Portion"
+    },
+    "032": {
+        "name": "Non Commercial, Inboards, Over 26 ft, 150 hp & under",
+        "type": "Boats, PD Portion"
+    },
+    "033": {
+        "name": "Non Commercial, Inboards, Over 26 ft, Over 150 hp",
+        "type": "Boats, PD Portion"
+    },
+    "034": {
+        "name": "Non Commercial, House & Pontoon, 26 ft & under, No motor",
+        "type": "Boats, PD Portion"
+    },
+    "035": {
+        "name": "Non Commercial, House & Pontoon, 26 ft & under, Over 150 hp",
+        "type": "Boats, PD Portion"
+    },
+    "036": {
+        "name": "Non Commercial, House & Pontoon, Over 26 ft, 150 hp & und",
+        "type": "Boats, PD Portion"
+    },
+    "037": {
+        "name": "Non Commercial, House & Pontoon, Over 26 ft, Over 150 hp",
+        "type": "Boats, PD Portion"
+    },
+    "038": {
+        "name": "Commercial Use, All classes",
+        "type": "Boats, PD Portion"
+    },
+    "039": {
+        "name": "Non Commercial, Not Otherwise Classified, All other classes",
+        "type": "Boats, PD Portion"
+    },
+    "040": {
+        "name": "All Classes",
+        "type": "CDP"
+    },
+    "041": {
+        "name": "All classes including mobile and base units, phones, etc.",
+        "type": "Citizens Band Radios"
+    },
+    "042": {
+        "name": "Private",
+        "type": "Coin Collections"
+    },
+    "043": {
+        "name": "Dealers",
+        "type": "Coin Collections"
+    },
+    "044": {
+        "name": "Others",
+        "type": "Coin Collections"
+    },
+    "045": {
+        "name": "All classes",
+        "type": "Cold Storage Locker"
+    },
+    "046": {
+        "name": "All classes",
+        "type": "Contact Lenses"
+    },
+    "047": {
+        "name": "All risk form",
+        "type": "Contractors Equipment"
+    },
+    "048": {
+        "name": "Named peril form",
+        "type": "Contractors Equipment"
+    },
+    "049": {
+        "name": "Extra expense",
+        "type": "Contractors Equipment"
+    },
+    "050": {
+        "name": "All classes",
+        "type": "Contractors Equipment and Installation Combined"
+    },
+    "051": {
+        "name": "Excluding ginners",
+        "type": "Cotton Buyers Transit"
+    },
+    "052": {
+        "name": "Ginners",
+        "type": "Cotton Buyers Transit"
+    },
+    "053": {
+        "name": "Equipment",
+        "type": "Data Processing"
+    },
+    "054": {
+        "name": "Media",
+        "type": "Data Processing"
+    },
+    "055": {
+        "name": "Extra expense",
+        "type": "Data Processing"
+    },
+    "056": {
+        "name": "Business interruption",
+        "type": "Data Processing"
+    },
+    "057": {
+        "name": "All other classes",
+        "type": "Dealers"
+    },
+    "058": {
+        "name": "Dual interest",
+        "type": "Deferred Payment Merchandise"
+    },
+    "059": {
+        "name": "Single interest",
+        "type": "Deferred Payment Merchandise"
+    },
+    "060": {
+        "name": "Contingent interest",
+        "type": "Deferred Payment Merchandise"
+    },
+    "061": {
+        "name": "Personal, All classes",
+        "type": "Radio & TV"
+    },
+    "062": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "063": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "064": {
+        "name": "All classes",
+        "type": "Difference in Conditions"
+    },
+    "065": {
+        "name": "All classes",
+        "type": "Docks, Piers, and Wharves"
+    },
+    "066": {
+        "name": "Non-reporting, No incidental stock",
+        "type": "Equipment Dealers"
+    },
+    "067": {
+        "name": "Non Commercial, House & Pontoon, 26 ft & und, 150 hp & und",
+        "type": "Boats, PD Portion"
+    },
+    "068": {
+        "name": "Reporting, No incidental stock",
+        "type": "Equipment Dealers"
+    },
+    "069": {
+        "name": "Non-reporting, With incidental stock",
+        "type": "Equipment Dealers"
+    },
+    "070": {
+        "name": "Reporting, With incidental stock",
+        "type": "Equipment Dealers"
+    },
+    "071": {
+        "name": "Owners form, Owners property",
+        "type": "Exhibition Risks"
+    },
+    "072": {
+        "name": "Exhibitors form, Loaned property",
+        "type": "Exhibition Risks"
+    },
+    "073": {
+        "name": "Blanket",
+        "type": "Farm Equipment"
+    },
+    "074": {
+        "name": "Scheduled",
+        "type": "Farm Equipment"
+    },
+    "075": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "076": {
+        "name": "Extra expense",
+        "type": "Farm Equipment"
+    },
+    "077": {
+        "name": "Irrigation equipment",
+        "type": "Farm Equipment"
+    },
+    "078": {
+        "name": "All classes",
+        "type": "Films and Negatives"
+    },
+    "079": {
+        "name": "Including antiques",
+        "type": "Fine Arts"
+    },
+    "080": {
+        "name": "Other commercial collections",
+        "type": "Fine Arts"
+    },
+    "081": {
+        "name": "Private Collection, Excluding antiques",
+        "type": "Fine Arts"
+    },
+    "082": {
+        "name": "Dealers",
+        "type": "Fine Arts"
+    },
+    "083": {
+        "name": "Museums",
+        "type": "Fine Arts"
+    },
+    "084": {
+        "name": "Stained glass windows",
+        "type": "Fine Arts"
+    },
+    "085": {
+        "name": "Form A",
+        "type": "First Class Mail"
+    },
+    "086": {
+        "name": "Form B",
+        "type": "First Class Mail"
+    },
+    "087": {
+        "name": "Transfer agent mail policy",
+        "type": "First Class Mail"
+    },
+    "088": {
+        "name": "Dual interest",
+        "type": "Floor Plan Merchandise"
+    },
+    "089": {
+        "name": "Single interest",
+        "type": "Floor Plan Merchandise"
+    },
+    "090": {
+        "name": "Contingent interest",
+        "type": "Floor Plan Merchandise"
+    },
+    "091": {
+        "name": "Reporting",
+        "type": "Furriers Block"
+    },
+    "092": {
+        "name": "Non-reporting",
+        "type": "Furriers Block"
+    },
+    "093": {
+        "name": "Custody rider",
+        "type": "Furriers Customers"
+    },
+    "094": {
+        "name": "Legal Liability, Retail",
+        "type": "Furriers Customers"
+    },
+    "095": {
+        "name": "Legal Liability, Wholesale",
+        "type": "Furriers Customers"
+    },
+    "096": {
+        "name": "All others including certificates",
+        "type": "Furriers Customers"
+    },
+    "097": {
+        "name": "Optional annual premium non-reporting",
+        "type": "Furriers Customers"
+    },
+    "098": {
+        "name": "Womens Wear, Named perils",
+        "type": "Garment Contractors"
+    },
+    "099": {
+        "name": "Womens Wear, Named perils and premises",
+        "type": "Garment Contractors"
+    },
+    "100": {
+        "name": "Womens Wear, All risk",
+        "type": "Garment Contractors"
+    },
+    "101": {
+        "name": "Womens Wear, All risk including premises",
+        "type": "Garment Contractors"
+    },
+    "102": {
+        "name": "Womens Wear, All property",
+        "type": "Garment Contractors"
+    },
+    "103": {
+        "name": "Mens Wear, Named perils",
+        "type": "Garment Contractors"
+    },
+    "104": {
+        "name": "Mens Wear, Named perils and premises",
+        "type": "Garment Contractors"
+    },
+    "105": {
+        "name": "Mens Wear, All risk",
+        "type": "Garment Contractors"
+    },
+    "106": {
+        "name": "Mens Wear, All risk including premises",
+        "type": "Garment Contractors"
+    },
+    "107": {
+        "name": "Mens Wear, All property",
+        "type": "Garment Contractors"
+    },
+    "108": {
+        "name": "Others, Named perils",
+        "type": "Garment Contractors"
+    },
+    "109": {
+        "name": "Others, Named perils and premises",
+        "type": "Garment Contractors"
+    },
+    "110": {
+        "name": "Others, All risk",
+        "type": "Garment Contractors"
+    },
+    "111": {
+        "name": "Others, All risk including premises",
+        "type": "Garment Contractors"
+    },
+    "112": {
+        "name": "Others, All property",
+        "type": "Garment Contractors"
+    },
+    "113": {
+        "name": "With gemprint credit",
+        "type": "Jewelry Floater"
+    },
+    "114": {
+        "name": "All other classes",
+        "type": "Golfers Equipment Floater"
+    },
+    "115": {
+        "name": "All classes",
+        "type": "Government Service"
+    },
+    "116": {
+        "name": "All classes",
+        "type": "Gun Floater"
+    },
+    "117": {
+        "name": "All classes",
+        "type": "Grain Floater"
+    },
+    "118": {
+        "name": "Retailers, Non-reporting",
+        "type": "Heating & Air Conditioning Dealers"
+    },
+    "119": {
+        "name": "Retailers, Reporting",
+        "type": "Heating & Air Conditioning Dealers"
+    },
+    "120": {
+        "name": "Wholesalers and distributors",
+        "type": "Heating & Air Conditioning Dealers"
+    },
+    "121": {
+        "name": "Horse and Wagon",
+        "type": "All classes"
+    },
+    "122": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "123": {
+        "name": "Farm Equipment, Non-reporting, No incidental stock",
+        "type": "Implement Dealers Stock Floater"
+    },
+    "124": {
+        "name": "Farm Equipment, Reporting, No incidental stock",
+        "type": "Implement Dealers Stock Floater"
+    },
+    "125": {
+        "name": "Farm Equipment, Non-reporting, With incidental stock",
+        "type": "Implement Dealers Stock Floater"
+    },
+    "126": {
+        "name": "Farm Equipment, Reporting, With incidental stock",
+        "type": "Implement Dealers Stock Floater"
+    },
+    "127": {
+        "name": "Construction Equip, Non-reporting, No incidental stock",
+        "type": "Implement Dealers Stock Floater"
+    },
+    "128": {
+        "name": "Construction Equip, Reporting, No incidental stock",
+        "type": "Implement Dealers Stock Floater"
+    },
+    "129": {
+        "name": "Construction Equip, Non-reporting, With incidental stock",
+        "type": "Implement Dealers Stock Floater"
+    },
+    "130": {
+        "name": "Construction Equip, Reporting, With incidental stock",
+        "type": "Implement Dealers Stock Floater"
+    },
+    "131": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "132": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "133": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "134": {
+        "name": "All classes",
+        "type": "Installation Risks"
+    },
+    "135": {
+        "name": "All classes",
+        "type": "Installation or Building Materials - Job Site"
+    },
+    "136": {
+        "name": "Residential, Single job",
+        "type": "Builders Risk"
+    },
+    "137": {
+        "name": "Residential, Blanket",
+        "type": "Builders Risk"
+    },
+    "138": {
+        "name": "Residential, Excess of loss",
+        "type": "Builders Risk"
+    },
+    "139": {
+        "name": "Mercantile, Single job",
+        "type": "Builders Risk"
+    },
+    "140": {
+        "name": "Mercantile, Blanket",
+        "type": "Builders Risk"
+    },
+    "141": {
+        "name": "Mercantile, Excess of loss",
+        "type": "Builders Risk"
+    },
+    "142": {
+        "name": "All Others, Single job",
+        "type": "Builders Risk"
+    },
+    "143": {
+        "name": "All Others, Blanket",
+        "type": "Builders Risk"
+    },
+    "144": {
+        "name": "All Others, Excess of loss",
+        "type": "Builders Risk"
+    },
+    "145": {
+        "name": "Standard, Loose Diamond Dealers, Fire",
+        "type": "Jewelers Block"
+    },
+    "146": {
+        "name": "Standard, Loose Diamond Dealers, All other perils",
+        "type": "Jewelers Block"
+    },
+    "147": {
+        "name": "Standard, Jewelry Wholesalers, Fire",
+        "type": "Jewelers Block"
+    },
+    "148": {
+        "name": "Standard, Jewelry Wholesalers, All other perils",
+        "type": "Jewelers Block"
+    },
+    "149": {
+        "name": "Standard, Jewelry Retailers, Fire",
+        "type": "Jewelers Block"
+    },
+    "150": {
+        "name": "Standard, Jewelry Retailers, All other perils",
+        "type": "Jewelers Block"
+    },
+    "151": {
+        "name": "Standard, Pawnbrokers, Fire",
+        "type": "Jewelers Block"
+    },
+    "152": {
+        "name": "Standard, Pawnbrokers, All other perils",
+        "type": "Jewelers Block"
+    },
+    "153": {
+        "name": "Standard, Jewelry Manufacturers, Fire",
+        "type": "Jewelers Block"
+    },
+    "154": {
+        "name": "Standard, Jewelry Manufacturers, All other perils",
+        "type": "Jewelers Block"
+    },
+    "155": {
+        "name": "Restricted, Loose Diamond Dealers, Fire",
+        "type": "Jewelers Block"
+    },
+    "156": {
+        "name": "Restricted, Loose Diamond Dealers, All other perils",
+        "type": "Jewelers Block"
+    },
+    "157": {
+        "name": "Restricted, Jewelry Wholesalers, Fire",
+        "type": "Jewelers Block"
+    },
+    "158": {
+        "name": "Restricted, Jewelry Wholesalers, All other perils",
+        "type": "Jewelers Block"
+    },
+    "159": {
+        "name": "Restricted, Jewelry Retailers, Fire",
+        "type": "Jewelers Block"
+    },
+    "160": {
+        "name": "Restricted, Jewelry Retailers, All other perils",
+        "type": "Jewelers Block"
+    },
+    "161": {
+        "name": "Restricted, Pawnbrokers, Fire",
+        "type": "Jewelers Block"
+    },
+    "162": {
+        "name": "Restricted, Pawnbrokers, All other perils",
+        "type": "Jewelers Block"
+    },
+    "163": {
+        "name": "Restricted, Jewelry Manufacturers, Fire",
+        "type": "Jewelers Block"
+    },
+    "164": {
+        "name": "Restricted, Jewelry Manufacturers, All other perils",
+        "type": "Jewelers Block"
+    },
+    "165": {
+        "name": "All other classes",
+        "type": "Leased Property"
+    },
+    "166": {
+        "name": "All classes",
+        "type": "Linen & Uniform Supply Floater"
+    },
+    "167": {
+        "name": "All classes",
+        "type": "Live Animals and Pelts"
+    },
+    "168": {
+        "name": "Blanket, No optional perils",
+        "type": "Livestock Floater"
+    },
+    "169": {
+        "name": "Scheduled, No optional perils",
+        "type": "Livestock Floater"
+    },
+    "170": {
+        "name": "Feedlot and Miscellaneous Livestock",
+        "type": "Livestock Floater"
+    },
+    "171": {
+        "name": "Blanket, All optional perils",
+        "type": "Livestock Floater"
+    },
+    "172": {
+        "name": "Scheduled, All optional perils",
+        "type": "Livestock Floater"
+    },
+    "173": {
+        "name": "Scheduled, Optional Perils, No sheep",
+        "type": "Livestock Floater"
+    },
+    "174": {
+        "name": "Blanket, Optional Perils, No sheep",
+        "type": "Livestock Floater"
+    },
+    "175": {
+        "name": "All classes",
+        "type": "Logging Equipment"
+    },
+    "176": {
+        "name": "Business machinery",
+        "type": "Machinery and Mechanical Equipment"
+    },
+    "177": {
+        "name": "Coin operated device - amusement",
+        "type": "Machinery and Mechanical Equipment"
+    },
+    "178": {
+        "name": "Golf carts",
+        "type": "Machinery and Mechanical Equipment"
+    },
+    "179": {
+        "name": "Vending machines",
+        "type": "Machinery and Mechanical Equipment"
+    },
+    "180": {
+        "name": "Voting machines",
+        "type": "Machinery and Mechanical Equipment"
+    },
+    "181": {
+        "name": "Parking meters",
+        "type": "Machinery and Mechanical Equipment"
+    },
+    "182": {
+        "name": "All others",
+        "type": "Machinery and Mechanical Equipment"
+    },
+    "183": {
+        "name": "All classes",
+        "type": "School Property Floater"
+    },
+    "184": {
+        "name": "All classes",
+        "type": "Municipal Property Floater"
+    },
+    "185": {
+        "name": "All classes",
+        "type": "Audio Visual Equipment"
+    },
+    "186": {
+        "name": "All classes",
+        "type": "Hospital Property Floater"
+    },
+    "187": {
+        "name": "Retailers, Non-reporting",
+        "type": "Marine Supply and Boat Dealers"
+    },
+    "188": {
+        "name": "Retailers, Reporting",
+        "type": "Marine Supply and Boat Dealers"
+    },
+    "189": {
+        "name": "Wholesalers and distributors",
+        "type": "Marine Supply and Boat Dealers"
+    },
+    "190": {
+        "name": "Marine operator legal liability",
+        "type": "Marine Supply and Boat Dealers"
+    },
+    "191": {
+        "name": "All classes",
+        "type": "Merchandise Floater"
+    },
+    "192": {
+        "name": "Personal",
+        "type": "All Other Classes Not Specified"
+    },
+    "193": {
+        "name": "Commercial",
+        "type": "All Other Classes Not Specified"
+    },
+    "194": {
+        "name": "Reporting policies",
+        "type": "Merchants Property"
+    },
+    "195": {
+        "name": "Non-reporting policies",
+        "type": "Merchants Property"
+    },
+    "196": {
+        "name": "Strip Mining",
+        "type": "Mine Equipment and Rolling Stock"
+    },
+    "197": {
+        "name": "Underground Mining",
+        "type": "Mine Equipment and Rolling Stock"
+    },
+    "198": {
+        "name": "Reporting policies",
+        "type": "Mobile Home Dealers including Trailers"
+    },
+    "199": {
+        "name": "Non-reporting policies",
+        "type": "Mobile Home Dealers including Trailers"
+    },
+    "200": {
+        "name": "Equipment",
+        "type": "Morticians"
+    },
+    "201": {
+        "name": "Liability",
+        "type": "Morticians"
+    },
+    "202": {
+        "name": "Owners Form, Under 100 miles",
+        "type": "Motor Truck Cargo"
+    },
+    "203": {
+        "name": "Owners Form, Over 100 miles",
+        "type": "Motor Truck Cargo"
+    },
+    "204": {
+        "name": "Carriers Form, Under 100 miles",
+        "type": "Motor Truck Cargo"
+    },
+    "205": {
+        "name": "Carriers Form, Over 100 miles",
+        "type": "Motor Truck Cargo"
+    },
+    "206": {
+        "name": "Carriers Form, Retrospective",
+        "type": "Motor Truck Cargo"
+    },
+    "207": {
+        "name": "Individual, Non professional",
+        "type": "Musical Instruments"
+    },
+    "208": {
+        "name": "Individual, Professional",
+        "type": "Musical Instruments"
+    },
+    "209": {
+        "name": "Dance Bands and orchestras",
+        "type": "Musical Instruments"
+    },
+    "210": {
+        "name": "Other orchestras, bands, etc.",
+        "type": "Musical Instruments"
+    },
+    "211": {
+        "name": "Stationary organs",
+        "type": "Musical Instruments"
+    },
+    "212": {
+        "name": "Non-reporting",
+        "type": "Musical Instrument Dealers"
+    },
+    "213": {
+        "name": "Reporting",
+        "type": "Musical Instrument Dealers"
+    },
+    "214": {
+        "name": "All classes",
+        "type": "Signs and Clocks"
+    },
+    "215": {
+        "name": "Retailers, Excluding reporting form",
+        "type": "Office Machines and Supply Dealers"
+    },
+    "216": {
+        "name": "Retailers, Reporting form",
+        "type": "Office Machines and Supply Dealers"
+    },
+    "217": {
+        "name": "Wholesalers and distributors",
+        "type": "Office Machines and Supply Dealers"
+    },
+    "218": {
+        "name": "Cable tools and other equipment",
+        "type": "Oil and Gas Drilling Rigs"
+    },
+    "219": {
+        "name": "Well servicing equipment",
+        "type": "Oil and Gas Drilling Rigs"
+    },
+    "220": {
+        "name": "Coastal rotary",
+        "type": "Oil and Gas Drilling Rigs"
+    },
+    "221": {
+        "name": "Inland Rotary",
+        "type": "Oil and Gas Drilling Rigs"
+    },
+    "222": {
+        "name": "All classes",
+        "type": "Oil and Gas Drilling Rigs"
+    },
+    "223": {
+        "name": "Coastal territory",
+        "type": "Oil and Gas Drilling Rigs"
+    },
+    "224": {
+        "name": "Inland territory",
+        "type": "Oil and Gas Drilling Rigs"
+    },
+    "225": {
+        "name": "Open form",
+        "type": "Parcel Post"
+    },
+    "226": {
+        "name": "Personal",
+        "type": "Paraphernalia"
+    },
+    "227": {
+        "name": "Commercial",
+        "type": "Paraphernalia"
+    },
+    "228": {
+        "name": "Legal liability only",
+        "type": "Pattern Floater"
+    },
+    "229": {
+        "name": "All others",
+        "type": "Pattern Floater"
+    },
+    "230": {
+        "name": "Trailer contents (auto home)",
+        "type": "Personal Effects"
+    },
+    "231": {
+        "name": "Travel (ticket) baggage",
+        "type": "Personal Effects"
+    },
+    "232": {
+        "name": "All other",
+        "type": "Personal Effects"
+    },
+    "233": {
+        "name": "All classes",
+        "type": "Fur Floater"
+    },
+    "234": {
+        "name": "Without gemprint credit",
+        "type": "Jewelry Floater"
+    },
+    "235": {
+        "name": "Blanket portion",
+        "type": "Personal Property Floater"
+    },
+    "236": {
+        "name": "Outdoor radio and TV towers and antennas",
+        "type": "Personal Property Floater"
+    },
+    "237": {
+        "name": "Miscellaneous scheduled property",
+        "type": "Personal Property Floater"
+    },
+    "238": {
+        "name": "With extended coverage",
+        "type": "Physicians and Surgeons Equipment"
+    },
+    "239": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "240": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "241": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "242": {
+        "name": "Without extended coverage",
+        "type": "Physicians and Surgeons"
+    },
+    "243": {
+        "name": "All classes",
+        "type": "Poultry Floater"
+    },
+    "244": {
+        "name": "Insureds property on other premises",
+        "type": "Processing Risks"
+    },
+    "245": {
+        "name": "Customers property on insureds premises",
+        "type": "Processing Risks"
+    },
+    "246": {
+        "name": "Retailers, Non-reporting forms",
+        "type": "Professional or Scientific Instruments Dealers"
+    },
+    "247": {
+        "name": "Retailers, Reporting forms",
+        "type": "Professional or Scientific Instruments Dealers"
+    },
+    "248": {
+        "name": "Wholesalers and distributors",
+        "type": "Professional or Scientific Instruments Dealers"
+    },
+    "249": {
+        "name": "All classes",
+        "type": "Radioactive Contamination Coverage"
+    },
+    "250": {
+        "name": "All classes",
+        "type": "Radio and TV Dealers & Repairers"
+    },
+    "251": {
+        "name": "Commercial, Towers and Antennas, Property damage",
+        "type": "Radio and TV"
+    },
+    "252": {
+        "name": "Commercial, Towers and Antennas, Use and occupancy",
+        "type": "Radio and TV"
+    },
+    "253": {
+        "name": "Commercial, Broadcasting Equipment, Property damage",
+        "type": "Radio and TV"
+    },
+    "254": {
+        "name": "Commercial, Broadcasting Equipment, Use and occupancy",
+        "type": "Radio and TV"
+    },
+    "255": {
+        "name": "Commercial, Towers and Antennas Builders risk",
+        "type": "Radio and TV"
+    },
+    "256": {
+        "name": "Commercial, Cable TV, Property damage",
+        "type": "Radio and TV"
+    },
+    "257": {
+        "name": "Commercial, Cable TV, Use and occupancy",
+        "type": "Radio and TV"
+    },
+    "258": {
+        "name": "All classes",
+        "type": "Radium Floater"
+    },
+    "259": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "260": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "261": {
+        "name": "Short haul",
+        "type": "Railroad Risks"
+    },
+    "262": {
+        "name": "Yard switching",
+        "type": "Railroad Risks"
+    },
+    "263": {
+        "name": "Equipment excluding locomotives",
+        "type": "Railroad Risks"
+    },
+    "264": {
+        "name": "Tank cars",
+        "type": "Railroad Risks"
+    },
+    "265": {
+        "name": "Miscellaneous",
+        "type": "Railroad Risks"
+    },
+    "266": {
+        "name": "PD Portion",
+        "type": "Recreational Vehicles"
+    },
+    "267": {
+        "name": "P & I Portion",
+        "type": "Recreational Vehicles"
+    },
+    "268": {
+        "name": "All classes",
+        "type": "Registered Mail"
+    },
+    "269": {
+        "name": "Direct Coverage, Owners interest",
+        "type": "Rigging"
+    },
+    "270": {
+        "name": "Direct Coverage, Riggers interest",
+        "type": "Rigging"
+    },
+    "271": {
+        "name": "Legal liability imposed by law",
+        "type": "Rigging"
+    },
+    "272": {
+        "name": "All classes",
+        "type": "Saddles and Bridles"
+    },
+    "273": {
+        "name": "Wearing apparel",
+        "type": "Salespersons Samples"
+    },
+    "274": {
+        "name": "All others",
+        "type": "Salespersons Samples"
+    },
+    "275": {
+        "name": "All classes",
+        "type": "Scientific Instruments"
+    },
+    "276": {
+        "name": "All classes",
+        "type": "Sidetrack Liability"
+    },
+    "277": {
+        "name": "All classes",
+        "type": "Silverware Floater"
+    },
+    "278": {
+        "name": "PD Portion",
+        "type": "Snowmobiles"
+    },
+    "279": {
+        "name": "P & I Portion",
+        "type": "Snowmobiles"
+    },
+    "280": {
+        "name": "All classes",
+        "type": "Sports Equipment"
+    },
+    "281": {
+        "name": "Retailers, Non-reporting forms",
+        "type": "Sporting Goods Dealers"
+    },
+    "282": {
+        "name": "Retailers, Reporting forms",
+        "type": "Sporting Goods Dealers"
+    },
+    "283": {
+        "name": "Wholesalers and distributors",
+        "type": "Sporting Goods Dealers"
+    },
+    "284": {
+        "name": "Private",
+        "type": "Stamp Collections"
+    },
+    "285": {
+        "name": "Dealers",
+        "type": "Stamp Collections"
+    },
+    "286": {
+        "name": "Others",
+        "type": "Stamp Collections"
+    },
+    "287": {
+        "name": "All classes",
+        "type": "Tobacco Curing System"
+    },
+    "288": {
+        "name": "All classes",
+        "type": "Tanks"
+    },
+    "289": {
+        "name": "All classes",
+        "type": "Tank Contents"
+    },
+    "290": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "291": {
+        "name": "All classes",
+        "type": "Theatrical Floaters"
+    },
+    "292": {
+        "name": "All classes",
+        "type": "Tourists Baggage"
+    },
+    "293": {
+        "name": "All classes",
+        "type": "Tools and Equipment Floater"
+    },
+    "294": {
+        "name": "Personal",
+        "type": "Trailer Contents"
+    },
+    "295": {
+        "name": "Camping and mobile home",
+        "type": "Trailers"
+    },
+    "296": {
+        "name": "All other",
+        "type": "Trailers"
+    },
+    "297": {
+        "name": "Pipe Lines, Property damage",
+        "type": "Transmission and Pipe Lines"
+    },
+    "298": {
+        "name": "Pipe Lines, Use and occupancy",
+        "type": "Transmission and Pipe Lines"
+    },
+    "299": {
+        "name": "Non Commercial, House and Pontoon, Over 26 ft, No motor",
+        "type": "Boats, PD Portion"
+    },
+    "300": {
+        "name": "Power, Telegraph, phone, Property damage",
+        "type": "Transmission and Pipe Lines"
+    },
+    "301": {
+        "name": "Power, Telegraph, phone, Use and occupancy",
+        "type": "Transmission and Pipe Lines"
+    },
+    "302": {
+        "name": "Non-reporting",
+        "type": "Commercial Property Policy"
+    },
+    "303": {
+        "name": "Reporting",
+        "type": "Commercial Property Policy"
+    },
+    "304": {
+        "name": "Open and annual",
+        "type": "Transportation Floater"
+    },
+    "305": {
+        "name": "Issued with garment contractors floater",
+        "type": "Transportation Floater"
+    },
+    "306": {
+        "name": "Trip Transit, Household Goods, Owners",
+        "type": "Transportation Floater"
+    },
+    "307": {
+        "name": "Trip Transit, Other Than Household Goods, Owners",
+        "type": "Transportation Floater"
+    },
+    "308": {
+        "name": "Trip Transit, All others",
+        "type": "Transportation Floater"
+    },
+    "309": {
+        "name": "Trip Transit, Household Goods, Public carrier",
+        "type": "Transportation Floater"
+    },
+    "310": {
+        "name": "Trip Transit, Other Than Household Goods, Public carrier",
+        "type": "Transportation Floater"
+    },
+    "311": {
+        "name": "All other classes",
+        "type": "Use and Occupancy"
+    },
+    "312": {
+        "name": "All other classes",
+        "type": "Valuable Papers and Records"
+    },
+    "313": {
+        "name": "All other classes",
+        "type": "Veterinarians Bailee"
+    },
+    "314": {
+        "name": "All other classes",
+        "type": "Warehousemens Legal Liability"
+    },
+    "315": {
+        "name": "All other classes",
+        "type": "Wedding Presents"
+    },
+    "316": {
+        "name": "All other classes",
+        "type": "Well Drilling Equipment"
+    },
+    "317": {
+        "name": "All other classes",
+        "type": "Wool Growers Floater"
+    },
+    "318": {
+        "name": "Builders risk",
+        "type": "Bridges and Tunnels"
+    },
+    "319": {
+        "name": "Property Damage, All risks",
+        "type": "Bridges and Tunnels"
+    },
+    "320": {
+        "name": "Property Damage, Named perils",
+        "type": "Bridges and Tunnels"
+    },
+    "321": {
+        "name": "Use and occupancy",
+        "type": "Bridges and Tunnels"
+    },
+    "322": {
+        "name": "Private",
+        "type": "Cameras and Sound Equipment"
+    },
+    "323": {
+        "name": "Motion picture producer",
+        "type": "Cameras and Sound Equipment"
+    },
+    "324": {
+        "name": "Television",
+        "type": "Cameras and Sound Equipment"
+    },
+    "325": {
+        "name": "Other commercial",
+        "type": "Cameras and Sound Equipment"
+    },
+    "326": {
+        "name": "Reporting form",
+        "type": "Camera Dealers"
+    },
+    "327": {
+        "name": "Non-reporting form",
+        "type": "Camera Dealers"
+    },
+    "328": {
+        "name": "Non-reporting",
+        "type": "Commercial Block"
+    },
+    "329": {
+        "name": "Reporting",
+        "type": "Commercial Block"
+    },
+    "330": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "331": {
+        "name": "Locomotives including equipment",
+        "type": "Railroad Risks"
+    },
+    "332": {
+        "name": "Winter range livestock",
+        "type": "Livestock Floater"
+    },
+    "333": {
+        "name": "Restricted, Watch Repairers, Fire",
+        "type": "Jewelers Block"
+    },
+    "334": {
+        "name": "Restricted, Watch Repairers, All other perils",
+        "type": "Jewelers Block"
+    },
+    "335": {
+        "name": "Standard, Watch Repairers, Fire",
+        "type": "Jewelers Block"
+    },
+    "336": {
+        "name": "Standard, Watch Repairers, All other perils",
+        "type": "Jewelers Block"
+    },
+    "337": {
+        "name": "All classes",
+        "type": "Hardware and Implement Dealers Floater"
+    },
+    "338": {
+        "name": "All classes",
+        "type": "Dwelling Contents Floater"
+    },
+    "339": {
+        "name": "Non Commercial, Outboards and Canoes, Under 50 hp",
+        "type": "Boats, PD Portion"
+    },
+    "340": {
+        "name": "All classes",
+        "type": "Builders Risk and Installation Combined"
+    },
+    "341": {
+        "name": "All Classes, Commercial",
+        "type": "Boats, P & I Portion"
+    },
+    "342": {
+        "name": "All Classes, Personal",
+        "type": "Boats, P & I Portion"
+    },
+    "343": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "344": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "345": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "346": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "347": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "348": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "349": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "350": {
+        "name": "Motorized, without Collision",
+        "type": "Golf Carts"
+    },
+    "351": {
+        "name": "Motorized, with Collision",
+        "type": "Golf Carts"
+    },
+    "352": {
+        "name": "Motorized, Optional Medical Payments Coverage",
+        "type": "Golf Carts"
+    },
+    "353": {
+        "name": "Motorized, Optional Limited Property Damage Liability",
+        "type": "Golf Carts"
+    },
+    "354": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "355": {
+        "name": "Motorized, without Collision",
+        "type": "Grounds Care Vehicles"
+    },
+    "356": {
+        "name": "Motorized, with Collision",
+        "type": "Grounds Care Vehicles"
+    },
+    "357": {
+        "name": "Motorized, Optional Medical Payments Coverage",
+        "type": "Grounds Care Vehicles"
+    },
+    "358": {
+        "name": "Motorized, Optional Limited Property Damage Liability",
+        "type": "Grounds Care Vehicles"
+    },
+    "359": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "360": {
+        "name": "Motorized, without Collision",
+        "type": "Mobility Assistance Vehicles"
+    },
+    "361": {
+        "name": "Motorized, with Collision",
+        "type": "Mobility Assistance Vehicles"
+    },
+    "362": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "363": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "364": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "365": {
+        "name": "Motorized, without Collision",
+        "type": "Snowmobiles"
+    },
+    "366": {
+        "name": "Motorized, with Collision",
+        "type": "Snowmobiles"
+    },
+    "367": {
+        "name": "Motorized, Optional Medical Payments Coverage",
+        "type": "Snowmobiles"
+    },
+    "368": {
+        "name": "Motorized, Optional Limited Property Damage Liability",
+        "type": "Snowmobiles"
+    },
+    "369": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "370": {
+        "name": "Non-Commercial, Not More than 16 feet, Principally Operated on Inland Waters Other Than the Great Lakes",
+        "type": "Boats and Outboard Motors, PD Portion"
+    },
+    "371": {
+        "name": "Non-Commercial, Not More than 16 feet, Principally Operated on the Great Lakes and/or Coastal Waters",
+        "type": "Boats and Outboard Motors, PD Portion"
+    },
+    "372": {
+        "name": "Non-Commercial, Not More than 16 feet, Optional Medical Payments Coverage",
+        "type": "Boats and Outboard Motors"
+    },
+    "373": {
+        "name": "Non-Commercial, Not More than 16 feet, Optional Limited Property Damage Liability",
+        "type": "Boats and Outboard Motors"
+    },
+    "374": {
+        "name": "With Collision",
+        "type": "Grounds Care Trailers"
+    },
+    "375": {
+        "name": "Without Collision",
+        "type": "Grounds Care Trailers"
+    },
+    "376": {
+        "name": "Grounds Care Equipment",
+        "type": "Grounds Care Equipment"
+    },
+    "377": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "378": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "379": {
+        "name": "Reserved",
+        "type": "Reserved"
+    },
+    "380": {
+        "name": "Reserved",
+        "type": "Reserved"
+    }
+}

@@ -1,0 +1,50 @@
+{
+    "00": {
+        "name": "Does not apply",
+        "form": "Does not apply"
+    },
+    "02": {
+        "name": "Premises Burglary and Robbery Coverage",
+        "form": "CR 0302 / CR-302"
+    },
+    "03": {
+        "name": "Burglary & Robbery Coverage -- Safe Burglary and Messenger",
+        "form": "CR 0303 / CR-303"
+    },
+    "04": {
+        "name": "Money and Securities Coverage",
+        "form": "CR 0304 / CR-304"
+    },
+    "06": {
+        "name": "Theft Coverage -- Property Other Than Money & Securities",
+        "form": "CR 0306 / CR-306"
+    },
+    "07": {
+        "name": "Theft Coverage -- Churches",
+        "form": "CR 0307 / CR-307"
+    },
+    "08": {
+        "name": "Employee Dishonesty Coverage",
+        "form": "CR 0308 / CR-308"
+    },
+    "11": {
+        "name": "Computer Fraud Coverage",
+        "form": "CR 0311"
+    },
+    "12": {
+        "name": "Premises Liability for Guests Property",
+        "form": "CR 0312"
+    },
+    "13": {
+        "name": "Counterfeit Money, Money Orders, and Travelers Checks",
+        "form": "CR 0313"
+    },
+    "14": {
+        "name": "Forgery Coverage",
+        "form": "CR 0314"
+    },
+    "99": {
+        "name": "All Other",
+        "form": "Does not apply"
+    }
+}
