@@ -1,0 +1,247 @@
+{
+    "lineOfInsurance": {
+        "inboundName": "lineOfInsurance",
+        "stageName": "LINE",
+        "dataType": "VARCHAR"
+    },
+    "accountingMonth": {
+        "inboundName": "accountingMonth",
+        "stageName": "REP_MO",
+        "dataType": "VARCHAR"
+    },
+    "accountingYear": {
+        "inboundName": "accountingYear",
+        "stageName": "REP_YR",
+        "dataType": "VARCHAR"
+    },
+    "companyCode": {
+        "inboundName": "companyCode",
+        "stageName": "COMP",
+        "dataType": "VARCHAR"
+    },
+    "stateCode": {
+        "inboundName": "stateCode",
+        "stageName": "STATE",
+        "dataType": "VARCHAR"
+    },
+    "countyCode": {
+        "inboundName": "countyCode",
+        "stageName": "COUNTY",
+        "dataType": "VARCHAR"
+    },
+    "areaIndicatorCode": {
+        "inboundName": "areaIndicatorCode",
+        "stageName": "AREA",
+        "dataType": "VARCHAR"
+    },
+    "territoryCode": {
+        "inboundName": "territory",
+        "stageName": "TERRITORY",
+        "dataType": "VARCHAR"
+    },
+    "transactionCode": {
+        "inboundName": "transactionCode",
+        "stageName": "TRANS",
+        "dataType": "VARCHAR"
+    },
+    "premiumAmount": {
+        "inboundName": "premiumAmount",
+        "stageName": "PREM_AMT",
+        "dataType": "NUMERIC"
+    },
+    "lossAmount": {
+        "inboundName": "lossAmount",
+        "stageName": "LOSS_AMT",
+        "dataType": "NUMERIC"
+    },
+    "exposure": {
+        "inboundName": "exposure",
+        "stageName": "EXPOSURE",
+        "dataType": "INT"
+    },
+    "claimCount": {
+        "inboundName": "claimCount",
+        "stageName": "CLM_CNT",
+        "dataType": "INT"
+    },
+    "annualStatementLineOfBusiness": {
+        "inboundName": "annualStatementLineOfBusiness",
+        "stageName": "ASLOB",
+        "dataType": "VARCHAR"
+    },
+    "programCode": {
+        "inboundName": "programCode",
+        "stageName": "PROG_CD",
+        "dataType": "VARCHAR"
+    },
+    "policyForm": {
+        "inboundName": "policyForm",
+        "stageName": "POL_FRM",
+        "dataType": "VARCHAR"
+    },
+    "exceptionCode":{
+        "inboundName": "exceptionCode",
+        "stageName": "EXCEPTION",
+        "dataType": "VARCHAR"
+    },
+    "terrorismIndicator": {
+        "inboundName": "terrorismIndicator",
+        "stageName": "TERRORISM",
+        "dataType": "VARCHAR"
+    },
+    "propertyAmountOfInsurance": {
+        "inboundName": "propertyAmountOfInsurance",
+        "stageName": "PAOI",
+        "dataType": "VARCHAR"
+    },
+    "deductibleType": {
+        "inboundName": "deductibleType",
+        "stageName": "DED_TYPE",
+        "dataType": "VARCHAR"
+    },
+    "deductibleAmount": {
+        "inboundName": "deductibleAmount",
+        "stageName": "DED_AMT",
+        "dataType": "VARCHAR"
+    },
+    "windstormOrHailCoverageDeductibleAmount": {
+        "inboundName": "windstormOrHailCoverageDeductibleAmount",
+        "stageName": "WIND_DED",
+        "dataType": "VARCHAR"
+    },
+    "classCode": {
+        "inboundName": "classCode",
+        "stageName": "CLASS_CODE",
+        "dataType": "VARCHAR"
+    },
+    "constructionCode": {
+        "inboundName": "constructionCode",
+        "stageName": "CONSTRUCTION",
+        "dataType": "VARCHAR"
+    },
+    "fireProtectionCode": {
+        "inboundName": "fireProtectionCode",
+        "stageName": "FIRE_PROT",
+        "dataType": "VARCHAR"
+    },
+    "yearOfConstruction": {
+        "inboundName": "yearOfConstruction",
+        "stageName": "YR_CON",
+        "dataType": "VARCHAR"
+    },
+    "liabilityLimit": {
+        "inboundName": "liabilityLimit",
+        "stageName": "LIA_LIM",
+        "dataType": "VARCHAR"
+    },
+    "medicalPayments": {
+        "inboundName": "medicalPayments",
+        "stageName": "MED_PAY_LIM",
+        "dataType": "VARCHAR"
+    },
+    "occupancyCode": {
+        "inboundName": "occupancyCode",
+        "stageName": "OCCUPANCY",
+        "dataType": "VARCHAR"
+    },
+    "hbbIndicator": {
+        "inboundName": "homeBasedBusinessIndicator",
+        "stageName": "HBB_IND",
+        "dataType": "VARCHAR"
+    },
+    "numberOfFamilies": {
+        "inboundName": "numberOfFamilies",
+        "stageName": "NUM_FAM",
+        "dataType": "VARCHAR"
+    },
+    "sizeOfTheFarm": {
+        "inboundName": "sizeOfTheFarm",
+        "stageName": "SIZE_FARM",
+        "dataType": "VARCHAR"
+    },
+    "riskType": {
+        "inboundName": "riskType",
+        "stageName": "RISK_TYPE",
+        "dataType": "VARCHAR"
+    },
+    "typeOfPolicy": {
+        "inboundName": "typeOfPolicy",
+        "stageName": "TYPE_POLICY",
+        "dataType": "VARCHAR"
+    },
+    "poolCode": {
+        "inboundName": "poolCode",
+        "stageName": "POOL",
+        "dataType": "VARCHAR"
+    },
+    "monthsCovered": {
+        "inboundName": "monthsCovered",
+        "stageName": "MOS_COV",
+        "dataType": "VARCHAR"
+    },
+    "causeOfLoss": {
+        "inboundName": "causeOfLoss",
+        "stageName": "COL",
+        "dataType": "VARCHAR"
+    },
+    "accidentMonth": {
+        "inboundName": "accidentMonth",
+        "stageName":  "ACCIDENT_MON",
+        "dataType": "VARCHAR"
+    },
+    "accidentDay": {
+        "inboundName": "accidentDay",
+        "stageName": "ACCIDENT_DAY",
+        "dataType": "VARCHAR"
+    },
+    "accidentYear": {
+        "inboundName": "accidentYear",
+        "stageName": "ACCIDENT_YEAR",
+        "dataType": "VARCHAR"
+    },
+    "zipCode": {
+        "inboundName": "zipCode",
+        "stageName": "ZIP",
+        "dataType": "VARCHAR"
+    },
+    "zipCodeSuffix": {
+        "inboundName": "zipCodeSuffix",
+        "stageName": "ZIP_SUFF",
+        "dataType": "VARCHAR"
+    },
+    "stateException": {
+        "inboundName": "stateException",
+        "stageName": "ST_EXC",
+        "dataType": "VARCHAR"
+    },
+    "policyNumber": {
+        "inboundName": "policyNumber",
+        "stageName": "POLICY_NUM",
+        "dataType": "VARCHAR"
+    },
+    "claimNumber": {
+        "inboundName": "claimNumber",
+        "stageName": "CLAIM_NUM",
+        "dataType": "VARCHAR"
+    },
+    "claimIdentifier": {
+        "inboundName": "claimIdentifier",
+        "stageName": "CLAIM_ID",
+        "dataType": "VARCHAR"
+    },
+    "companyUse": {
+        "inboundName": "companyUse",
+        "stageName": "CO_USE",
+        "dataType": "VARCHAR"
+    },
+    "status": {
+        "inboundName": "status",
+        "stageName": "STATUS",
+        "dataType": "VARCHAR"
+    },
+    "lineNumber": {
+        "inboundName": "lineNumber",
+        "stageName": "LINE_NUMBER",
+        "dataType":  "INT"
+    }
+}

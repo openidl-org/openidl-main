@@ -1,0 +1,11 @@
+{
+    "exceptionField": {
+        "MA": {
+            "codes": {
+                "0": "Does Not Apply",
+                "1": "Liability Coverage Excludes Lead Poisoning Liability",
+                "2": "Liability Coverage Includes Lead Poisoning Liability"
+            }
+        }
+    }
+}
