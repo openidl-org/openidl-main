@@ -1,0 +1,26 @@
+{
+	"1": {
+		"name": "Premium or Cancellation",
+		"type": "Premium"
+	},
+	"2": {
+		"name": "Paid Loss",
+		"type": "Loss"
+	},
+	"3": {
+		"name": "Outstanding Loss",
+		"type": "Loss"
+	},
+	"6": {
+		"name": "Paid Allocated Loss Adjustment Expense",
+		"type": "Loss"
+	},
+	"7": {
+		"name": "Outstanding Allocated Loss Adjustment Expense",
+		"type": "Loss"
+	},
+	"8": {
+		"name": "Limited Coding",
+		"type": "Premium"
+	}
+}

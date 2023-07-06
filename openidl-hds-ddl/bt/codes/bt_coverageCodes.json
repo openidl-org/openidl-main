@@ -1,0 +1,46 @@
+{
+    "1": {
+        "name": "Physical Damage/Property Coverage with Theft",
+        "type": "Property Coverage"
+    },
+    "2": {
+        "name": "Physical Damage/Property Coverage without Theft",
+        "type": "Property Coverage"
+    },
+    "A": {
+        "name": "Physical Damage - Collision",
+        "type": "Property Coverage"
+    },
+    "B": {
+        "name": "Physical Damage - Comprehensive",
+        "type": "Property Coverage"
+    },
+    "6": {
+        "name": "Trailer Coverage",
+        "type": "Property Coverage"
+    },
+    "7": {
+        "name": "All Other Property Coverage",
+        "type": "Property Coverage"
+    },
+    "3": {
+        "name": "",
+        "type": "Liability Coverage"
+    },
+    "4": {
+        "name": "",
+        "type": "Liability Coverage"
+    },
+    "5": {
+        "name": "",
+        "type": "Liability Coverage"
+    },
+    "8": {
+        "name": "",
+        "type": "Liability Coverage"
+    },
+    "9": {
+        "name": "",
+        "type": "Liability Coverage"
+    }
+}
