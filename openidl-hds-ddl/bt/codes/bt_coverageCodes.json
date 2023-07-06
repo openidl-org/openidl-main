@@ -24,23 +24,23 @@
         "type": "Property Coverage"
     },
     "3": {
-        "name": "",
+        "name": "Liability with Uninsured Boater Coverage",
         "type": "Liability Coverage"
     },
     "4": {
-        "name": "",
+        "name": "Liability without Uninsured Boater Coverage",
         "type": "Liability Coverage"
     },
     "5": {
-        "name": "",
+        "name": "Uninsured Boater Coverage",
         "type": "Liability Coverage"
     },
     "8": {
-        "name": "",
+        "name": "All Other Liability Coverage",
         "type": "Liability Coverage"
     },
     "9": {
-        "name": "",
-        "type": "Liability Coverage"
+        "name": "Minimum Premium record subject to SECTION I, PART C, Rule 3.b",
+        "type": "Does Not Apply"
     }
 }

@@ -1,0 +1,78 @@
+{
+    "0": {
+        "name": "Does Not Apply",
+        "type": "Does Not Apply"
+    },
+    "A": {
+        "name": "$250",
+        "type": "Flat Electronic Equipment Deductible Amounts"
+    },
+    "B": {
+        "name": "$500",
+        "type": "Flat Electronic Equipment Deductible Amounts"
+    },
+    "C": {
+        "name": "$750",
+        "type": "Flat Electronic Equipment Deductible Amounts"
+    },
+    "D": {
+        "name": "$1,000",
+        "type": "Flat Electronic Equipment Deductible Amounts"
+    },
+    "E": {
+        "name": "$2,000",
+        "type": "Flat Electronic Equipment Deductible Amounts"
+    },
+    "F": {
+        "name": "$2,500",
+        "type": "Flat Electronic Equipment Deductible Amounts"
+    },
+    "G": {
+        "name": "$5,000",
+        "type": "Flat Electronic Equipment Deductible Amounts"
+    },
+    "H": {
+        "name": "$10,000",
+        "type": "Flat Electronic Equipment Deductible Amounts"
+    },
+    "J": {
+        "name": "All Other",
+        "type": "Flat Electronic Equipment Deductible Amounts"
+    },
+    "1": {
+        "name": "1%",
+        "type": "Percentage Electronic Equipment Deductible Amounts"
+    },
+    "2": {
+        "name": "2%",
+        "type": "Percentage Electronic Equipment Deductible Amounts"
+    },
+    "3": {
+        "name": "3%",
+        "type": "Percentage Electronic Equipment Deductible Amounts"
+    },
+    "4": {
+        "name": "4%",
+        "type": "Percentage Electronic Equipment Deductible Amounts"
+    },
+    "5": {
+        "name": "5%",
+        "type": "Percentage Electronic Equipment Deductible Amounts"
+    },
+    "6": {
+        "name": "10%",
+        "type": "Percentage Electronic Equipment Deductible Amounts"
+    },
+    "7": {
+        "name": "15%",
+        "type": "Percentage Electronic Equipment Deductible Amounts"
+    },
+    "8": {
+        "name": "20%",
+        "type": "Percentage Electronic Equipment Deductible Amounts"
+    },
+    "9": {
+        "name": "All Other",
+        "type": "Percentage Electronic Equipment Deductible Amounts"
+    }
+}

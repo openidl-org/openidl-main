@@ -1,0 +1,70 @@
+{
+    "0": {
+        "name": "Does Not Apply",
+        "type": "Does Not Apply"
+    },
+    "1": {
+        "name": "Coastal South Atlantic and Gulf - from the North Carolina-Virginia border southward",
+        "type": "AAIS Boatowners Manuals prior to Revision 05 08 (or equivalent)"
+    },
+    "2": {
+        "name": "Coastal North Atlantic - from the North Carolina-Virginia border northward",
+        "type": "AAIS Boatowners Manuals prior to Revision 05 08 (or equivalent)"
+    },
+    "3": {
+        "name": "Great Lakes",
+        "type": "AAIS Boatowners Manuals prior to Revision 05 08 (or equivalent)"
+    },
+    "4": {
+        "name": "Coastal Pacific",
+        "type": "AAIS Boatowners Manuals prior to Revision 05 08 (or equivalent)"
+    },
+    "5": {
+        "name": "Other Inland Waters",
+        "type": "AAIS Boatowners Manuals prior to Revision 05 08 (or equivalent)"
+    },
+    "A": {
+        "name": "Alaska -- Coastal waters of Alaska",
+        "type": "AAIS Boatowners Manual Revision 05 08 (or equivalent) and AAIS Yacht Manual Revision 09 10 (or equivalent)"
+    },
+    "B": {
+        "name": "Pacific North -- Coastal waters of the Pacific Ocean off the coasts of Washington and Oregon",
+        "type": "AAIS Boatowners Manual Revision 05 08 (or equivalent) and AAIS Yacht Manual Revision 09 10 (or equivalent)"
+    },
+    "C": {
+        "name": "Pacific South -- Coastal waters of the Pacific Ocean off the coasts of California and Hawaii",
+        "type": "AAIS Boatowners Manual Revision 05 08 (or equivalent) and AAIS Yacht Manual Revision 09 10 (or equivalent)"
+    },
+    "D": {
+        "name": "Inland - West -- Inland waters of Alaska, Arizona, California, Colorado, Hawaii, Idaho, Kansas, Montana, Nebraska, North Dakota, Nevada, New Mexico, Oklahoma, Oregon, South Dakota, Texas, Utah, Washington, and Wyoming",
+        "type": "AAIS Boatowners Manual Revision 05 08 (or equivalent) and AAIS Yacht Manual Revision 09 10 (or equivalent)"
+    },
+    "E": {
+        "name": "Inland - Central -- Waters of Missouri, Kentucky, and Tennessee",
+        "type": "AAIS Boatowners Manual Revision 05 08 (or equivalent) and AAIS Yacht Manual Revision 09 10 (or equivalent)"
+    },
+    "F": {
+        "name": "Inland - East -- Inland waters of Alabama, Arkansas, Connecticut, Delaware, District of Columbia, Florida, Georgia, Illinois, Indiana, Iowa, Louisiana, Maine, Massachusetts, Maryland, Michigan, Minnesota, Mississippi, New Hampshire, New Jersey, New York, North Carolina, Ohio, Pennsylvania, Puerto Rico, Rhode Island, South Carolina, Vermont, Virginia, West Virginia, and Wisconsin",
+        "type": "AAIS Boatowners Manual Revision 05 08 (or equivalent) and AAIS Yacht Manual Revision 09 10 (or equivalent)"
+    },
+    "G": {
+        "name": "Great Lakes -- Lake Erie, Lake Huron, Lake Michigan, Lake Ontario, and Lake Superior",
+        "type": "AAIS Boatowners Manual Revision 05 08 (or equivalent) and AAIS Yacht Manual Revision 09 10 (or equivalent)"
+    },
+    "H": {
+        "name": "Atlantic North -- Coastal waters of Connecticut, Delaware, Massachusetts, Maryland, Maine, New Hampshire, New Jersey, New York, and Rhode Island",
+        "type": "AAIS Boatowners Manual Revision 05 08 (or equivalent) and AAIS Yacht Manual Revision 09 10 (or equivalent)"
+    },
+    "J": {
+        "name": "Atlantic South -- Coastal waters of Georgia, North Carolina, South Carolina, and Virginia",
+        "type": "AAIS Boatowners Manual Revision 05 08 (or equivalent) and AAIS Yacht Manual Revision 09 10 (or equivalent)"
+    },
+    "K": {
+        "name": "Gulf West -- Coastal waters of Alabama, Louisiana, Mississippi, and Texas",
+        "type": "AAIS Boatowners Manual Revision 05 08 (or equivalent) and AAIS Yacht Manual Revision 09 10 (or equivalent)"
+    },
+    "L": {
+        "name": "Florida and Puerto Rico -- Coastal waters of Florida and Puerto Rico",
+        "type": "AAIS Boatowners Manual Revision 05 08 (or equivalent) and AAIS Yacht Manual Revision 09 10 (or equivalent)"
+    }
+}

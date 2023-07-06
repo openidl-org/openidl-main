@@ -1,0 +1,92 @@
+{
+    "0": {
+        "code": "0",
+        "flatDeductibleAmounts": "Does Not Apply",
+        "splitDeductibleAmounts": "Does Not Apply",
+        "percentageDeductibles": "Does Not Apply"
+    },
+    "1": {
+        "code": "1",
+        "flatDeductibleAmounts": "None",
+        "splitDeductibleAmounts": "None",
+        "percentageDeductibles": "0%"
+    },
+    "2": {
+        "code": "2",
+        "flatDeductibleAmounts": "$50",
+        "splitDeductibleAmounts": "-------",
+        "percentageDeductibles": "1%"
+    },
+    "3": {
+        "code": "3",
+        "flatDeductibleAmounts": "$100",
+        "splitDeductibleAmounts": "$50 / 100",
+        "percentageDeductibles": "2%"
+    },
+    "7": {
+        "code": "7",
+        "flatDeductibleAmounts": "$101-199",
+        "splitDeductibleAmounts": "-------",
+        "percentageDeductibles": "-------"
+    },
+    "8": {
+        "code": "8",
+        "flatDeductibleAmounts": "$200-249",
+        "splitDeductibleAmounts": "-------",
+        "percentageDeductibles": "-------"
+    },
+    "4": {
+        "code": "4",
+        "flatDeductibleAmounts": "$250",
+        "splitDeductibleAmounts": "$100 / 250",
+        "percentageDeductibles": "3%"
+    },
+    "5": {
+        "code": "5",
+        "flatDeductibleAmounts": "$500",
+        "splitDeductibleAmounts": "$100 / 500",
+        "percentageDeductibles": "5%"
+    },
+    "6": {
+        "code": "6",
+        "flatDeductibleAmounts": "$1,000",
+        "splitDeductibleAmounts": "$100 / 1,000",
+        "percentageDeductibles": "10%"
+    },
+    "A": {
+        "code": "A",
+        "flatDeductibleAmounts": "$2,500",
+        "splitDeductibleAmounts": "$250 / 2,500",
+        "percentageDeductibles": "-------"
+    },
+    "B": {
+        "code": "B",
+        "flatDeductibleAmounts": "$5,000",
+        "splitDeductibleAmounts": "$250 / 5,000",
+        "percentageDeductibles": "-------"
+    },
+    "C": {
+        "code": "C",
+        "flatDeductibleAmounts": "------",
+        "splitDeductibleAmounts": "$500 / 1%",
+        "percentageDeductibles": "-------"
+    },
+    "D": {
+        "code": "D",
+        "flatDeductibleAmounts": "------",
+        "splitDeductibleAmounts": "$500 / 2%",
+        "percentageDeductibles": "-------"
+    },
+    "E": {
+        "code": "E",
+        "flatDeductibleAmounts": "------",
+        "splitDeductibleAmounts": "$500 / 3%",
+        "percentageDeductibles": "-------"
+    },
+    "9": {
+        "code": "9",
+        "flatDeductibleAmounts": "All Other",
+        "splitDeductibleAmounts": "All Other",
+        "percentageDeductibles": "All Other"
+    }
+}
