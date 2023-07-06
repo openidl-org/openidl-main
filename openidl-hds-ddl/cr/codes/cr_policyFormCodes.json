@@ -1,0 +1,173 @@
+{
+    "01": {
+        "name": "Financial Institution - Premises coverage",
+        "type": "ISO Subline Code 960 (Burglary and Theft)"
+    },
+    "02": {
+        "name": "Broad Forms",
+        "type": "ISO Subline Code 960 (Burglary and Theft)"
+    },
+    "03": {
+        "name": "Mercantile Open Stock",
+        "type": "ISO Subline Code 960 (Burglary and Theft)"
+    },
+    "04": {
+        "name": "Mercantile Stock",
+        "type": "ISO Subline Code 960 (Burglary and Theft)"
+    },
+    "05": {
+        "name": "Money Orders and Counterfeit Paper Currency",
+        "type": "ISO Subline Code 960 (Burglary and Theft)"
+    },
+    "06": {
+        "name": "Form C - (excluding Plans 3, 4, 5, 9, 10) - Theft, Disappearance and Destruction",
+        "type": "ISO Subline Code 960 (Burglary and Theft)"
+    },
+    "08": {
+        "name": "Robbery and Safe Burglary -- Form D ( excluding Plans 3, 4, 5, and 9)",
+        "type": "ISO Subline Code 960 (Burglary and Theft)"
+    },
+    "09": {
+        "name": "Robbery and Safe Burglary -- Form Q (excluding Plans 4 and 5)",
+        "type": "ISO Subline Code 960 (Burglary and Theft)"
+    },
+    "10": {
+        "type": "ISO Subline Code 960 (Burglary and Theft)",
+        "name": [
+            "Forms E through N",
+            "Form E - Premises Burglary",
+            "Form F - Computer Fraud",
+            "Form G - Extortion",
+            "Form H - Premises Theft and Robbery Outside The Premises Form I - Lessees of Safe Deposit Box",
+            "Form J - Securities Deposited With Others",
+            "Form K - Liability for Guests Property - Safe Deposit Box Form L - Guests Property - Premises",
+            "Form M - Safe Depository Liability",
+            "Form N - Safe Depository Direct Loss"
+        ]
+    },
+    "11": {
+        "type": "ISO Subline Code 960 (Burglary and Theft)",
+        "name": [
+            "Plans 3, 4, 5, 9, and 10",
+            "Plan 3 - Storekeepers Broad Form",
+            "Plan 4 - Storekeepers Burglary and Robbery Plan 5 - Office Burglary and Robbery",
+            "Plan 9 - Excess Bank Burglary and Robbery Plan 10 - Bank Excess Securities"
+        ]
+    },
+    "99": {
+        "name": "Miscellaneous",
+        "type": "ISO Subline Code 960 (Burglary and Theft)"
+    },
+    "21": {
+        "name": "Inside the Premises - Theft of Money & Securities (ISO form codes 120-121)",
+        "type": "ISO Subline Code 965 (Crime and Fidelity) - Burglary and Theft"
+    },
+    "22": {
+        "name": "Inside the Premises - Robbery or Safe Burglary of Other (ISO form codes 125-126)",
+        "type": "ISO Subline Code 965 (Crime and Fidelity) - Burglary and Theft"
+    },
+    "23": {
+        "name": "Outside the Premises (ISO form codes 130-132)",
+        "type": "ISO Subline Code 965 (Crime and Fidelity) - Burglary and Theft"
+    },
+    "24": {
+        "name": "Money Orders and Counterfeit Paper Currency (ISO form code 140)",
+        "type": "ISO Subline Code 965 (Crime and Fidelity) - Burglary and Theft"
+    },
+    "25": {
+        "name": "Inside the Premises - Theft of Other Property (ISO form codes 148-153)",
+        "type": "ISO Subline Code 965 (Crime and Fidelity) - Burglary and Theft"
+    },
+    "26": {
+        "name": "Inside the Premises - Robbery or Burglary of Other Property (ISO form code 154)",
+        "type": "ISO Subline Code 965 (Crime and Fidelity) - Burglary and Theft"
+    },
+    "27": {
+        "name": "Inside the Premises - Robbery or Safe Burglary of Money & Securities (ISO form code 156)",
+        "type": "ISO Subline Code 965 (Crime and Fidelity) - Burglary and Theft"
+    },
+    "28": {
+        "name": "Lessees of Safe Deposit Boxes (ISO form codes 162-164)",
+        "type": "ISO Subline Code 965 (Crime and Fidelity) - Burglary and Theft"
+    },
+    "29": {
+        "name": "Securities Deposited with Others (ISO form code 165)",
+        "type": "ISO Subline Code 965 (Crime and Fidelity) - Burglary and Theft"
+    },
+    "30": {
+        "name": "Guests Property (ISO form codes 170-171)",
+        "type": "ISO Subline Code 965 (Crime and Fidelity) - Burglary and Theft"
+    },
+    "31": {
+        "name": "Safe Depository (ISO form codes 175-176)",
+        "type": "ISO Subline Code 965 (Crime and Fidelity) - Burglary and Theft"
+    },
+    "32": {
+        "name": "Employee Theft (ISO form codes 101, 102, 104-113)",
+        "type": "ISO Subline Code 965 (Crime and Fidelity) - Fidelity and Forgery"
+    },
+    "33": {
+        "name": "Employee Theft PER EMPLOYEE (ISO form codes 202, 204-206, 209-210, 212-213)",
+        "type": "ISO Subline Code 965 (Crime and Fidelity) - Fidelity and Forgery"
+    },
+    "34": {
+        "name": "Forgery or Alteration (ISO form codes 115-118)",
+        "type": "ISO Subline Code 965 (Crime and Fidelity) - Fidelity and Forgery"
+    },
+    "35": {
+        "name": "Computer Fraud (ISO form codes 135-136)",
+        "type": "ISO Subline Code 965 (Crime and Fidelity) - Fidelity and Forgery"
+    },
+    "36": {
+        "name": "Clients Property (ISO form code 142)",
+        "type": "ISO Subline Code 965 (Crime and Fidelity) - Fidelity and Forgery"
+    },
+    "37": {
+        "name": "Funds Transfer Fraud (ISO form code 144)",
+        "type": "ISO Subline Code 965 (Crime and Fidelity) - Fidelity and Forgery"
+    },
+    "38": {
+        "name": "Extortion (ISO form code 146)",
+        "type": "ISO Subline Code 965 (Crime and Fidelity) - Fidelity and Forgery"
+    },
+    "39": {
+        "name": "Employee Theft - Name or Position Schedule (ISO form codes 158-159)",
+        "type": "ISO Subline Code 965 (Crime and Fidelity) - Fidelity and Forgery"
+    },
+    "40": {
+        "name": "Destruction of Electronic Data or Computer Programs (ISO form code 180)",
+        "type": "ISO Subline Code 965 (Crime and Fidelity) - Fidelity and Forgery"
+    },
+    "41": {
+        "name": "Unauthorized Reproduction of Computer Software by Employees (ISO form code 185)",
+        "type": "ISO Subline Code 965 (Crime and Fidelity) - Fidelity and Forgery"
+    },
+    "50": {
+        "name": "Kidnap/Ransom and Extortion (ISO form codes 301, 305, 310, 315, 320, 325, 330)",
+        "type": "ISO Subline Code 965 (Crime and Fidelity)"
+    },
+    "60": {
+        "name": "E-Commerce (ISO form codes 860, 863, 866)",
+        "type": "ISO Subline Code 965 (Crime and Fidelity)"
+    },
+    "90": {
+        "name": "Certified acts of terrorism covered (coverage not excluded)",
+        "type": "Terrorism Options Under the Terrorism Risk Insurance Act of 2002"
+    },
+    "91": {
+        "name": "Certified acts of terrorism excluded subject to Standard Fire Policy statutes when applicable, producing fire only coverage for certified acts of terrorism",
+        "type": "Terrorism Options Under the Terrorism Risk Insurance Act of 2002"
+    },
+    "92a": {
+        "name": "Non-certified acts of terrorism covered (coverage not excluded)a",
+        "type": "Terrorism Options Under the Terrorism Risk Insurance Act of 2002"
+    },
+    "93a": {
+        "name": "Non-certified acts of terrorism covered, except acts of terrorism arising out of nuclear, biological or chemical events a",
+        "type": "Terrorism Options Under the Terrorism Risk Insurance Act of 2002"
+    },
+    "94": {
+        "name": "Terrorism coverage (premium and loss) reported separately from the underlying coverage",
+        "type": "Terrorism Options Post-TRIA"
+    }
+}

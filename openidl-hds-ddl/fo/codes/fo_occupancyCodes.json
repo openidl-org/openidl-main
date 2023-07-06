@@ -1,0 +1,14 @@
+{
+    "0": {
+        "name": "Does Not Apply",
+        "type": "Does Not Apply"
+    }, 
+    "1": {
+        "name": "Non-Seasonal",
+        "type": "Does Not Apply"
+    }, 
+    "2": {
+        "name": "Seasonal",
+        "type": "Does Not Apply"
+    }
+}

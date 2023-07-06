@@ -1,0 +1,530 @@
+{
+    "00": {
+        "name": "Does Not Apply",
+        "type": "Does Not Apply"
+    },
+    "01": {
+        "name": "Livestock",
+        "type": "Scheduled Farm Personal Property (Policy Form Code 12)"
+    },
+    "66": {
+        "name": "Equipment and machinery - Tractors (Including Attachments)",
+        "type": "Scheduled Farm Personal Property (Policy Form Code 12)"
+    },
+    "67": {
+        "name": "Equipment and machinery - Combines and Harvesters",
+        "type": "Scheduled Farm Personal Property (Policy Form Code 12)"
+    },
+    "68": {
+        "name": "Equipment and machinery - Other Than Tractors, Combines, and Harvesters",
+        "type": "Scheduled Farm Personal Property (Policy Form Code 12)"
+    },
+    "69": {
+        "name": "Equipment and machinery - Machinery Not Described",
+        "type": "Scheduled Farm Personal Property (Policy Form Code 12)"
+    },
+    "03": {
+        "name": "Poultry",
+        "type": "Scheduled Farm Personal Property (Policy Form Code 12)"
+    },
+    "04": {
+        "name": "Turkeys",
+        "type": "Scheduled Farm Personal Property (Policy Form Code 12)"
+    },
+    "05": {
+        "name": "Hay/Straw/Fodder in buildings",
+        "type": "Scheduled Farm Personal Property (Policy Form Code 12)"
+    },
+    "06": {
+        "name": "Hay/Straw/Fodder in the open",
+        "type": "Scheduled Farm Personal Property (Policy Form Code 12)"
+    },
+    "07": {
+        "name": "Household contents",
+        "type": "Scheduled Farm Personal Property (Policy Form Code 12)"
+    },
+    "08": {
+        "name": "Farm products (including dairy) and supplies - NOC",
+        "type": "Scheduled Farm Personal Property (Policy Form Code 12)"
+    },
+    "70": {
+        "name": "Grain - In the Open",
+        "type": "Scheduled Farm Personal Property (Policy Form Code 12)"
+    },
+    "71": {
+        "name": "Grain - Metal Structures - Threshed Grain and Seeds",
+        "type": "Scheduled Farm Personal Property (Policy Form Code 12)"
+    },
+    "72": {
+        "name": "Grain - Metal Structures - General Contents",
+        "type": "Scheduled Farm Personal Property (Policy Form Code 12)"
+    },
+    "73": {
+        "name": "Grain - In Other Structures",
+        "type": "Scheduled Farm Personal Property (Policy Form Code 12)"
+    },
+    "10": {
+        "name": "Computers",
+        "type": "Scheduled Farm Personal Property (Policy Form Code 12)"
+    },
+    "74": {
+        "name": "Tobacco and Hemp",
+        "type": "Scheduled Farm Personal Property (Policy Form Code 12)"
+    },
+    "75": {
+        "name": "Trays, Boxes, Box Shook",
+        "type": "Scheduled Farm Personal Property (Policy Form Code 12)"
+    },
+    "76": {
+        "name": "Wool",
+        "type": "Scheduled Farm Personal Property (Policy Form Code 12)"
+    },
+    "49": {
+        "name": "All other property",
+        "type": "Scheduled Farm Personal Property (Policy Form Code 12)"
+    },
+    "51": {
+        "name": "Dwellings",
+        "type": "Farm Barns, Buildings, and Other Structures (Policy Form Code 10)"
+    },
+    "77": {
+        "name": "Barns",
+        "type": "Farm Barns, Buildings, and Other Structures (Policy Form Code 10)"
+    },
+    "78": {
+        "name": "Outbuildings",
+        "type": "Farm Barns, Buildings, and Other Structures (Policy Form Code 10)"
+    },
+    "53": {
+        "name": "Silos",
+        "type": "Farm Barns, Buildings, and Other Structures (Policy Form Code 10)"
+    },
+    "54": {
+        "name": "Sheds, Such as Implement, Machine, and Tool",
+        "type": "Farm Barns, Buildings, and Other Structures (Policy Form Code 10)"
+    },
+    "55": {
+        "name": "Houses, Such as Incubator, Brooder, Milk, Hen",
+        "type": "Farm Barns, Buildings, and Other Structures (Policy Form Code 10)"
+    },
+    "56": {
+        "name": "Windmills and Windchargers",
+        "type": "Farm Barns, Buildings, and Other Structures (Policy Form Code 10)"
+    },
+    "58": {
+        "name": "Granaries",
+        "type": "Farm Barns, Buildings, and Other Structures (Policy Form Code 10)"
+    },
+    "59": {
+        "name": "Dairy Barns",
+        "type": "Farm Barns, Buildings, and Other Structures (Policy Form Code 10)"
+    },
+    "60": {
+        "name": "Hog Confinement Buildings",
+        "type": "Farm Barns, Buildings, and Other Structures (Policy Form Code 10)"
+    },
+    "61": {
+        "name": "Potato Houses",
+        "type": "Farm Barns, Buildings, and Other Structures (Policy Form Code 10)"
+    },
+    "62": {
+        "name": "Fences, Corrals, Chutes, Power and Light Poles, Wiring, Solar, Cell Towers",
+        "type": "Farm Barns, Buildings, and Other Structures (Policy Form Code 10)"
+    },
+    "64": {
+        "name": "Tanks",
+        "type": "Farm Barns, Buildings, and Other Structures (Policy Form Code 10)"
+    },
+    "65": {
+        "name": "Greenhouses",
+        "type": "Farm Barns, Buildings, and Other Structures (Policy Form Code 10)"
+    },
+    "99": {
+        "name": "All Other Structures",
+        "type": "Farm Barns, Buildings, and Other Structures (Policy Form Code 10)"
+    },
+    "15": {
+        "name": "Livestock -- Winter Perils (AAIS FO-324 / FO 0324 or Equivalent)",
+        "type": "Livestock Perils Options (Policy Form Code 77)"
+    },
+    "16": {
+        "name": "Livestock -- Loading and Unloading Accidents (FL-334) -- excluding sheep, Livestock -- Loading and Unloading Accidents (FL-334) - including sheep, Livestock -- Suffocation (AAIS FO-349 / FO 0349 or equivalent)",
+        "type": "Livestock Perils Options (Policy Form Code 77)"
+    },
+    "10010": {
+        "name": "Baskets",
+        "type": "Crafts"
+    },
+    "10020": {
+        "name": "Candles",
+        "type": "Crafts"
+    },
+    "10030": {
+        "name": "Ceramics",
+        "type": "Crafts"
+    },
+    "10040": {
+        "name": "Decorative clothing",
+        "type": "Crafts"
+    },
+    "10050": {
+        "name": "Dolls",
+        "type": "Crafts"
+    },
+    "10060": {
+        "name": "Fabrics",
+        "type": "Crafts"
+    },
+    "10070": {
+        "name": "Flower Arrangements",
+        "type": "Crafts"
+    },
+    "10080": {
+        "name": "Glass",
+        "type": "Crafts"
+    },
+    "10090": {
+        "name": "Jewelry",
+        "type": "Crafts"
+    },
+    "10100": {
+        "name": "Metalwork",
+        "type": "Crafts"
+    },
+    "10110": {
+        "name": "Needlework",
+        "type": "Crafts"
+    },
+    "10120": {
+        "name": "Quilts",
+        "type": "Crafts"
+    },
+    "10130": {
+        "name": "Sculptures",
+        "type": "Crafts"
+    },
+    "10140": {
+        "name": "Wall Hangings",
+        "type": "Crafts"
+    },
+    "10150": {
+        "name": "Wind Chimes",
+        "type": "Crafts"
+    },
+    "10160": {
+        "name": "Wood Products",
+        "type": "Crafts"
+    },
+    "10170": {
+        "name": "Wreaths",
+        "type": "Crafts"
+    },
+    "20010": {
+        "name": "Baked Goods",
+        "type": "Foods"
+    },
+    "20020": {
+        "name": "Beverages (i.e. Coffee and Tea)",
+        "type": "Foods"
+    },
+    "20030": {
+        "name": "Candy, Nuts or Confections",
+        "type": "Foods"
+    },
+    "20040": {
+        "name": "Canning (i.e. Jellies and Jams)",
+        "type": "Foods"
+    },
+    "20050": {
+        "name": "Deli Foods",
+        "type": "Foods"
+    },
+    "20060": {
+        "name": "Fruit and Vegetable Stand (no \"Pick Your Own\" Operations",
+        "type": "Foods"
+    },
+    "20070": {
+        "name": "Gourmet Foods",
+        "type": "Foods"
+    },
+    "20080": {
+        "name": "Picnic Baskets",
+        "type": "Foods"
+    },
+    "20090": {
+        "name": "Smoked and Dressed Meats, Poultry, and Fish",
+        "type": "Foods"
+    },
+    "20100": {
+        "name": "Wine and Spirits",
+        "type": "Foods"
+    },
+    "30010": {
+        "name": "Accounting",
+        "type": "Offices"
+    },
+    "30020": {
+        "name": "Billing",
+        "type": "Offices"
+    },
+    "30030": {
+        "name": "Bookkeeping",
+        "type": "Offices"
+    },
+    "30040": {
+        "name": "Business Consulting",
+        "type": "Offices"
+    },
+    "30050": {
+        "name": "Calligraphy",
+        "type": "Offices"
+    },
+    "30060": {
+        "name": "Career Consulting",
+        "type": "Offices"
+    },
+    "30070": {
+        "name": "Computer Consulting",
+        "type": "Offices"
+    },
+    "30080": {
+        "name": "Counseling",
+        "type": "Offices"
+    },
+    "30090": {
+        "name": "Desktop Publishing",
+        "type": "Offices"
+    },
+    "30100": {
+        "name": "Financial Planning",
+        "type": "Offices"
+    },
+    "30110": {
+        "name": "Freelance Writing",
+        "type": "Offices"
+    },
+    "30120": {
+        "name": "Graphic Art",
+        "type": "Offices"
+    },
+    "30130": {
+        "name": "Insurance Agent",
+        "type": "Offices"
+    },
+    "30140": {
+        "name": "Mailing and Addressing",
+        "type": "Offices"
+    },
+    "30150": {
+        "name": "Public Relations",
+        "type": "Offices"
+    },
+    "30160": {
+        "name": "Real Estate Agent",
+        "type": "Offices"
+    },
+    "30170": {
+        "name": "Resume Writing",
+        "type": "Offices"
+    },
+    "30180": {
+        "name": "Telephone Answering",
+        "type": "Offices"
+    },
+    "30190": {
+        "name": "Tutoring",
+        "type": "Offices"
+    },
+    "30200": {
+        "name": "Word Processing",
+        "type": "Offices"
+    },
+    "40010": {
+        "name": "Antiques",
+        "type": "Retail"
+    },
+    "40020": {
+        "name": "Art Supplies",
+        "type": "Retail"
+    },
+    "40030": {
+        "name": "Art Work",
+        "type": "Retail"
+    },
+    "40040": {
+        "name": "Books, Magazines, and Videos",
+        "type": "Retail"
+    },
+    "40050": {
+        "name": "Candles",
+        "type": "Retail"
+    },
+    "40060": {
+        "name": "Clothing",
+        "type": "Retail"
+    },
+    "40070": {
+        "name": "Coins and Stamps",
+        "type": "Retail"
+    },
+    "40080": {
+        "name": "Collectibles",
+        "type": "Retail"
+    },
+    "40090": {
+        "name": "Cosmetics",
+        "type": "Retail"
+    },
+    "40100": {
+        "name": "Costume Jewelry",
+        "type": "Retail"
+    },
+    "40110": {
+        "name": "Decorative Housewares",
+        "type": "Retail"
+    },
+    "40120": {
+        "name": "Gifts",
+        "type": "Retail"
+    },
+    "40130": {
+        "name": "Household and Kitchen Products",
+        "type": "Retail"
+    },
+    "40140": {
+        "name": "Personal Care Products",
+        "type": "Retail"
+    },
+    "40150": {
+        "name": "Plants and Flowers",
+        "type": "Retail"
+    },
+    "40160": {
+        "name": "Stationery and Paper Products",
+        "type": "Retail"
+    },
+    "40170": {
+        "name": "Tackle and Bait",
+        "type": "Retail"
+    },
+    "40180": {
+        "name": "Toys",
+        "type": "Retail"
+    },
+    "40190": {
+        "name": "Vitamins and Health Care Products",
+        "type": "Retail"
+    },
+    "50010": {
+        "name": "Aesthetician",
+        "type": "Services"
+    },
+    "50020": {
+        "name": "Barber",
+        "type": "Services"
+    },
+    "50030": {
+        "name": "Beautician",
+        "type": "Services"
+    },
+    "50040": {
+        "name": "Bicycle Repair",
+        "type": "Services"
+    },
+    "50050": {
+        "name": "Camera Repair",
+        "type": "Services"
+    },
+    "50060": {
+        "name": "Carpet and Uphosltery Cleaning",
+        "type": "Services"
+    },
+    "50070": {
+        "name": "Clock, Jewelry, or Watch Repair",
+        "type": "Services"
+    },
+    "50080": {
+        "name": "Computer Repair",
+        "type": "Services"
+    },
+    "50090": {
+        "name": "Dog ot Cat Boarding, Breeding, or Training",
+        "type": "Services"
+    },
+    "50100": {
+        "name": "Dressmaker, Seamstress, or Tailor",
+        "type": "Services"
+    },
+    "50110": {
+        "name": "Flower Arranging",
+        "type": "Services"
+    },
+    "50120": {
+        "name": "Furniture Upholstering",
+        "type": "Services"
+    },
+    "50130": {
+        "name": "Gift Delivery Service",
+        "type": "Services"
+    },
+    "50140": {
+        "name": "Hair Stylist",
+        "type": "Services"
+    },
+    "50150": {
+        "name": "House Cleaning",
+        "type": "Services"
+    },
+    "50160": {
+        "name": "House Sitting",
+        "type": "Services"
+    },
+    "50170": {
+        "name": "Instruction (Music, Etiquette, etc.)",
+        "type": "Services"
+    },
+    "50180": {
+        "name": "Interior Decorating",
+        "type": "Services"
+    },
+    "50190": {
+        "name": "Manicurist",
+        "type": "Services"
+    },
+    "50200": {
+        "name": "Musical Instrument Repair",
+        "type": "Services"
+    },
+    "50210": {
+        "name": "Personal Shopper",
+        "type": "Services"
+    },
+    "50220": {
+        "name": "Pet Sitting and Walking",
+        "type": "Services"
+    },
+    "50230": {
+        "name": "Photography",
+        "type": "Services"
+    },
+    "50240": {
+        "name": "Picture Framing",
+        "type": "Services"
+    },
+    "50250": {
+        "name": "Printer",
+        "type": "Services"
+    },
+    "50260": {
+        "name": "Shoe Repair",
+        "type": "Services"
+    },
+    "50270": {
+        "name": "Videotaping",
+        "type": "Services"
+    },
+    "50280": {
+        "name": "Wedding or Party Planning",
+        "type": "Services"
+    }
+}
