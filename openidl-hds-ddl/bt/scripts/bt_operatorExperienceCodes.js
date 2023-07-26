@@ -1,26 +1,26 @@
 fs = require('fs');
 
-let codeMap = require('../codes/bt_fuelTypeCodes.json');
+let codeMap = require('../codes/bt_operatorExperienceCodes.json');
 let fileLines = [];
 let tableDDL = `
 DO $$ 
 BEGIN
-CREATE TABLE IF NOT EXISTS bt_fuel_type_code (
+CREATE TABLE IF NOT EXISTS bt_operator_experience_code (
     id INT,
     code VARCHAR,
-    description VARCHAR,
+    years_of_experience VARCHAR,
     effective_date DATE NOT NULL DEFAULT '1900-01-01',
     expiration_date DATE NOT NULL DEFAULT '9999-12-31'
 );
 
-IF NOT EXISTS (SELECT * FROM bt_fuel_type_code) THEN `;
+IF NOT EXISTS (SELECT * FROM bt_operator_experience_code) THEN `;
 fileLines.push(tableDDL);
 
 let codes = Object.keys(codeMap);
 let index = 1;
 for (let code of codes) {
 	//console.log(code)
-	line = `    INSERT INTO bt_fuel_type_code VALUES(${index},'${code}','${codeMap[code]}');`;
+	line = `    INSERT INTO bt_operator_experience_code VALUES(${index},'${code}','${codeMap[code]}');`;
 	fileLines.push(line);
 	index += 1;
 }
@@ -30,7 +30,7 @@ END $$;`;
 fileLines.push(end);
 
 var file = fs.createWriteStream(
-	'../tables/V0.0.1.15.9__bt_fuel_type_code.sql'
+	'../tables/V0.0.1.15.15__bt_operator_experience_code.sql'
 );
 file.on('error', function (err) {
 	/* error handling */
