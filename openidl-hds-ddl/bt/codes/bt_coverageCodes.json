@@ -1,0 +1,46 @@
+{
+    "1": {
+        "name": "Physical Damage/Property Coverage with Theft",
+        "type": "Property Coverage"
+    },
+    "2": {
+        "name": "Physical Damage/Property Coverage without Theft",
+        "type": "Property Coverage"
+    },
+    "A": {
+        "name": "Physical Damage - Collision",
+        "type": "Property Coverage"
+    },
+    "B": {
+        "name": "Physical Damage - Comprehensive",
+        "type": "Property Coverage"
+    },
+    "6": {
+        "name": "Trailer Coverage",
+        "type": "Property Coverage"
+    },
+    "7": {
+        "name": "All Other Property Coverage",
+        "type": "Property Coverage"
+    },
+    "3": {
+        "name": "Liability with Uninsured Boater Coverage",
+        "type": "Liability Coverage"
+    },
+    "4": {
+        "name": "Liability without Uninsured Boater Coverage",
+        "type": "Liability Coverage"
+    },
+    "5": {
+        "name": "Uninsured Boater Coverage",
+        "type": "Liability Coverage"
+    },
+    "8": {
+        "name": "All Other Liability Coverage",
+        "type": "Liability Coverage"
+    },
+    "9": {
+        "name": "Minimum Premium record subject to SECTION I, PART C, Rule 3.b",
+        "type": "Does Not Apply"
+    }
+}

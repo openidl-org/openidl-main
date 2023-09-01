@@ -1,0 +1,18 @@
+{
+    "0": {
+        "name": "Does Not Apply",
+        "type": "Does Not Apply"
+    },
+    "1": {
+        "name": "Single Owner",
+        "type": "Single Owner"
+    },
+    "2": {
+        "name": "Residing in Same Household",
+        "type": "Multiple Owners"
+    },
+    "3": {
+        "name": "Residing in Different Households",
+        "type": "Multiple Owners"
+    }
+}
