@@ -11,7 +11,7 @@
         "env": "IDP_ADMIN_CONFIG",
         "file": "local-cognito-admin-config.json"
     },
-    "kvs-credentialss": {
+    "kvs-credentials": {
         "env": "KVS_CONFIG",
         "file": "local-kvs-config.json"
     }

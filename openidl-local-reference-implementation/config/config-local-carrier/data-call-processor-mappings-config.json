@@ -3,7 +3,7 @@
         "env": "OFF_CHAIN_DB_CONFIG",
         "file": "local-db-config.json"
     },
-    "kvs-credentialss": {
+    "kvs-credentials": {
         "env": "KVS_CONFIG",
         "file": "local-kvs-config.json"
     }
