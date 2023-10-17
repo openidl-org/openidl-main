@@ -27,7 +27,7 @@ const path = require('path');
 const swaggerUi = require('swagger-ui-express');
 const yaml = require('js-yaml');
 const session = require('express-session');
-const openidlCommonLib = require('@senofi/openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
 openidlCommonLib.EnvConfig.init();
 
 global.fetch = require('node-fetch');
@@ -50,7 +50,7 @@ const idpCredentials = JSON.parse(process.env.IDP_CONFIG);
 const authHandler = openidlCommonLib.AuthHandler.setHandler(idpCredentials);
 
 const errorHandler = require('./middlewares/error-handler');
-const { init } = require('@senofi/openidl-common-lib/helper/wallet');
+const { init } = require('@openidl-org/openidl-common-lib/helper/wallet');
 const { json } = require('body-parser');
 const e = require('express');
 const app = express();

@@ -5,7 +5,7 @@ logger.level = config.logLevel;
 const mongoDataProcessor = require('./data-processor-mongo');
 const postgresDataProcessor = require('./data-processor-postgres');
 const dataProcessor = require('../controllers/data-processor');
-const openidlCommonLib = require('@senofi/openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
 let DBManagerFactory = openidlCommonLib.DBManagerFactory;
 let dbManagerFactoryObject = new DBManagerFactory();
 

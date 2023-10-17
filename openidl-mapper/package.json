@@ -1,5 +1,5 @@
 {
-  "name": "@senofi/openidl-mapper",
+  "name": "@openidl-org/openidl-mapper",
   "version": "0.0.1",
   "main": "index.js",
   "repository": {

@@ -25,7 +25,7 @@ FROM golang:${GO_VER}-alpine${ALPINE_VER}
 
 LABEL org.opencontainers.image.title "openIDL Smart Contract"
 LABEL org.opencontainers.image.description "openIDL smart contract for Kubernetes chaincode builder"
-LABEL org.opencontainers.image.source "https://github.com/senofi/openidl-main/openidl-chaincode"
+LABEL org.opencontainers.image.source "https://github.com/openidl-org/openidl-main/openidl-chaincode"
 
 COPY --from=build /usr/bin/dumb-init /usr/bin/dumb-init
 COPY --from=build /go/bin/openidl-contract /usr/bin/openidl-contract

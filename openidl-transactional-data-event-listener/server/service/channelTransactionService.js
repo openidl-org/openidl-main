@@ -1,4 +1,4 @@
-const { Transaction } = require('@senofi/openidl-common-lib');
+const { Transaction } = require('@openidl-org/openidl-common-lib');
 const networkConfig = require('../config/connection-profile.json');
 
 const targetChannelConfig = require('../config/target-channel-config');

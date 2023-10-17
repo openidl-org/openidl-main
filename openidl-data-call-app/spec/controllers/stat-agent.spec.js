@@ -1,6 +1,6 @@
 const statAgent = require('../../server/controllers/stat-agent');
 const transactionFactory = require('../../server/helpers/transaction-factory');
-const openidlCommonLib = require('@senofi/openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
 const DBManagerFactory = openidlCommonLib.DBManagerFactory;
 
 let jsonResponse;

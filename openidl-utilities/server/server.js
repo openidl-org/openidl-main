@@ -26,7 +26,7 @@ const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const yaml = require('js-yaml');
 const session = require('express-session');
-const openidlCommonLib = require('@senofi/openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
 openidlCommonLib.EnvConfig.init();
 
 const routes = require('./routes');

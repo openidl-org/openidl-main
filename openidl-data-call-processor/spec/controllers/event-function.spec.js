@@ -1,6 +1,6 @@
 const eventFunction =
 	require('../../server/controllers/event-function').eventFunction;
-const { Transaction } = require('@senofi/openidl-common-lib');
+const { Transaction } = require('@openidl-org/openidl-common-lib');
 const Processor = require('../../server/controllers/processor');
 
 jest.mock('../../server/controllers/processor');

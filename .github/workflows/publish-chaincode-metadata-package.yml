@@ -26,7 +26,7 @@ on:
         description: 'Docker image'
         required: true
         type: string
-        default: 'senofi/openidl-chaincode'
+        default: 'openidl-org/openidl-chaincode'
       chaincode_docker_image_digest:
         description: 'Docker image SHA256 digest'
         required: true

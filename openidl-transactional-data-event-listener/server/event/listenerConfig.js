@@ -1,5 +1,5 @@
 const mainEvent = require('./eventHandler');
-const openidlCommonLib = require('@senofi/openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
 const channelConfig = require('../config/listener-channel-config.json');
 const log4js = require('log4js');
 const walletHelper = openidlCommonLib.Wallet;

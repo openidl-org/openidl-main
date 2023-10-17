@@ -14,7 +14,7 @@
     },
     "dependencies": {
         "@cloudant/cloudant": "^3.0.1",
-        "@senofi/openidl-common-lib": "^0.7.0",
+        "@openidl-org/openidl-common-lib": "^0.7.0",
         "@sendgrid/mail": "^7.2.1",
         "array-chunk-by-size": "^2.1.1",
         "aws-sdk": "2.474.0",

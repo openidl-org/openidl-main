@@ -24,7 +24,7 @@ const logger = log4js.getLogger('event -eventHandler ');
 let InstanceFactory = require('../middleware/instance-factory');
 const {
     Transaction
-} = require('@senofi/openidl-common-lib');
+} = require('@openidl-org/openidl-common-lib');
 const createTargetChannelTransactions = require("../service/channelTransactionService");
 logger.level = config.logLevel;
 logger.info("Init wallet: " + process.env.KVS_CONFIG);

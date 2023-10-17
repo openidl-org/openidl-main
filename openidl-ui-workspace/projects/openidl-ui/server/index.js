@@ -9,7 +9,7 @@ const session = require('express-session');
 const cors = require('cors');
 const log4js = require('log4js');
 const noCache = require('nocache')
-const openidlCommonLib = require('@senofi/openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
 if (NODE_ENV === 'development' || NODE_ENV == "local") {
     openidlCommonLib.EnvConfig.init('/projects/openidl-ui/server/config');
 } else {

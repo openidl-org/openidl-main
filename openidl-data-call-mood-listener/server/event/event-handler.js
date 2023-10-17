@@ -23,7 +23,7 @@ const networkConfig = require('../config/connection-profile.json');
 
 const {
     Transaction
-} = require('@senofi/openidl-common-lib');
+} = require('@openidl-org/openidl-common-lib');
 
 const logger = log4js.getLogger('event-handler ');
 logger.level = config.logLevel;

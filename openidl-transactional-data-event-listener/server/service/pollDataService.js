@@ -4,7 +4,7 @@ const {
 } = require('../service/deadlineWindowService');
 
 const log4js = require('log4js');
-const { Transaction } = require('@senofi/openidl-common-lib');
+const { Transaction } = require('@openidl-org/openidl-common-lib');
 
 const config = require('../config/default.json');
 const matureEventHandler = require('../matureEvent/matureEvent');

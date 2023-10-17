@@ -1,5 +1,5 @@
 const Email = require('../../server/middlewares/sendemail');
-const openidlCommonLib = require('@senofi/openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
 let emailHander = openidlCommonLib.Email;
 
 

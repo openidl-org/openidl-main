@@ -2,7 +2,7 @@ const assert = require('assert');
 const sinon = require('sinon');
 const { targetDB } = require('config');
 const { initEventListener } = require('../../server/event/eventListener');
-const {EventListener} = require("@senofi/openidl-common-lib");
+const {EventListener} = require("@openidl-org/openidl-common-lib");
 const networkConfig = require('../../server/config/connection-profile.json');
 
 describe('initEventListener', () => {

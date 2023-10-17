@@ -1,4 +1,4 @@
-module github.com/senofi/openidl-main/openidl-chaincode/chaincode/openidl/openidl-contract
+module github.com/openidl-org/openidl-main/openidl-chaincode/chaincode/openidl/openidl-contract
 
 go 1.16
 

@@ -1,5 +1,5 @@
 const Email = require('../../server/controllers/sendemail');
-const openidlCommonLib = require('@senofi/openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
 const emailHander = require('../../server/middlewares/sendemail');
 let emailAPIKey = require('../../server/config/default.json');
 

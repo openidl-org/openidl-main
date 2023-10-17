@@ -25,7 +25,7 @@
     },
     "certificateAuthorities": {
         "carr1CA": {
-            "url": "https://hlf-carr1ca-ca.d1.test.senofi.net:443",
+            "url": "https://hlf-carr1ca-ca.d1.test.openidl-org.net:443",
             "caName": "ca",
             "tlsCACerts": {
                 "pem": [
@@ -36,7 +36,7 @@
     },
     "peers": {
         "peer2carr1": {
-            "url": "grpcs://hlf-peer2carr1-peer.d1.test.senofi.net:443",
+            "url": "grpcs://hlf-peer2carr1-peer.d1.test.openidl-org.net:443",
             "tlsCACerts": {
                 "pem": ""
             }

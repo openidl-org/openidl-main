@@ -1,4 +1,4 @@
-const openidlCommonLib = require('@senofi/openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
 const mongoDataProcessor = require('../../server/controllers/data-processor-mongo');
 const processor = require('../../server/controllers/processor');
 let DBManagerFactory = openidlCommonLib.DBManagerFactory;

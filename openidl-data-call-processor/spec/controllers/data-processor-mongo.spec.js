@@ -1,9 +1,9 @@
 const dataProcessor = require('../../server/controllers/data-processor-mongo');
-const openidlCommonLib = require('@senofi/openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
 let DBManagerFactory = openidlCommonLib.DBManagerFactory;
 const MongoDBManager = require('../../server/middleware/mongodb-manager');
 const InstanceFactory = require('../../server/middleware/instance-factory');
-const { Transaction } = require('@senofi/openidl-common-lib');
+const { Transaction } = require('@openidl-org/openidl-common-lib');
 const sleep = require('sleep');
 const S3BucketManager = require('../../server/middleware/s3bucket-manager');
 const AWS = require('aws-sdk');

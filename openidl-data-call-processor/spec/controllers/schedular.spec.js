@@ -1,8 +1,8 @@
-const openidlCommonLib = require('@senofi/openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
 const schedular = require('../../server/controllers/schedular');
 let DBManagerFactory = openidlCommonLib.DBManagerFactory;
 let dbManagerFactoryObject = new DBManagerFactory();
-const { Transaction } = require('@senofi/openidl-common-lib');
+const { Transaction } = require('@openidl-org/openidl-common-lib');
 const Processor = require('../../server/controllers/processor');
 
 describe('schedular', () => {

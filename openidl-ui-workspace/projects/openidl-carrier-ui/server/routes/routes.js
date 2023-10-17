@@ -1,7 +1,7 @@
 'use strict';
 const express = require('express');
 const app = express();
-const openidlCommonLib = require('@senofi/openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
 const idpCredentials = JSON.parse(process.env.IDP_CONFIG);;
 const authHandler = openidlCommonLib.AuthHandler.setHandler(idpCredentials);
 const commonController = require('../controllers/common');
