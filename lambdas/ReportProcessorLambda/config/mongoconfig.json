@@ -1,0 +1,6 @@
+{
+    "persistentStore": "mongo",
+    "mongodb": "${DMV_MONGO_DB}",
+    "simpleUri": "${DMV_MONGO_URI}",
+    "collection" : "${DMV_MONGO_COLL}"
+}

@@ -22,22 +22,16 @@ const sizeof = require('object-sizeof');
 const config = require('config');
 const logger = log4js.getLogger('event -eventHandler ');
 let InstanceFactory = require('../middleware/instance-factory');
-const targetChannelConfig = require('../config/target-channel-config');
-const networkConfig = require('../config/connection-profile.json');
 const {
     Transaction
 } = require('@openidl-org/openidl-common-lib');
-let ChannelTransactionMap = new Map();
+const createTargetChannelTransactions = require("../service/channelTransactionService");
 logger.level = config.logLevel;
+logger.info("Init wallet: " + process.env.KVS_CONFIG);
 
 Transaction.initWallet(JSON.parse(process.env.KVS_CONFIG));
-for (let channelIndex = 0; channelIndex < targetChannelConfig.targetChannels.length; channelIndex++) {
-    const targetChannelTransaction = new Transaction(targetChannelConfig.users[0].org, targetChannelConfig.users[0].user, targetChannelConfig.targetChannels[channelIndex].channelName, targetChannelConfig.targetChannels[channelIndex].chaincodeName, targetChannelConfig.users[0].mspId);
-    targetChannelTransaction.init(networkConfig);
-    ChannelTransactionMap.set(targetChannelConfig.targetChannels[channelIndex].channelName, targetChannelTransaction);
-
-}
-var eventFunction = {};
+const ChannelTransactionMap = createTargetChannelTransactions();
+let eventFunction = {};
 // Changed event name to disable event listener
 eventFunction.TransactionalDataAvailable = async function processTransactionalDataAvailableEvent(payload, blockNumber) {
     try {
@@ -52,7 +46,8 @@ eventFunction.TransactionalDataAvailable = async function processTransactionalDa
                 dataCallVersion: payload.dataCallVersion,
                 carrierId: payload.carrierId,
                 channelName: payload.channelName,
-                pageNumber: payload.pageNumber
+                pageNumber: payload.pageNumber,
+                sequenceNum: payload.sequenceNum
             };
             let CarrierChannelTransaction = ChannelTransactionMap.get(data.channelName);
 
@@ -60,7 +55,7 @@ eventFunction.TransactionalDataAvailable = async function processTransactionalDa
             logger.debug('processTransactionalDataAvailableEvent: GetInsuranceData submitTransaction invoke ');
             logger.info("** Transaction started for GetInsuranceData at : Start_Time=" + new Date().toISOString());
             try {
-                queryResponse = await CarrierChannelTransaction.executeTransaction('GetInsuranceData', JSON.stringify(data));
+                queryResponse = await CarrierChannelTransaction.executeTransaction('GetInsuranceData', JSON.stringify(data), 3);
                 queryResponse = JSON.parse(queryResponse.toString('utf8'))
             } catch (err) {
                 logger.error('failed to get insurance data for ', data)
@@ -76,14 +71,14 @@ eventFunction.TransactionalDataAvailable = async function processTransactionalDa
             let factoryObject = new InstanceFactory();
             let targetObject = await factoryObject.getInstance(config.insuranceDataStorageEnv);
 
-            var insuranceData = new Object();
-            let id = data.dataCallId + '-' + data.carrierId + '-' + data.dataCallVersion + '-' + data.pageNumber;
+            let insuranceData = {};
+            let id = data.dataCallId + '/' + data.carrierId + '-' + data.dataCallVersion + '-' + data.pageNumber + '-' + data.sequenceNum + '.json';
             logger.info("created id is: ", id)
             //check whether record already exist with this '_id'
             //then get '_rev '
             try {
                 let revId = await targetObject.getTransactionalData(id);
-                if (revId != "error") {
+                if (revId !== "error") {
                     logger.debug('revId' + revId)
                     insuranceData._rev = revId;
                 }
@@ -91,7 +86,7 @@ eventFunction.TransactionalDataAvailable = async function processTransactionalDa
                 logger.error('error during getTransactionalData onerror ' + err)
             }
             insuranceData._id = id;
-            insuranceData.records = queryResponse.records;
+            insuranceData.records = { records: queryResponse.records, recordsNum: payload.recordsNum };
             try {
                 await targetObject.saveTransactionalData(insuranceData);
             } catch (err) {

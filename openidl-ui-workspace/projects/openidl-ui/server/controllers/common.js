@@ -163,6 +163,22 @@ common.getDataCalls = (req, res) => {
     }
 }
 
+common.getJurisdiction = (req, res) => {
+    var url = '/jurisdiction';
+
+    logger.debug('Current Jurisdiction');
+    logger.debug("url :", url);
+    logger.debug("CURRENT_JURISDICTION: ", process.env.CURRENT_JURISDICTION);
+
+    let jsonRes = {
+        statusCode: 200,
+        success: true,
+        result: process.env.CURRENT_JURISDICTION
+    };
+    util.sendResponse(res, jsonRes);
+}
+
+
 common.getLOBs = (req, res) => {
     var url = '/lob';
     if (res.locals.role == 'regulator' || res.locals.role == 'stat-agent' || res.locals.role == 'carrier') {

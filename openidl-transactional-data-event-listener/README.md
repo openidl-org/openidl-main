@@ -101,6 +101,26 @@ For development, testing, and debugging purposes, it is very convenient to run t
     ```
 * Application will be using local CouchDB running on port `9984` as user certificate key value store
 
+### 7. Configure hosts mappings
+The application will connect to the nodes by using the following URIs `orderer.example.com`, `peer0.aais.example.com`, `peer0.analytics.example.com`. However, it won't succeed because the actual URI for the nodes in local environment is `localhost`. In order to tackle that hosts mappings have to be added to the hosts configuration on the local machine like this:
+
+* MacOS/Linux
+
+The hosts configuration file is located at `/etc/hosts`. Add the lines below to that file.
+```
+127.0.0.1 orderer.example.com
+127.0.0.1 peer0.aais.example.com
+127.0.0.1 peer0.analytics.example.com
+```
+
+* Windows
+
+The hosts configuration file is located at `C:\Windows\System32\Drivers\etc\hosts`. Add the lines below to that file.
+```
+127.0.0.1 orderer.example.com
+127.0.0.1 peer0.aais.example.com
+127.0.0.1 peer0.analytics.example.com
+```
 ### Start the Node.js server
 
 1. Run the `npm install` command and verify that there are no errors.
@@ -133,3 +153,50 @@ If there are errors, please inspect the logs carefully and debug accordingly. Co
 Sequence diagram [draw.io](hhttps://github.com/openidl-org/openidl-main/tree/main/openidl-transactional-data-event-listener/docs/transactional-data-event-listener.drawio) file.
 
 ![Sequence diagram  image.](./docs/transactional-data-event-listener.jpg)
+
+### Report preparation flow and components
+Describes the components and flow for preparing report data.
+
+#### Components
+* ExpressJS App
+* Cron Job Handler
+* Poll Data Service
+* Mature Event Handler
+
+#### Flow
+![Flow diagram  image.](./docs/report-preparation-flow.png)
+
+#### Flow description
+1. Trigger report preparation process
+
+* Manually by sending HTTP requrest to the deinfed ExpressJS endpoint.
+
+The report prepration process can be triggered by sending HTTP request to the defined ExpressJS endpoint. The endpoint expects a POST request with a body containing start and end dates:
+```
+{
+    "startTime": "some date",
+    "endTime": "some date"
+}
+``` 
+* Automatically when Cron Job triggers
+
+Preparation of report data is triggered by a cron job automatically in specified time interval. When run by the cron job the process sets the start and end time of deadlines depending on the configured "pollIntervalInDays" or uses "1" day interval time if the "pollIntervalInDays" is not configured.
+
+2. Poll Data Service
+
+Poll data service is called by either the cron job or from the endpoint handler. It is responsible for:
+* Deadline window
+
+As mentioned above the deadline window can be provided or if not provided to the Poll Data service then it is defined by using the "pollIntervalInDays" or just "1" day if "pollIntervalInDays" is not configured.
+* Get the mature data calls
+
+Executes "ListMatureDataCalls" transaction to get the mature data calls based on the deadline window.
+
+* Sends mature data calls to Mature Data Event Handler one by one.
+
+3. Mature Data Event Handler
+Responsible to transform and upload the data to S3 bucket.
+
+* Fetches all insurance data by data call id.
+* Transforms the data
+* Uploads the data to S3 bucket.

@@ -10,7 +10,7 @@ const cors = require('cors');
 const log4js = require('log4js');
 const noCache = require('nocache')
 const openidlCommonLib = require('@openidl-org/openidl-common-lib');
-if (NODE_ENV === 'development') {
+if (NODE_ENV === 'development' || NODE_ENV == "local") {
     openidlCommonLib.EnvConfig.init('/projects/openidl-ui/server/config');
 } else {
     openidlCommonLib.EnvConfig.init();
@@ -44,15 +44,18 @@ app.use(noCache());
 app.enable("trust proxy");
 // TODO Undable to move passport related stuff to middleware need expert help
 // TODO discuss on standard session maintaince approach from Node.js for production
-app.use(session({
+const sessionCookie = {
+    secure: true,
+    httpOnly: true,
+    sameSite: 'lax'
+}
+if (NODE_ENV === 'development' || NODE_ENV == "local") {
+    sessionCookie.secure = false;
+} app.use(session({
     secret: "123456",
     resave: true,
     saveUninitialized: true,
-    cookie: {
-        secure: true,
-        httpOnly: true,
-        sameSite: 'lax'
-    } 
+    cookie: sessionCookie
 }));
 logger.debug('setting up app: initializing passport');
 const passport = authHandler.getPassport();
@@ -72,7 +75,7 @@ if (NODE_ENV === 'production') {
 
 }
 
-if (NODE_ENV === 'production' || NODE_ENV === 'qa') {
+if (NODE_ENV === 'production' || NODE_ENV === 'qa' || NODE_ENV === 'local') {
     app.use(express.static('dist/openidl-ui'));
 }
 // app.get('/', (req, res) => {

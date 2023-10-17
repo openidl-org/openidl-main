@@ -124,7 +124,7 @@
 							</div>
 						</div>
 
-						<div class="row">
+						<div class="row" *ngIf="hideFormElement">
 							<div class="col">
 								<mat-form-field
 									appearance="outline"
@@ -220,7 +220,7 @@
 						</div>
 
 						<div class="row">
-							<div class="col toggle">
+							<div class="col toggle" *ngIf="hideFormElement">
 								<mat-slide-toggle
 									formControlName="intentToPublish"
 									color="primary"
@@ -229,6 +229,19 @@
 								>
 									Expected Public Circulation?
 								</mat-slide-toggle>
+							</div>
+							<div class="col">
+								<mat-form-field appearance="outline" class="full-width" dateFormat1>							
+									<mat-label>Transaction Month</mat-label>
+									<input matInput [matDatepicker]="transactionMonthPicker" placeholder="Month and Year" formControlName="transactionMonth">
+									<mat-datepicker-toggle matSuffix [for]="transactionMonthPicker"></mat-datepicker-toggle>
+									<mat-datepicker #transactionMonthPicker
+													startView="multi-year"
+													(yearSelected)="chosenYearHandler($event)"
+													(monthSelected)="chosenMonthHandler($event, transactionMonthPicker)"
+													panelClass="example-month-picker">
+									</mat-datepicker>
+								</mat-form-field>
 							</div>
 							<div class="col">
 								<mat-form-field
@@ -401,11 +414,11 @@
 								</p>
 							</div>
 						</div>
-						<div class="row pb-1">
-							<div class="col readonly" *ngIf="model.deadline">
-								<h4>Deadline</h4>
+						<div class="row pb-1" *ngIf="hideFormElement">
+							<div class="col readonly">
+								<h4>Expected Public Circulation?</h4>
 								<p>
-									{{ model.deadline }}
+									{{ model.intentToPublish ? 'Yes' : 'No' }}
 								</p>
 							</div>
 							<div class="col readonly">
@@ -422,10 +435,6 @@
 									{{ model.lossToDate }}
 								</p>
 							</div>
-							<div
-								class="col readonly"
-								*ngIf="!model.deadline"
-							></div>
 						</div>
 						<div class="row pb-1">
 							<div
@@ -443,18 +452,28 @@
 									{{ model.lineOfBusiness }}
 								</p>
 							</div>
-							<div class="col readonly">
-								<h4>Expected Public Circulation?</h4>
+							<div class="col readonly" *ngIf="model.deadline">
+								<h4>Deadline</h4>
 								<p>
-									{{ model.intentToPublish ? 'Yes' : 'No' }}
+									{{ model.deadline }}
 								</p>
 							</div>
+							<div
+								class="col readonly"
+								*ngIf="!model.deadline"
+							></div>
 							<div
 								class="col readonly"
 								*ngIf="!model.proposedDeliveryDate"
 							></div>
 						</div>
 						<div class="row pb-1">
+							<div class="col readonly">
+								<h4>Transaction Month</h4>
+								<p>
+									<span>{{ model.transactionMonth ? model.transactionMonth : '-NA-' }}</span>
+								</p>
+							</div>
 							<div class="col readonly" *ngIf="isForumUrl">
 								<h4>Forum URL</h4>
 								<p>

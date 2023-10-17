@@ -14,104 +14,46 @@
  *  limitations under the License.
  */
 
-
 const express = require('express');
 const log4js = require('log4js');
 const config = require('config');
-const cron = require('node-cron');
-const schedule = require('node-schedule');
-
+const bodyParser = require('body-parser');
 const openidlCommonLib = require('@openidl-org/openidl-common-lib');
-const cronHandler = require('./cron/cron-handler');
+
+
+// Init common lib env variables (call before injecting local depencencies because they rely on the ENV variable to be injected)
 openidlCommonLib.EnvConfig.init();
 
-const EventListener = openidlCommonLib.EventListener;
-const walletHelper = openidlCommonLib.Wallet;
-const channelConfig = require('./config/listener-channel-config.json');
-const networkConfig = require('./config/connection-profile.json');
-const mainEvent = require('./event/event-handler');
-let DBManagerFactory = openidlCommonLib.DBManagerFactory;
-let dbManagerFactoryObject = new DBManagerFactory();
+const { initCronJob } = require('./cron/cronJob');
+const httpsRedirect = require('./express/middleware/httpsRedirect');
+const { initEventListener } = require('./event/eventListener');
+const expressRoutes = require('./express');
 
-const app = express();
 //Set up logging
 const logger = log4js.getLogger('index');
 logger.level = config.logLevel;
+const expressLogger = log4js.getLogger('express');
+expressLogger.level = 'INFO'
+
+// Setup express
+const app = express();
+app.use(bodyParser.json());
+app.use(httpsRedirect);
+app.use(log4js.connectLogger(expressLogger, { level: log4js.levels.INFO }));
 app.enable('trust proxy');
 
-app.use(function (req, res, next) {
-    if (req.secure || process.env.BLUEMIX_REGION === undefined) {
-        next();
-    } else {
-        logger.info('redirecting to https');
-        res.redirect('https://' + req.headers.host + req.url);
-    }
-});
-
-app.get('/health', (req, res) => {
-    res.json({
-        'message': 'Data call trasactional event listener is alive.'
-    });
-})
+logger.debug(`[START] initCronJob()`);
+expressRoutes(app);
 
 const host = process.env.HOST || config.host;
 const port = process.env.PORT || config.port;
 
 app.listen(port, () => {
-    logger.info(`app listening on http://${host}:${port}`);
-    app.emit("listened", null);
+	logger.info(`app listening on http://${host}:${port}`);
+	app.emit('listened', null);
 });
+// Init cron job
+initCronJob();
 
-async function init() {
-    cronHandler.init();
-    const pollIntervalString = config.pollIntervalString;
-    logger.info("poll interval config: ", pollIntervalString);
-    const job = schedule.scheduleJob(pollIntervalString, async () => await cronHandler.pollForMaturedDataCall());
-    logger.info("job scheduling done  ", job);
-    let dbManager = await dbManagerFactoryObject.getInstance(JSON.parse(process.env.OFF_CHAIN_DB_CONFIG));
-    let listenerConfig = {};
-    let listernerChannels = new Array();
-    for (let index = 0; index < channelConfig.listenerChannels.length; index++) {
-        let channelName = channelConfig.listenerChannels[index].channelName;
-        let listenerChannel = {};
-        logger.debug("channelName" + channelName);
-        listenerChannel["channelName"] = channelName;
-
-        let events = [];
-        for (let index1 = 0; index1 < channelConfig.listenerChannels[index].events.length; index1++) {
-            let eventName = channelConfig.listenerChannels[index].events[index1];
-            logger.debug("EVENT NAME " + Object.keys(eventName));
-            // const eventFun = mainEvent.eventFunction[Object.keys(eventName)];
-            let event = {};
-            event[Object.keys(eventName)] = mainEvent.eventFunction[Object.keys(eventName)];
-            events.push(event)
-        }
-        listenerChannel["events"] = events;
-        logger.debug("listenerChannel" + listenerChannel);
-        listernerChannels.push(listenerChannel);
-
-    }
-    listenerConfig['listenerChannels'] = listernerChannels;
-    await walletHelper.init(JSON.parse(process.env.KVS_CONFIG));
-    let idExists = await walletHelper.identityExists(channelConfig.identity.user);
-    if (!idExists) {
-        throw new Error("Invalid Identity, no certificate found in certificate store");
-    }
-    const wallet = walletHelper.getWallet();
-    let identity = {};
-    logger.debug(channelConfig.identity.user);
-    identity['user'] = channelConfig.identity.user;
-    identity['wallet'] = wallet;
-    let applicationName = channelConfig.applicationName;
-    listenerConfig["applicationName"] = applicationName;
-    listenerConfig['identity'] = identity;
-
-
-    try {
-        await EventListener.init(networkConfig, listenerConfig, dbManager, config.targetDB);
-        await EventListener.processInvoke();
-    } catch (err) {
-        logger.error('eventHandler init error' + err);
-    }
-}
-init();
+// Init Event listener
+initEventListener();

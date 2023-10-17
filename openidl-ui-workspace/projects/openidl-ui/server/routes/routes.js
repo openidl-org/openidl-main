@@ -27,6 +27,9 @@ router.route(API_URL + '/logout').post(authHandler.logout, commonController.logo
 // Get data calls according to the params passed eg: status, page index etc
 router.route(API_URL + '/list-data-calls-by-criteria').get(authHandler.isLoggedIn, authHandler.getUserRole, authHandler.validateToken, commonController.getDataCalls);
 
+// Get getjurisdiction
+router.route(API_URL + '/jurisdiction').get(authHandler.isLoggedIn, authHandler.getUserRole, authHandler.validateToken, commonController.getJurisdiction);
+
 // Get LOBs
 router.route(API_URL + '/lob').get(authHandler.isLoggedIn, authHandler.getUserRole, authHandler.validateToken, commonController.getLOBs);
 

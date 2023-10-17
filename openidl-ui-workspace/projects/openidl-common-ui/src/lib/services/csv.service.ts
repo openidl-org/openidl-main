@@ -11,9 +11,11 @@ export class CsvService {
 		const output = [];
 		let definition_mongo = '';
 		data.forEach((element) => {
+      console.log(element);
 			let csvData = {};
 			let definition_cloudant = element.viewDefinition_cloudant;
-			definition_mongo = element.viewDefinition_mongo;
+			let definition_mongo = element.viewDefinition_mongo;
+      let definition_postgres = element.viewDefinition_postgres;
 			if (
 				typeof definition_cloudant == undefined ||
 				typeof definition_cloudant == 'undefined' ||
@@ -58,11 +60,31 @@ export class CsvService {
 				);
 				definition_mongo = definition_mongo + ',{out:{inline:1}}';
 			}
+      if (
+        typeof definition_postgres == undefined ||
+        typeof definition_postgres == 'undefined' ||
+        definition_postgres == '') {
+
+        definition_postgres = '-';
+      } else {
+        definition_postgres = { ...definition_postgres };
+
+        if (definition_postgres.map) {
+          definition_postgres.map = atob(definition_postgres.map);
+        }
+        if (definition_postgres.reduce) {
+          definition_postgres.reduce = atob(definition_postgres.reduce);
+        }
+        if (definition_postgres.cleanup) {
+          definition_postgres.cleanup = atob(definition_postgres.cleanup);
+        }
+      }
 			csvData['Pattern_ID'] = element.extractionPatternID;
 			csvData['Pattern_Name'] = element.extractionPatternName;
 			csvData['Description'] = element.description;
 			csvData['definition_cloudant'] = definition_cloudant;
 			csvData['definition_mongo'] = definition_mongo;
+      csvData['definition_postgres'] = JSON.stringify(definition_postgres).replace(/\\n/g, '\n');
 			output.push(csvData);
 		});
 		var options = {
@@ -71,7 +93,8 @@ export class CsvService {
 				'Pattern Name',
 				'Pattern Description',
 				'Cloudant Definition',
-				'Mongo Definition'
+				'Mongo Definition',
+        'PostgreSQL Definition'
 			]
 		};
 		new ngxCsv(output, fileName, options);

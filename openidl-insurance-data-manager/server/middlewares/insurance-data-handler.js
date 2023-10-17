@@ -68,6 +68,31 @@ const fileterEmailData = async (servicetype) => {
 }
 
 /**
+ * This method is invoking mongodb for reading
+ * @param {Json} insuranceDataArray - Insurance documents payload structure
+ */
+insuranceDataHandler.getFilteredDocuments = async (query) => {
+  let mongoExecResult;
+  try {
+  let connectionManager = await insuranceDataHandler.dbConnection();
+
+  const DMVCollectionName = "" + insuranceManagerDB + "_" + query.organizationId
+  logger.debug("DMV Collection name: ", DMVCollectionName); 
+  if (connectionManager != null) {
+    mongoExecResult = await connectionManager.getFilteredDocuments( 
+      DMVCollectionName,
+      query);
+    return mongoExecResult;
+  } else {
+    throw new Error("Cannot establish connection to HDS")
+  }
+  } catch (error) {
+    logger.error('Failed during getFilteredDocuments method in insuranceDataHandler module. Error is ' + error);
+    throw error;
+  }
+}
+
+/**
  * This method is invoking mongodb, blockchain layers method
  * @param {Json} insuranceDataArray - Insurance documents payload structure
  */

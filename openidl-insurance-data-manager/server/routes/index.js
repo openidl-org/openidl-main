@@ -54,5 +54,6 @@ router.use('/sendemail', authHandler.validateToken, emailController.sendEmail);
  * hash value into blockchain
  */
 router.use('/load-insurance-data', authHandler.validateToken, statAgentController.loadInsuranceData);
+router.route('/get-insurance-data-by-criteria').get( authHandler.validateToken, statAgentController.getInsuranceData);
 
 module.exports = router;

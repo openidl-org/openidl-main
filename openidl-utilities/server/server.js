@@ -22,6 +22,7 @@ const log4js = require('log4js');
 const config = require('config');
 const fs = require('fs');
 const path = require('path');
+const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const yaml = require('js-yaml');
 const session = require('express-session');
@@ -33,6 +34,7 @@ const logger = log4js.getLogger('server');
 logger.level = config.logLevel;
 logger.info("Starting");
 const app = express();
+app.use(cors());
 
 global.fetch = require('node-fetch');
 

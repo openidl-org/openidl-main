@@ -57,6 +57,7 @@ router.route('/data-call-log/:id/:version').get(authHandler.validateToken, commo
 //--- like and consent
 router.route('/like').post(authHandler.validateToken, commonController.toggleLike);
 router.route('/consent').post(authHandler.validateToken, carrierController.createConsent);
+router.route('/reconsent').post(authHandler.validateToken, carrierController.createReconsent);
 router.route('/like-status-data-call/:id/:version/:orgId').get(authHandler.validateToken, commonController.likeStatusByDataCall);
 router.route('/consent-status-data-call/:id/:version/:orgId').get(authHandler.validateToken, carrierController.consentStatusByDataCall);
 router.route('/like-count/:id/:version').get(authHandler.validateToken, commonController.likeCount);

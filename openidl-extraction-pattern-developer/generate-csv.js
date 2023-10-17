@@ -3,11 +3,10 @@ const mongoDBManagerInstance = require('mongodb').MongoClient;
 const Parser = require('json2csv')
 const fs = require('fs')
 const { v4: uuidv4 } = require('uuid');
-const config = require("./config.json")
 
 async function initializeDBConnection(local = true) {
     if (local) {
-        connectionURL = config.db.dbURL
+        connectionURL = "mongodb://localhost:27017"
         let dbManager = new MongoDBManager({ url: connectionURL });
         await dbManager.connect()
         return dbManager
@@ -72,14 +71,12 @@ async function generateCSV(dbName, collectionName, outputFileName, useLocal) {
 }
 
 function convertToCSV(json) {
-    console.log(json)
     let rows = []
     for (let item of json) {
         let row = {}
-        // for (let field in item['_id']) {
-        //     row[field] = item['_id'][field]
-        // }
-        row['_id'] = item['_id']
+        for (let field in item['_id']) {
+            row[field] = item['_id'][field]
+        }
         for (let field in item.value) {
             row[field] = item.value[field]
         }
@@ -103,11 +100,11 @@ function convertToCSV(json) {
 // let dbName = "covid-report";
 // let collectionName = "hds-data";
 // let reductionName = "hds-report-input";
-let databaseName = config.db.dbName
-let collectionName = config.db.collectionName
-let reductionName = config.db.reductionName;
+let databaseName = "openidl-offchain-db-ppp-any-nr";
+let collectionName = "insurance_trx_db_any";
+let reductionName = 'any_covid_data_all';
 
-let outputFile = config.serializer.outputFile
+let outputFile = 'covid-output/covid-output-any-ppp-all-nr.csv'
 
 let useLocal = true
 

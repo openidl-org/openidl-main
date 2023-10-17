@@ -81,6 +81,7 @@ export class TableComponent implements OnInit, AfterViewInit {
 	//table columns
 	draftColumns = [
 		'name',
+		'transactionMonth',
 		'deadline',
 		'jurisdiction',
 		'lineOfBusiness',
@@ -90,6 +91,7 @@ export class TableComponent implements OnInit, AfterViewInit {
 	];
 	issuedColumns = [
 		'name',
+		'transactionMonth',
 		'deadline',
 		'jurisdiction',
 		'lineOfBusiness',
@@ -100,6 +102,7 @@ export class TableComponent implements OnInit, AfterViewInit {
 	];
 	cancelledColumns = [
 		'name',
+		'transactionMonth',
 		'deadline',
 		'jurisdiction',
 		'lineOfBusiness',
@@ -381,6 +384,7 @@ export class TableComponent implements OnInit, AfterViewInit {
 							}
 							this.data.push({
 								name: element.dataCalls.name,
+								transactionMonth: element.dataCalls.transactionMonth,
 								deadline: element.dataCalls.deadline,
 								jurisdiction: element.dataCalls.jurisdiction,
 								lineOfBusiness:
@@ -431,6 +435,8 @@ export class TableComponent implements OnInit, AfterViewInit {
 					if (this.data && this.data.length > 0) {
 						this.isRecord = true;
 						this.data.forEach((el) => {
+							if (el.transactionMonth || el.transactionMonth !== '') {
+							}
 							if (el.deadline || el.deadline !== '') {
 							}
 							if (
@@ -493,6 +499,7 @@ export class TableComponent implements OnInit, AfterViewInit {
 
 export interface DataTableItem {
 	name: string;
+	transactionMonth: string;
 	deadline: string;
 	jurisdiction: string;
 	lineOfBusiness: string;

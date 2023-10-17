@@ -18,7 +18,6 @@
 
 const log4js = require('log4js');
 const config = require('config');
-
 const util = require('../helpers/util');
 const transactionFactory = require('../helpers/transaction-factory');
 const logger = log4js.getLogger('stat-agent');
@@ -74,6 +73,42 @@ statAgent.loadInsuranceData = async (request, response) => {
         logger.info("REQUEST END TIME FOR RUNTIME Exception CHUNKID " + request.body.chunkId + " " + new Date().toISOString());
          let errorResponse = await util.apiResponse(error.statusCode, error.success, error.message)
           util.sendResponse(response, errorResponse);
+    }
+}
+
+/**
+ * This method is parent method to read documents from HDS
+ * @param {Object} request -- To handle the body payload request
+ * @param {Object} response -- Send response to client
+ */
+statAgent.getInsuranceData = async (request, response) => {
+    logger.info('Inside getInsuranceData method.....');
+    try {
+        if (!request.query.hasOwnProperty('organizationId') || !request.query.hasOwnProperty('transactionMonth')) {
+            const jsonRes = {
+                statusCode: 400,
+                success: false,
+                message: "Required Parameters OrganizationID and transactionMonth not found!",
+            }
+            util.sendResponse(response, jsonRes);
+        } else {
+        let mongoExecResult = await insuranceDataHandler.getFilteredDocuments(request.query);
+        let jsonRes = {
+            statusCode: 200,
+            success: true,
+            result: mongoExecResult
+        };
+        util.sendResponse(response, jsonRes);
+    }
+    } catch (error) {
+        logger.error("error message: ", JSON.stringify(error))
+        let errorResponse = 
+        {
+            statusCode: error.statusCode || 500, 
+            error: error.success || false,
+            message: error.message || "Error"
+        }
+        util.sendResponse(response, errorResponse);
     }
 }
 

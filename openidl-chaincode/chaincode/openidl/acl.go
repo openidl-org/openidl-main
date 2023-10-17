@@ -36,6 +36,7 @@ func checkAccessForOrg(stub shim.ChaincodeStubInterface, function string) (bool,
 			"IssueDataCall":           {ADVISORY_ORGANISATION_TYPE},
 			"ToggleLike":              {ADVISORY_ORGANISATION_TYPE, CARRIER_ORGANISATION_TYPE},
 			"CreateConsent":           {ADVISORY_ORGANISATION_TYPE, CARRIER_ORGANISATION_TYPE},
+			"CreateReconsent":         {ADVISORY_ORGANISATION_TYPE, CARRIER_ORGANISATION_TYPE},
 			"CreateReport":            {ADVISORY_ORGANISATION_TYPE},
 			"UpdateReport":            {ADVISORY_ORGANISATION_TYPE},
 		}

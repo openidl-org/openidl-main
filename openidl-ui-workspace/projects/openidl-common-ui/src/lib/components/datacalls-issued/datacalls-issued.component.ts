@@ -42,6 +42,7 @@ export class DatacallsIssuedComponent implements OnInit {
 		premiumFromDate: '',
 		premiumToDate: '',
 		deadline: '',
+		transactionMonth: '',
 		intentToPublish: true,
 		isShowParticipants: '',
 		purpose: '',
@@ -92,6 +93,10 @@ export class DatacallsIssuedComponent implements OnInit {
 	hasForumUrl: boolean = false;
 	hasPattern: boolean = false;
 	readonly defaultDate = '0001-01-01T00:00:00Z';
+
+	// Hide form elements that are not required in the view.
+	// TODO: May completely remove in future or add them back to view.
+	hideFormElement = false;
 
 	constructor(
 		private formBuilder: FormBuilder,

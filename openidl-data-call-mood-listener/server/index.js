@@ -61,7 +61,9 @@ app.listen(port, () => {
 });
 
 async function init() {
-    let dbManager = await dbManagerFactoryObject.getInstance(JSON.parse(process.env.OFF_CHAIN_DB_CONFIG));
+    const options = JSON.parse(process.env.OFF_CHAIN_DB_CONFIG);
+
+    let dbManager = await dbManagerFactoryObject.getInstance(options);
     logger.debug("dbManager instance " + dbManager);
     let listenerConfig = {};
     let listernerChannels = new Array();

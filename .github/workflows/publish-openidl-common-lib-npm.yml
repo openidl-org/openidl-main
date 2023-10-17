@@ -1,0 +1,34 @@
+name: Publish openIDL common-lib
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  publish-openidl-common-lib-npm-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          registry-url: 'https://npm.pkg.github.com/'
+      - name: Publish package on NPM
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          registry: https://npm.pkg.github.com
+          token: '${{ secrets.GITHUB_TOKEN }}'
+          access: public
+          package: openidl-common-lib/package.json
+      # push the version changes to GitHub
+      # - run: |
+      #     git config --global user.name "GitHub CD bot"
+      #     git config --global user.email "github-cd-bot@aaisonline.com"
+      #     git commit -a -s -m "Publish New Version $version of openidl-common-lib"
+      #     git push
+      #   env:
+      #     # The secret is passed automatically. Nothing to configure.
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      #     version: ${{ env.VERSION }}

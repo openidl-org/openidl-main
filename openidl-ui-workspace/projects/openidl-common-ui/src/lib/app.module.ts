@@ -17,11 +17,11 @@ import { MaterialModule } from './material.module';
 
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
-import { FormComponent } from './components/form/form.component';
+import { CustomDateFormat, FormComponent } from './components/form/form.component';
 import { TableComponent } from './components/table/table.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SearchComponent } from './components/search/search.component';
-import { UpdateFormComponent } from './components/update-form/update-form.component';
+import { CustomDateFormat1, UpdateFormComponent } from './components/update-form/update-form.component';
 import { DatacallsIssuedComponent } from './components/datacalls-issued/datacalls-issued.component';
 import { DatacallHistoryComponent } from './components/datacall-history/datacall-history.component';
 import { BlocksHistoryComponent } from './components/blocks-history/blocks-history.component';
@@ -42,6 +42,8 @@ import { UpdateReportComponent } from './components/update-report/update-report.
     BlocksHistoryComponent,
     UpdateReportComponent,
     ReportTableComponent,
+    CustomDateFormat,
+    CustomDateFormat1
   ],
   imports: [
     BrowserModule,

@@ -108,7 +108,7 @@ async function init() {
     await schedulerInit();
 
   } catch (err) {
-    logger.error('eventHandler init error' + err);
+    logger.error('eventHandler init error', err);
   }
 };
 

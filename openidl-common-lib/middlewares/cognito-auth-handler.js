@@ -80,6 +80,8 @@ cognitoAuthHandler.authenticate = (req, res, next) => {
   passport.authenticate('cognito', function (err, user, info) {
     if (err || info) {
       logger.debug('if err or infor');
+      logger.debug("err: ", JSON.stringify(err, null, 2));
+      logger.debug("info: ", JSON.stringify(info, null, 2));
       res.status(500).json({
         message: info.message
       });

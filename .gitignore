@@ -37,3 +37,7 @@ openidl-config/*
 openidl-k8s/*
 awx-automation/*
 jenkins-jobs/*
+
+# Gradle
+.gradle/
+build/

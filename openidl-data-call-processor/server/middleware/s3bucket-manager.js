@@ -40,7 +40,6 @@ class S3BucketManager {
         const accessparams = await this.getAccessParams();
         let bucket = new AWS.S3(accessparams);
         logger.debug(" saveObjectParam bucket: " + bucketConfig.bucketName + " key: " + input._id)
-        logger.debug("  records: " + JSON.stringify(input.records))
         let insertObjectParam = { Bucket: bucketConfig.bucketName, Key: input._id, Body: JSON.stringify(input.records) };
         try {
             const data = await bucket.putObject(insertObjectParam).promise();
@@ -53,12 +52,9 @@ class S3BucketManager {
     async getTransactionalData(id) {
         logger.debug("Inside getTransactionalData");
         const accessParams = await this.getAccessParams();
-        logger.debug("accessparams: ", accessParams);
         let bucket = new AWS.S3(accessParams);
         let getObjectParam = { Bucket: bucketConfig.bucketName, Key: id };
         const data = await bucket.getObject(getObjectParam).promise();
-        console.log("getobject data is - " + JSON.stringify(data))
-        console.log("getobject body is - " + JSON.stringify(JSON.parse(data.Body), null, 2))
         return data.VersionId // TODO check VersionId i the thing we need 
     }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Directive } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -6,11 +6,66 @@ import { DataService } from '../../services/data.service';
 import { StorageService } from '../../services/storage.service';
 import { MESSAGE } from '../../config/messageBundle';
 import { DialogService } from '../../services/dialog.service';
+import {
+	MomentDateAdapter,
+	MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+} from '@angular/material-moment-adapter';
+import {
+	DateAdapter,
+	MAT_DATE_FORMATS,
+	MAT_DATE_LOCALE,
+} from '@angular/material/core';
+import { MatDatepicker } from '@angular/material/datepicker';
+import * as _moment from 'moment';
+import { default as _rollupMoment, Moment } from 'moment';
+  
+const moment = _rollupMoment || _moment;
+  
+export const STANDARD_FORMATS1 = {
+	parse: {
+		dateInput: 'MM/DD/YYYY',
+	},
+	display: {
+		dateInput: 'MM/DD/YYYY',
+		monthYearLabel: 'MMM YYYY',
+		dateA11yLabel: 'LL',
+		monthYearA11yLabel: 'MMMM YYYY',
+	}
+};
+
+export const YYYYMM_FORMATS1 = {
+	parse: {
+		dateInput: 'YYYY/MM',
+	},
+	display: {
+		dateInput: 'YYYY/MM',
+		monthYearLabel: 'MMM YYYY',
+		dateA11yLabel: 'LL',
+		monthYearA11yLabel: 'MMMM YYYY',
+	}
+};
+
+@Directive({
+	selector: '[dateFormat1]',
+	providers: [
+	  {provide: MAT_DATE_FORMATS, useValue: YYYYMM_FORMATS1},
+	]
+  })
+  export class CustomDateFormat1 {
+  }
 
 @Component({
 	selector: 'app-update-form',
 	templateUrl: './update-form.component.html',
-	styleUrls: ['./update-form.component.scss']
+	styleUrls: ['./update-form.component.scss'],
+	providers: [
+		{
+			provide: DateAdapter,
+			useClass: MomentDateAdapter,
+			deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+		},
+		{provide: MAT_DATE_FORMATS, useValue: STANDARD_FORMATS1}
+	]
 })
 export class UpdateFormComponent implements OnInit {
 	// Events to be emitted to the parent component
@@ -28,12 +83,13 @@ export class UpdateFormComponent implements OnInit {
 		purpose: '',
 		isShowParticipants: true,
 		lineOfBusiness: '',
-		intentToPublish: '',
+		intentToPublish: true,
 		eligibilityRequirement: '',
 		detailedCriteria: '',
 		jurisdiction: '',
 		comments: '',
 		deadline: '',
+		transactionMonth: '',
 		premiumFromDate: '',
 		premiumToDate: '',
 		lossFromDate: '',
@@ -53,7 +109,12 @@ export class UpdateFormComponent implements OnInit {
 	datacall;
 	buttonText: any = 'Like Data Call';
 	forumurl: string = '';
-	LOBs = [];
+	LOBs = [
+		{
+			code: 'Auto: Personal',
+			value: 'Auto: Personal'
+		}
+	]; // Set default to 'Auto: Personal'
 	consentCount: any;
 	likeCount: any;
 	data: any;
@@ -91,6 +152,10 @@ export class UpdateFormComponent implements OnInit {
 	toolbarTS = '';
 	currentStatus = '';
 
+	// Hide form elements that are not required in the view.
+	// TODO: May completely remove in future or add them back to view.
+	hideFormElement = false;
+
 	constructor(
 		private formBuilder: FormBuilder,
 		private dataService: DataService,
@@ -120,7 +185,15 @@ export class UpdateFormComponent implements OnInit {
 			this.model.jurisdiction =
 				this.storageService.getItem('jurisdiction');
 		} else {
-			this.model.jurisdiction = 'Ohio';
+			this.dataService.getData('/jurisdiction').subscribe(
+				(response) => {
+					this.model.jurisdiction = response;
+					this.storageService.setItem('jurisdiction', response);
+				},
+				(error) => {
+					console.log(error);
+				}
+			);
 		}
 
 		// Storing role to toggle roles related flags
@@ -190,10 +263,19 @@ export class UpdateFormComponent implements OnInit {
 					{ value: '', disabled: true },
 					[Validators.required]
 				],
-				purpose: [{ value: '', disabled: true }, [Validators.required]],
-				isShowParticipants: [{ value: true, disabled: true }],
-				lineOfBusiness: [
+				transactionMonth: [
 					{ value: '', disabled: true },
+					[Validators.required]
+				],
+				purpose: [
+					{ value: '', disabled: true },
+					[Validators.required]
+				],
+				isShowParticipants: [
+					{ value: true, disabled: true }
+				],
+				lineOfBusiness: [
+					{ value: this.LOBs[0].value, disabled: true },
 					[Validators.required]
 				],
 				detailedCriteria: [
@@ -201,7 +283,7 @@ export class UpdateFormComponent implements OnInit {
 					[Validators.required]
 				],
 				intentToPublish: [
-					{ value: '', disabled: true },
+					{ value: true, disabled: true },
 					[Validators.required]
 				],
 				eligibilityRequirement: [
@@ -229,12 +311,13 @@ export class UpdateFormComponent implements OnInit {
 				premiumToDate: ['', [Validators.required]],
 				lossFromDate: ['', [Validators.required]],
 				lossToDate: ['', [Validators.required]],
+				transactionMonth: [this.model.transactionMonth, [Validators.required]],
 				deadline: ['', [Validators.required]],
 				purpose: ['', [Validators.required]],
 				isShowParticipants: [true],
-				lineOfBusiness: ['', [Validators.required]],
+				lineOfBusiness: [this.LOBs[0].value, [Validators.required]],
 				detailedCriteria: ['', [Validators.required]],
-				intentToPublish: ['', [Validators.required]],
+				intentToPublish: [true, [Validators.required]],
 				eligibilityRequirement: ['', [Validators.required]],
 				jurisdiction: [this.model.jurisdiction],
 				comments: ['']
@@ -278,6 +361,10 @@ export class UpdateFormComponent implements OnInit {
 					{ value: '', disabled: true },
 					[Validators.required]
 				],
+				transactionMonth: [
+					{ value: '', disabled: true },
+					[Validators.required]
+				],
 				deadline: [
 					{ value: '', disabled: true },
 					[Validators.required]
@@ -285,7 +372,7 @@ export class UpdateFormComponent implements OnInit {
 				purpose: [{ value: '', disabled: true }, [Validators.required]],
 				isShowParticipants: [{ value: true, disabled: true }],
 				lineOfBusiness: [
-					{ value: '', disabled: true },
+					{ value: this.LOBs[0].value, disabled: true },
 					[Validators.required]
 				],
 				detailedCriteria: [
@@ -293,7 +380,7 @@ export class UpdateFormComponent implements OnInit {
 					[Validators.required]
 				],
 				intentToPublish: [
-					{ value: '', disabled: true },
+					{ value: true, disabled: true },
 					[Validators.required]
 				],
 				eligibilityRequirement: [
@@ -315,7 +402,7 @@ export class UpdateFormComponent implements OnInit {
 		this.dataService.getData(uri).subscribe(
 			(response) => {
 				this.isSpinner = false;
-				let lob = JSON.parse(response);
+				const lob = JSON.parse(response);
 				this.LOBs = lob.lob;
 			},
 			(error) => {
@@ -429,7 +516,8 @@ export class UpdateFormComponent implements OnInit {
 			eligibilityRequirement: data.eligibilityRequirement,
 			isShowParticipants: data.isShowParticipants,
 			comments: data.comments,
-			deadline: data.deadline
+			deadline: data.deadline,
+			transactionMonth: data.transactionMonth
 		});
 	}
 
@@ -666,6 +754,7 @@ export class UpdateFormComponent implements OnInit {
 				this.datacall.lossToDate
 			],
 			deadline: this.datacall.deadline,
+			transactionMonth: this.datacall.transactionMonth,
 			purpose: this.datacall.purpose,
 			isShowParticipants: this.datacall.isShowParticipants,
 			lineOfBusiness: this.datacall.lineOfBusiness,
@@ -728,6 +817,7 @@ export class UpdateFormComponent implements OnInit {
 			purpose: value.purpose.trim(),
 			lineOfBusiness: value.lineOfBusiness.trim(),
 			deadline: value.deadline,
+			transactionMonth: this.getTransactionMonth(value.transactionMonth),
 			premiumFromDate: value.premiumFromDate,
 			premiumToDate: value.premiumToDate,
 			lossFromDate: value.lossFromDate,
@@ -794,6 +884,7 @@ export class UpdateFormComponent implements OnInit {
 			purpose: value.purpose.trim(),
 			lineOfBusiness: value.lineOfBusiness.trim(),
 			deadline: value.deadline,
+			transactionMonth: this.getTransactionMonth(value.transactionMonth),
 			premiumFromDate: value.premiumFromDate,
 			premiumToDate: value.premiumToDate,
 			lossFromDate: value.lossFromDate,
@@ -927,14 +1018,6 @@ export class UpdateFormComponent implements OnInit {
 	showSessionModal() {
 		this.dialogService.openModal(this.title, this.message, this.type, true);
 	}
-
-	// enable today and future dates for deadline calender
-	disableOldDates = (d: Date | null): boolean => {
-		const selected = d || new Date();
-		const now = new Date();
-		// display today and future dates
-		return selected.setHours(0, 0, 0, 0) >= now.setHours(0, 0, 0, 0);
-	};
 
 	createDraftCopy(src) {
 		let target = {};
@@ -1097,5 +1180,38 @@ export class UpdateFormComponent implements OnInit {
 
 	fieldChange() {
 		this.fieldChangeEvent.emit();
+	}
+
+	// Format the transaction month to YYYY-MM before sending to backend
+	getTransactionMonth(transactionMonth) {
+		if (transactionMonth) {
+			const year = new Date(transactionMonth).toLocaleDateString('en-US', {year: 'numeric'});
+			const month = new Date(transactionMonth).toLocaleDateString('en-US', {month: '2-digit'});
+			return (year + '-' + month);
+		}
+		return '-NA-';
+	}
+
+	disableOldDates = (d: Date | null): boolean => {
+		const selected = (d || new Date());
+		const now = new Date();
+		// display today and future dates
+		return selected >= now;
+	};
+
+	chosenYearHandler(normalizedYear: Moment) {
+		const ctrlValue = this.registerForm.get('transactionMonth').value;
+		ctrlValue.year(normalizedYear.year());
+		this.registerForm.get('transactionMonth').setValue(ctrlValue);
+	}
+	
+	chosenMonthHandler(
+		normalizedMonth: Moment,
+		datepicker: MatDatepicker<Moment>
+	) {
+		const ctrlValue = this.registerForm.get('transactionMonth').value;
+		ctrlValue.month(normalizedMonth.month());
+		this.registerForm.get('transactionMonth').setValue(ctrlValue);
+		datepicker.close();
 	}
 }

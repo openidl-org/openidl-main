@@ -1,11 +1,7 @@
 name: Publish openIDL data-call-app
-on:
-  push:
-    branches:
-      - 'develop'
-    paths:
-      - 'openidl-data-call-app/**'
 
+on:
+  workflow_call:
   workflow_dispatch:
 
 env:
@@ -27,7 +23,7 @@ jobs:
 
     steps:
       - name: Check out the Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Log into GitHub Docker Registry
         if: github.event_name != 'pull_request'
@@ -48,10 +44,6 @@ jobs:
         run: |
           sed -i 's|${GITHUB_TOKEN}|${{ secrets.GITHUB_TOKEN }}|' ./.npmrc
 
-      - name: Get Current Date and Time
-        id: datetime
-        run: echo "BUILD_DATETIME=$(date +%m%d%Y%H%M)" >> ${GITHUB_ENV}
-
       - name: Get Branch Name
         run: echo "BRANCH=${GITHUB_REF#refs/heads/}" >> ${GITHUB_ENV}
 
@@ -65,4 +57,4 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}-${{ env.BRANCH }}-${{ env.COMMIT_ID }}-${{ env.BUILD_DATETIME }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.BRANCH }}-${{ env.COMMIT_ID }}-${{ github.run_number }}

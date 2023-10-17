@@ -9,3 +9,5 @@ server/config/local-kvs-config.json
 server/config/connection-profile.json
 server/config/s3-bucket-config.json
 
+# nyc output
+.nyc_output

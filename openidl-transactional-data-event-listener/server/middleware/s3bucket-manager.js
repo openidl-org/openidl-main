@@ -37,12 +37,10 @@ class S3BucketManager {
     async getTransactionalDataByDatacall(dataCallId) {
         logger.info("Inside getTransactionalDataByDataCall, datacallId is ", dataCallId);
         const accessParams = await this.getAccessParams();
-        logger.debug("accessparams: ", accessParams);
         let bucket = new AWS.S3(accessParams);
         let getObjectParam = { Bucket: bucketConfig.bucketName, Prefix: dataCallId };
         try {
             const data = await bucket.listObjects(getObjectParam).promise();
-            console.log("getobject data is - " + JSON.stringify(data))
             return data
         } catch (err) {
             logger.error(err)
@@ -51,13 +49,10 @@ class S3BucketManager {
     async getData(id) {
         logger.info("Inside getData, id is ", id);
         const accessParams = await this.getAccessParams();
-        logger.debug("accessparams: ", accessParams);
         let bucket = new AWS.S3(accessParams);
         let getObjectParam = { Bucket: bucketConfig.bucketName, Key: id };
         try {
             const data = await bucket.getObject(getObjectParam).promise();
-            console.log("getobject data is - " + JSON.stringify(data))
-            console.log("getobject body is - " + JSON.stringify(JSON.parse(data.Body), null, 2))
             return data
         } catch (err) {
             logger.error(err)
@@ -68,13 +63,10 @@ class S3BucketManager {
     async getTransactionalData(id) {
         logger.debug("Inside getTransactionalData");
         const accessParams = await this.getAccessParams();
-        logger.debug("accessparams: ", accessParams);
         let bucket = new AWS.S3(accessParams);
         let getObjectParam = { Bucket: bucketConfig.bucketName, Key: id };
         try {
             const data = await bucket.getObject(getObjectParam).promise();
-            console.log("getobject data is - " + JSON.stringify(data))
-            console.log("getobject body is - " + JSON.stringify(JSON.parse(data.Body), null, 2))
             return data.VersionId
         } catch (err) {
             logger.error(err)
@@ -84,16 +76,28 @@ class S3BucketManager {
         logger.debug('Inside saveTransactionalData');
         const accessparams = await this.getAccessParams();
         let bucket = new AWS.S3(accessparams);
-        logger.debug(" saveObjectParam bucket: " + bucketConfig.bucketName + " key: " + input._id)
-        logger.debug("  records: " + JSON.stringify(input.records))
+        logger.debug("saveObjectParam bucket: " + bucketConfig.bucketName + " key: " + input._id)
         let insertObjectParam = { Bucket: bucketConfig.bucketName, Key: input._id, Body: JSON.stringify(input.records) };
         try {
-            const data = await bucket.putObject(insertObjectParam).promise();
-            logger.debug("After  putobject " + JSON.stringify(data))
+            const data = await bucket.upload(insertObjectParam).promise();
             logger.debug('Records Inserted Successfully');
         } catch (err) {
             logger.error(err);
         }
     }
+    async uploadStreamToS3(input, streamData) {
+        logger.debug('Inside uploadStreamToS3');
+        const accessparams = await this.getAccessParams();
+        let bucket = new AWS.S3(accessparams);
+        logger.debug("uploadStreamToS3 bucket: " + bucketConfig.bucketName + " key: " + input)
+        let insertObjectParam = { Bucket: bucketConfig.bucketName, Key: input, Body: streamData };
+        try {
+            await bucket.upload(insertObjectParam).promise();
+            logger.debug('Records Inserted Successfully');
+        } catch (err) {
+            logger.error(err);
+        }
+    }
+    
 }
 module.exports = S3BucketManager;

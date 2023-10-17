@@ -1,47 +1,54 @@
-
-let InstanceFactory = require('../middleware/instance-factory');
+const InstanceFactory = require('../middleware/instance-factory');
 const log4js = require('log4js');
 const config = require('config');
 const logger = log4js.getLogger('event -eventHandler ');
+const Stream = require('stream');
 
-const MatureEvent = {}
+const MatureEvent = {};
 
 MatureEvent.handleMatureEvent = async (data) => {
-	logger.info("in handleMatureEvent", data)
-	//creating instance factory object 
-	let factoryObject = new InstanceFactory();
-	logger.info("config storage env ", config.insuranceDataStorageEnv)
-	let targetObject = await factoryObject.getInstance(config.insuranceDataStorageEnv);
-        logger.info("targetObject: ", typeof targetObject)
-	logger.info("Gathering all results");
-	let allInsuranceData = await targetObject.getTransactionalDataByDatacall(data.dataCalls.id);
-	logger.info("allinsurance data: ", allInsuranceData);
-	if (allInsuranceData.Contents.length === 0) {
-		logger.error("Mature data call has no consent!")
-	} else {
-		const resultSet = [];
-		for (let j = 0; j < allInsuranceData.Contents.length; j = j + 1) {
-			const data = await targetObject.getData(allInsuranceData.Contents[j].Key)
-			logger.info("s3 single result data is: ", data);
-			logger.info("s3 single result data body is: ", JSON.stringify(JSON.parse(data.Body)));
-			resultSet.push(data.Body)
-		}
-		let id = 'result' + '-' + data.dataCalls.id;
-		var resultData = new Object();
-		resultData._id = id;
-		resultData.records = resultSet;
-		try {
-			await targetObject.saveTransactionalData(resultData);
-			//test for if result is saved
-			const readResult = await targetObject.getData(id)
+	try {
+		logger.info("in handleMatureEvent", data);
 
-		} catch (err) {
-			logger.error('failed to save result data for', resultData._id)
-			logger.error('error during save resultlData onerror ' + err)
+		const factoryObject = new InstanceFactory();
+		const targetObject = await factoryObject.getInstance(config.insuranceDataStorageEnv);
+
+		logger.debug("config storage env ", config.insuranceDataStorageEnv);
+		logger.debug("targetObject: ", typeof targetObject);
+
+		logger.info("Gathering all results");
+		const allInsuranceData = await targetObject.getTransactionalDataByDatacall(data.dataCalls.id);
+		logger.info("all insurance data fetched.");
+
+		if (allInsuranceData.Contents.length === 0) {
+			logger.error("Mature data call has no consent!");
+			return;
 		}
-		logger.debug('result data saved for id', resultData._id)
+
+		const stream = new Stream.PassThrough();
+		let totalRecords = 0;
+		const promises = allInsuranceData.Contents.map(async ({ Key }) => {
+			const data = await targetObject.getData(Key);
+			const { records, recordsNum } = JSON.parse(data.Body);
+			totalRecords += recordsNum;
+			return records;
+		});
+		const records = await Promise.all(promises);
+		const combinedRecords = records.flat().map(JSON.stringify).join(",");
+		stream.write(`[${combinedRecords}]`);
+		stream.end();
+
+		const id = `result-${data.dataCalls.id}`;
+		await targetObject.uploadStreamToS3(id, stream);
+		logger.debug(`result data saved for id ${id}`);
+
+		if (totalRecords !== records.flat().length) {
+			throw new Error(`Error occurred while combining data chunks for data call with id: ${data.dataCalls.id}`);
+		}
+
+	} catch (error) {
+		logger.error(error);
 	}
-}
-
+};
 
 module.exports = MatureEvent;

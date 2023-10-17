@@ -109,33 +109,35 @@
 					</p>
 				</div>
 			</div>
+			<ng-container *ngIf="hideFormElement">
+				<div class="row">
+					<div class="col readonly">
+						<h4>Expected Public Circulation?</h4>
+						<p>
+							{{ draft.intentToPublish ? 'Yes' : 'No' }}
+						</p>
+					</div>
+					<div class="col readonly">
+						<h4>Premium Dates</h4>
+						<p>
+							{{ draft.premiumFromDate | date: 'MM/dd/yyyy' }} to
+							{{ draft.premiumToDate | date: 'MM/dd/yyyy' }}
+						</p>
+					</div>
+					<div class="col readonly">
+						<h4>Loss Dates</h4>
+						<p>
+							{{ draft.lossFromDate | date: 'MM/dd/yyyy' }} to
+							{{ draft.lossToDate | date: 'MM/dd/yyyy' }}
+						</p>
+					</div>
+				</div>
+			</ng-container>
 			<div class="row">
 				<div class="col readonly">
 					<h4>Line of Business</h4>
 					<p>
 						{{ draft.lineOfBusiness }}
-					</p>
-				</div>
-				<div class="col readonly">
-					<h4>Premium Dates</h4>
-					<p>
-						{{ draft.premiumFromDate | date: 'MM/dd/yyyy' }} to
-						{{ draft.premiumToDate | date: 'MM/dd/yyyy' }}
-					</p>
-				</div>
-				<div class="col readonly">
-					<h4>Loss Dates</h4>
-					<p>
-						{{ draft.lossFromDate | date: 'MM/dd/yyyy' }} to
-						{{ draft.lossToDate | date: 'MM/dd/yyyy' }}
-					</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col readonly">
-					<h4>Expected Public Circulation?</h4>
-					<p>
-						{{ draft.intentToPublish ? 'Yes' : 'No' }}
 					</p>
 				</div>
 				<div class="col readonly">
@@ -145,32 +147,16 @@
 					</p>
 				</div>
 				<div class="col readonly">
-					<div *ngIf="hasDeliveryDate">
-						<h4>Proposed Delivery Date</h4>
+					<div class="col readonly">
+						<h4>Transaction Month</h4>
 						<p>
-							<button
-								*ngIf="isStatAgent"
-								mat-mini-fab
-								color="primary"
-								(click)="deliveryDateEdit()"
-								matTooltip="Edit delivery date"
-								matTooltipPosition="above"
-								aria-label="Edit delivery date"
-							>
-								<mat-icon>edit</mat-icon>
-							</button>
-							<span [class.delivery-date]="isStatAgent">
-								{{
-									draft.proposedDeliveryDate
-										| date: 'MM/dd/yyyy '
-								}}
-							</span>
+							<span>{{ draft.transactionMonth ? draft.transactionMonth : '-NA-' }}</span>
 						</p>
 					</div>
 				</div>
 			</div>
 
-			<div class="row" *ngIf="hasForumUrl || hasPattern">
+			<div class="row">
 				<div class="col readonly" *ngIf="hasForumUrl">
 					<h4>Forum URL</h4>
 					<p>
@@ -212,7 +198,28 @@
 						</span>
 					</p>
 				</div>
-				<div class="col readonly"></div>
+				<div class="col readonly" *ngIf="hasDeliveryDate">
+					<h4>Proposed Delivery Date</h4>
+					<p>
+						<button
+							*ngIf="isStatAgent"
+							mat-mini-fab
+							color="primary"
+							(click)="deliveryDateEdit()"
+							matTooltip="Edit delivery date"
+							matTooltipPosition="above"
+							aria-label="Edit delivery date"
+						>
+							<mat-icon>edit</mat-icon>
+						</button>
+						<span [class.delivery-date]="isStatAgent">
+							{{
+								draft.proposedDeliveryDate
+									| date: 'MM/dd/yyyy '
+							}}
+						</span>
+					</p>
+				</div>
 			</div>
 
 			<div class="row">

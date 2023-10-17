@@ -5,6 +5,7 @@ logger.level = config.logLevel;
 const sleep = require('sleep');
 const sizeof = require('object-sizeof');
 const openidlCommonLib = require('@openidl-org/openidl-common-lib');
+const arrayChunkBySize = require('array-chunk-by-size');
 
 let InstanceFactory = require('../middleware/instance-factory');
 
@@ -53,7 +54,7 @@ class DataProcessorMongo {
         dataCallVersion) {
         // Venkat fix for email
         try {
-            logger.info(" In processRecord>>>> " + extractionPattern.viewDefinition);
+            logger.info(" In processRecord: " + extractionPattern.viewDefinition);
             this.reduceCollectionName = reduceCollectionName;
             // Fix for Jira88
             await this.createMapReduceCollection(this.carrierId, reduceCollectionName, extractionPattern,
@@ -70,12 +71,9 @@ class DataProcessorMongo {
             if (distinctChunkid.length > 0) {
                 logger.info("Length condition is passed")
                 let payload = await this.constructJSON(distinctChunkid, reduceCollectionName, datacallID, dataCallVersion, this.carrierId)
-                logger.info("Payload structure is " + payload)
                 let result = await this.dbManager.insertChunkID(payload)
-                logger.info("Mongodb executed result is " + result)
                 if (result.status == "success") {
                     logger.info('Successfully inserted chunkIDs into extract_pattern_migration collection -  ' + distinctChunkid)
-                    logger.info("Payload structure is " + JSON.stringify(payload))
                     logger.debug("  processRecrods dbManager=" + this.dbManager)
                     await this.PDCS3Buckettransfer(payload, this.dbManager, this.targetChannelTransaction);
                     logger.info("Completed.......................................")
@@ -87,12 +85,9 @@ class DataProcessorMongo {
             } else {
                 logger.info("No distinct chunkId is found")
                 let payload = await this.constructJSONnoChunkId(reduceCollectionName, datacallID, dataCallVersion, this.carrierId)
-                logger.info("Payload structure is " + payload)
                 let result = await this.dbManager.insertChunkID(payload)
-                logger.info("Mongodb executed result is " + result)
                 if (result.status == "success") {
                     logger.info('Successfully inserted chunkIDs into extract_pattern_migration collection -  ' + distinctChunkid)
-                    logger.info("Payload structure is " + JSON.stringify(payload))
                     logger.debug("  processRecrods dbManager=" + this.dbManager)
                     await this.PDCS3Buckettransfer(payload, this.dbManager, this.targetChannelTransaction);
                     logger.info("Completed.......................................")
@@ -141,7 +136,6 @@ class DataProcessorMongo {
                     logger.info("Current Process is PDC Bucket update of Chunkid is " + item.chunkid)
                     logger.debug(" PDCS3 dbManager=" + dbManager)
                     transferDocuments = await this.getInsuranceDataNew(item.chunkid, jsonDocument.collectionname, dbManager);
-                    logger.info("this.mongorecords " + JSON.stringify(transferDocuments))
                     try {
                         // PDC Service 
                         await this.saveInsuranceRecordNew(jsonDocument.carrierid, transferDocuments, index, jsonDocument.datacallid, jsonDocument.versionid, target)
@@ -167,7 +161,6 @@ class DataProcessorMongo {
                         index++;
                         logger.info("Current Process is S3 Bucket update of Chunkid is " + item.chunkid)
                         if (transferDocuments.length == 0) transferDocuments = await this.getInsuranceDataNew(item.chunkid, jsonDocument.collectionname, dbManager);
-                        logger.info("this.mongorecords " + JSON.stringify(transferDocuments))
                         try {
                             // PDC Service 
                             let factoryObject = new InstanceFactory();
@@ -274,12 +267,12 @@ class DataProcessorMongo {
         let chunkDocuments = [];
         let extractionChunks;
         try {
-                chunkRecords["chunkid"] = ""
-                chunkRecords["pdcstatus"] = "YettoProcess"
-                chunkRecords["pdccomments"] = ""
-                chunkRecords["s3status"] = "YettoProcess"
-                chunkRecords["s3comments"] = ""
-                chunkDocuments.push(chunkRecords)
+            chunkRecords["chunkid"] = ""
+            chunkRecords["pdcstatus"] = "YettoProcess"
+            chunkRecords["pdccomments"] = ""
+            chunkRecords["s3status"] = "YettoProcess"
+            chunkRecords["s3comments"] = ""
+            chunkDocuments.push(chunkRecords)
 
             extractionChunks = {
                 "collectionname": collectionName,
@@ -333,16 +326,19 @@ class DataProcessorMongo {
         return extractionChunks
     }
     // Fix for Jira - 104  -- Venkat fix
-    async saveInsuranceRecordNew(carrierId, records, pageNumber, datacallid, versionid, target) {
+    async saveInsuranceRecordNewSinglePart(
+        carrierId, records, pageNumber, datacallid, versionid, target, sequenceNumber, totalRecordsNum) {
         try {
             let insuranceObject = {
                 pageNumber: pageNumber,
                 dataCallId: datacallid,
                 dataCallVersion: versionid,
                 carrierId: carrierId,
+                sequenceNum: sequenceNumber,
+                totalRecordsNum: totalRecordsNum,
+                recordsNum: records.length,
                 records: records
             }
-            logger.debug("insuranceObject " + JSON.stringify(insuranceObject))
             if (insuranceObject.records.length === 0) {
                 logger.info('Insurance Records not available in Mongo Database');
             } else {
@@ -351,9 +347,9 @@ class DataProcessorMongo {
                 let insurance_private = {
                     "transactional-data-": data
                 };
-                logger.info("Transaction before PDC :- Size of the payload = " + sizeof(insuranceObject) + "START_TIME = " + new Date().toISOString() + " Number of records : " + insuranceObject.records.length + "Page Number" + pageNumber);
-                await target.transientTransaction('SaveInsuranceData', insurance_private, pageNumber);
-                logger.info("Transaction after PDC :- END_TIME = " + new Date().toISOString() + "DATACALL_ID :- " + insuranceObject.dataCallId + "CARRIER_ID :- " + insuranceObject.carrierId + "Page Number" + pageNumber);
+                logger.info("Transaction before PDC :- Size of the payload = " + sizeof(insuranceObject) + "START_TIME = " + new Date().toISOString() + " Number of records: " + insuranceObject.records.length + " Page Number: " + pageNumber);
+                await this.targetChannelTransaction.transientTransaction('SaveInsuranceData', insurance_private, pageNumber);
+                logger.info("Transaction after PDC :- END_TIME = " + new Date().toISOString() + "DATACALL_ID :- " + insuranceObject.dataCallId + "CARRIER_ID: " + insuranceObject.carrierId + " Page Number: " + pageNumber);
             }
         } catch (ex) {
             throw ex
@@ -361,6 +357,36 @@ class DataProcessorMongo {
 
     }
 
+    async saveInsuranceRecordNew(carrierId, records, pageNumber, datacallid, versionid, target) {
+        try {
+            if (!Array.isArray(records)) {
+                const msg = "Extraction pattern result is not array!"
+                logger.error(msg)
+                throw new Error(msg);
+            }
+            if (records.length === 0) {
+                logger.info('Insurance Records not available in Mongo Database');
+            } else {
+                if (!config.PDCMaxSizeInBytes) {
+                    const msg = "PDC max file size not found in config!"
+                    logger.error(msg)
+                    throw new Error(msg);
+
+                }
+                const resArray = arrayChunkBySize.chunkArray({ input: records, bytesSize: config.PDCMaxSizeInBytes });;
+                let sequenceNumber = 1;
+                const totalRecordsNum = records.length;
+
+                for (let i = 0; i < resArray.length; i = i + 1) {
+                    await this.saveInsuranceRecordNewSinglePart(
+                        carrierId, resArray[i], pageNumber, datacallid, versionid, target, sequenceNumber, totalRecordsNum)
+                    sequenceNumber = sequenceNumber + 1;
+                }
+            }
+        } catch (ex) {
+            throw ex
+        }
+    }
 
     async saveInsuranceRecord(carrierId, records, pageNumber) {
         try {
@@ -397,7 +423,6 @@ class DataProcessorMongo {
             logger.debug("In getInsuranceData");
             logger.debug(" dbManager is " + dbManager)
             let records = await dbManager.getByCarrierIdNew(chunkID, collectionName);
-            logger.debug(" getInsuranceData - records " + records)
             return records;
         }
         catch (ex) {
