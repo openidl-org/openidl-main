@@ -1,0 +1,2039 @@
+{
+    "lineOfInsurance": {
+        "56": {
+            "name": "Automobile",
+            "code": "56"
+        }
+    },
+    "coverage": {
+        "1": {
+            "name": "Bodily Injury Liability",
+            "category": "Liability",
+            "code": "1"
+        },
+        "2": {
+            "name": "Property Damage Liability",
+            "category": "Liability",
+            "code": "2"
+        },
+        "3": {
+            "name": "Bodily Injury and Property Damage Liability —- Indivisible Premium",
+            "category": "Liability",
+            "code": "3"
+        },
+        "4": {
+            "name": "Personal Injury Protection",
+            "category": "Liability",
+            "code": "4"
+        },
+        "5": {
+            "name": "Medical Payments",
+            "category": "Liability",
+            "code": "5"
+        },
+        "6": {
+            "name": "Uninsured/Underinsured Moderists -- Indivisible Premium",
+            "category": "Liability",
+            "code": "6"
+        },
+        "X": {
+            "name": "Uninsured Motorist",
+            "category": "Liability",
+            "code": "X"
+        },
+        "Y": {
+            "name": "Underinsured Motorist",
+            "category": "Liability",
+            "code": "Y"
+        },
+        "7": {
+            "name": "Physical Damage -- Collision",
+            "category": "Physical Damage",
+            "code": "7"
+        },
+        "8": {
+            "name": "Physical Damage -- Other Than Collision",
+            "category": "Physical Damage",
+            "code": "8"
+        },
+        "T": {
+            "name": "Physical Damage -- Other Than Collision - Additional Coverage Records",
+            "category": "Physical Damage",
+            "code": "T"
+        },
+        "9": {
+            "name": "All Other Property and Liability Coverages",
+            "category": "All Other Property and Liability Coverages",
+            "code": "9"
+        },
+        "H": {
+            "name": "Certified acts of terrorism covered (coverage not excluded) -- liability only",
+            "category": "Terrorism",
+            "code": "H"
+        },
+        "W": {
+            "name": "Certified acts of terrorism covered (coverage not excluded) -- physical damage only",
+            "category": "Terrorism",
+            "code": "W"
+        },
+        "Z": {
+            "name": "Certified acts of terrorism covered (coverage not excluded) -- liability and physica damage",
+            "category": "Terrorism",
+            "code": "Z"
+        }
+    },
+    "state": {
+        "01": {
+            "code": "01",
+            "name": "Alabama"
+        },
+        "02": {
+            "code": "02",
+            "name": "Arizona"
+        },
+        "03": {
+            "code": "03",
+            "name": "Arkansas"
+        },
+        "04": {
+            "code": "04",
+            "name": "California"
+        },
+        "05": {
+            "code": "05",
+            "name": "Colorado"
+        },
+        "06": {
+            "code": "06",
+            "name": "Connecticut"
+        },
+        "07": {
+            "code": "07",
+            "name": "Delaware"
+        },
+        "08": {
+            "code": "08",
+            "name": "Dist. of Columbia"
+        },
+        "09": {
+            "code": "09",
+            "name": "Florida"
+        },
+        "10": {
+            "code": "10",
+            "name": "Georgia"
+        },
+        "11": {
+            "code": "11",
+            "name": "Idaho"
+        },
+        "12": {
+            "code": "12",
+            "name": "Illinois"
+        },
+        "13": {
+            "code": "13",
+            "name": "Indiana"
+        },
+        "14": {
+            "code": "14",
+            "name": "Iowa"
+        },
+        "15": {
+            "code": "15",
+            "name": "Kansas"
+        },
+        "16": {
+            "code": "16",
+            "name": "Kentucky"
+        },
+        "17": {
+            "code": "17",
+            "name": "Louisiana"
+        },
+        "18": {
+            "code": "18",
+            "name": "Maine"
+        },
+        "19": {
+            "code": "19",
+            "name": "Maryland"
+        },
+        "20": {
+            "code": "20",
+            "name": "Massachusetts"
+        },
+        "21": {
+            "code": "21",
+            "name": "Michigan"
+        },
+        "22": {
+            "code": "22",
+            "name": "Minnesota"
+        },
+        "23": {
+            "code": "23",
+            "name": "Mississippi"
+        },
+        "24": {
+            "code": "24",
+            "name": "Missouri"
+        },
+        "25": {
+            "code": "25",
+            "name": "Montana"
+        },
+        "26": {
+            "code": "26",
+            "name": "Nebraska"
+        },
+        "27": {
+            "code": "27",
+            "name": "Nevada"
+        },
+        "28": {
+            "code": "28",
+            "name": "New Hampshire"
+        },
+        "29": {
+            "code": "29",
+            "name": "New Jersey"
+        },
+        "30": {
+            "code": "30",
+            "name": "New Mexico"
+        },
+        "31": {
+            "code": "31",
+            "name": "New York"
+        },
+        "32": {
+            "code": "32",
+            "name": "North Carolina"
+        },
+        "33": {
+            "code": "33",
+            "name": "North Dakota"
+        },
+        "34": {
+            "code": "34",
+            "name": "Ohio"
+        },
+        "35": {
+            "code": "35",
+            "name": "Oklahoma"
+        },
+        "36": {
+            "code": "36",
+            "name": "Oregon"
+        },
+        "37": {
+            "code": "37",
+            "name": "Pennsylvania"
+        },
+        "38": {
+            "code": "38",
+            "name": "Rhode Island"
+        },
+        "39": {
+            "code": "39",
+            "name": "South Carolina"
+        },
+        "40": {
+            "code": "40",
+            "name": "South Dakota"
+        },
+        "41": {
+            "code": "41",
+            "name": "Tennessee"
+        },
+        "42": {
+            "code": "42",
+            "name": "Texas"
+        },
+        "43": {
+            "code": "43",
+            "name": "Utah"
+        },
+        "44": {
+            "code": "44",
+            "name": "Vermont"
+        },
+        "45": {
+            "code": "45",
+            "name": "Virginia"
+        },
+        "46": {
+            "code": "46",
+            "name": "Washington"
+        },
+        "47": {
+            "code": "47",
+            "name": "West Virginia"
+        },
+        "48": {
+            "code": "48",
+            "name": "Wisconsin"
+        },
+        "49": {
+            "code": "49",
+            "name": "Wyoming"
+        },
+        "52": {
+            "code": "52",
+            "name": "Hawaii"
+        },
+        "54": {
+            "code": "54",
+            "name": "Alaska"
+        },
+        "58": {
+            "code": "58",
+            "name": "Puerto Rico"
+        }
+    },
+    "transaction": {
+        "1": {
+            "code": "1",
+            "name": "Premium or Cancellation"
+        },
+        "2": {
+            "code": "2",
+            "name": "Paid Loss"
+        },
+        "3": {
+            "code": "3",
+            "name": "Outstanding Loss"
+        },
+        "6": {
+            "code": "6",
+            "name": "Paid Allocated Loss Adjustment Expense"
+        },
+        "7": {
+            "code": "7",
+            "name": "Outstanding Allocated Loss Adjustment Expense"
+        },
+        "8": {
+            "code": "8",
+            "name": "Limited Coding"
+        }
+    },
+    "program": {
+        "3": {
+            "code": "3",
+            "name": "ISO Program"
+        },
+        "C": {
+            "code": "C",
+            "name": "Exempt Commercial Risk: ISO forms and class codes"
+        },
+        "5": {
+            "code": "5",
+            "name": "All Other Programs (inicluding independent bureaus"
+        },
+        "F": {
+            "code": "F",
+            "name": "Exempt Commercial Risk: Independent forms but ISO class codes"
+        }
+    },
+    "subline": {
+        "1": {
+            "code": "1",
+            "name": "Private Passenger Auto"
+        },
+        "2": {
+            "code": "2",
+            "name": "Commercial Auto"
+        }
+    },
+    "operatorAge": {
+        "1": {
+            "code": "1",
+            "name": "17 and Under"
+        },
+        "2": {
+            "code": "2",
+            "name": "18"
+        },
+        "3": {
+            "code": "3",
+            "name": "19"
+        },
+        "4": {
+            "code": "4",
+            "name": "20"
+        },
+        "5": {
+            "code": "5",
+            "name": "21 -- 24"
+        },
+        "6": {
+            "code": "6",
+            "name": "25 -- 29"
+        },
+        "7": {
+            "code": "7",
+            "name": "30 -- 54"
+        },
+        "8": {
+            "code": "8",
+            "name": "55 -- 64"
+        },
+        "9": {
+            "code": "9",
+            "name": "65 and over"
+        },
+        "0": {
+            "code": "0",
+            "name": "Multi-car risk - Specific operator not assigned to this automobile"
+        }
+    },
+    "sexMarital": {
+        "1": {
+            "code": "1",
+            "maritalStatus": "Married",
+            "sex": "Male",
+            "principalSecondary": "N/A"
+        },
+        "2": {
+            "code": "2",
+            "maritalStatus": "Single",
+            "sex": "Male",
+            "principalSecondary": "Principal"
+        },
+        "3": {
+            "code": "3",
+            "maritalStatus": "Single",
+            "sex": "Male",
+            "principalSecondary": "Secondary"
+        },
+        "4": {
+            "code": "4",
+            "maritalStatus": "Married",
+            "sex": "Female",
+            "principalSecondary": "N/A"
+        },
+        "5": {
+            "code": "5",
+            "maritalStatus": "Single",
+            "sex": "Female",
+            "principalSecondary": "Primary"
+        },
+        "6": {
+            "code": "6",
+            "maritalStatus": "Single",
+            "sex": "Female",
+            "principalSecondary": "Secondary"
+        },
+        "7": {
+            "code": "7",
+            "maritalStatus": "Married",
+            "sex": "Gender Neutral State Only",
+            "principalSecondary": "N/A"
+        },
+        "8": {
+            "code": "8",
+            "maritalStatus": "Single",
+            "sex": "Gender Neutral State Only",
+            "principalSecondary": "N/A"
+        },
+        "0": {
+            "code": "0",
+            "maritalStatus": "N/A",
+            "sex": "N/A",
+            "principalSecondary": "N/A"
+        }
+    },
+    "vehicleUse": {
+        "1": {
+            "code": "1",
+            "name": "Work/School — Under 15 Miles"
+        },
+        "2": {
+            "code": "2",
+            "name": "Work/School — Over 15 Miles"
+        },
+        "3": {
+            "code": "3",
+            "name": "Pleasure — Under 7500 Miles"
+        },
+        "4": {
+            "code": "4",
+            "name": "Pleasure — Over 7500 Miles"
+        },
+        "5": {
+            "code": "5",
+            "name": "Business — No Youthful Operator"
+        },
+        "6": {
+            "code": "8",
+            "name": "Business — Youthful Operator"
+        },
+        "B": {
+            "code": "8",
+            "name": "Business — Operator Age Unspecified"
+        },
+        "7": {
+            "code": "7",
+            "name": "Farm — No Youthful Operator"
+        },
+        "8": {
+            "code": "8",
+            "name": "Farm — Youthful Operator"
+        },
+        "F": {
+            "code": "F",
+            "name": "Farm — Operator Age Unspecified"
+        },
+        "0": {
+            "code": "0",
+            "name": "N/A"
+        }
+    },
+    "performance": {
+        "1": {
+            "code": "1",
+            "name": "Standard"
+        },
+        "2": {
+            "code": "2",
+            "name": "Intermediate"
+        },
+        "3": {
+            "code": "3",
+            "name": "High"
+        },
+        "4": {
+            "code": "4",
+            "name": "Sports Car"
+        },
+        "5": {
+            "code": "5",
+            "name": "Sports Premium (New Jersey Only)"
+        },
+        "9": {
+            "code": "9",
+            "name": "All Other"
+        },
+        "0": {
+            "code": "0",
+            "name": "N/A"
+        }
+    },
+    "driversTraining": {
+        "1": {
+            "code": "1",
+            "name": "Drivers Training — Good Student Discount"
+        },
+        "2": {
+            "code": "2",
+            "name": "Drivers Training — No Good Student Discount"
+        },
+        "3": {
+            "code": "3",
+            "name": "No Drivers Training — Good Student Discount"
+        },
+        "4": {
+            "code": "4",
+            "name": "No Drivers Training — No Good Student Discount"
+        },
+        "5": {
+            "code": "5",
+            "name": "Not applicable"
+        }
+    },
+    "penaltyPoints": {
+        "0": {
+            "code": "0",
+            "name": "No penalty points"
+        },
+        "1": {
+            "code": "1",
+            "name": "1 penalty point"
+        },
+        "2": {
+            "code": "2",
+            "name": "2 penalty points"
+        },
+        "3": {
+            "code": "3",
+            "name": "3 penalty points"
+        },
+        "4": {
+            "code": "4",
+            "name": "4 penalty points"
+        },
+        "5": {
+            "code": "5",
+            "name": "5 penalty points"
+        },
+        "6": {
+            "code": "6",
+            "name": "6 penalty points"
+        },
+        "7": {
+            "code": "7",
+            "name": "7 or more penalty points"
+        },
+        "8": {
+            "code": "8",
+            "name": "Inexperienced driver (less than 3 years), but accident and conviction free"
+        }
+    },
+    "physicalDamageDeductible": {
+        "0": {
+            "code": "0",
+            "deductibe": "No Deductible"
+        },
+        "A": {
+            "code": "A",
+            "deductibe": "$25 Deductible"
+        },
+        "1": {
+            "code": "1",
+            "deductibe": "$50 Deductible"
+        },
+        "2": {
+            "code": "2",
+            "deductibe": "$100 Deductible"
+        },
+        "B": {
+            "code": "B",
+            "deductibe": "$150 Deductible"
+        },
+        "3": {
+            "code": "3",
+            "deductibe": "$200 Deductible"
+        },
+        "4": {
+            "code": "4",
+            "deductibe": "$250 Deductible"
+        },
+        "C": {
+            "code": "C",
+            "deductibe": "$300 Deductible"
+        },
+        "5": {
+            "code": "5",
+            "deductibe": "$500 Deductible"
+        },
+        "D": {
+            "code": "D",
+            "deductibe": "$750 Deductible"
+        },
+        "6": {
+            "code": "6",
+            "deductibe": "$1,000 Deductible"
+        },
+        "7": {
+            "code": "7",
+            "deductibe": "$1,500 Deductible"
+        },
+        "8": {
+            "code": "8",
+            "deductibe": "$2,000 Deductible"
+        },
+        "9": {
+            "code": "9",
+            "deductibe": "All Other"
+        }
+    },
+    "vehicleBodyStyle": {
+        "01": {
+            "code": "01",
+            "name": "Sedan (2 or 4 door)*"
+        },
+        "02": {
+            "code": "02",
+            "name": "Station Wagon"
+        },
+        "03": {
+            "code": "03",
+            "name": "Convertible"
+        },
+        "04": {
+            "code": "04",
+            "name": "Vans - Passenger"
+        },
+        "05": {
+            "code": "05",
+            "name": "Vans - Cargo"
+        },
+        "06": {
+            "code": "06",
+            "name": "Pick-Up or Panel Truck"
+        },
+        "07": {
+            "code": "07",
+            "name": "Buses"
+        },
+        "08": {
+            "code": "08",
+            "name": "Truck (Not including Truck Tractors or Dump Trucks)"
+        },
+        "09": {
+            "code": "09",
+            "name": "Motor Homes and Auto Homes (self-propelled)"
+        },
+        "10": {
+            "code": "10",
+            "name": "Campers and Travel Trailers"
+        },
+        "11": {
+            "code": "11",
+            "name": "Dune Buggies"
+        },
+        "12": {
+            "code": "12",
+            "name": "All Terrain Vehicles"
+        },
+        "13": {
+            "code": "13",
+            "name": "Antique Autos"
+        },
+        "14": {
+            "code": "14",
+            "name": "Amphibious Autos"
+        },
+        "15": {
+            "code": "15",
+            "name": "Snowmobiles"
+        },
+        "16": {
+            "code": "16",
+            "name": "Golf Carts"
+        },
+        "17": {
+            "code": "17",
+            "name": "Motorcycles, Motorscooters, Motorbikes, Trail Bikes and Mopeds"
+        },
+        "18": {
+            "code": "18",
+            "name": "Named Non-owner"
+        },
+        "19": {
+            "code": "19",
+            "name": "Sedan 2-door"
+        },
+        "20": {
+            "code": "20",
+            "name": "Sedan 4-door"
+        },
+        "21": {
+            "code": "21",
+            "name": "Semitrailer"
+        },
+        "22": {
+            "code": "22",
+            "name": "Trailer"
+        },
+        "23": {
+            "code": "23",
+            "name": "Trailer - Service or Utility"
+        },
+        "24": {
+            "code": "24",
+            "name": "Truck Tractor (Including Semitractors)"
+        },
+        "25": {
+            "code": "25",
+            "name": "Dump Trucks"
+        },
+        "30": {
+            "code": "30",
+            "name": "Taxies, Limousines or Van Pools"
+        },
+        "99": {
+            "code": "99",
+            "name": "All Other"
+        }
+    },
+    "vehicleBodySize": {
+        "1": {
+            "code": "1",
+            "name": "Private Passenger"
+        },
+        "2": {
+            "code": "2",
+            "name": "Sports Car"
+        },
+        "3": {
+            "code": "3",
+            "name": "Oversized Car or Limousine"
+        },
+        "4": {
+            "code": "4",
+            "name": "Light Truck (10,000 lbs. or less empty weight) or bus"
+        },
+        "5": {
+            "code": "5",
+            "name": "Medium Truck (10,001 - 20,000 lbs. empty weight)"
+        },
+        "6": {
+            "code": "6",
+            "name": "Heavy Truck (20,001 - 45,000 lbs. empty weight)"
+        },
+        "7": {
+            "code": "7",
+            "name": "Extra Heavy Truck (Over 45,000 lbs. empty weight)"
+        },
+        "9": {
+            "code": "9",
+            "name": "All Other"
+        }
+    },
+    "umUimCoverage": {
+        "1": {
+            "code": "1",
+            "name": "Bodily Injury"
+        },
+        "2": {
+            "code": "2",
+            "name": "Property Damage"
+        },
+        "3": {
+            "code": "3",
+            "name": "Bodily Injury and Property Damage"
+        }
+    },
+    "singleMultiCar": {
+        "1": {
+            "code": "1",
+            "name": "Single Car Rated"
+        },
+        "2": {
+            "code": "2",
+            "name": "Multi-Car Discount"
+        },
+        "9": {
+            "code": "9",
+            "name": "Not Applicable"
+        }
+    },
+    "packageCode": {
+        "0": {
+            "code": "0",
+            "description": "Auto coverage written as a separate policy and not an endorsement to another policy."
+        },
+        "7": {
+            "code": "7",
+            "description": "Auto coverage written as an endorsement to a CMP, CPP or BOP policy."
+        },
+        "9": {
+            "code": "9",
+            "description": "Auto coverage written as an endorsement to any other type of policy."
+        }
+    },
+    "poolAffiliation": {
+        "1": {
+            "code": "1",
+            "description": "Preferred Risk"
+        },
+        "3": {
+            "code": "3",
+            "description": "Standard risk not written in a pool, JUA or assigned risk facility, etc., and not shared with another company."
+        },
+        "4": {
+            "code": "4",
+            "description": "Standard risk written in a pool, JUA or assigned risk facility, etc."
+        },
+        "5": {
+            "code": "5",
+            "description": "Substandard risk not written in a pool, JUA or assigned risk facility, etc., and not shared with another company."
+        },
+        "6": {
+            "code": "6",
+            "description": "Substandard risk written in a pool, JUA or assigned risk facility, etc."
+        },
+        "8": {
+            "code": "8",
+            "description": "Servicing carrier"
+        }
+    },
+    "symbol": {
+        "Prior to 1990": {
+            "01": {
+                "code": "01",
+                "years": "Prior to 1990",
+                "Cars Built Prior to 1975": "$0 - 1,600",
+                "1976 - 1980 Cars": "$0 - 1,600",
+                "1981 - 1989 Cars": "$0 - 1,600"
+            },
+            "02": {
+                "code": "02",
+                "years": "Prior to 1990",
+                "Cars Built Prior to 1975": "$1,601 - 2,100",
+                "1976 - 1980 Cars": "$1,601 - 2,100",
+                "1981 - 1989 Cars": "$1,601 - 2,100"
+            },
+            "03": {
+                "code": "03",
+                "years": "Prior to 1990",
+                "Cars Built Prior to 1975": "$2,101 - 2,750",
+                "1976 - 1980 Cars": "$2,101 - 2,750",
+                "1981 - 1989 Cars": "$2,101 - 2,750"
+            },
+            "04": {
+                "code": "04",
+                "years": "Prior to 1990",
+                "Cars Built Prior to 1975": "$2,751 - 3,700",
+                "1976 - 1980 Cars": "$2,751 - 3,700",
+                "1981 - 1989 Cars": "$2,751 - 3,700"
+            },
+            "05": {
+                "code": "05",
+                "years": "Prior to 1990",
+                "Cars Built Prior to 1975": "$3,701 - 5,000",
+                "1976 - 1980 Cars": "$3,701 - 5,000",
+                "1981 - 1989 Cars": "$3,701 - 5,000"
+            },
+            "06": {
+                "code": "06",
+                "years": "Prior to 1990",
+                "Cars Built Prior to 1975": "$5,001 - 6,500",
+                "1976 - 1980 Cars": "$5,001 - 6,500",
+                "1981 - 1989 Cars": "$5,001 - 6,500"
+            },
+            "07": {
+                "code": "07",
+                "years": "Prior to 1990",
+                "Cars Built Prior to 1975": "$6,501 & Above",
+                "1976 - 1980 Cars": "$6,501 - 8,000",
+                "1981 - 1989 Cars": "$6,501 - 8,000"
+            },
+            "08": {
+                "code": "08",
+                "years": "Prior to 1990",
+                "Cars Built Prior to 1975": "",
+                "1976 - 1980 Cars": "$8,001 - 10,000",
+                "1981 - 1989 Cars": "$8,001 - 10,000"
+            },
+            "09": {
+                "code": "09",
+                "years": "Prior to 1990",
+                "Cars Built Prior to 1975": "",
+                "1976 - 1980 Cars": "",
+                "1981 - 1989 Cars": ""
+            },
+            "10": {
+                "code": "10",
+                "years": "Prior to 1990",
+                "Cars Built Prior to 1975": "",
+                "1976 - 1980 Cars": "$10,001 - 12,500",
+                "1981 - 1989 Cars": "$10,001 - 12,500"
+            },
+            "11": {
+                "code": "11",
+                "years": "Prior to 1990",
+                "Cars Built Prior to 1975": "",
+                "1976 - 1980 Cars": "$12,501 - 15,000",
+                "1981 - 1989 Cars": "$12,501 - 15,000"
+            },
+            "12": {
+                "code": "12",
+                "years": "Prior to 1990",
+                "Cars Built Prior to 1975": "",
+                "1976 - 1980 Cars": "$15,001 - 17,500",
+                "1981 - 1989 Cars": "$15,001 - 17,500"
+            },
+            "13": {
+                "code": "13",
+                "years": "Prior to 1990",
+                "Cars Built Prior to 1975": "",
+                "1976 - 1980 Cars": "$17,501 - 20,000",
+                "1981 - 1989 Cars": "$17,501 - 20,000"
+            },
+            "14": {
+                "code": "14",
+                "years": "Prior to 1990",
+                "Cars Built Prior to 1975": "",
+                "1976 - 1980 Cars": "$20,001 & Above",
+                "1981 - 1989 Cars": "$20,001 - 24,000"
+            },
+            "15": {
+                "code": "15",
+                "years": "Prior to 1990",
+                "Cars Built Prior to 1975": "",
+                "1976 - 1980 Cars": "",
+                "1981 - 1989 Cars": "$24,001 - 28,000"
+            },
+            "16": {
+                "code": "16",
+                "years": "Prior to 1990",
+                "Cars Built Prior to 1975": "",
+                "1976 - 1980 Cars": "",
+                "1981 - 1989 Cars": "$28,001 - 33,000"
+            },
+            "17": {
+                "code": "17",
+                "years": "Prior to 1990",
+                "Cars Built Prior to 1975": "",
+                "1976 - 1980 Cars": "",
+                "1981 - 1989 Cars": "$33,001 - 39,000"
+            },
+            "18": {
+                "code": "18",
+                "years": "Prior to 1990",
+                "Cars Built Prior to 1975": "",
+                "1976 - 1980 Cars": "",
+                "1981 - 1989 Cars": "$39,001 - 46,000"
+            },
+            "19": {
+                "code": "19",
+                "years": "Prior to 1990",
+                "Cars Built Prior to 1975": "",
+                "1976 - 1980 Cars": "",
+                "1981 - 1989 Cars": "$46,001 - 55,000"
+            },
+            "20": {
+                "code": "20",
+                "years": "Prior to 1990",
+                "Cars Built Prior to 1975": "",
+                "1976 - 1980 Cars": "",
+                "1981 - 1989 Cars": "$55,001 - 65,000"
+            },
+            "21": {
+                "code": "21",
+                "years": "Prior to 1990",
+                "Cars Built Prior to 1975": "",
+                "1976 - 1980 Cars": "",
+                "1981 - 1989 Cars": "$65,001 & Above"
+            }
+        },
+        "1990 and After": {
+            "01": {
+                "code": "01",
+                "years": "1990 and After",
+                "Cost New": "$0 - 6,500"
+            },
+            "02": {
+                "code": "02",
+                "years": "1990 and After",
+                "Cost New": "$6,501 - 8,000"
+            },
+            "03": {
+                "code": "03",
+                "years": "1990 and After",
+                "Cost New": "$8,001 - 9,000"
+            },
+            "04": {
+                "code": "04",
+                "years": "1990 and After",
+                "Cost New": "$9,001 - 10,000"
+            },
+            "05": {
+                "code": "05",
+                "years": "1990 and After",
+                "Cost New": "$10,001 - 11,250"
+            },
+            "06": {
+                "code": "06",
+                "years": "1990 and After",
+                "Cost New": "$11,251 - 12,500"
+            },
+            "07": {
+                "code": "07",
+                "years": "1990 and After",
+                "Cost New": "$12,501 - 13,750"
+            },
+            "08": {
+                "code": "08",
+                "years": "1990 and After",
+                "Cost New": "$13,751 - 15,000"
+            },
+            "10": {
+                "code": "09",
+                "years": "1990 and After",
+                "Cost New": "$15,001 - 16,250"
+            },
+            "11": {
+                "code": "10",
+                "years": "1990 and After",
+                "Cost New": "$16,251 - 17,500"
+            },
+            "12": {
+                "code": "11",
+                "years": "1990 and After",
+                "Cost New": "$17,501 - 18,750"
+            },
+            "13": {
+                "code": "12",
+                "years": "1990 and After",
+                "Cost New": "$18,751 - 20,000"
+            },
+            "14": {
+                "code": "13",
+                "years": "1990 and After",
+                "Cost New": "$20,001 - 22,000"
+            },
+            "15": {
+                "code": "14",
+                "years": "1990 and After",
+                "Cost New": "$22,001 - 24,000"
+            },
+            "09": {
+                "code": "15",
+                "years": "1990 and After",
+                "Cost New": ""
+            },
+            "16": {
+                "code": "16",
+                "years": "1990 and After",
+                "Cost New": "$24,001 - 26,000"
+            },
+            "17": {
+                "code": "17",
+                "years": "1990 and After",
+                "Cost New": "$26,001 - 28,000"
+            },
+            "18": {
+                "code": "18",
+                "years": "1990 and After",
+                "Cost New": "$28,001 - 30,000"
+            },
+            "19": {
+                "code": "19",
+                "years": "1990 and After",
+                "Cost New": "$30,001 - 33,000"
+            },
+            "20": {
+                "code": "20",
+                "years": "1990 and After",
+                "Cost New": "$33,001 - 36,000"
+            },
+            "21": {
+                "code": "21",
+                "years": "1990 and After",
+                "Cost New": "$36,001 - 40,000"
+            },
+            "22": {
+                "code": "22",
+                "years": "1990 and After",
+                "Cost New": "$40,001 - 45,000"
+            },
+            "23": {
+                "code": "23",
+                "years": "1990 and After",
+                "Cost New": "$45,001 - 50,000"
+            },
+            "24": {
+                "code": "24",
+                "years": "1990 and After",
+                "Cost New": "$50,001 - 60,000"
+            },
+            "25": {
+                "code": "25",
+                "years": "1990 and After",
+                "Cost New": "$60,001 - 70,000"
+            },
+            "26": {
+                "code": "26",
+                "years": "1990 and After",
+                "Cost New": "$70,001 - 80,000"
+            },
+            "27": {
+                "code": "27",
+                "years": "1990 and After",
+                "Cost New": "$80,001 & Above"
+            }
+        }
+    },
+    "passiveRestraintDiscount": {
+        "1": {
+            "code": "1",
+            "description": "Air Bags for both front seat occupants."
+        },
+        "2": {
+            "code": "2",
+            "description": "Air Bag for the driver only — No passenger belt passive restraint."
+        },
+        "3": {
+            "code": "3",
+            "description": "Air Bag for the driver only — With passenger belt passive restraint."
+        },
+        "4": {
+            "code": "4",
+            "description": "Belt Passive Restraint System for both front seat occupants."
+        },
+        "5": {
+            "code": "5",
+            "description": "Belt Passive Restraint System for the driver only. "
+        },
+        "6": {
+            "code": "6",
+            "description": "Vehicles with No Passive Restraint System."
+        },
+        "9": {
+            "code": "9",
+            "description": "Not Applicable"
+        }
+    },
+    "antiLockBrakesDiscount": {
+        "1": {
+            "code": "1",
+            "description": "Anti-Lock Braking System discount applied to this coverage."
+        },
+        "2": {
+            "code": "2",
+            "description": "Program offers an Anti-Lock Braking System discount on this coverage, but the vehicle does not qualify for the discount."
+        },
+        "9": {
+            "code": "9",
+            "description": "Not Applicable -Program does not offer an Anti-Lock Braking System discount on this coverage."
+        }
+    },
+    "antiTheftDeviceDiscount": {
+        "01": {
+            "code": "01",
+            "description": "Vehicles with no discount but rated under a discount program"
+        },
+        "02": {
+            "code": "02",
+            "description": "Vehicles with alarm only — with discount"
+        },
+        "03": {
+            "code": "03",
+            "description": "Vehicles with active devices — with discount"
+        },
+        "04": {
+            "code": "04",
+            "description": "Vehicles with passive devices — with discount"
+        },
+        "05": {
+            "code": "05",
+            "description": "Vehicles with an alarm and an active device — with discount"
+        },
+        "06": {
+            "code": "06",
+            "description": "Vehicles with an alarm and a passive device — with discount"
+        },
+        "99": {
+            "code": "99",
+            "description": "All other (Vehicles not rated under a discount program)"
+        }
+    },
+    "defensiveDriverDiscount": {
+        "1": {
+            "code": "1",
+            "description": "Defensive driver discount applied to this coverage"
+        },
+        "2": {
+            "code": "2",
+            "description": "Driver does not qualify for the defensive driver discount available on this coverage."
+        },
+        "9": {
+            "code": "9",
+            "description": "Not Applicable - Program does not offer a defensive driver discount on this coverage."
+        }
+    },
+    "pipLimitDeductible": {
+        "1": {
+            "code": "1",
+            "description": "Basic PIP coverage — No deductible"
+        },
+        "2": {
+            "code": "2",
+            "description": "Basic PIP coverage — Deductible applies"
+        },
+        "3": {
+            "code": "3",
+            "description": "Basic and additional PIP — No deductible"
+        },
+        "4": {
+            "code": "4",
+            "description": "Basic and additional PIP — Deductible applies"
+        }
+    },
+    "experienceRatingModificationFactor": {
+        "100": {
+            "code": "100",
+            "factor": "None"
+        },
+        "090": {
+            "code": "090",
+            "factor": ".900"
+        },
+        "067": {
+            "code": "3",
+            "factor": ".665"
+        }
+    },
+    "causeOfLoss": {
+        "1": {
+            "1": {
+                "code": "1",
+                "name": "Bodily Injury"
+            },
+            "2": {
+                "code": "2",
+                "name": "Death Limit Claim"
+            }
+        },
+        "2": {
+            "1": {
+                "code": "1",
+                "name": "Property Damage"
+            }
+        },
+        "3": {
+            "1": {
+                "code": "1",
+                "name": "Bodily Injury"
+            },
+            "2": {
+                "code": "2",
+                "name": "Property Damage"
+            }
+        },
+        "4": {
+            "1": {
+                "code": "1",
+                "name": "Medical Expenses - Basic"
+            },
+            "2": {
+                "code": "2",
+                "name": "Loss of Income - Basic"
+            },
+            "3": {
+                "code": "3",
+                "name": "Survivor's Benefits -  Basic"
+            },
+            "4": {
+                "code": "4",
+                "name": "Funeral Expenses - Basic"
+            },
+            "5": {
+                "code": "5",
+                "name": "Medical Expenses - Excess"
+            },
+            "6": {
+                "code": "6",
+                "name": "Loss of Income - Excess"
+            },
+            "8": {
+                "code": "8",
+                "name": "All Other - Excess"
+            },
+            "9": {
+                "code": "9",
+                "name": "All Other - Basic"
+            }
+        },
+        "5": {
+            "1": {
+                "code": "1",
+                "name": "Medical Payments"
+            }
+        },
+        "6": {
+            "1": {
+                "code": "1",
+                "name": "Bodily Injury"
+            },
+            "2": {
+                "code": "2",
+                "name": "Property Damage"
+            },
+            "8": {
+                "code": "8",
+                "name": "All Other"
+            }
+        },
+        "Y": {
+            "1": {
+                "code": "1",
+                "name": "Bodily Injury"
+            },
+            "2": {
+                "code": "2",
+                "name": "Property Damage"
+            },
+            "8": {
+                "code": "8",
+                "name": "All Other"
+            }
+        },
+        "7": {
+            "1": {
+                "code": "1",
+                "name": "Collision"
+            }
+        },
+        "8": {
+            "0": {
+                "code": "0",
+                "name": "Personal Effects"
+            },
+            "1": {
+                "code": "1",
+                "name": "Fire"
+            },
+            "2": {
+                "code": "2",
+                "name": "Theft"
+            },
+            "3": {
+                "code": "3",
+                "name": "Vandalism"
+            },
+            "4": {
+                "code": "4",
+                "name": "Glass Breakage"
+            },
+            "5": {
+                "code": "5",
+                "name": "Wind and Hail"
+            },
+            "6": {
+                "code": "6",
+                "name": "Earthquake"
+            },
+            "7": {
+                "code": "7",
+                "name": "Water"
+            },
+            "8": {
+                "code": "8",
+                "name": "Towing and Labor or Other Transportation"
+            },
+            "9": {
+                "code": "9",
+                "name": "All Other"
+            }
+        },
+        "T": {
+            "0": {
+                "code": "0",
+                "name": "Personal Effects"
+            },
+            "1": {
+                "code": "1",
+                "name": "Fire"
+            },
+            "2": {
+                "code": "2",
+                "name": "Theft"
+            },
+            "3": {
+                "code": "3",
+                "name": "Vandalism"
+            },
+            "4": {
+                "code": "4",
+                "name": "Glass Breakage"
+            },
+            "5": {
+                "code": "5",
+                "name": "Wind and Hail"
+            },
+            "6": {
+                "code": "6",
+                "name": "Earthquake"
+            },
+            "7": {
+                "code": "7",
+                "name": "Water"
+            },
+            "8": {
+                "code": "8",
+                "name": "Towing and Labor or Other Transportation"
+            },
+            "9": {
+                "code": "9",
+                "name": "All Other"
+            }
+        },
+        "A": {
+            "1": {
+                "code": "1",
+                "name": "Medical Expenses"
+            },
+            "2": {
+                "code": "2",
+                "name": "Loss of Income"
+            },
+            "3": {
+                "code": "3",
+                "name": "Survivor's Benefits"
+            },
+            "4": {
+                "code": "4",
+                "name": "Funeral Expenses"
+            }
+        },
+        "B": {
+            "1": {
+                "code": "1",
+                "name": "Medical Expenses"
+            },
+            "2": {
+                "code": "2",
+                "name": "Loss of Income"
+            },
+            "3": {
+                "code": "3",
+                "name": "Survivor's Benefits"
+            },
+            "4": {
+                "code": "4",
+                "name": "Funeral Expenses"
+            }
+        },
+        "C": {
+            "1": {
+                "code": "1",
+                "name": "Medical Expenses"
+            },
+            "2": {
+                "code": "2",
+                "name": "Loss of Income"
+            },
+            "3": {
+                "code": "3",
+                "name": "Survivor's Benefits"
+            },
+            "4": {
+                "code": "4",
+                "name": "Funeral Expenses"
+            }
+        },
+        "D": {
+            "1": {
+                "code": "1",
+                "name": "Medical Expenses"
+            },
+            "2": {
+                "code": "2",
+                "name": "Loss of Income"
+            },
+            "3": {
+                "code": "3",
+                "name": "Survivor's Benefits"
+            },
+            "4": {
+                "code": "4",
+                "name": "Funeral Expenses"
+            }
+        },
+        "E": {
+            "1": {
+                "code": "1",
+                "name": "Medical Expenses"
+            },
+            "2": {
+                "code": "2",
+                "name": "Loss of Income"
+            },
+            "3": {
+                "code": "3",
+                "name": "Survivor's Benefits"
+            },
+            "4": {
+                "code": "4",
+                "name": "Funeral Expenses"
+            }
+        },
+        "F": {
+            "1": {
+                "code": "1",
+                "name": "Medical Expenses"
+            },
+            "2": {
+                "code": "2",
+                "name": "Loss of Income"
+            },
+            "3": {
+                "code": "3",
+                "name": "Survivor's Benefits"
+            },
+            "4": {
+                "code": "4",
+                "name": "Funeral Expenses"
+            }
+        },
+        "G": {
+            "1": {
+                "code": "1",
+                "name": "Medical Expenses"
+            },
+            "2": {
+                "code": "2",
+                "name": "Loss of Income"
+            },
+            "3": {
+                "code": "3",
+                "name": "Survivor's Benefits"
+            },
+            "4": {
+                "code": "4",
+                "name": "Funeral Expenses"
+            }
+        },
+        "J": {
+            "1": {
+                "code": "1",
+                "name": "Medical Expenses"
+            },
+            "2": {
+                "code": "2",
+                "name": "Loss of Income"
+            },
+            "3": {
+                "code": "3",
+                "name": "Survivor's Benefits"
+            },
+            "4": {
+                "code": "4",
+                "name": "Funeral Expenses"
+            }
+        },
+        "K": {
+            "1": {
+                "code": "1",
+                "name": "Medical Expenses"
+            },
+            "2": {
+                "code": "2",
+                "name": "Loss of Income"
+            },
+            "3": {
+                "code": "3",
+                "name": "Survivor's Benefits"
+            },
+            "4": {
+                "code": "4",
+                "name": "Funeral Expenses"
+            }
+        },
+        "L": {
+            "1": {
+                "code": "1",
+                "name": "Medical Expenses"
+            },
+            "2": {
+                "code": "2",
+                "name": "Loss of Income"
+            },
+            "3": {
+                "code": "3",
+                "name": "Survivor's Benefits"
+            },
+            "4": {
+                "code": "4",
+                "name": "Funeral Expenses"
+            }
+        },
+        "M": {
+            "1": {
+                "code": "1",
+                "name": "Medical Expenses"
+            },
+            "2": {
+                "code": "2",
+                "name": "Loss of Income"
+            },
+            "3": {
+                "code": "3",
+                "name": "Survivor's Benefits"
+            },
+            "4": {
+                "code": "4",
+                "name": "Funeral Expenses"
+            }
+        },
+        "N": {
+            "1": {
+                "code": "1",
+                "name": "Medical Expenses"
+            },
+            "2": {
+                "code": "2",
+                "name": "Loss of Income"
+            },
+            "3": {
+                "code": "3",
+                "name": "Survivor's Benefits"
+            },
+            "4": {
+                "code": "4",
+                "name": "Funeral Expenses"
+            }
+        },
+        "P": {
+            "1": {
+                "code": "1",
+                "name": "Medical Expenses"
+            },
+            "2": {
+                "code": "2",
+                "name": "Loss of Income"
+            },
+            "3": {
+                "code": "3",
+                "name": "Survivor's Benefits"
+            },
+            "4": {
+                "code": "4",
+                "name": "Funeral Expenses"
+            }
+        },
+        "R": {
+            "1": {
+                "code": "1",
+                "name": "Medical Expenses"
+            },
+            "2": {
+                "code": "2",
+                "name": "Loss of Income"
+            },
+            "3": {
+                "code": "3",
+                "name": "Survivor's Benefits"
+            },
+            "4": {
+                "code": "4",
+                "name": "Funeral Expenses"
+            }
+        },
+        "9": {
+            "9": {
+                "code": "1",
+                "name": "Any Cause of Loss for Coverage Code 9"
+            }
+        },
+        "H": {
+            "9": {
+                "code": "1",
+                "name": "Any Cause of Loss for Coverage Code H, W, and Z"
+            }
+        },
+        "W": {
+            "9": {
+                "code": "1",
+                "name": "Any Cause of Loss for Coverage Code H, W, and Z"
+            }
+        },
+        "Z": {
+            "9": {
+                "code": "1",
+                "name": "Any Cause of Loss for Coverage Code H, W, and Z"
+            }
+        }
+    },
+    "liabilityLimits": {
+        "1": {
+            "1": {
+                "code": "1",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$25,000/50,000"
+            },
+            "2": {
+                "code": "2",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$50,000/100,000"
+            },
+            "3": {
+                "code": "3",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$100,000/300,000"
+            },
+            "4": {
+                "code": "4",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$250,000/500,000"
+            },
+            "5": {
+                "code": "5",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$300,000/500,000"
+            },
+            "6": {
+                "code": "6",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$500,000/1,000,000"
+            },
+            "7": {
+                "code": "7",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$25,000/50,000"
+            },
+            "8": {
+                "code": "8",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$1,000,000"
+            }
+        },
+        "2": {
+            "0": {
+                "code": "0",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$5,000 or less"
+            },
+            "1": {
+                "code": "1",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$10,000"
+            },
+            "2": {
+                "code": "2",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$15,000"
+            },
+            "A": {
+                "code": "A",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$20,000"
+            },
+            "3": {
+                "code": "3",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$25,000"
+            },
+            "B": {
+                "code": "B",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$40,000"
+            },
+            "4": {
+                "code": "4",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$50,000"
+            },
+            "5": {
+                "code": "5",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$100,000"
+            },
+            "6": {
+                "code": "6",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$250,000"
+            },
+            "7": {
+                "code": "7",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$300,000"
+            },
+            "8": {
+                "code": "8",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$500,000"
+            }
+        },
+        "3": {
+            "1": {
+                "code": "1",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$25,000/50,000"
+            },
+            "2": {
+                "code": "2",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$50,000/100,000"
+            },
+            "3": {
+                "code": "3",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$100,000/300,000"
+            },
+            "4": {
+                "code": "4",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$250,000/500,000"
+            },
+            "5": {
+                "code": "5",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$300,000/500,000"
+            },
+            "6": {
+                "code": "6",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$500,000/1,000,000"
+            },
+            "7": {
+                "code": "7",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$25,000/50,000"
+            },
+            "8": {
+                "code": "8",
+                "description": "State Statutory Basic Limitas through",
+                "value": "$1,000,000"
+            }
+        },
+        "5": {
+            "1": {
+                "code": "1",
+                "description": "Limit Per Person",
+                "value": "$500"
+            },
+            "2": {
+                "code": "2",
+                "description": "Limit Per Person",
+                "value": "$750"
+            },
+            "3": {
+                "code": "3",
+                "description": "Limit Per Person",
+                "value": "$1,000"
+            },
+            "4": {
+                "code": "4",
+                "description": "Limit Per Person",
+                "value": "$2,000"
+            },
+            "5": {
+                "code": "5",
+                "description": "Limit Per Person",
+                "value": "$3,000"
+            },
+            "6": {
+                "code": "6",
+                "description": "Limit Per Person",
+                "value": "$5,000"
+            },
+            "7": {
+                "code": "7",
+                "description": "Limit Per Person",
+                "value": "$10,000"
+            },
+            "8": {
+                "code": "8",
+                "description": "Limit Per Person",
+                "value": "$15,000"
+            },
+            "9": {
+                "code": "8",
+                "description": "Limit Per Person",
+                "value": "$25,000 and over"
+            }
+        },
+        "6": {
+            "1": {
+                "code": "1",
+                "description": "Per Person/Per Accident",
+                "value": "$5,000/10,000"
+            },
+            "2": {
+                "code": "2",
+                "description": "Per Person/Per Accident",
+                "value": "$10,000/20,000"
+            },
+            "3": {
+                "code": "3",
+                "description": "Per Person/Per Accident",
+                "value": "$15,000/30,000"
+            },
+            "4": {
+                "code": "4",
+                "description": "Per Person/Per Accident",
+                "value": "$25,000/50,000"
+            },
+            "5": {
+                "code": "5",
+                "description": "Per Person/Per Accident",
+                "value": "$50,000/100,000"
+            },
+            "6": {
+                "code": "6",
+                "description": "Per Person/Per Accident",
+                "value": "$100,000/300,000"
+            },
+            "7": {
+                "code": "7",
+                "description": "Per Person/Per Accident",
+                "value": "$300,000/500,000"
+            },
+            "8": {
+                "code": "8",
+                "description": "Per Person/Per Accident",
+                "value": "$1,000,000"
+            }
+        },
+        "X": {
+            "1": {
+                "code": "1",
+                "description": "Per Person/Per Accident",
+                "value": "$5,000/10,000"
+            },
+            "2": {
+                "code": "2",
+                "description": "Per Person/Per Accident",
+                "value": "$10,000/20,000"
+            },
+            "3": {
+                "code": "3",
+                "description": "Per Person/Per Accident",
+                "value": "$15,000/30,000"
+            },
+            "4": {
+                "code": "4",
+                "description": "Per Person/Per Accident",
+                "value": "$25,000/50,000"
+            },
+            "5": {
+                "code": "5",
+                "description": "Per Person/Per Accident",
+                "value": "$50,000/100,000"
+            },
+            "6": {
+                "code": "6",
+                "description": "Per Person/Per Accident",
+                "value": "$100,000/300,000"
+            },
+            "7": {
+                "code": "7",
+                "description": "Per Person/Per Accident",
+                "value": "$300,000/500,000"
+            },
+            "8": {
+                "code": "8",
+                "description": "Per Person/Per Accident",
+                "value": "$1,000,000"
+            }
+        },
+        "Y": {
+            "1": {
+                "code": "1",
+                "description": "Per Person/Per Accident",
+                "value": "$5,000/10,000"
+            },
+            "2": {
+                "code": "2",
+                "description": "Per Person/Per Accident",
+                "value": "$10,000/20,000"
+            },
+            "3": {
+                "code": "3",
+                "description": "Per Person/Per Accident",
+                "value": "$15,000/30,000"
+            },
+            "4": {
+                "code": "4",
+                "description": "Per Person/Per Accident",
+                "value": "$25,000/50,000"
+            },
+            "5": {
+                "code": "5",
+                "description": "Per Person/Per Accident",
+                "value": "$50,000/100,000"
+            },
+            "6": {
+                "code": "6",
+                "description": "Per Person/Per Accident",
+                "value": "$100,000/300,000"
+            },
+            "7": {
+                "code": "7",
+                "description": "Per Person/Per Accident",
+                "value": "$300,000/500,000"
+            },
+            "8": {
+                "code": "8",
+                "description": "Per Person/Per Accident",
+                "value": "$1,000,000"
+            }
+        }
+    }
+}

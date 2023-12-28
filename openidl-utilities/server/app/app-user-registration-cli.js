@@ -14,40 +14,50 @@
  *  limitations under the License.
  */
 
-const config = require('../app/config/app-config');
+const config = require('../config/app-config');
 const appUserRegistration = require('./app-user');
 const selectedOption = process.argv[4];
 const log4js = require('log4js');
 const logger = log4js.getLogger('app - app-user registration');
 logger.level = config.logLevel;
 logger.info("Selected Option >> " + selectedOption);
-const usersConfig = require('../app/config/user-config.json');
+const usersConfig = require('../config/user-config.json');
 logger.info("User Details config file >> " + usersConfig);
 
 async function main() {
 	logger.info('Start Executing Job');
-
+	const idpConfig = JSON.parse(process.env.IDP_CONFIG);
 	if (selectedOption === "-c") {
-
-		// Step 1 Create User in Cloud Directory
-		await appUserRegistration.createUserInCloudDirectory(usersConfig);
-
-		// Step 2 Sign in user to App ID
-		await appUserRegistration.signInUserToAppId(usersConfig);
-
-		// Step 3 Update user's profile attributes in App ID
-		await appUserRegistration.updateUserProfileInAppId(usersConfig);
-
-
+		switch (idpConfig.idpType) {
+			case "appid":
+				// Step 1 Create User in Cloud Directory
+				await appUserRegistration.createUserInCloudDirectory(usersConfig);
+				// Step 2 Sign in user to App ID
+				await appUserRegistration.signInUserToAppId(usersConfig);
+				// Step 3 Update user's profile attributes in App ID
+				await appUserRegistration.updateUserProfileInAppId(usersConfig);
+				break;
+			case "cognito":
+				await appUserRegistration.createUserInCognito(usersConfig);
+				break;
+			default:
+				logger.error("Incorrect Usage of identity provider type. Refer README for more details");
+				break;
+		}
 	} else if (selectedOption === "-u") {
-
-		// Step 1 Sign in user to App ID to get user's internal resource id
-		await signInUserToAppId(usersConfig);
-
-		// Step 2 Update user's profile attributes in App ID
-		await updateUserProfileInAppId(usersConfig);
-
-
+		switch (idpConfig.idpType) {
+			case "appid":
+				// Step 1 Sign in user to App ID to get user's internal resource id
+				await appUserRegistration.signInUserToAppId(usersConfig);
+				// Step 2 Update user's profile attributes in App ID
+				await appUserRegistration.updateUserProfileInAppId(usersConfig);
+			case "cognito":
+				await appUserRegistration.updateCognitoUserAttributes(usersConfig);
+				break;
+			default:
+				logger.error("Incorrect Usage of identity provider type. Refer README for more details");
+				break;
+		}
 	} else if (selectedOption === "-d") {
 		// TODO Add code for DELETE
 

@@ -1,0 +1,32 @@
+<app-header [selected]="selected"></app-header>
+<div class="container">
+	<h1 class="header-with-icon">
+		<mat-icon color="primary">analytics</mat-icon>
+		<span>View Report</span>
+	</h1>
+	<div class="breadcrumb">
+		<a class="back-link" [routerLink]="['/datacallList']">Data Calls</a>
+		&nbsp; / &nbsp;
+		<a class="back-link" [routerLink]="['/viewIssued']"
+			>Data Call Details</a
+		>
+		&nbsp; / &nbsp;
+		<a
+			class="back-link"
+			style="text-decoration: none"
+			href="javascript:(void);"
+			>Data Call Reports</a
+		>
+	</div>
+	<div>
+		<mat-card>
+			<mat-card-header>
+				<mat-card-title>Report</mat-card-title>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<app-report-table></app-report-table>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>

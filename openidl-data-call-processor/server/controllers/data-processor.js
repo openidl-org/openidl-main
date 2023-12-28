@@ -2,17 +2,18 @@ const log4js = require('log4js');
 const config = require('config');
 const logger = log4js.getLogger('datacall-processor');
 logger.level = config.logLevel;
-const IBMCloudEnv = require('ibm-cloud-env');
-IBMCloudEnv.init();
 const sleep = require('sleep');
-const cloudant = require('@cloudant/cloudant')(IBMCloudEnv.getDictionary('off-chain-db-credentials'));
 const sizeof = require('object-sizeof');
+const Cloudant = require('@cloudant/cloudant');
 
 class DataProcessor {
     constructor(id, version, carrierID, exPattern, channel, viewName) {
         logger.debug("In DataProcessor");
         let DBname = config.insuranceDB + "_" + carrierID;
+
+        const cloudant = Cloudant(JSON.parse(process.env.OFF_CHAIN_DB_CONFIG));
         this.insuranceDB = cloudant.db.use(DBname);
+
         this.dataCallId = id;
         this.dataCallVersion = version;
         this.carrierId = carrierID;

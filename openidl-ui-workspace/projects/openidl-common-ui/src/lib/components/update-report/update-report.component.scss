@@ -1,0 +1,41 @@
+@import '../../../styles/variables';
+
+.update-form {
+	margin: 1rem auto;
+	.data-form {
+		margin-top: 1rem;
+		padding: 1rem;
+
+		.pb-1 {
+			padding-bottom: 1rem;
+		}
+
+		.full-width {
+			width: 100%;
+		}
+
+		.row {
+			display: flex;
+			flex-direction: row;
+		}
+
+		.col {
+			flex: 1;
+			margin-right: 6rem;
+		}
+
+		.col:last-child {
+			margin-right: 0;
+		}
+
+		.right {
+			text-align: right;
+		}
+	}
+
+	.heading {
+		font-size: 20px;
+		font-weight: 500;
+		padding-top: 20px;
+	}
+}

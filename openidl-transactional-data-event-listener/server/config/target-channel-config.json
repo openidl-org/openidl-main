@@ -1,7 +1,7 @@
 {
-    "targetChannels": ${TARGET_CHANNELS},
+    "targetChannels": [{"channelName":"analytics-aais","chaincodeName":"openidl-cc-aais-carriers"}],
     "users": [{
-        "org": "analyticsmsp",
+        "org": "analytics",
         "user": "openidl-transactional-data-event-listener-ibp-2.0",
         "mspId": "analyticsmsp"
     }]

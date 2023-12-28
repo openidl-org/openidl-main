@@ -1,0 +1,21 @@
+<app-base-dialog [title]="data.title" [type]="data.type"></app-base-dialog>
+<mat-dialog-content class="mat-typography">
+	<mat-form-field appearance="outline">
+		<mat-label>Delivery Date</mat-label>
+		<input
+			matInput
+			[matDatepicker]="deliveryDate"
+			[(ngModel)]="data.date"
+		/>
+		<mat-datepicker-toggle
+			matSuffix
+			[for]="deliveryDate"
+		></mat-datepicker-toggle>
+		<mat-datepicker #deliveryDate></mat-datepicker>
+	</mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+	<button mat-flat-button [mat-dialog-close]="data.date" color="primary">
+		Update Delivery Date
+	</button>
+</mat-dialog-actions>

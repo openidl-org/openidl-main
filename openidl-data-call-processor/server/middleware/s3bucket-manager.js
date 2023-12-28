@@ -15,55 +15,47 @@ AWS.config.update({
 });
 class S3BucketManager {
     constructor() { }
-    async saveTransactionalData(input) {
-        return new Promise(function (resolve, reject) {
-            logger.debug('Inside saveTransactionalData');
-            let bucket = new AWS.S3();
-            logger.debug(" saveObjectParam bucket: " + bucketConfig.bucketName + " key: " + input._id)
-            logger.debug("  records: " + JSON.stringify(input.records))
-            let insertObjectParam = { Bucket: bucketConfig.bucketName, Key: input._id, Body: JSON.stringify(input.records) };
-            bucket.putObject((insertObjectParam), (err,data) => {
-                if (err) {
-                    logger.error('Error inserting records:' + err);
-                    reject(err);
-                } else {
-                    logger.debug("After  putobject " + JSON.stringify(data))
-                    logger.debug('Records Inserted Successfully');
-                    resolve('Records Inserted Successfully');
-                }
-            });
+    async getAccessParams() {
+        const sts = new AWS.STS({
+            //region: 'us-east-2',
+            accessKeyId: bucketConfig.accessKeyId,
+            secretAccessKey: bucketConfig.secretAccessKey
 
         });
+        const params = bucketConfig.roleParams;
+
+        const accessParamInfo = await sts.assumeRole(params).promise();
+        logger.debug('Changed Credentials');
+
+        const accessparams = {
+            accessKeyId: accessParamInfo.Credentials.AccessKeyId,
+            secretAccessKey: accessParamInfo.Credentials.SecretAccessKey,
+            sessionToken: accessParamInfo.Credentials.SessionToken,
+        };
+        return accessparams;
     }
 
+    async saveTransactionalData(input) {
+        logger.debug('Inside saveTransactionalData');
+        const accessparams = await this.getAccessParams();
+        let bucket = new AWS.S3(accessparams);
+        logger.debug(" saveObjectParam bucket: " + bucketConfig.bucketName + " key: " + input._id)
+        let insertObjectParam = { Bucket: bucketConfig.bucketName, Key: input._id, Body: JSON.stringify(input.records) };
+        try {
+            const data = await bucket.putObject(insertObjectParam).promise();
+            logger.debug("After  putobject " + JSON.stringify(data))
+            logger.debug('Records Inserted Successfully');
+        } catch (err) {
+            logger.error(err);
+        }
+    }
     async getTransactionalData(id) {
         logger.debug("Inside getTransactionalData");
-        return new Promise(function (resolve, reject) {
-            let bucket = new AWS.S3();
-            let getObjectParam = { Bucket: bucketConfig.bucketName, Key: id };
-
-            try {
-                logger.debug(" getObjectParam bucket=" + bucketConfig.bucketName + "  key=" + id)
-                bucket.getObject((getObjectParam), (err, data) => {
-                   
-                   
-                    if (err) {
-                        logger.debug("getobject error is " + err)
-                        logger.debug('No record found' + err);
-                        reject('error')
-                    } else {
-                        logger.debug("getobject data is - JSON.stringify " + JSON.stringify(data))
-                        logger.debug("getobject data is " + data)
-                        logger.debug("Inside getTransactionalData, Record exist, data._rev, upadting in s3Bucket *************** " + data._rev);
-                        resolve(data._rev);
-                    }
-                });
-            } catch (err) {
-                logger.err("error retrieving document:" + err);
-                reject("error");
-            }
-
-        })
+        const accessParams = await this.getAccessParams();
+        let bucket = new AWS.S3(accessParams);
+        let getObjectParam = { Bucket: bucketConfig.bucketName, Key: id };
+        const data = await bucket.getObject(getObjectParam).promise();
+        return data.VersionId // TODO check VersionId i the thing we need 
     }
 }
 module.exports = S3BucketManager;

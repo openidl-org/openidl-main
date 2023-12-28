@@ -4,14 +4,16 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/hyperledger/fabric/core/chaincode/shim"
-	pb "github.com/hyperledger/fabric/protos/peer"
 	"strings"
+
+	"github.com/hyperledger/fabric-chaincode-go/shim"
+	pb "github.com/hyperledger/fabric-protos-go/peer"
+	logger "github.com/sirupsen/logrus"
 )
 
 // ToggleLike Creates and then toggles likes as a boolean value
 // for a datacall
-func (this *openIDLCC) ToggleLike(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) ToggleLike(stub shim.ChaincodeStubInterface, args string) pb.Response {
 	logger.Debug("ToggleLike: enter")
 	defer logger.Debug("ToggleLike: exit")
 	logger.Debug("ToggleLike > stub.GetChannelID > ", stub.GetChannelID())
@@ -106,7 +108,7 @@ func (this *openIDLCC) ToggleLike(stub shim.ChaincodeStubInterface, args string)
 
 // Returns List of carriers Liked for a specific data call, based on dataCallID and dataCallVersion
 // Request param- {"dataCallID":" ", "dataCallVersion":" "}
-func (this *openIDLCC) GetLikesByDataCall(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) GetLikesByDataCall(stub shim.ChaincodeStubInterface, args string) pb.Response {
 
 	logger.Debug("GetLikesByDataCall: enter")
 	defer logger.Debug("GetLikesByDataCall: exit")
@@ -173,7 +175,7 @@ func (this *openIDLCC) GetLikesByDataCall(stub shim.ChaincodeStubInterface, args
 
 // Returns List of carriers Consented for a specific data call, based on dataCallID and dataCallVersion on requested channels
 // Request param- {"dataCallID":" ", "dataCallVersion":" ", "channelList":[{"channelName": "channel1","chaincodeName": "openidl-cc-channel1"}]}
-func (this *openIDLCC) ListLikesByDataCall(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) ListLikesByDataCall(stub shim.ChaincodeStubInterface, args string) pb.Response {
 
 	logger.Debug("ListLikesByDataCall: enter")
 	defer logger.Debug("ListLikesByDataCall: exit")
@@ -295,7 +297,7 @@ func (this *openIDLCC) ListLikesByDataCall(stub shim.ChaincodeStubInterface, arg
 }
 
 // GetLikeByDataCallAndOrganization Returns list of likes based on input criteria
-func (this *openIDLCC) GetLikeByDataCallAndOrganization(stub shim.ChaincodeStubInterface, args []string) pb.Response {
+func (this *SmartContract) GetLikeByDataCallAndOrganization(stub shim.ChaincodeStubInterface, args []string) pb.Response {
 	logger.Debug("GetLikeByDataCallAndOrganization: enter")
 	defer logger.Debug("GetLikeByDataCallAndOrganization: exit")
 	if len(args) < 1 {
@@ -359,7 +361,7 @@ func (this *openIDLCC) GetLikeByDataCallAndOrganization(stub shim.ChaincodeStubI
 }
 
 // Create a new entry of like count
-func (this *openIDLCC) CreateLikeCountEntry(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) CreateLikeCountEntry(stub shim.ChaincodeStubInterface, args string) pb.Response {
 	logger.Debug("CreateLikeCountEntry: enter")
 	defer logger.Debug("CreateLikeCountEntry: exit")
 	if len(args) < 1 {
@@ -389,7 +391,7 @@ func (this *openIDLCC) CreateLikeCountEntry(stub shim.ChaincodeStubInterface, ar
 }
 
 // Perform count of like count entries
-func (this *openIDLCC) CountLikes(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) CountLikes(stub shim.ChaincodeStubInterface, args string) pb.Response {
 	logger.Debug("CountLikes: enter")
 	defer logger.Debug("CountLikes: exit")
 	if len(args) < 1 {
@@ -441,7 +443,7 @@ func (this *openIDLCC) CountLikes(stub shim.ChaincodeStubInterface, args string)
 }
 
 //updates like count for a data call based on dataCallID and dataCallVersion
-func (this *openIDLCC) UpdateLikeCountForDataCall(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) UpdateLikeCountForDataCall(stub shim.ChaincodeStubInterface, args string) pb.Response {
 	logger.Debug("UpdateLikeCountForDataCall: enter")
 	defer logger.Debug("UpdateLikeCountForDataCall: exit")
 	if len(args) < 1 {

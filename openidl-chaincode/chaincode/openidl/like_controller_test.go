@@ -7,9 +7,10 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/hyperledger/fabric/core/chaincode/shim"
-	pb "github.com/hyperledger/fabric/protos/peer"
+	"github.com/hyperledger/fabric-chaincode-go/shim"
+	pb "github.com/hyperledger/fabric-protos-go/peer"
 	"github.com/stretchr/testify/assert"
+	// logger "github.com/sirupsen/logrus"
 )
 
 // callToggleLike Common test function to create like on channel and to be used for all test cases
@@ -56,7 +57,6 @@ func Test_ToggleLike_Should_Create_New_Like_For_A_Datacall_When_Like_Does_Not_Ex
 	// The returned like to should match the created one
 	assert.True(t, reflect.DeepEqual(output[0].Like, input))
 }
-
 func Test_ToggleLike_Should_Not_Create_New_Like_When_Datacall_Does_Not_Exists(t *testing.T) {
 	fmt.Println("Test_ToggleLike_Should_Not_Create_New_Like_When_Datacall_Does_Not_Exists")
 	// setup Multi-channel Test Envrionment
@@ -101,10 +101,11 @@ func Test_ToggleLike_Should_Update_Like_When_Like_Exists_With_Different_Status(t
 
 	// now we will Unlike the datacall
 	callToggleLike(t, mutlicarrierStub, UNLIKE_JSON_MULTI_CARRIER)
-	output = callListLikesByDataCall(t, mutlicarrierStub, LIST_LIKE_CRITERIA_JSON)
+	outputs := callListLikesByDataCall(t, mutlicarrierStub, LIST_LIKE_CRITERIA_JSON)
+	outputLike := outputs[0]
 
 	// now we will check whether the len has become 0 , if the dataCall has been unliked ( as the listLikes function returns nothing for unlike)
-	assert.Equal(t, 0, len(output), "Test_ToggleLike: Function's success, datacall updated for Unlike.")
+	assert.Equal(t, false, outputLike.Like.Liked, "Test_ToggleLike: Function's success, datacall updated for Unlike.")
 }
 
 func Test_ToggleLike_Should_Not_Update_Like_When_Like_Exists_With_Same_Status(t *testing.T) {
@@ -192,7 +193,6 @@ func Test_ListLikesByDataCall_Should_Return_List_Of_Likes_Based_On_Input_Criteri
 	assert.True(t, reflect.DeepEqual(outputLikesFromMultiCarrier[0].Like, carrierLikeInput))
 	assert.True(t, reflect.DeepEqual(outputLikesFromMultiCarrier[1].Like, multiCarrierLike))
 }
-
 func Test_GetLikeByDataCallAndOrganization_Should_Return_Like_Based_On_Input_Organization(t *testing.T) {
 	fmt.Println("Test_ListLikesByDataCall_Should_Return_List_Of_Likes_Based_On_Input_Criteria")
 	// setup Multi-channel Test Envrionment
@@ -207,12 +207,11 @@ func Test_GetLikeByDataCallAndOrganization_Should_Return_Like_Based_On_Input_Org
 	// Create Like on aais-carries channel
 	callToggleLike(t, mutlicarrierStub, LIKE_JSON_MULTI_CARRIER)
 
-	getLikeResponse := checkInvoke(t, mutlicarrierStub, "GetLikeByDataCallAndOrganization", []byte(LIST_LIKE_CRITERIA_JSON))
+	getLikeResponse := checkInvoke(t, mutlicarrierStub, "GetLikeByDataCallAndOrganization", []byte(GET_LIKE_CRITERIA_JSON))
 	if getLikeResponse.Status != shim.OK {
 		fmt.Println("Test_CountLikes: ListLikesByDataCall failed with message res.Message: ", string(getLikeResponse.Message))
 		t.FailNow()
 	}
-
 	var outputLikesFromMultiCarrier []ListLikeResponse
 	json.Unmarshal([]byte(getLikeResponse.Payload), &outputLikesFromMultiCarrier)
 

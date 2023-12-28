@@ -1,0 +1,29 @@
+{
+    "batchId": "10",
+    "chunkId": "1000",
+    "carrierId": "00002",
+    "records": [
+        {
+            "policy": {
+                "id": "PersonalAutoStatsMessageID",
+                "type": "object",
+                "title": "StatsMessage",
+                "additionalProperties": false,
+                "properties": {
+                    "StateCode": {
+                        "type": "string",
+                        "description": "The state in which this transaction is reported."
+                    },
+                    "CoverageCode": {
+                        "type": "string",
+                        "description": "The Coverage Code for the "
+                    }
+                }
+            },
+            "chunkId": "10000",
+            "batchId": "10",
+            "carrierId": "0002",
+            "SequenceNum": 1
+        }
+    ]
+}

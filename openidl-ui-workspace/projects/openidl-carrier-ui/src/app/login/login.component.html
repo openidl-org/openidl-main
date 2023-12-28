@@ -1,0 +1,98 @@
+<div class="main-div">
+	<mat-grid-list cols="2">
+		<mat-grid-tile></mat-grid-tile>
+		<mat-grid-tile>
+			<form
+				[formGroup]="userForm"
+				#formDirective="ngForm"
+				(ngSubmit)="login(userForm.value, formDirective)"
+				novalidate
+			>
+				<mat-card class="login-card">
+					<mat-card-header class="header">
+						<img
+							class="image"
+							mat-card-image
+							src="../../assets/images/OpenIDL_Login_Logo.png"
+							alt="OpenIDL Logo"
+						/>
+					</mat-card-header>
+
+					<mat-card-content class="content">
+						<p class="heading">Sign In</p>
+						<div class="row">
+							<div class="col">
+								<mat-form-field
+									class="full-width"
+									appearance="outline"
+								>
+									<mat-icon matPrefix color="primary"
+										>person_filled</mat-icon
+									>
+									<mat-label>Username</mat-label>
+									<input
+										matInput
+										name="username"
+										formControlName="username"
+									/>
+									<mat-error
+										*ngIf="
+											userForm.controls[
+												'username'
+											].hasError('required')
+										"
+									>
+										Username is <strong>required</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<mat-form-field
+									class="full-width"
+									appearance="outline"
+								>
+									<mat-icon matPrefix color="primary"
+										>password_filled</mat-icon
+									>
+									<mat-label>Password</mat-label>
+									<input
+										matInput
+										type="password"
+										name="password"
+										placeholder="Password"
+										formControlName="password"
+									/>
+									<mat-error
+										*ngIf="
+											userForm.controls[
+												'password'
+											].hasError('required')
+										"
+									>
+										Password is <strong>required</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col center">
+								<button
+									class="login-button"
+									[class.spinner]="isSpinner"
+									[disabled]="isSpinner"
+									mat-flat-button
+									color="primary"
+									type="submit"
+								>
+									LOGIN
+								</button>
+							</div>
+						</div>
+					</mat-card-content>
+				</mat-card>
+			</form>
+		</mat-grid-tile>
+	</mat-grid-list>
+</div>

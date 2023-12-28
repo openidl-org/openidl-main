@@ -22,38 +22,40 @@ const log4js = require('log4js');
 const config = require('config');
 const fs = require('fs');
 const path = require('path');
+const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const yaml = require('js-yaml');
-const IBMCloudEnv = require('ibm-cloud-env');
-IBMCloudEnv.init();
+const session = require('express-session');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
+openidlCommonLib.EnvConfig.init();
+
 const routes = require('./routes');
 const logger = log4js.getLogger('server');
 logger.level = config.logLevel;
 logger.info("Starting");
 const app = express();
+app.use(cors());
 
+global.fetch = require('node-fetch');
 
+app.use(session({
+    secret: "123456",
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+        secure: true,
+        httpOnly: true,
+        sameSite: 'lax'
+    } 
+}));
 
-const openidlCommonLib = require('openidl-common-lib');
-const apiAuthHandler = openidlCommonLib.ApiAuthHandler;
-apiAuthHandler.init(IBMCloudEnv.getDictionary('appid-credentials'));
+const idpCredentials = JSON.parse(process.env.IDP_CONFIG);
+const authHandler = openidlCommonLib.AuthHandler.setHandler(idpCredentials);
 
-
-
-
-let apiAppStrategy = apiAuthHandler.getAPIStrategy();
-const apiPassport = apiAuthHandler.getPassport();
-app.use(apiPassport.initialize());
-apiPassport.use(apiAppStrategy);
-
-// Passport session persistance
-apiPassport.serializeUser(function (user, cb) {
-    cb(null, user);
-});
-
-apiPassport.deserializeUser(function (obj, cb) {
-    cb(null, obj);
-});
+const passport = authHandler.getPassport();
+app.use(passport.initialize());
+app.use(passport.session());
+authHandler.setStrategy(passport);
 
 /**
  * Set up logging
@@ -63,7 +65,7 @@ logger.debug('setting up app: registering routes, middleware...');
 /**
  * Load swagger document
  */
-const swaggerDocument = yaml.safeLoad(fs.readFileSync(path.join(__dirname, '../public', 'openapi.yaml'), 'utf8'));
+const swaggerDocument = yaml.load(fs.readFileSync(path.join(__dirname, '../public', 'openapi.yaml'), 'utf8'));
 
 /**
  * Support json parsing
@@ -114,9 +116,9 @@ const port = process.env.PORT || config.port;
 //const host = "localhost";
 //const port = "8080";
 
-    app.listen(port, () => {
-        logger.info(`app listening on http://${host}:${port}`);
-        logger.info(`Swagger UI is available at http://${host}:${port}/api-docs`);
-        app.emit("listened", null);
-    });
+app.listen(port, () => {
+    logger.info(`app listening on http://${host}:${port}`);
+    logger.info(`Swagger UI is available at http://${host}:${port}/api-docs`);
+    app.emit("listened", null);
+});
 module.exports = app;

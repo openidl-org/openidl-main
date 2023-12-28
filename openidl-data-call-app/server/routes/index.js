@@ -17,9 +17,11 @@
 const express = require('express');
 const log4js = require('log4js');
 const config = require('config');
-const openidlCommonLib = require('openidl-common-lib');
-const userAuthHandler = openidlCommonLib.UserAuthHandler;
-const apiAuthHandler = openidlCommonLib.ApiAuthHandler;
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
+
+const idpCredentials = JSON.parse(process.env.IDP_CONFIG);
+const authHandler = openidlCommonLib.AuthHandler.setHandler(idpCredentials);
+
 const health = require('./health');
 const ping = require('./ping');
 const commonController = require('../controllers/common');
@@ -39,57 +41,58 @@ logger.level = config.logLevel;
  * Add routes
  */
 router.use('/health', health);
-router.use('/ping', apiAuthHandler.authenticate, ping);
-router.route('/login').post(userAuthHandler.authenticate, userAuthHandler.getUserAttributes, apiAuthHandler.getApiToken, userAuthHandler.storeTokenInCookie, commonController.login);
-router.route('/logout').post(userAuthHandler.logout, commonController.logout);
-router.route('/lob').get(apiAuthHandler.authenticate, commonController.listLineOfBusiness);
+router.use('/ping', authHandler.validateToken, ping);
+router.route('/login').post(authHandler.authenticate, authHandler.getUserAttributes, authHandler.storeTokenInCookie, commonController.login);
+router.route('/logout').post(authHandler.logout, commonController.logout);
+router.route('/lob').get(authHandler.validateToken, commonController.listLineOfBusiness);
 
 
 //--- data call retreival & Search Data Call
-router.route('/search-data-calls').get(apiAuthHandler.authenticate, commonController.searchDataCalls);
-router.route('/list-data-calls-by-criteria').get(apiAuthHandler.authenticate, commonController.listDataCallsByCriteria);
-router.route('/data-call/:id/:version').get(apiAuthHandler.authenticate, commonController.getDataCallByIdAndVersion);
-router.route('/data-call-versions/:id').get(apiAuthHandler.authenticate, commonController.getDataCallVersionsById);
-router.route('/data-call-log/:id/:version').get(apiAuthHandler.authenticate, commonController.dataCallLog);
+router.route('/search-data-calls').get(authHandler.validateToken, commonController.searchDataCalls);
+router.route('/list-data-calls-by-criteria').get(authHandler.validateToken, commonController.listDataCallsByCriteria);
+router.route('/data-call/:id/:version').get(authHandler.validateToken, commonController.getDataCallByIdAndVersion);
+router.route('/data-call-versions/:id').get(authHandler.validateToken, commonController.getDataCallVersionsById);
+router.route('/data-call-log/:id/:version').get(authHandler.validateToken, commonController.dataCallLog);
 
 //--- like and consent
-router.route('/like').post(apiAuthHandler.authenticate, commonController.toggleLike);
-router.route('/consent').post(apiAuthHandler.authenticate, carrierController.createConsent);
-router.route('/like-status-data-call/:id/:version/:orgId').get(apiAuthHandler.authenticate, commonController.likeStatusByDataCall);
-router.route('/consent-status-data-call/:id/:version/:orgId').get(apiAuthHandler.authenticate, carrierController.consentStatusByDataCall);
-router.route('/like-count/:id/:version').get(apiAuthHandler.authenticate, commonController.likeCount);
-router.route('/consent-count/:id/:version').get(apiAuthHandler.authenticate, commonController.consentCount);
-router.route('/update-consent-status').post(apiAuthHandler.authenticate, carrierController.updateConsentStatus);
+router.route('/like').post(authHandler.validateToken, commonController.toggleLike);
+router.route('/consent').post(authHandler.validateToken, carrierController.createConsent);
+router.route('/reconsent').post(authHandler.validateToken, carrierController.createReconsent);
+router.route('/like-status-data-call/:id/:version/:orgId').get(authHandler.validateToken, commonController.likeStatusByDataCall);
+router.route('/consent-status-data-call/:id/:version/:orgId').get(authHandler.validateToken, carrierController.consentStatusByDataCall);
+router.route('/like-count/:id/:version').get(authHandler.validateToken, commonController.likeCount);
+router.route('/consent-count/:id/:version').get(authHandler.validateToken, commonController.consentCount);
+router.route('/update-consent-status').post(authHandler.validateToken, carrierController.updateConsentStatus);
 
 
 //----extraction-pattern 
-router.route('/list-extraction-patterns').get(apiAuthHandler.authenticate, commonController.listExtractionPatterns);
-// router.route('/extraction-patterns').post(apiAuthHandler.authenticate, commonController.getExtractionPatternsById);
-router.route('/create-extraction-pattern').post(apiAuthHandler.authenticate, regulatorController.createExtractionPattern);
-router.route('/update-extraction-pattern').put(apiAuthHandler.authenticate, regulatorController.updateExtractionPattern);
-router.route('/get-data-call-and-extraction-pattern').post(apiAuthHandler.authenticate, commonController.getDataCallAndExtractionPattern);
+router.route('/list-extraction-patterns').get(authHandler.validateToken, commonController.listExtractionPatterns);
+// router.route('/extraction-patterns').post(authHandler.validateToken, commonController.getExtractionPatternsById);
+router.route('/create-extraction-pattern').post(authHandler.validateToken, regulatorController.createExtractionPattern);
+router.route('/update-extraction-pattern').put(authHandler.validateToken, regulatorController.updateExtractionPattern);
+router.route('/get-data-call-and-extraction-pattern').post(authHandler.validateToken, commonController.getDataCallAndExtractionPattern);
 
 //----data call modification
-router.route('/data-call').post(apiAuthHandler.authenticate, regulatorController.createDataCall)
-    .put(apiAuthHandler.authenticate, regulatorController.updateDataCall);
-router.route('/save-new-draft').post(apiAuthHandler.authenticate, regulatorController.saveNewDraft);
-router.route('/issue-data-call').put(apiAuthHandler.authenticate, regulatorController.issueDataCall);
-router.route('/save-and-issue-data-call').post(apiAuthHandler.authenticate, regulatorController.saveAndIssueDataCall);
-router.route('/updatedatacallcount').post(apiAuthHandler.authenticate, regulatorController.updateDataCallCount);
+router.route('/data-call').post(authHandler.validateToken, regulatorController.createDataCall)
+    .put(authHandler.validateToken, regulatorController.updateDataCall);
+router.route('/save-new-draft').post(authHandler.validateToken, regulatorController.saveNewDraft);
+router.route('/issue-data-call').put(authHandler.validateToken, regulatorController.issueDataCall);
+router.route('/save-and-issue-data-call').post(authHandler.validateToken, regulatorController.saveAndIssueDataCall);
+router.route('/updatedatacallcount').post(authHandler.validateToken, regulatorController.updateDataCallCount);
 
 
 //----stat-agent like/consent
-router.route('/list-likes-by-data-call/:id/:version').get(apiAuthHandler.authenticate, statAgentController.listLikesByDataCall);
-router.route('/list-consents-by-data-call/:id/:version').get(apiAuthHandler.authenticate, statAgentController.listConsentsByDataCall);
+router.route('/list-likes-by-data-call/:id/:version').get(authHandler.validateToken, statAgentController.listLikesByDataCall);
+router.route('/list-consents-by-data-call/:id/:version').get(authHandler.validateToken, statAgentController.listConsentsByDataCall);
 
 //---report
-router.route('/report').get(apiAuthHandler.authenticate, commonController.getReportsByCriteria)
-    .post(apiAuthHandler.authenticate, statAgentController.createReport)
-    .put(apiAuthHandler.authenticate, regulatorController.updateReport);
+router.route('/report').get(authHandler.validateToken, commonController.getReportsByCriteria)
+    .post(authHandler.validateToken, statAgentController.createReport)
+    .put(authHandler.validateToken, regulatorController.updateReport);
 
 
-router.route('/reset-data').delete(apiAuthHandler.authenticate, statAgentController.resetData);
-router.route('/block-explorer').get(apiAuthHandler.authenticate, commonController.blockExplorer);
+router.route('/reset-data').delete(authHandler.validateToken, statAgentController.resetData);
+router.route('/block-explorer').get(authHandler.validateToken, commonController.blockExplorer);
 
 //temp testing idmController
 router.route('/runDataLoad').post(idmController.runDataLoad);

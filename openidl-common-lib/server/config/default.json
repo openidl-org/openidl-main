@@ -1,9 +1,0 @@
-{
-    "logLevel": "debug",
-    "host": "localhost",
-    "port": "8080",
-    "maxBatchArraySize": 10000,
-    "targetDB": "insurance_trx_db",
-    "carrierid":["6964","1234"],
-    "send_grid_apikey" : "${AWS secret /openidl/ibm/any/any key=send-grid-apikey}"
-}

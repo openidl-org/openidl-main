@@ -1,52 +1,64 @@
 {
-    "name": "openidl-common-lib",
-    "version": "0.1.0",
-    "private": false,
-    "main": "index.js",
-    "scripts": {
-        "start": "node index.js",
-        "dev": "nodemon index.js",
-        "lint": "eslint .",
-        "lintfix": "eslint --fix .",
-        "test": "nyc mocha --exit"
-    },
-    "dependencies": {
-        "@cloudant/cloudant": "4.2.1",
-        "@ibm-functions/iam-token-manager": "^1.0.3",
-        "@sendgrid/mail": "^7.2.1",
-        "cfenv": "^1.1.0",
-        "config": "^2.0.1",
-        "cors": "^2.8.4",
-        "express-enforces-ssl": "^1.1.0",
-        "fabric-ca-client": "^1.4.7",
-        "fabric-client": "^1.4.7",
-        "fabric-network": "^1.4.7",
-        "grpc": "^1.15.1",
-        "ibm-cloud-env": "^0.2.6",
-        "ibmcloud-appid": "^6.0.0",
-        "lodash": "4.17.15",
-        "log4js": "4.3.2",
-        "mongodb": "3.3.0-beta2",
-        "nconf": "^0.10.0",
-        "passport": "^0.4.0",
-        "request-promise": "^4.2.2",
-        "safe-eval": "^0.4.1"
-    },
-    "engines": {
-        "node": "8.9.x",
-        "npm": "5.5.x"
-    },
-    "devDependencies": {
-        "chai": "^4.1.2",
-        "chai-http": "^4.0.0",
-        "cross-env": "^5.2.0",
-        "eslint": "^4.19.1",
-        "eslint-config-airbnb": "^17.0.0",
-        "eslint-config-airbnb-base": "^13.0.0",
-        "eslint-plugin-import": "^2.13.0",
-        "grpc": "^1.15.1",
-        "mocha": "^5.2.0",
-        "nodemon": "^1.18.3",
-        "nyc": "15.0.0"
+  "name": "@openidl-org/openidl-common-lib",
+  "version": "0.7.61",
+  "private": false,
+  "main": "index.js",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openidl-org/openidl-main.git",
+    "directory": "openidl-common-lib"
+  },
+  "engines": {
+    "node": "14.17.x",
+    "npm": "6.14.x"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "lint": "eslint .",
+    "lintfix": "eslint --fix .",
+    "test": "nyc mocha --exit"
+  },
+  "dependencies": {
+    "@cloudant/cloudant": "4.2.1",
+    "@ibm-functions/iam-token-manager": "^1.0.3",
+    "@sendgrid/mail": "^7.2.1",
+    "fabric-ca-client": "^2.2.3",
+    "fabric-network": "^2.2.3",
+    "ibmcloud-appid": "^6.0.0",
+    "log4js": "^4.3.2",
+    "mongodb": "^3.6.10",
+    "node-vault": "^0.9.22",
+    "passport": "^0.4.0",
+    "passport-cognito": "^0.2.2",
+    "pg": "^8.8.0",
+    "pg-cursor": "^2.7.4",
+    "request-promise": "^4.2.2",
+    "safe-eval": "^0.4.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "cross-env": "^5.2.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "husky": "^4.3.8",
+    "mocha": "^8.4.0",
+    "nodemon": "^2.0.12",
+    "nyc": "15.0.0"
+  },
+  "resolutions": {
+    "fabric-client/**/jsrsasign": "10.2.0",
+    "fabric-ca-client/**/jsrsasign": "10.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm version --force --no-git-tag-version patch && git add package.json package-lock.json"
     }
+  }
 }

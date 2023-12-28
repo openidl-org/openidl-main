@@ -1,0 +1,16 @@
+<app-header [selected]="selected"></app-header>
+<div class="container">
+	<h1 class="header-with-icon">
+		<mat-icon color="primary">note_add</mat-icon>
+		<span>Issued Data Call</span>
+	</h1>
+	<button mat-button color="primary" (click)="goBack()">
+		<mat-icon color="primary">arrow_back_ios</mat-icon>
+		Back to Data Calls
+	</button>
+	<app-datacalls-issued
+		(viewReportEvent)="viewReport()"
+		(viewDraftsEvent)="viewDrafts()"
+		(cloneDatacallEvent)="cloneDatacall()"
+	></app-datacalls-issued>
+</div>

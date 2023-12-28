@@ -13,25 +13,24 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
- 
+
 
 const log4js = require('log4js');
 const config = require('config');
 const uuid = require('uuid/v1');
 const targetChannelConfig = require('../config/target-channel-config');
 const networkConfig = require('../config/connection-profile.json');
-const IBMCloudEnv = require('ibm-cloud-env');
-IBMCloudEnv.init();
+
 const {
     Transaction
-} = require('openidl-common-lib');
+} = require('@openidl-org/openidl-common-lib');
 
 const logger = log4js.getLogger('event-handler ');
-logger.setLevel(config.logLevel);
+logger.level = config.logLevel;
 
 console.log(targetChannelConfig);
 
-Transaction.initWallet(IBMCloudEnv.getDictionary('IBM-certificate-manager-credentials'));
+Transaction.initWallet(JSON.parse(process.env.KVS_CONFIG));
 let targetChannelTransaction = new Transaction(targetChannelConfig.users[0].org, targetChannelConfig.users[0].user, targetChannelConfig.targetChannels[0].channelName, targetChannelConfig.targetChannels[0].chaincodeName, targetChannelConfig.users[0].mspId);
 targetChannelTransaction.init(networkConfig);
 
@@ -41,7 +40,6 @@ eventFunction.ConsentedEvent = async function processConsentEvent(payload, block
         logger.info('processConsentEvent function entry payload');
         if (payload) {
             payload = JSON.parse(payload.toString('utf8'));
-            logger.debug(payload);
             logger.debug(' processConsentEvent block number ==>' + blockNumber);
             if ((!payload.datacallID) || (!payload.dataCallVersion)) {
                 logger.error('processConsentEvent submit transaction error: invalid conscent payload :');

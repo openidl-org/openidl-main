@@ -1,0 +1,22 @@
+{
+    "carrierId": "<a value that matches the carrier id>",
+    "sourceId": "carrierx",
+    "batchId": "batch_10101",
+    "chunkId": "chunk_10101",
+    "dbName": "openidl-offchain-db",
+    "collectionName": "insurance_trx_db_<carrierId>",
+    "reductionName": "extracted-data",
+    "carrier": {
+        "insurance-data-manager": {
+            "url": "insurance-data-manager-service.dev.<subdomain>.<domain>.com"
+        },
+        "utilities": {
+            "url": "utilities-service.dev.carrier.<subdomain>.<domain>.com"
+        },
+        "mongo": {
+            "port": "28017",
+            "user": "<mongo user>",
+            "token": "<mongo user token>"
+        }
+    }
+}

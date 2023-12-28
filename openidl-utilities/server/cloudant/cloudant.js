@@ -20,8 +20,6 @@ const log4js = require('log4js');
 const config = require('config');
 const logger = log4js.getLogger('server - cloudant');
 const fs = require('fs');
-const IBMCloudEnv = require('ibm-cloud-env');
-IBMCloudEnv.init("/server/fabric/config/mappings.json");
 const cred = require("../cloudant/config/local-cloudant-config.json")
 const cloudant = require('@cloudant/cloudant')(cred);
 const const_DB = require('../cloudant/config/constant');

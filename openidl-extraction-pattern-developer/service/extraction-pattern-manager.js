@@ -18,35 +18,36 @@ class ExtractionPatternManager {
         var todayString = today.toISOString()
         todayString = todayString.substring(0, todayString.lastIndexOf(':')) + ':00Z'
         return {
-            "extractionPatternID":id,
-            "extractionPatternName":name,
-            "description":description,
-            "jurisdication":jurisdiction,
-            "insurance":insurance,
-            "viewDefinition":{
-                "map":mapFunction.toString(),
-                "reduce":reduceFunction.toString()
+            "extractionPatternID": id,
+            "extractionPatternName": name,
+            "description": description,
+            "jurisdication": jurisdiction,
+            "insurance": insurance,
+            "viewDefinition": {
+                "map": mapFunction.toString(),
+                "reduce": reduceFunction.toString()
             },
-            "dbType":"mongo",
-            "version":version,
-            "isActive":true,
-            "effectiveStartTs":effectiveDate,
-            "effectiveEndTs":expirationDate,
-            "premiumFromDate":premiumFromDate,
-            "premiumToDate":premiumToDate,
-            "lossFromDate":lossFromDate,
-            "lossToDate":lossToDate,
-            "updatedTs":todayString,
-            "updatedBy":userId
+            "dbType": "mongo",
+            "version": version,
+            "isActive": true,
+            "effectiveStartTs": effectiveDate,
+            "effectiveEndTs": expirationDate,
+            "premiumFromDate": premiumFromDate,
+            "premiumToDate": premiumToDate,
+            "lossFromDate": lossFromDate,
+            "lossToDate": lossToDate,
+            "updatedTs": todayString,
+            "updatedBy": userId
         }
     }
 
     listExtractionPatterns(extractionPattern) {
-        
+
     }
 
     async writeExtractionPatternToFile(extractionPattern, fileName) {
-        fs.writeFile(fileName, JSON.stringify(extractionPattern), (err) => {
+        console.log("ExtractonPattern:", extractionPattern)
+        fs.writeFileSync(fileName, JSON.stringify(extractionPattern), (err) => {
             if (err) {
                 console.error(err)
                 return

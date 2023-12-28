@@ -19,10 +19,7 @@
 
 const log4js = require('log4js');
 const config = require('config');
-const IBMCloudEnv = require('ibm-cloud-env');
-IBMCloudEnv.init();
-const cloudant = require('@cloudant/cloudant')(IBMCloudEnv.getDictionary('off-chain-db-credentials'));
-const transactionalDataManagerDB = cloudant.db.use(config.transactionalDataManagerDB);
+const Cloudant = require('@cloudant/cloudant');
 
 // set up logging
 const logger = log4js.getLogger('cloudant-manager');
@@ -32,6 +29,8 @@ class CloudantManager {
     constructor() { }
 
     async saveTransactionalData(input) {
+        const cloudant = Cloudant(JSON.parse(process.env.OFF_CHAIN_DB_CONFIG));
+        const transactionalDataManagerDB = cloudant.db.use(config.transactionalDataManagerDB);
         logger.debug('Inside saveTransactionalData')
         return new Promise(function (resolve, reject) {
             transactionalDataManagerDB.insert((input), (err) => {
@@ -50,6 +49,8 @@ class CloudantManager {
 
     async getTransactionalData(id) {
         logger.debug("inside getTransactionalData");
+        const cloudant = Cloudant(JSON.parse(process.env.OFF_CHAIN_DB_CONFIG));
+        const transactionalDataManagerDB = cloudant.db.use(config.transactionalDataManagerDB);
         return new Promise(function (resolve, reject) {
             try {
                 transactionalDataManagerDB.get((id), (err, data) => {

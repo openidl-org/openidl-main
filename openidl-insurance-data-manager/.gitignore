@@ -2,12 +2,16 @@ node_modules/**
 
 # Tests
 .nyc_output/**
+coverage/**
 
 # IDE
 .vscode/**
 
 #credentials
-server/config/local-appid-config.json
+server/config/connection-profile.json
+server/config/email.json
+server/config/local-certmanager-config.json
 server/config/local-cloudant-config.json
-server/config/openidl-ui-client-id.json
-
+server/config/local-cognito-config.json
+server/config/local-mongo-config.json
+server/config/local-vault-config.json

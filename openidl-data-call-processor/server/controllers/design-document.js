@@ -21,9 +21,7 @@ const log4js = require('log4js');
 const config = require('config');
 const logger = log4js.getLogger('designDocument-Update');
 logger.level = config.logLevel;
-const IBMCloudEnv = require('ibm-cloud-env');
-IBMCloudEnv.init();
-const cloudant = require('@cloudant/cloudant')(IBMCloudEnv.getDictionary('off-chain-db-credentials'));
+const Cloudant = require('@cloudant/cloudant');
 
 const designDocument = {};
 
@@ -31,7 +29,10 @@ designDocument.updateDesignDocument = async(extractionPattern,viewName,carrierId
     logger.debug("In updateDesign Document carrier ID"+carrierId);
     let DBName=config.insuranceDB+"_"+carrierId;
     logger.debug("In updateDesign Document DB name"+DBName);
+
+    const cloudant = Cloudant(JSON.parse(process.env.OFF_CHAIN_DB_CONFIG));
     const insuranceDB = cloudant.db.use(DBName);
+
     return new Promise((resolve, reject) => {
         const designDoc = {
             _id: '_design/application',

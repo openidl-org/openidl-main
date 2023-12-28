@@ -1,0 +1,17 @@
+<app-base-dialog [title]="data.title" [type]="data.type"></app-base-dialog>
+<mat-dialog-content class="mat-typography">
+	<mat-form-field class="full-width" appearance="outline">
+		<mat-label>Forum URL</mat-label>
+		<input
+			matInput
+			type="url"
+			placeholder="Enter Forum URL"
+			[(ngModel)]="data.url"
+		/>
+	</mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+	<button mat-flat-button [mat-dialog-close]="data.url" color="primary">
+		Update Forum URL
+	</button>
+</mat-dialog-actions>

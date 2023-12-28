@@ -55,6 +55,33 @@ carrier.createConsent = async (req, res) => {
   util.sendResponse(res, jsonRes);
 
 };
+carrier.createReconsent = async (req, res) => {
+  logger.info("createReconsent method entry -");
+  let jsonRes;
+  try {
+    req.body['createdTs'] = new Date().toISOString();
+    req.body['status'] = "Submitted";
+    logger.debug('createConsent req body :');
+    logger.debug(req.body);
+    await transactionFactory.getCarrierChannelTransaction().submitTransaction('CreateReconsent', JSON.stringify(req.body));
+    jsonRes = {
+      statusCode: 200,
+      success: true,
+      message: 'OK'
+    };
+  } catch (err) {
+    logger.error('createConsent error ', err);
+    jsonRes = {
+      statusCode: 500,
+      success: false,
+      message: `FAILED: ${err}`,
+    };
+  }
+  logger.debug('createConsent send response ');
+  logger.info('createConsent method exit ');
+  util.sendResponse(res, jsonRes);
+
+};
 carrier.consentStatusByDataCall = async (req, res) => {
   logger.info("consentStatusByDataCall method entry -");
   let jsonRes;

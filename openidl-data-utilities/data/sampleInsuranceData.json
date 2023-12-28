@@ -1,0 +1,38 @@
+[
+    {
+        "organizationId": "1235",
+        "effectiveDate": "2021-01-01",
+        "expirationDate": "2022-01-01",
+        "accountingDate": "2021-06-01",
+        "zipcode": "11111",
+        "limit": 100000,
+        "premium": 100
+    },
+    {
+        "organizationId": "1235",
+        "effectiveDate": "2021-02-01",
+        "expirationDate": "2022-02-01",
+        "accountingDate": "2021-07-01",
+        "zipcode": "11111",
+        "limit": 150000,
+        "premium": 200
+    },
+    {
+        "organizationId": "1235",
+        "effectiveDate": "2021-03-01",
+        "expirationDate": "2022-03-01",
+        "accountingDate": "2021-08-01",
+        "zipcode": "11111",
+        "limit": 200000,
+        "premium": 300
+    },
+    {
+        "organizationId": "1235",
+        "effectiveDate": "2021-04-01",
+        "expirationDate": "2022-04-01",
+        "accountingDate": "2021-09-01",
+        "zipcode": "11112",
+        "limit": 250000,
+        "premium": 100
+    }
+]

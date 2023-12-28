@@ -3,14 +3,16 @@ package main
 import (
 	"encoding/json"
 	"errors"
-	"github.com/hyperledger/fabric/core/chaincode/shim"
-	pb "github.com/hyperledger/fabric/protos/peer"
 	"strconv"
 	"strings"
+
+	"github.com/hyperledger/fabric-chaincode-go/shim"
+	pb "github.com/hyperledger/fabric-protos-go/peer"
+	logger "github.com/sirupsen/logrus"
 )
 
-func (this *openIDLCC) SaveInsuranceDataHash(stub shim.ChaincodeStubInterface, args string) pb.Response {
-	logger.Debug("SaveInsuranceDataHash: enter")
+func (this *SmartContract) SaveInsuranceDataHash(stub shim.ChaincodeStubInterface, args string) pb.Response {
+	logger.Info("SaveInsuranceDataHash: enter")
 	defer logger.Debug("SaveInsuranceDataHash: exit")
 	var insurance InsuranceDataHash
 
@@ -28,7 +30,7 @@ func (this *openIDLCC) SaveInsuranceDataHash(stub shim.ChaincodeStubInterface, a
 	} else if insurance.ChunkId == "" {
 		return shim.Error("ChunkId should not be Empty")
 	}
-	
+
 	namespacePrefix := INSURANCE_HASH_PREFIX
 	//var pks []string = []string{INSURANCE_HASH_PREFIX, insurance.CarrierId, insurance.BatchId}
 	key, _ := stub.CreateCompositeKey(namespacePrefix, []string{insurance.CarrierId, insurance.BatchId, insurance.ChunkId})
@@ -51,7 +53,7 @@ func (this *openIDLCC) SaveInsuranceDataHash(stub shim.ChaincodeStubInterface, a
 // Error   {json}:{"message":"....","errorCode":"Sys_Err/Bus_Err"}
 // Description : returns a InsuranceHashRecord of specifc batchid
 
-func (this *openIDLCC) GetHashById(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) GetHashById(stub shim.ChaincodeStubInterface, args string) pb.Response {
 	logger.Debug("GetHashById: enter")
 	defer logger.Debug("GetHashById: exit")
 
@@ -77,9 +79,9 @@ func (this *openIDLCC) GetHashById(stub shim.ChaincodeStubInterface, args string
 }
 
 //this function puts the Insurance data extracted based on extraction pattern into private data collection
-func (this *openIDLCC) SaveInsuranceData(stub shim.ChaincodeStubInterface, args []string) pb.Response {
-	logger.Debug("SaveInsuranceData: enter")
-	defer logger.Debug("SaveInsuranceData: exit")
+func (this *SmartContract) SaveInsuranceData(stub shim.ChaincodeStubInterface, args []string) pb.Response {
+	logger.Info("SaveInsuranceData: enter")
+	defer logger.Info("SaveInsuranceData: exit")
 	var insurance InsuranceData
 	transientMapKey := INSURANCE_TRANSACTIONAL_RECORD_PREFIX
 
@@ -92,6 +94,7 @@ func (this *openIDLCC) SaveInsuranceData(stub shim.ChaincodeStubInterface, args 
 		return shim.Error("SaveInsuranceData: Invalid key in the transient map")
 	}
 	err = json.Unmarshal([]byte(InsuranceDataTransMap[transientMapKey]), &insurance)
+	logger.Info("SaveInsuranceData: got transient map")
 
 	if err != nil {
 		logger.Error("SaveInsuranceData: Error during json.Unmarshal: ", err)
@@ -99,7 +102,6 @@ func (this *openIDLCC) SaveInsuranceData(stub shim.ChaincodeStubInterface, args 
 	}
 	pageNumber := insurance.PageNumber
 	pageNumberAsString := strconv.Itoa(pageNumber)
-
 	if insurance.CarrierId == "" {
 		return shim.Error("CarrierId should not be Empty")
 	} else if insurance.DataCallId == "" {
@@ -108,18 +110,26 @@ func (this *openIDLCC) SaveInsuranceData(stub shim.ChaincodeStubInterface, args 
 		return shim.Error("DataCallVersion should not be Empty")
 	} else if pageNumber == 0 {
 		return shim.Error("PageNumber should not be Empty")
+	} else if insurance.SequenceNum == 0 {
+		return shim.Error("sequenceNum should not be Empty")
+	} else if insurance.RecordsNum == 0 {
+		return shim.Error("recordsNum should not be Empty")
+	} else if insurance.TotalRecordsNum == 0 {
+		return shim.Error("totalRecordsNum should not be Empty")
 	}
 
+	logger.Info("SaveInsuranceData: all necessary params found")
 	//Identify the pdc name based on channelName
 	channelName := stub.GetChannelID()
 	private_data_collection := getPDCNameByChannelName(channelName)
 
 	namespacePrefix := INSURANCE_TRANSACTIONAL_RECORD_PREFIX
-	key, _ := stub.CreateCompositeKey(namespacePrefix, []string{insurance.DataCallId, insurance.DataCallVersion, insurance.CarrierId, pageNumberAsString})
-
+	sequenceNumberAsString := strconv.Itoa(insurance.SequenceNum)
+	key, _ := stub.CreateCompositeKey(namespacePrefix, []string{insurance.DataCallId, insurance.DataCallVersion, insurance.CarrierId, pageNumberAsString, sequenceNumberAsString})
 	insuranceDataAsBytes, _ := json.Marshal(insurance)
 	err = stub.PutPrivateData(private_data_collection, key, insuranceDataAsBytes)
 
+	logger.Info("SaveInsuranceData: put private data done")
 	if err != nil {
 		logger.Error("Error commiting pdc data:", err)
 		return shim.Error("SaveInsuranceData: Error committing data for key: " + key)
@@ -130,12 +140,14 @@ func (this *openIDLCC) SaveInsuranceData(stub shim.ChaincodeStubInterface, args 
 	auditRecord.DataCallId = insurance.DataCallId
 	auditRecord.DataCallVersion = insurance.DataCallVersion
 	auditRecord.CarrierId = insurance.CarrierId
+	auditRecord.SequenceNum = insurance.SequenceNum
 
 	namespacePrefixForAudit := AUDIT_INSURANCE_TRANSACTIONAL_RECORD_PREFIX
-	auditRecordKey, _ := stub.CreateCompositeKey(namespacePrefixForAudit, []string{auditRecord.DataCallId, auditRecord.DataCallVersion, auditRecord.CarrierId})
+	auditRecordKey, _ := stub.CreateCompositeKey(namespacePrefixForAudit, []string{auditRecord.DataCallId, auditRecord.DataCallVersion, auditRecord.CarrierId, sequenceNumberAsString})
 
 	auditRecordAsBytes, _ := json.Marshal(auditRecord)
 	err = stub.PutState(auditRecordKey, auditRecordAsBytes)
+	logger.Info("SaveInsuranceData: put audit key done")
 
 	if err != nil {
 		return shim.Error("SaveInsuranceData: Creating Audit Record: Error committing data for key: " + auditRecordKey)
@@ -148,15 +160,21 @@ func (this *openIDLCC) SaveInsuranceData(stub shim.ChaincodeStubInterface, args 
 	eventPayload.DataCallVersion = insurance.DataCallVersion
 	eventPayload.CarrierId = insurance.CarrierId
 	eventPayload.PageNumber = insurance.PageNumber
+	eventPayload.SequenceNum = insurance.SequenceNum
+	eventPayload.RecordsNum = insurance.RecordsNum
 
 	eventPayloadAsBytes, _ := json.Marshal(eventPayload)
-	_ = stub.SetEvent(INSURANCE_RECORD_AND_AUDIT_CREATED_EVENT, eventPayloadAsBytes)
+	err = stub.SetEvent(INSURANCE_RECORD_AND_AUDIT_CREATED_EVENT, eventPayloadAsBytes)
+	if err != nil {
+		return shim.Error("SaveInsuranceData: error during creating event")
+	}
 
+	logger.Info("SaveInsuranceData: set event done")
 	return shim.Success(nil)
 }
 
 // this function returns true if InsuranceData exists in pdc for a data call else returns false
-func (this *openIDLCC) CheckInsuranceDataExists(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) CheckInsuranceDataExists(stub shim.ChaincodeStubInterface, args string) pb.Response {
 	logger.Debug("CheckInsuranceDataExists: enter")
 	defer logger.Debug("CheckInsuranceDataExists: exit")
 
@@ -177,20 +195,24 @@ func (this *openIDLCC) CheckInsuranceDataExists(stub shim.ChaincodeStubInterface
 		return shim.Error("DataCallVersion can not be Empty")
 	}
 	namespace := AUDIT_INSURANCE_TRANSACTIONAL_RECORD_PREFIX
-	key, _ := stub.CreateCompositeKey(namespace, []string{getInsuranceData.DataCallId, getInsuranceData.DataCallVersion, getInsuranceData.CarrierId})
-	insuranceDataAsBytes, err := stub.GetState(key)
-	if err != nil {
-		logger.Error("CheckInsuranceDataExists: Error retreiving Insurance data for key ", key)
-		return shim.Error("CheckInsuranceDataExists: Error retreiving Insurance data for key" + key)
+	partialKey, _ := stub.CreateCompositeKey("", []string{getInsuranceData.DataCallId, getInsuranceData.DataCallVersion, getInsuranceData.CarrierId})
+	insuranceDataIterator, err := stub.GetStateByPartialCompositeKey(namespace, []string{partialKey})
+	if insuranceDataIterator == nil{
+		return shim.Success([]byte(strconv.FormatBool(isExist)));
 	}
-	if len(insuranceDataAsBytes) > 0 {
+	if err != nil {
+		logger.Error("CheckInsuranceDataExists: Error retreiving Insurance data for key ", partialKey)
+		return shim.Error("CheckInsuranceDataExists: Error retreiving Insurance data for key" + partialKey)
+	}
+	defer insuranceDataIterator.Close()
+	if insuranceDataIterator.HasNext() {
 		isExist = true
 	}
 	return shim.Success([]byte(strconv.FormatBool(isExist)))
 }
 
 // this function returns Insurance Data fetching from pdc
-func (this *openIDLCC) GetInsuranceData(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) GetInsuranceData(stub shim.ChaincodeStubInterface, args string) pb.Response {
 	logger.Debug("GetInsuranceData: enter")
 	defer logger.Debug("GetInsuranceData: exit")
 
@@ -212,13 +234,16 @@ func (this *openIDLCC) GetInsuranceData(stub shim.ChaincodeStubInterface, args s
 		return shim.Error("DataCallVersion can not be Empty")
 	} else if getInsuranceData.ChannelName == "" {
 		return shim.Error("ChannelName can not be Empty")
+	} else if getInsuranceData.SequenceNum == 0 {
+		return shim.Error("sequenceNum can not be Empty")
 	}
 	//startIndex := getInsuranceData.StartIndex
 	//pageSize := getInsuranceData.PageSize
 	pageNumber := getInsuranceData.PageNumber
 	pageNumberAsString := strconv.Itoa(pageNumber)
+	sequenceNumberAsString := strconv.Itoa(getInsuranceData.SequenceNum)
 	namespacePrefix := INSURANCE_TRANSACTIONAL_RECORD_PREFIX
-	key, _ := stub.CreateCompositeKey(namespacePrefix, []string{getInsuranceData.DataCallId, getInsuranceData.DataCallVersion, getInsuranceData.CarrierId, pageNumberAsString})
+	key, _ := stub.CreateCompositeKey(namespacePrefix, []string{getInsuranceData.DataCallId, getInsuranceData.DataCallVersion, getInsuranceData.CarrierId, pageNumberAsString, sequenceNumberAsString})
 	//Identify the pdc name based on channelID
 	channelName := stub.GetChannelID()
 	private_data_collection := getPDCNameByChannelName(channelName)

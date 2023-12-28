@@ -1,0 +1,51 @@
+@import '../../../styles/variables';
+
+.form {
+	padding-bottom: 3rem;
+
+	.data-form {
+		width: 80%;
+		margin: 0 auto;
+		padding: 2rem 0;
+
+		.full-width {
+			width: 100%;
+		}
+		.row {
+			display: flex;
+			flex-direction: row;
+		}
+
+		.col {
+			flex: 1;
+			margin-right: 6rem;
+
+			&.toggle {
+				padding-bottom: 1.2rem;
+			}
+
+			.example-month-picker .mat-calendar-period-button {
+				pointer-events: none;
+			}
+			  
+			.example-month-picker .mat-calendar-arrow {
+				display: none;
+			}
+		}
+
+		.col:last-child {
+			margin-right: 0;
+		}
+
+		.button-row {
+			text-align: end;
+			margin: 1rem 0;
+			button {
+				margin: 0 0.5rem;
+			}
+			button:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+}

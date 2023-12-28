@@ -1,21 +1,10 @@
 {
     "off-chain-db-credentials": {
-        "searchPatterns": [
-            "cloudfoundry:off-chain-db",
-            "env:OFF_CHAIN_DB_CONFIG",
-            "file:/server/config/local-cloudant-config.json"
-        ]
+        "env": "OFF_CHAIN_DB_CONFIG",
+        "file": "local-db-config.json"
     },
-    "off-chain-db-credentials-mongo": {
-        "searchPatterns": [
-            "file:/server/config/local-mongo-config.json"
-        ]
-    },
-    "IBM-certificate-manager-credentials": {
-        "searchPatterns": [
-            "env:IBM_CERTIFICATE_MANAGER_CONFIG",
-            "file:/server/config/local-certmanager-config.json"
-        ]
+    "kvs-credentials": {
+        "env": "KVS_CONFIG",
+        "file": "local-kvs-config.json"
     }
-
 }

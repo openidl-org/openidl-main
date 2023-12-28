@@ -1,0 +1,56 @@
+name: Publish chaincode metadata package
+
+on:
+  workflow_call:
+    inputs:
+      chaincode_metadata_label:
+        description: 'Chaincode metadata label'
+        required: true
+        type: string
+      chaincode_docker_image:
+        description: 'Docker image'
+        required: true
+        type: string
+      chaincode_docker_image_digest:
+        description: 'Docker image SHA256 digest'
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      chaincode_metadata_label:
+        description: 'Chaincode metadata label'
+        required: true
+        type: string
+        default: 'openidl-cc-default'
+      chaincode_docker_image:
+        description: 'Docker image'
+        required: true
+        type: string
+        default: 'openidl-org/openidl-chaincode'
+      chaincode_docker_image_digest:
+        description: 'Docker image SHA256 digest'
+        required: true
+        type: string
+        default: 'sha256:22e14d78fa4d3cbf1465fd52e7d49e4ba119de55fe697996612fc38b07ea8f35'
+
+jobs:
+  publish-chaincode-metadata-package:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout project sources
+      uses: actions/checkout@v2
+    - name: Setup Gradle
+      uses: gradle/gradle-build-action@v2
+    - name: Run build with Gradle Wrapper
+      working-directory: openidl-chaincode/chaincode/openidl-metadata
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        NEW_VERSION=1.0.$GITHUB_RUN_NUMBER
+        echo "Github username: ${GITHUB_ACTOR}"
+        echo "Version: ${NEW_VERSION}"
+        ./gradlew publish \
+          -PchaincodeLabel=${{ inputs.chaincode_metadata_label }} \
+          -PimageLocationUrl=${{ inputs.chaincode_docker_image }} \
+          -PimageDigest=${{ inputs.chaincode_docker_image_digest }} \
+          -Pversion=$NEW_VERSION

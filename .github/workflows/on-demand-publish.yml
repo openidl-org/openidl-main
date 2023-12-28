@@ -1,0 +1,32 @@
+name: On-demand build & publish
+
+on:
+  workflow_dispatch:
+
+jobs:
+  openidl-common-lib:
+    uses: ./.github/workflows/publish-openidl-common-lib-npm.yml
+  openidl-mapper:
+    needs: openidl-common-lib
+    uses: ./.github/workflows/publish-mapper.yml
+  openidl-utilities:
+    needs: openidl-common-lib
+    uses: ./.github/workflows/publish-openidl-utilities.yml
+  openidl-data-call-app:
+    needs: openidl-common-lib
+    uses: ./.github/workflows/publish-openidl-data-call-app.yml
+  openidl-data-call-mood-listener:
+    needs: openidl-common-lib
+    uses: ./.github/workflows/publish-openidl-data-call-mood-listener.yml
+  openidl-data-call-processor:
+    needs: openidl-common-lib
+    uses: ./.github/workflows/publish-openidl-data-call-processor.yml
+  openidl-insurance-data-manager:
+    needs: openidl-common-lib
+    uses: ./.github/workflows/publish-openidl-insurance-data-manager.yml
+  openidl-data-event-listener:
+    needs: openidl-common-lib
+    uses: ./.github/workflows/publish-openidl-transactional-data-event-listener.yml
+  openidl-ui-workspace:
+    needs: openidl-common-lib
+    uses: ./.github/workflows/publish-openidl-ui-workspace.yml

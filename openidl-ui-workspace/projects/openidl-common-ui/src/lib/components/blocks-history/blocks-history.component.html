@@ -1,0 +1,12 @@
+<mat-accordion class="block-list">
+	<mat-expansion-panel>
+		<mat-expansion-panel-header>
+			<mat-panel-title>Blockchain Shared Ledger</mat-panel-title>
+		</mat-expansion-panel-header>
+		<ul>
+			<li *ngFor="let block of blockList">
+				{{ block }}
+			</li>
+		</ul>
+	</mat-expansion-panel>
+</mat-accordion>

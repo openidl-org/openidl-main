@@ -27,30 +27,30 @@ const path = require('path');
 const swaggerUi = require('swagger-ui-express');
 const yaml = require('js-yaml');
 const session = require('express-session');
-const IBMCloudEnv = require('ibm-cloud-env');
-IBMCloudEnv.init();
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
+openidlCommonLib.EnvConfig.init();
+
+global.fetch = require('node-fetch');
 const routes = require('./routes');
-const openidlDataCallCommonApp = require('openidl-common-lib');
 const transactionFactory = require('./helpers/transaction-factory');
 const networkConfig = require('./config/connection-profile.json');
 
 
 const logger = log4js.getLogger('server');
-logger.setLevel(config.logLevel);
+logger.level = config.logLevel;
 
-const DBManagerFactory = openidlDataCallCommonApp.DBManagerFactory;
+const DBManagerFactory = openidlCommonLib.DBManagerFactory;
 const dbManagerFactoryObject = new DBManagerFactory();
 const insuranceManagerDB = config.targetDB;
 //vv
 //const carrerIds = config.carrierid;
 
 const util = require('./helpers/util');
-
-const apiAuthHandler = openidlDataCallCommonApp.ApiAuthHandler;
-apiAuthHandler.init(IBMCloudEnv.getDictionary('appid-credentials'));
+const idpCredentials = JSON.parse(process.env.IDP_CONFIG);
+const authHandler = openidlCommonLib.AuthHandler.setHandler(idpCredentials);
 
 const errorHandler = require('./middlewares/error-handler');
-const { init } = require('openidl-common-lib/helper/wallet');
+const { init } = require('@openidl-org/openidl-common-lib/helper/wallet');
 const { json } = require('body-parser');
 const e = require('express');
 const app = express();
@@ -60,7 +60,7 @@ app.use(cors());
  * Set up logging
  */
 
- 
+
 
 logger.debug('setting up app: registering routes, middleware...');
 /**
@@ -76,10 +76,6 @@ const swaggerDocument = yaml.safeLoad(fs.readFileSync(path.join(__dirname, '../p
 app.use(bodyParser.urlencoded({
     extended: true,
 }));
-app.use(bodyParser.json({
-    limit: '50mb'
-}));
-
 
 logger.debug('setting up app: registering routes, middleware...');
 
@@ -96,23 +92,22 @@ app.enable("trust proxy");
 app.use(session({
     secret: "123456",
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: {
+        secure: true,
+        httpOnly: true,
+        sameSite: 'lax'
+    } 
 }));
+
 logger.debug('setting up app: initializing passport');
+const passport = authHandler.getPassport();
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.json({limit: '500mb'}));
 
-let apiAppStrategy = apiAuthHandler.getAPIStrategy();
-const apiPassport = apiAuthHandler.getPassport();
-app.use(apiPassport.initialize());
-apiPassport.use(apiAppStrategy);
+authHandler.setStrategy(passport);
 
-// Passport session persistance
-apiPassport.serializeUser(function (user, cb) {
-    cb(null, user);
-});
-
-apiPassport.deserializeUser(function (obj, cb) {
-    cb(null, obj);
-});
 app.enable('trust proxy');
 
 app.use(function (req, res, next) {
@@ -172,17 +167,18 @@ let dbServiceRunning = util.isMongoServiceRunning(dbManagerFactoryObject);
 
 if (dbServiceRunning) {
     logger.info("Mongo DB service is up and running");
-    transactionFactory.init(IBMCloudEnv.getDictionary('IBM-certificate-manager-credentials'), networkConfig).then(() => {
-        logger.info('transaction factory init done');
-        app.listen(port, () => {
-            logger.info(`app listening on http://${host}:${port}`);
-            logger.info(`Swagger UI is available at http://${host}:${port}/api-docs`);
-            app.emit("listened", null);
-           // dbTaskInitialization();
+    transactionFactory.init(JSON.parse(process.env.KVS_CONFIG)
+        , networkConfig).then(() => {
+            logger.info('transaction factory init done');
+            app.listen(port, () => {
+                logger.info(`app listening on http://${host}:${port}`);
+                logger.info(`Swagger UI is available at http://${host}:${port}/api-docs`);
+                app.emit("listened", null);
+                // dbTaskInitialization();
+            });
+        }).catch(err => {
+            logger.error('Transaction factory Init Error. Please contact system admin' + err);
         });
-    }).catch(err => {
-        logger.error('Transaction factory Init Error. Please contact system admin' + err);
-    });
 } else {
     logger.error("Mongo DB service is down. Please contact system administrator");
     process.exit();

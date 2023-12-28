@@ -1,0 +1,21 @@
+@import '../../styles/variables';
+
+.data-call-list {
+	padding-bottom: 3rem;
+	.status-group {
+		.button {
+			width: 8rem;
+			.text {
+				margin-left: 3px;
+			}
+			&.mat-button-toggle-checked {
+				background: $primary;
+				color: $white;
+			}
+		}
+	}
+
+	.mtb-1 {
+		margin: 1rem 0;
+	}
+}

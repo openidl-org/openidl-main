@@ -7,16 +7,17 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/hyperledger/fabric/core/chaincode/shim"
-	"github.com/hyperledger/fabric/protos/ledger/queryresult"
-	pb "github.com/hyperledger/fabric/protos/peer"
+	"github.com/hyperledger/fabric-chaincode-go/shim"
+	"github.com/hyperledger/fabric-chaincode-go/shimtest"
+	"github.com/hyperledger/fabric-protos-go/ledger/queryresult"
+	pb "github.com/hyperledger/fabric-protos-go/peer"
 )
 
 // Changed to Transaction id being generated uniquely for even test cases
 var TxIdSeed int = 0
 
 type CouchDBMockStub struct {
-	*shim.MockStub
+	*shimtest.MockStub
 	ObjectType string
 }
 
@@ -38,7 +39,7 @@ type CouchDBMockStateRangeQueryIterator struct {
 }
 
 func NewCouchDBMockStub(name string, cc shim.Chaincode) *CouchDBMockStub {
-	mock := shim.NewMockStub(name, cc)
+	mock := shimtest.NewMockStub(name, cc)
 	cmock := CouchDBMockStub{mock, ""}
 	return &cmock
 }
@@ -55,12 +56,17 @@ func MockInit(stub *CouchDBMockStub, function string, args []byte) pb.Response {
 }
 
 func checkInvoke(t *testing.T, stub *CouchDBMockStub, function string, args []byte) pb.Response {
+	fmt.Println("inside checkInvoke")
 	mockInvokeArgs := [][]byte{[]byte(function), args}
+	fmt.Println("mockinvokeArgs ", mockInvokeArgs)
 	txId := generateTransactionId()
+	fmt.Println("txId ", txId)
 	res := stub.MockInvoke(txId, mockInvokeArgs)
+	fmt.Println("res ", res)
 	if res.Status != shim.OK {
 		t.FailNow()
 	}
+	fmt.Println("res ", res)
 	return res
 }
 func checkInvokeForResetLedger(t *testing.T, stub *CouchDBMockStub, function string) pb.Response {

@@ -16,10 +16,9 @@
   },
   "dependencies": {
     "deep-equals": "0.0.2",
-    "ibm-cloud-env": "^0.2.7",
     "json-diff": "^0.5.4",
     "json2csv": "^5.0.6",
-    "log4js": "^6.3.0",
+    "log4js": "^4.3.2",
     "mongodb": "^3.6.3",
     "mongoose": "^5.10.13",
     "openidl-mapper": "file:../openidl-mapper",

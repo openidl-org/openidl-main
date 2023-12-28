@@ -1,0 +1,40 @@
+<app-header></app-header>
+
+<div class="container">
+	<container-element [ngSwitch]="currentStatus">
+		<h1 class="header-with-icon" *ngSwitchCase="'ISSUED'">
+			<mat-icon color="primary">note_add</mat-icon>
+			<span>Issued Data Call</span>
+		</h1>
+		<h1 class="header-with-icon" *ngSwitchCase="'CANCELLED'">
+			<mat-icon color="primary">archive</mat-icon>
+			<span>Abandoned Data Call</span>
+		</h1>
+		<h1 class="header-with-icon" *ngSwitchDefault>
+			<mat-icon color="primary">bookmarks</mat-icon>
+			<span>Draft Data Call</span>
+		</h1>
+	</container-element>
+
+	<div *ngIf="isBack">
+		<button mat-button color="primary" (click)="goBack()">
+			<mat-icon color="primary">arrow_back_ios</mat-icon>
+			Back to Data Calls
+		</button>
+	</div>
+	<div class="breadcrumb" *ngIf="!isBack">
+		<a class="back-link" [routerLink]="['/datacallList']">Data Calls</a>
+		&nbsp; / &nbsp;
+		<a class="back-link" [routerLink]="['/viewIssued']"
+			>Data call details</a
+		>
+		&nbsp; / &nbsp;
+		<a
+			class="back-link"
+			style="text-decoration: none"
+			href="javascript:(void);"
+			>Data call drafts</a
+		>
+	</div>
+	<app-update-form (fail)="goBack()"></app-update-form>
+</div>

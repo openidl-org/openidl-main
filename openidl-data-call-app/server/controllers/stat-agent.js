@@ -15,7 +15,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
- 
+
 
 const log4js = require('log4js');
 const config = require('config');
@@ -24,7 +24,7 @@ const transactionFactory = require('../helpers/transaction-factory');
 const channelConfig = require('../config/channel-config.json');
 const carriersDb = "carriers_db";
 const logger = log4js.getLogger('controllers - statAgent');
-const openidlCommonLib = require('openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
 const DBManagerFactory = openidlCommonLib.DBManagerFactory;
 const dbManagerFactoryObject = new DBManagerFactory();
 logger.level = config.loglevel
@@ -185,7 +185,8 @@ statAgent.createReport = async (req, res) => {
 const getConsentOrgNames = async (queryResponse) => {
     console.log("Inside getOrgNames");
     const carrierIds = queryResponse.map(response => response.consent.carrierID);
-    const dbManager = await dbManagerFactoryObject.getInstance();
+    const options = JSON.parse(process.env.OFF_CHAIN_DB_CONFIG);
+    const dbManager = await dbManagerFactoryObject.getInstance(options);
     return new Promise(function (resolve, reject) {
         dbManager.fetchCarrierNames(carrierIds, carriersDb).then((data) => {
             //console.log('Retrieved document successfully for id:' + carrierIds, data);
@@ -205,7 +206,8 @@ const getConsentOrgNames = async (queryResponse) => {
 const getLikeOrgNames = async (queryResponse) => {
     console.log("Inside getOrgNames");
     const carrierIds = queryResponse.map(response => response.like.organizationID);
-    const dbManager = await dbManagerFactoryObject.getInstance();
+    const options = JSON.parse(process.env.OFF_CHAIN_DB_CONFIG);
+    const dbManager = await dbManagerFactoryObject.getInstance(options);
     console.log("carrierIds,dbManager", carrierIds, dbManager)
     console.log("carriersDb--->", carriersDb)
     return new Promise(function (resolve, reject) {

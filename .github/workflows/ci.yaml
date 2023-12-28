@@ -1,0 +1,31 @@
+name: Run Data Event Listener tests
+
+on:
+  pull_request:
+    paths:
+      - "openidl-transactional-data-event-listener/**"
+
+env:
+  REGISTRY: ghcr.io/${{ github.repository }}
+  IMAGE_NAME: openidl-transactional-data-event-listener
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+jobs:
+  openidl-transactional-data-event-listener:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14.17.x'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: openidl-transactional-data-event-listener
+
+      - name: Run tests
+        run: npm test
+        working-directory: openidl-transactional-data-event-listener

@@ -1,0 +1,51 @@
+<mat-toolbar class="header">
+	<span
+		><img
+			src="../../assets/images/openidl-header-logo.png"
+			(click)="goHome()"
+			class="logo"
+			alt="Open IDL Logo"
+		/>
+		<span class="divider"></span>
+		<img [src]="roleIcon" class="logo" />
+		<span class="divider"></span>
+		<img [src]="orgLogo" class="logo" />
+	</span>
+	<span class="spacer"></span>
+	<button
+		mat-button
+		color="primary"
+		[ngClass]="{ active: selected === 0 }"
+		(click)="navigateToRoute('/datacallList'); selected = 0"
+	>
+		<mat-icon>list_alt</mat-icon>
+		Data Calls
+	</button>
+	<button
+		mat-button
+		color="primary"
+		[ngClass]="{ active: selected === 1 }"
+		*ngIf="appConst.shouldCreateDatacall"
+		(click)="navigateToRoute('/createDatacall'); selected = 1"
+	>
+		<mat-icon>add_box</mat-icon>
+		New Data Call
+	</button>
+	<button mat-button color="primary" (click)="checkLogout()">
+		<mat-icon>logout</mat-icon>
+		Log Out
+	</button>
+	<button
+		mat-icon-button
+		[matMenuTriggerFor]="menu"
+		title="more menu"
+		*ngIf="isResetWorldState && role === 'statagent'"
+	>
+		<mat-icon>more_vert</mat-icon>
+	</button>
+	<mat-menu #menu="matMenu">
+		<button mat-menu-item (click)="confirmReset()" *ngIf="isResetBtn">
+			Delete All Data
+		</button>
+	</mat-menu>
+</mat-toolbar>

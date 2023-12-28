@@ -6,8 +6,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/hyperledger/fabric/core/chaincode/shim"
-	pb "github.com/hyperledger/fabric/protos/peer"
+	"github.com/hyperledger/fabric-chaincode-go/shim"
+	pb "github.com/hyperledger/fabric-protos-go/peer"
+	logger "github.com/sirupsen/logrus"
 )
 
 /**
@@ -24,7 +25,7 @@ import (
  @Failure:{"message":"", "errorCode":"sys_err or bus_error"}
  * @Description : CreateConsent function contains business logic to insert consent calls
 **/
-func (this *openIDLCC) CreateConsent(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) CreateConsent(stub shim.ChaincodeStubInterface, args string) pb.Response {
 	logger.Debug("CreateConsent: enter")
 	defer logger.Debug("CreateConsent: exit")
 
@@ -97,8 +98,91 @@ func (this *openIDLCC) CreateConsent(stub shim.ChaincodeStubInterface, args stri
 	return shim.Success(nil)
 }
 
+/**
+* function-name :CreateReconsent (invoke)
+* @params{json}:
+{
+	"dataCallID":"Mandatory",
+	"dataCallVersion":"Mandatory",
+	"carrierID":"Mandatory",*
+	"createdTs":"Mandatory",
+	"createdBy":"Mandatory"
+}
+ @Success: nil
+ @Failure:{"message":"", "errorCode":"sys_err or bus_error"}
+ * @Description : CreateReconsent function contains business logic to insert consent calls even
+ * if there is already a consent  from the carrier
+**/
+func (this *SmartContract) CreateReconsent(stub shim.ChaincodeStubInterface, args string) pb.Response {
+	logger.Debug("CreateReconsent: enter")
+	defer logger.Debug("CreateReconsent: exit")
+
+	//Check if array length is greater than 0
+	if len(args) < 1 {
+		return shim.Error("Incorrect number of arguments. Expecting 5")
+	}
+	consent := Consent{}
+	err := json.Unmarshal([]byte(args), &consent)
+	if err != nil {
+		return shim.Error("CreateConsent: Error Unmarshalling Controller Call JSON: " + err.Error())
+	}
+
+	// TODO: Investigate why it is returning nill despite the fact data call exists in other channel
+	// Check if the data call corresponding to this like exists on Global channel
+
+	var dataCall GetDataCall
+	dataCall.ID = consent.DatacallID
+	dataCall.Version = consent.DataCallVersion
+	dataCallAsBytes, _ := json.Marshal(dataCall)
+	getDataCallReqJson := string(dataCallAsBytes)
+	logger.Debug("CreateReconsent: getDataCallReqJson > ", getDataCallReqJson)
+	var GetDataCallByIdAndVersionFunc = "GetDataCallByIdAndVersion"
+	getDataCallRequest := ToChaincodeArgs(GetDataCallByIdAndVersionFunc, getDataCallReqJson)
+	logger.Debug("CreateReconsent: getDataCallRequest", getDataCallRequest)
+	getDataCallResponse := stub.InvokeChaincode(DEFAULT_CHAINCODE_NAME, getDataCallRequest, DEFAULT_CHANNEL)
+	logger.Debug("CreateReconsent: getDataCallResponse > ", getDataCallResponse)
+	logger.Debug("CreateReconsent: getDataCallResponse.Status ", getDataCallResponse.Status)
+	logger.Debug("CreateReconsent: getDataCallResponse.Payload", string(getDataCallResponse.Payload))
+	if getDataCallResponse.Status != 200 {
+		logger.Error("CreateReconsent: Invalid Data Call ID and Version Specified: ", err)
+		return shim.Error(errors.New("CreateReconsent: Invalid Data Call ID and Version Specified").Error())
+	}
+
+	logger.Debug("Recieved Data Call >> " + string(getDataCallResponse.Payload))
+	if len(getDataCallResponse.Payload) <= 0 {
+		logger.Error("CreateReconsent: No Matching datacallId and datacallVersion specified in Consent message")
+		return shim.Error(errors.New("CreateReconsent: No Matching datacallId and datacallVersion specified in Consent message").Error())
+
+	}
+
+	pks := []string{CONSENT_PREFIX, consent.DatacallID, consent.DataCallVersion, consent.CarrierID}
+	consentKey, _ := stub.CreateCompositeKey(CONSENT_DOCUMENT_TYPE, pks) //CONSENT_PREFIX + consent.DatacallID
+
+	// Checking the ledger to confirm that the controller key doesn't exist
+	logger.Debug("CreateReconsent: Get Consent from World State")
+	previousConsentData, _ := stub.GetState(consentKey)
+	logger.Debug("CreateReconsent: PreviousConsentAsBytes > ", previousConsentData)
+
+	logger.Warning("CreateReconsent: Consent Already Exist for data call Id: ", consent.DatacallID)
+	logger.Debug("CreateReconsent: Create consent entry")
+	consentInBytes, _ := json.Marshal(consent)
+
+	// === Save Controller to state ===
+	err = stub.PutState(consentKey, consentInBytes)
+	if err != nil {
+		return shim.Error("CreateConsent: Error committing data for key: " + consentKey)
+	}
+
+	logger.Debug("CreateConsent: Consent Committed to World State, Raising a CreateConsentEvent")
+
+	// Create chaincode event
+	_ = stub.SetEvent(CREATE_CONSENT_EVENT, consentInBytes)
+
+	return shim.Success(nil)
+}
+
 // Request param- {"dataCallID":"", "dataCallVersion":"", "carrierid":"", "status": }
-func (this *openIDLCC) UpdateConsentStatus(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) UpdateConsentStatus(stub shim.ChaincodeStubInterface, args string) pb.Response {
 
 	logger.Debug("UpdateConsentStatus: Enter")
 	if len(args) < 1 {
@@ -112,12 +196,12 @@ func (this *openIDLCC) UpdateConsentStatus(stub shim.ChaincodeStubInterface, arg
 		return shim.Error(errors.New("UpdateConsentStatus: Error during json.Unmarshal").Error())
 	}
 
-	if consent.DataCallID == "" || consent.DataCallVersion == "" || consent.CarrierID == ""  {
+	if consent.DataCallID == "" || consent.DataCallVersion == "" || consent.CarrierID == "" {
 		return shim.Error("DataCallID or DataCallVersion or CarrierID can't be empty")
 	}
 
 	pks := []string{CONSENT_PREFIX, consent.DataCallID, consent.DataCallVersion, consent.CarrierID}
-	consentKey, _ := stub.CreateCompositeKey(CONSENT_DOCUMENT_TYPE, pks) 
+	consentKey, _ := stub.CreateCompositeKey(CONSENT_DOCUMENT_TYPE, pks)
 
 	logger.Debug("Get Consent from World State")
 	consentData, _ := stub.GetState(consentKey)
@@ -139,9 +223,9 @@ func (this *openIDLCC) UpdateConsentStatus(stub shim.ChaincodeStubInterface, arg
 
 		consentDataAsBytes, _ := json.Marshal(cc)
 		err = stub.PutState(consentKey, consentDataAsBytes)
-				if err != nil {
-					logger.Error("Error commiting the cosent status")
-					return shim.Error("Error commiting the consent status")
+		if err != nil {
+			logger.Error("Error commiting the cosent status")
+			return shim.Error("Error commiting the consent status")
 		}
 
 		return shim.Success(nil)
@@ -149,7 +233,7 @@ func (this *openIDLCC) UpdateConsentStatus(stub shim.ChaincodeStubInterface, arg
 
 }
 
-func (this *openIDLCC) CreateConsentCountEntry(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) CreateConsentCountEntry(stub shim.ChaincodeStubInterface, args string) pb.Response {
 	logger.Debug("CreateConsentCountEntry: enter")
 	defer logger.Debug("CreateConsentCountEntry: exit")
 	if len(args) < 1 {
@@ -195,7 +279,7 @@ func (this *openIDLCC) CreateConsentCountEntry(stub shim.ChaincodeStubInterface,
 * @Failure:{"message":"", "errorCode":"sys_err or bus_error"}
 * @Description : Counting the number of consents carrier is giving or already given
 */
-func (this *openIDLCC) CountConsents(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) CountConsents(stub shim.ChaincodeStubInterface, args string) pb.Response {
 	logger.Debug("CountConsents: enter")
 	defer logger.Debug("CountConsents: exit")
 	if len(args) < 1 {
@@ -246,7 +330,7 @@ func (this *openIDLCC) CountConsents(stub shim.ChaincodeStubInterface, args stri
 }
 
 //updates consent count for a data call based on dataCallID and dataCallVersion
-func (this *openIDLCC) UpdateConsentCountForDataCall(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) UpdateConsentCountForDataCall(stub shim.ChaincodeStubInterface, args string) pb.Response {
 	logger.Debug("UpdateConsentCountForDataCall: enter")
 	defer logger.Debug("UpdateConsentCountForDataCall: exit")
 	if len(args) < 1 {
@@ -311,7 +395,7 @@ func (this *openIDLCC) UpdateConsentCountForDataCall(stub shim.ChaincodeStubInte
 
 // Returns List of carriers Consented for a specific data call, based on dataCallID and dataCallVersion
 // Request param- {"dataCallID":" ", "dataCallVersion":" "}
-func (this *openIDLCC) GetConsentsByDataCall(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) GetConsentsByDataCall(stub shim.ChaincodeStubInterface, args string) pb.Response {
 
 	logger.Debug("GetConsentsByDataCall: enter")
 	defer logger.Debug("GetConsentsByDataCall: exit")
@@ -378,7 +462,7 @@ func (this *openIDLCC) GetConsentsByDataCall(stub shim.ChaincodeStubInterface, a
 
 // Returns List of carriers Consented for a specific data call, based on dataCallID and dataCallVersion on requested channels
 // Request param- {"dataCallID":" ", "dataCallVersion":" ", "channelList":[{"channelName": "channel1","chaincodeName": "openidl-cc-channel1"}]}
-func (this *openIDLCC) ListConsentsByDataCall(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) ListConsentsByDataCall(stub shim.ChaincodeStubInterface, args string) pb.Response {
 
 	logger.Debug("ListConsentsByDataCall: enter")
 	defer logger.Debug("ListConsentsByDataCall: exit")
@@ -499,7 +583,7 @@ func (this *openIDLCC) ListConsentsByDataCall(stub shim.ChaincodeStubInterface, 
 
 }
 
-func (this *openIDLCC) GetConsentByDataCallAndOrganization(stub shim.ChaincodeStubInterface, args []string) pb.Response {
+func (this *SmartContract) GetConsentByDataCallAndOrganization(stub shim.ChaincodeStubInterface, args []string) pb.Response {
 
 	logger.Debug("GetConsentByDataCallAndOrganization: enter")
 	defer logger.Debug("GetConsentByDataCallAndOrganization: exit")

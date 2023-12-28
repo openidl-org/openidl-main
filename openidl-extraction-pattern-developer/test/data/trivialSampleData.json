@@ -1,0 +1,35 @@
+{
+    "batchId": "batch_11111",
+    "chunkId": "chunk_11111",
+    "carrierId": "1235",
+    "records": [
+        {
+            "zipcode": "11111",
+            "premium": 100,
+            "batchId": "batch_11111",
+            "chunkId": "chunk_11111",
+            "carrierId": "1235"
+        },
+        {
+            "zipcode": "11111",
+            "premium": 200,
+            "batchId": "batch_11111",
+            "chunkId": "chunk_11111",
+            "carrierId": "1235"
+        },
+        {
+            "zipcode": "11111",
+            "premium": 300,
+            "batchId": "batch_11111",
+            "chunkId": "chunk_11111",
+            "carrierId": "1235"
+        },
+        {
+            "zipcode": "11112",
+            "premium": 100,
+            "batchId": "batch_11111",
+            "chunkId": "chunk_11111",
+            "carrierId": "1235"
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+<app-base-dialog [title]="data.title" [type]="data.type"></app-base-dialog>
+<mat-dialog-content class="mat-typography">
+	{{ data.message }}
+
+	<div *ngIf="data.isData">
+		{{ data.data | json }}
+	</div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+	<button
+		*ngIf="data.isSessionExpired"
+		mat-flat-button
+		(click)="redirectToLogin()"
+		cdkFocusInitial
+		color="primary"
+	>
+		Login
+	</button>
+</mat-dialog-actions>

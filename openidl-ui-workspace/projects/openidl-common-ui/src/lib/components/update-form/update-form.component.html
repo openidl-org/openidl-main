@@ -1,0 +1,741 @@
+<div class="form">
+	<mat-card>
+		<mat-card-content class="data-form">
+			<mat-toolbar>
+				<span *ngIf="toolbarLabel.length > 0"
+					>{{ toolbarLabel }} |
+					<span class="mat-body-2">{{ toolbarTS }}</span></span
+				>
+
+				<span class="spacer"></span>
+				<div *ngIf="currentStatus === 'DRAFT'">
+					<mat-spinner
+						matSuffix
+						[diameter]="20"
+						*ngIf="likeCount === undefined"
+					></mat-spinner>
+					<mat-icon
+						color="primary"
+						*ngIf="likeCount >= 0"
+						[matBadge]="likeCount"
+						matBadgeColor="warn"
+						>favorite</mat-icon
+					>
+				</div>
+			</mat-toolbar>
+			<div class="row">
+				<div class="sidebar">
+					<mat-selection-list [multiple]="false">
+						<div mat-subheader>Available Versions</div>
+						<mat-list-option
+							(click)="showDetails(draft, i)"
+							[selected]="!(draft.status === 'ISSUED') && i == 0"
+							*ngFor="let draft of draftlist; let i = index"
+						>
+							<mat-icon mat-list-icon>bookmark</mat-icon>
+							<div mat-line *ngIf="draft.status === 'ISSUED'">
+								Issued Data Call
+							</div>
+							<div
+								mat-line
+								*ngIf="!(draft.status === 'ISSUED') && i == 0"
+							>
+								Current Version
+							</div>
+							<div
+								mat-line
+								*ngIf="!(draft.status === 'ISSUED') && i != 0"
+							>
+								Draft Version {{ draft.version }}
+							</div>
+							<div mat-line>{{ draft.updatedTs }}</div>
+						</mat-list-option>
+					</mat-selection-list>
+				</div>
+				<div class="content">
+					<form
+						*ngIf="!isReadonly"
+						[formGroup]="registerForm"
+						novalidate
+						class="data-form"
+					>
+						<div class="row">
+							<div class="col">
+								<mat-form-field
+									class="full-width"
+									appearance="outline"
+								>
+									<mat-label>Name</mat-label>
+									<input
+										matInput
+										placeholder="Enter Name"
+										formControlName="name"
+									/>
+								</mat-form-field>
+							</div>
+							<div class="col">
+								<mat-form-field
+									class="full-width"
+									appearance="outline"
+								>
+									<mat-label>Jurisdiction</mat-label>
+									<input
+										readonly
+										matInput
+										placeholder="Enter Jurisdiction"
+										formControlName="jurisdiction"
+									/>
+								</mat-form-field>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col">
+								<mat-form-field
+									class="full-width"
+									appearance="outline"
+								>
+									<mat-label>Description</mat-label>
+									<input
+										matInput
+										placeholder="Enter Description"
+										formControlName="description"
+									/>
+								</mat-form-field>
+							</div>
+							<div class="col">
+								<mat-form-field
+									appearance="outline"
+									class="full-width"
+								>
+									<mat-label>Line of Business</mat-label>
+									<mat-select
+										placeholder="Select Line of Business"
+										formControlName="lineOfBusiness"
+										[class.spinner]="LOBs.length === 0"
+									>
+										<mat-option
+											[value]="lob.value"
+											*ngFor="let lob of LOBs"
+											>{{ lob.value }}</mat-option
+										>
+									</mat-select>
+								</mat-form-field>
+							</div>
+						</div>
+
+						<div class="row" *ngIf="hideFormElement">
+							<div class="col">
+								<mat-form-field
+									appearance="outline"
+									class="full-width"
+								>
+									<mat-label>Premium Dates</mat-label>
+									<mat-date-range-input
+										[rangePicker]="premiumDatePicker"
+									>
+										<input
+											matStartDate
+											formControlName="premiumFromDate"
+											placeholder="Start date"
+										/>
+										<input
+											matEndDate
+											formControlName="premiumToDate"
+											placeholder="End date"
+										/>
+									</mat-date-range-input>
+									<mat-datepicker-toggle
+										matSuffix
+										[for]="premiumDatePicker"
+									></mat-datepicker-toggle>
+									<mat-date-range-picker
+										#premiumDatePicker
+									></mat-date-range-picker>
+
+									<mat-error
+										*ngIf="
+											registerForm.controls.premiumFromDate.hasError(
+												'matStartDateInvalid'
+											)
+										"
+										>Invalid start date</mat-error
+									>
+									<mat-error
+										*ngIf="
+											registerForm.controls.premiumToDate.hasError(
+												'matEndDateInvalid'
+											)
+										"
+										>Invalid end date</mat-error
+									>
+								</mat-form-field>
+							</div>
+							<div class="col">
+								<mat-form-field
+									appearance="outline"
+									class="full-width"
+								>
+									<mat-label>Loss Dates</mat-label>
+									<mat-date-range-input
+										[rangePicker]="lossDatePicker"
+									>
+										<input
+											matStartDate
+											formControlName="lossFromDate"
+											placeholder="Start date"
+										/>
+										<input
+											matEndDate
+											formControlName="lossToDate"
+											placeholder="End date"
+										/>
+									</mat-date-range-input>
+									<mat-datepicker-toggle
+										matSuffix
+										[for]="lossDatePicker"
+									></mat-datepicker-toggle>
+									<mat-date-range-picker
+										#lossDatePicker
+									></mat-date-range-picker>
+
+									<mat-error
+										*ngIf="
+											registerForm.controls.lossFromDate.hasError(
+												'matStartDateInvalid'
+											)
+										"
+										>Invalid start date</mat-error
+									>
+									<mat-error
+										*ngIf="
+											registerForm.controls.lossToDate.hasError(
+												'matEndDateInvalid'
+											)
+										"
+										>Invalid end date</mat-error
+									>
+								</mat-form-field>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col toggle" *ngIf="hideFormElement">
+								<mat-slide-toggle
+									formControlName="intentToPublish"
+									color="primary"
+									[checked]="true"
+									labelPosition="before"
+								>
+									Expected Public Circulation?
+								</mat-slide-toggle>
+							</div>
+							<div class="col">
+								<mat-form-field appearance="outline" class="full-width" dateFormat1>							
+									<mat-label>Transaction Month</mat-label>
+									<input matInput [matDatepicker]="transactionMonthPicker" placeholder="Month and Year" formControlName="transactionMonth">
+									<mat-datepicker-toggle matSuffix [for]="transactionMonthPicker"></mat-datepicker-toggle>
+									<mat-datepicker #transactionMonthPicker
+													startView="multi-year"
+													(yearSelected)="chosenYearHandler($event)"
+													(monthSelected)="chosenMonthHandler($event, transactionMonthPicker)"
+													panelClass="example-month-picker">
+									</mat-datepicker>
+								</mat-form-field>
+							</div>
+							<div class="col">
+								<mat-form-field
+									appearance="outline"
+									class="full-width"
+								>
+									<mat-label>Deadline</mat-label>
+									<input
+										matInput
+										[matDatepickerFilter]="disableOldDates"
+										[matDatepicker]="deadlinePicker"
+										formControlName="deadline"
+									/>
+									<mat-datepicker-toggle
+										matSuffix
+										[for]="deadlinePicker"
+									></mat-datepicker-toggle>
+									<mat-datepicker
+										#deadlinePicker
+									></mat-datepicker>
+								</mat-form-field>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col">
+								<mat-form-field
+									appearance="outline"
+									class="full-width"
+								>
+									<mat-label>Purpose</mat-label>
+									<textarea
+										rows="7"
+										matInput
+										placeholder="Enter Purpose"
+										formControlName="purpose"
+									></textarea>
+								</mat-form-field>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col">
+								<mat-form-field
+									appearance="outline"
+									class="full-width"
+								>
+									<mat-label>Detailed Criteria</mat-label>
+									<textarea
+										rows="7"
+										matInput
+										placeholder="Enter Detailed Criteria"
+										formControlName="detailedCriteria"
+									></textarea>
+								</mat-form-field>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col">
+								<mat-form-field
+									appearance="outline"
+									class="full-width"
+								>
+									<mat-label
+										>Eligibility Requirement</mat-label
+									>
+									<textarea
+										rows="7"
+										matInput
+										placeholder="Enter Eligibility Requirement"
+										formControlName="eligibilityRequirement"
+									></textarea>
+								</mat-form-field>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col toggle">
+								<mat-slide-toggle
+									class="full-width"
+									formControlName="isShowParticipants"
+									color="primary"
+									[checked]="true"
+									labelPosition="before"
+								>
+									Add list of participants to summary report?
+								</mat-slide-toggle>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<mat-form-field
+									appearance="outline"
+									class="full-width"
+								>
+									<mat-label
+										>Comment (Mandatory for saving a new
+										data call draft)</mat-label
+									>
+									<textarea
+										rows="7"
+										matInput
+										placeholder="Enter Comment"
+										formControlName="comments"
+									></textarea>
+								</mat-form-field>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col button-row">
+								<button
+									mat-stroked-button
+									color="primary"
+									(click)="clone(registerForm.value)"
+								>
+									<mat-icon color="primary"
+										>content_copy</mat-icon
+									>
+									Clone
+								</button>
+								<button
+									mat-stroked-button
+									color="primary"
+									(click)="abandon(registerForm.value)"
+								>
+									<mat-icon color="primary">archive</mat-icon>
+									Abandon
+								</button>
+								<button
+									mat-stroked-button
+									color="primary"
+									(click)="saveDraft(registerForm.value)"
+								>
+									<mat-icon color="primary"
+										>bookmark</mat-icon
+									>
+									Save New Draft
+								</button>
+								<button
+									mat-flat-button
+									color="primary"
+									(click)="issueDatacall(registerForm.value)"
+								>
+									<mat-icon>note_add</mat-icon>
+									Issue
+								</button>
+							</div>
+						</div>
+					</form>
+
+					<div *ngIf="isReadonly" class="data-form">
+						<div class="row pb-1">
+							<div class="col readonly">
+								<h4>Name</h4>
+								<p>
+									{{ model.name }}
+								</p>
+							</div>
+							<div class="col readonly">
+								<h4>Jurisdiction</h4>
+								<p>
+									{{ model.jurisdiction }}
+								</p>
+							</div>
+							<div class="col readonly">
+								<h4>Description</h4>
+								<p>
+									{{ model.description }}
+								</p>
+							</div>
+						</div>
+						<div class="row pb-1" *ngIf="hideFormElement">
+							<div class="col readonly">
+								<h4>Expected Public Circulation?</h4>
+								<p>
+									{{ model.intentToPublish ? 'Yes' : 'No' }}
+								</p>
+							</div>
+							<div class="col readonly">
+								<h4>Premium Dates</h4>
+								<p>
+									{{ model.premiumFromDate }} to
+									{{ model.premiumToDate }}
+								</p>
+							</div>
+							<div class="col readonly">
+								<h4>Loss Dates</h4>
+								<p>
+									{{ model.lossFromDate }} to
+									{{ model.lossToDate }}
+								</p>
+							</div>
+						</div>
+						<div class="row pb-1">
+							<div
+								class="col readonly"
+								*ngIf="model.proposedDeliveryDate"
+							>
+								<h4>Proposed Delivery Date</h4>
+								<p>
+									{{ model.proposedDeliveryDate }}
+								</p>
+							</div>
+							<div class="col readonly">
+								<h4>Line of Business</h4>
+								<p>
+									{{ model.lineOfBusiness }}
+								</p>
+							</div>
+							<div class="col readonly" *ngIf="model.deadline">
+								<h4>Deadline</h4>
+								<p>
+									{{ model.deadline }}
+								</p>
+							</div>
+							<div
+								class="col readonly"
+								*ngIf="!model.deadline"
+							></div>
+							<div
+								class="col readonly"
+								*ngIf="!model.proposedDeliveryDate"
+							></div>
+						</div>
+						<div class="row pb-1">
+							<div class="col readonly">
+								<h4>Transaction Month</h4>
+								<p>
+									<span>{{ model.transactionMonth ? model.transactionMonth : '-NA-' }}</span>
+								</p>
+							</div>
+							<div class="col readonly" *ngIf="isForumUrl">
+								<h4>Forum URL</h4>
+								<p>
+									<button
+										*ngIf="isStatAgent"
+										mat-mini-fab
+										matTooltip="Edit forum URL"
+										matTooltipPosition="above"
+										color="primary"
+										(click)="editForum()"
+										aria-label="Edit Forum URL"
+									>
+										<mat-icon>edit</mat-icon>
+									</button>
+									<button
+										mat-button
+										class="text-wrap"
+										[matTooltip]="forumurl"
+										matTooltipPosition="above"
+										color="primary"
+										(click)="openURL(forumurl)"
+									>
+										{{ forumurl }}
+									</button>
+								</p>
+							</div>
+						</div>
+						<div class="row pb-1">
+							<div class="col readonly">
+								<h4>
+									Add list of participants to summary report
+								</h4>
+								<p>
+									{{
+										model.isShowParticipants ? 'Yes' : 'No'
+									}}
+								</p>
+							</div>
+							<div class="col readonly" *ngIf="datacall.isLocked">
+								<h4>Carrier Consents</h4>
+								<p>
+									<mat-spinner
+										class="mat-spin"
+										matSuffix
+										aria-label="Loading carriers count"
+										[diameter]="20"
+										*ngIf="consentCount === undefined"
+									></mat-spinner>
+									<mat-icon
+										*ngIf="consentCount >= 0"
+										class="count-icon"
+										color="primary"
+										aria-label="Number of Carriers"
+										[matBadge]="consentCount"
+										matBadgeColor="warn"
+										>business</mat-icon
+									>
+									<button
+										class="btn-org"
+										mat-button
+										color="primary"
+										*ngIf="isStatAgent"
+										(click)="viewCarriers('Consented')"
+									>
+										View Carriers
+									</button>
+								</p>
+							</div>
+							<div class="col readonly">
+								<h4>Organization Likes</h4>
+								<p>
+									<span
+										*ngIf="
+											(isStatAgent || isCarr) &&
+												datacall.status !== 'ISSUED' &&
+												!datacall.isLocked &&
+												!isViewAbandoned;
+											else elseBlock
+										"
+									>
+										<button
+											[matBadge]="likeCount"
+											matBadgeColor="warn"
+											mat-flat-button
+											[attr.aria-label]="buttonText"
+											color="primary"
+											(click)="toggleAction()"
+											[class.spinner]="isSmallSpinner"
+											[disabled]="isSmallSpinner || isStatAgent"
+											[matTooltip]="buttonText"
+										>
+											<mat-icon *ngIf="isLike">
+												favorite
+											</mat-icon>
+											<mat-icon *ngIf="!isLike">
+												favorite_border
+											</mat-icon>
+										</button>
+									</span>
+									<ng-template #elseBlock>
+										<mat-spinner
+											class="mat-spin"
+											aria-label="Loading Organizations count"
+											matSuffix
+											[diameter]="20"
+											*ngIf="likeCount === undefined"
+										></mat-spinner>
+										<mat-icon
+											*ngIf="likeCount >= 0"
+											class="count-icon"
+											color="primary"
+											aria-label="Number of Likes"
+											[matBadge]="likeCount"
+											matBadgeColor="warn"
+										>
+											favorite
+										</mat-icon>
+									</ng-template>
+
+									<button
+										class="btn-org"
+										mat-button
+										color="primary"
+										[disabled]="
+											!(
+												isStatAgent &&
+												isLikeCountPositive
+											)
+										"
+										(click)="viewCarriers('Liked')"
+									>
+										View Organizations
+									</button>
+								</p>
+								<p *ngIf="isRecorded">
+									<mat-icon class="record-time"
+										>schedule</mat-icon
+									>
+									{{ recordTime }}
+								</p>
+							</div>
+						</div>
+						<div
+							*ngIf="
+								!isForumUrl && isStatAgent && !isViewAbandoned
+							"
+							class="row pb-1"
+						>
+							<div class="col">
+								<mat-form-field
+									class="full-width"
+									appearance="outline"
+								>
+									<mat-label>Forum URL</mat-label>
+									<mat-icon matPrefix>forum</mat-icon>
+									<input
+										matInput
+										type="url"
+										placeholder="Paste forum URL here"
+										[(ngModel)]="model.forumURL"
+									/>
+									<button
+										class="forum-button"
+										matSuffix
+										mat-flat-button
+										color="primary"
+										(click)="updateForum()"
+									>
+										Set Forum URL
+									</button>
+								</mat-form-field>
+							</div>
+						</div>
+						<div class="row pb-1">
+							<div class="col">
+								<h4>Purpose</h4>
+								<p>
+									{{ model.purpose }}
+								</p>
+							</div>
+						</div>
+						<div class="row pb-1">
+							<div class="col">
+								<h4>Detailed Criteria</h4>
+								<p>
+									{{ model.detailedCriteria }}
+								</p>
+							</div>
+						</div>
+						<div class="row pb-1">
+							<div class="col">
+								<h4>Eligibility Requirement</h4>
+								<p>
+									{{ model.eligibilityRequirement }}
+								</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col button-row">
+								<button
+									mat-stroked-button
+									color="primary"
+									*ngIf="
+										(isViewAbandoned &&
+											isReg &&
+											isSameJurisdiction()) ||
+										(isReadonly &&
+											isReg &&
+											!isSameJurisdiction())
+									"
+									(click)="clone(model)"
+								>
+									<mat-icon color="primary"
+										>content_copy</mat-icon
+									>
+									Clone
+								</button>
+								<button
+									mat-flat-button
+									disabled
+									color="primary"
+									*ngIf="
+										isViewAbandoned &&
+										isReg &&
+										isSameJurisdiction()
+									"
+								>
+									<mat-icon>archive</mat-icon>
+									Abandon
+								</button>
+								<button
+									mat-flat-button
+									color="primary"
+									disabled
+									*ngIf="
+										isViewAbandoned &&
+										isReg &&
+										isSameJurisdiction()
+									"
+								>
+									<mat-icon>bookmark</mat-icon>
+									Save New Draft
+								</button>
+								<button
+									mat-flat-button
+									color="primary"
+									disabled
+									*ngIf="
+										isViewAbandoned &&
+										isReg &&
+										isSameJurisdiction()
+									"
+								>
+									<mat-icon>note_add</mat-icon>
+									Issue
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</mat-card-content>
+	</mat-card>
+</div>
+<app-spinner *ngIf="isSpinner"></app-spinner>

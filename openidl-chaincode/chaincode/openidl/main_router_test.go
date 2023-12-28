@@ -3,8 +3,10 @@ package main
 import (
 	"encoding/json"
 	//"fmt"
-	"github.com/hyperledger/fabric/core/chaincode/shim"
-	pb "github.com/hyperledger/fabric/protos/peer"
+	"github.com/hyperledger/fabric-chaincode-go/shim"
+	pb "github.com/hyperledger/fabric-protos-go/peer"
+	logger "github.com/sirupsen/logrus"
+
 	//"github.com/stretchr/testify/assert"
 	"os"
 	//"testing"
@@ -13,10 +15,8 @@ import (
 // openIDLCC is a chaincode component that supports the mainFunction operations for the openIDL network
 type openIDLTestCC struct {
 	carriers map[string]Carrier
-	openIDLCC
+	SmartContract
 }
-
-//var logger = shim.NewLogger("openIDLTestCC_Logger")
 
 func (this *openIDLTestCC) Init(stub shim.ChaincodeStubInterface) pb.Response {
 	logger.Debug("Init: enter")
@@ -31,7 +31,7 @@ func (this *openIDLTestCC) Init(stub shim.ChaincodeStubInterface) pb.Response {
 		logger.Debug("Channels List Marshalled Successfully > ", crossInvocationChannels)
 	}
 
-	this.carriers = GetCarriersMap()
+	// this.carriers = GetCarriersMap()
 
 	return shim.Success(nil)
 }
@@ -72,11 +72,15 @@ func (this *openIDLTestCC) Invoke(stub shim.ChaincodeStubInterface) pb.Response 
 	} else if function == "CountConsents" {
 		return this.CountConsents(stub, args[0])
 	} else if function == "ListConsentsByDataCall" {
-		return this.ListConsentsByDataCall(stub, args)
+		return this.ListConsentsByDataCall(stub, args[0])
 	} else if function == "GetConsentByDataCallAndOrganization" {
 		return this.GetConsentByDataCallAndOrganization(stub, args)
 	} else if function == "ListLikesByDataCall" {
-		return this.ListLikesByDataCall(stub, args)
+		return this.ListLikesByDataCall(stub, args[0])
+	} else if function == "GetLikesByDataCall" {
+		return this.GetLikesByDataCall(stub, args[0])
+	} else if function == "GetConsentsByDataCall" {
+		return this.GetConsentsByDataCall(stub, args[0])
 	} else if function == "GetLikeByDataCallAndOrganization" {
 		return this.GetLikeByDataCallAndOrganization(stub, args)
 	} else if function == "SaveAndIssueDataCall" {
@@ -102,7 +106,7 @@ func (this *openIDLTestCC) Invoke(stub shim.ChaincodeStubInterface) pb.Response 
 	} else if function == "GetHashById" {
 		return this.GetHashById(stub, args[0])
 	} else if function == "SaveInsuranceData" {
-		return this.SaveInsuranceData(stub, args[0])
+		return this.SaveInsuranceData(stub, args)
 	}
 
 	return shim.Error("Invalid Function: " + function)

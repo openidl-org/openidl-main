@@ -1,0 +1,41 @@
+@import '../../styles/variables';
+
+.header {
+	border-bottom: 0.2rem solid $primary-dark;
+	height: 5rem;
+	background-color: $white;
+	padding: 2rem;
+	margin-bottom: 2rem;
+
+	button {
+		margin: 0 0.2rem;
+	}
+	.active {
+		background: $primary;
+		color: $white;
+	}
+
+	.logo {
+		height: 50px;
+		cursor: pointer;
+	}
+
+	.spacer {
+		flex: 1 1 auto;
+	}
+
+	.divider {
+		display: inline-block;
+		border-left: 2px solid $primary-dark;
+		height: 30px;
+		vertical-align: top;
+		margin: 0 0.6rem;
+		margin-top: 15px;
+
+		&.small {
+			height: 24px;
+			margin-top: 0;
+			vertical-align: middle;
+		}
+	}
+}

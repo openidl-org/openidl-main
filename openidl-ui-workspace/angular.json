@@ -1,0 +1,261 @@
+{
+	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+	"version": 1,
+	"newProjectRoot": "projects",
+	"projects": {
+		"openidl-common-ui": {
+			"projectType": "library",
+			"root": "projects/openidl-common-ui",
+			"sourceRoot": "projects/openidl-common-ui/src",
+			"prefix": "lib",
+			"architect": {
+				"build": {
+					"builder": "@angular-devkit/build-angular:ng-packagr",
+					"options": {
+						"project": "projects/openidl-common-ui/ng-package.json"
+					},
+					"configurations": {
+						"production": {
+							"tsConfig": "projects/openidl-common-ui/tsconfig.lib.prod.json"
+						},
+						"development": {
+							"tsConfig": "projects/openidl-common-ui/tsconfig.lib.json"
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"main": "projects/openidl-common-ui/src/test.ts",
+						"tsConfig": "projects/openidl-common-ui/tsconfig.spec.json",
+						"karmaConfig": "projects/openidl-common-ui/karma.conf.js"
+					}
+				}
+			}
+		},
+		"openidl-ui": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"style": "scss"
+				},
+				"@schematics/angular:application": {
+					"strict": true
+				}
+			},
+			"root": "projects/openidl-ui",
+			"sourceRoot": "projects/openidl-ui/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "@angular-devkit/build-angular:browser",
+					"options": {
+						"outputPath": "dist/openidl-ui",
+						"index": "projects/openidl-ui/src/index.html",
+						"main": "projects/openidl-ui/src/main.ts",
+						"polyfills": "projects/openidl-ui/src/polyfills.ts",
+						"tsConfig": "projects/openidl-ui/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/openidl-ui/src/favicon.ico",
+							"projects/openidl-ui/src/assets"
+						],
+						"styles": [
+							"projects/openidl-ui/src/styles/styles.scss",
+							"projects/openidl-ui/src/styles/custom-theme.scss"
+						],
+						"scripts": []
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "2mb",
+									"maximumError": "3mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "20kb",
+									"maximumError": "40kb"
+								}
+							],
+							"fileReplacements": [
+								{
+									"replace": "projects/openidl-ui/src/environments/environment.ts",
+									"with": "projects/openidl-ui/src/environments/environment.prod.ts"
+								}
+							],
+							"outputHashing": "all",
+							"optimization": {
+								"scripts": true,
+								"styles": {
+									"minify": true,
+									"inlineCritical": false
+								},
+								"fonts": true
+							}
+						},
+						"development": {
+							"buildOptimizer": false,
+							"optimization": false,
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "@angular-devkit/build-angular:dev-server",
+					"configurations": {
+						"production": {
+							"browserTarget": "openidl-ui:build:production"
+						},
+						"development": {
+							"browserTarget": "openidl-ui:build:development"
+						}
+					},
+					"defaultConfiguration": "development"
+				},
+				"extract-i18n": {
+					"builder": "@angular-devkit/build-angular:extract-i18n",
+					"options": {
+						"browserTarget": "openidl-ui:build"
+					}
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"main": "projects/openidl-ui/src/test.ts",
+						"polyfills": "projects/openidl-ui/src/polyfills.ts",
+						"tsConfig": "projects/openidl-ui/tsconfig.spec.json",
+						"karmaConfig": "projects/openidl-ui/karma.conf.js",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/openidl-ui/src/favicon.ico",
+							"projects/openidl-ui/src/assets"
+						],
+						"styles": ["projects/openidl-ui/src/styles.scss"],
+						"scripts": []
+					}
+				}
+			}
+		},
+		"openidl-carrier-ui": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"style": "scss"
+				},
+				"@schematics/angular:application": {
+					"strict": true
+				}
+			},
+			"root": "projects/openidl-carrier-ui",
+			"sourceRoot": "projects/openidl-carrier-ui/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "@angular-devkit/build-angular:browser",
+					"options": {
+						"outputPath": "dist/openidl-carrier-ui",
+						"index": "projects/openidl-carrier-ui/src/index.html",
+						"main": "projects/openidl-carrier-ui/src/main.ts",
+						"polyfills": "projects/openidl-carrier-ui/src/polyfills.ts",
+						"tsConfig": "projects/openidl-carrier-ui/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/openidl-carrier-ui/src/favicon.ico",
+							"projects/openidl-carrier-ui/src/assets"
+						],
+						"styles": [
+							"projects/openidl-ui/src/styles/styles.scss",
+							"projects/openidl-ui/src/styles/custom-theme.scss"
+						],
+						"scripts": []
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "2mb",
+									"maximumError": "3mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "20kb",
+									"maximumError": "40kb"
+								}
+							],
+							"fileReplacements": [
+								{
+									"replace": "projects/openidl-carrier-ui/src/environments/environment.ts",
+									"with": "projects/openidl-carrier-ui/src/environments/environment.prod.ts"
+								}
+							],
+							"outputHashing": "all",
+							"optimization": {
+								"scripts": true,
+								"styles": {
+									"minify": true,
+									"inlineCritical": false
+								},
+								"fonts": true
+							}
+						},
+						"development": {
+							"buildOptimizer": false,
+							"optimization": false,
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "@angular-devkit/build-angular:dev-server",
+					"configurations": {
+						"production": {
+							"browserTarget": "openidl-carrier-ui:build:production"
+						},
+						"development": {
+							"browserTarget": "openidl-carrier-ui:build:development"
+						}
+					},
+					"defaultConfiguration": "development"
+				},
+				"extract-i18n": {
+					"builder": "@angular-devkit/build-angular:extract-i18n",
+					"options": {
+						"browserTarget": "openidl-carrier-ui:build"
+					}
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"main": "projects/openidl-carrier-ui/src/test.ts",
+						"polyfills": "projects/openidl-carrier-ui/src/polyfills.ts",
+						"tsConfig": "projects/openidl-carrier-ui/tsconfig.spec.json",
+						"karmaConfig": "projects/openidl-carrier-ui/karma.conf.js",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/openidl-carrier-ui/src/favicon.ico",
+							"projects/openidl-carrier-ui/src/assets"
+						],
+						"styles": [
+							"projects/openidl-carrier-ui/src/styles.scss"
+						],
+						"scripts": []
+					}
+				}
+			}
+		}
+	},
+	"defaultProject": "openidl-ui"
+}

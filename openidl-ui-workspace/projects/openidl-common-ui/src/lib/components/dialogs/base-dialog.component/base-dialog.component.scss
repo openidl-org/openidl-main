@@ -1,0 +1,26 @@
+@import '../../../../styles/variables';
+
+.task-header {
+	height: 3.5rem;
+	border-radius: 4px;
+	color: $white;
+}
+.fx-spacer {
+	flex: 1 1 auto;
+}
+
+.info {
+	background: $primary;
+}
+
+.success {
+	background: #4caf50;
+}
+
+.error {
+	background: #ef5350;
+}
+
+.warning {
+	background: #ef6c00;
+}

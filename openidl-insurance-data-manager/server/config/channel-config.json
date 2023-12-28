@@ -1,0 +1,29 @@
+{
+    "channels": [
+        {
+            "channelName": "defaultchannel",
+            "chaincodeName": "openidl-cc-default"
+        },
+        {
+            "channelName": "analytics-${HOST}",
+            "chaincodeName": "openidl-cc-aais-carriers"
+        }
+    ],
+    "users": [
+        {
+            "org": "${HOST}",
+            "user": "openidl-${HOST}-insurance-data-manager-ibp-2.0",
+            "mspId": "${HOST}msp"
+        }
+    ],
+    "crossChannelQueryParam": [
+        {
+            "channelName": "analytics-aais",
+            "chaincodeName": "openidl-cc-aais-carriers"
+        },
+        {
+            "channelName": "analytics-carrier",
+            "chaincodeName": "openidl-cc-aais-carriers"
+        }
+    ]
+}

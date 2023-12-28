@@ -1,0 +1,384 @@
+<div class="form">
+	<mat-card>
+		<mat-card-header>
+			<mat-card-title>Data Call Details</mat-card-title>
+		</mat-card-header>
+		<mat-divider></mat-divider>
+		<mat-card-content class="data-form">
+			<form
+				*ngIf="
+					isStatAgent &&
+					(!hasForumUrl || !hasPattern || !hasDeliveryDate)
+				"
+				class="pb-2"
+				[formGroup]="registerForm"
+			>
+				<div class="row">
+					<div class="col" *ngIf="!hasDeliveryDate">
+						<mat-form-field appearance="outline" class="full-width">
+							<mat-label>Delivery Date</mat-label>
+							<input
+								matInput
+								[matDatepicker]="proposedDeliveryDate"
+								formControlName="proposedDeliveryDate"
+							/>
+							<mat-datepicker-toggle
+								matSuffix
+								[for]="proposedDeliveryDate"
+							></mat-datepicker-toggle>
+							<mat-datepicker
+								#proposedDeliveryDate
+							></mat-datepicker>
+						</mat-form-field>
+					</div>
+					<div class="col flex2" *ngIf="!hasForumUrl">
+						<mat-form-field class="full-width" appearance="outline">
+							<mat-label>Forum URL</mat-label>
+							<input
+								matInput
+								type="url"
+								placeholder="Enter Forum URL"
+								formControlName="forumUrl"
+							/>
+						</mat-form-field>
+					</div>
+				</div>
+				<div class="row pb-2">
+					<div class="col" *ngIf="!hasPattern">
+						<mat-form-field appearance="outline" class="full-width">
+							<mat-label>Extraction Pattern</mat-label>
+							<mat-select
+								placeholder="Select Extraction Pattern"
+								formControlName="extractionPatternID"
+							>
+								<mat-option
+									[value]="data.extractionPatternID"
+									*ngFor="let data of extractionPatternList"
+									>{{
+										data.extractionPatternName
+									}}</mat-option
+								>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div class="col" *ngIf="!hasPattern">
+						<div class="btn-container">
+							<button
+								mat-button
+								color="primary"
+								(click)="showPattern()"
+							>
+								View & Download Patterns
+							</button>
+						</div>
+					</div>
+					<div
+						class="col right"
+						*ngIf="!hasForumUrl || !hasPattern || !hasDeliveryDate"
+					>
+						<div class="btn-container">
+							<button
+								mat-flat-button
+								color="primary"
+								(click)="updateFields(registerForm)"
+							>
+								Update Details
+							</button>
+						</div>
+					</div>
+				</div>
+				<mat-divider></mat-divider>
+			</form>
+			<div class="row">
+				<div class="col readonly">
+					<h4>Name</h4>
+					<p>
+						{{ draft.name }}
+					</p>
+				</div>
+				<div class="col readonly">
+					<h4>Jurisdiction</h4>
+					<p>
+						{{ draft.jurisdiction }}
+					</p>
+				</div>
+				<div class="col readonly">
+					<h4>Description</h4>
+					<p>
+						{{ draft.description }}
+					</p>
+				</div>
+			</div>
+			<ng-container *ngIf="hideFormElement">
+				<div class="row">
+					<div class="col readonly">
+						<h4>Expected Public Circulation?</h4>
+						<p>
+							{{ draft.intentToPublish ? 'Yes' : 'No' }}
+						</p>
+					</div>
+					<div class="col readonly">
+						<h4>Premium Dates</h4>
+						<p>
+							{{ draft.premiumFromDate | date: 'MM/dd/yyyy' }} to
+							{{ draft.premiumToDate | date: 'MM/dd/yyyy' }}
+						</p>
+					</div>
+					<div class="col readonly">
+						<h4>Loss Dates</h4>
+						<p>
+							{{ draft.lossFromDate | date: 'MM/dd/yyyy' }} to
+							{{ draft.lossToDate | date: 'MM/dd/yyyy' }}
+						</p>
+					</div>
+				</div>
+			</ng-container>
+			<div class="row">
+				<div class="col readonly">
+					<h4>Line of Business</h4>
+					<p>
+						{{ draft.lineOfBusiness }}
+					</p>
+				</div>
+				<div class="col readonly">
+					<h4>Add list of participants to summary report</h4>
+					<p>
+						{{ draft.isShowParticipants ? 'Yes' : 'No' }}
+					</p>
+				</div>
+				<div class="col readonly">
+					<div class="col readonly">
+						<h4>Transaction Month</h4>
+						<p>
+							<span>{{ draft.transactionMonth ? draft.transactionMonth : '-NA-' }}</span>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col readonly" *ngIf="hasForumUrl">
+					<h4>Forum URL</h4>
+					<p>
+						<button
+							*ngIf="isStatAgent"
+							mat-mini-fab
+							matTooltip="Edit forum URL"
+							matTooltipPosition="above"
+							color="primary"
+							(click)="editForum()"
+							aria-label="Edit Forum URL"
+						>
+							<mat-icon>edit</mat-icon>
+						</button>
+						<button
+							mat-button
+							class="text-wrap"
+							[matTooltip]="draft.forumURL"
+							matTooltipPosition="above"
+							color="primary"
+							(click)="openURL(draft.forumURL)"
+						>
+							{{ draft.forumURL }}
+						</button>
+					</p>
+				</div>
+				<div class="col readonly" *ngIf="hasPattern">
+					<h4>Extraction Pattern</h4>
+					<p>
+						<button
+							mat-button
+							color="primary"
+							(click)="getExtractionPatternById()"
+						>
+							View & Download
+						</button>
+						<span>
+							{{ draft.extractionPatternName }}
+						</span>
+					</p>
+				</div>
+				<div class="col readonly" *ngIf="hasDeliveryDate">
+					<h4>Proposed Delivery Date</h4>
+					<p>
+						<button
+							*ngIf="isStatAgent"
+							mat-mini-fab
+							color="primary"
+							(click)="deliveryDateEdit()"
+							matTooltip="Edit delivery date"
+							matTooltipPosition="above"
+							aria-label="Edit delivery date"
+						>
+							<mat-icon>edit</mat-icon>
+						</button>
+						<span [class.delivery-date]="isStatAgent">
+							{{
+								draft.proposedDeliveryDate
+									| date: 'MM/dd/yyyy '
+							}}
+						</span>
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col button-row">
+					<button
+						mat-stroked-button
+						color="primary"
+						*ngIf="isReg"
+						(click)="cloneDatacall(draft)"
+					>
+						<mat-icon color="primary">content_copy</mat-icon>
+						Clone Data Call
+					</button>
+					<button
+						mat-stroked-button
+						color="primary"
+						*ngIf="isReg || isCarr"
+						(click)="viewDrafts()"
+					>
+						<mat-icon>bookmarks</mat-icon>
+						View Draft Versions
+					</button>
+					<button
+						mat-flat-button
+						color="primary"
+						(click)="viewReport()"
+						[disabled]="!isReportAvlbl"
+						*ngIf="isReg || isCarr"
+					>
+						<mat-icon>analytics</mat-icon>
+						View Reports
+					</button>
+					<button
+						*ngIf="isCarr"
+						mat-flat-button
+						color="primary"
+						(click)="toggleAction()"
+						[disabled]="!isConsent"
+						[class.spinner]="isSmallSpinner"
+					>
+						<mat-icon>check_circle</mat-icon>
+						Consent to the Report
+					</button>
+				</div>
+			</div>
+			<div class="row" *ngIf="isRecorded">
+				<div class="col right">
+					<p>{{ action }} recorded: {{ recordTime }}</p>
+				</div>
+			</div>
+		</mat-card-content>
+	</mat-card>
+
+	<div class="pt-2">
+		<div class="row">
+			<div class="col flex2">
+				<mat-card>
+					<mat-card-content class="data-content">
+						<h2>Purpose</h2>
+						<p>
+							{{ draft.purpose }}
+						</p>
+
+						<h2>Detailed Criteria</h2>
+						<p>
+							{{ draft.detailedCriteria }}
+						</p>
+
+						<h2>Eligibility Requirement</h2>
+						<p>
+							{{ draft.eligibilityRequirement }}
+						</p>
+					</mat-card-content>
+					<mat-divider *ngIf="isStatAgent"></mat-divider>
+					<mat-card-actions align="end" *ngIf="isStatAgent">
+						<button
+							mat-stroked-button
+							color="primary"
+							(click)="viewDrafts()"
+						>
+							<mat-icon>bookmarks</mat-icon>
+							View Draft Versions
+						</button>
+					</mat-card-actions>
+				</mat-card>
+			</div>
+			<div class="col">
+				<mat-card class="mb-2">
+					<mat-card-content class="consent-card">
+						<h2>Carrier Consents</h2>
+						<p>
+							<mat-spinner
+								matSuffix
+								[diameter]="20"
+								*ngIf="consentCount === undefined"
+							></mat-spinner>
+							<mat-icon
+								*ngIf="consentCount >= 0"
+								class="count-icon"
+								color="primary"
+								aria-label="Number of Carriers"
+								[matBadge]="consentCount"
+								matBadgeColor="warn"
+								>business</mat-icon
+							>
+							<button
+								class="btn-org"
+								mat-button
+								color="primary"
+								*ngIf="isStatAgent"
+								(click)="viewCarriers('Consented')"
+							>
+								View Carriers
+							</button>
+						</p>
+						<h2>Organization Likes</h2>
+						<p>
+							<mat-spinner
+								matSuffix
+								[diameter]="20"
+								*ngIf="likeCount === undefined"
+							></mat-spinner>
+							<mat-icon
+								*ngIf="likeCount >= 0"
+								class="count-icon"
+								color="primary"
+								aria-label="Number of Likes"
+								[matBadge]="likeCount"
+								matBadgeColor="warn"
+							>
+								favorite
+							</mat-icon>
+							<button
+								class="btn-org"
+								mat-button
+								color="primary"
+								[disabled]="!isLikeCountPositive"
+								(click)="viewCarriers('Liked')"
+							>
+								View Organizations
+							</button>
+						</p>
+					</mat-card-content>
+				</mat-card>
+
+				<mat-card>
+					<mat-card-content>
+						<h2>History</h2>
+						<app-datacall-history></app-datacall-history>
+					</mat-card-content>
+				</mat-card>
+			</div>
+		</div>
+	</div>
+	<app-update-report
+		*ngIf="isStatAgent"
+		[datacall]="draft"
+		[username]="this.loginResult.username"
+		(updateReportEvent)="updateReport($event)"
+	></app-update-report>
+</div>
+<app-spinner *ngIf="isSpinner"></app-spinner>

@@ -1,0 +1,25 @@
+{
+    "channels": [
+        {
+            "channelName": "defaultchannel",
+            "chaincodeName": "openidl-cc-default"
+        },
+        {
+            "channelName": "analytics-aais",
+            "chaincodeName": "openidl-cc-aais-carriers"
+        }
+    ],
+    "users": [
+        {
+            "org": "analytics",
+            "user": "openidl-analytics-data-call-app-ibp-2.0",
+            "mspId": "analyticsmsp"
+        }
+    ],
+    "crossChannelQueryParam": [
+        {
+            "channelName": "analytics-aais",
+            "chaincodeName": "openidl-cc-aais-carriers"
+        }
+    ]
+}

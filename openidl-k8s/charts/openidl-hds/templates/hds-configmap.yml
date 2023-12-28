@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: {{ .Values.global.hdsconfigmap }}
-data:
-  database_url: {{ .Values.mongo.servicename }}

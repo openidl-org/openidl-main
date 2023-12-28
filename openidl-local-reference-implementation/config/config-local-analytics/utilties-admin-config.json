@@ -1,0 +1,9 @@
+{
+    "adminlist": [
+        {
+            "user": "admin",
+            "secret": "adminpw",
+            "org": "analytics"
+        }
+    ]
+}

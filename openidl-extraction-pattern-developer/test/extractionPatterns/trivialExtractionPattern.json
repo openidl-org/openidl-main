@@ -1,0 +1,20 @@
+{
+  "extractionPatternID": "Trivial_Pattern_01",
+  "extractionPatternName": "Trivial Pattern For Testing",
+  "description": "Sample description",
+  "viewDefinition": {
+    "map": "function map() {emit( this.a, {'a': this.a})}",
+    "reduce": "function reduce(key,values) {var totals = {'a':0}; for (value of values) {totals.a += value.a}; return totals; }"
+  },
+  "dbType": "mongo",
+  "version": "1",
+  "isActive": true,
+  "premiumFromdate": "Policy.crrncyPymnt.accntSttmnt.prdStrtDt | Policy.plcyStrctr.cvrg.crrncyPymnt.accntSttmnt.prdStrtDt",
+  "lossFromdate": "clm.clmFldr.clmCmpnnt.crrncyPymnt.accntSttmnt.prdStrtDt | clm.clmFldr.lssEvnt.strtDt",
+  "jurisdication": "Policy.plcyStrctr.lctn.ggrphcLctn.ggrphcLctnCds.cd | Policy.plcyStrctr.lctn.ggrphcLctn.ggrphcLctnCds.abbrvtn | Policy.plcyStrctr.lctn.ggrphcLctn.rgn",
+  "insurance": "Policy.prdctTyp.cd | Policy.prdctTyp.dscrptn",
+  "effectiveStartTs": "2021-01-30T18:30:00Z",
+  "effectiveEndTs": "2022-01-30T18:30:00Z",
+  "updatedTs": "2021-07-16T06:13:41.571Z",
+  "updatedBy": "aaisstatagent@aais.com"
+}

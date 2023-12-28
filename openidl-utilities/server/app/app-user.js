@@ -13,34 +13,174 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
- 
 
+const AWS = require('aws-sdk');
 const request = require("request-promise");
 const Q = require("q");
-var appUserRegister = {}
-const config = require('../app/config/app-id-credentials.json');
-const appConfig = require('../app/config/app-config.json')
+var appUserRegister = {};
+const config = require('../config/default.json');
 const log4js = require('log4js');
 const logger = log4js.getLogger('app - appuser');
-logger.level = appConfig.logLevel;
+logger.level = config.logLevel;
+
+/**
+ * Creates a user in aws cognito
+ */
+appUserRegister.createUserInCognito = async (usersConfig) => {
+	let users = usersConfig.users;
+
+	const cognitoConfig = JSON.parse(process.env.IDP_CONFIG);;
+	AWS.config.update(JSON.parse(process.env.IDP_ADMIN_CONFIG));
+	const accessparams = await getAccessParams(JSON.parse(process.env.IDP_ADMIN_CONFIG));
+	const cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider(
+		accessparams,
+		{
+		apiVersion: '2016-04-18',
+		region: cognitoConfig.region
+	});
+
+	for (var i = 0; i < users.length; i++) {
+		logger.debug("Request > " + users[i]);
+		let params = {
+			UserPoolId: cognitoConfig.userPoolId,
+			Username: users[i].username,
+			TemporaryPassword: users[i].password,
+			UserAttributes: [
+				{
+					Name: 'email_verified',
+					Value: "true"
+				}
+			]
+		};
+		Object.keys(users[i].attributes).forEach(function (key) {
+			params.UserAttributes.push({
+				Name: key,
+				Value: users[i].attributes[key]
+			})
+		});
+		if (users[i].familyName) {
+			params.UserAttributes.push({
+				Name: 'family_name',
+				Value: users[i].familyName
+			})
+		}
+		if (users[i].givenName) {
+			params.UserAttributes.push({
+				Name: 'given_name',
+				Value: users[i].givenName
+			})
+		}
+		params.UserAttributes.push({
+			Name: 'email',
+			Value: users[i].email
+		});
+		await cognitoidentityserviceprovider.adminCreateUser(params).promise();
+
+		params = {
+			UserPoolId: cognitoConfig.userPoolId,
+			Username: users[i].username,
+			Password: users[i].password,
+			Permanent: true
+		};
+		await cognitoidentityserviceprovider.adminSetUserPassword(params).promise();
+	}
+}
+
+
+/**
+ * Update user atrributes in aws cognito
+ */
+appUserRegister.updateCognitoUserAttributes = async (usersConfig) => {
+	logger.info('updateCognitoUserAttributes method entry -');
+	let users = usersConfig.users;
+
+	const cognitoConfig = JSON.parse(process.env.IDP_CONFIG);;
+	AWS.config.update(JSON.parse(process.env.IDP_ADMIN_CONFIG));
+	const accessparams = await getAccessParams(JSON.parse(process.env.IDP_ADMIN_CONFIG));
+	const cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider(
+		accessparams,
+		{
+		apiVersion: '2016-04-18',
+		region: cognitoConfig.region
+	});
+
+	for (var i = 0; i < users.length; i++) {
+		logger.debug("Request > " + users[i]);
+		const params = {
+			UserPoolId: cognitoConfig.userPoolId,
+			Username: users[i].username,
+			UserAttributes: []
+		};
+		Object.keys(users[i].attributes).forEach(function (key) {
+			params.UserAttributes.push({
+				Name: key,
+				Value: users[i].attributes[key]
+			})
+		});
+		if (users[i].familyName) {
+			params.UserAttributes.push({
+				Name: 'family_name',
+				Value: users[i].familyName
+			})
+		}
+		if (users[i].givenName) {
+			params.UserAttributes.push({
+				Name: 'given_name',
+				Value: users[i].givenName
+			})
+		}
+		if (users[i].email) {
+			params.UserAttributes.push({
+				Name: 'email',
+				Value: users[i].email
+			});
+		}
+		await cognitoidentityserviceprovider.adminUpdateUserAttributes(params).promise();
+	}
+}
+
 /**
  * Creates a user in cloud directory
  */
 appUserRegister.createUserInCloudDirectory = async (usersConfig) => {
+	const appIdConfig = JSON.parse(process.env.IDP_CONFIG);
 	const deferred = Q.defer();
 	let users = usersConfig.users;
 	var accessToken = usersConfig.authKey;
 	var method = "POST"
-	var url = config.managementUrl + appConfig.cloudDirectoryPath;
+	var url = appIdConfig.managementUrl + appIdConfig.cloudDirectoryPath;
 	logger.debug("URL >> " + url);
-	logger.debug(config.managementUrl);
+	logger.debug(appIdConfig.managementUrl);
 	var headers = {
 		"Content-Type": "application/json",
 		"Authorization": "Bearer " + accessToken
 	};
 
 	for (var i = 0; i < users.length; i++) {
-		var reqBody = users[i];
+		// var reqBody = users[i];
+		const reqBody = {
+			"directory": "cloud_directory",
+			"name": {
+				"givenName": users[i].givenName,
+				"familyName": users[i].familyName,
+			},
+			"emails": [
+				{
+					"value": users[i].attributes.email,
+					"primary": true
+				}
+			],
+			"userName": users[i].username,
+			"password": users[i].password,
+			"status": "CONFIRMED",
+			"profile": {
+				"attributes": {
+				}
+			}
+		}
+		Object.keys(users[i].attributes).forEach(function (key) {
+			reqBody.profile.attributes[key] = users[i].attributes[key];
+		});
 		logger.debug("Request > " + reqBody);
 		logger.debug(reqBody);
 		handleRequest(headers, reqBody, method, url, deferred, true);
@@ -51,15 +191,16 @@ appUserRegister.createUserInCloudDirectory = async (usersConfig) => {
  * Sign in the user to APPID
  */
 appUserRegister.signInUserToAppId = async (usersConfig) => {
+	const appIdConfig = JSON.parse(process.env.IDP_CONFIG);
 	const deferred = Q.defer();
 	let users = usersConfig.users;
 	logger.debug(users)
 	var method = "POST"
-	var url = config.oauthServerUrl + appConfig.tokenPath;
-	logger.debug(new Buffer(config.clientId + ":" + config.secret).toString('base64'));
+	var url = appIdConfig.oauthServerUrl + appIdConfig.tokenPath;
+	logger.debug(new Buffer(appIdConfig.clientId + ":" + appIdConfig.secret).toString('base64'));
 	var headers = {
 		"Content-Type": "application/json",
-		'Authorization': 'Basic ' + new Buffer(config.clientId + ":" + config.secret).toString('base64')
+		'Authorization': 'Basic ' + new Buffer(appIdConfig.clientId + ":" + appIdConfig.secret).toString('base64')
 	};
 
 	for (var i = 0; i < users.length; i++) {
@@ -75,7 +216,7 @@ appUserRegister.signInUserToAppId = async (usersConfig) => {
  * No need to create user in appid as once it is signed in it is already activated in APP ID
  */
 appUserRegister.updateUserProfileInAppId = async (usersConfig) => {
-
+	const appIdConfig = JSON.parse(process.env.IDP_CONFIG);
 	const deferred = Q.defer();
 	let users = usersConfig.users;
 
@@ -95,7 +236,7 @@ appUserRegister.updateUserProfileInAppId = async (usersConfig) => {
 
 		var method = "PUT";
 
-		var url = config.managementUrl + appConfig.usersPath + appIdUserDetails.users[0].id + appConfig.profilePath;
+		var url = appIdConfig.managementUrl + appIdConfig.usersPath + appIdUserDetails.users[0].id + appIdConfig.profilePath;
 		var reqBody = JSON.stringify(users[i].profile);
 
 		logger.info("Request" + reqBody);
@@ -110,10 +251,11 @@ appUserRegister.updateUserProfileInAppId = async (usersConfig) => {
  * @param  user 
  */
 async function getUserIdFromAppId(accessToken, email) {
+	const appIdConfig = JSON.parse(process.env.IDP_CONFIG);
 	const deferred = Q.defer();
 	var method = "GET"
 	// use first and only email id
-	var url = config.managementUrl + appConfig.userEmailPath + email;
+	var url = appIdConfig.managementUrl + appIdConfig.userEmailPath + email;
 	var headers = {
 		"Content-Type": "application/json",
 		"Authorization": "Bearer " + accessToken
@@ -122,6 +264,29 @@ async function getUserIdFromAppId(accessToken, email) {
 	handleRequest(headers, reqBody, method, url, deferred);
 	return deferred.promise;
 }
+ async function getAccessParams(bucketConfig) {
+	if (!bucketConfig.region || !bucketConfig.accessKeyId
+		|| ! bucketConfig.secretAccessKey || !bucketConfig.roleParams) {
+			throw Error("Missing config for AWS")
+		}
+        const sts = new AWS.STS({
+            region: bucketConfig.region,
+            accessKeyId: bucketConfig.accessKeyId,
+            secretAccessKey: bucketConfig.secretAccessKey
+
+        });
+        const params = bucketConfig.roleParams;
+
+        const accessParamInfo = await sts.assumeRole(params).promise();
+        logger.debug('Changed Credentials');
+
+        const accessparams = {
+            accessKeyId: accessParamInfo.Credentials.AccessKeyId,
+            secretAccessKey: accessParamInfo.Credentials.SecretAccessKey,
+            sessionToken: accessParamInfo.Credentials.SessionToken,
+        };
+        return accessparams;
+    }
 /**
  * Generic HTTP call
  * @param {*} headers 

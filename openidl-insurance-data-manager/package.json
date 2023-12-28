@@ -1,6 +1,6 @@
 {
   "name": "app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
     "start": "NODE_CONFIG_DIR=./server/config node server/server.js",
@@ -8,36 +8,38 @@
     "lint": "eslint .",
     "lintfix": "eslint --fix .",
     "test": "mocha --timeout 600000 --exit",
-    "dev-test": "mocha --timeout 600000 --exit"
+    "dev-test": "mocha --timeout 600000 --exit",
+    "jest": "jest --config ./jest.config.js"
   },
   "dependencies": {
+    "@openidl-org/openidl-common-lib": "^0.7.0",
+    "@sendgrid/mail": "^7.2.1",
     "body-parser": "^1.18.3",
     "config": "^2.0.1",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
+    "crypto": "^1.0.1",
     "express": "~4.16.0",
     "express-session": "^1.15.1",
     "helmet": "3.21.2",
     "http-errors": "~1.6.2",
-    "ibm-cloud-env": "^0.2.6",
     "js-yaml": "^3.12.0",
-    "log4js": "^1.1.1",
-    "openidl-common-lib": "git+https://x-oauth-basic:${GITHUB_TOKEN}@git.ng.bluemix.net/openIDL/openidl-common-lib.git#ken_dev",
-     "sort-json-array": "^0.1.7",
+    "log4js": "^4.3.2",
+    "node-fetch": "^2.6.1",
+    "sort-json-array": "^0.1.7",
     "swagger-ui-express": "^3.0.10",
-    "uuid": "^3.3.2",
-    "@sendgrid/mail": "^7.2.1",
-    "crypto": "^1.0.1"
+    "uuid": "^3.3.2"
   },
   "engines": {
-    "node": "8.9.x",
-    "npm": "5.5.x"
+    "node": "14.17.x",
+    "npm": "6.14.x"
   },
   "devDependencies": {
+    "jest": "^27.4.7",
     "chai": "^4.1.2",
     "cross-env": "^5.2.0",
-    "mocha": "^5.2.0",
-    "nodemon": "^1.18.3",
+    "mocha": "^8.4.0",
+    "nodemon": "^2.0.12",
     "mock-req-res": "1.0.4",
     "sinon": "7.2.7"
   }

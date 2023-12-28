@@ -1,0 +1,15 @@
+<app-base-dialog [title]="data.title" [type]="data.type"></app-base-dialog>
+<mat-dialog-content class="mat-typography">
+	{{ data.message }}
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+	<button
+		mat-flat-button
+		(click)="onClickYes()"
+		cdkFocusInitial
+		color="primary"
+	>
+		Yes
+	</button>
+	<button mat-flat-button mat-dialog-close>No</button>
+</mat-dialog-actions>

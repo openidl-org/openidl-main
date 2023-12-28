@@ -1,0 +1,176 @@
+<div class="data-table" [hidden]="isSpinner">
+	<table mat-table class="width-table" matSort [dataSource]="dataSource">
+		<!-- Name Column -->
+		<ng-container matColumnDef="name">
+			<th
+				mat-header-cell
+				*matHeaderCellDef
+				mat-sort-header
+				class="col-name"
+			>
+				Name
+			</th>
+			<td mat-cell *matCellDef="let row">{{ row.name }}</td>
+		</ng-container>
+
+		<!-- Transaction Month Column -->
+		<ng-container matColumnDef="transactionMonth">
+			<th
+				mat-header-cell
+				*matHeaderCellDef
+				mat-sort-header
+				class="col-transaction-month"
+			>
+				Transaction Month
+			</th>
+			<td mat-cell *matCellDef="let row">
+				{{ row.transactionMonth ? row.transactionMonth : '-NA-' }}
+			</td>
+		</ng-container>
+
+		<!-- Deadline Column -->
+		<ng-container matColumnDef="deadline">
+			<th
+				mat-header-cell
+				*matHeaderCellDef
+				mat-sort-header
+				class="col-deadline"
+			>
+				Deadline
+			</th>
+			<td mat-cell *matCellDef="let row">
+				{{ row.deadline | date: 'MM/dd/yyyy' }}
+			</td>
+		</ng-container>
+		<!-- Jurisdiction Column -->
+		<ng-container matColumnDef="jurisdiction">
+			<th
+				mat-header-cell
+				*matHeaderCellDef
+				mat-sort-header
+				class="col-jurisdiction"
+			>
+				Jurisdiction
+			</th>
+			<td mat-cell *matCellDef="let row">{{ row.jurisdiction }}</td>
+		</ng-container>
+		<!-- lineOfBusiness Column -->
+		<ng-container matColumnDef="lineOfBusiness">
+			<th
+				mat-header-cell
+				*matHeaderCellDef
+				mat-sort-header
+				class="col-line-of-business"
+			>
+				Line Of Business
+			</th>
+			<td mat-cell *matCellDef="let row">{{ row.lineOfBusiness }}</td>
+		</ng-container>
+		<!-- Version Column -->
+		<ng-container matColumnDef="version">
+			<th
+				mat-header-cell
+				*matHeaderCellDef
+				mat-sort-header
+				class="col-version"
+			>
+				Version No.
+			</th>
+			<td mat-cell *matCellDef="let row">{{ row.version }}</td>
+		</ng-container>
+		<!-- Status Column -->
+		<ng-container
+			matColumnDef="noOfLikes"
+			*ngIf="status === statusObj.DRAFT"
+		>
+			<th
+				mat-header-cell
+				*matHeaderCellDef
+				mat-sort-header
+				class="col-status draft"
+			>
+				Likes
+			</th>
+			<td mat-cell *matCellDef="let row">{{ row.noOfLikes }}</td>
+		</ng-container>
+		<ng-container
+			matColumnDef="noOfConsents"
+			*ngIf="status === statusObj.ISSUED"
+		>
+			<th
+				mat-header-cell
+				*matHeaderCellDef
+				mat-sort-header
+				class="col-status issued"
+			>
+				Consents
+			</th>
+			<td mat-cell *matCellDef="let row">{{ row.noOfConsents }}</td>
+		</ng-container>
+		<ng-container
+			matColumnDef="reportStatus"
+			*ngIf="status === statusObj.ISSUED"
+		>
+			<th
+				mat-header-cell
+				*matHeaderCellDef
+				mat-sort-header
+				class="col-status"
+			>
+				Report Status
+			</th>
+			<td
+				mat-cell
+				*matCellDef="let row"
+				(click)="
+					viewReport($event, row, row.reportStatus, row.reportUrl)
+				"
+				class="row-status"
+				[ngClass]="{
+					active:
+						row.reportStatus &&
+						!(row.reportStatus.toLowerCase() === 'awaiting')
+				}"
+			>
+				{{ row.reportStatus }}
+			</td>
+		</ng-container>
+		<!-- Updated Date Column -->
+		<ng-container matColumnDef="updatedTs">
+			<th
+				mat-header-cell
+				*matHeaderCellDef
+				mat-sort-header
+				[ngClass]="{ cancelled1: status === statusObj.CANCELLED }"
+				class="col-updated-date"
+			>
+				Updated Date
+			</th>
+			<td mat-cell *matCellDef="let row">
+				{{ row.updatedTs | date: 'MM/dd/yyyy' }}
+			</td>
+		</ng-container>
+
+		<tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+		<tr
+			mat-row
+			*matRowDef="let row; columns: tableColumns"
+			(click)="viewDraft(row)"
+		></tr>
+		<tr class="mat-row" *matNoDataRow>
+			<td class="mat-cell" colspan="9999">
+				No {{ statusText }} data calls are available
+			</td>
+		</tr>
+	</table>
+
+	<mat-paginator
+		#paginator
+		[length]="50"
+		[pageIndex]="0"
+		[pageSize]="recordsPerPage"
+		[pageSizeOptions]="[10, 15, 20]"
+	>
+	</mat-paginator>
+</div>
+<app-spinner *ngIf="isSpinner"></app-spinner>

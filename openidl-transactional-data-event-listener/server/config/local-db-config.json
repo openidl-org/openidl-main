@@ -1,0 +1,5 @@
+{
+    "persistentStore": "mongo",
+    "mongodb": "openidl-offchain-db",
+    "simpleURI": "mongodb://localhost:27017"
+}

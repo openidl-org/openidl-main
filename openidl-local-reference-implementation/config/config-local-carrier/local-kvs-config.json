@@ -1,0 +1,4 @@
+{
+    "walletType": "couchdb",
+    "url": "http://admin:adminpw@host.minikube.internal:9984"
+}

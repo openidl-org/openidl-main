@@ -4,8 +4,9 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/hyperledger/fabric/core/chaincode/lib/cid"
-	"github.com/hyperledger/fabric/core/chaincode/shim"
+	"github.com/hyperledger/fabric-chaincode-go/pkg/cid"
+	"github.com/hyperledger/fabric-chaincode-go/shim"
+	logger "github.com/sirupsen/logrus"
 )
 
 //returns true(if orgType has access for that function)
@@ -35,6 +36,7 @@ func checkAccessForOrg(stub shim.ChaincodeStubInterface, function string) (bool,
 			"IssueDataCall":           {ADVISORY_ORGANISATION_TYPE},
 			"ToggleLike":              {ADVISORY_ORGANISATION_TYPE, CARRIER_ORGANISATION_TYPE},
 			"CreateConsent":           {ADVISORY_ORGANISATION_TYPE, CARRIER_ORGANISATION_TYPE},
+			"CreateReconsent":         {ADVISORY_ORGANISATION_TYPE, CARRIER_ORGANISATION_TYPE},
 			"CreateReport":            {ADVISORY_ORGANISATION_TYPE},
 			"UpdateReport":            {ADVISORY_ORGANISATION_TYPE},
 		}

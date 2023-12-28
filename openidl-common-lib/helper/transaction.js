@@ -3,18 +3,18 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
- 
+
 
 const log4js = require('log4js');
-const config = require('config');
 const {
     Gateway
 } = require('fabric-network');
+const { BlockDecoder } = require('fabric-common');
 
 const walletHelper = require('./wallet');
 
 const logger = log4js.getLogger('helper -transaction ');
-logger.level = config.logLevel;
+logger.level = process.env.LOG_LEVEL || 'debug';
 
 const MESSAGE_CONFIG = require('./config/ibp-messages-config.js');
 
@@ -26,38 +26,12 @@ class transaction {
         this.channelName = channelName;
         this.chaincodeName = chaincodeName;
         this.orgMSPId = orgMSPId;
-        this.gateway = new Gateway();
-
     }
     init(connProfilePath) {
         this.ccp = connProfilePath;
     }
     static initWallet(options) {
         walletHelper.init(options);
-    }
-
-    async initEventHub() {
-        logger.debug('init event hub');
-        const idExists = await walletHelper.identityExists(this.user);
-        if (!idExists) {
-            throw new Error("Invalid Identity, no certificate found in certificate store");
-        }
-        // gateway and contract connection
-        logger.debug('channel:' + this.channelName);
-        logger.debug('user:' + this.user);
-        await this.gateway.connect(this.ccp, {
-            identity: this.user,
-            wallet: walletHelper.getWallet(),
-        });
-        const network = await this.gateway.getNetwork(this.channelName);
-        const channel = network.getChannel();
-        const peerMap = network.getPeerMap();
-        const peer = peerMap.get(this.orgMSPId);
-        this.eventHub = channel.newChannelEventHub(peer);
-        //  finally { //TODO need to discuss 
-        //   this.gateway.disconnect();
-        // }
-
     }
 
     /**
@@ -91,6 +65,7 @@ class transaction {
         logger.debug('inside transaction.submitTransaction() functionName...' + functionName);
         logger.debug('inside transaction.submitTransaction() parameters...');
         logger.debug(parameters);
+        const gateway = new Gateway();
         try {
             // user enroll and import if identity not found in wallet
             const idExists = await walletHelper.identityExists(this.user);
@@ -99,13 +74,13 @@ class transaction {
             }
 
             // gateway and contract connection
-            await this.gateway.connect(this.ccp, {
+            await gateway.connect(this.ccp, {
                 identity: this.user,
                 wallet: walletHelper.getWallet(),
                 discovery: { enabled: true, asLocalhost: false }
             });
 
-            const network = await this.gateway.getNetwork(this.channelName);
+            const network = await gateway.getNetwork(this.channelName);
             const contract = network.getContract(this.chaincodeName);
 
             // invoke transaction
@@ -117,7 +92,7 @@ class transaction {
 
             return this.submitTransaction(functionName, parameters, this.handleError(err, retryCountPending));
         } finally {
-            this.gateway.disconnect();
+            gateway.disconnect();
         }
     };
 
@@ -127,6 +102,7 @@ class transaction {
         logger.debug('inside transaction.executeTransaction() parameters...');
         logger.debug(parameters);
 
+        const gateway = new Gateway();
         try {
             // user enroll and import if identity not found in wallet
             const idExists = await walletHelper.identityExists(this.user);
@@ -135,12 +111,12 @@ class transaction {
             }
 
             // gateway and contract connection
-            await this.gateway.connect(this.ccp, {
+            await gateway.connect(this.ccp, {
                 identity: this.user,
                 wallet: walletHelper.getWallet(),
                 discovery: { enabled: true, asLocalhost: false }
             });
-            const network = await this.gateway.getNetwork(this.channelName);
+            const network = await gateway.getNetwork(this.channelName);
             const contract = network.getContract(this.chaincodeName);
 
             // invoke transaction
@@ -152,23 +128,24 @@ class transaction {
             logger.error('executeTransaction error ' + err);
             return this.executeTransaction(functionName, parameters, this.handleError(err, retryCountPending));
         } finally {
-            this.gateway.disconnect();
+            gateway.disconnect();
         }
     };
-    async transientTransaction(functionName, parameters, pageNumber, retryCountPending, ) {
+    async transientTransaction(functionName, parameters, pageNumber, retryCountPending) {
         logger.debug('inside transaction.transientTransaction() functionName...' + functionName);
         logger.debug('inside transaction.transientTransaction() parameters...');
+        const gateway = new Gateway();
         try {
             const idExists = await walletHelper.identityExists(this.user);
             if (!idExists) {
                 throw new Error("Invalid Identity, no certificate found in certificate store");
             }
-            await this.gateway.connect(this.ccp, {
+            await gateway.connect(this.ccp, {
                 identity: this.user,
                 wallet: walletHelper.getWallet(),
                 discovery: { enabled: true, asLocalhost: false }
             });
-            const network = await this.gateway.getNetwork(this.channelName);
+            const network = await gateway.getNetwork(this.channelName);
             const contract = network.getContract(this.chaincodeName);
             logger.info("Transaction " + functionName + "execution start at " + new Date().toISOString() + "for page " + pageNumber + "*************");
             const invokeResponse = await contract.createTransaction(functionName).setTransient(parameters).submit();
@@ -179,19 +156,17 @@ class transaction {
 
             return this.transientTransaction(functionName, parameters, this.handleError(err, retryCountPending));
         } finally {
-            this.gateway.disconnect();
+            gateway.disconnect();
         }
     };
 
     getChannelName() {
         return this.channelName;
     }
-    // getEventHub() { //TODO handle null condition
-    //   return this.eventHub;
-    // }
 
     async getBlockDetails(retryCountPending) {
         logger.debug('get block details');
+        const gateway = new Gateway();
         try {
             // let hashArray = [];
             const idExists = await walletHelper.identityExists(this.user);
@@ -199,81 +174,94 @@ class transaction {
                 throw new Error("Invalid Identity, no certificate found in certificate store");
             }
             // gateway and contract connection
-            await this.gateway.connect(this.ccp, {
+            await gateway.connect(this.ccp, {
                 identity: this.user,
                 wallet: walletHelper.getWallet(),
                 discovery: { enabled: true, asLocalhost: false }
             });
-            const network = await this.gateway.getNetwork(this.channelName);
-            const channel = network.getChannel();
-            const queryInfo = await channel.queryInfo();
+            const network = await gateway.getNetwork(this.channelName);
+            const blockHeight = network.discoveryService.discoveryResults.peers_by_org[this.orgMSPId].peers[0].ledgerHeight.low;
             logger.debug('height');
-            logger.debug(queryInfo.height);
-            const blockHeight = queryInfo.height.low;
+            logger.debug(blockHeight);
+            const contract = network.getContract('qscc');
             const promiseArray = [];
             for (let index = blockHeight - 5; index < blockHeight; index++) {
-                promiseArray.push(channel.queryBlock(index));
+                promiseArray.push(contract.evaluateTransaction(
+                    'GetBlockByNumber',
+                    this.channelName,
+                    String(index)
+                ));
             }
             const blockData = await Promise.all(promiseArray);
-            return blockData.map(block => block.header.data_hash);
+            return blockData.map(block => 
+                { 
+                    const blockData = BlockDecoder.decode(block);
+                    return blockData.header.data_hash.toString('hex') 
+                });
         } catch (err) {
             logger.error('getBlockDetails error ' + err);
             return this.getBlockDetails(this.handleError(err, retryCountPending));
         } finally {
-            this.gateway.disconnect();
+            gateway.disconnect();
         }
     };
 
     async getBlockHeight(retryCountPending) {
         logger.debug('get block height');
+        const gateway = new Gateway();
         try {
             const idExists = await walletHelper.identityExists(this.user);
             if (!idExists) {
                 throw new Error("Invalid Identity, no certificate found in certificate store");
             }
             // gateway and contract connection
-            await this.gateway.connect(this.ccp, {
+            await gateway.connect(this.ccp, {
                 identity: this.user,
                 wallet: walletHelper.getWallet(),
                 discovery: { enabled: true, asLocalhost: false }
             });
-            const network = await this.gateway.getNetwork(this.channelName);
-            const channel = network.getChannel();
-            const queryInfo = await channel.queryInfo();
+            const network = await gateway.getNetwork(this.channelName);
+            const height = network.discoveryService.discoveryResults.peers_by_org[this.orgMSPId].peers[0].ledgerHeight.low;
             logger.debug('height');
-            logger.debug(queryInfo.height);
-            return queryInfo.height;
+            logger.debug(height);
+            return height;
         } catch (err) {
             logger.error('getBlockHeight error ' + err);
             return this.getBlockHeight(this.handleError(err, retryCountPending));
         } finally {
-            this.gateway.disconnect();
+            gateway.disconnect();
         }
     }
 
     async getBlockDataByBlockNumber(blockNumber, retryCountPending) {
         logger.debug('getBlockDataByBlockNumber method entry');
+        const gateway = new Gateway();
         try {
             const idExists = await walletHelper.identityExists(this.user);
             if (!idExists) {
                 throw new Error("Invalid Identity, no certificate found in certificate store");
             }
             // gateway and contract connection
-            await this.gateway.connect(this.ccp, {
+            await gateway.connect(this.ccp, {
                 identity: this.user,
                 wallet: walletHelper.getWallet(),
                 discovery: { enabled: true, asLocalhost: false }
             });
-            const network = await this.gateway.getNetwork(this.channelName);
-            const channel = network.getChannel();
-            const blockData = await channel.queryBlock(blockNumber);
+            const network = await gateway.getNetwork(this.channelName);
+            const contract = network.getContract('qscc');
+            const resultByte = await contract.evaluateTransaction(
+                'GetBlockByNumber',
+                this.channelName,
+                String(blockNumber)
+            );
+            const blockData = BlockDecoder.decode(resultByte);
             logger.debug('getBlockDataByBlockNumber method exit');
             return blockData;
         } catch (err) {
             logger.error('getBlockDataByBlockNumber error ' + err);
             return this.getBlockDataByBlockNumber(blockNumber, this.handleError(err, retryCountPending));
         } finally {
-            this.gateway.disconnect();
+            gateway.disconnect();
         }
     }
 
@@ -281,18 +269,19 @@ class transaction {
 
     async sendUpgradeProposal(requestObj, adminCert, ordererName) {
         logger.info('Inside transaction.sendUpgradeProposal()...');
+        const gateway = new Gateway();
         try {
             const idExists = await walletHelper.identityExists(this.user);
             if (!idExists) {
                 throw new Error("Invalid Identity, no certificate found in certificate store");
             }
-            await this.gateway.connect(this.ccp, {
+            await gateway.connect(this.ccp, {
                 identity: this.user,
                 wallet: walletHelper.getWallet(),
                 discovery: { enabled: true, asLocalhost: false }
             });
-            await this.gateway.getNetwork(this.channelName);
-            const client = await this.gateway.getClient(this.channelName);
+            await gateway.getNetwork(this.channelName);
+            const client = await gateway.getClient(this.channelName);
             client.setAdminSigningIdentity(adminCert.private_key, adminCert.cert, adminCert.mspid);
             requestObj.txId = client.newTransactionID(true);
             const channel = client.getChannel(this.channelName);
@@ -311,24 +300,27 @@ class transaction {
         } catch (err) {
             logger.info("Error while upgrading chaincode.......");
             throw new Error(err);
+        } finally {
+            gateway.disconnect();
         }
 
     };
 
     async sendInstantiateProposal(requestObj, adminCert, ordererName) {
         logger.debug('Inside transaction.sendInstantiateProposal()...');
+        const gateway = new Gateway();
         try {
             const idExists = await walletHelper.identityExists(this.user);
             if (!idExists) {
                 throw new Error("Invalid Identity, no certificate found in certificate store");
             }
-            await this.gateway.connect(this.ccp, {
+            await gateway.connect(this.ccp, {
                 identity: this.user,
                 wallet: walletHelper.getWallet(),
                 discovery: { enabled: true, asLocalhost: false }
             });
-            await this.gateway.getNetwork(this.channelName);
-            const client = await this.gateway.getClient(this.channelName);
+            await gateway.getNetwork(this.channelName);
+            const client = await gateway.getClient(this.channelName);
             client.setAdminSigningIdentity(adminCert.private_key, adminCert.cert, adminCert.mspid);
             requestObj.txId = client.newTransactionID(true);
             const channel = client.getChannel(this.channelName);
@@ -347,6 +339,8 @@ class transaction {
         } catch (err) {
             logger.info("Error while Instantiating chaincode.......");
             throw new Error(err);
+        } finally {
+            gateway.disconnect();
         }
 
     };

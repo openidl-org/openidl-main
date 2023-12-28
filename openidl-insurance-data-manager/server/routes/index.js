@@ -17,9 +17,11 @@
 const express = require('express');
 const log4js = require('log4js');
 const config = require('config');
-const openidlDataCallCommonApp = require('openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
 
-const apiAuthHandler = openidlDataCallCommonApp.ApiAuthHandler;
+const idpCredentials = JSON.parse(process.env.IDP_CONFIG);
+const authHandler = openidlCommonLib.AuthHandler.setHandler(idpCredentials);
+
 const health = require('./health');
 const ping = require('./ping');
 const statAgentController = require('../controllers/stat-agent');
@@ -32,25 +34,26 @@ const router = express.Router();
  * Set up logging
  */
 const logger = log4js.getLogger('routes - index');
-logger.setLevel(config.logLevel);
+logger.level = config.logLevel;
 
 /**
  * Add routes
  */
-router.use('/health', apiAuthHandler.authenticate, health);
-router.use('/ping', apiAuthHandler.authenticate, ping);
-router.use('/insurance-data', apiAuthHandler.authenticate, statAgentController.insuranceData);
-router.use('/ins-data-hash', apiAuthHandler.authenticate, statAgentController.saveInsuranceDataHash);
-router.use('/ins-data-hds', apiAuthHandler.authenticate, statAgentController.saveInsuranceDataHDS);
-router.use('/ins-data-hds-err', apiAuthHandler.authenticate, statAgentController.saveInsuranceDataHDSError);
+router.use('/health', authHandler.validateToken, health);
+router.use('/ping', authHandler.validateToken, ping);
+router.use('/insurance-data', authHandler.validateToken, statAgentController.insuranceData);
+router.use('/ins-data-hash', authHandler.validateToken, statAgentController.saveInsuranceDataHash);
+router.use('/ins-data-hds', authHandler.validateToken, statAgentController.saveInsuranceDataHDS);
+router.use('/ins-data-hds-err', authHandler.validateToken, statAgentController.saveInsuranceDataHDSError);
 
 // Jira - AAISPROD-14 Changes
-router.use('/sendemail', apiAuthHandler.authenticate, emailController.sendEmail);
+router.use('/sendemail', authHandler.validateToken, emailController.sendEmail);
 
 /**
  * This API end point is invoked by Nifi to load insurance data into mongodb and store insurance
  * hash value into blockchain
  */
-router.use('/load-insurance-data', apiAuthHandler.authenticate, statAgentController.loadInsuranceData);
+router.use('/load-insurance-data', authHandler.validateToken, statAgentController.loadInsuranceData);
+router.route('/get-insurance-data-by-criteria').get( authHandler.validateToken, statAgentController.getInsuranceData);
 
 module.exports = router;

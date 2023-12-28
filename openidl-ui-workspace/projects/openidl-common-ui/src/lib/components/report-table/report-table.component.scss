@@ -1,0 +1,108 @@
+@import '../../../styles/variables';
+
+.data-table {
+	.width-table {
+		width: 100%;
+	}
+
+	.col-status {
+		text-transform: capitalize;
+	}
+
+	.col-action {
+		width: 40px;
+	}
+
+	.row-icon {
+		padding-bottom: 10px;
+
+		.mat-icon {
+			top: 8px;
+			position: relative;
+			margin-left: 5px;
+		}
+	}
+
+	.text-wrap {
+		max-width: 400px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		display: block;
+	}
+
+	.mat-row:hover {
+		background-color: $table-hover;
+		cursor: pointer;
+	}
+
+	.row-status {
+		text-transform: capitalize;
+	}
+
+	.active {
+		color: $primary;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+
+	.report-link {
+		color: $primary;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+
+	.spinner-container {
+		height: 5rem;
+		position: relative;
+		text-align: center;
+
+		.spin {
+			display: inline;
+			top: 40%;
+		}
+	}
+}
+
+.report-table {
+	.truncate-url {
+		width: 350px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: block;
+	}
+	.truncate-hash {
+		width: 250px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: block;
+	}
+
+	@media screen and (max-width: 1024px) {
+		.truncate-url {
+			width: 200px;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: block;
+		}
+		.truncate-hash {
+			width: 170px;
+		}
+	}
+
+	@media screen and (max-width: 780px) {
+		.truncate-url {
+			width: 100px;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: block;
+		}
+		.truncate-hash {
+			width: 90px;
+		}
+	}
+}

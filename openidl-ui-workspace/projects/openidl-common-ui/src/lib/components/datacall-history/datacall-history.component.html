@@ -1,0 +1,20 @@
+<mat-list class="history">
+	<mat-list-item *ngFor="let history of datacallHistory">
+		<mat-icon mat-list-icon color="primary">history_toggle_off</mat-icon>
+		<div mat-line>{{ history.action }}</div>
+		<div mat-line>{{ history.actionTs }}</div>
+	</mat-list-item>
+
+	<!-- <mat-list-item *ngFor="let history of [1, 2, 3, 4, 5]">
+		<mat-icon mat-list-icon color="primary">history_toggle_off</mat-icon>
+		<div mat-line>Data Call Issued.</div>
+		<div mat-line>7/13/2021 04:38 PM</div>
+	</mat-list-item> -->
+	<div class="loading">
+		<mat-spinner
+			matSuffix
+			[diameter]="40"
+			*ngIf="datacallHistory === undefined"
+		></mat-spinner>
+	</div>
+</mat-list>

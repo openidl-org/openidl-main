@@ -5,15 +5,16 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/hyperledger/fabric/core/chaincode/shim"
-	pb "github.com/hyperledger/fabric/protos/peer"
+	"github.com/hyperledger/fabric-chaincode-go/shim"
+	pb "github.com/hyperledger/fabric-protos-go/peer"
+	logger "github.com/sirupsen/logrus"
 	//"time"
 )
 
 // logDataCallTransaction creates a new Transactional Log Entry for a datacall
 // Success: nil
 // Error: {"message":"....","errorCode":"Sys_Err/Bus_Err"}
-func (this *openIDLCC) LogDataCallTransaction(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) LogDataCallTransaction(stub shim.ChaincodeStubInterface, args string) pb.Response {
 	logger.Debug("LogDataCallTransaction: enter")
 	defer logger.Debug("LogDataCallTransaction: exit")
 	logger.Debug("LogDataCallTransaction json received : ", args)
@@ -51,7 +52,7 @@ func (this *openIDLCC) LogDataCallTransaction(stub shim.ChaincodeStubInterface, 
 //  "status" :"DRAFT OR ISSUED OR CANCELLED"}
 // Success {byte[]}: byte[]
 // Error   {json}:{"message":"....","errorCode":"Sys_Err/Bus_Err"}
-func (this *openIDLCC) GetDataCallTransactionHistory(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) GetDataCallTransactionHistory(stub shim.ChaincodeStubInterface, args string) pb.Response {
 	logger.Debug("GetDataCallTransactionHistory: enter")
 	defer logger.Debug("GetDataCallTransactionHistory: exit")
 	logger.Debug("GetDataCallTransactionHistory json received : ", args)
@@ -91,7 +92,7 @@ func (this *openIDLCC) GetDataCallTransactionHistory(stub shim.ChaincodeStubInte
 
 }
 
-func (this *openIDLCC) ListDataCallTransactionHistory(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) ListDataCallTransactionHistory(stub shim.ChaincodeStubInterface, args string) pb.Response {
 	logger.Debug("GetDataCallTransactionHistory: enter")
 	defer logger.Debug("GetDataCallTransactionHistory: exit")
 	logger.Debug("GetDataCallTransactionHistory json received : ", args)

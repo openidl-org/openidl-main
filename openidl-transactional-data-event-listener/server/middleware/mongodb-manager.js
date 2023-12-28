@@ -1,9 +1,6 @@
 const log4js = require('log4js');
 const config = require('config');
-const IBMCloudEnv = require('ibm-cloud-env');
 const mongoDBManagerInstance = require("mongodb").MongoClient;
-const DBConfig = require('../config/DBConfig.json');
-const mongoDBName = DBConfig.databaseService[0].mongodb;
 const DBCollection = config.transactionalDataManagerDB;
 
 const logger = log4js.getLogger('mongodb-manager');
@@ -16,20 +13,18 @@ class MongoDBManager {
 
     static async initMongoDBConnection() {
         logger.info('Inside init mongodb connection');
-        const DBService = DBConfig.databaseService[0];
-        const servicecredentials = DBService.servicecredentials;
-        IBMCloudEnv.init();
-        const mongoconfig = IBMCloudEnv.getDictionary(servicecredentials);
+        const mongoconfig = JSON.parse(process.env.OFF_CHAIN_DB_CONFIG);
         const ca = mongoconfig.connection.mongodb.certificate.certificate_base64;
         const options = {
             ssl: true,
             sslValidate: false,
             sslCA: ca,
-            useNewUrlParser: true
+            useNewUrlParser: true,
+            useUnifiedTopology: true
         };
         const connectionString = mongoconfig.connection.mongodb.composed[0];
         const mongoDBClient = await mongoDBManagerInstance.connect(connectionString, options);
-        mongodb = mongoDBClient.db(mongoDBName);
+        mongodb = mongoDBClient.db(mongoconfig.mongodb);
         return mongodb;
     }
 

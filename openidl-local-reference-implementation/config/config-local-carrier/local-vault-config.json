@@ -1,0 +1,7 @@
+{
+    "walletType": "hashicorp_vault",
+    "accessKeyId": "${AWS_ACCESS_KEY}",
+    "secretAccessKey": "${AWS_ACCESS_SECRET_KEY}",
+    "region": "${AWS_REGION}",
+    "secretName": "aais-hv-credential"
+}

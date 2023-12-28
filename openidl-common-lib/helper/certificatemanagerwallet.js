@@ -1,4 +1,4 @@
- 
+
 'use strict';
 /**
  * Copyright 2018 IBM All Rights Reserved.
@@ -8,8 +8,8 @@
 
 const log4js = require('log4js');
 const request = require('request');
-const BaseWallet = require('fabric-network/lib/impl/wallet/basewallet');
 const logger = log4js.getLogger('helpers - certificate manager');
+logger.level = process.env.LOG_LEVEL || 'debug';
 const itm = require('@ibm-functions/iam-token-manager');
 const certificateManagerConfig = require('./config/certification_manager.json');
 /**
@@ -19,7 +19,7 @@ const certificateManagerConfig = require('./config/certification_manager.json');
  * @class
  * @extends {BaseWallet}
  */
-class CertificatemanagerWallet extends BaseWallet {
+class CertificatemanagerWallet {
 
 	/**
 	 * Creates an instance of the CertificatemanagerWallet
@@ -27,25 +27,12 @@ class CertificatemanagerWallet extends BaseWallet {
 	 * @param {WalletMixin} mixin
 	 * @memberof CertificatemanagerWallet
 	 */
-	constructor() {
-		super();
-		this.CMOptions = {};
+	constructor(options) {
+		this.CMOptions = options;
 	}
 
-	async loadoptions(options) {
-		this.options = options;
-		Object.assign(this.CMOptions, this.options);
-	}
-
-	async exists(label) {
-		const myAuthToken = 'Bearer ' + await this.generateAuthToken(this.CMOptions.apikey);
-		logger.debug('in exists, label = %s', label);
-		const certificateId = await this.getCertificateId(label, myAuthToken);
-		logger.debug("in exists " + certificateId);
-		if (certificateId == -1) {
-			return false;
-		}
-		return true;
+	static async loadoptions(options) {
+		return new CertificatemanagerWallet(options);
 	}
 
 	//list all certificates from repository and then retrives the certificate id based on the label
@@ -115,18 +102,13 @@ class CertificatemanagerWallet extends BaseWallet {
 					reject(error);
 				} else {
 					var responsebody = JSON.parse(body);
-					resolve({
-						type: 'X509',
-						mspId: responsebody['description'],
-						certificate: responsebody['data']['content'],
-						privateKey: responsebody['data']['priv_key']
-					});
+					resolve(responsebody['data']);
 				}
 			});
 		});
 	}
 
-	async export(label) {
+	async get(label) {
 		const myAuthToken = 'Bearer ' + await this.generateAuthToken(this.CMOptions.apikey);
 		var certificateId = await this.getCertificateId(label, myAuthToken);
 		var identity = await this.getCertificate(certificateId, myAuthToken);
@@ -134,7 +116,7 @@ class CertificatemanagerWallet extends BaseWallet {
 		return identity;
 	}
 
-	async import(name, identity) {
+	async put(name, identity) {
 		const myAuthToken = 'Bearer ' + await this.generateAuthToken(this.CMOptions.apikey);
 		const instanceid = this.CMOptions.instance_id;
 		const url = certificateManagerConfig.url + "/" + encodeURIComponent(instanceid) + "/certificates/import";
@@ -147,11 +129,7 @@ class CertificatemanagerWallet extends BaseWallet {
 		};
 		const body = {
 			"name": name,
-			"description": identity.mspId,
-			"data": {
-				"content": identity.certificate,
-				"priv_key": identity.privateKey
-			}
+			data: identity,
 		};
 
 		return new Promise((resolve, reject) => {

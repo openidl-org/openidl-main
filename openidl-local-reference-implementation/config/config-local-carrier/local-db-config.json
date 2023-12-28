@@ -1,0 +1,5 @@
+{
+    "persistentStore": "mongo",
+    "mongodb": "openidl-offchain-db",
+    "simpleURI": "mongodb://host.minikube.internal:27017"
+}

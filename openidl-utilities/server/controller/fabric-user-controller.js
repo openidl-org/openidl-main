@@ -16,9 +16,9 @@
  *  limitations under the License.
  */
 
- 
+
 const log4js = require('log4js');
-const fabric_config = require('../fabric/config/fabric-config');
+const fabric_config = require('../config/fabric-config');
 const logger = log4js.getLogger('controllers - fabric-user-controller');
 const fabricUserEnrollment = require('../fabric/fabric-enrollment');
 const fabricEnrollmentAPI = {};
@@ -42,7 +42,7 @@ fabricEnrollmentAPI.enroll = async (req, res) => {
     fabricUserEnrollment.init(fabric_config.connectionProfile);
 
     //invoke apis
-    if (payload.options == fabric_config.register) {
+    if (payload.options == 'register') {
         try {
             logger.debug("payload.users[0]" + payload.users[0]);
             await fabricUserEnrollment.registerUser(payload.users[0]);
@@ -62,10 +62,10 @@ fabricEnrollmentAPI.enroll = async (req, res) => {
             };
         }
     }
-    else if (payload.options == fabric_config.enroll) {
+    else if (payload.options == 'enroll') {
         try {
             logger.debug("payload.users[0]" + payload.users[0]);
-            await fabricUserEnrollment.enrollUser(payload.users[0], fabric_config.persistantStore);
+            await fabricUserEnrollment.enrollUser(payload.users[0]);
             logger.info("Fabric user enrolled  = " + new Date().toISOString());
             jsonRes = {
                 statusCode: 200,

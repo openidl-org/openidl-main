@@ -1,7 +1,7 @@
 openapi: '3.0.0'
 info:
   title: 'OpenIDL Insurance Data Manager API(s)'
-  version: '1.0.0'
+  version: '1.0.1'
   description: >-
     > This interface enables the testers to quickly test the API(s) developed by the Dev Team. If you dont have your token  then first generate the token.
     for testing the API(S).
@@ -80,6 +80,38 @@ paths:
               $ref: '#/components/schemas/insuranceData'
 
         required: true
+      security:
+      - bearerAuth: []
+
+  "/openidl/api/get-insurance-data-by-criteria":
+    get:
+      tags:
+        - Gets Insurance data from HDS
+      description: Gets Insurance data from HDS
+      summary: Gets Insurance data from HDS
+      parameters:
+        - name: organizationId
+          in: query
+          description: Organization Id
+          required: true
+          explode: true
+          schema:
+            type: string
+        - name: transactionMonth
+          in: query
+          description: Transaction Month
+          required: true
+          explode: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Read HDS data Successfully'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/readResponse'
+
       security:
       - bearerAuth: []
 
@@ -220,6 +252,15 @@ components:
       items:
         type: object
         
+    "readResponse":
+      type: object
+      description: This represents read response format
+      properties:
+        success:
+          type: string
+          example: "true"
+        result:
+          $ref: '#/components/schemas/record'          
                               
     
                

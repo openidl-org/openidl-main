@@ -1,0 +1,19 @@
+<app-base-dialog
+	[title]="data.pattern[0].extractionPatternName"
+	[type]="data.type"
+></app-base-dialog>
+
+<mat-dialog-content class="mat-typography">
+	<p>
+		{{ data.pattern[0].description }}
+	</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+	<button mat-flat-button (click)="onClickDownload()" color="primary">
+		<mat-icon>download</mat-icon>
+		Download Extraction Pattern
+	</button>
+</mat-dialog-actions>
+<div class="info">
+	{{ patternMessage }}
+</div>

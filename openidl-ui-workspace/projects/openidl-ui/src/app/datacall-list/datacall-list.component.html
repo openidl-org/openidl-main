@@ -1,0 +1,74 @@
+<div class="data-call-list">
+	<app-header [selected]="selected"></app-header>
+	<div class="container">
+		<h1 class="header-with-icon">
+			<mat-icon color="primary">list_alt</mat-icon>
+			<span>Data Call List</span>
+		</h1>
+		<mat-card>
+			<app-search (searchValue)="search($event)"></app-search>
+			<div class="pb-4"></div>
+			<mat-button-toggle-group
+				[value]="selectedTab"
+				[(ngModel)]="selectedTab"
+				(change)="onStatusGroupChange($event)"
+				#group="matButtonToggleGroup"
+				class="status-group"
+			>
+				<mat-button-toggle
+					class="button"
+					[value]="0"
+					aria-label="Drafts"
+				>
+					<mat-icon>bookmarks</mat-icon>
+					<span class="text">Drafts</span>
+				</mat-button-toggle>
+				<mat-button-toggle
+					class="button"
+					[value]="1"
+					aria-label="Issued"
+				>
+					<mat-icon>note_add</mat-icon>
+					<span class="text">Issued</span>
+				</mat-button-toggle>
+				<mat-button-toggle
+					class="button"
+					[value]="2"
+					aria-label="Abandoned"
+				>
+					<mat-icon>archive</mat-icon>
+					<span class="text">Abandoned</span>
+				</mat-button-toggle>
+			</mat-button-toggle-group>
+
+			<div class="mtb-1">
+				<app-table
+					*ngIf="selectedTab === 0"
+					[status]="statusObj.DRAFT"
+					(viewDraftEvent)="viewDraft($event)"
+					(viewIssuedEvent)="viewIssued($event)"
+					(viewReportEvent)="viewReport($event)"
+				></app-table>
+				<app-table
+					*ngIf="selectedTab === 1"
+					[status]="statusObj.ISSUED"
+					(viewDraftEvent)="viewDraft($event)"
+					(viewIssuedEvent)="viewIssued($event)"
+					(viewReportEvent)="viewReport($event)"
+				></app-table>
+				<app-table
+					*ngIf="selectedTab === 2"
+					[status]="statusObj.CANCELLED"
+					(viewDraftEvent)="viewDraft($event)"
+					(viewIssuedEvent)="viewIssued($event)"
+					(viewReportEvent)="viewReport($event)"
+					(viewAbandonedEvent)="viewAbandoned($event)"
+				></app-table>
+			</div>
+		</mat-card>
+
+		<div class="mtb-1">
+			<app-blocks-history></app-blocks-history>
+		</div>
+	</div>
+</div>

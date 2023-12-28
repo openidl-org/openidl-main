@@ -1,0 +1,80 @@
+// build.gradle
+plugins {
+    id("base")
+    id("maven-publish")
+}
+
+task generateSources(type: Copy) {
+    from 'src/main/resources/'
+    into "$buildDir/generated-src"
+    filter {
+        line -> line.replaceAll('chaincode-label', chaincodeLabel)
+                    .replaceAll('image-digest', imageDigest)
+                    .replaceAll('image-location-url', imageLocationUrl)
+    }
+}
+
+task buildCodeTar(type: Tar) {
+    extension = 'tgz'
+    destinationDir = file('build/archive')
+    archiveFileName = 'code.tar.gz'
+    compression = Compression.GZIP
+
+    into ('.'){
+        from "$buildDir/generated-src/code/"
+        include 'image.json'
+    }
+
+    into ('/'){
+        from "$buildDir/generated-src/code/"
+        include 'META-INF/**'
+    }
+}
+
+task buildChaincodeTar(type: Tar) {
+    extension = 'tgz'
+    destinationDir = file('build')
+    archiveFileName = 'openidl-chaincode.tgz'
+    compression = Compression.GZIP
+   // groupId = "openidl"
+
+    into ('/'){
+        from "$buildDir/archive/"
+        include '*'
+    }
+
+    into ('/'){
+        from "$buildDir/generated-src/"
+        include 'metadata.json'
+    }
+}
+
+buildCodeTar.dependsOn generateSources
+buildChaincodeTar.dependsOn buildCodeTar
+build.dependsOn buildChaincodeTar
+
+def chaincodeTar = layout.buildDirectory.file('openidl-chaincode.tgz')
+def chaincodeTarArtifact = artifacts.add('archives', chaincodeTar.get().asFile) {
+    type 'tgz'
+    builtBy 'buildChaincodeTar'
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/openidl-org/openidl-main")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+    publications {
+        maven(MavenPublication) {
+            groupId 'openidl-chaincode'
+            artifactId chaincodeLabel
+            artifact chaincodeTarArtifact
+        }
+    }
+}

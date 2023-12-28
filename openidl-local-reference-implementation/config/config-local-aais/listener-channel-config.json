@@ -1,0 +1,25 @@
+{
+    "listenerChannels": [
+        {
+            "channelName": "analytics-aais",
+            "events": [
+                {
+                    "ConsentedEvent": "ConsentedEvent"
+                }
+            ]
+        },
+        {
+            "channelName": "defaultchannel",
+            "events": [
+                {
+                    "ExtractionPatternSpecified": "ExtractionPatternSpecified"
+                }
+            ]
+        }
+    ],
+    "identity": {
+        "user": "openidl-aais-data-call-processor-ibp-2.0",
+        "wallet": "&wallet"
+    },
+    "applicationName": "openidl-aais-data-call-processor"
+}

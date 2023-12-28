@@ -1,0 +1,5 @@
+{
+    "accessKeyId": "${AWS_S3_ACCESS_KEY}",
+    "secretAccessKey": "${AWS_S3_SECRET_ACCESS_KEY}",
+    "bucketName": "openidl-analytics"
+}

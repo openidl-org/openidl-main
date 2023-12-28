@@ -3,11 +3,14 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"reflect"
 	"strconv"
+	"reflect"
 	"testing"
 
-	"github.com/hyperledger/fabric/core/chaincode/shim"
+	"github.com/golang/protobuf/proto"
+	"github.com/hyperledger/fabric-chaincode-go/shim"
+	"github.com/hyperledger/fabric-protos-go/msp"
+	logger "github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -21,11 +24,15 @@ import (
 //This function tests whether it creates CreateDataCall.
 func Test_CreateDataCall_Should_Create_Datacall_when_Datacall_Does_not_Exists(t *testing.T) {
 	fmt.Println("Test_CreateDataCall_Should_Create_Datacall_when_Datacall_Does_not_Exists")
-	scc := new(openIDLTestCC)
+	scc := new(SmartContract)
 	stub := NewCouchDBMockStub("OpenIDLMockStub", scc)
+	sid := &msp.SerializedIdentity{Mspid: "aaismsp", IdBytes: idbytes}
+	b, err := proto.Marshal(sid)
+	if err != nil {
+		t.FailNow()
+	}
 
-	//scc := new(openIDLCC)
-	//stub := MockStub("openIDLCC", scc)
+	stub.Creator = b
 
 	//test for CreateDataCall
 	//Step-1: For ERROR- Check whether it returns error for empty ID
@@ -66,8 +73,15 @@ func Test_CreateDataCall_Should_Create_Datacall_when_Datacall_Does_not_Exists(t 
 //This function tests whether it  updates status.
 func Test_UpdateDataCall_Should_Update_An_Existing_Datacall(t *testing.T) {
 	fmt.Println("Test_UpdateDataCall_Should_Update_An_Existing_Datacall")
-	scc := new(openIDLTestCC)
+	scc := new(SmartContract)
 	stub := NewCouchDBMockStub("OpenIDLMockStub", scc)
+	sid := &msp.SerializedIdentity{Mspid: "aaismsp", IdBytes: idbytes}
+	b, err := proto.Marshal(sid)
+	if err != nil {
+		t.FailNow()
+	}
+
+	stub.Creator = b
 
 	//Step-1: For ERROR- Check whether it returns error for empty ID
 	res_err_updateDataCall := checkInvoke_forError(t, stub, "UpdateDataCall", []byte(UPDATE_DATA_CALL_EMPTY_ID_JSON))
@@ -110,8 +124,15 @@ func Test_UpdateDataCall_Should_Update_An_Existing_Datacall(t *testing.T) {
 //This function tests whether it sets status to ISSUED.
 func Test_IssueDataCall_Should_Issue_A_Datacall(t *testing.T) {
 	fmt.Println("Test_IssueDataCall_Should_Issue_A_Datacall")
-	scc := new(openIDLTestCC)
+	scc := new(SmartContract)
 	stub := NewCouchDBMockStub("OpenIDLMockStub", scc)
+	sid := &msp.SerializedIdentity{Mspid: "aaismsp", IdBytes: idbytes}
+	b, err := proto.Marshal(sid)
+	if err != nil {
+		t.FailNow()
+	}
+	stub.Creator = b
+
 	//Step-1: For ERROR- Check whether it returns error for empty ID
 	res_err_issueDataCall := checkInvoke_forError(t, stub, "IssueDataCall", []byte(ISSUE_DATA_CALL_EMPTY_ID_JSON))
 	var err_message_for_issue = res_err_issueDataCall.Message
@@ -151,8 +172,15 @@ func Test_IssueDataCall_Should_Issue_A_Datacall(t *testing.T) {
 //This function tests whether it creates new version of Datacall.
 func Test_SaveNewDraft_Should_Save_An_Existing_Datacall_With_New_Version(t *testing.T) {
 	fmt.Println("Test_SaveNewDraft_Should_Save_An_Existing_Datacall_With_New_Version")
-	scc := new(openIDLTestCC)
+	scc := new(SmartContract)
 	stub := NewCouchDBMockStub("OpenIDLMockStub", scc)
+	sid := &msp.SerializedIdentity{Mspid: "aaismsp", IdBytes: idbytes}
+	b, err := proto.Marshal(sid)
+	if err != nil {
+		t.FailNow()
+	}
+	stub.Creator = b
+
 
 	//Step-1: For ERROR- Check whether it returns error for empty ID
 	res_err_saveNewDraft := checkInvoke_forError(t, stub, "SaveNewDraft", []byte(SAVE_NEW_DRAFT_EMPTY_ID_JSON))
@@ -197,8 +225,15 @@ func Test_SaveNewDraft_Should_Save_An_Existing_Datacall_With_New_Version(t *test
 //This function tests whether it retrives DataCall for paricular ID and version
 func Test_GetDataCallByIdAndVersion_Should_Return_Datacall_With_Input_Datacall_ID_And_Version(t *testing.T) {
 	fmt.Println("Test_GetDataCallByIdAndVersion_Should_Return_Datacall_With_Input_Datacall_ID_And_Version")
-	scc := new(openIDLTestCC)
+	scc := new(SmartContract)
 	stub := NewCouchDBMockStub("OpenIDLMockStub", scc)
+	sid := &msp.SerializedIdentity{Mspid: "aaismsp", IdBytes: idbytes}
+	b, err := proto.Marshal(sid)
+	if err != nil {
+		t.FailNow()
+	}
+	stub.Creator = b
+
 	//test for GetDataCallByIdAndVersion
 	//Step-1: For ERROR- Check whether it returns error for empty ID
 	res_err_getByIdAndVersion := checkInvoke_forError(t, stub, "GetDataCallByIdAndVersion", []byte(GET_DATA_CALL_BY_ID_AND_VERSION_EMPTY_ID_JSON))
@@ -234,8 +269,15 @@ func Test_GetDataCallByIdAndVersion_Should_Return_Datacall_With_Input_Datacall_I
 //This function tests whether it retrives all the different versions of a DataCall.
 func Test_GetDataCallVersionsById_Should_Return_All_Versions_Of_Input_Datacall_Id(t *testing.T) {
 	fmt.Println("Test_GetDataCallVersionsById_Should_Return_All_Versions_Of_Input_Datacall_Id")
-	scc := new(openIDLTestCC)
+	scc := new(SmartContract)
 	stub := NewCouchDBMockStub("OpenIDLMockStub", scc)
+	sid := &msp.SerializedIdentity{Mspid: "aaismsp", IdBytes: idbytes}
+	b, err := proto.Marshal(sid)
+	if err != nil {
+		t.FailNow()
+	}
+	stub.Creator = b
+
 	//Step-1: For ERROR- Check whether it returns error for empty ID
 	res_err_getDataCallVersions := checkInvoke_forError(t, stub, "GetDataCallVersionsById", []byte(GET_DATA_CALL_VERSIONS_BY_ID_EMPTY_ID_JSON))
 	var err_message_getDataCallVersions = res_err_getDataCallVersions.Message
@@ -251,8 +293,15 @@ func Test_GetDataCallVersionsById_Should_Return_All_Versions_Of_Input_Datacall_I
 //This function tests whether it returns error for empty Status.
 func Test_ListDataCallsByCriteria_Should_Return_Datacalls_Based_On_Input_Criterion(t *testing.T) {
 	fmt.Println("Test_ListDataCallsByCriteria_Should_Return_Datacalls_Based_On_Input_Criterion")
-	scc := new(openIDLTestCC)
+	scc := new(SmartContract)
 	stub := NewCouchDBMockStub("OpenIDLMockStub", scc)
+	sid := &msp.SerializedIdentity{Mspid: "aaismsp", IdBytes: idbytes}
+	b, err := proto.Marshal(sid)
+	if err != nil {
+		t.FailNow()
+	}
+	stub.Creator = b
+
 	//Step-1: For ERROR- Check whether it returns error for empty Status
 	res_err_listByCriteria := checkInvoke_forError(t, stub, "ListDataCallsByCriteria", []byte(LIST_DATA_CALL_BY_CRITERIA_EMPTY_STATUS_JSON))
 	var err_message_listByCriteria = res_err_listByCriteria.Message

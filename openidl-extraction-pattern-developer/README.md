@@ -3,6 +3,10 @@
 -   see the runbook testing section for instructions on creating and publishing test extraction patterns
 -   create sample data
 
+# setup
+
+-   run `npm install`
+
 # creating data in a mongodb
 
 -   run the `data-loader.js` script to load data from a test file

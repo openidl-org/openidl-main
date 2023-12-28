@@ -27,35 +27,24 @@ const cors = require('cors');
 const helmet = require("helmet");
 const cookieParser = require("cookie-parser");
 const session = require('express-session');
-const IBMCloudEnv = require('ibm-cloud-env');
-IBMCloudEnv.init();
+
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
+openidlCommonLib.EnvConfig.init();
+
 const routes = require('./routes');
-const openidlCommonLib = require('openidl-common-lib');
 const transactionFactory = require('./helpers/transaction-factory');
 const networkConfig = require('./config/connection-profile.json');
 const logger = log4js.getLogger('server');
 logger.level = config.logLevel;
 
-// transactionFactory.init(IBMCloudEnv.getDictionary('aais-db-credentials'), networkConfig);
-logger.info('the appid credentials from env/local file');
-logger.info(IBMCloudEnv.getDictionary('appid-credentials'))
-const userAuthHandler = openidlCommonLib.UserAuthHandler;
-userAuthHandler.init(IBMCloudEnv.getDictionary('appid-credentials'));
+global.fetch = require('node-fetch');
 
-const apiAuthHandler = openidlCommonLib.ApiAuthHandler;
-apiAuthHandler.init(IBMCloudEnv.getDictionary('appid-credentials'));
-
+const idpCredentials = JSON.parse(process.env.IDP_CONFIG);
+const authHandler = openidlCommonLib.AuthHandler.setHandler(idpCredentials);
 const errorHandler = require('./middlewares/error-handler');
 const app = express();
 
 app.use(cors());
-/**
- * Set up logging
- */
-
-
-logger.debug('setting up app: registering routes, middleware...');
-
 
 /**
  * Load swagger document
@@ -83,44 +72,24 @@ logger.debug('setting up app: registering routes, middleware...');
 app.use(helmet());
 app.use(cookieParser());
 app.use(helmet.noCache());
-app.enable("trust proxy");
-app.use(userAuthHandler.configureSSL);
 // TODO Unable to move passport related stuff to middleware need expert help 
 // TODO discuss on standard session maintenance approach from Node.js for production
 app.use(session({
     secret: "123456",
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: {
+        secure: true,
+        httpOnly: true,
+        sameSite: 'lax'
+    } 
 }));
+
 logger.debug('setting up app: initializing passport');
-const passport = userAuthHandler.getPassport();
+const passport = authHandler.getPassport();
 app.use(passport.initialize());
 app.use(passport.session());
-let webAppStrategy = userAuthHandler.getUserAuthStrategy();
-passport.use(webAppStrategy);
-
-// Passport session persistance
-passport.serializeUser(function (user, cb) {
-    cb(null, user);
-});
-
-passport.deserializeUser(function (obj, cb) {
-    cb(null, obj);
-});
-
-let apiAppStrategy = apiAuthHandler.getAPIStrategy();
-const apiPassport = apiAuthHandler.getPassport();
-app.use(apiPassport.initialize());
-apiPassport.use(apiAppStrategy);
-
-// Passport session persistance
-apiPassport.serializeUser(function (user, cb) {
-    cb(null, user);
-});
-
-apiPassport.deserializeUser(function (obj, cb) {
-    cb(null, obj);
-});
+authHandler.setStrategy(passport);
 
 app.enable('trust proxy');
 
@@ -167,16 +136,18 @@ app.use(errorHandler.handleError);
  */
 const host = process.env.HOST || config.host;
 const port = process.env.PORT || config.port;
-console.log("  cert config  " + IBMCloudEnv.getDictionary('IBM-certificate-manager-credentials'));
 
-transactionFactory.init(IBMCloudEnv.getDictionary('IBM-certificate-manager-credentials'), networkConfig).then(data => {
-    console.log('transaction factory init done');
-    app.listen(port, () => {
-        logger.info(`app listening on http://${host}:${port}`);
-        logger.info(`Swagger UI is available at http://${host}:${port}/api-docs`);
-        app.emit("listened", null);
+transactionFactory.init(
+    JSON.parse(process.env.KVS_CONFIG),
+    networkConfig)
+    .then(data => {
+        console.log('transaction factory init done');
+        app.listen(port, () => {
+            logger.info(`app listening on http://${host}:${port}`);
+            logger.info(`Swagger UI is available at http://${host}:${port}/api-docs`);
+            app.emit("listened", null);
+        });
+    }).catch(err => {
+        logger.error('transaction factory init error' + err);
     });
-}).catch(err => {
-    logger.error('transaction factory init error' + err);
-});
 module.exports = app;

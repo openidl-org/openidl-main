@@ -1,0 +1,45 @@
+{
+    "name": "carr1 Gateway",
+    "version": "1.0",
+    "client": {
+        "organization": "carr1",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": 300
+                },
+                "orderer": 300
+            }
+        }
+    },
+    "organizations": {
+        "carr1": {
+            "mspid": "carr1",
+            "peers": [
+                "peer2carr1"
+            ],
+            "certificateAuthorities": [
+                "carr1CA"
+            ]
+        }
+    },
+    "certificateAuthorities": {
+        "carr1CA": {
+            "url": "https://hlf-carr1ca-ca.d1.test.openidl-org.net:443",
+            "caName": "ca",
+            "tlsCACerts": {
+                "pem": [
+                    ""
+                ]
+            }
+        }
+    },
+    "peers": {
+        "peer2carr1": {
+            "url": "grpcs://hlf-peer2carr1-peer.d1.test.openidl-org.net:443",
+            "tlsCACerts": {
+                "pem": ""
+            }
+        }
+    }
+}

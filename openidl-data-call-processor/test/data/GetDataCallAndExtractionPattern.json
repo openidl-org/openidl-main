@@ -2,19 +2,27 @@
     "dataCallId": "b3e17d40-3f00-11e9-a935-8dfa2d3c2e78",
     "dataCallVersion": "1",
     "extractionPattern": {
-        "id": "Pattern_01",
-        "name": "ExtractionPattern1",
-        "description": "This is the test description for ExtractionPattern1",
-        "Agreement": ["documentType",
-            "document.Type",
-            "document.propertyBOs",
-            "document.Components"
-        ],
-        "Claim": ["documentType",
-            "document.Type",
-            "document.propertyBOs",
-            "document.Components"
-        ]
+        "extractionPatternID": "nd_07",
+        "extractionPatternName": "ND 7",
+        "description": "Specific Policy Test",
+        "jurisdication": "ND",
+        "insurance": "Personal Auto",
+        "dbType": "postgres",
+        "viewDefinition": {
+            "map": "SELECT * FROM testdb.vin_numbers",
+            "reduce": "NOT_USED_FOR_POSTGRES"
+        },
+        "version": "0.1",
+        "isActive": true,
+        "effectiveStartTs": "2022-06-13T18:30:00Z",
+        "effectiveEndTs": "2022-06-15T18:30:00Z",
+        "premiumFromDate": "2022-01-30T18:30:00Z",
+        "premiumToDate": "2023-01-30T18:30:00Z",
+        "lossFromDate": "2022-01-30T18:30:00Z",
+        "lossToDate": "2023-01-30T18:30:00Z",
+        "updatedTs": "2022-07-21T12:37:00Z",
+        "updatedBy": "openidl@openidl-org.ca"
     },
-    "extPatternTs": "0001-01-01T00:00:00Z"
+    "extPatternTs": "0001-01-01T00:00:00Z",
+    "isSet": true
 }

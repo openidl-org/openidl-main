@@ -1,0 +1,15 @@
+{
+    "channels": [
+        {
+            "channelName": "analytics-aais",
+            "chaincodeName": "openidl-cc-aais-carriers"
+        }
+    ],
+    "users": [
+        {
+            "org": "aais",
+            "user": "openidl-aais-insurance-data-manager-ibp-2.0",
+            "mspId": "aaismsp"
+        }
+    ]
+}

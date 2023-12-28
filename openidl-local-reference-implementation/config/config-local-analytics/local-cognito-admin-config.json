@@ -1,0 +1,5 @@
+{
+  "accessKeyId": "${COGNITO_ADMIN_ACCESS_KEY}",
+  "secretAccessKey": "${COGNITO_ADMIN_SECRET_ACCESS_KEY}",
+  "region": "${COGNITO_REGION}"
+}

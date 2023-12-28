@@ -1,0 +1,67 @@
+name: Publish openIDL transactional-data-event-listener
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io/${{ github.repository }}
+  IMAGE_NAME: openidl-transactional-data-event-listener
+
+defaults:
+  run:
+    shell: bash
+    working-directory: openidl-transactional-data-event-listener
+
+jobs:
+  build-and-push-image-transactional-data-event-listener:
+    name: Build and Push - openIDL transactional-data-event-listener to GitHub Packages
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Check out the Repository
+        uses: actions/checkout@v3
+
+      - name: Prepare .npmrc
+        id: npmrc
+        run: |
+          sed -i 's|${GITHUB_TOKEN}|${{ secrets.GITHUB_TOKEN }}|' ./.npmrc
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Log into GitHub Docker Registry
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      - name: Get Branch Name
+        run: echo "BRANCH=${GITHUB_REF#refs/heads/}" >> ${GITHUB_ENV}
+
+      - name: Get Commit ID
+        run: echo "COMMIT_ID=$(git rev-parse --short "$GITHUB_SHA")" >> ${GITHUB_ENV}
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v2
+        with:
+          context: openidl-transactional-data-event-listener
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.BRANCH }}-${{ env.COMMIT_ID }}-${{ github.run_number }}
+
+

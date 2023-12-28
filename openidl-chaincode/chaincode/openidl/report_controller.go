@@ -4,15 +4,17 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/hyperledger/fabric/core/chaincode/shim"
-	pb "github.com/hyperledger/fabric/protos/peer"
 	"strings"
+
+	"github.com/hyperledger/fabric-chaincode-go/shim"
+	pb "github.com/hyperledger/fabric-protos-go/peer"
+	logger "github.com/sirupsen/logrus"
 )
 
 // CreateReport creates a new report for a particular DataCall Id and version.
 // Success: byte[]
 // Error: {"message":"....","errorCode":"Sys_Err/Bus_Err"}
-func (this *openIDLCC) CreateReport(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) CreateReport(stub shim.ChaincodeStubInterface, args string) pb.Response {
 	logger.Debug("CreateReport: enter")
 	defer logger.Debug("CreateReport: exit")
 	var report Report
@@ -111,9 +113,9 @@ func (this *openIDLCC) CreateReport(stub shim.ChaincodeStubInterface, args strin
 	}
 
 	//Creating DataCallLog when the Report is created for IssuedDataCall
-	dataCallCreateReportLog := DataCallLog{report.DataCallID, report.DataCallVersion, ActionReportCandidate.ActionID, ActionReportCandidate.ActionDesc, report.UpdatedTs, report.CreatedBy}
-	dataCallCreateReportLogAsBytes, _ := json.Marshal(dataCallCreateReportLog)
-	this.LogDataCallTransaction(stub, string(dataCallCreateReportLogAsBytes))
+	// dataCallCreateReportLog := DataCallLog{report.DataCallID, report.DataCallVersion, ActionReportCandidate.ActionID, ActionReportCandidate.ActionDesc, report.UpdatedTs, report.CreatedBy}
+	// dataCallCreateReportLogAsBytes, _ := json.Marshal(dataCallCreateReportLog)
+	// this.LogDataCallTransaction(stub, string(dataCallCreateReportLogAsBytes))
 
 	return shim.Success(nil)
 }
@@ -121,7 +123,7 @@ func (this *openIDLCC) CreateReport(stub shim.ChaincodeStubInterface, args strin
 // UpdateReport updates the existing report for a particular DataCall Id and version.
 // Success: byte[]
 // Error: {"message":"....","errorCode":"Sys_Err/Bus_Err"}
-func (this *openIDLCC) UpdateReport(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) UpdateReport(stub shim.ChaincodeStubInterface, args string) pb.Response {
 	logger.Debug("UpdateReport: enter")
 	defer logger.Debug("UpdateReport: exit")
 	var report Report
@@ -271,7 +273,7 @@ func (this *openIDLCC) UpdateReport(stub shim.ChaincodeStubInterface, args strin
 // Success {byte[]}: byte[]
 // Error   {json}:{"message":"....","errorCode":"Sys_Err/Bus_Err"}
 
-func (this *openIDLCC) ListReportsByCriteria(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) ListReportsByCriteria(stub shim.ChaincodeStubInterface, args string) pb.Response {
 	logger.Debug("ListReportsByCriteria: enter")
 	defer logger.Debug("ListReportsByCriteria: exit")
 	var listReportsCriteria ListReportsCriteria
@@ -357,7 +359,7 @@ func paginateReport(report []Report, startIndex int, pageSize int) []Report {
 }
 
 //returns the last updated report
-func (this *openIDLCC) GetHighestOrderReportByDataCall(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) GetHighestOrderReportByDataCall(stub shim.ChaincodeStubInterface, args string) pb.Response {
 	logger.Debug("ListReportsByCriteria: enter")
 	defer logger.Debug("ListReportsByCriteria: exit")
 	var getHighestOrderReport GetHighestOrderReport
@@ -424,7 +426,7 @@ func (this *openIDLCC) GetHighestOrderReportByDataCall(stub shim.ChaincodeStubIn
 // Error   {json}:{"message":"....","errorCode":"Sys_Err/Bus_Err"}
 // Description : returns a report of specifc version,id and hash.
 
-func (this *openIDLCC) GetReportById(stub shim.ChaincodeStubInterface, args string) pb.Response {
+func (this *SmartContract) GetReportById(stub shim.ChaincodeStubInterface, args string) pb.Response {
 	logger.Debug("GetReportById: enter")
 	defer logger.Debug("GetReportById: exit")
 

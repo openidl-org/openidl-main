@@ -1,10 +1,13 @@
+// mock value for KVS_CONFIG
+process.env.KVS_CONFIG = '{}';
+
 const chai = require('chai');
 const expect = chai.expect;
 const config = require('config');
-const openidlCommonLib = require('openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
 const Transaction = openidlCommonLib.Transaction;
 const eventHandler = openidlCommonLib.eventHandler
-const eventFunction = require('../server/event/event-handler').eventFunction;
+const eventFunction = require('../server/event/eventHandler').eventFunction;
 const InstanceFactory = require('../server/middleware/instance-factory');
 //const CloudantManager = require('../server/middleware/cloudantManager');
 const eventPayload = require('./test-data/event-payload.json');
@@ -13,9 +16,6 @@ const payload = JSON.stringify(eventPayload);
 const sinon = require("sinon");
 const factoryObject = new InstanceFactory();
 let targetObject;
-/*factoryObject.getInstance(config.insuranceDataStorageEnv).then(function (res) {
-    targetObject = res;
-})*/
 
 
 describe('TransactionalDataAvailable Event Test', () => {

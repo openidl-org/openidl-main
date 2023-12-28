@@ -1,0 +1,3 @@
+{
+    "accessKey": "${COGNITO_ADMIN_ACCESS_KEY}"
+}

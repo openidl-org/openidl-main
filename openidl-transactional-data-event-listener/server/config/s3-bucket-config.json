@@ -1,0 +1,11 @@
+{
+    "bucketName": "carr1-test-openidl-hdsdatastore",
+    "accessKeyId": "testkey",
+    "region": "us-east-2",
+    "secretAccessKey": "testaccesskey",
+    "roleParams": {
+        "ExternalId": "apps-user",
+        "RoleArn": "arn:aws:iam::3333333333:role/d1-test-openidl-apps",
+        "RoleSessionName": "openidl"
+    }
+}

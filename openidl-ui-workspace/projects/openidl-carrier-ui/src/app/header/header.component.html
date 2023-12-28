@@ -1,0 +1,39 @@
+<mat-toolbar class="header">
+	<span
+		><img
+			src="../../assets/images/openidl-header-logo.png"
+			(click)="goHome()"
+			class="logo"
+			alt="Open IDL Logo" />
+		<span class="divider"></span>
+		<img [src]="roleIcon" class="logo" />
+		<span class="divider"></span>
+		<img [src]="orgLogo" class="logo"
+	/></span>
+	<span class="spacer"></span>
+	<button
+		mat-button
+		color="primary"
+		[ngClass]="{ active: selected === 0 }"
+		[routerLink]="['/datacallList']"
+		(click)="selected = 0"
+	>
+		<mat-icon>list_alt</mat-icon>
+		Data Calls
+	</button>
+	<button
+		mat-button
+		color="primary"
+		[ngClass]="{ active: selected === 1 }"
+		*ngIf="appConst.shouldCreateDatacall"
+		[routerLink]="['/createDatacall']"
+		(click)="selected = 1"
+	>
+		<mat-icon>add_box</mat-icon>
+		New Data Call
+	</button>
+	<button mat-button color="primary" (click)="logout()">
+		<mat-icon>logout</mat-icon>
+		Log Out
+	</button>
+</mat-toolbar>

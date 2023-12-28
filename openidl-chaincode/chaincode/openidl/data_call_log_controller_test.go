@@ -4,7 +4,9 @@ import (
 	"encoding/json"
 	"reflect"
 
-	"github.com/hyperledger/fabric/core/chaincode/shim"
+	"github.com/golang/protobuf/proto"
+	"github.com/hyperledger/fabric-chaincode-go/shim"
+	"github.com/hyperledger/fabric-protos-go/msp"
 	"github.com/stretchr/testify/assert"
 
 	"fmt"
@@ -13,10 +15,14 @@ import (
 
 func Test_LogDataCallTransaction_Should_Create_New_A_DatacallLog_Entry_In_Ledger(t *testing.T) {
 	fmt.Println("Test_LogDataCallTransaction_Should_Create_New_A_DatacallLog_Entry_In_Ledger")
-	openIdlCC := new(openIDLTestCC)
-
-	// Create A DataCall on default channel
-	defaultStub := NewCouchDBMockStub("DefaultChannelStub", openIdlCC)
+	scc := new(SmartContract)
+	defaultStub := NewCouchDBMockStub("OpenIDLMockStub", scc)
+	sid := &msp.SerializedIdentity{Mspid: "aaismsp", IdBytes: idbytes}
+	b, err := proto.Marshal(sid)
+	if err != nil {
+		t.FailNow()
+	}
+	defaultStub.Creator = b
 
 	var input DataCallLog
 	json.Unmarshal([]byte(CREATE_DATACALL_LOG_ENTRY), &input)
@@ -43,10 +49,15 @@ func Test_LogDataCallTransaction_Should_Create_New_A_DatacallLog_Entry_In_Ledger
 
 func Test_GetDataCallTransactionHistory_Should_Return_DatacallLog_Present_In_The_Ledger(t *testing.T) {
 	fmt.Println("Test_GetDataCallTransactionHistory_Should_Return_DatacallLog_Present_In_The_Ledger")
-	openIdlCC := new(openIDLTestCC)
+	scc := new(SmartContract)
+	defaultStub := NewCouchDBMockStub("OpenIDLMockStub", scc)
+	sid := &msp.SerializedIdentity{Mspid: "aaismsp", IdBytes: idbytes}
+	b, err := proto.Marshal(sid)
+	if err != nil {
+		t.FailNow()
+	}
+	defaultStub.Creator = b
 
-	// Create A DataCall on default channel
-	defaultStub := NewCouchDBMockStub("DefaultChannelStub", openIdlCC)
 
 	var input DataCallLog
 	json.Unmarshal([]byte(CREATE_DATACALL_LOG_ENTRY), &input)

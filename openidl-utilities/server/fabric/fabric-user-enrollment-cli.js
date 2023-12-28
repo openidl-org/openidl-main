@@ -17,7 +17,7 @@
 
 const log4js = require('log4js');
 const path = require('path');
-const fabric_constants = require('../fabric/config/fabric-config.json')
+const fabric_constants = require('../config/fabric-config.json')
 const logger = log4js.getLogger('fabric-user-Enrollment-cli');
 logger.level = fabric_constants.logLevel;
 const fabricUserEnrollment = require('./fabric-enrollment');

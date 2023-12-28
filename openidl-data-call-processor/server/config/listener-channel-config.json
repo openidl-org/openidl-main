@@ -1,0 +1,26 @@
+{
+    "listenerChannels": [
+        {
+            "channelName": "analytics-${HOST}",
+            "events": [
+                {
+                    "ConsentedEvent": "ConsentedEvent"
+                }
+            ]
+        },
+        {
+            "channelName": "defaultchannel",
+            "events": [
+                {
+                    "ExtractionPatternSpecified": "ExtractionPatternSpecified"
+                }
+            ]
+        }
+    ],
+    "identity": {
+        "user": "openidl-${HOST}-data-call-processor-ibp-2.0",
+        "wallet": "&wallet",
+        "org": "${HOST}"
+    },
+    "applicationName": "openidl-data-call-processor"
+}

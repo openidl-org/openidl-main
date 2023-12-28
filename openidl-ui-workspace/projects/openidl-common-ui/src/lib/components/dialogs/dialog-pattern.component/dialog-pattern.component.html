@@ -1,0 +1,66 @@
+<app-base-dialog
+	title="Extraction Pattern"
+	[type]="data.type"
+></app-base-dialog>
+
+<mat-dialog-content class="mat-typography">
+	<table mat-table [dataSource]="dataSource" class="table-pattern">
+		<ng-container matColumnDef="select">
+			<th mat-header-cell *matHeaderCellDef>
+				<mat-checkbox
+					color="primary"
+					(change)="$event ? masterToggle() : null"
+					[checked]="selection.hasValue() && isAllSelected()"
+					[indeterminate]="selection.hasValue() && !isAllSelected()"
+					[aria-label]="checkboxLabel()"
+				>
+				</mat-checkbox>
+			</th>
+			<td mat-cell *matCellDef="let row">
+				<mat-checkbox
+					color="primary"
+					(click)="$event.stopPropagation()"
+					(change)="$event ? selection.toggle(row) : null"
+					[checked]="selection.isSelected(row)"
+					[aria-label]="checkboxLabel(row)"
+				>
+				</mat-checkbox>
+			</td>
+		</ng-container>
+
+		<ng-container matColumnDef="extractionPatternName">
+			<th mat-header-cell *matHeaderCellDef>Name</th>
+			<td mat-cell *matCellDef="let element">
+				{{ element.extractionPatternName }}
+			</td>
+		</ng-container>
+
+		<ng-container matColumnDef="description">
+			<th mat-header-cell *matHeaderCellDef>Description</th>
+			<td mat-cell *matCellDef="let element">
+				{{ element.description }}
+			</td>
+		</ng-container>
+
+		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+		<tr
+			mat-row
+			*matRowDef="let row; columns: displayedColumns"
+			(click)="selection.toggle(row)"
+		></tr>
+	</table>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+	<button
+		mat-flat-button
+		(click)="onClickDownload()"
+		color="primary"
+		[disabled]="isDownloadDisable"
+	>
+		<mat-icon>download</mat-icon>
+		Download Extraction Patterns
+	</button>
+</mat-dialog-actions>
+<div class="info">
+	{{ patternMessage }}
+</div>

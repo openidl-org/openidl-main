@@ -1,0 +1,6 @@
+{
+  "idpType": "cognito",
+  "userPoolId": "${COGNITO_USER_POOL_ID}",
+  "clientId": "${COGNITO_CLIENT_ID}",
+  "region": "${COGNITO_REGION}"
+}

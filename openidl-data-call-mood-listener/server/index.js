@@ -17,14 +17,14 @@
 const express = require('express');
 const log4js = require('log4js');
 const config = require('config');
-const openidlCommonLib = require('openidl-common-lib');
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
+openidlCommonLib.EnvConfig.init();
+
 const EventListener = openidlCommonLib.EventListener;
 const walletHelper = openidlCommonLib.Wallet;
-const IBMCloudEnv = require('ibm-cloud-env');
 const channelConfig = require('./config/listener-channel-config.json');
 const networkConfig = require('./config/connection-profile.json');
 const mainEvent = require('./event/event-handler');
-
 
 let DBManagerFactory = openidlCommonLib.DBManagerFactory;
 let dbManagerFactoryObject = new DBManagerFactory();
@@ -32,7 +32,7 @@ let dbManagerFactoryObject = new DBManagerFactory();
 const app = express();
 const logger = log4js.getLogger('index');
 // setup logging
-logger.setLevel(config.logLevel);
+logger.level = config.logLevel;
 app.enable('trust proxy');
 
 app.use(function (req, res, next) {
@@ -61,7 +61,9 @@ app.listen(port, () => {
 });
 
 async function init() {
-    let dbManager = await dbManagerFactoryObject.getInstance();
+    const options = JSON.parse(process.env.OFF_CHAIN_DB_CONFIG);
+
+    let dbManager = await dbManagerFactoryObject.getInstance(options);
     logger.debug("dbManager instance " + dbManager);
     let listenerConfig = {};
     let listernerChannels = new Array();
@@ -85,7 +87,7 @@ async function init() {
 
     }
     listenerConfig['listenerChannels'] = listernerChannels;
-    walletHelper.init(IBMCloudEnv.getDictionary('IBM-certificate-manager-credentials'));
+    await walletHelper.init(JSON.parse(process.env.KVS_CONFIG));
     var idExists = await walletHelper.identityExists(channelConfig.identity.user);
     if (!idExists) {
         throw new Error("Invalid Identity, no certificate found in certificate store");
@@ -101,7 +103,7 @@ async function init() {
     logger.debug('Listener Config', listenerConfig);
 
     try {
-        await EventListener.init(networkConfig, listenerConfig, dbManager);
+        await EventListener.init(networkConfig, listenerConfig, dbManager, config.targetDB);
         await EventListener.processInvoke();
     } catch (err) {
         logger.error('eventHandler init error' + err);

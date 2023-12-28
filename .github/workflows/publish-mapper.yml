@@ -1,23 +1,26 @@
 name: Publish Mapper
+
 on:
-  push:
-    paths:
-    - 'openidl-mapper/**'
+  workflow_call:
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       # Setup .npmrc file to publish to npm
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
-          node-version: '12.x'
+          node-version: '16.x'
           registry-url: 'https://npm.pkg.github.com'
       - name: install
         run: npm install
         working-directory: openidl-mapper
       - name: publish
-        run: npm publish --access public
-        working-directory: openidl-mapper
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.CONTAINER_TOKEN }}
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
+          registry: https://npm.pkg.github.com
+          access: public
+          package: openidl-mapper/package.json

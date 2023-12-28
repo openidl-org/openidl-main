@@ -2,7 +2,8 @@
     "listenerChannels": ${LISTENER_CHANNELS_EVENTS},
     "identity": {
         "user": "openidl-data-call-mood-listener-ibp-2.0",
-        "wallet": "&wallet"
+        "wallet": "&wallet",
+        "org": "aais"
     },
     "applicationName": "data-call-mood-listener"
 }

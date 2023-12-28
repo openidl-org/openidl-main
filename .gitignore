@@ -3,10 +3,41 @@ openidl-mapper/referenceJson.json
 openidl-mapper/referenceJson2.json
 **/node_modules
 openidl-mapper/schema/Hack_openIDL_Tier3.json
-openidl-insurance-data-manager/server/config/*.json
 openidl-secrets-manager/config/*.json
-hosts input.txt
-hosts update.txt
-hosts updated.txt
+hosts-input.txt
+hosts-update.txt
+hosts-updated.txt
 openidl-common-ui/dist/
+**/vendor
+systemup.log
 openidl-ui/server/config/local-appid-config.json
+openidl-common-ui/package-lock.json
+openidl-ui/package-lock.json
+openidl-carrier-ui/package-lock.json
+openidl-ui/.env
+openidl-ui-workspace/package-lock.json
+openidl-ui-workspace/projects/openidl-carrier-ui/server/config/local-appid-config.json
+openidl-ui-workspace/projects/openidl-ui/server/config/local-appid-config.json
+**/*for testing*.*
+openidl-local-reference-implementation/config/config.json
+**/npmls.txt
+openidl-local-reference-implementation/config/config.json
+openidl-config/aais-dev-config-secrets.json
+openidl-config/config/*
+!openidl-config/config/placeholder.txt
+openidl-config/ubuntu.yml
+openidl-config/analytics-dev-config-secrets.json
+ca.pem
+openidl-data-utilities/config/config.json
+openidl-data-utilities/config/logins.json
+openidl-data-utilities/output/output.csv
+openidl-config/openidl-configurations/config/carrier-config.json
+openidl-config/vault/*
+openidl-config/*
+openidl-k8s/*
+awx-automation/*
+jenkins-jobs/*
+
+# Gradle
+.gradle/
+build/

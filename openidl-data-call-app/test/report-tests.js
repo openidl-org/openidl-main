@@ -24,11 +24,10 @@ describe('Testing report route ', () => {
         expect(loginResponse.status).to.equal(200);
         expect(loginResponse.body).to.be.a('object');
         expect(loginResponse.body.result).to.be.a('object');
-        expect(loginResponse.body.result.apiToken).to.be.exist;
-        const apiToken = JSON.parse(loginResponse.body.result.apiToken);
-        expect(apiToken).to.be.a('object');
-        expect(apiToken.accessToken).to.be.a('string');
-        accessToken = apiToken.accessToken;
+        expect(loginResponse.body.result.userToken).to.be.exist;
+        const userToken = loginResponse.body.result.userToken;
+        expect(userToken).to.be.a('string');
+        accessToken = userToken;
 
         const res = await chai.request(url).get('/list-data-calls-by-criteria')
             .set('Authorization', 'Bearer ' + accessToken)

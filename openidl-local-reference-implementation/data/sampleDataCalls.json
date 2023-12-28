@@ -1,0 +1,53 @@
+[
+    {
+        "name": "Sample DC 1",
+        "intentToPublish": true,
+        "description": "DC Description",
+        "purpose": "DC Purpose",
+        "lineOfBusiness": "Auto: Personal",
+        "premiumFromDate": "2021-01-01T07:00:00.000Z",
+        "premiumToDate": "2021-12-31T07:00:00.000Z",
+        "lossFromDate": "2021-01-01T07:00:00.000Z",
+        "lossToDate": "2021-12-31T07:00:00.000Z",
+        "jurisdiction": "Alabama",
+        "detailedCriteria": "DC Detailed Criteria",
+        "eligibilityRequirement": "DC Eligibility",
+        "status": "DRAFT",
+        "isShowParticipants": true,
+        "deadline": "2021-10-31T06:00:00.000Z"
+    },
+    {
+        "name": "Sample DC 2",
+        "intentToPublish": true,
+        "description": "DC Description",
+        "purpose": "DC Purpose",
+        "lineOfBusiness": "Auto: Personal",
+        "premiumFromDate": "2021-01-01T07:00:00.000Z",
+        "premiumToDate": "2021-12-31T07:00:00.000Z",
+        "lossFromDate": "2021-01-01T07:00:00.000Z",
+        "lossToDate": "2021-12-31T07:00:00.000Z",
+        "jurisdiction": "Alabama",
+        "detailedCriteria": "DC Detailed Criteria",
+        "eligibilityRequirement": "DC Eligibility",
+        "status": "DRAFT",
+        "isShowParticipants": true,
+        "deadline": "2021-10-31T06:00:00.000Z"
+    },
+    {
+        "name": "Sample DC 3",
+        "intentToPublish": true,
+        "description": "DC Description",
+        "purpose": "DC Purpose",
+        "lineOfBusiness": "Auto: Personal",
+        "premiumFromDate": "2021-01-01T07:00:00.000Z",
+        "premiumToDate": "2021-12-31T07:00:00.000Z",
+        "lossFromDate": "2021-01-01T07:00:00.000Z",
+        "lossToDate": "2021-12-31T07:00:00.000Z",
+        "jurisdiction": "Alabama",
+        "detailedCriteria": "DC Detailed Criteria",
+        "eligibilityRequirement": "DC Eligibility",
+        "status": "DRAFT",
+        "isShowParticipants": true,
+        "deadline": "2021-10-31T06:00:00.000Z"
+    }
+]

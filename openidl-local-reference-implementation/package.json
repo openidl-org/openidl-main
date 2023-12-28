@@ -1,0 +1,16 @@
+{
+  "name": "openidl-local-reference-implementation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@kubernetes/client-node": "^0.15.1",
+    "ncp": "^2.0.0",
+    "node-fetch": "^2.6.5"
+  }
+}

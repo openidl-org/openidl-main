@@ -1,0 +1,68 @@
+[
+    {
+        "extractionPatternID": "TT_01",
+        "extractionPatternName": "TT_01",
+        "description": "Tiny Test Data Call Extraction Pattern",
+        "jurisdication": "SC",
+        "insurance": "Homeowners",
+        "dbType": "mongo",
+        "version": "0.1",
+        "isActive": true,
+        "effectiveStartTs": "2020-01-01T00:00:00Z",
+        "effectiveEndTs": "2020-03-31T23:59:59Z",
+        "premiumFromDate": "2021-01-01T18:30:00Z",
+        "premiumToDate": "2021-12-31T18:30:00Z",
+        "lossFromDate": "2021-01-01T18:30:00Z",
+        "lossToDate": "2021-12-31T18:30:00Z",
+        "updatedTs": "2021-07-23T17:28:00Z",
+        "updatedBy": "kens@aaisonline.com",
+        "viewDefinition": {
+            "map": "function map() {\n\n    let policy = this.policy\n    let policyStructure = policy.policyStructure[0]\n    let fileDate = policy.extra.fileDate\n    let naicCompanyNumber = policy.company.code\n    if (!naicCompanyNumber) naicCompanyNumber = '11111'\n    let zipCode = policyStructure.location[0].geographicLocation.postalCode\n    let chunkId = \"11111\"\n\n    emit(\n        {\n            \"naicCompanyNumber\": naicCompanyNumber,\n            \"zipCode\": zipCode,\n            \"fileDate\": fileDate,\n            \"chunkId\": chunkId\n        },\n        {\n            \"count\": 1,\n            \"chunkId\": chunkId\n        }\n    );\n}",
+            "reduce": "function reduce(key, values) {\n    let result = {}\n    let totalHits = 0\n    let chunkId = ''\n    for (value of values) {\n        totalHits += 1\n        chunkId = value.chunkId\n    }\n    result.hits = totalHits\n    result.chunkId = chunkId\n    return result;\n}"
+        }
+    },
+    {
+        "extractionPatternID": "TT_02",
+        "extractionPatternName": "TT_02",
+        "description": "Tiny Test Data Call Extraction Pattern",
+        "jurisdication": "SC",
+        "insurance": "Homeowners",
+        "dbType": "mongo",
+        "version": "0.1",
+        "isActive": true,
+        "effectiveStartTs": "2020-01-01T00:00:00Z",
+        "effectiveEndTs": "2020-03-31T23:59:59Z",
+        "premiumFromDate": "2021-01-01T18:30:00Z",
+        "premiumToDate": "2021-12-31T18:30:00Z",
+        "lossFromDate": "2021-01-01T18:30:00Z",
+        "lossToDate": "2021-12-31T18:30:00Z",
+        "updatedTs": "2021-07-23T17:28:00Z",
+        "updatedBy": "kens@aaisonline.com",
+        "viewDefinition": {
+            "map": "function map() {\n\n    let policy = this.policy\n    let policyStructure = policy.policyStructure[0]\n    let fileDate = policy.extra.fileDate\n    let naicCompanyNumber = policy.company.code\n    if (!naicCompanyNumber) naicCompanyNumber = '11111'\n    let zipCode = policyStructure.location[0].geographicLocation.postalCode\n    let chunkId = \"11111\"\n\n    emit(\n        {\n            \"naicCompanyNumber\": naicCompanyNumber,\n            \"zipCode\": zipCode,\n            \"fileDate\": fileDate,\n            \"chunkId\": chunkId\n        },\n        {\n            \"count\": 1,\n            \"chunkId\": chunkId\n        }\n    );\n}",
+            "reduce": "function reduce(key, values) {\n    let result = {}\n    let totalHits = 0\n    let chunkId = ''\n    for (value of values) {\n        totalHits += 1\n        chunkId = value.chunkId\n    }\n    result.hits = totalHits\n    result.chunkId = chunkId\n    return result;\n}"
+        }
+    },
+    {
+        "extractionPatternID": "TT_03",
+        "extractionPatternName": "TT_03",
+        "description": "Tiny Test Data Call Extraction Pattern",
+        "jurisdication": "SC",
+        "insurance": "Homeowners",
+        "dbType": "mongo",
+        "version": "0.1",
+        "isActive": true,
+        "effectiveStartTs": "2020-01-01T00:00:00Z",
+        "effectiveEndTs": "2020-03-31T23:59:59Z",
+        "premiumFromDate": "2021-01-01T18:30:00Z",
+        "premiumToDate": "2021-12-31T18:30:00Z",
+        "lossFromDate": "2021-01-01T18:30:00Z",
+        "lossToDate": "2021-12-31T18:30:00Z",
+        "updatedTs": "2021-07-23T17:28:00Z",
+        "updatedBy": "kens@aaisonline.com",
+        "viewDefinition": {
+            "map": "function map() {\n\n    let policy = this.policy\n    let policyStructure = policy.policyStructure[0]\n    let fileDate = policy.extra.fileDate\n    let naicCompanyNumber = policy.company.code\n    if (!naicCompanyNumber) naicCompanyNumber = '11111'\n    let zipCode = policyStructure.location[0].geographicLocation.postalCode\n    let chunkId = \"11111\"\n\n    emit(\n        {\n            \"naicCompanyNumber\": naicCompanyNumber,\n            \"zipCode\": zipCode,\n            \"fileDate\": fileDate,\n            \"chunkId\": chunkId\n        },\n        {\n            \"count\": 1,\n            \"chunkId\": chunkId\n        }\n    );\n}",
+            "reduce": "function reduce(key, values) {\n    let result = {}\n    let totalHits = 0\n    let chunkId = ''\n    for (value of values) {\n        totalHits += 1\n        chunkId = value.chunkId\n    }\n    result.hits = totalHits\n    result.chunkId = chunkId\n    return result;\n}"
+        }
+    }
+]

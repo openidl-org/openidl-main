@@ -13,12 +13,15 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
- 
+
 const express = require('express');
 const log4js = require('log4js');
 const config = require('config');
-const openidlDataCallCommonApp = require('openidl-common-lib');
-const apiAuthHandler = openidlDataCallCommonApp.ApiAuthHandler;
+const openidlCommonLib = require('@openidl-org/openidl-common-lib');
+
+const idpCredentials = JSON.parse(process.env.IDP_CONFIG);
+const authHandler = openidlCommonLib.AuthHandler.setHandler(idpCredentials);
+
 const fabricUserEnrollment = require('../controller/fabric-user-controller');
 const appUser = require('../controller/app-user-controller');
 const router = express.Router();
@@ -31,7 +34,9 @@ logger.level = config.logLevel;
 /**
  * Add routes
  */
-router.use('/fabric-user-enrollment', apiAuthHandler.authenticate, fabricUserEnrollment.enroll);
-router.use('/app-user-enrollment', apiAuthHandler.authenticate, appUser.register);
+router.use('/fabric-user-enrollment', authHandler.validateToken, fabricUserEnrollment.enroll);
+router.use('/app-user-enrollment', authHandler.validateToken, appUser.register);
+router.use('/app-user-login', authHandler.authenticate, authHandler.getUserAttributes, appUser.login);
+router.use('/app-user-attributes', authHandler.validateToken, appUser.updateUserAttributes);
 
 module.exports = router;

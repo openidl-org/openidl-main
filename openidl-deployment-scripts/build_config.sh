@@ -108,12 +108,12 @@ then
     #delete the secret if it aleady exists
     kubectl delete secret appssecret
 
-    kubectl create secret generic appssecret --from-file=appid=output/local-appid-config.json --from-file=certmanager=output/local-certmanager-config.json --from-file=mongodb=output/local-mongo-config.json --from-file=cloudantdb=output/local-cloudant-config.json --from-file=connectionprofile=output/connection-profile.json || error_exit "Error in creating secret for $ENV-$ORG-apps-clstr"
+    kubectl create secret generic appssecret --from-file=appid=output/local-appid-config.json --from-file=certmanager=output/local-certmanager-config.json --from-file=kvs=server/config/local-kvs-config.json --from-file=mongodb=output/local-mongo-config.json --from-file=cloudantdb=output/local-cloudant-config.json --from-file=connectionprofile=output/connection-profile.json || error_exit "Error in creating secret for $ENV-$ORG-apps-clstr"
 else
     #delete the secret if it aleady exists
     kubectl delete secret appssecret
 
-    kubectl create secret generic appssecret --from-file=appid=output/local-appid-config.json --from-file=certmanager=output/local-certmanager-config.json --from-file=mongodb=output/local-mongo-config.json --from-file=cloudantdb=output/local-cloudant-config.json --from-file=connectionprofile=output/connection-profile.json --from-file=awss3=output/s3-bucket-config.json || error_exit "Error in creating secret for $ENV-$ORG-apps-clstr"
+    kubectl create secret generic appssecret --from-file=appid=output/local-appid-config.json --from-file=certmanager=output/local-certmanager-config.json --from-file=kvs=server/config/local-kvs-config.json --from-file=mongodb=output/local-mongo-config.json --from-file=cloudantdb=output/local-cloudant-config.json --from-file=connectionprofile=output/connection-profile.json --from-file=awss3=output/s3-bucket-config.json || error_exit "Error in creating secret for $ENV-$ORG-apps-clstr"
 fi
 
 kubectl get secrets

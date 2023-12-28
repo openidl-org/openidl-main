@@ -1,0 +1,14 @@
+{
+    "statAgent": {
+        "username": "stat-agent@openidl.org",
+        "password": "StatAgent@blockchain"
+    },
+    "regulator": {
+        "username": "regulator@openidl.org",
+        "password": "Regulator@blockchain"
+    },
+    "carrier": {
+        "username": "carrier@openidl.org",
+        "password": "Carrier@blockchain"
+    }
+}

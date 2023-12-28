@@ -1,0 +1,17 @@
+.lds-css {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(255, 255, 255, 0.5);
+	width: 100%;
+	height: 100%;
+	display: block;
+	z-index: 100;
+}
+.lds-rolling {
+	position: relative;
+	top: 45%;
+	left: 45%;
+}

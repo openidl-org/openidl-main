@@ -1,0 +1,51 @@
+<mat-card class="update-form">
+	<mat-card-header>
+		<mat-card-title>Update Report</mat-card-title>
+	</mat-card-header>
+	<mat-divider></mat-divider>
+	<mat-card-content class="data-form">
+		<form
+			[formGroup]="registerForm"
+			class="pb-1"
+			#formDirective="ngForm"
+			(ngSubmit)="updateReport(registerForm.value, formDirective)"
+		>
+			<div class="row">
+				<div class="col">
+					<mat-form-field class="full-width" appearance="outline">
+						<mat-label>Report URL</mat-label>
+						<input
+							matInput
+							placeholder="Paste report URL here"
+							formControlName="reportURL"
+						/>
+					</mat-form-field>
+				</div>
+				<div class="col">
+					<mat-form-field class="full-width" appearance="outline">
+						<mat-label>Report Hash</mat-label>
+						<input
+							matInput
+							placeholder="Type report hash here"
+							formControlName="reportHash"
+						/>
+					</mat-form-field>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col right">
+					<button
+						mat-flat-button
+						color="primary"
+						[disabled]="!shouldUpdateReport"
+					>
+						Update Report
+					</button>
+				</div>
+			</div>
+		</form>
+		<mat-divider></mat-divider>
+		<div class="heading">Reports</div>
+		<app-report-table (reportStatus)="getReportStatus()"></app-report-table>
+	</mat-card-content>
+</mat-card>

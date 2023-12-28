@@ -21,7 +21,7 @@ const config = require('config');
 const util = require('../helpers/util');
 const {
     LineOfBusinessService
-} = require('openidl-common-lib');
+} = require('@openidl-org/openidl-common-lib');
 const transactionFactory = require('../helpers/transaction-factory');
 const logger = log4js.getLogger('controllers - common');
 logger.level = config.logLevel;

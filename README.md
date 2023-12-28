@@ -1,4 +1,4 @@
-# openIDL Main
+## openIDL Main
 
 This is the main repostiory for openidl
 
@@ -23,17 +23,95 @@ To get started quickly, follow these steps. This assumes you don't need to updat
 
 There are several different ways to run things:
 
-Install VirtualBox
+-   Install VirtualBox
+    -   Make sure it has 4 cpus
+-   Running on a local system
+-   Running on a remote system
+    \*See instructions below for setting up a proxy
 
--   make sure it has 4 cpus
+## Install Golang
 
-Running on a local system
+The smart contracts we use are written in Go. See below for installation instructions. Version 1.16 is recommended.
 
-Running on a remote system
+For ubuntu
 
--   See instructions below for setting up a proxy
+```
+$ wget https://dl.google.com/go/go1.16.4.linux-amd64.tar.gz
+$ rm -rf /usr/local/go && tar -C /usr/local -xzf  go1.16.4.linux-amd64.tar.gz
+$ export PATH=$PATH:/usr/local/go/bin
+$ go version
+```
 
-## Make sure git is available
+For Mac:
+
+```
+$ curl -o golang.pkg https://dl.google.com/go/go1.16.4.darwin-amd64.pkg
+$ sudo open golang.pkg
+```
+
+An installation wizard will come up, complete the process there. After that, run the following command:
+
+```
+$ export PATH=$PATH:/usr/local/go/bin
+$ go version
+```
+
+**Troubleshooting note**: If you have "permission denied" error in untarring the file, please make sure to have correct ownership of directories, or you may want to use `sudo` for the untar. 
+For more details or troubleshooting, see https://golang.org/doc/install
+
+## Install Git
+
+For ubuntu
+
+```
+$ sudo apt install git-all
+```
+
+For Mac:
+
+```
+$ brew install git
+```
+
+For more details or troubleshooting,see https://curl.haxx.se/download.html
+
+## Install Docker
+
+Please follow the documentation given below to make sure you have Docker and you have it set up in correct way:
+https://hyperledger-fabric.readthedocs.io/en/release-2.2/prereqs.html#docker-and-docker-compose
+
+For more details and troubleshooting, please refer to
+https://hyperledger-fabric.readthedocs.io/en/release-2.2/prereqs.html#
+
+### Install Docker Compose
+For Ubuntu:
+```
+$ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+$ sudo chmod +x /usr/local/bin/docker-compose
+$ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+```
+For Mac:
+Docker Compose comes as a part of Docker, there's no need for a separate install.
+
+### Install Make
+If `make` is not installed, for Ubuntu:
+```
+$ sudo apt-get install build-essential
+```
+For mac
+```
+ brew install make
+```
+
+### Install JQ
+If `jq` is not installed, for Ubuntu:
+```
+$ sudo apt-get install jq
+```
+For mac
+```
+ brew install jq
+```
 
 ## Get Minikube working
 
@@ -43,11 +121,22 @@ Running on a remote system
 
 [Installation Instructions](https://helm.sh/docs/intro/install/)
 
-## Clone the repository
+## Clone the openidl-main repository
 
 ```
 git clone https://github.com/openidl-org/openidl-main.git
 ```
+
+## Clone the openidl-aais-gitops repository
+
+```
+git clone https://github.com/openidl-carrier1/openidl-aais-gitops.git
+```
+
+## Copy helm charts from openidl-aais-gitops to openidl-main
+Go to openidl-aais-gitops local repository cloned in previous step and copy "openidl-k8s/" to openidl-main repository. 
+
+cp -r ./openidl-aais-gitops/openidl-k8s/ ./openidl-main/
 
 ## Get the Config files
 
@@ -65,6 +154,8 @@ If usinb bash then `bash systemdown.sh`
 ### Startup the system
 
 Run `./systemup.sh` from the `openidl-main` directory.
+
+If you get an error that includes "failed calling webhook", then wait 30 seconds and run `make reinstall_in_k8s`. The first time it may complain that it couldn't create new content in the nifi namespace. Just run `make reinstall_in_k8s` again after a short time.
 
 ### Monitor the Kubernetes cluster
 
@@ -93,26 +184,34 @@ cloud is in (ibm, aws, local)
 envt is in (stage, test, dev, prod)
 node is in (aais, analytics, carrier)
 
--   the helm charts will look in the openidl-k8s/charts/openidl-secrets/config directory for the files to load into mounts in the image
-    -   this folder is ignored in .gitignore so no secrets get checked in to git.
--   the helm chart uses the following mapping:
+the helm charts will look in the following directories for the files to load into mounts in the image
+-    openidl-k8s/charts/openidl-secrets/config-aais 
+-    openidl-k8s/charts/openidl-secrets/config-analytics 
+-    openidl-k8s/charts/openidl-secrets/config-carrier 
 
-| filename                               | secret name               |
-| -------------------------------------- | ------------------------- |
-| channel-config.json                    | channel-config            |
-| connection-profile.json                | connection-profile        |
-| DBConfig.json                          | db-config                 |
-| default.json                           | default-config            |
-| email.json                             | email-config              |
-| listener-channel-config.json           | listener-channel-config   |
-| local-appid-config.json                | local-appid-config        |
-| local-certmanager-config.json          | local-certmanager-config  |
-| local-cloudant-config.json             | local-cloudant-config     |
-| local-mongo-config.json                | local-mongo-config        |
-| flowconfig.json                        | nifi-flowconfig           |
-| s3-bucket-config.json                  | s3-bucket-config          |
-| target-channel-identifiers-config.json | target-channel-config     |
-| unique-identifiers-config.json         | unique-identifiers-config |
+this folder is ignored in .gitignore so no secrets get checked in to git.
+
+the helm chart uses the following mapping:
+
+| filename                               | secret name                      |
+| -------------------------------------- | -------------------------        |
+| channel-config.json                    | channel-config                   |
+| connection-profile.json                | connection-profile               |
+| local-db-config.json                   | local-db-config                  |
+| default.json                           | default-config                   |
+| email.json                             | email-config                     |
+| listener-channel-config.json           | listener-channel-config          |
+| local-cognito-config.json              | local-cognito-config             |
+| local-kvs-config.json                  | local-kvs-config                 |
+| flowconfig.json                        | nifi-flowconfig                  |
+| s3-bucket-config.json                  | s3-bucket-config                 |
+| target-channel-identifiers-config.json | target-channel-config            |
+| unique-identifiers-config.json         | unique-identifiers-config        |
+| local-vault-config.json                | vault-config                     |
+| mappings.json                          | data-call-app-mappings-config    |
+| utilities-fabric-config.json           | utilities-fabric-config          |
+| utilities-admin-config.json            | utilities-admin-config           |
+| local-cognito-admin-config.json        | cognito-admin-config             |
 
 Look to each project specific helm chart to see what configs are used.
 
@@ -197,6 +296,14 @@ make run_data_call_app
 make run_mongo_express
 ```
 
+# Builing Local Images
+
+This repository leverages common functionality from [openidl-common-lib](https://github.com/openidl-org/openidl-main/tree/main/openidl-common-lib) . To install this dependency, replace `{GITHUB_TOKEN}` in `.npmrc` with your own Git personal access token in all the repositories. For details on how to get an access token, please see [Personal access tokens](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) on the GitHub site. Access Token should have at least `read:packages` permissions
+
+```
+make build_all_images
+```
+
 # Experimental
 
 To make everything work for everyone, we are using virtual machines for the reference implementation.
@@ -255,11 +362,4 @@ sudo apt-get install build-essential
 ```bash
 sudo apt update
 sudo apt install qemu-kvm libvirt-daemon-system
-<<<<<<< HEAD
-```
-
-=======
-
-```
->>>>>>> 7b3e0bc69033852b8d96e7ef789eefbe4a02bb82
 ```

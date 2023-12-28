@@ -31,12 +31,10 @@ describe('Testing carrier route ', () => {
         expect(loginResponse.body.result.attributes).to.be.a('object');
         expect(loginResponse.body.result.attributes.role).to.be.a('string');
         expect(loginResponse.body.result.attributes.organizationId).to.be.a('string');
-        expect(loginResponse.body.result.apiToken).to.be.exist;
-        const apiToken = JSON.parse(loginResponse.body.result.apiToken);
-        expect(apiToken).to.be.a('object');
-        expect(apiToken.accessToken).to.be.a('string');
-
-        accessToken = apiToken.accessToken;
+        expect(loginResponse.body.result.userToken).to.be.exist;
+        const userToken = loginResponse.body.result.userToken;
+        expect(userToken).to.be.a('string');
+        accessToken = userToken;
         userName = loginResponse.body.result.username;
         orgId = loginResponse.body.result.attributes.organizationId;
         orgnizationType = loginResponse.body.result.attributes.role;

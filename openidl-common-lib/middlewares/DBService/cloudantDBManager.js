@@ -17,19 +17,14 @@
 
 
 const log4js = require('log4js');
-const config = require('config');
-const IBMCloudEnv = require('ibm-cloud-env');
 const logger = log4js.getLogger('cloudantDB-manager');
-logger.level = config.logLevel;
-
-
+logger.level = process.env.LOG_LEVEL || 'debug';
 class CloudantDBManager {
 
     constructor(DBService) {
         this.createView = true;
         this.name = "cloudant";
-        IBMCloudEnv.init();
-        this.CloudantManagerDB = require('@cloudant/cloudant')(IBMCloudEnv.getDictionary(DBService[0].servicecredentials));
+        this.CloudantManagerDB = require('@cloudant/cloudant')(DBService);
     }
 
     async dbName() {

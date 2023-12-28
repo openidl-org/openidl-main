@@ -1,6 +1,6 @@
 {
     "name": "app",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "private": true,
     "scripts": {
         "start": "NODE_CONFIG_DIR=./server/config node server/server.js",
@@ -11,38 +11,36 @@
         "dev-test": "cross-env NODE_CONFIG_DIR=./server/config nyc mocha --timeout 10000 --exit"
     },
     "dependencies": {
+        "@cloudant/cloudant": "^3.0.1",
+        "@openidl-org/openidl-common-lib": "^0.7.0",
+        "aws-sdk": "^2.949.0",
         "body-parser": "^1.18.3",
-        "cfenv": "^1.1.0",
         "config": "^2.0.1",
         "cookie-parser": "^1.4.3",
         "cors": "^2.8.4",
         "express": "~4.16.0",
-        "express-enforces-ssl": "^1.1.0",
         "express-session": "^1.15.1",
-        "fabric-ca-client": "^1.4.7",
-        "fabric-client": "^1.4.7",
-        "fabric-network": "^1.4.7",
+        "fabric-ca-client": "^2.2.3",
+        "fabric-network": "^2.2.3",
         "file-system": "^2.2.2",
-        "grpc": "^1.15.1",
-        "ibm-cloud-env": "^0.2.6",
+        "fs-extra": "7.0.1",
         "ibmcloud-appid": "^6.0.0",
+        "js-yaml": "^4.1.0",
+        "jsonwebtoken": "^8.5.1",
+        "jsrsasign": "^10.3.0",
         "lodash": "^4.17.11",
-        "log4js": "4.3.2",
+        "log4js": "^4.3.2",
         "nconf": "^0.10.0",
-        "openidl-common-lib": "git+https://x-oauth-basic:${GITHUB_TOKEN}@git.ng.bluemix.net/openIDL/openidl-common-lib.git#develop",
+        "node-fetch": "^2.6.1",
         "passport": "^0.4.0",
         "q": "^1.4.1",
         "request": "^2.88.0",
         "request-promise": "^4.2.2",
-        "swagger-ui-express": "^3.0.10",
-        "@cloudant/cloudant": "^3.0.1",
-           "jsonwebtoken": "^8.5.1",
-        "jsrsasign": "^8.0.24",
-         "fs-extra": "7.0.1"
+        "swagger-ui-express": "^3.0.10"
     },
     "engines": {
-        "node": "8.9.x",
-        "npm": "5.5.x"
+        "node": "14.17.x",
+        "npm": "6.14.x"
     },
     "devDependencies": {
         "cross-env": "^5.2.0"

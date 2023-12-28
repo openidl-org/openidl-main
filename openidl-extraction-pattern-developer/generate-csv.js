@@ -1,4 +1,3 @@
-const IBMCloudEnv = require("ibm-cloud-env");
 const MongoDBManager = require("./service/mongo-database-manager");
 const mongoDBManagerInstance = require('mongodb').MongoClient;
 const Parser = require('json2csv')
@@ -12,9 +11,7 @@ async function initializeDBConnection(local = true) {
         await dbManager.connect()
         return dbManager
     } else {
-        const servicecredentials = 'off-chain-db-credentials-mongo';
-        IBMCloudEnv.init();
-        const mongoconfig = IBMCloudEnv.getDictionary(servicecredentials);
+        const mongoconfig = JSON.parse(process.env.OFF_CHAIN_DB_CONFIG);
         const ca = mongoconfig.connection.mongodb.certificate.certificate_base64;
         console.log('ca ' + ca)
 
@@ -22,7 +19,8 @@ async function initializeDBConnection(local = true) {
             ssl: true,
             sslValidate: false,
             sslCA: ca,
-            useNewUrlParser: true
+            useNewUrlParser: true,
+            useUnifiedTopology: true
         };
         const connectionString = mongoconfig.connection.mongodb.composed[0];
         const mongoDBClient = await mongoDBManagerInstance.connect(connectionString, options);

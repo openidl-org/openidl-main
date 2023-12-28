@@ -1,0 +1,61 @@
+name: Publish openIDL data-call-mood-listener
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io/${{ github.repository }}
+  IMAGE_NAME: openidl-data-call-mood-listener
+
+defaults:
+  run:
+    shell: bash
+    working-directory: openidl-data-call-mood-listener
+
+jobs:
+  build-and-push-image-data-call-mood-listener:
+    name: Build and Push - openIDL data-call-mood-listener to GitHub Packages
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Check out the Repository
+        uses: actions/checkout@v3
+
+      - name: Log into GitHub Docker Registry
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      - name: Prepare .npmrc
+        id: npmrc
+        run: |
+          sed -i 's|${GITHUB_TOKEN}|${{ secrets.GITHUB_TOKEN }}|' ./.npmrc
+
+      - name: Get Branch Name
+        run: echo "BRANCH=${GITHUB_REF#refs/heads/}" >> ${GITHUB_ENV}
+
+      - name: Get Commit ID
+        run: echo "COMMIT_ID=$(git rev-parse --short "$GITHUB_SHA")" >> ${GITHUB_ENV}
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v2
+        with:
+          context: openidl-data-call-mood-listener
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.BRANCH }}-${{ env.COMMIT_ID }}-${{ github.run_number }}
+
+

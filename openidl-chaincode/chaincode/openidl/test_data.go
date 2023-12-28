@@ -35,10 +35,12 @@ const (
 	CONSENT_TEST_DATA_MULTICARRIERs                      = `{"datacallID":"Data_Call_123","dataCallVersion":"1","carrierID":"12345","carrierName":"Hypermutual","createdTs":"2018-11-13T18:30:00.000Z","createdBy":"abc"}`
 	CONSENT_TEST_DATA_WITH_DELTA                         = `{"datacallID":"Data_Call_123","dataCallVersion":"1","carrierID":"12345","carrierName":"Hypermutual","createdTs":"2018-11-13T18:30:00.000Z","createdBy":"abc","delta":1}`
 	LIST_CONSENT_CRITERIA_JSON                           = `{"consent": {"datacallID": "Data_Call_123","dataCallVersion": "1", "carrierID":"12345"}, "channelIDs":["aais-carrier1"]}`
-	LIST_LIKE_CRITERIA_JSON                              = `{"like": {"datacallID": "Data_Call_123","dataCallVersion": "1", "OrganizationID":"12345"}, "channelIDs":["aais-carrier1"]}`
+	LIST_CONSENT_CRITERIA_NEW_JSON                       = `{"datacallID": "Data_Call_123","dataCallVersion": "1", "channelList":[{"channelName":"aais-carrier1", "chaincodeName": "openidl-cc-default"}, {"channelName":"aais-carrier1", "chaincodeName": "openidl-cc-default"}]}`
+	GET_LIKE_CRITERIA_JSON                              = `{"like": {"datacallID": "Data_Call_123","dataCallVersion": "1", "OrganizationID":"12345"}, "channelIDs":["aais-carrier1"]}`
+	LIST_LIKE_CRITERIA_JSON                              = `{"datacallID": "Data_Call_123","dataCallVersion": "1", "channelList":[{"channelName":"aais-carrier1", "chaincodeName": "openidl-cc-default"}]}`
 	CREATE_DATACALL_LOG_ENTRY                            = `{"dataCallID":"Data_Call_1","dataCallVersion":"1","actionID":"DATA_CALL_ISSUED","action":"Issued","actionTs":"2018-11-01T18:30:00.000Z","updatedBy":"user@aaisonline.com"}`
 	SAVE_INSURANCE_HASH_EMPTY_ID_JSON                    = `{"batchId":"","hash":"test"}`
-	SAVE_INSURANCE_HASH_VALID_JSON                       = `{"batchId":"Insurance-batch-1","hash":"test","carrierId":"12345"}`
+	SAVE_INSURANCE_HASH_VALID_JSON                       = `{"batchId":"Insurance-batch-1", "chunkId":"chunk1", "hash":"test","carrierId":"12345"}`
 	SAVE_INSURANCE_DATA_VALID_JSON                       = `{"batchId":"batch_123","dataCallId":"Data_Call_123","dataCallVersion":"1","carrierId":"12345","pageNumber":1,"value":{"key1":"value1","key2":"value2","key3":"value3","key4":["val1","val2","val3"]}}`
 	SAVE_INSURANCE_DATA_EMPTY_CARRIER_ID_JSON            = `{"batchId":"batch_123","dataCallId":"Data_Call_123","dataCallVersion":"1","carrierId":"","pageNumber":1,"value":{"key1":"value1","key2":"value2","key3":"value3","key4":["val1","val2","val3"]}}`
 )

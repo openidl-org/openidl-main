@@ -1,0 +1,22 @@
+{
+    "extractionPatternID": "Trivial_01",
+    "extractionPatternName": "Trivial_01",
+    "description": "Trivial Extraction Pattern",
+    "jurisdication": "AL",
+    "insurance": "Personal Auto",
+    "viewDefinition": {
+        "map": "function map() {\n    let key = this.zipcode\n    var result = {\n        \"key\": { \"zipcode\": key },\n        \"value\": {\n            \"premium\": this.premium,\n            \"chunkId\": this.chunkId,\n            \"carrierId\": this.carrierId\n        }\n    }\n    emit(\n        result.key, result.value.premium,\n    )\n}",
+        "reduce": "function reduce(key, value) {\n    return Array.sum(value);\n}"
+    },
+    "dbType": "mongo",
+    "version": "0.1",
+    "isActive": true,
+    "effectiveStartTs": "2022-01-30T18:30:00Z",
+    "effectiveEndTs": "2023-01-30T18:30:00Z",
+    "premiumFromDate": "2022-01-30T18:30:00Z",
+    "premiumToDate": "2023-01-30T18:30:00Z",
+    "lossFromDate": "2022-01-30T18:30:00Z",
+    "lossToDate": "2023-01-30T18:30:00Z",
+    "updatedTs": "2021-11-23T14:48:00Z",
+    "updatedBy": "kens@aaisonline.com"
+}

@@ -1,0 +1,11 @@
+{
+  "urlPrefix": "https://s3.${AWS_ZONE}.amazonaws.com/",
+  "accessKeyId": "${AWS_ACCESS_KEY_ID}",
+  "bucketName": "${REPORT_BUCKET_NAME}",
+  "roleParams": {
+    "ExternalId": "${ROLE_PARAM_EXTERNAL_ID}",
+    "RoleArn": "${ROLE_ARN}",
+    "RoleSessionName": "${ROLE_SESSION_NAME}"
+  },
+  "secretAccessKey": "$SECRET_ACCESS_KEY}"
+}

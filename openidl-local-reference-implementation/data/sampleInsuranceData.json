@@ -1,0 +1,79 @@
+{
+    "records": [
+        {
+            "policy": {
+                "limits": [
+                    {
+                        "limitAmount": 5000,
+                        "limitType": "Primary Amount of Insurance"
+                    }
+                ],
+                "lineOfInsurance": {
+                    "code": "H",
+                    "description": "Homeowners (excl. MHO Tenant Condo)",
+                    "subline": "JF"
+                },
+                "currencyPayment": [
+                    {
+                        "enumType": "Premium Amount",
+                        "premiumType": "2",
+                        "currencyPaymentAmount": 0,
+                        "accountStatement": [
+                            {
+                                "periodStartDate": "2020-11-14"
+                            }
+                        ],
+                        "transactionCode": "1",
+                        "transactionType": "Premium",
+                        "monthsCovered": {
+                            "description": "12"
+                        }
+                    }
+                ],
+                "policyStructure": [
+                    {
+                        "location": [
+                            {
+                                "geographicLocation": {
+                                    "stateAbbreviation": "LA",
+                                    "stateLegacyCode": "18",
+                                    "stateName": "Louisiana",
+                                    "postalCode": "70002"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "company": {
+                    "companyType": "Fire",
+                    "code": "12345"
+                },
+                "annualStatementLineNumber": {
+                    "code": "04",
+                    "description": "04"
+                },
+                "policyForm": {
+                    "description": "W"
+                },
+                "personalPolicy": {
+                    "policyNumber": "930693",
+                    "policyEffectiveDate": "2020-11-14",
+                    "policyEffectiveStatus": "In-Force",
+                    "policyExpirationDate": "2021-11-14",
+                    "reinstatement": "Not a reinstatement",
+                    "policyCount": 0,
+                    "truePolicyCountInForce": 0,
+                    "transactionType": "1"
+                },
+                "perilCategories": {
+                    "windHailCoverageStatus": "Includes Wind"
+                },
+                "extra": {
+                    "internalPolicyType": "H",
+                    "isOnNonRenewalsFile": "N",
+                    "fileDate": "2021-02-28"
+                }
+            }
+        }
+    ]
+}

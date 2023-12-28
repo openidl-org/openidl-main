@@ -1,0 +1,120 @@
+@import '../../../styles/variables';
+
+.form {
+	padding-bottom: 3rem;
+	padding-top: 1rem;
+
+	.data-form {
+		margin: 0 auto;
+		padding: 1rem;
+
+		.mat-list-single-selected-option {
+			background: $primary;
+			color: $white;
+		}
+
+		.full-width {
+			width: 100%;
+		}
+		.row {
+			display: flex;
+			flex-direction: row;
+
+			&.pb-1 {
+				padding-bottom: 2rem;
+			}
+		}
+
+		.col {
+			flex: 1;
+			margin-right: 10rem;
+
+			&.readonly {
+				margin-right: 1rem;
+			}
+
+			&.toggle {
+				padding: 1.2rem 0;
+			}
+
+			h4 {
+				font-weight: bold;
+			}
+			p {
+				.mat-icon-button {
+					line-height: 20px;
+					height: auto;
+				}
+
+				.likes {
+					width: 5rem;
+					display: inline-block;
+				}
+			}
+		}
+		.sidebar {
+			flex: 1;
+			border-right: 1px solid $table-hover;
+		}
+		.content {
+			flex: 4;
+		}
+		.spacer {
+			flex: 1 1 auto;
+		}
+
+		.col:last-child {
+			margin-right: 0;
+		}
+
+		.button-row {
+			text-align: end;
+			margin: 1rem 0;
+			button {
+				// width: 9rem;
+				margin: 0 0.5rem;
+			}
+			button:last-child {
+				margin-right: 0;
+			}
+		}
+
+		.forum-button {
+			height: 51px;
+			position: absolute;
+			left: -116px;
+			top: -38px;
+			border-bottom-left-radius: 0;
+			border-top-left-radius: 0;
+		}
+
+		.mr-1 {
+			margin-right: 1rem;
+		}
+
+		.count-icon {
+			top: 6px;
+		}
+
+		.btn-org {
+			margin-left: 1rem;
+		}
+
+		.mat-spin {
+			display: inline;
+		}
+
+		.text-wrap {
+			max-width: 600px;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+
+		.record-time {
+			font-size: 18px;
+			top: 5px;
+			position: relative;
+		}
+	}
+}

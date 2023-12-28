@@ -1,0 +1,63 @@
+html,
+body {
+	height: 100%;
+}
+body {
+	margin: 0;
+	font-family: Roboto, 'Helvetica Neue', sans-serif;
+	background: #fafafa;
+}
+
+.header-with-icon {
+	.mat-icon {
+		font-size: 2rem;
+	}
+	span {
+		position: absolute;
+		// margin-top: 1px;
+		margin-left: 1rem;
+		font-weight: 500;
+	}
+}
+
+.container {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.mat-dialog-container {
+	min-width: 600px;
+}
+
+.center {
+	text-align: center;
+}
+
+.right {
+	text-align: right;
+}
+
+.pb-1 {
+	padding-bottom: 1rem;
+}
+
+.full-width {
+	width: 100%;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+}
+
+.col {
+	flex: 1;
+}
+
+.update-form {
+	margin: 1rem auto;
+	.data-form {
+		margin-top: 1rem;
+		padding: 1rem;
+	}
+}

@@ -1,0 +1,158 @@
+<div class="data-table" *ngIf="!isSpinner">
+	<table
+		mat-table
+		class="width-table"
+		[dataSource]="reportList"
+		*ngIf="reportList && reportList.length > 0"
+	>
+		<!-- Checkbox Column -->
+		<ng-container matColumnDef="select" *ngIf="role === 'regulator'">
+			<th mat-header-cell *matHeaderCellDef></th>
+			<td mat-cell *matCellDef="let row">
+				<mat-radio-button
+					*ngIf="
+						(!isAccepted &&
+							!isPublished &&
+							row.status.toLowerCase() === 'candidate') ||
+						(isAccepted && row.status.toLowerCase() === 'accepted')
+					"
+					name="report-selector"
+					color="primary"
+					[checked]="
+						(isAccepted &&
+							row.status.toLowerCase() === 'accepted') ||
+						isReportSelected
+					"
+					(click)="$event.stopPropagation(); getSelectedReport(row)"
+					[aria-label]="'report version ' + row.reportVersion"
+				>
+				</mat-radio-button>
+			</td>
+		</ng-container>
+
+		<!-- ReportVersion Column -->
+		<ng-container matColumnDef="reportVersion">
+			<th mat-header-cell *matHeaderCellDef>Version</th>
+			<td mat-cell *matCellDef="let row">{{ row.reportVersion }}</td>
+		</ng-container>
+
+		<!-- Date and Time Column -->
+		<ng-container matColumnDef="updatedTs">
+			<th mat-header-cell *matHeaderCellDef>Date and Time</th>
+			<td mat-cell *matCellDef="let row">
+				{{ row.updatedTs }}
+			</td>
+		</ng-container>
+
+		<!-- Status Column -->
+		<ng-container matColumnDef="status">
+			<th mat-header-cell *matHeaderCellDef>Status</th>
+			<td mat-cell *matCellDef="let row" class="col-status">
+				{{ row.status }}
+			</td>
+		</ng-container>
+
+		<!-- Report URL Column -->
+		<ng-container matColumnDef="url" *ngIf="isShowUrl">
+			<th mat-header-cell *matHeaderCellDef>Report URL</th>
+			<td mat-cell *matCellDef="let row" class="row-icon">
+				<a
+					class="report-link text-wrap"
+					[matTooltip]="row.url"
+					matTooltipPosition="above"
+					href="javascript:void(0);"
+					(click)="openURL(row.url)"
+					>{{ row.url }}</a
+				>
+			</td>
+		</ng-container>
+
+		<!-- Report Hash Column -->
+		<ng-container matColumnDef="hash">
+			<th mat-header-cell *matHeaderCellDef>Report Hash</th>
+			<td mat-cell *matCellDef="let row" class="row-icon">
+				<span
+					[matTooltip]="row.hash"
+					matTooltipPosition="above"
+					class="text-wrap"
+				>
+					{{ row.hash }}
+				</span>
+			</td>
+		</ng-container>
+
+		<!-- Action Column -->
+		<ng-container matColumnDef="action">
+			<th mat-header-cell *matHeaderCellDef class="col-action"></th>
+			<td mat-cell *matCellDef="let row">
+				<button
+					mat-icon-button
+					[matMenuTriggerFor]="menu"
+					title="more menu"
+				>
+					<mat-icon>more_vert</mat-icon>
+				</button>
+				<mat-menu #menu="matMenu">
+					<button
+						mat-menu-item
+						(click)="copyToClipboard(row.url, 'URL', $event)"
+					>
+						Copy Report URL
+					</button>
+					<button
+						mat-menu-item
+						(click)="copyToClipboard(row.hash, 'hash', $event)"
+					>
+						Copy Report Hash
+					</button>
+				</mat-menu>
+			</td>
+		</ng-container>
+
+		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+		<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+		<tr class="mat-row" *matNoDataRow>
+			<td class="mat-cell" colspan="9999">No reports available.</td>
+		</tr>
+	</table>
+
+	<div class="button-row" *ngIf="role === 'regulator' && isJurisdiction">
+		<button
+			mat-stroked-button
+			*ngIf="!isAccepted && !isPublished"
+			color="primary"
+			(click)="submitReport('acceptReport')"
+			[disabled]="isDisabled"
+		>
+			<mat-icon>done_all</mat-icon>
+			Accept
+		</button>
+		<button
+			mat-flat-button
+			*ngIf="isAccepted"
+			color="primary"
+			(click)="submitReport('publishReport')"
+			[disabled]="!isAccepted"
+		>
+			<mat-icon>publish</mat-icon>
+			Publish
+		</button>
+		<button
+			mat-flat-button
+			*ngIf="!isAccepted && !isPublished"
+			color="primary"
+			(click)="submitReport('acceptAndPublishReport')"
+			[disabled]="isDisabled"
+		>
+			<mat-icon>published_with_changes</mat-icon>
+			Accept and Publish
+		</button>
+	</div>
+</div>
+
+<div class="data-table" *ngIf="isSpinner">
+	<div class="spinner-container width-table">
+		<mat-spinner diameter="40" class="spin"></mat-spinner>
+	</div>
+</div>
